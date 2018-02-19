@@ -68,6 +68,16 @@
 
                     <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                         <div class="sidebar-sticky">
+
+                            <div class="form-group input-group-sm">
+                                {{--<label for="exampleInputEmail1"></label>--}}
+                                <input type="text" class="form-control" id="filtro_menu"
+                                       aria-describedby="filtro_menu_help" placeholder="">
+                                <small id="filtro_menu_help" class="form-text text-muted">
+                                    Filtrar elementos
+                                </small>
+                            </div>
+
                             <ul class="nav flex-column">
                                 <li class="nav-item">
                                     <a class="nav-link active" href="#">
