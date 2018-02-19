@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9c71587b-d991-482f-b19e-13dd138d49bc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Servicio.php" afterPath="$PROJECT_DIR$/app/Servicio.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/ServicioSalud.php" afterPath="$PROJECT_DIR$/app/ServicioSalud.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/ServidorAcceso.php" afterPath="$PROJECT_DIR$/app/ServidorAcceso.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/ServidorAplicacion.php" afterPath="$PROJECT_DIR$/app/ServidorAplicacion.php" />
     </list>
     <ignored path="catalogo_servicios_tic.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -87,41 +87,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ServicioSalud.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ServicioSalud.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/ServicioSalud.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38496584">
-              <caret line="26" column="3" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
+            <state vertical-scroll-proportion="-14.0">
+              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LogNavigation.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/LogNavigation.php">
+      <file leaf-file-name="ServicioTag.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/ServicioTag.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="48" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
+            <state vertical-scroll-proportion="-4.0">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="35" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Establecimiento.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Establecimiento.php">
+      <file leaf-file-name="ServidorAcceso.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/ServidorAcceso.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="46" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="46" />
+            <state vertical-scroll-proportion="-4.0">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="39" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EntregasCredencialesUsuario.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/EntregasCredencialesUsuario.php">
+      <file leaf-file-name="ServidorAplicacion.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/ServidorAplicacion.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="28" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.2072893">
+              <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -156,6 +156,8 @@
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Servicio.php" />
         <option value="$PROJECT_DIR$/app/ServicioSalud.php" />
+        <option value="$PROJECT_DIR$/app/ServidorAcceso.php" />
+        <option value="$PROJECT_DIR$/app/ServidorAplicacion.php" />
       </list>
     </option>
   </component>
@@ -448,13 +450,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/ServicioTag.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54340833">
-          <caret line="26" column="38" selection-start-line="26" selection-start-column="38" selection-end-line="26" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Dominio.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.0">
@@ -592,10 +587,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/ServicioTag.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.0">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="35" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/ServicioSalud.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38496584">
-          <caret line="26" column="3" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
+        <state vertical-scroll-proportion="-14.0">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/ServidorAcceso.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.0">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="39" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/ServidorAplicacion.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2072893">
+          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
           <folding />
         </state>
       </provider>
