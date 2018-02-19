@@ -19,7 +19,6 @@ class User extends Authenticatable
       'nom_completo',
       'ape_paterno',
       'ape_materno',
-      'name',
 
    ];
 
