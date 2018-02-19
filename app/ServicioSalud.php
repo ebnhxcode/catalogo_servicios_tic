@@ -20,7 +20,9 @@ class ServicioSalud extends Model
    ];
 
 
+   public function region () {
+      return $this->belongsTo('App\Region', 'id_region');
+   }
 
-
-
+   
 }
