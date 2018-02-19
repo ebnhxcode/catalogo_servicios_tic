@@ -3989,71 +3989,6 @@
         ]
     },
     {
-        "name": "phpspec/prophecy",
-        "version": "1.7.4",
-        "version_normalized": "1.7.4.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/phpspec/prophecy.git",
-            "reference": "9f901e29c93dae4aa77c0bb161df4276f9c9a1be"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/phpspec/prophecy/zipball/9f901e29c93dae4aa77c0bb161df4276f9c9a1be",
-            "reference": "9f901e29c93dae4aa77c0bb161df4276f9c9a1be",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/instantiator": "^1.0.2",
-            "php": "^5.3|^7.0",
-            "phpdocumentor/reflection-docblock": "^2.0|^3.0.2|^4.0",
-            "sebastian/comparator": "^1.1|^2.0",
-            "sebastian/recursion-context": "^1.0|^2.0|^3.0"
-        },
-        "require-dev": {
-            "phpspec/phpspec": "^2.5|^3.2",
-            "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.5"
-        },
-        "time": "2018-02-11 18:49:29",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.7.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Prophecy\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Konstantin Kudryashov",
-                "email": "ever.zet@gmail.com",
-                "homepage": "http://everzet.com"
-            },
-            {
-                "name": "Marcello Duarte",
-                "email": "marcello.duarte@gmail.com"
-            }
-        ],
-        "description": "Highly opinionated mocking framework for PHP 5.3+",
-        "homepage": "https://github.com/phpspec/prophecy",
-        "keywords": [
-            "Double",
-            "Dummy",
-            "fake",
-            "mock",
-            "spy",
-            "stub"
-        ]
-    },
-    {
         "name": "phpunit/phpunit",
         "version": "7.0.1",
         "version_normalized": "7.0.1.0",
@@ -4133,6 +4068,71 @@
             "phpunit",
             "testing",
             "xunit"
+        ]
+    },
+    {
+        "name": "phpspec/prophecy",
+        "version": "1.7.5",
+        "version_normalized": "1.7.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/phpspec/prophecy.git",
+            "reference": "dfd6be44111a7c41c2e884a336cc4f461b3b2401"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/phpspec/prophecy/zipball/dfd6be44111a7c41c2e884a336cc4f461b3b2401",
+            "reference": "dfd6be44111a7c41c2e884a336cc4f461b3b2401",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/instantiator": "^1.0.2",
+            "php": "^5.3|^7.0",
+            "phpdocumentor/reflection-docblock": "^2.0|^3.0.2|^4.0",
+            "sebastian/comparator": "^1.1|^2.0",
+            "sebastian/recursion-context": "^1.0|^2.0|^3.0"
+        },
+        "require-dev": {
+            "phpspec/phpspec": "^2.5|^3.2",
+            "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.5"
+        },
+        "time": "2018-02-19 10:16:54",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.7.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Prophecy\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Konstantin Kudryashov",
+                "email": "ever.zet@gmail.com",
+                "homepage": "http://everzet.com"
+            },
+            {
+                "name": "Marcello Duarte",
+                "email": "marcello.duarte@gmail.com"
+            }
+        ],
+        "description": "Highly opinionated mocking framework for PHP 5.3+",
+        "homepage": "https://github.com/phpspec/prophecy",
+        "keywords": [
+            "Double",
+            "Dummy",
+            "fake",
+            "mock",
+            "spy",
+            "stub"
         ]
     }
 ]
