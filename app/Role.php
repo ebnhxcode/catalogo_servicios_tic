@@ -9,12 +9,9 @@ class Role extends Model
    protected $table="roles";
    protected $primaryKey="id_role";
    protected $fillable=[
-      'role'
+      'nom_role',
+      'det_role',
    ];
 
-
-   public function users () {
-      return $this->hasMany('App\User', 'id_role');
-   }
 
 }

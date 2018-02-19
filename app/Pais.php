@@ -9,7 +9,8 @@ class Pais extends Model
     protected $table="pais";
     protected $primaryKey="id_pais";
     protected $fillable=[
-       'id_pais','nombre_pais',
+       'id_pais',
+       'nombre_pais',
     ];
 
 }
