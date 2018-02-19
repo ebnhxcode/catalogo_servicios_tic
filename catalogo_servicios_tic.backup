@@ -5947,6 +5947,262 @@ SELECT pg_catalog.setval('usuarios_servicios_id_seq', 1, false);
 
 
 --
+-- Name: accesos_aplicaciones accesos_aplicaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY accesos_aplicaciones
+    ADD CONSTRAINT accesos_aplicaciones_pkey PRIMARY KEY (id_acceso_aplicacion);
+
+
+--
+-- Name: accesos_servidores accesos_servidores_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY accesos_servidores
+    ADD CONSTRAINT accesos_servidores_pkey PRIMARY KEY (id_acceso_servidor);
+
+
+--
+-- Name: actividades actividades_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY actividades
+    ADD CONSTRAINT actividades_pkey PRIMARY KEY (id_actividad);
+
+
+--
+-- Name: actividades_tags actividades_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY actividades_tags
+    ADD CONSTRAINT actividades_tags_pkey PRIMARY KEY (id_actividad_tag);
+
+
+--
+-- Name: aplicaciones_estados aplicaciones_estados_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY aplicaciones_estados
+    ADD CONSTRAINT aplicaciones_estados_pkey PRIMARY KEY (id_aplicacion_estado);
+
+
+--
+-- Name: aplicaciones aplicaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY aplicaciones
+    ADD CONSTRAINT aplicaciones_pkey PRIMARY KEY (id_aplicacion);
+
+
+--
+-- Name: aplicaciones_tags aplicaciones_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY aplicaciones_tags
+    ADD CONSTRAINT aplicaciones_tags_pkey PRIMARY KEY (id_aplicacion_tag);
+
+
+--
+-- Name: aplicaciones_tecnologias aplicaciones_tecnologias_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY aplicaciones_tecnologias
+    ADD CONSTRAINT aplicaciones_tecnologias_pkey PRIMARY KEY (id_aplicacion_tecnologia);
+
+
+--
+-- Name: cargos cargos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY cargos
+    ADD CONSTRAINT cargos_pkey PRIMARY KEY (id_cargo);
+
+
+--
+-- Name: catalogos_servicios catalogos_servicios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY catalogos_servicios
+    ADD CONSTRAINT catalogos_servicios_pkey PRIMARY KEY (id_catalogo_servicio);
+
+
+--
+-- Name: datacentros datacentros_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY datacentros
+    ADD CONSTRAINT datacentros_pkey PRIMARY KEY (id_datacentro);
+
+
+--
+-- Name: dominios dominios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY dominios
+    ADD CONSTRAINT dominios_pkey PRIMARY KEY (id_dominio);
+
+
+--
+-- Name: estados estados_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY estados
+    ADD CONSTRAINT estados_pkey PRIMARY KEY (id_estado);
+
+
+--
+-- Name: fuentes_aplicaciones fuentes_aplicaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY fuentes_aplicaciones
+    ADD CONSTRAINT fuentes_aplicaciones_pkey PRIMARY KEY (id_fuente_aplicacion);
+
+
+--
+-- Name: permisos permisos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY permisos
+    ADD CONSTRAINT permisos_pkey PRIMARY KEY (id_permiso);
+
+
+--
+-- Name: roles_permisos roles_permisos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY roles_permisos
+    ADD CONSTRAINT roles_permisos_pkey PRIMARY KEY (id_role_permiso);
+
+
+--
+-- Name: roles roles_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY roles
+    ADD CONSTRAINT roles_pkey PRIMARY KEY (id_role);
+
+
+--
+-- Name: servicios_estados servicios_estados_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY servicios_estados
+    ADD CONSTRAINT servicios_estados_pkey PRIMARY KEY (id_servicio_estado);
+
+
+--
+-- Name: servicios_permisos servicios_permisos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY servicios_permisos
+    ADD CONSTRAINT servicios_permisos_pkey PRIMARY KEY (id_servicio_permiso);
+
+
+--
+-- Name: servicios servicios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY servicios
+    ADD CONSTRAINT servicios_pkey PRIMARY KEY (id_servicio);
+
+
+--
+-- Name: servicios_tags servicios_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY servicios_tags
+    ADD CONSTRAINT servicios_tags_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: servidor_aplicaciones servidor_aplicaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY servidor_aplicaciones
+    ADD CONSTRAINT servidor_aplicaciones_pkey PRIMARY KEY (id_servidor_aplicacion);
+
+
+--
+-- Name: sistemas_operativos sistemas_operativos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY sistemas_operativos
+    ADD CONSTRAINT sistemas_operativos_pkey PRIMARY KEY (id_sistema_operativo);
+
+
+--
+-- Name: tags tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tags
+    ADD CONSTRAINT tags_pkey PRIMARY KEY (id_tag);
+
+
+--
+-- Name: tecnologia_desarrollo tecnologia_desarrollo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tecnologia_desarrollo
+    ADD CONSTRAINT tecnologia_desarrollo_pkey PRIMARY KEY (id_tecnologia_desarrollo);
+
+
+--
+-- Name: tipos_aplicaciones tipos_aplicaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tipos_aplicaciones
+    ADD CONSTRAINT tipos_aplicaciones_pkey PRIMARY KEY (id_tipo_aplicacion);
+
+
+--
+-- Name: tipos_tecnologias_desarrollo tipos_tecnologias_desarrollo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tipos_tecnologias_desarrollo
+    ADD CONSTRAINT tipos_tecnologias_desarrollo_pkey PRIMARY KEY (id_tipo_tecnologia_desarrollo);
+
+
+--
+-- Name: usuarios_bitacora_servicios usuarios_bitacora_servicios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY usuarios_bitacora_servicios
+    ADD CONSTRAINT usuarios_bitacora_servicios_pkey PRIMARY KEY (id_usuario_bitacora_servicio);
+
+
+--
+-- Name: usuarios_cargos usuarios_cargos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY usuarios_cargos
+    ADD CONSTRAINT usuarios_cargos_pkey PRIMARY KEY (id_usuario_cargo);
+
+
+--
+-- Name: usuarios_estados usuarios_estados_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY usuarios_estados
+    ADD CONSTRAINT usuarios_estados_pkey PRIMARY KEY (id_usuario_estado);
+
+
+--
+-- Name: usuarios_roles usuarios_roles_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY usuarios_roles
+    ADD CONSTRAINT usuarios_roles_pkey PRIMARY KEY (id_usuario_role);
+
+
+--
+-- Name: usuarios_servicios usuarios_servicios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY usuarios_servicios
+    ADD CONSTRAINT usuarios_servicios_pkey PRIMARY KEY (id_usuario_servicio);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
