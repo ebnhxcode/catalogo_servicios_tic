@@ -2,46 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c71587b-d991-482f-b19e-13dd138d49bc" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Actividad.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/ActividadTag.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Aplicacion.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/AplicacionAcceso.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/AplicacionEstado.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/AplicacionTag.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/AplicacionTecnologia.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Cargo.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/CatalogoServicio.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/CatalogoServicioTag.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Comuna.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Datacentro.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Dominio.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/EntregasCredencialesUsuario.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Establecimiento.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Estado.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/FuenteAplicacion.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/LogNavegacion.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Pais.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Permiso.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Region.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Role.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/RolePermiso.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Servicio.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/ServicioEstado.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/ServicioSalud.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/ServicioTag.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/ServidorAcceso.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/ServidorAplicacion.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/SistemaOperativo.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Tag.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/TecnologiaDesarrollo.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/TipoAplicacion.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/TipoTecnologiaDesarrollo.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/User.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/UsuarioBitacoraServicio.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/UsuarioCargo.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/UsuarioEstado.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/UsuarioRole.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/UsuarioServicio.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" />
@@ -352,6 +312,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="catalogo_servicios_tic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="catalogo_servicios_tic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Http" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="catalogo_servicios_tic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="catalogo_servicios_tic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Http" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Middleware" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
