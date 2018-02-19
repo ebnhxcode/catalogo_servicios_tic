@@ -23,6 +23,6 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 
 Route::resource('/catalogo_servicios', 'CatalogoServicioController');
-Route::resource('/roles', 'RolesController');
+Route::resource('/roles', 'RoleController');
 
 
