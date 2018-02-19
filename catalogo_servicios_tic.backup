@@ -30,6 +30,146 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 SET search_path = public, pg_catalog;
 
+--
+-- Name: accesos_aplicaciones_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE accesos_aplicaciones_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE accesos_aplicaciones_id_seq OWNER TO postgres;
+
+--
+-- Name: accesos_servidores_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE accesos_servidores_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE accesos_servidores_id_seq OWNER TO postgres;
+
+--
+-- Name: actividades_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE actividades_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE actividades_id_seq OWNER TO postgres;
+
+--
+-- Name: actividades_tags_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE actividades_tags_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE actividades_tags_id_seq OWNER TO postgres;
+
+--
+-- Name: aplicaciones_estados_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE aplicaciones_estados_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE aplicaciones_estados_id_seq OWNER TO postgres;
+
+--
+-- Name: aplicaciones_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE aplicaciones_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE aplicaciones_id_seq OWNER TO postgres;
+
+--
+-- Name: aplicaciones_tags_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE aplicaciones_tags_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE aplicaciones_tags_id_seq OWNER TO postgres;
+
+--
+-- Name: aplicaciones_tecnologias_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE aplicaciones_tecnologias_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE aplicaciones_tecnologias_id_seq OWNER TO postgres;
+
+--
+-- Name: cargos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE cargos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cargos_id_seq OWNER TO postgres;
+
+--
+-- Name: catalogos_servicios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE catalogos_servicios_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE catalogos_servicios_id_seq OWNER TO postgres;
+
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -48,6 +188,34 @@ CREATE TABLE comuna (
 
 
 ALTER TABLE comuna OWNER TO postgres;
+
+--
+-- Name: datacentros_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE datacentros_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE datacentros_id_seq OWNER TO postgres;
+
+--
+-- Name: dominios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE dominios_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE dominios_id_seq OWNER TO postgres;
 
 --
 -- Name: establecimiento; Type: TABLE; Schema: public; Owner: postgres
@@ -71,6 +239,34 @@ CREATE TABLE establecimiento (
 ALTER TABLE establecimiento OWNER TO postgres;
 
 --
+-- Name: estados_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE estados_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE estados_id_seq OWNER TO postgres;
+
+--
+-- Name: fuentes_aplicaciones_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE fuentes_aplicaciones_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE fuentes_aplicaciones_id_seq OWNER TO postgres;
+
+--
 -- Name: pais; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -83,6 +279,20 @@ CREATE TABLE pais (
 
 
 ALTER TABLE pais OWNER TO postgres;
+
+--
+-- Name: permisos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE permisos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE permisos_id_seq OWNER TO postgres;
 
 --
 -- Name: region; Type: TABLE; Schema: public; Owner: postgres
@@ -101,6 +311,34 @@ CREATE TABLE region (
 ALTER TABLE region OWNER TO postgres;
 
 --
+-- Name: roles_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE roles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE roles_id_seq OWNER TO postgres;
+
+--
+-- Name: roles_permisos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE roles_permisos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE roles_permisos_id_seq OWNER TO postgres;
+
+--
 -- Name: servicio_salud; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -115,6 +353,216 @@ CREATE TABLE servicio_salud (
 
 
 ALTER TABLE servicio_salud OWNER TO postgres;
+
+--
+-- Name: servicios_estados_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE servicios_estados_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE servicios_estados_id_seq OWNER TO postgres;
+
+--
+-- Name: servicios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE servicios_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE servicios_id_seq OWNER TO postgres;
+
+--
+-- Name: servicios_permisos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE servicios_permisos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE servicios_permisos_id_seq OWNER TO postgres;
+
+--
+-- Name: servicios_tags_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE servicios_tags_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE servicios_tags_id_seq OWNER TO postgres;
+
+--
+-- Name: servidor_aplicaciones_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE servidor_aplicaciones_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE servidor_aplicaciones_id_seq OWNER TO postgres;
+
+--
+-- Name: sistemas_operativos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE sistemas_operativos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE sistemas_operativos_id_seq OWNER TO postgres;
+
+--
+-- Name: tags_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE tags_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE tags_id_seq OWNER TO postgres;
+
+--
+-- Name: tecnologia_desarrollo_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE tecnologia_desarrollo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE tecnologia_desarrollo_id_seq OWNER TO postgres;
+
+--
+-- Name: tipos_aplicaciones_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE tipos_aplicaciones_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE tipos_aplicaciones_id_seq OWNER TO postgres;
+
+--
+-- Name: tipos_tecnologias_desarrollo_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE tipos_tecnologias_desarrollo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE tipos_tecnologias_desarrollo_id_seq OWNER TO postgres;
+
+--
+-- Name: usuarios_bitacora_servicios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE usuarios_bitacora_servicios_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE usuarios_bitacora_servicios_id_seq OWNER TO postgres;
+
+--
+-- Name: usuarios_cargos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE usuarios_cargos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE usuarios_cargos_id_seq OWNER TO postgres;
+
+--
+-- Name: usuarios_estados_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE usuarios_estados_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE usuarios_estados_id_seq OWNER TO postgres;
+
+--
+-- Name: usuarios_roles_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE usuarios_roles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE usuarios_roles_id_seq OWNER TO postgres;
+
+--
+-- Name: usuarios_servicios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE usuarios_servicios_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE usuarios_servicios_id_seq OWNER TO postgres;
 
 --
 -- Data for Name: comuna; Type: TABLE DATA; Schema: public; Owner: postgres
@@ -4431,6 +4879,230 @@ COPY servicio_salud (id_servicio_salud, id_region, nombre_servicio_salud, orden,
 29	9	Araucanía Norte	22	2017-10-31 11:06:00	2017-10-31 11:06:00
 33	10	Chiloé	27	2017-10-31 11:06:00	2017-10-31 11:06:00
 \.
+
+
+--
+-- Name: accesos_aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('accesos_aplicaciones_id_seq', 1, false);
+
+
+--
+-- Name: accesos_servidores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('accesos_servidores_id_seq', 1, false);
+
+
+--
+-- Name: actividades_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('actividades_id_seq', 1, false);
+
+
+--
+-- Name: actividades_tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('actividades_tags_id_seq', 1, false);
+
+
+--
+-- Name: aplicaciones_estados_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('aplicaciones_estados_id_seq', 1, false);
+
+
+--
+-- Name: aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('aplicaciones_id_seq', 1, false);
+
+
+--
+-- Name: aplicaciones_tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('aplicaciones_tags_id_seq', 1, false);
+
+
+--
+-- Name: aplicaciones_tecnologias_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('aplicaciones_tecnologias_id_seq', 1, false);
+
+
+--
+-- Name: cargos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('cargos_id_seq', 1, false);
+
+
+--
+-- Name: catalogos_servicios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('catalogos_servicios_id_seq', 1, false);
+
+
+--
+-- Name: datacentros_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('datacentros_id_seq', 1, false);
+
+
+--
+-- Name: dominios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('dominios_id_seq', 1, false);
+
+
+--
+-- Name: estados_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('estados_id_seq', 1, false);
+
+
+--
+-- Name: fuentes_aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('fuentes_aplicaciones_id_seq', 1, false);
+
+
+--
+-- Name: permisos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('permisos_id_seq', 1, false);
+
+
+--
+-- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('roles_id_seq', 1, false);
+
+
+--
+-- Name: roles_permisos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('roles_permisos_id_seq', 1, false);
+
+
+--
+-- Name: servicios_estados_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('servicios_estados_id_seq', 1, false);
+
+
+--
+-- Name: servicios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('servicios_id_seq', 1, false);
+
+
+--
+-- Name: servicios_permisos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('servicios_permisos_id_seq', 1, false);
+
+
+--
+-- Name: servicios_tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('servicios_tags_id_seq', 1, false);
+
+
+--
+-- Name: servidor_aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('servidor_aplicaciones_id_seq', 1, false);
+
+
+--
+-- Name: sistemas_operativos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('sistemas_operativos_id_seq', 1, false);
+
+
+--
+-- Name: tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('tags_id_seq', 1, false);
+
+
+--
+-- Name: tecnologia_desarrollo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('tecnologia_desarrollo_id_seq', 1, false);
+
+
+--
+-- Name: tipos_aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('tipos_aplicaciones_id_seq', 1, false);
+
+
+--
+-- Name: tipos_tecnologias_desarrollo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('tipos_tecnologias_desarrollo_id_seq', 1, false);
+
+
+--
+-- Name: usuarios_bitacora_servicios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('usuarios_bitacora_servicios_id_seq', 1, false);
+
+
+--
+-- Name: usuarios_cargos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('usuarios_cargos_id_seq', 1, false);
+
+
+--
+-- Name: usuarios_estados_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('usuarios_estados_id_seq', 1, false);
+
+
+--
+-- Name: usuarios_roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('usuarios_roles_id_seq', 1, false);
+
+
+--
+-- Name: usuarios_servicios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('usuarios_servicios_id_seq', 1, false);
 
 
 --
