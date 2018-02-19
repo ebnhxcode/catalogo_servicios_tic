@@ -14,11 +14,11 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <div id="FrontController">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Catálogo Servicios Tic') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -67,87 +67,55 @@
                 <div class="row">
 
                     <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-                        <div class="sidebar-sticky">
 
-                            <div class="form-group input-group-sm">
-                                {{--<label for="exampleInputEmail1"></label>--}}
-                                <input type="text" class="form-control" id="filtro_menu"
-                                       aria-describedby="filtro_menu_help" placeholder="">
-                                <small id="filtro_menu_help" class="form-text text-muted">
-                                    Filtrar elementos
-                                </small>
-                            </div>
+                        <div class="form-group input-group-sm">
+                            <!-- Input para escribir el termino a buscar -->
+                            <input type="text" class="form-control" aria-describedby="filtro_menu_help"
+                                   placeholder="" v-model="filtro_menu" id="filtro_menu">
 
+                            <small id="filtro_menu_help" class="form-text text-muted">
+                                Filtrar menú
+                            </small>
+                        </div>
+
+                        <div class="sidebar-sticky" style="overflow:auto; max-height: 650px;">
+
+
+                            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                                <span>Home Menú</span>
+                                <a class="d-flex align-items-center text-muted" href="#">
+                                    <span data-feather="plus-circle"></span>
+                                </a>
+                            </h6>
                             <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="#">
-                                        <span data-feather="home"></span>
-                                        Dashboard <span class="sr-only">(current)</span>
+                                <li class="nav-item" v-for="menu in filterBy(menus, filtro_menu)">
+                                    <a class="nav-link active" :href="menu.url">
+                                        @{{ menu.title }}<span class="sr-only">(current)</span>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                        <span data-feather="file"></span>
-                                        Orders
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                        <span data-feather="shopping-cart"></span>
-                                        Products
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                        <span data-feather="users"></span>
-                                        Customers
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                        <span data-feather="bar-chart-2"></span>
-                                        Reports
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                        <span data-feather="layers"></span>
-                                        Integrations
-                                    </a>
+
+                                <li class="nav-item" v-if="filterBy(menus, filtro_menu).length == 0">
+                                    <small class="text-muted text-center">Sin resultados.</small>
                                 </li>
                             </ul>
 
                             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                                <span>Saved reports</span>
+                                <span>Mantenedores</span>
                                 <a class="d-flex align-items-center text-muted" href="#">
                                     <span data-feather="plus-circle"></span>
                                 </a>
                             </h6>
 
                             <ul class="nav flex-column mb-2">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                        <span data-feather="file-text"></span>
-                                        Current month
+
+                                <li class="nav-item" v-for="mant in filterBy(mantenedores, filtro_menu)">
+                                    <a class="nav-link" :href="mant.url">
+                                        @{{ mant.title }}
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                        <span data-feather="file-text"></span>
-                                        Last quarter
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                        <span data-feather="file-text"></span>
-                                        Social engagement
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                        <span data-feather="file-text"></span>
-                                        Year-end sale
-                                    </a>
+
+                                <li class="nav-item" v-if="filterBy(mantenedores, filtro_menu).length == 0">
+                                    <small class="text-muted text-center">Sin resultados.</small>
                                 </li>
                             </ul>
                         </div>
@@ -161,6 +129,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    {{--<script src="{{ asset('js/app.js') }}"></script>--}}
+    <script src="{{ asset('js/controllers/FrontController.js') }}"></script>
+
 </body>
 </html>

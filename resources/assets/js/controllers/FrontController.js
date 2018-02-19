@@ -1,15 +1,94 @@
 require('../bootstrap');
-
 window.Vue = require('vue');
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+import VueResource from 'vue-resource';
+Vue.use(VueResource);
+import { _ , range } from 'lodash';
+import Vue2Filters from 'vue2-filters';
+Vue.use(Vue2Filters);
+
 
 Vue.component('front-component', require('../components/FrontComponent.vue'));
 
 const FrontController = new Vue({
-   el: '#FrontController'
+   el: '#FrontController',
+   data(){
+      return {
+         'filtro_menu':null,
+
+         'menus':[
+            {
+               'title':'Dashboard',
+               'url':'/dashboard',
+            },
+            {
+               'title':'Servicios',
+               'url':'/servicios',
+            },
+            {
+               'title':'Aplicaciones',
+               'url':'/aplicaciones',
+            },
+            {
+               'title':'Actividades',
+               'url':'/actividades',
+            },
+            {
+               'title':'Catálogos',
+               'url':'/catalogos',
+            },
+         ],
+
+         'mantenedores':[
+            {
+               'title':'Roles',
+               'url':'/roles',
+            },
+            {
+               'title':'Usuarios',
+               'url':'/usuarios',
+            },
+            {
+               'title':'Cargos',
+               'url':'/cargos',
+            },
+            {
+               'title':'Servicios',
+               'url':'/servicios',
+            },
+            {
+               'title':'Aplicaciones',
+               'url':'/aplicaciones',
+            },
+            {
+               'title':'Servidores',
+               'url':'/servidores',
+            },
+            {
+               'title':'Tags',
+               'url':'/tags',
+            },
+            {
+               'title':'Datacentros',
+               'url':'/datacentros',
+            },
+            {
+               'title':'Credenciales',
+               'url':'/credenciales',
+            },
+         ],
+      }
+   },
+
+   computed: {},
+   watch: {},
+   components: {
+
+   },
+   created(){
+
+   },
+   ready: {},
+   filters: {},
+   methods: {}
 });
