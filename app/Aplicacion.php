@@ -22,6 +22,7 @@ class Aplicacion extends Model
       'id_dominio',
       'id_servicio',
       'id_tipo_aplicacion',
+
       'id_usuario_registra',
       'id_usuario_modifica',
    ];
