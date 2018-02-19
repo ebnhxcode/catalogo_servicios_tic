@@ -23,6 +23,10 @@ class ServicioTag extends Model
       return $this->belongsTo('App\Servicio', 'id_servicio');
    }
 
+   public function tag() {
+      return $this->belongsTo('App\Tag', 'id_tag');
+   }
+
    public function usuario_registra() {
       return $this->belongsTo('App\User', 'id_usuario_registra');
    }

@@ -10,19 +10,21 @@ class CatalogoServicioTag extends Model
    protected $primaryKey = "id_catalogo_servicio_tag";
    protected $fillable = [
       #columns
-      'asunto',
-      'det_catalogo',
-      'avatar',
 
       #relaciones -> pks
-      'id_servicio',
+      'id_catalogo_servicio',
+      'id_tag',
 
       'id_usuario_registra',
       'id_usuario_modifica',
    ];
 
-   public function servicio() {
-      return $this->belongsTo('App\Servicio', 'id_servicio');
+   public function catalogo_servicio() {
+      return $this->belongsTo('App\CatalogoServicio', 'id_catalogo_servicio');
+   }
+
+   public function tag() {
+      return $this->belongsTo('App\Tag', 'id_tag');
    }
 
    public function usuario_registra() {
