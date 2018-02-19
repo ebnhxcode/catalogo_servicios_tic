@@ -4,18 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CatalogoServicioTag extends Model
+class ServicioTag extends Model
 {
-   protected $table = "catalogos_servicios_tags";
-   protected $primaryKey = "id_catalogo_servicio_tag";
+   protected $table = "servicios_tags";
+   protected $primaryKey = "id_servicio_tag";
    protected $fillable = [
       #columns
-      'asunto',
-      'det_catalogo',
-      'avatar',
 
       #relaciones -> pks
       'id_servicio',
+      'id_tag',
 
       'id_usuario_registra',
       'id_usuario_modifica',
