@@ -11,7 +11,6 @@ class Establecimiento extends Model
    protected $fillable = [
       # columns
       'nombre_establecimiento',
-      'nombre_establecimiento',
       'tipo_establecimiento',
       'vigencia_desde',
       'fecha_cierre',
@@ -24,9 +23,20 @@ class Establecimiento extends Model
       'id_comuna',
    ];
 
+   public function establecimiento_antiguo() {
+      return $this->belongsTo('App\Establecimiento', 'id_establecimiento_antiguo');
+   }
 
+   public function servicio_salud() {
+      return $this->belongsTo('App\ServicioSalud', 'id_servicio_salud');
+   }
 
+   public function region() {
+      return $this->belongsTo('App\Region', 'id_region');
+   }
 
-
+   public function comuna() {
+      return $this->belongsTo('App\Comuna', 'id_comuna');
+   }
 
 }
