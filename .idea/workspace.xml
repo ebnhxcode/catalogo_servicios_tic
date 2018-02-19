@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c71587b-d991-482f-b19e-13dd138d49bc" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Aplicacion.php" afterPath="$PROJECT_DIR$/app/Aplicacion.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/AplicacionAcceso.php" afterPath="$PROJECT_DIR$/app/AplicacionAcceso.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/AplicacionTecnologia.php" afterPath="$PROJECT_DIR$/app/AplicacionTecnologia.php" />
     </list>
     <ignored path="catalogo_servicios_tic.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,10 +25,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Aplicacion.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Aplicacion.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Aplicacion.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45980707">
+            <state vertical-scroll-proportion="-11.0">
               <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding />
             </state>
@@ -38,8 +38,18 @@
       <file leaf-file-name="AplicacionAcceso.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/AplicacionAcceso.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.0">
-              <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+            <state vertical-scroll-proportion="-4.0">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="38" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AplicacionTecnologia.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/AplicacionTecnologia.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.20900321">
+              <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -55,6 +65,7 @@
       <list>
         <option value="$PROJECT_DIR$/app/AplicacionAcceso.php" />
         <option value="$PROJECT_DIR$/app/Aplicacion.php" />
+        <option value="$PROJECT_DIR$/app/AplicacionTecnologia.php" />
       </list>
     </option>
   </component>
@@ -228,18 +239,26 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/AplicacionAcceso.php">
+    <entry file="file://$PROJECT_DIR$/app/Aplicacion.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.0">
-          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+        <state vertical-scroll-proportion="-11.0">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Aplicacion.php">
+    <entry file="file://$PROJECT_DIR$/app/AplicacionAcceso.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45980707">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        <state vertical-scroll-proportion="-4.0">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="38" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/AplicacionTecnologia.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20900321">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
           <folding />
         </state>
       </provider>
