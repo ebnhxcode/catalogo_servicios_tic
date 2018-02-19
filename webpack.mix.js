@@ -33,19 +33,11 @@ mix.js(
       'public/css/all.css'); // Este archivo se creara y compilara todos los CSS que en el array se encuentren.
 */
 
-mix.scripts([
-      'resources/assets/js/',
-   ],
-   'public/js/app/controllers/controllers.js');
 
-   /*
-   .styles([
-      'resources/assets/css/bootstrap.css',
-   ],
-   'public/css/all.css');
-   */
-
-
+mix.js(
+   'resources/assets/js/controllers/FrontController.js',
+   'public/js/controllers/FrontController.js'
+);
 
 mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');
