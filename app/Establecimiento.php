@@ -6,10 +6,27 @@ use Illuminate\Database\Eloquent\Model;
 
 class Establecimiento extends Model
 {
-   protected $table = 'establecimiento';
+   protected $table = 'establecimientos';
    protected $primaryKey = 'id_establecimiento';
    protected $fillable = [
-      'id_establecimiento','id_establecimiento_antiguo','id_servicio','id_region','id_comuna',
-      'nombre_establecimiento','tipo_establecimiento','vigencia_desde','fecha_cierre'
+      # columns
+      'nombre_establecimiento',
+      'nombre_establecimiento',
+      'tipo_establecimiento',
+      'vigencia_desde',
+      'fecha_cierre',
+
+      # relaciones -> pks
+      'id_establecimiento',
+      'id_establecimiento_antiguo',
+      'id_servicio_salud',
+      'id_region',
+      'id_comuna',
    ];
+
+
+
+
+
+
 }
