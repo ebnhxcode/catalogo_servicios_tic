@@ -49,10 +49,6 @@
 
       {{--<canvas class="my-4" id="myChart" width="900" height="380"></canvas>--}}
 
-      <modal name="hello-world">
-         hello, world!
-      </modal>
-
       <h4 class="h4">Lista de roles</h4>
 
       <div class="table-responsive">

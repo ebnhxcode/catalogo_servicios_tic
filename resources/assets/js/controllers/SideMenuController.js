@@ -7,9 +7,6 @@ import { _ , range } from 'lodash';
 import Vue2Filters from 'vue2-filters';
 Vue.use(Vue2Filters);
 
-import VModal from 'vue-js-modal'
-Vue.use(VModal);
-
 
 //Vue.component('front-component', require('../components/FrontComponent.vue'));
 
