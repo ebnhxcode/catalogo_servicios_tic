@@ -4,26 +4,21 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TecnologiaDesarrollo extends Model
+class TipoTecnologiaDesarrollo extends Model
 {
-   protected $table = "tecnologias_desarrollos";
-   protected $primaryKey = "id_tecnologia_desarrollo";
+   protected $table = "tipos_tecnologias_desarrollo";
+   protected $primaryKey = "id_tipo_tecnologia_desarrollo";
    protected $fillable = [
       #columns
-      'nom_tecnologia',
-      'det_tecnologia',
-      'vers_tecnologia',
+      'nom_tipo_tecnologia',
+      'det_tipo_tecnologia',
+      'cod_tipo_tecnologia',
 
       #relaciones -> pks
-      'id_tipo_tecnologia',
 
       'id_usuario_registra',
       'id_usuario_modifica',
    ];
-
-   public function tipo_tecnologia () {
-      return $this->belongsTo('App\TipoTecnologiaDesarrollo', 'id_tipo_tecnologia');
-   }
 
    public function usuario_registra() {
       return $this->belongsTo('App\User', 'id_usuario_registra');
