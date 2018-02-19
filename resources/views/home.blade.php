@@ -159,3 +159,7 @@
     </main>
 
 @endsection
+
+@section('VueControllers')
+    <script src="{{ asset('js/controllers/HomeController.js') }}"></script>
+@endsection

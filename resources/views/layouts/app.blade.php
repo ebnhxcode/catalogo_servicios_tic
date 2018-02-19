@@ -14,7 +14,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="FrontController">
+    <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -66,7 +66,7 @@
             <div class="container-fluid">
                 <div class="row">
 
-                    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                    <nav class="col-md-2 d-none d-md-block bg-light sidebar" id="SideMenuController">
 
                         <div class="form-group input-group-sm">
                             <!-- Input para escribir el termino a buscar -->
@@ -126,11 +126,13 @@
             </div>
 
         </main>
-    </div>
+    </div><!-- #FrontController -->
 
     <!-- Scripts -->
     {{--<script src="{{ asset('js/app.js') }}"></script>--}}
-    <script src="{{ asset('js/controllers/FrontController.js') }}"></script>
+    <script src="{{ asset('js/controllers/SideMenuController.js') }}"></script>
+
+    @yield('VueControllers')
 
 </body>
 </html>

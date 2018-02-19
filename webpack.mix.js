@@ -34,10 +34,9 @@ mix.js(
 */
 
 
-mix.js(
-   'resources/assets/js/controllers/FrontController.js',
-   'public/js/controllers/FrontController.js'
-);
+mix.js('resources/assets/js/controllers/FrontController.js','public/js/controllers/FrontController.js');
+mix.js('resources/assets/js/controllers/HomeController.js','public/js/controllers/HomeController.js');
+mix.js('resources/assets/js/controllers/RoleController.js','public/js/controllers/RoleController.js');
 
 mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');

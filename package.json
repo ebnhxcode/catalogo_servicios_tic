@@ -24,6 +24,7 @@
         "vee-validate": "^2.0.4",
         "vue": "^2.5.7",
         "vue-awesome": "^2.3.4",
+        "vue-js-modal": "^1.3.10",
         "vue-json-excel": "^0.1.7",
         "vue-resource": "^1.3.6",
         "vue-router": "^3.0.1",
