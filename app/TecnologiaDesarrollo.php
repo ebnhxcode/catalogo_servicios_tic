@@ -6,5 +6,30 @@ use Illuminate\Database\Eloquent\Model;
 
 class TecnologiaDesarrollo extends Model
 {
-    //
+   protected $table = "tecnologias_desarrollos";
+   protected $primaryKey = "id_tecnologia_desarrollo";
+   protected $fillable = [
+      #columns
+      'nom_tecnologia',
+      'det_tecnologia',
+      'vers_tecnologia',
+
+      #relaciones -> pks
+      'id_tipo_tecnologia',
+
+      'id_usuario_registra',
+      'id_usuario_modifica',
+   ];
+
+   public function tipo_tecnologia () {
+      return $this->belongsTo('App\TipoTecnologia', 'id_tipo_tecnologia');
+   }
+
+   public function usuario_registra() {
+      return $this->belongsTo('App\User', 'id_usuario_registra');
+   }
+
+   public function usuario_modifica() {
+      return $this->belongsTo('App\User', 'id_usuario_modifica');
+   }
 }

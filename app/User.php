@@ -7,23 +7,53 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+   use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+   protected $primaryKey = "id_usuario";
+   protected $fillable = [
+      'username',
+      'email',
+      'password',
+      'nom_usuario',
+      'nom_completo',
+      'ape_paterno',
+      'ape_materno',
+      'name',
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+   ];
+
+   protected $hidden = [
+      'password',
+      'remember_token',
+   ];
+
+   public function usuario_bitacora_servicios () {
+      return $this->hasMany('App\UsuarioBitacoraServicio', 'id_usuario');
+   }
+
+   public function usuario_estado () {
+      return $this->hasOne('App\UsuarioEstado', 'id_usuario');
+   }
+
+   public function usuario_roles () {
+      return $this->hasMany('App\UsuarioRole', 'id_usuario');
+   }
+
+   public function usuario_cargos () {
+      return $this->hasMany('App\UsuarioCargos', 'id_usuario');
+   }
+
+   public function usuarios_servicios () {
+      return $this->hasMany('App\UsuarioServicio', 'id_usuario');
+   }
+
+   public function servicios () {
+      return $this->hasMany('App\Servicio', 'id_usuario');
+   }
+
+
+
+
+
+
 }
