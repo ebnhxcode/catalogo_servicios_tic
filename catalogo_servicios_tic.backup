@@ -44,30 +44,6 @@ CREATE SEQUENCE accesos_aplicaciones_id_seq
 
 ALTER TABLE accesos_aplicaciones_id_seq OWNER TO postgres;
 
-SET default_tablespace = '';
-
-SET default_with_oids = false;
-
---
--- Name: accesos_aplicaciones; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE accesos_aplicaciones (
-    id_acceso_aplicacion integer DEFAULT nextval('accesos_aplicaciones_id_seq'::regclass) NOT NULL,
-    id_aplicacion integer,
-    id_servidor integer,
-    username text,
-    password text,
-    email text,
-    id_usuario_registra integer,
-    id_usuario_modifica integer,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
-ALTER TABLE accesos_aplicaciones OWNER TO postgres;
-
 --
 -- Name: accesos_servidores_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
@@ -83,27 +59,6 @@ CREATE SEQUENCE accesos_servidores_id_seq
 ALTER TABLE accesos_servidores_id_seq OWNER TO postgres;
 
 --
--- Name: accesos_servidores; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE accesos_servidores (
-    id_acceso_servidor integer DEFAULT nextval('accesos_servidores_id_seq'::regclass) NOT NULL,
-    id_aplicacion integer,
-    id_servidor integer,
-    username text,
-    password text,
-    tipo_acceso text,
-    puerto_acceso text,
-    id_usuario_registra integer,
-    id_usuario_modifica integer,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
-ALTER TABLE accesos_servidores OWNER TO postgres;
-
---
 -- Name: actividades_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -116,6 +71,10 @@ CREATE SEQUENCE actividades_id_seq
 
 
 ALTER TABLE actividades_id_seq OWNER TO postgres;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
 
 --
 -- Name: actividades; Type: TABLE; Schema: public; Owner: postgres
@@ -185,7 +144,7 @@ ALTER TABLE aplicaciones_id_seq OWNER TO postgres;
 
 CREATE TABLE aplicaciones (
     id_aplicacion integer DEFAULT nextval('aplicaciones_id_seq'::regclass) NOT NULL,
-    id_tipo_actividad integer,
+    id_tipo_aplicacion integer,
     id_servicio integer,
     id_dominio integer,
     nom_aplicacion text,
@@ -203,6 +162,26 @@ CREATE TABLE aplicaciones (
 
 
 ALTER TABLE aplicaciones OWNER TO postgres;
+
+--
+-- Name: aplicaciones_accesos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE aplicaciones_accesos (
+    id_acceso_aplicacion integer DEFAULT nextval('accesos_aplicaciones_id_seq'::regclass) NOT NULL,
+    id_aplicacion integer,
+    id_servidor integer,
+    username text,
+    password text,
+    email text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE aplicaciones_accesos OWNER TO postgres;
 
 --
 -- Name: aplicaciones_estados_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -828,6 +807,27 @@ CREATE TABLE servidor_aplicaciones (
 ALTER TABLE servidor_aplicaciones OWNER TO postgres;
 
 --
+-- Name: servidores_accesos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE servidores_accesos (
+    id_acceso_servidor integer DEFAULT nextval('accesos_servidores_id_seq'::regclass) NOT NULL,
+    id_aplicacion integer,
+    id_servidor integer,
+    username text,
+    password text,
+    tipo_acceso text,
+    puerto_acceso text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE servidores_accesos OWNER TO postgres;
+
+--
 -- Name: sistemas_operativos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1150,22 +1150,6 @@ CREATE TABLE usuarios_servicios (
 ALTER TABLE usuarios_servicios OWNER TO postgres;
 
 --
--- Data for Name: accesos_aplicaciones; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY accesos_aplicaciones (id_acceso_aplicacion, id_aplicacion, id_servidor, username, password, email, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
-\.
-
-
---
--- Data for Name: accesos_servidores; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY accesos_servidores (id_acceso_servidor, id_aplicacion, id_servidor, username, password, tipo_acceso, puerto_acceso, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
-\.
-
-
---
 -- Data for Name: actividades; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1185,7 +1169,15 @@ COPY actividades_tags (id_actividad_tag, id_actividad, id_tag, id_usuario_regist
 -- Data for Name: aplicaciones; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY aplicaciones (id_aplicacion, id_tipo_actividad, id_servicio, id_dominio, nom_aplicacion, det_aplicacion, alias, url_web, ip, subdominio, ssl_tls, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY aplicaciones (id_aplicacion, id_tipo_aplicacion, id_servicio, id_dominio, nom_aplicacion, det_aplicacion, alias, url_web, ip, subdominio, ssl_tls, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: aplicaciones_accesos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY aplicaciones_accesos (id_acceso_aplicacion, id_aplicacion, id_servidor, username, password, email, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
 \.
 
 
@@ -5643,6 +5635,14 @@ COPY servidor_aplicaciones (id_servidor_aplicacion, id_datacentro, id_sistema_op
 
 
 --
+-- Data for Name: servidores_accesos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY servidores_accesos (id_acceso_servidor, id_aplicacion, id_servidor, username, password, tipo_acceso, puerto_acceso, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
 -- Data for Name: sistemas_operativos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -5947,18 +5947,18 @@ SELECT pg_catalog.setval('usuarios_servicios_id_seq', 1, false);
 
 
 --
--- Name: accesos_aplicaciones accesos_aplicaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: aplicaciones_accesos accesos_aplicaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY accesos_aplicaciones
+ALTER TABLE ONLY aplicaciones_accesos
     ADD CONSTRAINT accesos_aplicaciones_pkey PRIMARY KEY (id_acceso_aplicacion);
 
 
 --
--- Name: accesos_servidores accesos_servidores_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: servidores_accesos accesos_servidores_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY accesos_servidores
+ALTER TABLE ONLY servidores_accesos
     ADD CONSTRAINT accesos_servidores_pkey PRIMARY KEY (id_acceso_servidor);
 
 
