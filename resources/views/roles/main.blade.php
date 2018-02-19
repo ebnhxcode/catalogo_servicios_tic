@@ -22,7 +22,9 @@
                </div>
 
                <div class="btn-group mr-0">
-                  <button class="btn btn-sm btn-outline-success" @click.prevent="show">Nuevo Role</button>
+                  <button class="btn btn-sm btn-outline-success" @click.prevent="show1">Nuevo Role 1</button>
+                  <button class="btn btn-sm btn-outline-success" @click.prevent="show2">Nuevo Role 2</button>
+                  <button class="btn btn-sm btn-outline-success" @click.prevent="show3">Nuevo Role 3</button>
                </div>
 
 
@@ -51,6 +53,10 @@
 
       <h4 class="h4">Lista de roles</h4>
 
+
+
+
+
       <div class="table-responsive">
          <table class="table table-striped table-hover table-sm">
 
@@ -75,6 +81,65 @@
             </tbody>
 
          </table>
+      </div>
+
+      <div>
+
+         {{--
+         <modal name="hello-world"
+                :reset="true"
+                :width="800"
+                :height="600"
+                :adaptive="true"
+                :draggable="true">
+            <div class="row">
+               <div class="col-md-12">
+                  hello, world!
+               </div>
+            </div>
+         </modal>
+         --}}
+
+
+         <show1 name="show1"
+                :reset="true"
+                :width="400"
+                :height="300"
+                :adaptive="true"
+                :draggable="true">
+            <div class="row">
+               <div class="col-md-12">
+                  show1!
+               </div>
+            </div>
+         </show1>
+
+         <show2 name="show2"
+                :reset="true"
+                :width="400"
+                :height="300"
+                :adaptive="true"
+                :draggable="true">
+            <div class="row">
+               <div class="col-md-12">
+                  show1!
+               </div>
+            </div>
+         </show2>
+
+         <show3 name="show3"
+                :reset="true"
+                :width="400"
+                :height="300"
+                :adaptive="true"
+                :draggable="true">
+            <div class="row">
+               <div class="col-md-12">
+                  show1!
+               </div>
+            </div>
+         </show3>
+
       </div>
 
 

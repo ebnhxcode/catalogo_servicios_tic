@@ -1,6 +1,9 @@
 
+import VModal from 'vue-js-modal'
+Vue.use(VModal, { componentName: 'show1'} );
 
-
+//Vue.use(VModal, { componentName: 'show2'} );
+//Vue.use(VModal, { componentName: 'show3'} );
 
 const RoleController = new Vue({
    el: '#RoleController',
@@ -57,11 +60,11 @@ const RoleController = new Vue({
    computed: {},
    watch: {},
    components: {
-
    },
    created(){
       console.log("RoleController mounted");
-      this.show();
+      //this.show();
+
    },
    ready: {},
    filters: {},
@@ -87,6 +90,77 @@ const RoleController = new Vue({
             ]
          });
       },
+
+      show1 () {
+         this.$modal.show('show1',{
+            title: 'Alert!',
+            text: 'You are too awesome',
+            buttons: [
+               {
+                  title: 'Deal with it',
+                  handler: () => { alert('Woot!') }
+               },
+               {
+                  title: '',       // Button title
+                  default: true,    // Will be triggered by default if 'Enter' pressed.
+                  handler: () => {} // Button click handler
+               },
+               {
+                  title: 'Close'
+               }
+            ]
+         });
+      },
+
+      show2 () {
+         this.$modal.show('show2',{
+            title: 'Alert!',
+            text: 'You are too awesome',
+            buttons: [
+               {
+                  title: 'Deal with it',
+                  handler: () => { alert('Woot!') }
+               },
+               {
+                  title: '',       // Button title
+                  default: true,    // Will be triggered by default if 'Enter' pressed.
+                  handler: () => {} // Button click handler
+               },
+               {
+                  title: 'Close'
+               }
+            ]
+         });
+      },
+
+
+      show3 () {
+         this.$modal.show('show3',{
+            title: 'Alert!',
+            text: 'You are too awesome',
+            buttons: [
+               {
+                  title: 'Deal with it',
+                  handler: () => { alert('Woot!') }
+               },
+               {
+                  title: '',       // Button title
+                  default: true,    // Will be triggered by default if 'Enter' pressed.
+                  handler: () => {} // Button click handler
+               },
+               {
+                  title: 'Close'
+               }
+            ]
+         });
+      },
+
+
+
+
+
+
+
       hide () {
          this.$modal.hide('hello-world');
       }
