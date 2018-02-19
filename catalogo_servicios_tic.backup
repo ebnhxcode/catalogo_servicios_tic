@@ -44,6 +44,30 @@ CREATE SEQUENCE accesos_aplicaciones_id_seq
 
 ALTER TABLE accesos_aplicaciones_id_seq OWNER TO postgres;
 
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: accesos_aplicaciones; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE accesos_aplicaciones (
+    id_acceso_aplicacion integer DEFAULT nextval('accesos_aplicaciones_id_seq'::regclass) NOT NULL,
+    id_aplicacion integer,
+    id_servidor integer,
+    username text,
+    password text,
+    email text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE accesos_aplicaciones OWNER TO postgres;
+
 --
 -- Name: accesos_servidores_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
@@ -57,6 +81,27 @@ CREATE SEQUENCE accesos_servidores_id_seq
 
 
 ALTER TABLE accesos_servidores_id_seq OWNER TO postgres;
+
+--
+-- Name: accesos_servidores; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE accesos_servidores (
+    id_acceso_servidor integer DEFAULT nextval('accesos_servidores_id_seq'::regclass) NOT NULL,
+    id_aplicacion integer,
+    id_servidor integer,
+    username text,
+    password text,
+    tipo_acceso text,
+    puerto_acceso text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE accesos_servidores OWNER TO postgres;
 
 --
 -- Name: actividades_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -73,6 +118,23 @@ CREATE SEQUENCE actividades_id_seq
 ALTER TABLE actividades_id_seq OWNER TO postgres;
 
 --
+-- Name: actividades; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE actividades (
+    id_actividad integer DEFAULT nextval('actividades_id_seq'::regclass) NOT NULL,
+    nom_actividad text,
+    det_actividad text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE actividades OWNER TO postgres;
+
+--
 -- Name: actividades_tags_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -87,18 +149,21 @@ CREATE SEQUENCE actividades_tags_id_seq
 ALTER TABLE actividades_tags_id_seq OWNER TO postgres;
 
 --
--- Name: aplicaciones_estados_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: actividades_tags; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE aplicaciones_estados_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+CREATE TABLE actividades_tags (
+    id_actividad_tag integer DEFAULT nextval('actividades_tags_id_seq'::regclass) NOT NULL,
+    id_actividad integer,
+    id_tag integer,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
 
 
-ALTER TABLE aplicaciones_estados_id_seq OWNER TO postgres;
+ALTER TABLE actividades_tags OWNER TO postgres;
 
 --
 -- Name: aplicaciones_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -115,6 +180,62 @@ CREATE SEQUENCE aplicaciones_id_seq
 ALTER TABLE aplicaciones_id_seq OWNER TO postgres;
 
 --
+-- Name: aplicaciones; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE aplicaciones (
+    id_aplicacion integer DEFAULT nextval('aplicaciones_id_seq'::regclass) NOT NULL,
+    id_tipo_actividad integer,
+    id_servicio integer,
+    id_dominio integer,
+    nom_aplicacion text,
+    det_aplicacion text,
+    alias text,
+    url_web text,
+    ip text,
+    subdominio text,
+    ssl_tls text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE aplicaciones OWNER TO postgres;
+
+--
+-- Name: aplicaciones_estados_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE aplicaciones_estados_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE aplicaciones_estados_id_seq OWNER TO postgres;
+
+--
+-- Name: aplicaciones_estados; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE aplicaciones_estados (
+    id_aplicacion_estado integer DEFAULT nextval('aplicaciones_estados_id_seq'::regclass) NOT NULL,
+    id_aplicacion integer,
+    id_estado integer,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE aplicaciones_estados OWNER TO postgres;
+
+--
 -- Name: aplicaciones_tags_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -127,6 +248,23 @@ CREATE SEQUENCE aplicaciones_tags_id_seq
 
 
 ALTER TABLE aplicaciones_tags_id_seq OWNER TO postgres;
+
+--
+-- Name: aplicaciones_tags; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE aplicaciones_tags (
+    id_aplicacion_tag integer DEFAULT nextval('aplicaciones_tags_id_seq'::regclass) NOT NULL,
+    id_aplicacion integer,
+    id_tag integer,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE aplicaciones_tags OWNER TO postgres;
 
 --
 -- Name: aplicaciones_tecnologias_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -143,6 +281,23 @@ CREATE SEQUENCE aplicaciones_tecnologias_id_seq
 ALTER TABLE aplicaciones_tecnologias_id_seq OWNER TO postgres;
 
 --
+-- Name: aplicaciones_tecnologias; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE aplicaciones_tecnologias (
+    id_aplicacion_tecnologia integer DEFAULT nextval('aplicaciones_tecnologias_id_seq'::regclass) NOT NULL,
+    id_aplicacion integer,
+    id_tecnologia integer,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE aplicaciones_tecnologias OWNER TO postgres;
+
+--
 -- Name: cargos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -155,6 +310,23 @@ CREATE SEQUENCE cargos_id_seq
 
 
 ALTER TABLE cargos_id_seq OWNER TO postgres;
+
+--
+-- Name: cargos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE cargos (
+    id_cargo integer DEFAULT nextval('cargos_id_seq'::regclass) NOT NULL,
+    nom_cargo text,
+    det_cargo text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE cargos OWNER TO postgres;
 
 --
 -- Name: catalogos_servicios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -170,9 +342,24 @@ CREATE SEQUENCE catalogos_servicios_id_seq
 
 ALTER TABLE catalogos_servicios_id_seq OWNER TO postgres;
 
-SET default_tablespace = '';
+--
+-- Name: catalogos_servicios; Type: TABLE; Schema: public; Owner: postgres
+--
 
-SET default_with_oids = false;
+CREATE TABLE catalogos_servicios (
+    id_catalogo_servicio integer DEFAULT nextval('catalogos_servicios_id_seq'::regclass) NOT NULL,
+    id_servicio integer,
+    asunto text,
+    det_catalogo text,
+    avatar text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE catalogos_servicios OWNER TO postgres;
 
 --
 -- Name: comuna; Type: TABLE; Schema: public; Owner: postgres
@@ -204,6 +391,22 @@ CREATE SEQUENCE datacentros_id_seq
 ALTER TABLE datacentros_id_seq OWNER TO postgres;
 
 --
+-- Name: datacentros; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE datacentros (
+    id_datacentro integer DEFAULT nextval('datacentros_id_seq'::regclass) NOT NULL,
+    nom_datacentro text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE datacentros OWNER TO postgres;
+
+--
 -- Name: dominios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -216,6 +419,26 @@ CREATE SEQUENCE dominios_id_seq
 
 
 ALTER TABLE dominios_id_seq OWNER TO postgres;
+
+--
+-- Name: dominios; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE dominios (
+    id_dominio integer DEFAULT nextval('dominios_id_seq'::regclass) NOT NULL,
+    nom_dominio text,
+    det_dominio text,
+    ip_publica text,
+    ip_balanceador text,
+    dns_asoc_dominio text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE dominios OWNER TO postgres;
 
 --
 -- Name: establecimiento; Type: TABLE; Schema: public; Owner: postgres
@@ -253,6 +476,23 @@ CREATE SEQUENCE estados_id_seq
 ALTER TABLE estados_id_seq OWNER TO postgres;
 
 --
+-- Name: estados; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE estados (
+    id_estado integer DEFAULT nextval('estados_id_seq'::regclass) NOT NULL,
+    nom_estado text,
+    cod_estado text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE estados OWNER TO postgres;
+
+--
 -- Name: fuentes_aplicaciones_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -265,6 +505,26 @@ CREATE SEQUENCE fuentes_aplicaciones_id_seq
 
 
 ALTER TABLE fuentes_aplicaciones_id_seq OWNER TO postgres;
+
+--
+-- Name: fuentes_aplicaciones; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE fuentes_aplicaciones (
+    id_fuente_aplicacion integer DEFAULT nextval('fuentes_aplicaciones_id_seq'::regclass) NOT NULL,
+    id_aplicacion integer,
+    id_servicio integer,
+    url_descarga text,
+    nom_fuente text,
+    det_fuente text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE fuentes_aplicaciones OWNER TO postgres;
 
 --
 -- Name: pais; Type: TABLE; Schema: public; Owner: postgres
@@ -293,6 +553,24 @@ CREATE SEQUENCE permisos_id_seq
 
 
 ALTER TABLE permisos_id_seq OWNER TO postgres;
+
+--
+-- Name: permisos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE permisos (
+    id_permiso integer DEFAULT nextval('permisos_id_seq'::regclass) NOT NULL,
+    nom_permiso text,
+    det_permiso text,
+    cod_permiso text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE permisos OWNER TO postgres;
 
 --
 -- Name: region; Type: TABLE; Schema: public; Owner: postgres
@@ -325,6 +603,23 @@ CREATE SEQUENCE roles_id_seq
 ALTER TABLE roles_id_seq OWNER TO postgres;
 
 --
+-- Name: roles; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE roles (
+    id_role integer DEFAULT nextval('roles_id_seq'::regclass) NOT NULL,
+    nom_role text,
+    det_role text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE roles OWNER TO postgres;
+
+--
 -- Name: roles_permisos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -337,6 +632,23 @@ CREATE SEQUENCE roles_permisos_id_seq
 
 
 ALTER TABLE roles_permisos_id_seq OWNER TO postgres;
+
+--
+-- Name: roles_permisos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE roles_permisos (
+    id_role_permiso integer DEFAULT nextval('roles_permisos_id_seq'::regclass) NOT NULL,
+    id_role integer,
+    id_permiso integer,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE roles_permisos OWNER TO postgres;
 
 --
 -- Name: servicio_salud; Type: TABLE; Schema: public; Owner: postgres
@@ -355,6 +667,39 @@ CREATE TABLE servicio_salud (
 ALTER TABLE servicio_salud OWNER TO postgres;
 
 --
+-- Name: servicios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE servicios_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE servicios_id_seq OWNER TO postgres;
+
+--
+-- Name: servicios; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE servicios (
+    id_servicio integer DEFAULT nextval('servicios_id_seq'::regclass) NOT NULL,
+    id_actividad integer,
+    id_usuario integer,
+    nom_servicio text,
+    det_servicio text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE servicios OWNER TO postgres;
+
+--
 -- Name: servicios_estados_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -369,18 +714,21 @@ CREATE SEQUENCE servicios_estados_id_seq
 ALTER TABLE servicios_estados_id_seq OWNER TO postgres;
 
 --
--- Name: servicios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: servicios_estados; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE servicios_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+CREATE TABLE servicios_estados (
+    id_servicio_estado integer DEFAULT nextval('servicios_estados_id_seq'::regclass) NOT NULL,
+    id_usuario integer,
+    id_estado integer,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
 
 
-ALTER TABLE servicios_id_seq OWNER TO postgres;
+ALTER TABLE servicios_estados OWNER TO postgres;
 
 --
 -- Name: servicios_permisos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -397,6 +745,23 @@ CREATE SEQUENCE servicios_permisos_id_seq
 ALTER TABLE servicios_permisos_id_seq OWNER TO postgres;
 
 --
+-- Name: servicios_permisos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE servicios_permisos (
+    id_servicio_permiso integer DEFAULT nextval('servicios_permisos_id_seq'::regclass) NOT NULL,
+    id_servicio integer,
+    id_permiso integer,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE servicios_permisos OWNER TO postgres;
+
+--
 -- Name: servicios_tags_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -409,6 +774,23 @@ CREATE SEQUENCE servicios_tags_id_seq
 
 
 ALTER TABLE servicios_tags_id_seq OWNER TO postgres;
+
+--
+-- Name: servicios_tags; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE servicios_tags (
+    id integer DEFAULT nextval('servicios_tags_id_seq'::regclass) NOT NULL,
+    id_servicio integer,
+    id_tag integer,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE servicios_tags OWNER TO postgres;
 
 --
 -- Name: servidor_aplicaciones_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -425,6 +807,27 @@ CREATE SEQUENCE servidor_aplicaciones_id_seq
 ALTER TABLE servidor_aplicaciones_id_seq OWNER TO postgres;
 
 --
+-- Name: servidor_aplicaciones; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE servidor_aplicaciones (
+    id_servidor_aplicacion integer DEFAULT nextval('servidor_aplicaciones_id_seq'::regclass) NOT NULL,
+    id_datacentro integer,
+    id_sistema_operativo integer,
+    id_dominio integer,
+    nom_servidor text,
+    ip_servidor text,
+    url_servidor text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE servidor_aplicaciones OWNER TO postgres;
+
+--
 -- Name: sistemas_operativos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -437,6 +840,27 @@ CREATE SEQUENCE sistemas_operativos_id_seq
 
 
 ALTER TABLE sistemas_operativos_id_seq OWNER TO postgres;
+
+--
+-- Name: sistemas_operativos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE sistemas_operativos (
+    id_sistema_operativo integer DEFAULT nextval('sistemas_operativos_id_seq'::regclass) NOT NULL,
+    arquitectura text,
+    nom_so text,
+    det_so text,
+    vers_so text,
+    licencia_so text,
+    det_licencia text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE sistemas_operativos OWNER TO postgres;
 
 --
 -- Name: tags_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -453,6 +877,24 @@ CREATE SEQUENCE tags_id_seq
 ALTER TABLE tags_id_seq OWNER TO postgres;
 
 --
+-- Name: tags; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE tags (
+    id_tag integer DEFAULT nextval('tags_id_seq'::regclass) NOT NULL,
+    nom_tag text,
+    det_tag text,
+    meta_tag text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE tags OWNER TO postgres;
+
+--
 -- Name: tecnologia_desarrollo_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -465,6 +907,25 @@ CREATE SEQUENCE tecnologia_desarrollo_id_seq
 
 
 ALTER TABLE tecnologia_desarrollo_id_seq OWNER TO postgres;
+
+--
+-- Name: tecnologia_desarrollo; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE tecnologia_desarrollo (
+    id_tecnologia_desarrollo integer DEFAULT nextval('tecnologia_desarrollo_id_seq'::regclass) NOT NULL,
+    id_tipo_tecnologia integer,
+    nom_tecnologia text,
+    det_tecnologia text,
+    vers_tecnologia text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE tecnologia_desarrollo OWNER TO postgres;
 
 --
 -- Name: tipos_aplicaciones_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -481,6 +942,24 @@ CREATE SEQUENCE tipos_aplicaciones_id_seq
 ALTER TABLE tipos_aplicaciones_id_seq OWNER TO postgres;
 
 --
+-- Name: tipos_aplicaciones; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE tipos_aplicaciones (
+    id_tipo_aplicacion integer DEFAULT nextval('tipos_aplicaciones_id_seq'::regclass) NOT NULL,
+    nom_tipo_aplicacion text,
+    det_tipo_aplicacion text,
+    cod_tipo_aplicacion text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE tipos_aplicaciones OWNER TO postgres;
+
+--
 -- Name: tipos_tecnologias_desarrollo_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -493,6 +972,24 @@ CREATE SEQUENCE tipos_tecnologias_desarrollo_id_seq
 
 
 ALTER TABLE tipos_tecnologias_desarrollo_id_seq OWNER TO postgres;
+
+--
+-- Name: tipos_tecnologias_desarrollo; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE tipos_tecnologias_desarrollo (
+    id_tipo_tecnologia_desarrollo integer DEFAULT nextval('tipos_tecnologias_desarrollo_id_seq'::regclass) NOT NULL,
+    nom_tipo text,
+    det_tipo text,
+    cod_tipo text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE tipos_tecnologias_desarrollo OWNER TO postgres;
 
 --
 -- Name: usuarios_bitacora_servicios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -509,6 +1006,26 @@ CREATE SEQUENCE usuarios_bitacora_servicios_id_seq
 ALTER TABLE usuarios_bitacora_servicios_id_seq OWNER TO postgres;
 
 --
+-- Name: usuarios_bitacora_servicios; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE usuarios_bitacora_servicios (
+    id_usuario_bitacora_servicio integer DEFAULT nextval('usuarios_bitacora_servicios_id_seq'::regclass) NOT NULL,
+    id_usuario integer,
+    id_servicio integer,
+    id_actividad integer,
+    asunto text,
+    det_bitacora text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE usuarios_bitacora_servicios OWNER TO postgres;
+
+--
 -- Name: usuarios_cargos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -521,6 +1038,23 @@ CREATE SEQUENCE usuarios_cargos_id_seq
 
 
 ALTER TABLE usuarios_cargos_id_seq OWNER TO postgres;
+
+--
+-- Name: usuarios_cargos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE usuarios_cargos (
+    id_usuario_cargo integer DEFAULT nextval('usuarios_cargos_id_seq'::regclass) NOT NULL,
+    id_usuario integer,
+    id_cargo integer,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE usuarios_cargos OWNER TO postgres;
 
 --
 -- Name: usuarios_estados_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -537,6 +1071,23 @@ CREATE SEQUENCE usuarios_estados_id_seq
 ALTER TABLE usuarios_estados_id_seq OWNER TO postgres;
 
 --
+-- Name: usuarios_estados; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE usuarios_estados (
+    id_usuario_estado integer DEFAULT nextval('usuarios_estados_id_seq'::regclass) NOT NULL,
+    id_estado integer,
+    id_usuario integer,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE usuarios_estados OWNER TO postgres;
+
+--
 -- Name: usuarios_roles_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -551,6 +1102,23 @@ CREATE SEQUENCE usuarios_roles_id_seq
 ALTER TABLE usuarios_roles_id_seq OWNER TO postgres;
 
 --
+-- Name: usuarios_roles; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE usuarios_roles (
+    id_usuario_role integer DEFAULT nextval('usuarios_roles_id_seq'::regclass) NOT NULL,
+    id_role integer,
+    id_usuario integer,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE usuarios_roles OWNER TO postgres;
+
+--
 -- Name: usuarios_servicios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -563,6 +1131,103 @@ CREATE SEQUENCE usuarios_servicios_id_seq
 
 
 ALTER TABLE usuarios_servicios_id_seq OWNER TO postgres;
+
+--
+-- Name: usuarios_servicios; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE usuarios_servicios (
+    id_usuario_servicio integer DEFAULT nextval('usuarios_servicios_id_seq'::regclass) NOT NULL,
+    id_usuario integer,
+    id_servicio integer,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE usuarios_servicios OWNER TO postgres;
+
+--
+-- Data for Name: accesos_aplicaciones; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY accesos_aplicaciones (id_acceso_aplicacion, id_aplicacion, id_servidor, username, password, email, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: accesos_servidores; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY accesos_servidores (id_acceso_servidor, id_aplicacion, id_servidor, username, password, tipo_acceso, puerto_acceso, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: actividades; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY actividades (id_actividad, nom_actividad, det_actividad, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: actividades_tags; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY actividades_tags (id_actividad_tag, id_actividad, id_tag, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: aplicaciones; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY aplicaciones (id_aplicacion, id_tipo_actividad, id_servicio, id_dominio, nom_aplicacion, det_aplicacion, alias, url_web, ip, subdominio, ssl_tls, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: aplicaciones_estados; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY aplicaciones_estados (id_aplicacion_estado, id_aplicacion, id_estado, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: aplicaciones_tags; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY aplicaciones_tags (id_aplicacion_tag, id_aplicacion, id_tag, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: aplicaciones_tecnologias; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY aplicaciones_tecnologias (id_aplicacion_tecnologia, id_aplicacion, id_tecnologia, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: cargos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY cargos (id_cargo, nom_cargo, det_cargo, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: catalogos_servicios; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY catalogos_servicios (id_catalogo_servicio, id_servicio, asunto, det_catalogo, avatar, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
 
 --
 -- Data for Name: comuna; Type: TABLE DATA; Schema: public; Owner: postgres
@@ -915,6 +1580,22 @@ COPY comuna (id_comuna, id_region, nombre_comuna, created_at, updated_at) FROM s
 15102	15	Camarones	2017-10-31 11:06:00	2017-10-31 11:06:00
 15201	15	Putre	2017-10-31 11:06:00	2017-10-31 11:06:00
 15202	15	General Lagos	2017-10-31 11:06:00	2017-10-31 11:06:00
+\.
+
+
+--
+-- Data for Name: datacentros; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY datacentros (id_datacentro, nom_datacentro, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: dominios; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY dominios (id_dominio, nom_dominio, det_dominio, ip_publica, ip_balanceador, dns_asoc_dominio, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
 \.
 
 
@@ -4574,6 +5255,22 @@ COPY establecimiento (id_establecimiento, id_establecimiento_antiguo, id_servici
 
 
 --
+-- Data for Name: estados; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY estados (id_estado, nom_estado, cod_estado, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: fuentes_aplicaciones; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY fuentes_aplicaciones (id_fuente_aplicacion, id_aplicacion, id_servicio, url_descarga, nom_fuente, det_fuente, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
 -- Data for Name: pais; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -4822,6 +5519,14 @@ COPY pais (id_pais, nombre_pais, created_at, updated_at) FROM stdin;
 
 
 --
+-- Data for Name: permisos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY permisos (id_permiso, nom_permiso, det_permiso, cod_permiso, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
 -- Data for Name: region; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -4841,6 +5546,22 @@ COPY region (id_region, nombre_region, alias, orden, created_at, updated_at) FRO
 13	Metropolitana De Santiago	RM	7	2017-10-31 11:06:00	2017-10-31 11:06:00
 14	De Los Rios	XIV	12	2017-10-31 11:06:00	2017-10-31 11:06:00
 15	De Arica y Parinacota	XV	1	2017-10-31 11:06:00	2017-10-31 11:06:00
+\.
+
+
+--
+-- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY roles (id_role, nom_role, det_role, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: roles_permisos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY roles_permisos (id_role_permiso, id_role, id_permiso, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
 \.
 
 
@@ -4878,6 +5599,126 @@ COPY servicio_salud (id_servicio_salud, id_region, nombre_servicio_salud, orden,
 28	8	Arauco	19	2017-10-31 11:06:00	2017-10-31 11:06:00
 29	9	Araucanía Norte	22	2017-10-31 11:06:00	2017-10-31 11:06:00
 33	10	Chiloé	27	2017-10-31 11:06:00	2017-10-31 11:06:00
+\.
+
+
+--
+-- Data for Name: servicios; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY servicios (id_servicio, id_actividad, id_usuario, nom_servicio, det_servicio, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: servicios_estados; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY servicios_estados (id_servicio_estado, id_usuario, id_estado, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: servicios_permisos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY servicios_permisos (id_servicio_permiso, id_servicio, id_permiso, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: servicios_tags; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY servicios_tags (id, id_servicio, id_tag, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: servidor_aplicaciones; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY servidor_aplicaciones (id_servidor_aplicacion, id_datacentro, id_sistema_operativo, id_dominio, nom_servidor, ip_servidor, url_servidor, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: sistemas_operativos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY sistemas_operativos (id_sistema_operativo, arquitectura, nom_so, det_so, vers_so, licencia_so, det_licencia, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: tags; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tags (id_tag, nom_tag, det_tag, meta_tag, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: tecnologia_desarrollo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tecnologia_desarrollo (id_tecnologia_desarrollo, id_tipo_tecnologia, nom_tecnologia, det_tecnologia, vers_tecnologia, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: tipos_aplicaciones; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tipos_aplicaciones (id_tipo_aplicacion, nom_tipo_aplicacion, det_tipo_aplicacion, cod_tipo_aplicacion, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: tipos_tecnologias_desarrollo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tipos_tecnologias_desarrollo (id_tipo_tecnologia_desarrollo, nom_tipo, det_tipo, cod_tipo, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: usuarios_bitacora_servicios; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY usuarios_bitacora_servicios (id_usuario_bitacora_servicio, id_usuario, id_servicio, id_actividad, asunto, det_bitacora, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: usuarios_cargos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY usuarios_cargos (id_usuario_cargo, id_usuario, id_cargo, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: usuarios_estados; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY usuarios_estados (id_usuario_estado, id_estado, id_usuario, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: usuarios_roles; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY usuarios_roles (id_usuario_role, id_role, id_usuario, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: usuarios_servicios; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY usuarios_servicios (id_usuario_servicio, id_usuario, id_servicio, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
 \.
 
 
