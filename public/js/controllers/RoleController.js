@@ -60,21 +60,22 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 49);
+/******/ 	return __webpack_require__(__webpack_require__.s = 50);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 49:
+/***/ 50:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(50);
+module.exports = __webpack_require__(51);
 
 
 /***/ }),
 
-/***/ 50:
+/***/ 51:
 /***/ (function(module, exports) {
+
 
 
 var RoleController = new Vue({
@@ -128,11 +129,34 @@ var RoleController = new Vue({
    components: {},
    created: function created() {
       console.log("RoleController mounted");
+      this.show();
    },
 
    ready: {},
    filters: {},
-   methods: {}
+   methods: {
+      show: function show() {
+         this.$modal.show('hello-world', {
+            title: 'Alert!',
+            text: 'You are too awesome',
+            buttons: [{
+               title: 'Deal with it',
+               handler: function handler() {
+                  alert('Woot!');
+               }
+            }, {
+               title: '', // Button title
+               default: true, // Will be triggered by default if 'Enter' pressed.
+               handler: function handler() {} // Button click handler
+            }, {
+               title: 'Close'
+            }]
+         });
+      },
+      hide: function hide() {
+         this.$modal.hide('hello-world');
+      }
+   }
 });
 
 /***/ })

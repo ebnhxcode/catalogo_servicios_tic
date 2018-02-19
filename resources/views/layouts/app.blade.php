@@ -119,7 +119,8 @@
                                 </li>
                             </ul>
                         </div>
-                    </nav>
+                    </nav><!-- #SideMenuController -->
+
                     @yield('content')
 
                 </div>

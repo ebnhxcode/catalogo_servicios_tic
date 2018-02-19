@@ -7,7 +7,7 @@
 
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
 
-         <h1 class="h1">Roles</h1>
+         <h2 class="h2">Roles</h2>
 
 
          <div class="btn-toolbar mb-2 mb-md-0">
@@ -22,7 +22,7 @@
                </div>
 
                <div class="btn-group mr-0">
-                  <button class="btn btn-sm btn-outline-success">Nuevo Role</button>
+                  <button class="btn btn-sm btn-outline-success" @click.prevent="show">Nuevo Role</button>
                </div>
 
 
@@ -49,21 +49,27 @@
 
       {{--<canvas class="my-4" id="myChart" width="900" height="380"></canvas>--}}
 
-      <h2>Lista de roles</h2>
+      <modal name="hello-world">
+         hello, world!
+      </modal>
+
+      <h4 class="h4">Lista de roles</h4>
 
       <div class="table-responsive">
-         <table class="table table-striped table-sm">
+         <table class="table table-striped table-hover table-sm">
+
             <thead>
-            <tr>
-               <th>#</th>
-               <th>Header</th>
-               <th>Header</th>
-               <th>Header</th>
-               <th>Header</th>
-            </tr>
+               <tr>
+                  <th>#</th>
+                  <th>Header</th>
+                  <th>Header</th>
+                  <th>Header</th>
+                  <th>Header</th>
+               </tr>
             </thead>
+
             <tbody>
-               <tr v-for="t in filterBy(filtro_head, table)">
+               <tr v-for="t in filterBy(table, filtro_head)">
                   <td>@{{ t.value1 }}</td>
                   <td>@{{ t.value2 }}</td>
                   <td>@{{ t.value3 }}</td>
@@ -71,6 +77,7 @@
                   <td>@{{ t.value5 }}</td>
                </tr>
             </tbody>
+
          </table>
       </div>
 

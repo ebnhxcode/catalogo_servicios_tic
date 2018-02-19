@@ -1,4 +1,7 @@
 
+
+
+
 const RoleController = new Vue({
    el: '#RoleController',
    data(){
@@ -58,8 +61,35 @@ const RoleController = new Vue({
    },
    created(){
       console.log("RoleController mounted");
+      this.show();
    },
    ready: {},
    filters: {},
-   methods: {}
+   methods: {
+
+      show () {
+         this.$modal.show('hello-world',{
+            title: 'Alert!',
+            text: 'You are too awesome',
+            buttons: [
+               {
+                  title: 'Deal with it',
+                  handler: () => { alert('Woot!') }
+               },
+               {
+                  title: '',       // Button title
+                  default: true,    // Will be triggered by default if 'Enter' pressed.
+                  handler: () => {} // Button click handler
+               },
+               {
+                  title: 'Close'
+               }
+            ]
+         });
+      },
+      hide () {
+         this.$modal.hide('hello-world');
+      }
+
+   }
 });

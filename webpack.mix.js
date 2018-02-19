@@ -34,7 +34,7 @@ mix.js(
 */
 
 
-mix.js('resources/assets/js/controllers/FrontController.js','public/js/controllers/FrontController.js');
+mix.js('resources/assets/js/controllers/SideMenuController.js','public/js/controllers/SideMenuController.js');
 mix.js('resources/assets/js/controllers/HomeController.js','public/js/controllers/HomeController.js');
 mix.js('resources/assets/js/controllers/RoleController.js','public/js/controllers/RoleController.js');
 

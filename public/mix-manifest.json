@@ -1,5 +1,5 @@
 {
-    "/js/controllers/FrontController.js": "/js/controllers/FrontController.js",
+    "/js/controllers/SideMenuController.js": "/js/controllers/SideMenuController.js",
     "/css/app.css": "/css/app.css",
     "/js/controllers/HomeController.js": "/js/controllers/HomeController.js",
     "/js/app.js": "/js/app.js",
