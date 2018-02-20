@@ -11,12 +11,17 @@
    </thead>
 
    <tbody>
-   <tr v-for="t in filterBy(table, filtro_head)">
-      <td>@{{ t.value1 }}</td>
-      <td>@{{ t.value2 }}</td>
-      <td>@{{ t.value3 }}</td>
-      <td>@{{ t.value4 }}</td>
-      <td>@{{ t.value5 }}</td>
+   <tr v-for="p in filterBy(permisos, filtro_head)">
+      <td>@{{ p.id_permiso }}</td>
+      <td>@{{ p.nom_permiso }}</td>
+      <td>@{{ p.det_permiso }}</td>
+      <td>@{{ p.cod_permiso }}</td>
+      <td>
+         <button class="btn btn-sm btn-primary">X</button>
+      </td>
+   </tr>
+   <tr v-if="permisos.length == 0" class="align-items-center">
+      <td colspan="5">No hay más registros</td>
    </tr>
    </tbody>
 

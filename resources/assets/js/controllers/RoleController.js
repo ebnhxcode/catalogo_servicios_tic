@@ -3,14 +3,6 @@ import swal from 'sweetalert2'
 //Se importan todas las librerias compartidas y se cargan en el objeto instanciado como alias -> hp
 import { inyeccion_funciones_compartidas } from './libs/HelperPackage';
 
-import es from 'vee-validate/dist/locale/es';
-import VeeValidate, { Validator } from 'vee-validate';
-
-// Add locale helper.
-Validator.localize('es', es);
-// Install the Plugin and set the locale.
-Vue.use(VeeValidate, {locale: 'es'});
-
 import VModal from 'vue-js-modal'
 Vue.use(VModal, {dialog: true});
 
@@ -68,6 +60,11 @@ const RoleController = new Vue({
             'det_role':null,
             'id_permiso':null,
          },
+         'role_limpio':{
+            'nom_role':null,
+            'det_role':null,
+            'id_permiso':null,
+         },
          'roles':[],
       }
    },
@@ -83,12 +80,8 @@ const RoleController = new Vue({
    methods: {
 
       inicializar: function () {
-
-         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-
          this.$http.get('/roles').then(response => { // success callback
             this.roles = response.body.roles || null;
-
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);
          });
@@ -97,7 +90,7 @@ const RoleController = new Vue({
       guardar: function () {
          var self = this;
          this.$validator.validateAll().then(resultado => {
-            //console.log(resultado); true || false
+
             if (resultado === true) {
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
@@ -107,11 +100,19 @@ const RoleController = new Vue({
                formData.append('id_permiso', self.role.id_permiso);
 
                this.$http.post('/roles', formData).then(response => { // success callback
+                  if (response.status == 200) {
+                     self.role = response.data.role;
+                     self.roles.push(self.role)
+                     self.role = null;
+                     self.role = self.role_limpio;
 
-                  console.log(response);
+                     self.ocultar_modal('crear');
+                  } else {
+                     self.checkear_estado_respuesta_http(response.status);
+                  }
 
                }, response => { // error callback
-                  this.checkear_estado_respuesta_http(response.status);
+                  self.checkear_estado_respuesta_http(response.status);
                });
 
             }

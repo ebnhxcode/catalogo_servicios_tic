@@ -2,7 +2,7 @@
 @section('content')
    <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
 
-   <main role="main" class="col-md-10 ml-sm-auto col-lg-10 pt-3 px-4" id="RoleController">
+   <main role="main" class="col-md-9 ml-sm-auto col-lg-9 pt-3 px-4" id="RoleController">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
          <h2 class="h2">Roles</h2>
 

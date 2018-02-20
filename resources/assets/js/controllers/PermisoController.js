@@ -60,6 +60,12 @@ const PermisoController = new Vue({
             'det_permiso':null,
             'cod_permiso':null,
          },
+         'permiso_limpio':{
+            'nom_permiso':null,
+            'det_permiso':null,
+            'cod_permiso':null,
+         },
+         'permisos':[],
       }
    },
    computed: {},
@@ -73,16 +79,48 @@ const PermisoController = new Vue({
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
       inicializar: function () {
-         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
          this.$http.get('/permisos').then(response => { // success callback
-
-
+            this.permisos = response.body.permisos || null;
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);
          });
-
       },
 
+
+
+      guardar: function () {
+         var self = this;
+         this.$validator.validateAll().then(resultado => {
+
+            if (resultado === true) {
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               var formData = new  FormData();
+               formData.append('nom_permiso', self.permiso.nom_permiso);
+               formData.append('det_permiso', self.permiso.det_permiso);
+               formData.append('cod_permiso', self.permiso.cod_permiso);
+
+               this.$http.post('/permisos', formData).then(response => { // success callback
+
+                  if (response.status == 200) {
+                     self.permiso = response.data.permiso;
+                     self.permisos.push(self.permiso);
+                     self.permiso = null;
+                     self.permiso = self.permiso_limpio;;
+
+                     self.ocultar_modal('crear');
+                  } else {
+                     self.checkear_estado_respuesta_http(response.status);
+                  }
+
+               }, response => { // error callback
+                  self.checkear_estado_respuesta_http(response.status);
+               });
+
+            }
+
+
+         });
+      }
 
 
    }

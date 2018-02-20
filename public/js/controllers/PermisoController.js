@@ -2102,22 +2102,6 @@ var inyeccion_funciones_compartidas = {
    methods: {
       checkear_estado_respuesta_http: function checkear_estado_respuesta_http(status_code) {
          switch (status_code) {
-            case 200:
-
-               __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()({
-                  title: "Exito",
-                  text: "El resultado de la peticion es " + status_code,
-                  type: "success",
-                  confirmButtonClass: "btn-success",
-                  closeOnConfirm: true
-               }, function (isConfirm) {
-                  if (isConfirm) {
-                     window.location.href = '/';
-                  }
-               });
-
-               break;
-
             case 401:
 
                __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()({
@@ -3215,7 +3199,13 @@ var PermisoController = new Vue({
             'nom_permiso': null,
             'det_permiso': null,
             'cod_permiso': null
-         }
+         },
+         'permiso_limpio': {
+            'nom_permiso': null,
+            'det_permiso': null,
+            'cod_permiso': null
+         },
+         'permisos': []
       };
    },
 
@@ -3233,13 +3223,46 @@ var PermisoController = new Vue({
       inicializar: function inicializar() {
          var _this = this;
 
-         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-         this.$http.get('/permisos').then(function (response) {// success callback
-
-
+         this.$http.get('/permisos').then(function (response) {
+            // success callback
+            _this.permisos = response.body.permisos || null;
          }, function (response) {
             // error callback
             _this.checkear_estado_respuesta_http(response.status);
+         });
+      },
+
+      guardar: function guardar() {
+         var _this2 = this;
+
+         var self = this;
+         this.$validator.validateAll().then(function (resultado) {
+            //console.log(resultado); true || false
+            if (resultado === true) {
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               var formData = new FormData();
+               formData.append('nom_permiso', self.permiso.nom_permiso);
+               formData.append('det_permiso', self.permiso.det_permiso);
+               formData.append('cod_permiso', self.permiso.cod_permiso);
+
+               _this2.$http.post('/permisos', formData).then(function (response) {
+                  // success callback
+
+                  if (response.status == 200) {
+                     self.permiso = response.data.permiso;
+                     self.permisos.push(self.permiso);
+                     self.permiso = null;
+                     self.permiso = self.permiso_limpio;;
+
+                     self.ocultar_modal('crear');
+                  } else {
+                     self.checkear_estado_respuesta_http(response.status);
+                  }
+               }, function (response) {
+                  // error callback
+                  self.checkear_estado_respuesta_http(response.status);
+               });
+            }
          });
       }
 

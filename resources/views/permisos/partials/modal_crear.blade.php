@@ -24,25 +24,64 @@
 
             <dt>Nombre Permiso</dt>
             <dd>
-               <input name="nom_permiso" type="text" id="nom_permiso" v-model="permiso.nom_permiso"
-                      placeholder="nombre del permiso" class="form-control" />
+               <p class="control has-icon has-icon-right">
+                  <input name="nom_permiso" type="text" id="nom_permiso" v-model="permiso.nom_permiso"
+                         v-validate="'required'" data-vv-delay="500" placeholder="nombre del permiso"
+                         class="form-control" />
+
+                  <transition name="bounce">
+                     <i v-show="errors.has('nom_permiso')" class="fa fa-warning"></i>
+                  </transition>
+
+                  <transition name="bounce">
+                     <span v-show="errors.has('nom_permiso')" class="text-danger">
+                        @{{ errors.first('nom_permiso') }}
+                     </span>
+                  </transition>
+               </p>
             </dd>
 
             <dt>Detalle Permiso</dt>
             <dd>
-               <textarea name="det_permiso" id="det_permiso" v-model="permiso.det_permiso" cols="15" rows="2"
-                         class="form-control"></textarea>
+               <p class="control has-icon has-icon-right">
+                  <textarea name="det_permiso" id="det_permiso" v-model="permiso.det_permiso" cols="15" rows="2"
+                            v-validate="'required'" data-vv-delay="500"
+                           class="form-control"></textarea>
+
+                  <transition name="bounce">
+                     <i v-show="errors.has('det_permiso')" class="fa fa-warning"></i>
+                  </transition>
+
+                  <transition name="bounce">
+                     <span v-show="errors.has('det_permiso')" class="text-danger">
+                        @{{ errors.first('det_permiso') }}
+                     </span>
+                  </transition>
+               </p>
             </dd>
 
             <dt>Código Permiso</dt>
             <dd>
-               <input name="cod_permiso" type="text" id="cod_permiso" v-model="permiso.cod_permiso"
-                      placeholder="código del permiso" class="form-control" />
+               <p class="control has-icon has-icon-right">
+                  <input name="cod_permiso" type="text" id="cod_permiso" v-model="permiso.cod_permiso"
+                         v-validate="'required'" data-vv-delay="500" placeholder="código del permiso"
+                         class="form-control" />
+
+                  <transition name="bounce">
+                     <i v-show="errors.has('cod_permiso')" class="fa fa-warning"></i>
+                  </transition>
+
+                  <transition name="bounce">
+                     <span v-show="errors.has('cod_permiso')" class="text-danger">
+                        @{{ errors.first('cod_permiso') }}
+                     </span>
+                  </transition>
+               </p>
             </dd>
 
             <dt>Finalizar</dt>
             <dd>
-               <button class="btn btn-success" @click.prevent="">
+               <button class="btn btn-success" @click.prevent="guardar">
                   Guardar
                </button>
             </dd>

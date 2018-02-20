@@ -38,12 +38,22 @@ class RoleController extends Controller {
                'det_role' => $this->role['det_role']
             ]);
 
-            if ($this->role['id_permiso'] != null) {
+            if (!in_array($this->role['id_permiso'], [null,'null',''])) {
                 $this->permiso = Permiso::findOrFail($this->role['id_permiso']);
+
+                return response()->json([
+                   'TEST:' => $this->permiso
+                ]);
+
                 if ($this->permiso != null) {
                     $this->new_role->roles_permisos()->save($this->permiso);
                 }
+
+
+
             }
+
+            unset($this->role, $this->permiso);
 
             return response()->json([
                'sc' => 200,

@@ -9,22 +9,6 @@ export const inyeccion_funciones_compartidas = {
    methods: {
       checkear_estado_respuesta_http: function (status_code) {
          switch (status_code) {
-            case 200:
-
-               swal({
-                  title: "Exito",
-                  text: `El resultado de la peticion es ${status_code}`,
-                  type: "success",
-                  confirmButtonClass: "btn-success",
-                  closeOnConfirm: true,
-               }, function (isConfirm) {
-                  if (isConfirm) {
-                     window.location.href = '/';
-                  }
-               });
-
-               break;
-
             case 401:
 
                swal({
