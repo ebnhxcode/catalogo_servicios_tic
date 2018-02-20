@@ -85,60 +85,37 @@
 
       <div>
 
-         {{--
-         <modal name="hello-world"
-                :reset="true"
-                :width="800"
-                :height="600"
-                :adaptive="true"
-                :draggable="true">
-            <div class="row">
-               <div class="col-md-12">
-                  hello, world!
-               </div>
-            </div>
-         </modal>
-         --}}
-
-
-         <show1 name="show1"
+         <crear_role name="crear_role"
                 :reset="true"
                 :width="400"
                 :height="300"
                 :adaptive="true"
+                :resizable="true"
                 :draggable="true">
-            <div class="row">
-               <div class="col-md-12">
-                  show1!
-               </div>
-            </div>
-         </show1>
 
-         <show2 name="show2"
-                :reset="true"
-                :width="400"
-                :height="300"
-                :adaptive="true"
-                :draggable="true">
-            <div class="row">
-               <div class="col-md-12">
-                  show1!
-               </div>
-            </div>
-         </show2>
 
-         <show3 name="show3"
-                :reset="true"
-                :width="400"
-                :height="300"
-                :adaptive="true"
-                :draggable="true">
             <div class="row">
                <div class="col-md-12">
-                  show1!
+
+
+                  <dl class="dl-vertical" style="margin: 20px;">
+
+                     <dt>Nombre Role</dt>
+                     <dd>
+                        <input name="nom_role" type="text" id="nom_role" v-model="role.nom_role"
+                               placeholder="nombre del role" class="form-control" />
+                     </dd>
+
+                     <dt>Detalle Role</dt>
+                     <dd>
+                        <textarea name="det_role" id="det_role" cols="30" rows="10"></textarea>
+                     </dd>
+
+                  </dl>
+
                </div>
             </div>
-         </show3>
+         </crear_role>
 
       </div>
 

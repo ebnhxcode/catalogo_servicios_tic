@@ -82,7 +82,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_js_modal__);
 
 
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_js_modal___default.a, { componentName: 'show1' });
+var modal = new __WEBPACK_IMPORTED_MODULE_0_vue_js_modal___default.a();
+Vue.use(modal, { componentName: 'show1' });
+Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_js_modal___default.a, { componentName: 'show2' });
+
 //Vue.use(VModal, { componentName: 'show2'} );
 //Vue.use(VModal, { componentName: 'show3'} );
 
