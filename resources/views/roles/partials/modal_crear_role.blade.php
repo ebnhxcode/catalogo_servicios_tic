@@ -31,8 +31,8 @@
 
             <dt>Detalle Role</dt>
             <dd>
-                        <textarea name="det_role" id="det_role" v-model="role.det_role" cols="15" rows="5"
-                                  class="form-control"></textarea>
+               <textarea name="det_role" id="det_role" v-model="role.det_role" cols="15" rows="5"
+                         class="form-control"></textarea>
             </dd>
 
             <dt>Finalizar</dt>

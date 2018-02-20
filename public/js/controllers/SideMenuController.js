@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 38);
+/******/ 	return __webpack_require__(__webpack_require__.s = 40);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -46838,23 +46838,25 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 /* 37 */,
-/* 38 */
+/* 38 */,
+/* 39 */,
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(39);
-module.exports = __webpack_require__(43);
+__webpack_require__(41);
+module.exports = __webpack_require__(45);
 
 
 /***/ }),
-/* 39 */
+/* 41 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_resource__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_resource__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue2_filters__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue2_filters__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue2_filters___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue2_filters__);
 __webpack_require__(12);
 window.Vue = __webpack_require__(34);
@@ -46940,7 +46942,7 @@ var SideMenuController = new Vue({
 });
 
 /***/ }),
-/* 40 */
+/* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48041,7 +48043,7 @@ function xhrClient (request) {
 
 function nodeClient (request) {
 
-    var client = __webpack_require__(41);
+    var client = __webpack_require__(43);
 
     return new PromiseObj(function (resolve) {
 
@@ -48516,13 +48518,13 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 
 /***/ }),
-/* 41 */
+/* 43 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
-/* 42 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -49211,7 +49213,7 @@ function pluralize (value) {
 });
 
 /***/ }),
-/* 43 */
+/* 45 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

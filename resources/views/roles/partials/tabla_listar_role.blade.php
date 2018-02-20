@@ -3,10 +3,10 @@
    <thead>
       <tr>
          <th>#</th>
-         <th>Header</th>
-         <th>Header</th>
-         <th>Header</th>
-         <th>Header</th>
+         <th>Nombre</th>
+         <th>Detalle</th>
+         <th>Permisos</th>
+         <th>Acción</th>
       </tr>
    </thead>
 

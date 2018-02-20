@@ -37,6 +37,7 @@ mix.js(
 mix.js('resources/assets/js/controllers/SideMenuController.js','public/js/controllers/SideMenuController.js');
 mix.js('resources/assets/js/controllers/HomeController.js','public/js/controllers/HomeController.js');
 mix.js('resources/assets/js/controllers/RoleController.js','public/js/controllers/RoleController.js');
+mix.js('resources/assets/js/controllers/PermisoController.js','public/js/controllers/PermisoController.js');
 
 mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');
