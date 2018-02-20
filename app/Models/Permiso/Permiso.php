@@ -19,6 +19,10 @@ class Permiso extends Model
       'id_usuario_modifica',
    ];
 
+
+   #TODAS LAS RELACIONES BELONGS TO
+
+
    public function usuario_registra() {
       return $this->belongsTo('App\User', 'id_usuario_registra');
    }
@@ -26,4 +30,13 @@ class Permiso extends Model
    public function usuario_modifica() {
       return $this->belongsTo('App\User', 'id_usuario_modifica');
    }
+
+   #TODAS LAS RELACIONES HAS MANY
+
+   #TODAS LAS RELACIONES HAS ONE
+
+   public function roles_permisos () {
+      return $this->hasOne('App\RolePermiso' ,'id_permiso');
+   }
+
 }

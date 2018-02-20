@@ -13,10 +13,21 @@ class Role extends Model
       'det_role',
    ];
 
-   public function roles_permisos () {
-      return $this->hasOne('RolePermiso' ,'id_role');
-   }
+   #TODAS LAS RELACIONES BELONGS TO
 
+
+
+
+   #TODAS LAS RELACIONES HAS MANY
+
+
+
+
+   #TODAS LAS RELACIONES HAS ONE
+
+   public function roles_permisos () {
+      return $this->hasOne('App\RolePermiso' ,'id_role');
+   }
 
 
 }

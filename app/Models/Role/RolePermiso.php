@@ -19,6 +19,10 @@ class RolePermiso extends Model
       'id_usuario_modifica',
    ];
 
+
+   #TODAS LAS RELACIONES BELONGS TO
+
+
    public function role() {
       return $this->belongsTo('App\Role', 'id_role');
    }
@@ -34,4 +38,11 @@ class RolePermiso extends Model
    public function usuario_modifica() {
       return $this->belongsTo('App\User', 'id_usuario_modifica');
    }
+
+
+   #TODAS LAS RELACIONES HAS MANY
+   #TODAS LAS RELACIONES HAS ONE
+
+
+
 }
