@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 53);
+/******/ 	return __webpack_require__(__webpack_require__.s = 54);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2084,7 +2084,7 @@ if (typeof window !== 'undefined' && window.Sweetalert2) window.sweetAlert = win
 
 /***/ }),
 
-/***/ 39:
+/***/ 38:
 /***/ (function(module, exports, __webpack_require__) {
 
 !function(root, factory) {
@@ -2987,119 +2987,7 @@ if (typeof window !== 'undefined' && window.Sweetalert2) window.sweetAlert = win
 
 /***/ }),
 
-/***/ 53:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(54);
-
-
-/***/ }),
-
-/***/ 54:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_js_modal__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_js_modal__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sweetalert2__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__libs_HelperPackage__ = __webpack_require__(55);
-
-
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_js_modal___default.a);
-
-
-//Se importan todas las librerias compartidas y se cargan en el objeto instanciado como alias -> hp
-
-
-var PermisoController = new Vue({
-   el: '#PermisoController',
-   data: function data() {
-      return {
-         'filtro_head': null,
-         'table': [{
-            'value1': 'valuea1',
-            'value2': 'valuea2',
-            'value3': 'valuea3',
-            'value4': 'valuea4',
-            'value5': 'valuea5'
-         }, {
-            'value1': 'valueb1',
-            'value2': 'valueb2',
-            'value3': 'valueb3',
-            'value4': 'valueb4',
-            'value5': 'valueb5'
-         }, {
-            'value1': 'valuec1',
-            'value2': 'valuec2',
-            'value3': 'valuec3',
-            'value4': 'valuec4',
-            'value5': 'valuec5'
-         }, {
-            'value1': 'valued1',
-            'value2': 'valued2',
-            'value3': 'valued3',
-            'value4': 'valued4',
-            'value5': 'valued5'
-         }, {
-            'value1': 'valuee1',
-            'value2': 'valuee2',
-            'value3': 'valuee3',
-            'value4': 'valuee4',
-            'value5': 'valuee5'
-         }, {
-            'value1': 'valuef1',
-            'value2': 'valuef2',
-            'value3': 'valuef3',
-            'value4': 'valuef4',
-            'value5': 'valuef5'
-         }],
-         'permiso': {
-            'nom_permiso': null,
-            'det_permiso': null,
-            'cod_permiso': null
-         }
-      };
-   },
-
-
-   computed: {},
-   watch: {},
-   components: {},
-   created: function created() {
-      this.inicializar();
-   },
-
-   ready: {},
-   filters: {},
-   mixins: [__WEBPACK_IMPORTED_MODULE_2__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
-   methods: {
-
-      inicializar: function inicializar() {
-         var _this = this;
-
-         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-
-         this.$http.get('/permisos').then(function (response) {
-            // success callback
-
-            _this.checkear_estado_respuesta_http(response.status);
-
-            console.log(response);
-         }, function (response) {
-            // error callback
-            //console.log(response);
-            _this.checkear_estado_respuesta_http(response.status);
-         });
-      }
-
-   }
-});
-
-/***/ }),
-
-/***/ 55:
+/***/ 40:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3109,6 +2997,10 @@ var PermisoController = new Vue({
 //Algunas funciones lo necesitan
 
 
+/**
+ *  Este objeto tiene permisos para manejar otros mudulos siempre que no afecte a otros metodos u
+ *  objetos en donde ha sido importado
+*/
 var inyeccion_funciones_compartidas = {
    methods: {
       checkear_estado_respuesta_http: function checkear_estado_respuesta_http(status_code) {
@@ -3248,6 +3140,111 @@ var inyeccion_funciones_compartidas = {
    */
 
 };
+
+/***/ }),
+
+/***/ 54:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(55);
+
+
+/***/ }),
+
+/***/ 55:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_js_modal__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_js_modal__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sweetalert2__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__libs_HelperPackage__ = __webpack_require__(40);
+
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_js_modal___default.a);
+
+
+//Se importan todas las librerias compartidas y se cargan en el objeto instanciado como alias -> hp
+
+
+var PermisoController = new Vue({
+   el: '#PermisoController',
+   data: function data() {
+      return {
+         'filtro_head': null,
+         'table': [{
+            'value1': 'valuea1',
+            'value2': 'valuea2',
+            'value3': 'valuea3',
+            'value4': 'valuea4',
+            'value5': 'valuea5'
+         }, {
+            'value1': 'valueb1',
+            'value2': 'valueb2',
+            'value3': 'valueb3',
+            'value4': 'valueb4',
+            'value5': 'valueb5'
+         }, {
+            'value1': 'valuec1',
+            'value2': 'valuec2',
+            'value3': 'valuec3',
+            'value4': 'valuec4',
+            'value5': 'valuec5'
+         }, {
+            'value1': 'valued1',
+            'value2': 'valued2',
+            'value3': 'valued3',
+            'value4': 'valued4',
+            'value5': 'valued5'
+         }, {
+            'value1': 'valuee1',
+            'value2': 'valuee2',
+            'value3': 'valuee3',
+            'value4': 'valuee4',
+            'value5': 'valuee5'
+         }, {
+            'value1': 'valuef1',
+            'value2': 'valuef2',
+            'value3': 'valuef3',
+            'value4': 'valuef4',
+            'value5': 'valuef5'
+         }],
+         'permiso': {
+            'nom_permiso': null,
+            'det_permiso': null,
+            'cod_permiso': null
+         }
+      };
+   },
+
+   computed: {},
+   watch: {},
+   components: {},
+   created: function created() {
+      this.inicializar();
+   },
+
+   ready: {},
+   filters: {},
+   mixins: [__WEBPACK_IMPORTED_MODULE_2__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
+   methods: {
+      inicializar: function inicializar() {
+         var _this = this;
+
+         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+         this.$http.get('/permisos').then(function (response) {// success callback
+
+
+         }, function (response) {
+            // error callback
+            _this.checkear_estado_respuesta_http(response.status);
+         });
+      }
+
+   }
+});
 
 /***/ })
 

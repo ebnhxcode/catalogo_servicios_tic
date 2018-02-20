@@ -29,7 +29,7 @@
 
             <dt>Detalle Permiso</dt>
             <dd>
-               <textarea name="det_permiso" id="det_permiso" v-model="permiso.det_permiso" cols="15" rows="5"
+               <textarea name="det_permiso" id="det_permiso" v-model="permiso.det_permiso" cols="15" rows="2"
                          class="form-control"></textarea>
             </dd>
 

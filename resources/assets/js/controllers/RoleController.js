@@ -1,10 +1,12 @@
+//import VModal from 'vue-js-modal'
+//Vue.use(VModal);
 
-import VModal from 'vue-js-modal'
-Vue.use(VModal);
 import swal from 'sweetalert2'
 
 //Se importan todas las librerias compartidas y se cargan en el objeto instanciado como alias -> hp
 import { inyeccion_funciones_compartidas } from './libs/HelperPackage';
+
+
 
 const RoleController = new Vue({
    el: '#RoleController',
@@ -60,6 +62,7 @@ const RoleController = new Vue({
             'det_role':null,
             'id_permiso':null,
          },
+         'roles':[],
       }
    },
    computed: {},
@@ -74,9 +77,13 @@ const RoleController = new Vue({
    methods: {
 
       inicializar: function () {
+
+         //this.$validator.validateAll().then(result => {});
+
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
          this.$http.get('/roles').then(response => { // success callback
+            this.roles = response.body.roles || null;
 
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);

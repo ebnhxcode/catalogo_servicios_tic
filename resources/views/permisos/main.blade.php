@@ -2,7 +2,7 @@
 @section('content')
    <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
 
-   <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" id="PermisoController">
+   <main role="main" class="col-md-10 ml-sm-auto col-lg-10 pt-3 px-4" id="PermisoController">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
          <h2 class="h2">Permisos</h2>
 
@@ -12,7 +12,7 @@
 
                <div class="btn-group mr-2">
                   <input type="text" class="form-control input-sm"
-                         placeholder="filtrar" v-model="filtro_head" id="filtro_head">
+                      placeholder="filtrar" v-model="filtro_head" id="filtro_head">
                </div><!-- .btn-group mr-2 #mr->margin -->
 
                <div class="btn-group mr-0">
@@ -37,14 +37,14 @@
       <!-- Sección de la tabla que lista los elementos del módulo -->
       <div class="table-responsive">
          <!-- dir ./partials -->
-         @include('permisos.partials.tabla_listar_permiso')
+         @include('permisos.partials.tabla_listar')
       </div>
 
       <!-- Sección de los modals que despliegan segun la gestión -->
       <div>
          <!-- dir ./partials -->
-         @include('permisos.partials.modal_crear_permiso')
-         @include('permisos.partials.modal_actualizar_permiso')
+         @include('permisos.partials.modal_crear')
+         @include('permisos.partials.modal_actualizar')
       </div>
 
 

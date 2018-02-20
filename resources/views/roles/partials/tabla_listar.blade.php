@@ -11,12 +11,17 @@
    </thead>
 
    <tbody>
-      <tr v-for="t in filterBy(table, filtro_head)">
-         <td>@{{ t.value1 }}</td>
-         <td>@{{ t.value2 }}</td>
-         <td>@{{ t.value3 }}</td>
-         <td>@{{ t.value4 }}</td>
-         <td>@{{ t.value5 }}</td>
+      <tr v-for="r in filterBy(roles, filtro_head)">
+         <td>@{{ r.id_role }}</td>
+         <td>@{{ r.nom_role }}</td>
+         <td>@{{ r.det_role }}</td>
+         <td>@{{ r.id_permiso }}</td>
+         <td>
+            <button class="btn btn-sm btn-primary">X</button>
+         </td>
+      </tr>
+      <tr v-if="roles.length == 0">
+         <td colspan="5">No hay más registros</td>
       </tr>
    </tbody>
 

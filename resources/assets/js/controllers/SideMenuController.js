@@ -3,17 +3,23 @@ window.Vue = require('vue');
 
 import VueResource from 'vue-resource';
 Vue.use(VueResource);
+
 import { _ , range } from 'lodash';
+
 import Vue2Filters from 'vue2-filters';
 Vue.use(Vue2Filters);
 
+//import es from 'vee-validate/dist/locale/es';
+//import VeeValidate, { Validator } from 'vee-validate';
 
+// Add locale helper.
+//Validator.addLocale(es);
 
-//import VModal from 'vue-js-modal'
-//Vue.use(VModal, {dialog: true});
+// Install the Plugin and set the locale.
+//Vue.use(VeeValidate, {locale: 'es'});
 
-
-//Vue.component('front-component', require('../components/FrontComponent.vue'));
+import VModal from 'vue-js-modal'
+Vue.use(VModal, {dialog: true});
 
 const SideMenuController = new Vue({
    el: '#SideMenuController',
@@ -100,3 +106,5 @@ const SideMenuController = new Vue({
    filters: {},
    methods: {}
 });
+
+//Vue.component('front-component', require('../components/FrontComponent.vue'));
