@@ -1,25 +1,23 @@
-<modal name="crear_role"
+<modal name="actualizar"
        :reset="true"
        :width="600"
-       :height="400"
+       :height="480"
        :adaptive="true"
        :resizable="true"
        :draggable="true">
-
-
    <div class="row">
       <div class="col-md-12">
-
          <dl class="dl-vertical" style="margin: 20px;">
-
-
             <div class="float-right">
-               <button @click="$modal.hide('crear_role')" class="btn btn-sm btn-danger">
+               <button @click="ocultar_modal('actualizar')" class="btn btn-sm btn-danger">
                ❌
                </button>
             </div>
+            <!--################################-->
+            <!-- Desde aquí comienza desarrollo -->
+            <!--################################-->
 
-            <h2>Nuevo Role</h2>
+            <h2>Actualizar Role</h2>
             <hr>
 
 
@@ -42,10 +40,11 @@
                </button>
             </dd>
 
-         </dl>
 
-      </div>
+            <!--################################-->
+            <!-- Desde aquí finaliza desarrollo -->
+            <!--################################-->
+         </dl><!-- .dl-vertical -->
+      </div><!-- .col-* -->
    </div><!-- .row -->
-
-
 </modal>

@@ -9,7 +9,7 @@
       <div class="col-md-12">
          <dl class="dl-vertical" style="margin: 20px;">
             <div class="float-right">
-               <button @click="hp.ocultar_modal('actualizar')" class="btn btn-sm btn-danger">
+               <button @click="ocultar_modal('actualizar')" class="btn btn-sm btn-danger">
                ❌
                </button>
             </div>

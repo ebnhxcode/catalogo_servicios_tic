@@ -16,7 +16,7 @@
                </div><!-- .btn-group mr-2 #mr->margin -->
 
                <div class="btn-group mr-0">
-                  <button class="btn btn-sm btn-outline-success" @click.prevent="mostrar_modal_crear_role">
+                  <button class="btn btn-sm btn-outline-success" @click.prevent="mostrar_modal_crear">
                      Crear nuevo role
                   </button>
 
@@ -37,14 +37,14 @@
       <!-- Sección de la tabla que lista los elementos del módulo -->
       <div class="table-responsive">
          <!-- dir ./partials -->
-         @include('roles.partials.tabla_listar_role')
+         @include('roles.partials.tabla_listar')
       </div>
 
       <!-- Sección de los modals que despliegan segun la gestión -->
       <div>
          <!-- dir ./partials -->
-         @include('roles.partials.modal_crear_role')
-         @include('roles.partials.modal_actualizar_role')
+         @include('roles.partials.modal_crear')
+         @include('roles.partials.modal_actualizar')
       </div>
 
 

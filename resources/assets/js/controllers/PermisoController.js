@@ -62,32 +62,22 @@ const PermisoController = new Vue({
          },
       }
    },
-
    computed: {},
    watch: {},
-   components: {
-
-   },
+   components: {},
    created(){
       this.inicializar();
    },
    ready: {},
    filters: {},
-   mixins: [inyeccion_funciones_compartidas],
+   mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-
       inicializar: function () {
-
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-
          this.$http.get('/permisos').then(response => { // success callback
 
-            this.checkear_estado_respuesta_http(response.status);
-
-            console.log(response);
 
          }, response => { // error callback
-            //console.log(response);
             this.checkear_estado_respuesta_http(response.status);
          });
 

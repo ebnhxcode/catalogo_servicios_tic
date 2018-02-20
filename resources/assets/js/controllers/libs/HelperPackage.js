@@ -1,6 +1,10 @@
 //Algunas funciones lo necesitan
 import swal from 'sweetalert2'
 
+/**
+ *  Este objeto tiene permisos para manejar otros mudulos siempre que no afecte a otros metodos u
+ *  objetos en donde ha sido importado
+*/
 export const inyeccion_funciones_compartidas = {
    methods: {
       checkear_estado_respuesta_http: function (status_code) {
