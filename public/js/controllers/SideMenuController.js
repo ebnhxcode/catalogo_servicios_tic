@@ -46898,6 +46898,9 @@ var SideMenuController = new Vue({
             'title': 'Roles',
             'url': '/roles'
          }, {
+            'title': 'Permisos',
+            'url': '/permisos'
+         }, {
             'title': 'Usuarios',
             'url': '/usuarios'
          }, {

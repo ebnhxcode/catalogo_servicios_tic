@@ -1,11 +1,6 @@
 
 import VModal from 'vue-js-modal'
-Vue.use(VModal, { componentName: 'create_role'} );
-Vue.use(VModal, { componentName: 'update_role'} );
-
-
-//Vue.use(VModal, { componentName: 'show2'} );
-//Vue.use(VModal, { componentName: 'show3'} );
+Vue.use(VModal);
 
 const RoleController = new Vue({
    el: '#RoleController',
@@ -59,6 +54,7 @@ const RoleController = new Vue({
          'role':{
             'nom_role':null,
             'det_role':null,
+            'id_permiso':null,
          },
       }
    },
@@ -69,16 +65,20 @@ const RoleController = new Vue({
 
    },
    created(){
-      console.log("RoleController mounted");
+      //console.log("RoleController mounted");
       //this.show();
+      //Cuando se monta, es decir cuando se crea o se inicializa el componente se debe hacer la consulta
+      //para traer todos los roles
+
+
 
    },
    ready: {},
    filters: {},
    methods: {
 
-      update_role: function () {
-         this.$modal.show('update_role',{
+      mostrar_modal_actualizar_role: function () {
+         this.$modal.show('actualizar_role',{
             title: 'Alert!',
             text: 'You are too awesome',
             buttons: [
@@ -98,8 +98,8 @@ const RoleController = new Vue({
          });
       },
 
-      create_role: function () {
-         this.$modal.show('create_role',{
+      mostrar_modal_crear_role: function () {
+         this.$modal.show('crear_role',{
             title: 'Alert!',
             text: 'You are too awesome',
             buttons: [

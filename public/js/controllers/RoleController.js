@@ -82,11 +82,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_js_modal__);
 
 
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_js_modal___default.a, { componentName: 'create_role' });
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_js_modal___default.a, { componentName: 'update_role' });
-
-//Vue.use(VModal, { componentName: 'show2'} );
-//Vue.use(VModal, { componentName: 'show3'} );
+Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_js_modal___default.a);
 
 var RoleController = new Vue({
    el: '#RoleController',
@@ -132,7 +128,8 @@ var RoleController = new Vue({
          }],
          'role': {
             'nom_role': null,
-            'det_role': null
+            'det_role': null,
+            'id_permiso': null
          }
       };
    },
@@ -142,16 +139,20 @@ var RoleController = new Vue({
    watch: {},
    components: {},
    created: function created() {
-      console.log("RoleController mounted");
+      //console.log("RoleController mounted");
       //this.show();
+      //Cuando se monta, es decir cuando se crea o se inicializa el componente se debe hacer la consulta
+      //para traer todos los roles
+
+
    },
 
    ready: {},
    filters: {},
    methods: {
 
-      update_role: function update_role() {
-         this.$modal.show('update_role', {
+      mostrar_modal_actualizar_role: function mostrar_modal_actualizar_role() {
+         this.$modal.show('actualizar_role', {
             title: 'Alert!',
             text: 'You are too awesome',
             buttons: [{
@@ -169,8 +170,8 @@ var RoleController = new Vue({
          });
       },
 
-      create_role: function create_role() {
-         this.$modal.show('create_role', {
+      mostrar_modal_crear_role: function mostrar_modal_crear_role() {
+         this.$modal.show('crear_role', {
             title: 'Alert!',
             text: 'You are too awesome',
             buttons: [{
