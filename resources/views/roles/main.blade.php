@@ -22,9 +22,8 @@
                </div>
 
                <div class="btn-group mr-0">
-                  <button class="btn btn-sm btn-outline-success" @click.prevent="show1">Nuevo Role 1</button>
-                  <button class="btn btn-sm btn-outline-success" @click.prevent="show2">Nuevo Role 2</button>
-                  <button class="btn btn-sm btn-outline-success" @click.prevent="show3">Nuevo Role 3</button>
+                  <button class="btn btn-sm btn-outline-success" @click.prevent="create_role">Crear</button>
+                  <button class="btn btn-sm btn-outline-success" @click.prevent="update_role">Editar</button>
                </div>
 
 
@@ -85,13 +84,63 @@
 
       <div>
 
-         <crear_role name="crear_role"
+         <create_role name="create_role"
                 :reset="true"
-                :width="400"
-                :height="300"
+                :width="600"
+                :height="480"
                 :adaptive="true"
                 :resizable="true"
                 :draggable="true">
+
+
+            <div class="row">
+               <div class="col-md-12">
+
+                  <dl class="dl-vertical" style="margin: 20px;">
+
+
+                     <div class="float-right">
+                        <button @click="$modal.hide('create_role')" class="btn btn-sm btn-danger">
+                           ❌
+                        </button>
+                     </div>
+
+                     <h2>Nuevo Role</h2>
+                     <hr>
+
+
+                     <dt>Nombre Role</dt>
+                     <dd>
+                        <input name="nom_role" type="text" id="nom_role" v-model="role.nom_role"
+                               placeholder="nombre del role" class="form-control" />
+                     </dd>
+
+                     <dt>Detalle Role</dt>
+                     <dd>
+                        <textarea name="det_role" id="det_role" v-model="role.det_role" cols="15" rows="5"
+                                  class="form-control"></textarea>
+                     </dd>
+
+                     <dt>Finalizar</dt>
+                     <dd>
+                        <button class="btn btn-success" @click.prevent="">
+                           Guardar
+                        </button>
+                     </dd>
+
+                  </dl>
+
+               </div>
+            </div>
+         </create_role>
+
+         <update_role name="update_role"
+                      :reset="true"
+                      :width="600"
+                      :height="480"
+                      :adaptive="true"
+                      :resizable="true"
+                      :draggable="true">
 
 
             <div class="row">
@@ -108,14 +157,16 @@
 
                      <dt>Detalle Role</dt>
                      <dd>
-                        <textarea name="det_role" id="det_role" cols="30" rows="10"></textarea>
+                        <textarea name="det_role" id="det_role" v-model="role.det_role" cols="15" rows="5"
+                                  class="form-control"></textarea>
                      </dd>
 
                   </dl>
 
                </div>
             </div>
-         </crear_role>
+         </update_role>
+
 
       </div>
 

@@ -82,9 +82,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_js_modal__);
 
 
-var modal = new __WEBPACK_IMPORTED_MODULE_0_vue_js_modal___default.a();
-Vue.use(modal, { componentName: 'show1' });
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_js_modal___default.a, { componentName: 'show2' });
+Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_js_modal___default.a, { componentName: 'create_role' });
+Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_js_modal___default.a, { componentName: 'update_role' });
 
 //Vue.use(VModal, { componentName: 'show2'} );
 //Vue.use(VModal, { componentName: 'show3'} );
@@ -130,7 +129,11 @@ var RoleController = new Vue({
             'value3': 'valuef3',
             'value4': 'valuef4',
             'value5': 'valuef5'
-         }]
+         }],
+         'role': {
+            'nom_role': null,
+            'det_role': null
+         }
       };
    },
 
@@ -146,8 +149,9 @@ var RoleController = new Vue({
    ready: {},
    filters: {},
    methods: {
-      show: function show() {
-         this.$modal.show('hello-world', {
+
+      update_role: function update_role() {
+         this.$modal.show('update_role', {
             title: 'Alert!',
             text: 'You are too awesome',
             buttons: [{
@@ -164,8 +168,9 @@ var RoleController = new Vue({
             }]
          });
       },
-      show1: function show1() {
-         this.$modal.show('show1', {
+
+      create_role: function create_role() {
+         this.$modal.show('create_role', {
             title: 'Alert!',
             text: 'You are too awesome',
             buttons: [{
@@ -182,42 +187,7 @@ var RoleController = new Vue({
             }]
          });
       },
-      show2: function show2() {
-         this.$modal.show('show2', {
-            title: 'Alert!',
-            text: 'You are too awesome',
-            buttons: [{
-               title: 'Deal with it',
-               handler: function handler() {
-                  alert('Woot!');
-               }
-            }, {
-               title: '', // Button title
-               default: true, // Will be triggered by default if 'Enter' pressed.
-               handler: function handler() {} // Button click handler
-            }, {
-               title: 'Close'
-            }]
-         });
-      },
-      show3: function show3() {
-         this.$modal.show('show3', {
-            title: 'Alert!',
-            text: 'You are too awesome',
-            buttons: [{
-               title: 'Deal with it',
-               handler: function handler() {
-                  alert('Woot!');
-               }
-            }, {
-               title: '', // Button title
-               default: true, // Will be triggered by default if 'Enter' pressed.
-               handler: function handler() {} // Button click handler
-            }, {
-               title: 'Close'
-            }]
-         });
-      },
+
       hide: function hide() {
          this.$modal.hide('hello-world');
       }

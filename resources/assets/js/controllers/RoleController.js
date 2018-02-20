@@ -1,6 +1,8 @@
 
 import VModal from 'vue-js-modal'
-Vue.use(VModal, { componentName: 'show1'} );
+Vue.use(VModal, { componentName: 'create_role'} );
+Vue.use(VModal, { componentName: 'update_role'} );
+
 
 //Vue.use(VModal, { componentName: 'show2'} );
 //Vue.use(VModal, { componentName: 'show3'} );
@@ -54,12 +56,17 @@ const RoleController = new Vue({
                'value5':'valuef5',
             },
          ],
+         'role':{
+            'nom_role':null,
+            'det_role':null,
+         },
       }
    },
 
    computed: {},
    watch: {},
    components: {
+
    },
    created(){
       console.log("RoleController mounted");
@@ -70,8 +77,8 @@ const RoleController = new Vue({
    filters: {},
    methods: {
 
-      show () {
-         this.$modal.show('hello-world',{
+      update_role: function () {
+         this.$modal.show('update_role',{
             title: 'Alert!',
             text: 'You are too awesome',
             buttons: [
@@ -91,8 +98,8 @@ const RoleController = new Vue({
          });
       },
 
-      show1 () {
-         this.$modal.show('show1',{
+      create_role: function () {
+         this.$modal.show('create_role',{
             title: 'Alert!',
             text: 'You are too awesome',
             buttons: [
@@ -111,54 +118,6 @@ const RoleController = new Vue({
             ]
          });
       },
-
-      show2 () {
-         this.$modal.show('show2',{
-            title: 'Alert!',
-            text: 'You are too awesome',
-            buttons: [
-               {
-                  title: 'Deal with it',
-                  handler: () => { alert('Woot!') }
-               },
-               {
-                  title: '',       // Button title
-                  default: true,    // Will be triggered by default if 'Enter' pressed.
-                  handler: () => {} // Button click handler
-               },
-               {
-                  title: 'Close'
-               }
-            ]
-         });
-      },
-
-
-      show3 () {
-         this.$modal.show('show3',{
-            title: 'Alert!',
-            text: 'You are too awesome',
-            buttons: [
-               {
-                  title: 'Deal with it',
-                  handler: () => { alert('Woot!') }
-               },
-               {
-                  title: '',       // Button title
-                  default: true,    // Will be triggered by default if 'Enter' pressed.
-                  handler: () => {} // Button click handler
-               },
-               {
-                  title: 'Close'
-               }
-            ]
-         });
-      },
-
-
-
-
-
 
 
       hide () {
