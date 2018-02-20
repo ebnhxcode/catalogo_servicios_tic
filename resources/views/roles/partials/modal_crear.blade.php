@@ -1,9 +1,10 @@
 <modal name="crear"
        :reset="true"
        :width="600"
-       :height="400"
+       :height="600"
        :adaptive="true"
        :resizable="true"
+       :scrollable="true"
        :draggable="true">
    <div class="row">
       <div class="col-md-12">
@@ -22,10 +23,7 @@
 
             <dt>Nombre Role</dt>
             <dd>
-
-               {{--
                <p class="control has-icon has-icon-right">
-
                   <input name="nom_role" type="text" id="nom_role" v-model="role.nom_role"
                          v-validate="'required'" data-vv-delay="500" placeholder="nombre del role"
                          class="form-control" />
@@ -39,10 +37,7 @@
                         @{{ errors.first('nom_role') }}
                      </span>
                   </transition>
-
                </p>
-               --}}
-
             </dd>
 
             <dt>Detalle Role</dt>
@@ -63,7 +58,7 @@
 
             <dt>Finalizar</dt>
             <dd>
-               <button class="btn btn-success" @click.prevent="">
+               <button class="btn btn-success" @click.prevent="guardar">
                   Guardar
                </button>
             </dd>

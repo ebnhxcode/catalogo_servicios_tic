@@ -1,9 +1,10 @@
 <modal name="actualizar"
        :reset="true"
        :width="600"
-       :height="480"
+       :height="600"
        :adaptive="true"
        :resizable="true"
+       :scrollable="true"
        :draggable="true">
    <div class="row">
       <div class="col-md-12">

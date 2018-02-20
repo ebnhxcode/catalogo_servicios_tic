@@ -13,5 +13,10 @@ class Role extends Model
       'det_role',
    ];
 
+   public function roles_permisos () {
+      return $this->hasOne('RolePermiso' ,'id_role');
+   }
+
+
 
 }

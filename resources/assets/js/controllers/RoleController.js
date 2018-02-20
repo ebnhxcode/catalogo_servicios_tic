@@ -1,12 +1,18 @@
-//import VModal from 'vue-js-modal'
-//Vue.use(VModal);
-
 import swal from 'sweetalert2'
 
 //Se importan todas las librerias compartidas y se cargan en el objeto instanciado como alias -> hp
 import { inyeccion_funciones_compartidas } from './libs/HelperPackage';
 
+import es from 'vee-validate/dist/locale/es';
+import VeeValidate, { Validator } from 'vee-validate';
 
+// Add locale helper.
+Validator.localize('es', es);
+// Install the Plugin and set the locale.
+Vue.use(VeeValidate, {locale: 'es'});
+
+import VModal from 'vue-js-modal'
+Vue.use(VModal, {dialog: true});
 
 const RoleController = new Vue({
    el: '#RoleController',
@@ -78,8 +84,6 @@ const RoleController = new Vue({
 
       inicializar: function () {
 
-         //this.$validator.validateAll().then(result => {});
-
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
          this.$http.get('/roles').then(response => { // success callback
@@ -89,6 +93,32 @@ const RoleController = new Vue({
             this.checkear_estado_respuesta_http(response.status);
          });
       },
+
+      guardar: function () {
+         var self = this;
+         this.$validator.validateAll().then(resultado => {
+            //console.log(resultado); true || false
+            if (resultado === true) {
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+               var formData = new  FormData();
+               formData.append('nom_role', self.role.nom_role);
+               formData.append('det_role', self.role.det_role);
+               formData.append('id_permiso', self.role.id_permiso);
+
+               this.$http.post('/roles', formData).then(response => { // success callback
+
+                  console.log(response);
+
+               }, response => { // error callback
+                  this.checkear_estado_respuesta_http(response.status);
+               });
+
+            }
+
+
+         });
+      }
 
    }
 });

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 54);
+/******/ 	return __webpack_require__(__webpack_require__.s = 56);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2084,7 +2084,163 @@ if (typeof window !== 'undefined' && window.Sweetalert2) window.sweetAlert = win
 
 /***/ }),
 
-/***/ 38:
+/***/ 39:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return inyeccion_funciones_compartidas; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert2__);
+//Algunas funciones lo necesitan
+
+
+/**
+ *  Este objeto tiene permisos para manejar otros mudulos siempre que no afecte a otros metodos u
+ *  objetos en donde ha sido importado
+*/
+var inyeccion_funciones_compartidas = {
+   methods: {
+      checkear_estado_respuesta_http: function checkear_estado_respuesta_http(status_code) {
+         switch (status_code) {
+            case 200:
+
+               __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()({
+                  title: "Exito",
+                  text: "El resultado de la peticion es " + status_code,
+                  type: "success",
+                  confirmButtonClass: "btn-success",
+                  closeOnConfirm: true
+               }, function (isConfirm) {
+                  if (isConfirm) {
+                     window.location.href = '/';
+                  }
+               });
+
+               break;
+
+            case 401:
+
+               __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()({
+                  title: "Atencion",
+                  text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
+                  type: "warning",
+                  confirmButtonClass: "btn-danger",
+                  closeOnConfirm: true
+               }, function (isConfirm) {
+                  if (isConfirm) {
+                     window.location.href = '/login';
+                  }
+               });
+
+               break;
+
+            case 500:
+
+               __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()({
+                  title: "Atencion",
+                  text: "Ocurrio un error al guardar, por favor actualice la página.",
+                  type: "warning",
+                  confirmButtonClass: "btn-danger",
+                  closeOnConfirm: true
+               }, function (isConfirm) {
+                  if (isConfirm) {
+                     window.location.href = '/login';
+                  }
+               });
+
+               break;
+
+            default:
+               __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()({
+                  title: "Atencion",
+                  text: "Ocurrio un error al procesar el formulario, por favor actualice la página.",
+                  type: "warning",
+                  confirmButtonClass: "btn-danger",
+                  closeOnConfirm: true
+               }, function (isConfirm) {
+                  if (isConfirm) {
+                     window.location.href = '/login';
+                  }
+               });
+               break;
+         }
+      },
+      mostrar_modal_actualizar: function mostrar_modal_actualizar() {
+         this.$modal.show('actualizar', {
+            title: 'Alert!',
+            text: 'You are too awesome',
+            buttons: [{
+               title: 'Deal with it',
+               handler: function handler() {
+                  alert('Woot!');
+               }
+            }, {
+               title: '', // Button title
+               default: true, // Will be triggered by default if 'Enter' pressed.
+               handler: function handler() {} // Button click handler
+            }, {
+               title: 'Close'
+            }]
+         });
+      },
+      mostrar_modal_crear: function mostrar_modal_crear() {
+         this.$modal.show('crear', {
+            title: 'Alert!',
+            text: 'You are too awesome',
+            buttons: [{
+               title: 'Deal with it',
+               handler: function handler() {
+                  alert('Woot!');
+               }
+            }, {
+               title: '', // Button title
+               default: true, // Will be triggered by default if 'Enter' pressed.
+               handler: function handler() {} // Button click handler
+            }, {
+               title: 'Close'
+            }]
+         });
+      },
+      ocultar_modal: function ocultar_modal(nom_modal) {
+         this.$modal.hide(nom_modal);
+      }
+   }
+
+   /*
+   
+   Ejemplos
+   -----
+   const hola = {
+      test1(){console.log('test1')},
+      test2:function(){console.log('test2')}
+   }
+   export default hola
+   -----
+   export const hola2 = {
+      test1(){console.log('test1')},
+      test2:function(){console.log('test2')}
+   }
+   -----
+   var hola3 = {
+      test1(){console.log('test1')},
+      test2:function(){console.log('test2')}
+   }
+   
+   export var hola3
+   
+   -----
+   export function ocultar_modal (nom_modal) {
+      this.$modal.hide(nom_modal);
+   }
+   
+   
+   */
+
+};
+
+/***/ }),
+
+/***/ 40:
 /***/ (function(module, exports, __webpack_require__) {
 
 !function(root, factory) {
@@ -2987,180 +3143,24 @@ if (typeof window !== 'undefined' && window.Sweetalert2) window.sweetAlert = win
 
 /***/ }),
 
-/***/ 40:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return inyeccion_funciones_compartidas; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert2__);
-//Algunas funciones lo necesitan
-
-
-/**
- *  Este objeto tiene permisos para manejar otros mudulos siempre que no afecte a otros metodos u
- *  objetos en donde ha sido importado
-*/
-var inyeccion_funciones_compartidas = {
-   methods: {
-      checkear_estado_respuesta_http: function checkear_estado_respuesta_http(status_code) {
-         switch (status_code) {
-            case 200:
-
-               __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()({
-                  title: "Exito",
-                  text: "El resultado de la peticion es " + status_code,
-                  type: "success",
-                  confirmButtonClass: "btn-success",
-                  closeOnConfirm: true
-               }, function (isConfirm) {
-                  if (isConfirm) {
-                     window.location.href = '/';
-                  }
-               });
-
-               break;
-
-            case 401:
-
-               __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()({
-                  title: "Atencion",
-                  text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
-                  type: "warning",
-                  confirmButtonClass: "btn-danger",
-                  closeOnConfirm: true
-               }, function (isConfirm) {
-                  if (isConfirm) {
-                     window.location.href = '/login';
-                  }
-               });
-
-               break;
-
-            case 500:
-
-               __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()({
-                  title: "Atencion",
-                  text: "Ocurrio un error al guardar, por favor actualice la página.",
-                  type: "warning",
-                  confirmButtonClass: "btn-danger",
-                  closeOnConfirm: true
-               }, function (isConfirm) {
-                  if (isConfirm) {
-                     window.location.href = '/login';
-                  }
-               });
-
-               break;
-
-            default:
-               __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()({
-                  title: "Atencion",
-                  text: "Ocurrio un error al procesar el formulario, por favor actualice la página.",
-                  type: "warning",
-                  confirmButtonClass: "btn-danger",
-                  closeOnConfirm: true
-               }, function (isConfirm) {
-                  if (isConfirm) {
-                     window.location.href = '/login';
-                  }
-               });
-               break;
-         }
-      },
-      mostrar_modal_actualizar: function mostrar_modal_actualizar() {
-         this.$modal.show('actualizar', {
-            title: 'Alert!',
-            text: 'You are too awesome',
-            buttons: [{
-               title: 'Deal with it',
-               handler: function handler() {
-                  alert('Woot!');
-               }
-            }, {
-               title: '', // Button title
-               default: true, // Will be triggered by default if 'Enter' pressed.
-               handler: function handler() {} // Button click handler
-            }, {
-               title: 'Close'
-            }]
-         });
-      },
-      mostrar_modal_crear: function mostrar_modal_crear() {
-         this.$modal.show('crear', {
-            title: 'Alert!',
-            text: 'You are too awesome',
-            buttons: [{
-               title: 'Deal with it',
-               handler: function handler() {
-                  alert('Woot!');
-               }
-            }, {
-               title: '', // Button title
-               default: true, // Will be triggered by default if 'Enter' pressed.
-               handler: function handler() {} // Button click handler
-            }, {
-               title: 'Close'
-            }]
-         });
-      },
-      ocultar_modal: function ocultar_modal(nom_modal) {
-         this.$modal.hide(nom_modal);
-      }
-   }
-
-   /*
-   
-   Ejemplos
-   -----
-   const hola = {
-      test1(){console.log('test1')},
-      test2:function(){console.log('test2')}
-   }
-   export default hola
-   -----
-   export const hola2 = {
-      test1(){console.log('test1')},
-      test2:function(){console.log('test2')}
-   }
-   -----
-   var hola3 = {
-      test1(){console.log('test1')},
-      test2:function(){console.log('test2')}
-   }
-   
-   export var hola3
-   
-   -----
-   export function ocultar_modal (nom_modal) {
-      this.$modal.hide(nom_modal);
-   }
-   
-   
-   */
-
-};
-
-/***/ }),
-
-/***/ 54:
+/***/ 56:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(55);
+module.exports = __webpack_require__(57);
 
 
 /***/ }),
 
-/***/ 55:
+/***/ 57:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_js_modal__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_js_modal__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_js_modal__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sweetalert2__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__libs_HelperPackage__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__libs_HelperPackage__ = __webpack_require__(39);
 
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_js_modal___default.a);
