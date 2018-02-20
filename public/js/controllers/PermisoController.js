@@ -3237,7 +3237,7 @@ var PermisoController = new Vue({
 
          var self = this;
          this.$validator.validateAll().then(function (resultado) {
-            //console.log(resultado); true || false
+
             if (resultado === true) {
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
                var formData = new FormData();

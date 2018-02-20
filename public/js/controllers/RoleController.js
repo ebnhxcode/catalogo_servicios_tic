@@ -3205,7 +3205,8 @@ var RoleController = new Vue({
             'det_role': null,
             'id_permiso': null
          },
-         'roles': []
+         'roles': [],
+         'permisos': []
       };
    },
 
@@ -3227,6 +3228,7 @@ var RoleController = new Vue({
          this.$http.get('/roles').then(function (response) {
             // success callback
             _this.roles = response.body.roles || null;
+            _this.permisos = response.body.permisos || null;
          }, function (response) {
             // error callback
             _this.checkear_estado_respuesta_http(response.status);
@@ -3238,7 +3240,7 @@ var RoleController = new Vue({
 
          var self = this;
          this.$validator.validateAll().then(function (resultado) {
-            //console.log(resultado); true || false
+
             if (resultado === true) {
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 

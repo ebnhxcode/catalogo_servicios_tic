@@ -3,21 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="9c71587b-d991-482f-b19e-13dd138d49bc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/PermisoController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/PermisoController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/HomeController.js" afterPath="$PROJECT_DIR$/public/js/controllers/HomeController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/PermisoController.js" afterPath="$PROJECT_DIR$/public/js/controllers/PermisoController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/RoleController.js" afterPath="$PROJECT_DIR$/public/js/controllers/RoleController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/SideMenuController.js" afterPath="$PROJECT_DIR$/public/js/controllers/SideMenuController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/PermisoController.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/PermisoController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/RoleController.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/RoleController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/SideMenuController.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/SideMenuController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/home.blade.php" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/permisos/main.blade.php" afterPath="$PROJECT_DIR$/resources/views/permisos/main.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/permisos/partials/modal_crear.blade.php" afterPath="$PROJECT_DIR$/resources/views/permisos/partials/modal_crear.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/permisos/partials/tabla_listar.blade.php" afterPath="$PROJECT_DIR$/resources/views/permisos/partials/tabla_listar.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/roles/main.blade.php" afterPath="$PROJECT_DIR$/resources/views/roles/main.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/roles/partials/modal_crear.blade.php" afterPath="$PROJECT_DIR$/resources/views/roles/partials/modal_crear.blade.php" />
     </list>
     <ignored path="catalogo_servicios_tic.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,7 +34,7 @@
       <file leaf-file-name="SideMenuController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/SideMenuController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.678572">
+            <state vertical-scroll-proportion="0.0">
               <caret line="23" column="56" selection-start-line="23" selection-start-column="56" selection-end-line="23" selection-end-column="56" />
               <folding>
                 <element signature="e#866#1388#0" expanded="false" />
@@ -55,8 +47,8 @@
       <file leaf-file-name="RoleController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/RoleController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.70187795">
-              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.65436244">
+              <caret line="49" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
               <folding>
                 <element signature="e#40#56#0#PHP" expanded="true" />
               </folding>
@@ -68,9 +60,43 @@
         <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/RoleController.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+              <caret line="106" column="48" selection-start-line="106" selection-start-column="48" selection-end-line="106" selection-end-column="48" />
               <folding>
                 <element signature="e#404#1640#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tabla_listar.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/permisos/partials/tabla_listar.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.5">
+              <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="modal_crear.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/roles/partials/modal_crear.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.423077">
+              <caret line="57" column="97" selection-start-line="57" selection-start-column="97" selection-end-line="57" selection-end-column="97" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#dl#0;n#div#0;n#div#0;n#modal#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PermisoController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PermisoController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-20.423077">
+              <caret line="44" column="23" selection-start-line="44" selection-start-column="23" selection-end-line="44" selection-end-column="23" />
+              <folding>
+                <element signature="e#40#56#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -79,7 +105,7 @@
       <file leaf-file-name="PermisoController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/PermisoController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.571428">
+            <state vertical-scroll-proportion="0.0">
               <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
               <folding>
                 <element signature="e#394#1630#0" expanded="false" />
@@ -115,7 +141,6 @@
         <option value="$PROJECT_DIR$/resources/views/dashboard.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/HomeController.js" />
         <option value="$PROJECT_DIR$/resources/views/layouts/front.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/FrontController.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/Role/ModalCreateRole.vue" />
         <option value="$PROJECT_DIR$/resources/views/roles/partials/modal_actualizar_role.blade.php" />
@@ -130,7 +155,6 @@
         <option value="$PROJECT_DIR$/resources/views/permisos/partials/modal_actualizar_permiso.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/permisos/partials/modal_crear_permiso.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/roles/partials/tabla_listar.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/roles/partials/modal_crear.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/roles/partials/modal_actualizar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/permisos/partials/modal_actualizar.blade.php" />
         <option value="$PROJECT_DIR$/app/Models/Role/RolePermiso.php" />
@@ -139,12 +163,14 @@
         <option value="$PROJECT_DIR$/resources/views/permisos/partials/modal_crear.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/SideMenuController.js" />
         <option value="$PROJECT_DIR$/resources/views/permisos/partials/tabla_listar.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/roles/main.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/permisos/main.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/PermisoController.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/PermisoController.js" />
+        <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/roles/partials/modal_crear.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/RoleController.js" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" />
       </list>
@@ -167,8 +193,8 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="y" value="1" />
-    <option name="width" value="1280" />
-    <option name="height" value="1023" />
+    <option name="width" value="1360" />
+    <option name="height" value="767" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -195,7 +221,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -794,6 +819,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -863,10 +889,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="1" width="1280" height="1023" extended-state="6" />
+    <frame x="0" y="1" width="1360" height="767" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24140625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2367647" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1037,20 +1063,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9084507">
-          <caret line="162" column="26" selection-start-line="162" selection-start-column="26" selection-end-line="162" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/dashboard/main.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/composer.lock">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3539823">
@@ -1090,7 +1102,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1098,31 +1109,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5685841">
           <caret line="723" column="0" selection-start-line="723" selection-start-column="0" selection-end-line="723" selection-end-column="36" />
-          <folding>
-            <element signature="e#627#3168#0" expanded="false" />
-            <element signature="e#3197#4398#0" expanded="false" />
-            <element signature="e#4437#8693#0" expanded="false" />
-            <element signature="e#8717#9094#0" expanded="false" />
-            <element signature="e#9113#9472#0" expanded="false" />
-            <element signature="e#9490#9762#0" expanded="false" />
-            <element signature="e#9785#10067#0" expanded="false" />
-            <element signature="e#10084#10899#0" expanded="false" />
-            <element signature="e#10917#11344#0" expanded="false" />
-            <element signature="e#11364#11797#0" expanded="false" />
-            <element signature="e#11827#21990#0" expanded="false" />
-            <marker date="1519053443052" expanded="true" signature="4537:5527" placeholder="..." />
-            <marker date="1519053443052" expanded="true" signature="4576:5508" placeholder="..." />
-            <marker date="1519053443052" expanded="true" signature="4650:4871" placeholder="..." />
-            <marker date="1519053443052" expanded="true" signature="4760:4847" placeholder="..." />
-            <marker date="1519053443052" expanded="true" signature="4988:5176" placeholder="..." />
-            <marker date="1519053443052" expanded="true" signature="5270:5487" placeholder="..." />
-            <marker date="1519053443052" expanded="true" signature="5376:5463" placeholder="..." />
-            <marker date="1519053443052" expanded="true" signature="10302:10769" placeholder="..." />
-            <marker date="1519053443052" expanded="true" signature="11032:11192" placeholder="..." />
-            <marker date="1519053443052" expanded="true" signature="11483:11643" placeholder="..." />
-            <marker date="1519053443052" expanded="true" signature="39922:40109" placeholder="..." />
-            <marker date="1519053443052" expanded="true" signature="40036:40092" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1153,10 +1139,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.14380531">
           <caret line="39" column="47" selection-start-line="39" selection-start-column="47" selection-end-line="39" selection-end-column="47" />
-          <folding>
-            <element signature="e#35#439#0" expanded="false" />
-            <element signature="e#441#1122#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1164,7 +1146,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.25170842">
           <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1172,7 +1153,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.28097346">
           <caret line="68" column="22" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1180,7 +1160,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1188,7 +1167,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.5">
           <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1196,38 +1174,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="18.821428">
           <caret line="4698" column="21" selection-start-line="4698" selection-start-column="21" selection-end-line="4698" selection-end-column="116" />
-          <folding>
-            <element signature="e#504#23291#0" expanded="false" />
-            <element signature="e#23382#28108#0" expanded="false" />
-            <element signature="e#29937#30060#0" expanded="false" />
-            <element signature="e#30109#33318#0" expanded="false" />
-            <element signature="e#33337#33696#0" expanded="false" />
-            <element signature="e#33720#34089#0" expanded="false" />
-            <element signature="e#34105#43029#0" expanded="false" />
-            <element signature="e#56792#126200#0" expanded="false" />
-            <element signature="e#126231#189115#0" expanded="false" />
-            <element signature="e#189123#189386#0" expanded="false" />
-            <element signature="e#205818#209524#0" expanded="false" />
-            <element signature="e#209582#210717#0" expanded="false" />
-            <element signature="e#210779#213083#0" expanded="false" />
-            <element signature="e#213309#213485#0" expanded="false" />
-            <element signature="e#327937#377987#0" expanded="false" />
-            <element signature="e#378023#412464#0" expanded="false" />
-            <element signature="e#412504#472005#0" expanded="false" />
-            <element signature="e#472062#549845#0" expanded="false" />
-            <marker date="1519053443116" expanded="true" signature="30478:30644" placeholder="..." />
-            <marker date="1519053443116" expanded="true" signature="30580:30630" placeholder="..." />
-            <marker date="1519053443116" expanded="true" signature="224912:225078" placeholder="..." />
-            <marker date="1519053443116" expanded="true" signature="225014:225064" placeholder="..." />
-            <marker date="1519053443116" expanded="true" signature="333907:334080" placeholder="..." />
-            <marker date="1519053443116" expanded="true" signature="334013:334065" placeholder="..." />
-            <marker date="1519053443116" expanded="true" signature="382089:382262" placeholder="..." />
-            <marker date="1519053443116" expanded="true" signature="382195:382247" placeholder="..." />
-            <marker date="1519053443116" expanded="true" signature="416347:416520" placeholder="..." />
-            <marker date="1519053443116" expanded="true" signature="416453:416505" placeholder="..." />
-            <marker date="1519053443116" expanded="true" signature="478024:478197" placeholder="..." />
-            <marker date="1519053443116" expanded="true" signature="478130:478182" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1255,19 +1201,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/roles/partials/modal_crear.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37015945">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="39" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/permisos/partials/modal_actualizar.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.26">
           <caret line="17" column="45" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1275,7 +1212,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3997722">
           <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1283,15 +1219,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.05922551">
           <caret line="4" column="56" selection-start-line="4" selection-start-column="56" selection-end-line="4" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22209567">
-          <caret line="91" column="40" selection-start-line="91" selection-start-column="40" selection-end-line="91" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1299,13 +1226,48 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8291572">
           <caret line="56" column="53" selection-start-line="56" selection-start-column="53" selection-end-line="56" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/permisos/main.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6218679">
+          <caret line="42" column="68" selection-start-line="42" selection-start-column="68" selection-end-line="42" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/SideMenuController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="56" selection-start-line="23" selection-start-column="56" selection-end-line="23" selection-end-column="56" />
+          <folding>
+            <element signature="e#866#1388#0" expanded="false" />
+            <element signature="e#1415#2417#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/dashboard/main.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.4446309">
+          <caret line="126" column="59" selection-start-line="126" selection-start-column="59" selection-end-line="126" selection-end-column="59" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#nav#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12942478">
+        <state vertical-scroll-proportion="0.1574074">
           <caret line="9" column="61" selection-start-line="9" selection-start-column="61" selection-end-line="9" selection-end-column="61" />
           <folding>
             <element signature="e#333#1862#0" expanded="false" />
@@ -1316,37 +1278,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/permisos/main.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6218679">
-          <caret line="42" column="68" selection-start-line="42" selection-start-column="68" selection-end-line="42" selection-end-column="68" />
+        <state vertical-scroll-proportion="-0.6897106">
+          <caret line="0" column="19" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PermisoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.0">
-          <caret line="44" column="23" selection-start-line="44" selection-start-column="23" selection-end-line="44" selection-end-column="23" />
-          <folding>
-            <element signature="e#40#56#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/RoleController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
-          <folding>
-            <element signature="e#404#1640#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/PermisoController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.571428">
+        <state vertical-scroll-proportion="0.0">
           <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
           <folding>
             <element signature="e#394#1630#0" expanded="false" />
@@ -1354,29 +1296,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PermisoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.423077">
+          <caret line="44" column="23" selection-start-line="44" selection-start-column="23" selection-end-line="44" selection-end-column="23" />
+          <folding>
+            <element signature="e#40#56#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/permisos/partials/tabla_listar.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3405467">
+        <state vertical-scroll-proportion="-11.5">
           <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/SideMenuController.js">
+    <entry file="file://$PROJECT_DIR$/resources/views/roles/partials/modal_crear.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.678572">
-          <caret line="23" column="56" selection-start-line="23" selection-start-column="56" selection-end-line="23" selection-end-column="56" />
+        <state vertical-scroll-proportion="-12.423077">
+          <caret line="57" column="97" selection-start-line="57" selection-start-column="97" selection-end-line="57" selection-end-column="97" />
           <folding>
-            <element signature="e#866#1388#0" expanded="false" />
-            <element signature="e#1415#2417#0" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#dl#0;n#div#0;n#div#0;n#modal#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/RoleController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="106" column="48" selection-start-line="106" selection-start-column="48" selection-end-line="106" selection-end-column="48" />
+          <folding>
+            <element signature="e#404#1640#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/RoleController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.70187795">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.65436244">
+          <caret line="49" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
           <folding>
             <element signature="e#40#56#0#PHP" expanded="true" />
           </folding>

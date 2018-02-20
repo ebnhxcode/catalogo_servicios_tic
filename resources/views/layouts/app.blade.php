@@ -104,12 +104,10 @@
                         <div class="sidebar-sticky" style="overflow:auto; max-height: 650px;">
 
 
-                            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            <h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                                 <span>Home Menú</span>
-                                <a class="d-flex align-items-center text-muted" href="#">
-                                    <span data-feather="plus-circle"></span>
-                                </a>
-                            </h6>
+                            </h5>
+
                             <ul class="nav flex-column">
                                 <li class="nav-item" v-for="menu in filterBy(menus, filtro_menu)">
                                     <a class="nav-link active" :href="menu.url">
@@ -122,12 +120,9 @@
                                 </li>
                             </ul>
 
-                            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            <h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                                 <span>Mantenedores</span>
-                                <a class="d-flex align-items-center text-muted" href="#">
-                                    <span data-feather="plus-circle"></span>
-                                </a>
-                            </h6>
+                            </h5>
 
                             <ul class="nav flex-column mb-2">
 

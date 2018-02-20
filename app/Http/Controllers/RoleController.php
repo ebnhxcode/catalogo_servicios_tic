@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Permiso;
 use App\Role;
+use App\RolePermiso;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller {
@@ -11,13 +12,16 @@ class RoleController extends Controller {
     private $role;
     private $new_role;
     private $permiso;
+    private $permisos;
 
     public function index(Request $request) {
         if ($request->wantsJson()) {
             $this->roles = Role::all();
+            $this->permisos = Permiso::all();
             return response()->json([
                 'sc'=>200,
-                'roles'=>$this->roles
+                'roles'=>$this->roles,
+                'permisos'=>$this->permisos,
             ]);
         }
 
@@ -39,14 +43,18 @@ class RoleController extends Controller {
             ]);
 
             if (!in_array($this->role['id_permiso'], [null,'null',''])) {
-                $this->permiso = Permiso::findOrFail($this->role['id_permiso']);
-
-                return response()->json([
-                   'TEST:' => $this->permiso
-                ]);
+                $this->permiso = Permiso::find($this->role['id_permiso']);
 
                 if ($this->permiso != null) {
-                    $this->new_role->roles_permisos()->save($this->permiso);
+                    $this->new_role_permiso = RolePermiso::create([
+                        
+                    ]);
+
+                    $this->new_role_permiso = $this->new_role->roles_permisos()->associate($this->permiso);
+
+                    return response()->json([
+                       'TEST:' => $this->new_role_permiso
+                    ]);
                 }
 
 

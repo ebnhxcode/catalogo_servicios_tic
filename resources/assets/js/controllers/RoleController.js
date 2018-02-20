@@ -66,6 +66,7 @@ const RoleController = new Vue({
             'id_permiso':null,
          },
          'roles':[],
+         'permisos':[],
       }
    },
    computed: {},
@@ -82,6 +83,7 @@ const RoleController = new Vue({
       inicializar: function () {
          this.$http.get('/roles').then(response => { // success callback
             this.roles = response.body.roles || null;
+            this.permisos = response.body.permisos || null;
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);
          });
@@ -102,7 +104,7 @@ const RoleController = new Vue({
                this.$http.post('/roles', formData).then(response => { // success callback
                   if (response.status == 200) {
                      self.role = response.data.role;
-                     self.roles.push(self.role)
+                     self.roles.push(self.role);
                      self.role = null;
                      self.role = self.role_limpio;
 
