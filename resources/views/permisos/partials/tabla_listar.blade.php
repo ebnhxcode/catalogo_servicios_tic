@@ -17,7 +17,9 @@
       <td>@{{ p.det_permiso }}</td>
       <td>@{{ p.cod_permiso }}</td>
       <td>
-         <button class="btn btn-sm btn-primary">X</button>
+         <button class="btn btn-sm btn-primary">
+            <i class="fa fa-edit"></i>
+         </button>
       </td>
    </tr>
    <tr v-if="permisos && permisos.length == 0" class="align-items-center">
