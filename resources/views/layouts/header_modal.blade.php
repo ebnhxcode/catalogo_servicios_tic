@@ -4,7 +4,7 @@
        :reset="true"
        :width="600"
        :min-width="500"
-       :height="600"
+       :height="550"
        :min-height="500"
        :adaptive="true"
        :resizable="true"

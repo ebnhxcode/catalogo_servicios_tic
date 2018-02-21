@@ -1,6 +1,6 @@
 <!-- BEGIN HEADER -->
 
-@include('layouts.header_modal', ['nom_modal'=>'crear'])
+@include('layouts.header_modal', compact('nom_modal'=>'crear']))
 
 <!-- END HEADER -->
 

@@ -17,10 +17,12 @@
          <td>@{{ r.det_role }}</td>
          <td>@{{ r.id_permiso }}</td>
          <td>
-            <button class="btn btn-sm btn-primary">X</button>
+            <button class="btn btn-sm btn-primary">
+               <i class="fa fa-edit"></i>
+            </button>
          </td>
       </tr>
-      <tr v-if="roles.length == 0">
+      <tr v-if="roles && roles.length == 0">
          <td colspan="5">No hay más registros</td>
       </tr>
    </tbody>

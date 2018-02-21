@@ -20,7 +20,7 @@
          <button class="btn btn-sm btn-primary">X</button>
       </td>
    </tr>
-   <tr v-if="permisos.length == 0" class="align-items-center">
+   <tr v-if="permisos && permisos.length == 0" class="align-items-center">
       <td colspan="5">No hay más registros</td>
    </tr>
    </tbody>
