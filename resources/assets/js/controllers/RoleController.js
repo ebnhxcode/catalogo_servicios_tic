@@ -67,6 +67,10 @@ const RoleController = new Vue({
          },
          'roles':[],
          'permisos':[],
+
+         //Variables para validar si se está creando o editando
+         'modal_crear_activo': false,
+         'modal_actualizar_activo': false,
       }
    },
    computed: {},
@@ -118,10 +122,11 @@ const RoleController = new Vue({
                });
 
             }
-
-
          });
-      }
+         return;
+      },
+
+
 
    }
 });

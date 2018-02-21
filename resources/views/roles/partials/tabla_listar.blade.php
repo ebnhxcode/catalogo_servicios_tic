@@ -20,6 +20,15 @@
             <button class="btn btn-sm btn-primary">
                <i class="fa fa-edit"></i>
             </button>
+            <button class="btn btn-sm btn-success">
+               <i class="fa fa-save"></i>
+            </button>
+            <button class="btn btn-sm btn-warning">
+               <i class="fa fa-external-link"></i>
+            </button>
+            <button class="btn btn-sm btn-danger">
+               <i class="fa fa-close"></i>
+            </button>
          </td>
       </tr>
       <tr v-if="roles && roles.length == 0">

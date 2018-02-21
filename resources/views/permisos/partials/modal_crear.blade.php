@@ -27,7 +27,7 @@
                          class="form-control" />
 
                   <transition name="bounce">
-                     <i v-show="errors.has('nom_permiso')" class="fa fa-warning"></i>
+                     <i v-show="errors.has('nom_permiso')" class="fa fa-exclamation-circle"></i>
                   </transition>
 
                   <transition name="bounce">
@@ -46,7 +46,7 @@
                            class="form-control"></textarea>
 
                   <transition name="bounce">
-                     <i v-show="errors.has('det_permiso')" class="fa fa-warning"></i>
+                     <i v-show="errors.has('det_permiso')" class="fa fa-exclamation-circle"></i>
                   </transition>
 
                   <transition name="bounce">
@@ -65,7 +65,7 @@
                          class="form-control" />
 
                   <transition name="bounce">
-                     <i v-show="errors.has('cod_permiso')" class="fa fa-warning"></i>
+                     <i v-show="errors.has('cod_permiso')" class="fa fa-exclamation-circle"></i>
                   </transition>
 
                   <transition name="bounce">

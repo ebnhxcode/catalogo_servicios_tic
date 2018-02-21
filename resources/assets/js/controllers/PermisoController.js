@@ -66,6 +66,10 @@ const PermisoController = new Vue({
             'cod_permiso':null,
          },
          'permisos':[],
+
+         //Variables para validar si se está creando o editando
+         'modal_crear_activo': false,
+         'modal_actualizar_activo': false,
       }
    },
    computed: {},

@@ -105,6 +105,18 @@ export const inyeccion_funciones_compartidas = {
       ocultar_modal: function (nom_modal) {
          this.$modal.hide(nom_modal);
       },
+      before_close: function (event) {
+         console.log(event.name);
+         switch (event.name) {
+            case 'crear':
+               this.modal_crear_activo = false;
+               break;
+            case 'actualizar':
+               this.modal_actualizar_activo = false;
+               break;
+         }
+         return;
+      }
    }
 }
 

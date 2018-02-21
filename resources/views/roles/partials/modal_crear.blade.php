@@ -27,7 +27,7 @@
                          class="form-control" />
 
                   <transition name="bounce">
-                     <i v-show="errors.has('nom_role')" class="fa fa-warning"></i>
+                     <i v-show="errors.has('nom_role')" class="fa fa-exclamation-circle"></i>
                   </transition>
 
                   <transition name="bounce">

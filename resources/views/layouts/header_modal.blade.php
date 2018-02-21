@@ -1,5 +1,6 @@
 <!-- BEGIN HEADER -->
 <modal name="{{$nom_modal}}"
+       @before-close="before_close"
        :reset="true"
        :width="600"
        :min-width="500"

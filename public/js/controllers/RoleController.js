@@ -3206,7 +3206,11 @@ var RoleController = new Vue({
             'id_permiso': null
          },
          'roles': [],
-         'permisos': []
+         'permisos': [],
+
+         //Variables para validar si se está creando o editando
+         'modal_crear_activo': false,
+         'modal_actualizar_activo': false
       };
    },
 
@@ -3267,6 +3271,10 @@ var RoleController = new Vue({
                });
             }
          });
+      },
+
+      before_close: function before_close(event) {
+         console.log(event);
       }
 
    }
