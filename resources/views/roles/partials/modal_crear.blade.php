@@ -1,11 +1,10 @@
-<modal name="crear"
-       :reset="true"
-       :width="600"
-       :height="600"
-       :adaptive="true"
-       :resizable="true"
-       :scrollable="true"
-       :draggable="true">
+<!-- BEGIN HEADER -->
+
+@include('layouts.header_modal', ['nom_modal'=>'crear'])
+
+<!-- END HEADER -->
+
+
    <div class="row">
       <div class="col-md-12">
 
@@ -76,5 +75,7 @@
       </div><!-- .col-* -->
    </div><!-- .row -->
 
+<!-- BEGIN FOOTER -->
+@include('layouts.footer_modal')
 
-</modal>
+<!-- END FOOTER -->

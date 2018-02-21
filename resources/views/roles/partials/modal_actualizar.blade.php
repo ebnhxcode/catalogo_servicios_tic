@@ -1,11 +1,8 @@
-<modal name="actualizar"
-       :reset="true"
-       :width="600"
-       :height="600"
-       :adaptive="true"
-       :resizable="true"
-       :scrollable="true"
-       :draggable="true">
+<!-- BEGIN HEADER -->
+
+@include('layouts.header_modal', ['nom_modal'=>'actualizar'])
+
+   <!-- END HEADER -->
    <div class="row">
       <div class="col-md-12">
          <dl class="dl-vertical" style="margin: 20px;">
@@ -48,4 +45,9 @@
          </dl><!-- .dl-vertical -->
       </div><!-- .col-* -->
    </div><!-- .row -->
-</modal>
+
+
+<!-- BEGIN FOOTER -->
+@include('layouts.footer_modal')
+
+   <!-- END FOOTER -->
