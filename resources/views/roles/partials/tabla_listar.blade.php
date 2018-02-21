@@ -12,15 +12,49 @@
 
    <tbody>
       <tr v-for="r in filterBy(roles, filtro_head)">
-         <td>@{{ r.id_role }}</td>
-         <td>@{{ r.nom_role }}</td>
-         <td>@{{ r.det_role }}</td>
-         <td>@{{ r.id_permiso }}</td>
+
+
+         <template v-if="id_en_edicion != r.id_role">
+            <td>
+               @{{ r.id_role }}
+            </td>
+            <td>
+               @{{ r.nom_role }}
+            </td>
+            <td>
+               @{{ r.det_role }}
+            </td>
+            <td>
+               @{{ r.id_permiso }}
+            </td>
+         </template>
+
+         <template v-else>
+            <td>
+               @{{ r.id_role }}
+            </td>
+            <td>
+               <input type="text" class="form-control" :value="r.nom_role" v-model="r.nom_role">
+            </td>
+            <td>
+               <text-area v-model="r.det_role">
+                  @{{ r.det_role }}
+               </text-area>
+            </td>
+            <td>
+               <select v-model="r.id_permiso" class="form-control">
+                  <option :value="p.id_permiso" v-for="p in permisos">
+                     @{{ `${p.nom_permiso} -> ${p.det_permiso}` }}
+                  </option>
+               </select>
+            </td>
+         </template>
+
          <td>
-            <button class="btn btn-sm btn-primary">
+            <button class="btn btn-sm btn-success">
                <i class="fa fa-edit"></i>
             </button>
-            <button class="btn btn-sm btn-success">
+            <button class="btn btn-sm btn-primary">
                <i class="fa fa-save"></i>
             </button>
             <button class="btn btn-sm btn-warning">
