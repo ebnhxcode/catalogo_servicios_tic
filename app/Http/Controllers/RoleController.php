@@ -160,20 +160,18 @@ class RoleController extends Controller {
    public function store(Request $request) {
 
       $this->validacion = Validator::make($request->all(), [
-         'nom_role' => 'string|required|unique:roles|max:255',
+         'nom_role' => 'regex:/(^([a-zA-z]+)(\d+)?$)/u|required|unique:roles|max:255',
          'det_role' => 'required|max:1000',
-         'id_permiso' => 'required|integer|max:1',
+         'id_permiso' => 'required|integer',
       ]);
 
-      if ($this->validacion->fails()) {
 
-         if ($this->validacion->fails()) {
-            return response()->json($this->validacion->messages(), 200);
-         }
-
-         return redirect('post/create')
-            ->withErrors($this->validacion)
-            ->withInput();
+      if ($this->validacion->fails() == true) {
+         return response()->json([
+            'status' => 200, //Para los popups con alertas de sweet alert
+            'tipo' => 'errores_campos_requeridos', //Para las notificaciones
+            'mensajes' => $this->validacion->messages(), //Para mostrar los mensajes que van desde el backend
+         ]);
       }
 
 

@@ -3227,6 +3227,8 @@ var RoleController = new Vue({
          },
          'roles': [],
          'permisos': [],
+         'campos_formularios': [],
+         'errores_campos': [],
 
          //Variables para validar si se está creando o editando
          'modal_crear_activo': false,
@@ -3256,41 +3258,6 @@ var RoleController = new Vue({
             // success callback
             _this.roles = response.body.roles || null;
             _this.permisos = response.body.permisos || null;
-
-            _this.$notify({
-               group: 'foo',
-               type: 'warn',
-               title: 'Important message',
-               text: 'Hello user! This is a warning notification!'
-            });
-
-            _this.$notify({
-               group: 'foo',
-               type: 'primary',
-               title: 'Important message',
-               text: 'Hello user! This is a primary notification!'
-            });
-
-            _this.$notify({
-               group: 'foo',
-               type: 'success',
-               title: 'Important message',
-               text: 'Hello user! This is a success notification!'
-            });
-
-            _this.$notify({
-               group: 'foo',
-               type: 'info',
-               title: 'Important message',
-               text: 'Hello user! This is a info notification!'
-            });
-
-            _this.$notify({
-               group: 'foo',
-               type: 'error',
-               title: 'Important message',
-               text: 'Hello user! This is a default notification!'
-            });
          }, function (response) {
             // error callback
             _this.checkear_estado_respuesta_http(response.status);
@@ -3305,6 +3272,44 @@ var RoleController = new Vue({
          this.role = null;
          this.role = this.buscar_en_array_por_modelo_e_id(id_role, this.roles, 'role');
       },
+
+      notificar: function notificar(tipo, titulo, mensajes) {
+         for (var m in mensajes) {
+            var mensaje = mensajes[m][0];
+            this.$notify({
+               group: 'global',
+               type: tipo,
+               title: titulo,
+               text: mensaje
+            });
+         }
+      },
+
+      checkear_notificaciones: function checkear_notificaciones(respuesta_http) {
+
+         var status = respuesta_http.status || null;
+         var tipo = respuesta_http.data.tipo || null;
+         var mensajes = respuesta_http.data.mensajes || null;
+
+         switch (status) {
+
+            case 200:
+               switch (tipo) {
+                  case 'errores_campos_requeridos':
+                     // Tipo de notificacion , Titulo de los mensajes , Mensajes
+                     this.notificar('warn', 'Advertencia campo requerido', mensajes);
+                     break;
+               }
+               break;
+
+            default:
+               break;
+         }
+         return true;
+      },
+
+      //checkear_respuesta_servidor: function (respuesta_http) {},
+
 
       guardar_editado: function guardar_editado() {
          var _this2 = this;
@@ -3342,21 +3347,32 @@ var RoleController = new Vue({
       guardar: function guardar() {
          var _this3 = this;
 
+         //Sub instancia de contexto
          var self = this;
-
+         //Ejecuta validacion sobre los campos con validaciones
          this.$validator.validateAll().then(function (resultado) {
-
+            //Usa variable que recibe como parametro con el estado en boolean
             if (resultado === true) {
+               //Se adjunta el token
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-
+               //Instancia nuevo form data
                var formData = new FormData();
+               //Conforma objeto paramétrico para solicitud http
                formData.append('nom_role', self.role.nom_role != null ? self.role.nom_role : '');
                formData.append('det_role', self.role.det_role != null ? self.role.det_role : '');
                formData.append('id_permiso', self.role.id_permiso != null ? self.role.id_permiso : '');
 
                _this3.$http.post('/roles', formData).then(function (response) {
                   // success callback
+
+                  self.checkear_notificaciones(response);
+
+                  return console.log(response);
+
+                  return 0;
+
                   if (response.status == 200) {
+
                      self.role = response.data.role;
                      self.roles.push(self.role);
                      self.role = null;
@@ -3379,17 +3395,16 @@ var RoleController = new Vue({
 });
 
 /*
-
  this.$notify({
  group: 'foo',
- type: 'warning',
+ type: 'warn',
  title: 'Important message',
  text: 'Hello user! This is a warning notification!'
  });
 
  this.$notify({
  group: 'foo',
- type: 'primary',
+ type: 'primary', // En blanco tambien lo toma como primary
  title: 'Important message',
  text: 'Hello user! This is a primary notification!'
  });
@@ -3403,14 +3418,21 @@ var RoleController = new Vue({
 
  this.$notify({
  group: 'foo',
- type: 'info',
+ type: 'info', // Falta instalar en el js
  title: 'Important message',
  text: 'Hello user! This is a info notification!'
  });
 
  this.$notify({
  group: 'foo',
- type: 'info',
+ type: 'error',
+ title: 'Important message',
+ text: 'Hello user! This is a default notification!'
+ });
+
+ this.$notify({
+ group: 'foo',
+ type: 'default', // Falta instalar en el js
  title: 'Important message',
  text: 'Hello user! This is a default notification!'
  });
