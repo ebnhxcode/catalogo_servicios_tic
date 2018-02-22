@@ -6,7 +6,7 @@
          <th>Nombre</th>
          <th>Detalle</th>
          <th>Permisos</th>
-         <th>Acción</th>
+         <th style="min-width: 180px;">Acción</th>
       </tr>
    </thead>
 
@@ -34,12 +34,12 @@
                @{{ r.id_role }}
             </td>
             <td>
-               <input type="text" class="form-control" :value="r.nom_role" v-model="r.nom_role">
+               <input type="text" class="form-control" v-model="r.nom_role">
             </td>
             <td>
-               <text-area v-model="r.det_role">
+               <textarea v-model="r.det_role" class="form-control">
                   @{{ r.det_role }}
-               </text-area>
+               </textarea>
             </td>
             <td>
                <select v-model="r.id_permiso" class="form-control">
@@ -51,14 +51,17 @@
          </template>
 
          <td>
-            <button class="btn btn-sm btn-success">
+            <button class="btn btn-sm btn-primary" v-if="id_en_edicion != r.id_role && id_en_edicion == null"
+                    @click.prevent="editar(r.id_role)">
                <i class="fa fa-edit"></i>
             </button>
-            <button class="btn btn-sm btn-primary">
+            <button class="btn btn-sm btn-success" v-if="id_en_edicion == r.id_role"
+                    @click.prevent="guardar_editado">
                <i class="fa fa-save"></i>
             </button>
+
             <button class="btn btn-sm btn-warning">
-               <i class="fa fa-external-link"></i>
+               <i class="fa fa-external-link" ></i>
             </button>
             <button class="btn btn-sm btn-danger">
                <i class="fa fa-close"></i>

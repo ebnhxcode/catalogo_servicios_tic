@@ -71,9 +71,10 @@ const RoleController = new Vue({
          //Variables para validar si se está creando o editando
          'modal_crear_activo': false,
          'modal_actualizar_activo': false,
+         'lista_actualizar_activo':false,
 
 
-         'id_en_edicion': false,
+         'id_en_edicion': null,
       }
    },
    computed: {},
@@ -96,8 +97,56 @@ const RoleController = new Vue({
          });
       },
 
-      guardar: function () {
+
+      editar: function (id_role) {
+         this.lista_actualizar_activo = true;
+         this.id_en_edicion = id_role;
+
+         //id_objeto + array de objetos + nombre del model en lower case
+         this.role = null;
+         this.role = this.buscar_en_array_por_modelo_e_id(id_role,this.roles,'role');
+
+      },
+
+
+
+
+      guardar_editado: function () {
          var self = this;
+         //this.$validator.validateAll().then(resultado => {
+
+         //if (resultado === true) {
+         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+
+         this.$http.put(`/roles/${self.role.id_role}`, self.role).then(response => { // success callback
+            //console.log(response);
+            if (response.status == 200) {
+
+               self.role = this.buscar_en_array_por_modelo_e_id(self.role.id_role,self.roles,'role');
+               self.role = null;
+               self.role = response.data.role;
+
+               this.lista_actualizar_activo = false;
+               this.id_en_edicion = null;
+
+            } else {
+               self.checkear_estado_respuesta_http(response.status);
+            }
+
+         }, response => { // error callback
+            self.checkear_estado_respuesta_http(response.status);
+         });
+
+            //}
+         //});
+         return;
+      },
+
+      guardar: function () {
+
+         var self = this;
+
          this.$validator.validateAll().then(resultado => {
 
             if (resultado === true) {

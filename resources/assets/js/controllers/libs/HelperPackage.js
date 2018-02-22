@@ -116,7 +116,15 @@ export const inyeccion_funciones_compartidas = {
                break;
          }
          return;
-      }
+      },
+      buscar_en_array_por_modelo_e_id: function (id, array, model) {
+         for (let a in array) {
+            if (array[a][`id_${model}`] == id) {
+               return array[a];
+            }
+         }
+         return null;
+      },
    }
 }
 

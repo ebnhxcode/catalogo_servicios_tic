@@ -12,9 +12,18 @@ class RoleController extends Controller
    private $roles;
    private $role;
    private $new_role;
+   private $role_update;
    private $new_role_permiso;
    private $permiso;
    private $permisos;
+
+   private function es_vacio ($variable) {
+      if (isset($variable) && !in_array($variable, [null, 'null', ''])) {
+         return true;
+      } else {
+         return false;
+      }
+   }
 
    public function index(Request $request)
    {
@@ -39,7 +48,7 @@ class RoleController extends Controller
 
    public function store(Request $request)
    {
-      if ($request->wantsJson()) {
+      if ($request->wantsJson() && $request->ajax()) {
          $this->role = $request->all();
 
          $this->new_role = Role::create([
@@ -88,9 +97,48 @@ class RoleController extends Controller
       //
    }
 
-   public function update(Request $request, $id)
-   {
-      //
+   public function update(Request $request, $id) {
+      if ($request->wantsJson() && $request->ajax()) {
+
+         $this->role_update = $request->all();
+         $this->role = Role::find($id);
+
+         if ($this->es_vacio($this->role->id_role) == true) {
+
+
+            if ($this->es_vacio($this->role->id_permiso) == true) {
+
+               $this->new_role_permiso = RolePermiso::create([
+                  'id_role' => $this->role->id_role,
+                  'id_permiso' => $this->role->id_permiso,
+               ]);
+
+            } else {
+
+               $this->role_permiso = RolePermiso::where('id_role', $this->role->id_role)
+                  ->where('id_permiso', $this->role->id_permiso)
+                  ->first();
+
+
+
+               $this->new_role_permiso = $this->role_permiso;
+               $this->new_role_permiso->id_permiso = $this->role->id_permiso;
+               $this->role_permiso->update($this->new_role_permiso);
+
+            }
+
+
+            $this->role->update($this->role_update);
+
+         }
+
+         unset($this->role, $this->permiso);
+
+         return response()->json([
+            'sc' => 200,
+            'role' => $this->role_update
+         ]);
+      }
    }
 
    public function destroy($id)

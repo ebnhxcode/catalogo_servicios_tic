@@ -2187,6 +2187,26 @@ var inyeccion_funciones_compartidas = {
       },
       ocultar_modal: function ocultar_modal(nom_modal) {
          this.$modal.hide(nom_modal);
+      },
+      before_close: function before_close(event) {
+         console.log(event.name);
+         switch (event.name) {
+            case 'crear':
+               this.modal_crear_activo = false;
+               break;
+            case 'actualizar':
+               this.modal_actualizar_activo = false;
+               break;
+         }
+         return;
+      },
+      buscar_en_array_por_modelo_e_id: function buscar_en_array_por_modelo_e_id(id, array, model) {
+         for (var a in array) {
+            if (array[a]["id_" + model] == id) {
+               return array[a];
+            }
+         }
+         return null;
       }
    }
 
@@ -3210,7 +3230,10 @@ var RoleController = new Vue({
 
          //Variables para validar si se está creando o editando
          'modal_crear_activo': false,
-         'modal_actualizar_activo': false
+         'modal_actualizar_activo': false,
+         'lista_actualizar_activo': false,
+
+         'id_en_edicion': null
       };
    },
 
@@ -3239,10 +3262,53 @@ var RoleController = new Vue({
          });
       },
 
-      guardar: function guardar() {
+      editar: function editar(id_role) {
+         this.lista_actualizar_activo = true;
+         this.id_en_edicion = id_role;
+
+         //id_objeto + array de objetos + nombre del model en lower case
+         this.role = null;
+         this.role = this.buscar_en_array_por_modelo_e_id(id_role, this.roles, 'role');
+      },
+
+      guardar_editado: function guardar_editado() {
          var _this2 = this;
 
          var self = this;
+         //this.$validator.validateAll().then(resultado => {
+
+         //if (resultado === true) {
+         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+         this.$http.put('/roles/' + self.role.id_role, self.role).then(function (response) {
+            // success callback
+            //console.log(response);
+            if (response.status == 200) {
+
+               self.role = _this2.buscar_en_array_por_modelo_e_id(self.role.id_role, self.roles, 'role');
+               self.role = null;
+               self.role = response.data.role;
+
+               _this2.lista_actualizar_activo = false;
+               _this2.id_en_edicion = null;
+            } else {
+               self.checkear_estado_respuesta_http(response.status);
+            }
+         }, function (response) {
+            // error callback
+            self.checkear_estado_respuesta_http(response.status);
+         });
+
+         //}
+         //});
+         return;
+      },
+
+      guardar: function guardar() {
+         var _this3 = this;
+
+         var self = this;
+
          this.$validator.validateAll().then(function (resultado) {
 
             if (resultado === true) {
@@ -3253,7 +3319,7 @@ var RoleController = new Vue({
                formData.append('det_role', self.role.det_role);
                formData.append('id_permiso', self.role.id_permiso);
 
-               _this2.$http.post('/roles', formData).then(function (response) {
+               _this3.$http.post('/roles', formData).then(function (response) {
                   // success callback
                   if (response.status == 200) {
                      self.role = response.data.role;
@@ -3271,10 +3337,7 @@ var RoleController = new Vue({
                });
             }
          });
-      },
-
-      before_close: function before_close(event) {
-         console.log(event);
+         return;
       }
 
    }

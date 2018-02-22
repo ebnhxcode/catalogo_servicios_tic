@@ -2187,6 +2187,26 @@ var inyeccion_funciones_compartidas = {
       },
       ocultar_modal: function ocultar_modal(nom_modal) {
          this.$modal.hide(nom_modal);
+      },
+      before_close: function before_close(event) {
+         console.log(event.name);
+         switch (event.name) {
+            case 'crear':
+               this.modal_crear_activo = false;
+               break;
+            case 'actualizar':
+               this.modal_actualizar_activo = false;
+               break;
+         }
+         return;
+      },
+      buscar_en_array_por_modelo_e_id: function buscar_en_array_por_modelo_e_id(id, array, model) {
+         for (var a in array) {
+            if (array[a]["id_" + model] == id) {
+               return array[a];
+            }
+         }
+         return null;
       }
    }
 
@@ -3205,7 +3225,11 @@ var PermisoController = new Vue({
             'det_permiso': null,
             'cod_permiso': null
          },
-         'permisos': []
+         'permisos': [],
+
+         //Variables para validar si se está creando o editando
+         'modal_crear_activo': false,
+         'modal_actualizar_activo': false
       };
    },
 
