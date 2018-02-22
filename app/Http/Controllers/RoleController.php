@@ -159,13 +159,14 @@ class RoleController extends Controller {
 
    public function store(Request $request) {
 
+      #Se realiza validacion de los parametros de entrada que vienen desde el formulario
       $this->validacion = Validator::make($request->all(), [
-         'nom_role' => 'regex:/(^([a-zA-z]+)(\d+)?$)/u|required|unique:roles|max:255',
+         'nom_role' => 'regex:/(^([a-zA-z_ ]+)(\d+)?$)/u|required|unique:roles|max:255',
          'det_role' => 'required|max:1000',
          'id_permiso' => 'required|integer',
       ]);
 
-
+      #Se valida la respuesta con la salida de la validacion
       if ($this->validacion->fails() == true) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
@@ -174,63 +175,31 @@ class RoleController extends Controller {
          ]);
       }
 
-
-      $this->role = $request->all();
-      dd($this->role);
-
-      dd($this->validacion->fails());
-
+      #Como pasó todas las validaciones, se asigna al objeto
       $this->role = $request->all();
 
-      dd($this->role);
-
-      #$this->role = $request->all();
-
+      #Se crea el nuevo role
       $this->new_role = Role::create([
          'nom_role' => $this->role['nom_role'],
          'det_role' => $this->role['det_role']
       ]);
 
-      if (!in_array($this->role['id_permiso'], [null, 'null', ''])) {
+      #Al ser un nuevo registro se crea tambien el objeto relacional, role_permiso
+      $this->new_role_permiso = RolePermiso::create([
+         'id_role' => $this->new_role->id_role,
+         'id_permiso' => $this->role['id_permiso'],
+      ]);
 
-
-
-
-
-
-
-
-
-
-
-
-
-         $this->permiso = Permiso::find($this->role['id_permiso']);
-
-         if ($this->permiso != null) {
-            $this->new_role_permiso =
-               RolePermiso::where('id_permiso', $this->permiso->id_permiso)
-                  ->where('id_role', $this->new_role->id_role)->first();
-
-            return response()->json([
-               'TEST:' => $this->new_role_permiso
-            ]);
-
-            $this->new_role_permiso = RolePermiso::create([
-               'id_role' => '',
-               'id_permiso' => '',
-            ]);
-         }
-
-
-      }
-
-      unset($this->role, $this->permiso);
+      unset($this->role, $this->permiso, /*$this->validacion,$this->new_role,*/ $this->new_role_permiso);
 
       return response()->json([
-         'sc' => 200,
+         'status' => 200, //Para los popups con alertas de sweet alert
+         'tipo' => 'creacion_exitosa', //Para las notificaciones
+         'mensajes' => ["new_$this->nombre_modelo" => [0=>"Registro ($this->nombre_modelo) creado exitosamente."]],
+         //Para mostrar los mensajes que van desde el backend
          'role' => $this->new_role
       ]);
+
    }
 
    public function show($id) {
@@ -242,6 +211,55 @@ class RoleController extends Controller {
    }
 
    public function update(Request $request, $id) {
+
+      #Se realiza validacion de los parametros de entrada que vienen desde el formulario
+      $this->validacion = Validator::make($request->all(), [
+         'nom_role' => 'regex:/(^([a-zA-z]+)(\d+)?$)/u|required|unique:roles|max:255',
+         'det_role' => 'required|max:1000',
+         'id_permiso' => 'required|integer',
+      ]);
+
+      #Se valida la respuesta con la salida de la validacion
+      if ($this->validacion->fails() == true) {
+         return response()->json([
+            'status' => 200, //Para los popups con alertas de sweet alert
+            'tipo' => 'errores_campos_requeridos', //Para las notificaciones
+            'mensajes' => $this->validacion->messages(), //Para mostrar los mensajes que van desde el backend
+         ]);
+      }
+
+
+
+      #Se valida id_permiso no se encuentre nulo, sino lo crea
+      #Asignacion y posterior validacion de la actualizacion del campo id_permiso cuando la tabla es una tabla de Llaves
+      # que guarda keys de ambos modelos, entonces realiza el cambio si los datos son distintos,
+      # evitando que se asigne un null por defecto, no se permite que el usuario cambie el permiso a nulo, si o si debe
+      # tener datos asociados a un perfil
+      # --
+      #Si se actualiza el role, el usuario tiene que verificar si habia relacion con permiso en roles_permisos
+      # para actualizar la relacion con el dato nuevo en caso que haya sido modificado
+      if ( isset($this->role) && $this->role->role_permiso != null) {
+
+         $this->permiso = Permiso::find($this->role['id_permiso']);
+         #this->role // tenemos
+         $this->role->role_permiso->id_permiso =
+            ($this->role->role_permiso->id_permiso !== $this->permiso->id_permiso) ? $this->permiso->id_permiso : null;
+
+         if (!is_null($this->role->role_permiso->id_permiso)) {
+            $this->role->role_permiso->save();
+         }
+
+
+      } else {
+
+         $this->new_role_permiso = RolePermiso::create([
+            'id_role' => $this->role['id_role'],
+            'id_permiso' => $this->role['id_permiso'],
+         ]);
+
+      }
+
+
 
       if ($request->wantsJson() && $request->ajax()) {
 

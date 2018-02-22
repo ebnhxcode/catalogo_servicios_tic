@@ -48,7 +48,9 @@
       </div>
 
       {{--<notifications group="foo" position="bottom right" />--}}
+      <notifications group="top_center" position="top center" />
       <notifications group="global" position="bottom right" />
+
 
    </main>
 

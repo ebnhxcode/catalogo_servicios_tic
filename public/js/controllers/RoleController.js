@@ -3273,11 +3273,11 @@ var RoleController = new Vue({
          this.role = this.buscar_en_array_por_modelo_e_id(id_role, this.roles, 'role');
       },
 
-      notificar: function notificar(tipo, titulo, mensajes) {
+      notificar: function notificar(tipo, titulo, mensajes, grupo) {
          for (var m in mensajes) {
             var mensaje = mensajes[m][0];
             this.$notify({
-               group: 'global',
+               group: grupo,
                type: tipo,
                title: titulo,
                text: mensaje
@@ -3295,9 +3295,13 @@ var RoleController = new Vue({
 
             case 200:
                switch (tipo) {
+                  case 'creacion_exitosa':
+                     // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
+                     this.notificar('success', 'Registro exitoso', mensajes, 'global');
+                     break;
                   case 'errores_campos_requeridos':
-                     // Tipo de notificacion , Titulo de los mensajes , Mensajes
-                     this.notificar('warn', 'Advertencia campo requerido', mensajes);
+                     // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
+                     this.notificar('warn', 'Advertencia campo requerido', mensajes, 'global');
                      break;
                }
                break;
@@ -3366,10 +3370,6 @@ var RoleController = new Vue({
                   // success callback
 
                   self.checkear_notificaciones(response);
-
-                  return console.log(response);
-
-                  return 0;
 
                   if (response.status == 200) {
 
