@@ -28,31 +28,61 @@ class RoleController extends Controller {
 
       #Dummy obj
 
-      $this->role = Role::find(10);
+      #$this->role = Role::find(10);
       #$this->role = Role::find(11);
       #$this->role = Role::find(12);
       #$this->role = Role::find(13);
+      $this->role = Role::find(14);
+
       $this->permiso = Permiso::find(14);
       #$this->permiso = Permiso::find(15);
       #$this->permiso = Permiso::find(16);
       #$this->permiso = Permiso::find(17);
 
 
+      #Validar si el role tiene un permiso activo asociado
+      #Cuando no hay relacion retorna null
+      #Si hay relacion, retorna el objeto
+      dd($this->role->role_permiso);
+
+      #Si se actualiza el role, el usuario tiene que verificar si habia relacion con permiso en roles_permisos
+      # para actualizar la relacion con el dato nuevo en caso que haya sido modificado
+      if ( isset($this->role) && $this->role->role_permiso != null) {
+
+
+
+      }
 
 
 
 
-      #dd($this->permiso->roles_permisos());
 
 
 
 
+
+
+      dd($this->role_permiso);
+
+
+      dd(RolePermiso::all());
+
+      die();
+
+      #Para acceder a las propiedades mediante las relaciones de los objetos
+      #dd($this->role->role_permiso->permiso);
+
+      #Para buscar un role_permiso a partir de id_role e id_permiso
+      $this->role_permiso = RolePermiso::where('id_permiso', $this->permiso->id_permiso)
+         ->where('id_role', $this->role->id_role)->get();
+
+      #Para crear un nuevo Role Permiso a partir de 2 objetos
       $this->new_role_permiso = RolePermiso::create([
          'id_role' => $this->role->id_role,
          'id_permiso' => $this->permiso->id_permiso
       ]);
 
-      dd(RolePermiso::all());
+
 
 
 
