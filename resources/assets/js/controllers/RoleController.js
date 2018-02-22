@@ -92,6 +92,42 @@ const RoleController = new Vue({
          this.$http.get('/roles').then(response => { // success callback
             this.roles = response.body.roles || null;
             this.permisos = response.body.permisos || null;
+
+            this.$notify({
+               group: 'foo',
+               type: 'warn',
+               title: 'Important message',
+               text: 'Hello user! This is a warning notification!'
+            });
+
+            this.$notify({
+               group: 'foo',
+               type: 'primary',
+               title: 'Important message',
+               text: 'Hello user! This is a primary notification!'
+            });
+
+            this.$notify({
+               group: 'foo',
+               type: 'success',
+               title: 'Important message',
+               text: 'Hello user! This is a success notification!'
+            });
+
+            this.$notify({
+               group: 'foo',
+               type: 'info',
+               title: 'Important message',
+               text: 'Hello user! This is a info notification!'
+            });
+
+            this.$notify({
+               group: 'foo',
+               type: 'error',
+               title: 'Important message',
+               text: 'Hello user! This is a default notification!'
+            });
+
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);
          });
@@ -153,9 +189,9 @@ const RoleController = new Vue({
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
                var formData = new  FormData();
-               formData.append('nom_role', self.role.nom_role);
-               formData.append('det_role', self.role.det_role);
-               formData.append('id_permiso', self.role.id_permiso);
+               formData.append('nom_role', (self.role.nom_role != null) ? self.role.nom_role:'' );
+               formData.append('det_role', (self.role.det_role != null) ? self.role.det_role:'' );
+               formData.append('id_permiso', (self.role.id_permiso != null) ? self.role.id_permiso:'' );
 
                this.$http.post('/roles', formData).then(response => { // success callback
                   if (response.status == 200) {
@@ -182,3 +218,43 @@ const RoleController = new Vue({
 
    }
 });
+
+
+/*
+
+ this.$notify({
+ group: 'foo',
+ type: 'warning',
+ title: 'Important message',
+ text: 'Hello user! This is a warning notification!'
+ });
+
+ this.$notify({
+ group: 'foo',
+ type: 'primary',
+ title: 'Important message',
+ text: 'Hello user! This is a primary notification!'
+ });
+
+ this.$notify({
+ group: 'foo',
+ type: 'success',
+ title: 'Important message',
+ text: 'Hello user! This is a success notification!'
+ });
+
+ this.$notify({
+ group: 'foo',
+ type: 'info',
+ title: 'Important message',
+ text: 'Hello user! This is a info notification!'
+ });
+
+ this.$notify({
+ group: 'foo',
+ type: 'info',
+ title: 'Important message',
+ text: 'Hello user! This is a default notification!'
+ });
+
+*/

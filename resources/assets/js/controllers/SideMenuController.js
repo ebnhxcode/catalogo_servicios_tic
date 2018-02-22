@@ -21,6 +21,12 @@ Validator.localize('es', es);
 // Se instala el plugin importado
 Vue.use(VeeValidate, {locale: 'es'});
 
+// Se importa la libreria de notificaciones
+import Notifications from 'vue-notification';
+// Se instala el plugin importado
+Vue.use(Notifications);
+
+
 //Instancia controller de side menu en main app template
 const SideMenuController = new Vue({
    el: '#SideMenuController',

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 54);
+/******/ 	return __webpack_require__(__webpack_require__.s = 55);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3147,15 +3147,15 @@ var inyeccion_funciones_compartidas = {
 
 /***/ }),
 
-/***/ 54:
+/***/ 55:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(55);
+module.exports = __webpack_require__(56);
 
 
 /***/ }),
 
-/***/ 55:
+/***/ 56:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3256,6 +3256,41 @@ var RoleController = new Vue({
             // success callback
             _this.roles = response.body.roles || null;
             _this.permisos = response.body.permisos || null;
+
+            _this.$notify({
+               group: 'foo',
+               type: 'warn',
+               title: 'Important message',
+               text: 'Hello user! This is a warning notification!'
+            });
+
+            _this.$notify({
+               group: 'foo',
+               type: 'primary',
+               title: 'Important message',
+               text: 'Hello user! This is a primary notification!'
+            });
+
+            _this.$notify({
+               group: 'foo',
+               type: 'success',
+               title: 'Important message',
+               text: 'Hello user! This is a success notification!'
+            });
+
+            _this.$notify({
+               group: 'foo',
+               type: 'info',
+               title: 'Important message',
+               text: 'Hello user! This is a info notification!'
+            });
+
+            _this.$notify({
+               group: 'foo',
+               type: 'error',
+               title: 'Important message',
+               text: 'Hello user! This is a default notification!'
+            });
          }, function (response) {
             // error callback
             _this.checkear_estado_respuesta_http(response.status);
@@ -3315,9 +3350,9 @@ var RoleController = new Vue({
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
                var formData = new FormData();
-               formData.append('nom_role', self.role.nom_role);
-               formData.append('det_role', self.role.det_role);
-               formData.append('id_permiso', self.role.id_permiso);
+               formData.append('nom_role', self.role.nom_role != null ? self.role.nom_role : '');
+               formData.append('det_role', self.role.det_role != null ? self.role.det_role : '');
+               formData.append('id_permiso', self.role.id_permiso != null ? self.role.id_permiso : '');
 
                _this3.$http.post('/roles', formData).then(function (response) {
                   // success callback
@@ -3342,6 +3377,45 @@ var RoleController = new Vue({
 
    }
 });
+
+/*
+
+ this.$notify({
+ group: 'foo',
+ type: 'warning',
+ title: 'Important message',
+ text: 'Hello user! This is a warning notification!'
+ });
+
+ this.$notify({
+ group: 'foo',
+ type: 'primary',
+ title: 'Important message',
+ text: 'Hello user! This is a primary notification!'
+ });
+
+ this.$notify({
+ group: 'foo',
+ type: 'success',
+ title: 'Important message',
+ text: 'Hello user! This is a success notification!'
+ });
+
+ this.$notify({
+ group: 'foo',
+ type: 'info',
+ title: 'Important message',
+ text: 'Hello user! This is a info notification!'
+ });
+
+ this.$notify({
+ group: 'foo',
+ type: 'info',
+ title: 'Important message',
+ text: 'Hello user! This is a default notification!'
+ });
+
+*/
 
 /***/ })
 

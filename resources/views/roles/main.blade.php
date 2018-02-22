@@ -47,6 +47,7 @@
          @include('roles.partials.modal_actualizar')
       </div>
 
+      <notifications group="foo" position="bottom right" />
 
    </main>
 
