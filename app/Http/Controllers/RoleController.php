@@ -7,8 +7,7 @@ use App\Role;
 use App\RolePermiso;
 use Illuminate\Http\Request;
 
-class RoleController extends Controller
-{
+class RoleController extends Controller {
    private $roles;
    private $role;
    private $new_role;
@@ -19,14 +18,49 @@ class RoleController extends Controller
 
    private function es_vacio ($variable) {
       if (isset($variable) && !in_array($variable, [null, 'null', ''])) {
-         return true;
-      } else {
          return false;
+      } else {
+         return true;
       }
    }
 
-   public function index(Request $request)
-   {
+   public function rolestest (Request $request) {
+
+      #Dummy obj
+      $this->role = Role::find(10);
+      $this->permiso = Permiso::find(14);
+
+      
+
+
+
+
+
+
+      dd(RolePermiso::all());
+
+
+
+
+
+
+
+
+      #dd(RolePermiso::all());
+      #dd($this->permiso->roles_permisos());
+
+
+
+
+
+
+
+
+
+   }
+
+
+   public function index(Request $request) {
       if ($request->wantsJson()) {
          $this->roles = Role::all();
          $this->permisos = Permiso::all();
@@ -41,13 +75,11 @@ class RoleController extends Controller
    }
 
 
-   public function create()
-   {
+   public function create() {
       //
    }
 
-   public function store(Request $request)
-   {
+   public function store(Request $request) {
       if ($request->wantsJson() && $request->ajax()) {
          $this->role = $request->all();
 
@@ -87,26 +119,26 @@ class RoleController extends Controller
       }
    }
 
-   public function show($id)
-   {
+   public function show($id) {
       //
    }
 
-   public function edit($id)
-   {
+   public function edit($id) {
       //
    }
 
    public function update(Request $request, $id) {
+
       if ($request->wantsJson() && $request->ajax()) {
 
          $this->role_update = $request->all();
          $this->role = Role::find($id);
 
-         if ($this->es_vacio($this->role->id_role) == true) {
+
+         if ($this->es_vacio($this->role->id_role) == false) {
 
 
-            if ($this->es_vacio($this->role->id_permiso) == true) {
+            if ($this->es_vacio($this->role->id_permiso) == false) {
 
                $this->new_role_permiso = RolePermiso::create([
                   'id_role' => $this->role->id_role,
@@ -141,8 +173,7 @@ class RoleController extends Controller
       }
    }
 
-   public function destroy($id)
-   {
+   public function destroy($id) {
       //
    }
 }

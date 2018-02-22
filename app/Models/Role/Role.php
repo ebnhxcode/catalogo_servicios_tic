@@ -26,6 +26,10 @@ class Role extends Model
    #TODAS LAS RELACIONES HAS ONE
 
    public function roles_permisos () {
+      return $this->hasMany('App\RolePermiso' ,'id_role');
+   }
+
+   public function role_permiso () {
       return $this->hasOne('App\RolePermiso' ,'id_role');
    }
 
