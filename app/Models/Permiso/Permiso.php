@@ -35,8 +35,13 @@ class Permiso extends Model
 
    #TODAS LAS RELACIONES HAS ONE
 
-   public function roles_permisos () {
+   public function permiso_role () {
       return $this->hasOne('App\RolePermiso' ,'id_permiso');
    }
+
+   public function permisos_roles () {
+      return $this->hasMany('App\RolePermiso' ,'id_permiso');
+   }
+
 
 }

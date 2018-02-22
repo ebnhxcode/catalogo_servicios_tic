@@ -27,15 +27,30 @@ class RoleController extends Controller {
    public function rolestest (Request $request) {
 
       #Dummy obj
+
       $this->role = Role::find(10);
+      #$this->role = Role::find(11);
+      #$this->role = Role::find(12);
+      #$this->role = Role::find(13);
       $this->permiso = Permiso::find(14);
-
-      
-
-
-
+      #$this->permiso = Permiso::find(15);
+      #$this->permiso = Permiso::find(16);
+      #$this->permiso = Permiso::find(17);
 
 
+
+
+
+
+      #dd($this->permiso->roles_permisos());
+
+
+
+
+      $this->new_role_permiso = RolePermiso::create([
+         'id_role' => $this->role->id_role,
+         'id_permiso' => $this->permiso->id_permiso
+      ]);
 
       dd(RolePermiso::all());
 
@@ -47,7 +62,7 @@ class RoleController extends Controller {
 
 
       #dd(RolePermiso::all());
-      #dd($this->permiso->roles_permisos());
+
 
 
 

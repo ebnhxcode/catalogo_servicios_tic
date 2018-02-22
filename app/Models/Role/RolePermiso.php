@@ -22,7 +22,6 @@ class RolePermiso extends Model
 
    #TODAS LAS RELACIONES BELONGS TO
 
-
    public function role() {
       return $this->belongsTo('App\Role', 'id_role');
    }
