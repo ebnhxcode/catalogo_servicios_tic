@@ -204,11 +204,20 @@ class RoleController extends Controller {
 
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario
       $this->validacion = Validator::make($request->all(), [
-         'id_role' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|unique:roles|max:255',
+         'id_role' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|max:255',
          'nom_role' => 'regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|unique:roles|max:255',
          'det_role' => 'required|max:1000',
          'id_permiso' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
       ]);
+
+      if ($id != $request["id_$this->nombre_modelo"]) {
+         return response()->json([
+            'status' => 200, //Para los popups con alertas de sweet alert
+            'tipo' => 'error_datos_invalidos', //Para las notificaciones
+            'mensajes' => ["new_$this->nombre_modelo" => [0=>"Registro ($this->nombre_modelo) creado exitosamente."]],
+
+         ]);
+      }
 
       #Se valida la respuesta con la salida de la validacion
       if ($this->validacion->fails() == true) {
@@ -220,15 +229,6 @@ class RoleController extends Controller {
       }
 
 
-
-      #Se valida id_permiso no se encuentre nulo, sino lo crea
-      #Asignacion y posterior validacion de la actualizacion del campo id_permiso cuando la tabla es una tabla de Llaves
-      # que guarda keys de ambos modelos, entonces realiza el cambio si los datos son distintos,
-      # evitando que se asigne un null por defecto, no se permite que el usuario cambie el permiso a nulo, si o si debe
-      # tener datos asociados a un perfil
-      # --
-      #Si se actualiza el role, el usuario tiene que verificar si habia relacion con permiso en roles_permisos
-      # para actualizar la relacion con el dato nuevo en caso que haya sido modificado
       if ( isset($this->role) && $this->role->role_permiso != null) {
          #$this->permiso = Permiso::find($this->role['id_permiso']);
          $this->permiso = $this->role->role_permiso->permiso;

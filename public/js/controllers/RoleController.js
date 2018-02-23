@@ -2239,6 +2239,10 @@ var inyeccion_funciones_compartidas = {
                // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
                this.notificar('warn', 'Advertencia campo requerido', mensajes, 'global');
                return false;break;
+            case 'error_datos_invalidos':
+               // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
+               this.notificar('error', 'Error datos invalidos', mensajes, 'global');
+               break;
          }
          //Como no hay nada mas que pueda deneter la ejecucion, se cierra el modal con esta verificacion true.
          return true;
