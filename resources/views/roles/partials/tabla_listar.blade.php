@@ -11,7 +11,8 @@
    </thead>
 
    <tbody>
-      <tr v-for="r in filterBy(roles, filtro_head)">
+      <tr v-for="r in filterBy(roles, filtro_head)"
+          @dblclick.prevent="editar(r.id_role)">
 
 
          <template v-if="id_en_edicion != r.id_role || modal_actualizar_activo == true">

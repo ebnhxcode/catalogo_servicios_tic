@@ -189,12 +189,10 @@ const RoleController = new Vue({
       },
 
       guardar: function () {
-
          //Ejecuta validacion sobre los campos con validaciones
          if (this.validar_campos() == false) {
             return;
          }
-
          //Se adjunta el token
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
          //Instancia nuevo form data
