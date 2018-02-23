@@ -2235,6 +2235,10 @@ var inyeccion_funciones_compartidas = {
                // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
                this.notificar('success', 'Registro exitoso', mensajes, 'global');
                return true;break;
+            case 'actualizacion_exitosa':
+               // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
+               this.notificar('success', 'Actualización exitosa', mensajes, 'global');
+               return true;break;
             case 'errores_campos_requeridos':
                // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
                this.notificar('warn', 'Advertencia campo requerido', mensajes, 'global');
@@ -2242,7 +2246,7 @@ var inyeccion_funciones_compartidas = {
             case 'error_datos_invalidos':
                // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
                this.notificar('error', 'Error datos invalidos', mensajes, 'global');
-               break;
+               return false;break;
          }
          //Como no hay nada mas que pueda deneter la ejecucion, se cierra el modal con esta verificacion true.
          return true;
@@ -3293,7 +3297,8 @@ var RoleController = new Vue({
 
          //Estas var se deben conservar para todos los controllers por que se ejecutan para el modal crear (blanquea)
          'lista_actualizar_activo': false,
-         'id_en_edicion': null
+         'id_en_edicion': null,
+         'dejar_de_editar_contador': 0
 
       };
    },
@@ -3359,34 +3364,48 @@ var RoleController = new Vue({
       guardar_editado: function guardar_editado() {
          var _this2 = this;
 
-         var self = this;
-         //this.$validator.validateAll().then(resultado => {
-
-         //if (resultado === true) {
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-         this.$http.put('/roles/' + self.role.id_role, self.role).then(function (response) {
+         this.$http.put('/roles/' + this.role.id_role, this.role).then(function (response) {
             // success callback
-            //console.log(response);
+
             if (response.status == 200) {
+               if (!_this2.es_null(response.data.role)) {
+                  _this2.lista_actualizar_activo = false;
+                  _this2.id_en_edicion = null;
+               }
+            } else {
+               _this2.checkear_estado_respuesta_http(response.status);
+               return false;
+            }
 
-               self.role = _this2.buscar_en_array_por_modelo_e_id(self.role.id_role, self.roles, 'role');
-               self.role = null;
-               self.role = response.data.role;
+            if (_this2.mostrar_notificaciones(response) == true) {
+               //Aqui que pregunte si el modal está activo para que lo cierre
+               //this.ocultar_modal('actualizar');
 
+               _this2.role = {
+                  'nom_role': null,
+                  'det_role': null,
+                  'id_permiso': null
+               };
                _this2.lista_actualizar_activo = false;
                _this2.id_en_edicion = null;
+               _this2.inicializar();
             } else {
-               self.checkear_estado_respuesta_http(response.status);
+               _this2.dejar_de_editar_contador++;
             }
          }, function (response) {
             // error callback
-            self.checkear_estado_respuesta_http(response.status);
+            _this2.checkear_estado_respuesta_http(response.status);
          });
 
-         //}
-         //});
          return;
+      },
+
+      dejar_de_editar: function dejar_de_editar() {
+         this.lista_actualizar_activo = false;
+         this.id_en_edicion = null;
+         this.dejar_de_editar_contador = 0;
       },
 
       guardar: function guardar() {

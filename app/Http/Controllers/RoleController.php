@@ -205,7 +205,7 @@ class RoleController extends Controller {
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario
       $this->validacion = Validator::make($request->all(), [
          'id_role' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|max:255',
-         'nom_role' => 'regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|unique:roles|max:255',
+         'nom_role' => 'regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255',
          'det_role' => 'required|max:1000',
          'id_permiso' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
       ]);
@@ -215,8 +215,7 @@ class RoleController extends Controller {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
             'tipo' => 'error_datos_invalidos', //Para las notificaciones
-            'mensajes' => ["new_$this->nombre_modelo" => [0=>"Registro ($this->nombre_modelo) creado exitosamente."]],
-
+            'mensajes' => ["new_$this->nombre_modelo" => [0=>"Los datos a guardar son incorrectos."]],
          ]);
       }
 
@@ -230,14 +229,14 @@ class RoleController extends Controller {
       }
 
       $this->role = Role::find($request["id_$this->nombre_modelo"]);
+      $this->role->update($request->all());
 
       if ( isset($this->role) && $this->role->role_permiso != null) {
          $this->permiso = $this->role->role_permiso->permiso;
 
-         $this->role->role_permiso->id_permiso =
-            ($this->role->role_permiso->id_permiso !== $this->permiso->id_permiso) ? $this->permiso->id_permiso : null;
 
-         if (!is_null($this->role->role_permiso->id_permiso)) {
+         if ( ! in_array($this->permiso->id_permiso, [$request["id_permiso"],null,'null',''] )) {
+            $this->role->role_permiso->id_permiso = $request["id_permiso"];
             $this->role->role_permiso->save();
          }
 
@@ -250,14 +249,14 @@ class RoleController extends Controller {
 
       }
 
-      unset($this->role, $this->permiso);
+      #unset($this->new_role_permiso, $this->permiso);
 
       return response()->json([
          'status' => 200, //Para los popups con alertas de sweet alert
          'tipo' => 'actualizacion_exitosa', //Para las notificaciones
-         'mensajes' => ["new_$this->nombre_modelo" => [0=>"Registro ($this->nombre_modelo) creado exitosamente."]],
+         'mensajes' => ["new_$this->nombre_modelo" => [0=>"Registro actualizado exitosamente."]],
          //Para mostrar los mensajes que van desde el backend
-         'role' => $this->new_role
+         'role' => $this->role,
       ]);
 
    }

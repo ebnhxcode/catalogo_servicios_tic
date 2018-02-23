@@ -80,6 +80,7 @@ const RoleController = new Vue({
          //Estas var se deben conservar para todos los controllers por que se ejecutan para el modal crear (blanquea)
          'lista_actualizar_activo':false,
          'id_en_edicion': null,
+         'dejar_de_editar_contador': 0,
 
       }
    },
@@ -160,12 +161,17 @@ const RoleController = new Vue({
             if ( this.mostrar_notificaciones(response) == true ) {
                //Aqui que pregunte si el modal está activo para que lo cierre
                //this.ocultar_modal('actualizar');
-               
+
                this.role = {
                   'nom_role':null,
                   'det_role':null,
                   'id_permiso':null,
                };
+               this.lista_actualizar_activo = false;
+               this.id_en_edicion = null;
+               this.inicializar();
+            } else {
+               this.dejar_de_editar_contador ++;
             }
 
          }, response => { // error callback
@@ -173,6 +179,12 @@ const RoleController = new Vue({
          });
 
          return;
+      },
+
+      dejar_de_editar: function () {
+         this.lista_actualizar_activo = false;
+         this.id_en_edicion = null;
+         this.dejar_de_editar_contador = 0;
       },
 
       guardar: function () {

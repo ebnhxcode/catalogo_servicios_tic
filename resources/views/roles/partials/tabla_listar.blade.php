@@ -65,6 +65,11 @@
             <button class="btn btn-sm btn-danger" v-if="id_en_edicion == null">
                <i class="fa fa-close"></i>
             </button>
+            <button class="btn btn-sm btn-secondary"
+                    @click.prevent="dejar_de_editar()"
+                    v-if="dejar_de_editar_contador>2 && id_en_edicion == r.id_role">
+               <i class="fa fa-close"></i>
+            </button>
          </td>
       </tr>
       <tr v-if="roles && roles.length == 0">
