@@ -155,11 +155,6 @@ class RoleController extends Controller {
 
    }
 
-
-   public function create() {
-      //
-   }
-
    public function store(Request $request) {
 
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario
@@ -205,21 +200,14 @@ class RoleController extends Controller {
 
    }
 
-   public function show($id) {
-      //
-   }
-
-   public function edit($id) {
-      //
-   }
-
    public function update(Request $request, $id) {
 
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario
       $this->validacion = Validator::make($request->all(), [
-         'nom_role' => 'regex:/(^([a-zA-z]+)(\d+)?$)/u|required|unique:roles|max:255',
+         'id_role' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|unique:roles|max:255',
+         'nom_role' => 'regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|unique:roles|max:255',
          'det_role' => 'required|max:1000',
-         'id_permiso' => 'required|integer',
+         'id_permiso' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
       ]);
 
       #Se valida la respuesta con la salida de la validacion
@@ -242,8 +230,9 @@ class RoleController extends Controller {
       #Si se actualiza el role, el usuario tiene que verificar si habia relacion con permiso en roles_permisos
       # para actualizar la relacion con el dato nuevo en caso que haya sido modificado
       if ( isset($this->role) && $this->role->role_permiso != null) {
+         #$this->permiso = Permiso::find($this->role['id_permiso']);
+         $this->permiso = $this->role->role_permiso->permiso;
 
-         $this->permiso = Permiso::find($this->role['id_permiso']);
          #this->role // tenemos
          $this->role->role_permiso->id_permiso =
             ($this->role->role_permiso->id_permiso !== $this->permiso->id_permiso) ? $this->permiso->id_permiso : null;
@@ -308,7 +297,5 @@ class RoleController extends Controller {
       }
    }
 
-   public function destroy($id) {
-      //
-   }
+   public function destroy($id) {}
 }
