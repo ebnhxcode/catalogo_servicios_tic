@@ -1,3 +1,4 @@
+
 import swal from 'sweetalert2'
 
 //Se importan todas las librerias compartidas y se cargan en el objeto instanciado como alias -> hp
@@ -5,6 +6,8 @@ import { inyeccion_funciones_compartidas } from './libs/HelperPackage';
 
 import VModal from 'vue-js-modal'
 Vue.use(VModal, {dialog: true});
+
+
 
 const RoleController = new Vue({
    el: '#RoleController',
@@ -73,17 +76,44 @@ const RoleController = new Vue({
          //Variables para validar si se está creando o editando
          'modal_crear_activo': false,
          'modal_actualizar_activo': false,
+
+         //Estas var se deben conservar para todos los controllers por que se ejecutan para el modal crear (blanquea)
          'lista_actualizar_activo':false,
-
-
          'id_en_edicion': null,
+
       }
    },
    computed: {},
-   watch: {},
+   watch: {
+      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el role
+      // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
+      id_en_edicion: function (id_en_edicion) {
+         if (id_en_edicion == null) {
+            this.role = {
+               'nom_role':null,
+               'det_role':null,
+               'id_permiso':null,
+            };
+         }
+      }
+   },
    components: {},
    created(){
       this.inicializar();
+
+      /*
+      $(document).ready(function () {
+         //Handle al recargar pagina
+         window.onbeforeunload = function(e){
+            return "Estás seguro que deseas cerrar la ventana?";
+         };
+         window.onunload = function(e){
+            return "Cierre de la ventana";
+         };
+
+      });
+      */
+
    },
    ready: {},
    filters: {},
@@ -109,56 +139,6 @@ const RoleController = new Vue({
          this.role = this.buscar_en_array_por_modelo_e_id(id_role,this.roles,'role');
 
       },
-
-
-      notificar: function (tipo, titulo, mensajes, grupo) {
-         for (let m in mensajes) {
-            let mensaje = mensajes[m][0];
-            this.$notify({
-               group: grupo,
-               type: tipo,
-               title: titulo,
-               text: mensaje
-            });
-         }
-         return true;
-      },
-
-
-
-      checkear_notificaciones: function (respuesta_http) {
-
-         var status = respuesta_http.status || null;
-         var tipo = respuesta_http.data.tipo || null;
-         var mensajes = respuesta_http.data.mensajes || null;
-
-         switch (status) {
-
-            case 200:
-               switch (tipo) {
-                  case 'creacion_exitosa':
-                     // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
-                     this.notificar('success', 'Registro exitoso', mensajes, 'global');
-                     break;
-                  case 'errores_campos_requeridos':
-                     // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
-                     this.notificar('warn', 'Advertencia campo requerido',  mensajes, 'global');
-                     break;
-               }
-               break;
-
-
-            default:
-               break;
-         }
-         return true;
-
-      },
-
-
-
-      //checkear_respuesta_servidor: function (respuesta_http) {},
-
 
 
       guardar_editado: function () {
@@ -194,43 +174,47 @@ const RoleController = new Vue({
       },
 
       guardar: function () {
-         //Sub instancia de contexto
-         var self = this;
+
          //Ejecuta validacion sobre los campos con validaciones
-         this.$validator.validateAll().then(resultado => {
-            //Usa variable que recibe como parametro con el estado en boolean
-            if (resultado === true) {
-               //Se adjunta el token
-               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-               //Instancia nuevo form data
-               var formData = new  FormData();
-               //Conforma objeto paramétrico para solicitud http
-               formData.append('nom_role', (self.role.nom_role != null) ? self.role.nom_role:'' );
-               formData.append('det_role', (self.role.det_role != null) ? self.role.det_role:'' );
-               formData.append('id_permiso', (self.role.id_permiso != null) ? self.role.id_permiso:'' );
+         if (this.validar_campos() == false) {
+            return;
+         }
 
-               this.$http.post('/roles', formData).then(response => { // success callback
+         //Se adjunta el token
+         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+         //Instancia nuevo form data
+         var formData = new  FormData();
+         //Conforma objeto paramétrico para solicitud http
+         formData.append('nom_role', this.role.nom_role || null );
+         formData.append('det_role', this.role.det_role || null );
+         formData.append('id_permiso',this.role.id_permiso || null );
 
-                  self.checkear_notificaciones(response);
 
-                  if (response.status == 200) {
+         this.$http.post('/roles', formData).then(response => { // success callback
 
-                     self.role = response.data.role;
-                     self.roles.push(self.role);
-                     self.role = null;
-                     self.role = self.role_limpio;
-
-                     self.ocultar_modal('crear');
-                  } else {
-                     self.checkear_estado_respuesta_http(response.status);
-                  }
-
-               }, response => { // error callback
-                  self.checkear_estado_respuesta_http(response.status);
-               });
-
+            if ( response.status == 200) {
+               if ( !this.es_null(response.data.role) ) {
+                  this.role = response.data.role;
+                  this.roles.push(this.role);
+               }
+            } else {
+               this.checkear_estado_respuesta_http(response.status);
+               return false;
             }
+
+            if ( this.mostrar_notificaciones(response) == true ) {
+               this.ocultar_modal('crear');
+               this.role = {
+                  'nom_role':null,
+                  'det_role':null,
+                  'id_permiso':null,
+               };
+            }
+
+         }, response => { // error callback
+            this.checkear_estado_respuesta_http(response.status);
          });
+
          return;
       },
 

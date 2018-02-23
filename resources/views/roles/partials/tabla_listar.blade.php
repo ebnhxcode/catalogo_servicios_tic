@@ -6,7 +6,7 @@
          <th>Nombre</th>
          <th>Detalle</th>
          <th>Permisos</th>
-         <th style="min-width: 180px;">Acción</th>
+         <th style="min-width: 120px;">Acción</th>
       </tr>
    </thead>
 
@@ -25,7 +25,8 @@
                @{{ r.det_role }}
             </td>
             <td>
-               @{{ r.id_permiso }}
+               {{--@{{ r.role_permiso.id_permiso }}--}}
+               @{{ (r.id_permiso = r.role_permiso.id_permiso) ? r.role_permiso.permiso.det_permiso : '' }}
             </td>
          </template>
 
@@ -37,9 +38,7 @@
                <input type="text" class="form-control" v-model="r.nom_role">
             </td>
             <td>
-               <textarea v-model="r.det_role" class="form-control">
-                  @{{ r.det_role }}
-               </textarea>
+               <textarea rows="1" v-model="r.det_role" class="form-control">@{{ r.det_role }}</textarea>
             </td>
             <td>
                <select v-model="r.id_permiso" class="form-control">
@@ -60,10 +59,10 @@
                <i class="fa fa-save"></i>
             </button>
 
-            <button class="btn btn-sm btn-warning">
+            <button class="btn btn-sm btn-warning" v-if="id_en_edicion == null">
                <i class="fa fa-external-link" ></i>
             </button>
-            <button class="btn btn-sm btn-danger">
+            <button class="btn btn-sm btn-danger" v-if="id_en_edicion == null">
                <i class="fa fa-close"></i>
             </button>
          </td>

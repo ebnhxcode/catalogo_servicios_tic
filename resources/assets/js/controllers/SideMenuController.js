@@ -1,6 +1,36 @@
 require('../bootstrap');
 window.Vue = require('vue');
 
+// Se configura la localizacion de la traduccion de los errores
+//Validator.localize('es', es);
+// Se instala el plugin importado
+//Vue.use(VeeValidate, {locale: 'es'});
+
+// Se importa la libreria de notificaciones
+//import Notifications from 'vue-notification';
+// Se instala el plugin importado
+//Vue.use(Notifications);
+
+//Libreria para validacion de rut
+// import { validate, clean, format } from 'rut.js';
+
+//Libreria para trabajo con fechas
+// import moment from 'moment-es6';
+
+
+
+// Se importa la libreria de notificaciones
+import Notifications from 'vue-notification';
+// Se instala el plugin importado
+Vue.use(Notifications);
+
+
+import es from 'vee-validate/dist/locale/es';
+import VeeValidate, { Validator } from 'vee-validate';
+
+Validator.localize('es', es);
+Vue.use(VeeValidate, {locale: 'es'});
+
 //Se importa plugin de Request y Response Http
 import VueResource from 'vue-resource';
 Vue.use(VueResource);
@@ -11,20 +41,6 @@ import { _ , range } from 'lodash';
 //Se importa plugin de filtros
 import Vue2Filters from 'vue2-filters';
 Vue.use(Vue2Filters);
-
-//Se importa plugin de idioma y plugin validador de formularios
-import es from 'vee-validate/dist/locale/es';
-import VeeValidate, { Validator } from 'vee-validate';
-
-// Se configura la localizacion de la traduccion de los errores
-Validator.localize('es', es);
-// Se instala el plugin importado
-Vue.use(VeeValidate, {locale: 'es'});
-
-// Se importa la libreria de notificaciones
-import Notifications from 'vue-notification';
-// Se instala el plugin importado
-Vue.use(Notifications);
 
 
 //Instancia controller de side menu en main app template

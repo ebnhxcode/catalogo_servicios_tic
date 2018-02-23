@@ -7,6 +7,22 @@ import swal from 'sweetalert2'
 */
 export const inyeccion_funciones_compartidas = {
    methods: {
+      //Esta funcion en ingles es propia de los modal para hacer algo antes que se cierre
+      before_close: function (event) {
+         //console.log(event.name);
+         switch (event.name) {
+            case 'crear':
+               this.modal_crear_activo = false;
+               break;
+            case 'actualizar':
+               this.modal_actualizar_activo = false;
+               break;
+         }
+         return;
+      },
+      buscar_en_array_por_modelo_e_id: function (id, array, model) {
+         for (let a in array) { if (array[a][`id_${model}`] == id) { return array[a]; } } return null;
+      },
       checkear_estado_respuesta_http: function (status_code) {
          switch (status_code) {
             case 401:
@@ -56,6 +72,12 @@ export const inyeccion_funciones_compartidas = {
                break;
          }
       },
+
+      es_undefined:(v) => { return (typeof v == undefined)?true:false; },
+      es_null: (v) => { return (v==null)?true:false; },
+      es_empty: (v) => { return (!v || v==null || v=='' || typeof v == undefined) ? true : false; },
+      en_array: (array, v) => { return (array.indexOf(v) > -1) ? true : false; },
+
       mostrar_modal_actualizar: function () {
          this.$modal.show('actualizar', {
             title: 'Alert!',
@@ -80,6 +102,9 @@ export const inyeccion_funciones_compartidas = {
          });
       },
       mostrar_modal_crear: function () {
+         this.lista_actualizar_activo = false;
+         this.id_en_edicion = null;
+
          this.$modal.show('crear', {
             title: 'Alert!',
             text: 'You are too awesome',
@@ -102,29 +127,41 @@ export const inyeccion_funciones_compartidas = {
             ]
          });
       },
-      ocultar_modal: function (nom_modal) {
-         this.$modal.hide(nom_modal);
-      },
-      before_close: function (event) {
-         console.log(event.name);
-         switch (event.name) {
-            case 'crear':
-               this.modal_crear_activo = false;
-               break;
-            case 'actualizar':
-               this.modal_actualizar_activo = false;
-               break;
+      mostrar_notificaciones: function (respuesta_http) {
+
+         var status = respuesta_http.status;
+         var tipo = respuesta_http.body.tipo;
+         var mensajes = respuesta_http.body.mensajes;
+
+         switch (tipo) {
+            case 'creacion_exitosa':
+               // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
+               this.notificar('success', 'Registro exitoso', mensajes, 'global');
+               return true; break;
+            case 'errores_campos_requeridos':
+               // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
+               this.notificar('warn', 'Advertencia campo requerido',  mensajes, 'global');
+               return false; break;
          }
-         return;
+         //Como no hay nada mas que pueda deneter la ejecucion, se cierra el modal con esta verificacion true.
+         return true;
+
       },
-      buscar_en_array_por_modelo_e_id: function (id, array, model) {
-         for (let a in array) {
-            if (array[a][`id_${model}`] == id) {
-               return array[a];
-            }
-         }
-         return null;
+
+      validar_campos: function () { this.$validator.validateAll().then(res => { return res == true ? res : false; }); },
+
+      notificar: function (tipo, titulo, mensajes, grupo) {
+         for (var m in mensajes) { this.$notify({ group: grupo, type: tipo, title: titulo, text: mensajes[m][0] }); }
+         return true;
       },
+      ocultar_modal: function (nom_modal) { this.$modal.hide(nom_modal); },
+
+
+
+
+
+
+
    }
 }
 

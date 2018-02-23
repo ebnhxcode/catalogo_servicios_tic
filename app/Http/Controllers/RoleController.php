@@ -139,17 +139,20 @@ class RoleController extends Controller {
 
 
    public function index(Request $request) {
-      if ($request->wantsJson()) {
-         $this->roles = Role::all();
-         $this->permisos = Permiso::all();
-         return response()->json([
-            'sc' => 200,
-            'roles' => $this->roles,
-            'permisos' => $this->permisos,
-         ]);
+
+      if (!$request->wantsJson() && !$request->ajax()) {
+         return view('roles.main');
       }
 
-      return view('roles.main');
+      $this->roles = Role::with('role_permiso.permiso')->get();
+      $this->permisos = Permiso::all();
+      return response()->json([
+         'status' => 200,
+         'roles' => $this->roles,
+         'permisos' => $this->permisos,
+      ]);
+
+
    }
 
 
@@ -299,7 +302,7 @@ class RoleController extends Controller {
          unset($this->role, $this->permiso);
 
          return response()->json([
-            'sc' => 200,
+            'status' => 200,
             'role' => $this->role_update
          ]);
       }

@@ -2091,6 +2091,8 @@ if (typeof window !== 'undefined' && window.Sweetalert2) window.sweetAlert = win
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return inyeccion_funciones_compartidas; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert2__);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 //Algunas funciones lo necesitan
 
 
@@ -2100,6 +2102,26 @@ if (typeof window !== 'undefined' && window.Sweetalert2) window.sweetAlert = win
 */
 var inyeccion_funciones_compartidas = {
    methods: {
+      //Esta funcion en ingles es propia de los modal para hacer algo antes que se cierre
+      before_close: function before_close(event) {
+         //console.log(event.name);
+         switch (event.name) {
+            case 'crear':
+               this.modal_crear_activo = false;
+               break;
+            case 'actualizar':
+               this.modal_actualizar_activo = false;
+               break;
+         }
+         return;
+      },
+      buscar_en_array_por_modelo_e_id: function buscar_en_array_por_modelo_e_id(id, array, model) {
+         for (var a in array) {
+            if (array[a]['id_' + model] == id) {
+               return array[a];
+            }
+         }return null;
+      },
       checkear_estado_respuesta_http: function checkear_estado_respuesta_http(status_code) {
          switch (status_code) {
             case 401:
@@ -2149,6 +2171,20 @@ var inyeccion_funciones_compartidas = {
                break;
          }
       },
+
+      es_undefined: function es_undefined(v) {
+         return (typeof v === 'undefined' ? 'undefined' : _typeof(v)) == undefined ? true : false;
+      },
+      es_null: function es_null(v) {
+         return v == null ? true : false;
+      },
+      es_empty: function es_empty(v) {
+         return !v || v == null || v == '' || (typeof v === 'undefined' ? 'undefined' : _typeof(v)) == undefined ? true : false;
+      },
+      en_array: function en_array(array, v) {
+         return array.indexOf(v) > -1 ? true : false;
+      },
+
       mostrar_modal_actualizar: function mostrar_modal_actualizar() {
          this.$modal.show('actualizar', {
             title: 'Alert!',
@@ -2168,6 +2204,9 @@ var inyeccion_funciones_compartidas = {
          });
       },
       mostrar_modal_crear: function mostrar_modal_crear() {
+         this.lista_actualizar_activo = false;
+         this.id_en_edicion = null;
+
          this.$modal.show('crear', {
             title: 'Alert!',
             text: 'You are too awesome',
@@ -2185,29 +2224,42 @@ var inyeccion_funciones_compartidas = {
             }]
          });
       },
+      mostrar_notificaciones: function mostrar_notificaciones(respuesta_http) {
+
+         var status = respuesta_http.status;
+         var tipo = respuesta_http.body.tipo;
+         var mensajes = respuesta_http.body.mensajes;
+
+         switch (tipo) {
+            case 'creacion_exitosa':
+               // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
+               this.notificar('success', 'Registro exitoso', mensajes, 'global');
+               return true;break;
+            case 'errores_campos_requeridos':
+               // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
+               this.notificar('warn', 'Advertencia campo requerido', mensajes, 'global');
+               return false;break;
+         }
+         //Como no hay nada mas que pueda deneter la ejecucion, se cierra el modal con esta verificacion true.
+         return true;
+      },
+
+      validar_campos: function validar_campos() {
+         this.$validator.validateAll().then(function (res) {
+            return res == true ? res : false;
+         });
+      },
+
+      notificar: function notificar(tipo, titulo, mensajes, grupo) {
+         for (var m in mensajes) {
+            this.$notify({ group: grupo, type: tipo, title: titulo, text: mensajes[m][0] });
+         }
+         return true;
+      },
       ocultar_modal: function ocultar_modal(nom_modal) {
          this.$modal.hide(nom_modal);
-      },
-      before_close: function before_close(event) {
-         console.log(event.name);
-         switch (event.name) {
-            case 'crear':
-               this.modal_crear_activo = false;
-               break;
-            case 'actualizar':
-               this.modal_actualizar_activo = false;
-               break;
-         }
-         return;
-      },
-      buscar_en_array_por_modelo_e_id: function buscar_en_array_por_modelo_e_id(id, array, model) {
-         for (var a in array) {
-            if (array[a]["id_" + model] == id) {
-               return array[a];
-            }
-         }
-         return null;
       }
+
    }
 
    /*
