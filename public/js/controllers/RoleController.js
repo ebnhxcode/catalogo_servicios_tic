@@ -3377,7 +3377,7 @@ var RoleController = new Vue({
             // success callback
 
             if (response.status == 200) {
-               if (!_this2.es_null(response.data.role)) {
+               if (!_this2.es_null(response.body.role)) {
                   _this2.lista_actualizar_activo = false;
                   _this2.id_en_edicion = null;
                }
@@ -3436,10 +3436,7 @@ var RoleController = new Vue({
             // success callback
 
             if (response.status == 200) {
-               if (!_this3.es_null(response.data.role)) {
-                  _this3.role = response.data.role;
-                  _this3.roles.push(_this3.role);
-               }
+               _this3.inicializar();
             } else {
                _this3.checkear_estado_respuesta_http(response.status);
                return false;
@@ -3447,11 +3444,13 @@ var RoleController = new Vue({
 
             if (_this3.mostrar_notificaciones(response) == true) {
                _this3.ocultar_modal('crear');
+               _this3.role = null;
                _this3.role = {
                   'nom_role': null,
                   'det_role': null,
                   'id_permiso': null
                };
+               return;
             }
          }, function (response) {
             // error callback

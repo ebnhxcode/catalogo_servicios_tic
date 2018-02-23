@@ -150,7 +150,7 @@ const RoleController = new Vue({
          this.$http.put(`/roles/${this.role.id_role}`, this.role).then(response => { // success callback
 
             if (response.status == 200) {
-               if ( !this.es_null(response.data.role) ) {
+               if ( !this.es_null(response.body.role) ) {
                   this.lista_actualizar_activo = false;
                   this.id_en_edicion = null;
                }
@@ -208,10 +208,7 @@ const RoleController = new Vue({
          this.$http.post('/roles', formData).then(response => { // success callback
 
             if ( response.status == 200) {
-               if ( !this.es_null(response.data.role) ) {
-                  this.role = response.data.role;
-                  this.roles.push(this.role);
-               }
+               this.inicializar();
             } else {
                this.checkear_estado_respuesta_http(response.status);
                return false;
@@ -219,11 +216,13 @@ const RoleController = new Vue({
 
             if ( this.mostrar_notificaciones(response) == true ) {
                this.ocultar_modal('crear');
+               this.role = null;
                this.role = {
                   'nom_role':null,
                   'det_role':null,
-                  'id_permiso':null,
+                  'id_permiso':null
                };
+               return ;
             }
 
          }, response => { // error callback
