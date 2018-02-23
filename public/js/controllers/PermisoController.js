@@ -2111,6 +2111,7 @@ var inyeccion_funciones_compartidas = {
                break;
             case 'actualizar':
                this.modal_actualizar_activo = false;
+               this.id_en_edicion = null;
                break;
          }
          return;
@@ -2185,7 +2186,11 @@ var inyeccion_funciones_compartidas = {
          return array.indexOf(v) > -1 ? true : false;
       },
 
-      mostrar_modal_actualizar: function mostrar_modal_actualizar() {
+      mostrar_modal_actualizar: function mostrar_modal_actualizar(id) {
+         this.lista_actualizar_activo = false;
+         this.modal_actualizar_activo = true;
+         this.id_en_edicion = id;
+
          this.$modal.show('actualizar', {
             title: 'Alert!',
             text: 'You are too awesome',
@@ -2205,6 +2210,7 @@ var inyeccion_funciones_compartidas = {
       },
       mostrar_modal_crear: function mostrar_modal_crear() {
          this.lista_actualizar_activo = false;
+         this.modal_crear_activo = true;
          this.id_en_edicion = null;
 
          this.$modal.show('crear', {

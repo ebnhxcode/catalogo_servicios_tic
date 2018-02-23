@@ -6,7 +6,7 @@
       <div class="col-md-12">
 
          <div class="float-right">
-            <button @click="ocultar_modal('actualizar')" class="btn btn-sm btn-danger">
+            <button @click.prevent="ocultar_modal('actualizar')" class="btn btn-sm btn-danger">
             ❌
             </button>
          </div>

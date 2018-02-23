@@ -2111,6 +2111,7 @@ var inyeccion_funciones_compartidas = {
                break;
             case 'actualizar':
                this.modal_actualizar_activo = false;
+               this.id_en_edicion = null;
                break;
          }
          return;
@@ -2185,7 +2186,11 @@ var inyeccion_funciones_compartidas = {
          return array.indexOf(v) > -1 ? true : false;
       },
 
-      mostrar_modal_actualizar: function mostrar_modal_actualizar() {
+      mostrar_modal_actualizar: function mostrar_modal_actualizar(id) {
+         this.lista_actualizar_activo = false;
+         this.modal_actualizar_activo = true;
+         this.id_en_edicion = id;
+
          this.$modal.show('actualizar', {
             title: 'Alert!',
             text: 'You are too awesome',
@@ -2205,6 +2210,7 @@ var inyeccion_funciones_compartidas = {
       },
       mostrar_modal_crear: function mostrar_modal_crear() {
          this.lista_actualizar_activo = false;
+         this.modal_crear_activo = true;
          this.id_en_edicion = null;
 
          this.$modal.show('crear', {
@@ -3297,6 +3303,7 @@ var RoleController = new Vue({
 
          //Estas var se deben conservar para todos los controllers por que se ejecutan para el modal crear (blanquea)
          'lista_actualizar_activo': false,
+
          'id_en_edicion': null,
          'dejar_de_editar_contador': 0
 
@@ -3456,51 +3463,6 @@ var RoleController = new Vue({
 
    }
 });
-
-/*
- this.$notify({
- group: 'foo',
- type: 'warn',
- title: 'Important message',
- text: 'Hello user! This is a warning notification!'
- });
-
- this.$notify({
- group: 'foo',
- type: 'primary', // En blanco tambien lo toma como primary
- title: 'Important message',
- text: 'Hello user! This is a primary notification!'
- });
-
- this.$notify({
- group: 'foo',
- type: 'success',
- title: 'Important message',
- text: 'Hello user! This is a success notification!'
- });
-
- this.$notify({
- group: 'foo',
- type: 'info', // Falta instalar en el js
- title: 'Important message',
- text: 'Hello user! This is a info notification!'
- });
-
- this.$notify({
- group: 'foo',
- type: 'error',
- title: 'Important message',
- text: 'Hello user! This is a default notification!'
- });
-
- this.$notify({
- group: 'foo',
- type: 'default', // Falta instalar en el js
- title: 'Important message',
- text: 'Hello user! This is a default notification!'
- });
-
-*/
 
 /***/ })
 

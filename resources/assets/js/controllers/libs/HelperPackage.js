@@ -16,6 +16,7 @@ export const inyeccion_funciones_compartidas = {
                break;
             case 'actualizar':
                this.modal_actualizar_activo = false;
+               this.id_en_edicion = null;
                break;
          }
          return;
@@ -78,7 +79,11 @@ export const inyeccion_funciones_compartidas = {
       es_empty: (v) => { return (!v || v==null || v=='' || typeof v == undefined) ? true : false; },
       en_array: (array, v) => { return (array.indexOf(v) > -1) ? true : false; },
 
-      mostrar_modal_actualizar: function () {
+      mostrar_modal_actualizar: function (id) {
+         this.lista_actualizar_activo = false;
+         this.modal_actualizar_activo = true;
+         this.id_en_edicion = id;
+
          this.$modal.show('actualizar', {
             title: 'Alert!',
             text: 'You are too awesome',
@@ -103,6 +108,7 @@ export const inyeccion_funciones_compartidas = {
       },
       mostrar_modal_crear: function () {
          this.lista_actualizar_activo = false;
+         this.modal_crear_activo = true;
          this.id_en_edicion = null;
 
          this.$modal.show('crear', {

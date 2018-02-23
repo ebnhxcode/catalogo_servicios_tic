@@ -79,6 +79,7 @@ const RoleController = new Vue({
 
          //Estas var se deben conservar para todos los controllers por que se ejecutan para el modal crear (blanquea)
          'lista_actualizar_activo':false,
+
          'id_en_edicion': null,
          'dejar_de_editar_contador': 0,
 

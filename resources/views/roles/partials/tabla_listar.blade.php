@@ -14,7 +14,7 @@
       <tr v-for="r in filterBy(roles, filtro_head)">
 
 
-         <template v-if="id_en_edicion != r.id_role">
+         <template v-if="id_en_edicion != r.id_role || modal_actualizar_activo == true">
             <td>
                @{{ r.id_role }}
             </td>
@@ -50,16 +50,19 @@
          </template>
 
          <td>
-            <button class="btn btn-sm btn-primary" v-if="id_en_edicion != r.id_role && id_en_edicion == null"
+            <button class="btn btn-sm btn-primary"
+                    v-if="id_en_edicion != r.id_role && id_en_edicion == null && modal_actualizar_activo == false"
                     @click.prevent="editar(r.id_role)">
                <i class="fa fa-edit"></i>
             </button>
-            <button class="btn btn-sm btn-success" v-if="id_en_edicion == r.id_role"
+            <button class="btn btn-sm btn-success" v-if="id_en_edicion == r.id_role && modal_actualizar_activo == false"
                     @click.prevent="guardar_editado">
                <i class="fa fa-save"></i>
             </button>
 
-            <button class="btn btn-sm btn-warning" v-if="id_en_edicion == null">
+            <button class="btn btn-sm btn-warning"
+                    @click.prevent="mostrar_modal_actualizar(r.id_role)"
+                    v-if="id_en_edicion == null">
                <i class="fa fa-external-link" ></i>
             </button>
             <button class="btn btn-sm btn-danger" v-if="id_en_edicion == null">
@@ -72,9 +75,11 @@
             </button>
          </td>
       </tr>
+
       <tr v-if="roles && roles.length == 0">
          <td colspan="5">No hay más registros</td>
       </tr>
+
    </tbody>
 
 </table>
