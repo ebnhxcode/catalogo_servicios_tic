@@ -142,34 +142,36 @@ const RoleController = new Vue({
 
 
       guardar_editado: function () {
-         var self = this;
-         //this.$validator.validateAll().then(resultado => {
 
-         //if (resultado === true) {
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
+         this.$http.put(`/roles/${this.role.id_role}`, this.role).then(response => { // success callback
 
-         this.$http.put(`/roles/${self.role.id_role}`, self.role).then(response => { // success callback
-            //console.log(response);
             if (response.status == 200) {
-
-               self.role = this.buscar_en_array_por_modelo_e_id(self.role.id_role,self.roles,'role');
-               self.role = null;
-               self.role = response.data.role;
-
-               this.lista_actualizar_activo = false;
-               this.id_en_edicion = null;
-
+               if ( !this.es_null(response.data.role) ) {
+                  this.lista_actualizar_activo = false;
+                  this.id_en_edicion = null;
+               }
             } else {
-               self.checkear_estado_respuesta_http(response.status);
+               this.checkear_estado_respuesta_http(response.status);
+               return false;
+            }
+
+            if ( this.mostrar_notificaciones(response) == true ) {
+               //Aqui que pregunte si el modal está activo para que lo cierre
+               //this.ocultar_modal('actualizar');
+               
+               this.role = {
+                  'nom_role':null,
+                  'det_role':null,
+                  'id_permiso':null,
+               };
             }
 
          }, response => { // error callback
-            self.checkear_estado_respuesta_http(response.status);
+            this.checkear_estado_respuesta_http(response.status);
          });
 
-            //}
-         //});
          return;
       },
 

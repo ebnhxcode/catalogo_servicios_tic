@@ -210,6 +210,7 @@ class RoleController extends Controller {
          'id_permiso' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
       ]);
 
+      #Valida si la informacion que se envia para editar al usuario son iguales los ids
       if ($id != $request["id_$this->nombre_modelo"]) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
@@ -228,19 +229,17 @@ class RoleController extends Controller {
          ]);
       }
 
+      $this->role = Role::find($request["id_$this->nombre_modelo"]);
 
       if ( isset($this->role) && $this->role->role_permiso != null) {
-         #$this->permiso = Permiso::find($this->role['id_permiso']);
          $this->permiso = $this->role->role_permiso->permiso;
 
-         #this->role // tenemos
          $this->role->role_permiso->id_permiso =
             ($this->role->role_permiso->id_permiso !== $this->permiso->id_permiso) ? $this->permiso->id_permiso : null;
 
          if (!is_null($this->role->role_permiso->id_permiso)) {
             $this->role->role_permiso->save();
          }
-
 
       } else {
 
@@ -251,50 +250,16 @@ class RoleController extends Controller {
 
       }
 
+      unset($this->role, $this->permiso);
 
+      return response()->json([
+         'status' => 200, //Para los popups con alertas de sweet alert
+         'tipo' => 'actualizacion_exitosa', //Para las notificaciones
+         'mensajes' => ["new_$this->nombre_modelo" => [0=>"Registro ($this->nombre_modelo) creado exitosamente."]],
+         //Para mostrar los mensajes que van desde el backend
+         'role' => $this->new_role
+      ]);
 
-      if ($request->wantsJson() && $request->ajax()) {
-
-         $this->role_update = $request->all();
-         $this->role = Role::find($id);
-
-
-         if ($this->es_vacio($this->role->id_role) == false) {
-
-
-            if ($this->es_vacio($this->role->id_permiso) == false) {
-
-               $this->new_role_permiso = RolePermiso::create([
-                  'id_role' => $this->role->id_role,
-                  'id_permiso' => $this->role->id_permiso,
-               ]);
-
-            } else {
-
-               $this->role_permiso = RolePermiso::where('id_role', $this->role->id_role)
-                  ->where('id_permiso', $this->role->id_permiso)
-                  ->first();
-
-
-
-               $this->new_role_permiso = $this->role_permiso;
-               $this->new_role_permiso->id_permiso = $this->role->id_permiso;
-               $this->role_permiso->update($this->new_role_permiso);
-
-            }
-
-
-            $this->role->update($this->role_update);
-
-         }
-
-         unset($this->role, $this->permiso);
-
-         return response()->json([
-            'status' => 200,
-            'role' => $this->role_update
-         ]);
-      }
    }
 
    public function destroy($id) {}

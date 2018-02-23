@@ -138,6 +138,10 @@ export const inyeccion_funciones_compartidas = {
                // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
                this.notificar('success', 'Registro exitoso', mensajes, 'global');
                return true; break;
+            case 'actualizacion_exitosa':
+               // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
+               this.notificar('success', 'Actualización exitosa', mensajes, 'global');
+               return true; break;
             case 'errores_campos_requeridos':
                // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
                this.notificar('warn', 'Advertencia campo requerido',  mensajes, 'global');
@@ -145,7 +149,7 @@ export const inyeccion_funciones_compartidas = {
             case 'error_datos_invalidos':
                // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
                this.notificar('error', 'Error datos invalidos',  mensajes, 'global');
-               break;
+               return false; break;
          }
          //Como no hay nada mas que pueda deneter la ejecucion, se cierra el modal con esta verificacion true.
          return true;
