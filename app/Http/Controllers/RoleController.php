@@ -139,7 +139,6 @@ class RoleController extends Controller {
 
 
    public function index(Request $request) {
-
       if (!$request->wantsJson() && !$request->ajax()) {
          return view('roles.main');
       }
@@ -151,19 +150,15 @@ class RoleController extends Controller {
          'roles' => $this->roles,
          'permisos' => $this->permisos,
       ]);
-
-
    }
 
    public function store(Request $request) {
-
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario
       $this->validacion = Validator::make($request->all(), [
          'nom_role' => 'regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|unique:roles|max:255',
          'det_role' => 'required|max:1000',
          'id_permiso' => 'required|integer',
       ]);
-
       #Se valida la respuesta con la salida de la validacion
       if ($this->validacion->fails() == true) {
          return response()->json([
@@ -172,24 +167,19 @@ class RoleController extends Controller {
             'mensajes' => $this->validacion->messages(), //Para mostrar los mensajes que van desde el backend
          ]);
       }
-
       #Como pasó todas las validaciones, se asigna al objeto
       $this->role = $request->all();
-
       #Se crea el nuevo role
       $this->new_role = Role::create([
          'nom_role' => $this->role['nom_role'],
          'det_role' => $this->role['det_role']
       ]);
-
       #Al ser un nuevo registro se crea tambien el objeto relacional, role_permiso
       $this->new_role_permiso = RolePermiso::create([
          'id_role' => $this->new_role->id_role,
          'id_permiso' => $this->role['id_permiso'],
       ]);
-
       unset($this->role, $this->permiso, /*$this->validacion,$this->new_role,*/ $this->new_role_permiso);
-
       return response()->json([
          'status' => 200, //Para los popups con alertas de sweet alert
          'tipo' => 'creacion_exitosa', //Para las notificaciones
@@ -197,11 +187,9 @@ class RoleController extends Controller {
          //Para mostrar los mensajes que van desde el backend
          'role' => $this->new_role
       ]);
-
    }
 
    public function update(Request $request, $id) {
-
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario
       $this->validacion = Validator::make($request->all(), [
          'id_role' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|max:255',
@@ -209,7 +197,6 @@ class RoleController extends Controller {
          'det_role' => 'required|max:1000',
          'id_permiso' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
       ]);
-
       #Valida si la informacion que se envia para editar al usuario son iguales los ids
       if ($id != $request["id_$this->nombre_modelo"]) {
          return response()->json([
@@ -218,7 +205,6 @@ class RoleController extends Controller {
             'mensajes' => ["new_$this->nombre_modelo" => [0=>"Los datos a guardar son incorrectos."]],
          ]);
       }
-
       #Se valida la respuesta con la salida de la validacion
       if ($this->validacion->fails() == true) {
          return response()->json([
@@ -227,30 +213,21 @@ class RoleController extends Controller {
             'mensajes' => $this->validacion->messages(), //Para mostrar los mensajes que van desde el backend
          ]);
       }
-
       $this->role = Role::find($request["id_$this->nombre_modelo"]);
       $this->role->update($request->all());
-
       if ( isset($this->role) && $this->role->role_permiso != null) {
          $this->permiso = $this->role->role_permiso->permiso;
-
-
          if ( ! in_array($this->permiso->id_permiso, [$request["id_permiso"],null,'null',''] )) {
             $this->role->role_permiso->id_permiso = $request["id_permiso"];
             $this->role->role_permiso->save();
          }
-
       } else {
-
          $this->new_role_permiso = RolePermiso::create([
             'id_role' => $this->role['id_role'],
             'id_permiso' => $this->role['id_permiso'],
          ]);
-
       }
-
       #unset($this->new_role_permiso, $this->permiso);
-
       return response()->json([
          'status' => 200, //Para los popups con alertas de sweet alert
          'tipo' => 'actualizacion_exitosa', //Para las notificaciones
@@ -258,7 +235,6 @@ class RoleController extends Controller {
          //Para mostrar los mensajes que van desde el backend
          'role' => $this->role,
       ]);
-
    }
 
    public function destroy($id) {}
