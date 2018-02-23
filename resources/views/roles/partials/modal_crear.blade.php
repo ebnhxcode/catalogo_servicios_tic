@@ -23,7 +23,7 @@
             <dd>
                <p class="control has-icon has-icon-right">
                   <input type="text" v-model="role.nom_role" name="nom_role"
-                         v-validate="{required:true,regex:/^[a-z0-9_ ]+$/i}" data-vv-delay="500"
+                         v-validate="{required:true,regex:/^[a-zA-Z0-9_ ]+$/i}" data-vv-delay="500"
                          class="form-control" />
 
                   <transition name="bounce">

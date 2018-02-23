@@ -161,7 +161,7 @@ class RoleController extends Controller {
 
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario
       $this->validacion = Validator::make($request->all(), [
-         'nom_role' => 'regex:/(^([a-zA-z_ ]+)(\d+)?$)/u|required|unique:roles|max:255',
+         'nom_role' => 'regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|unique:roles|max:255',
          'det_role' => 'required|max:1000',
          'id_permiso' => 'required|integer',
       ]);

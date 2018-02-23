@@ -3283,6 +3283,7 @@ var RoleController = new Vue({
                text: mensaje
             });
          }
+         return true;
       },
 
       checkear_notificaciones: function checkear_notificaciones(respuesta_http) {
