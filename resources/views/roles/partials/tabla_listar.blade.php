@@ -77,7 +77,7 @@
          </td>
       </tr>
 
-      <tr v-if="roles && roles.length == 0">
+      <tr v-if="roles && roles.length == 0 || filterBy(roles, filtro_head).length == 0">
          <td colspan="5">No hay más registros</td>
       </tr>
 
