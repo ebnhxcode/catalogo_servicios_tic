@@ -198,6 +198,10 @@ const RoleController = new Vue({
          this.dejar_de_editar_contador = 0;
       },
 
+      eliminar: function () {
+
+      },
+
       guardar: function () {
          //Ejecuta validacion sobre los campos con validaciones
          if (this.validar_campos() == false) {
