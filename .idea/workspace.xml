@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9c71587b-d991-482f-b19e-13dd138d49bc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/RoleController.js" afterPath="$PROJECT_DIR$/public/js/controllers/RoleController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/RoleController.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/RoleController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/roles/main.blade.php" afterPath="$PROJECT_DIR$/resources/views/roles/main.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/roles/partials/tabla_listar.blade.php" afterPath="$PROJECT_DIR$/resources/views/roles/partials/tabla_listar.blade.php" />
     </list>
     <ignored path="catalogo_servicios_tic.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,33 +48,81 @@
       <file leaf-file-name="tabla_listar.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/roles/partials/tabla_listar.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.0">
-              <caret line="30" column="66" selection-start-line="30" selection-start-column="66" selection-end-line="30" selection-end-column="66" />
+            <state vertical-scroll-proportion="14.076923">
+              <caret line="26" column="56" selection-start-line="26" selection-start-column="56" selection-end-line="26" selection-end-column="56" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SideMenuController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/SideMenuController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="38" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RoleController.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RoleController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/RoleController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="21" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.24074075">
+              <caret line="97" column="29" selection-start-line="97" selection-start-column="29" selection-end-line="97" selection-end-column="29" />
               <folding>
                 <element signature="e#628#1864#0" expanded="false" />
-                <element signature="e#3294#3746#0" expanded="false" />
-                <element signature="e#3872#4191#0" expanded="false" />
-                <element signature="e#4228#4510#0" expanded="false" />
+                <element signature="e#5083#8288#0" expanded="false" />
+                <element signature="e#8308#8760#0" expanded="false" />
+                <element signature="e#9024#9343#0" expanded="false" />
+                <element signature="e#9380#9662#0" expanded="false" />
+                <marker date="1519536320485" expanded="true" signature="528:13148" placeholder="{&quot;el&quot;: '#RoleController'...}" />
+                <marker date="1519536320485" expanded="true" signature="2663:2939" placeholder="{&quot;id_role&quot;: false...}" />
+                <marker date="1519536320485" expanded="true" signature="3369:3679" placeholder="{&quot;id_role&quot;: 'String'...}" />
+                <marker date="1519536320485" expanded="true" signature="5057:8294" placeholder="{...}" />
+                <marker date="1519536320485" expanded="true" signature="5444:5631" placeholder="..." />
+                <marker date="1519536320485" expanded="true" signature="5558:5614" placeholder="..." />
+                <marker date="1519536320485" expanded="true" signature="8852:13146" placeholder="{...}" />
+                <marker date="1519536320485" expanded="true" signature="11695:11737" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdminController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/examples/AdminController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="939" column="6" selection-start-line="939" selection-start-column="6" selection-end-line="1038" selection-end-column="8" />
+              <folding>
+                <element signature="e#4437#8693#0" expanded="false" />
+                <element signature="e#8717#9094#0" expanded="false" />
+                <element signature="e#9113#9472#0" expanded="false" />
+                <element signature="e#9490#9762#0" expanded="false" />
+                <element signature="e#9785#10067#0" expanded="false" />
+                <element signature="e#10084#10899#0" expanded="false" />
+                <element signature="e#10917#11344#0" expanded="false" />
+                <element signature="e#11364#11797#0" expanded="false" />
+                <element signature="e#11827#21990#0" expanded="false" />
+                <element signature="e#22019#39535#0" expanded="false" />
+                <element signature="e#39561#42766#0" expanded="false" />
+                <element signature="e#42774#43037#0" expanded="false" />
+                <element signature="e#43098#43301#0" expanded="false" />
+                <element signature="e#43398#43487#0" expanded="false" />
+                <element signature="e#43531#43659#0" expanded="false" />
+                <element signature="e#43698#43936#0" expanded="false" />
+                <element signature="e#43985#46302#0" expanded="false" />
+                <element signature="e#46344#46541#0" expanded="false" />
+                <element signature="e#46591#46864#0" expanded="false" />
+                <element signature="e#46915#47188#0" expanded="false" />
+                <element signature="e#47229#47426#0" expanded="false" />
+                <element signature="e#47476#47749#0" expanded="false" />
+                <element signature="e#47800#48073#0" expanded="false" />
+                <element signature="e#48112#48299#0" expanded="false" />
+                <element signature="e#48339#48526#0" expanded="false" />
+                <element signature="e#48583#48846#0" expanded="false" />
+                <element signature="e#48911#49260#0" expanded="false" />
+                <element signature="e#49326#49675#0" expanded="false" />
+                <element signature="e#49731#49994#0" expanded="false" />
+                <element signature="e#50059#50408#0" expanded="false" />
+                <element signature="e#50474#50822#0" expanded="false" />
+                <element signature="e#50876#51119#0" expanded="false" />
+                <element signature="e#51174#51417#0" expanded="false" />
+                <element signature="e#51450#51490#0" expanded="false" />
+                <element signature="e#51524#53437#0" expanded="false" />
+                <element signature="e#53511#54118#0" expanded="false" />
+                <element signature="e#54144#54744#0" expanded="false" />
+                <element signature="e#54831#55862#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -87,12 +138,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/roles/main.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7106109">
-              <caret line="34" column="83" selection-start-line="34" selection-start-column="83" selection-end-line="34" selection-end-column="83" />
-              <folding />
+            <state vertical-scroll-proportion="-13.423077">
+              <caret line="68" column="59" selection-start-line="68" selection-start-column="59" selection-end-line="68" selection-end-column="59" />
+              <folding>
+                <element signature="e#2733#2760#0#HTML" expanded="true" />
+                <element signature="e#3455#3478#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -153,9 +207,9 @@
         <option value="$PROJECT_DIR$/resources/views/roles/partials/formulario_campos.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/roles/partials/modal_actualizar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/roles/partials/modal_crear.blade.php" />
-        <option value="$PROJECT_DIR$/resources/assets/js/controllers/RoleController.js" />
         <option value="$PROJECT_DIR$/resources/views/roles/partials/tabla_listar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/roles/main.blade.php" />
+        <option value="$PROJECT_DIR$/resources/assets/js/controllers/RoleController.js" />
       </list>
     </option>
   </component>
@@ -963,8 +1017,13 @@
           <line>126</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/resources/assets/js/controllers/examples/AdminController.js</url>
+          <line>362</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="15" />
+      <option name="time" value="17" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1008,13 +1067,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/examples/AdminController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5685841">
-          <caret line="723" column="0" selection-start-line="723" selection-start-column="0" selection-end-line="723" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -1202,45 +1254,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/examples/FormularioController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.410398">
-          <caret line="6100" column="0" selection-start-line="6100" selection-start-column="0" selection-end-line="6100" selection-end-column="0" />
-          <folding>
-            <element signature="e#591#1977#0" expanded="false" />
-            <element signature="e#2053#2424#0" expanded="false" />
-            <element signature="e#2443#2802#0" expanded="false" />
-            <element signature="e#2825#3107#0" expanded="false" />
-            <element signature="e#3124#3939#0" expanded="false" />
-            <element signature="e#3957#4384#0" expanded="false" />
-            <element signature="e#4404#4837#0" expanded="false" />
-            <element signature="e#4871#34312#0" expanded="false" />
-            <element signature="e#34352#42148#0" expanded="false" />
-            <element signature="e#42183#71183#0" expanded="false" />
-            <element signature="e#71225#79528#0" expanded="false" />
-            <element signature="e#79560#228422#0" expanded="false" />
-            <element signature="e#228431#228694#0" expanded="false" />
-            <element signature="e#228713#230305#0" expanded="false" />
-            <element signature="e#230413#230840#0" expanded="false" />
-            <element signature="e#230891#232421#0" expanded="false" />
-            <element signature="e#234779#236468#0" expanded="false" />
-            <element signature="e#236820#237255#0" expanded="false" />
-            <element signature="e#237309#297129#0" expanded="false" />
-            <element signature="e#297182#300178#0" expanded="false" />
-            <element signature="e#300230#311340#0" expanded="false" />
-            <element signature="e#311510#311726#0" expanded="false" />
-            <element signature="e#311884#313255#0" expanded="false" />
-            <element signature="e#313300#314465#0" expanded="false" />
-            <element signature="e#314515#316144#0" expanded="false" />
-            <element signature="e#316188#318482#0" expanded="false" />
-            <element signature="e#318521#319629#0" expanded="false" />
-            <marker date="1517698105000" expanded="true" signature="3342:3809" placeholder="..." />
-            <marker date="1517698105000" expanded="true" signature="4072:4232" placeholder="..." />
-            <marker date="1517698105000" expanded="true" signature="4523:4683" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/front.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.96241456">
@@ -1322,14 +1335,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/roles/partials/modal_actualizar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/examples/GridContraloriaController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.0725806">
@@ -1346,15 +1351,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/RoleController.js">
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/examples/FormularioController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="21" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.2808642">
+          <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
           <folding>
-            <element signature="e#628#1864#0" expanded="false" />
-            <element signature="e#3294#3746#0" expanded="false" />
-            <element signature="e#3872#4191#0" expanded="false" />
-            <element signature="e#4228#4510#0" expanded="false" />
+            <element signature="e#591#1977#0" expanded="false" />
+            <element signature="e#2053#2424#0" expanded="false" />
+            <element signature="e#2443#2802#0" expanded="false" />
+            <element signature="e#2825#3107#0" expanded="false" />
+            <element signature="e#3124#3939#0" expanded="false" />
+            <element signature="e#3957#4384#0" expanded="false" />
+            <element signature="e#4404#4837#0" expanded="false" />
+            <element signature="e#4871#34312#0" expanded="false" />
+            <element signature="e#34352#42148#0" expanded="false" />
+            <element signature="e#42183#71183#0" expanded="false" />
+            <element signature="e#71225#79528#0" expanded="false" />
+            <element signature="e#79560#228422#0" expanded="false" />
+            <element signature="e#228431#228694#0" expanded="false" />
+            <element signature="e#228713#230305#0" expanded="false" />
+            <element signature="e#230413#230840#0" expanded="false" />
+            <element signature="e#230891#232421#0" expanded="false" />
+            <element signature="e#234779#236468#0" expanded="false" />
+            <element signature="e#236820#237255#0" expanded="false" />
+            <element signature="e#237309#297129#0" expanded="false" />
+            <element signature="e#297182#300178#0" expanded="false" />
+            <element signature="e#300230#311340#0" expanded="false" />
+            <element signature="e#311510#311726#0" expanded="false" />
+            <element signature="e#311884#313255#0" expanded="false" />
+            <element signature="e#313300#314465#0" expanded="false" />
+            <element signature="e#314515#316144#0" expanded="false" />
+            <element signature="e#316188#318482#0" expanded="false" />
+            <element signature="e#318521#319629#0" expanded="false" />
+            <marker date="1517698105000" expanded="true" signature="3342:3809" placeholder="..." />
+            <marker date="1517698105000" expanded="true" signature="4072:4232" placeholder="..." />
+            <marker date="1517698105000" expanded="true" signature="4523:4683" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1369,17 +1400,97 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/roles/partials/tabla_listar.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.0">
-          <caret line="30" column="66" selection-start-line="30" selection-start-column="66" selection-end-line="30" selection-end-column="66" />
+        <state vertical-scroll-proportion="14.076923">
+          <caret line="26" column="56" selection-start-line="26" selection-start-column="56" selection-end-line="26" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/roles/partials/modal_actualizar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.5">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/roles/main.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7106109">
-          <caret line="34" column="83" selection-start-line="34" selection-start-column="83" selection-end-line="34" selection-end-column="83" />
-          <folding />
+        <state vertical-scroll-proportion="-13.423077">
+          <caret line="68" column="59" selection-start-line="68" selection-start-column="59" selection-end-line="68" selection-end-column="59" />
+          <folding>
+            <element signature="e#2733#2760#0#HTML" expanded="true" />
+            <element signature="e#3455#3478#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/examples/AdminController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="939" column="6" selection-start-line="939" selection-start-column="6" selection-end-line="1038" selection-end-column="8" />
+          <folding>
+            <element signature="e#4437#8693#0" expanded="false" />
+            <element signature="e#8717#9094#0" expanded="false" />
+            <element signature="e#9113#9472#0" expanded="false" />
+            <element signature="e#9490#9762#0" expanded="false" />
+            <element signature="e#9785#10067#0" expanded="false" />
+            <element signature="e#10084#10899#0" expanded="false" />
+            <element signature="e#10917#11344#0" expanded="false" />
+            <element signature="e#11364#11797#0" expanded="false" />
+            <element signature="e#11827#21990#0" expanded="false" />
+            <element signature="e#22019#39535#0" expanded="false" />
+            <element signature="e#39561#42766#0" expanded="false" />
+            <element signature="e#42774#43037#0" expanded="false" />
+            <element signature="e#43098#43301#0" expanded="false" />
+            <element signature="e#43398#43487#0" expanded="false" />
+            <element signature="e#43531#43659#0" expanded="false" />
+            <element signature="e#43698#43936#0" expanded="false" />
+            <element signature="e#43985#46302#0" expanded="false" />
+            <element signature="e#46344#46541#0" expanded="false" />
+            <element signature="e#46591#46864#0" expanded="false" />
+            <element signature="e#46915#47188#0" expanded="false" />
+            <element signature="e#47229#47426#0" expanded="false" />
+            <element signature="e#47476#47749#0" expanded="false" />
+            <element signature="e#47800#48073#0" expanded="false" />
+            <element signature="e#48112#48299#0" expanded="false" />
+            <element signature="e#48339#48526#0" expanded="false" />
+            <element signature="e#48583#48846#0" expanded="false" />
+            <element signature="e#48911#49260#0" expanded="false" />
+            <element signature="e#49326#49675#0" expanded="false" />
+            <element signature="e#49731#49994#0" expanded="false" />
+            <element signature="e#50059#50408#0" expanded="false" />
+            <element signature="e#50474#50822#0" expanded="false" />
+            <element signature="e#50876#51119#0" expanded="false" />
+            <element signature="e#51174#51417#0" expanded="false" />
+            <element signature="e#51450#51490#0" expanded="false" />
+            <element signature="e#51524#53437#0" expanded="false" />
+            <element signature="e#53511#54118#0" expanded="false" />
+            <element signature="e#54144#54744#0" expanded="false" />
+            <element signature="e#54831#55862#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/RoleController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24074075">
+          <caret line="97" column="29" selection-start-line="97" selection-start-column="29" selection-end-line="97" selection-end-column="29" />
+          <folding>
+            <element signature="e#628#1864#0" expanded="false" />
+            <element signature="e#5083#8288#0" expanded="false" />
+            <element signature="e#8308#8760#0" expanded="false" />
+            <element signature="e#9024#9343#0" expanded="false" />
+            <element signature="e#9380#9662#0" expanded="false" />
+            <marker date="1519536320485" expanded="true" signature="528:13148" placeholder="{&quot;el&quot;: '#RoleController'...}" />
+            <marker date="1519536320485" expanded="true" signature="2663:2939" placeholder="{&quot;id_role&quot;: false...}" />
+            <marker date="1519536320485" expanded="true" signature="3369:3679" placeholder="{&quot;id_role&quot;: 'String'...}" />
+            <marker date="1519536320485" expanded="true" signature="5057:8294" placeholder="{...}" />
+            <marker date="1519536320485" expanded="true" signature="5444:5631" placeholder="..." />
+            <marker date="1519536320485" expanded="true" signature="5558:5614" placeholder="..." />
+            <marker date="1519536320485" expanded="true" signature="8852:13146" placeholder="{...}" />
+            <marker date="1519536320485" expanded="true" signature="11695:11737" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>

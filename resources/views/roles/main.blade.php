@@ -29,9 +29,16 @@
                   </button>
 
                   <div class="dropdown-menu">
-                     <a class="dropdown-item" href="#!">
+
+                     <download-excel
+                        v-if="(excel_data_contador = filterBy(roles, filtro_head).length) > 0"
+                        :data="filterBy(roles, filtro_head)"
+                        :fields="excel_json_campos"
+                        name="roles.xls"
+                        class="dropdown-item">
                         Descargar Excel
-                     </a>
+                     </download-excel>
+
                      <a class="dropdown-item" href="#!" @click.prevent="inicializar">
                         Actualizar tabla
                      </a>
@@ -45,8 +52,6 @@
                   </div>
 
 
-
-
                </div><!-- .btn-group mr-0 #mr->margin -->
 
 
@@ -54,6 +59,19 @@
          </div><!-- .btn .btn-toolbar -->
       </div><!-- .d-flex .justify-* .flex-wrap .flex-md-nowrap .align-items-center -->
       {{--<canvas class="my-4" id="myChart" width="900" height="380"></canvas>--}}
+
+      <h5 style="position: relative;">Mostrar\Ocultar opciones de la tabla
+         (<small>Clic en un botón para mostrar en grilla</small>)</h5>
+      {{--<mini-spinner v-if="mini_spinner_table_inputs == true"></mini-spinner> v-else --}}
+      <div class="btn-group btn-group-sm btn-group-toggle" v-for="v,c,i in tabla_roles_campos">
+         <label :class="v==true?'btn btn-primary active':'btn btn-secondary'" @click.prevent="cambiar_visibilidad(c)"
+                {{--data-placement="top" data-toggle="tooltip" :title="`Clic para ${(v==true)?'ocultar':'mostrar'}`">--}}
+                data-placement="top" data-toggle="tooltip" title="Clic para mostrar u ocultar">
+            <input type="checkbox" autocomplete="off"> <span style="font-size: 85%;">@{{ tabla_roles_labels[c] }}</span>
+         </label>
+      </div>
+      <br />
+      <br />
 
 
       <h4 class="h4">Lista de roles</h4>

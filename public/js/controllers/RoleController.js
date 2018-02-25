@@ -3231,6 +3231,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal__);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 
 
@@ -3316,7 +3317,45 @@ var RoleController = new Vue({
          'id_en_edicion': null,
          'dejar_de_editar_contador': 0,
 
-         'orden_lista': 'asc'
+         'orden_lista': 'asc',
+
+         'tabla_roles_campos': {
+            'id_role': false,
+            'nom_role': true,
+            'det_role': false,
+            'id_permiso': false,
+            'id_usuario_registra': false,
+            'id_usuario_modifica': false,
+            'created_at': true,
+            'updated_at': false
+         },
+
+         'tabla_roles_labels': {
+            'id_role': 'Id role',
+            'nom_role': 'Nombre del role',
+            'det_role': 'Detalle del role',
+            'id_permiso': 'Permiso del role',
+            'id_usuario_registra': 'Usuario registra',
+            'id_usuario_modifica': 'Usuario Modifica',
+            'created_at': 'Creado en',
+            'updated_at': 'Actualizado en'
+         },
+
+         'excel_json_campos': {
+            'id_role': 'String',
+            'nom_role': 'String',
+            'det_role': 'String',
+            'id_permiso': 'String',
+            'id_usuario_registra': 'String',
+            'id_usuario_modifica': 'String',
+            'created_at': 'String',
+            'updated_at': 'String'
+         },
+
+         'excel_json_datos': [],
+         'excel_data_contador': 0,
+
+         'append_to_json_excel': {}
 
       };
    },
@@ -3335,9 +3374,109 @@ var RoleController = new Vue({
          } else {
             this.role = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.roles, 'role');
          }
+      },
+      roles: function roles(_roles) {
+         var self = this;
+         this.excel_json_datos = [];
+         return _roles.map(function (role, index) {
+            return self.excel_json_datos.push({
+               'id_role': role.id_role,
+               'nom_role': role.nom_role,
+               'det_role': role.det_role,
+               'id_permiso': role.id_permiso,
+               'id_usuario_registra': role.id_usuario_registra,
+               'id_usuario_modifica': role.id_usuario_modifica,
+               'created_at': role.created_at,
+               'updated_at': role.updated_at
+            });
+         });
       }
    },
-   components: {},
+   components: {
+      'download-excel': {
+         props: {
+            'data': {
+               type: Array,
+               required: true
+            },
+            'fields': {
+               type: Object,
+               required: true
+            },
+            'name': {
+               type: String,
+               default: "data.xls"
+            }
+         },
+         template: '\n            <a\n               href="#"\n               :id="id_name"\n               @click="generate_excel">\n               <slot>\n                  Download Excel\n               </slot>\n            </a>\n         ',
+         name: 'download-excel',
+         data: function data() {
+            return {
+               animate: true,
+               animation: ''
+            };
+         },
+         created: function created() {},
+         computed: {
+            id_name: function id_name() {
+               var now = new Date().getTime();
+               return 'export_' + now;
+            }
+         },
+         methods: {
+            emitXmlHeader: function emitXmlHeader() {
+               var headerRow = '<ss:Row>\n';
+               for (var colName in this.fields) {
+                  headerRow += '  <ss:Cell>\n';
+                  headerRow += '    <ss:Data ss:Type="String">';
+                  headerRow += colName + '</ss:Data>\n';
+                  headerRow += '  </ss:Cell>\n';
+               }
+               headerRow += '</ss:Row>\n';
+               return '<?xml version="1.0"?>\n' + '<ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">\n' + '<ss:Worksheet ss:Name="Sheet1">\n' + '<ss:Table>\n\n' + headerRow;
+            },
+
+            emitXmlFooter: function emitXmlFooter() {
+               return '\n</ss:Table>\n' + '</ss:Worksheet>\n' + '</ss:Workbook>\n';
+            },
+
+            jsonToSsXml: function jsonToSsXml(jsonObject) {
+               var row;
+               var col;
+               var xml;
+               //console.log(jsonObject);
+               var data = (typeof jsonObject === 'undefined' ? 'undefined' : _typeof(jsonObject)) != "object" ? JSON.parse(jsonObject) : jsonObject;
+
+               xml = this.emitXmlHeader();
+
+               for (row = 0; row < data.length; row++) {
+                  xml += '<ss:Row>\n';
+
+                  for (col in data[row]) {
+                     xml += '  <ss:Cell>\n';
+                     xml += '    <ss:Data ss:Type="' + this.fields[col] + '">';
+                     xml += String(data[row][col]).replace(/[^a-zA-Z0-9\s\-ñíéáóú\#\,\.\;\:ÑÍÉÓÁÚ@_]/g, '') + '</ss:Data>\n';
+                     xml += '  </ss:Cell>\n';
+                  }
+
+                  xml += '</ss:Row>\n';
+               }
+
+               xml += this.emitXmlFooter();
+               return xml;
+            },
+            generate_excel: function generate_excel(content, filename, contentType) {
+               var blob = new Blob([this.jsonToSsXml(this.data)], {
+                  'type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+               });
+
+               var a = document.getElementById(this.id_name);
+               a.href = window.URL.createObjectURL(blob);
+               a.download = this.name;
+            }
+         }
+      }
+   },
    created: function created() {
       this.inicializar();
 
@@ -3362,6 +3501,10 @@ var RoleController = new Vue({
    filters: {},
    mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
    methods: {
+
+      cambiar_visibilidad: function cambiar_visibilidad(campo) {
+         return this.tabla_roles_campos[campo] = !this.tabla_roles_campos[campo];
+      },
 
       inicializar: function inicializar() {
          var _this = this;

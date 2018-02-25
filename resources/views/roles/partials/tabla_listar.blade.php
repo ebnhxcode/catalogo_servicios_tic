@@ -2,31 +2,13 @@
 
    <thead>
       <tr>
-         <th>
-            <a href="#!" class="btn btn-light" @click.prevent="cambiar_orden_lista('id_role')">
+         <th v-for="c,i in tabla_roles_campos" v-if="c">
+            <a href="#!" class="btn btn-light" @click.prevent="cambiar_orden_lista(i)">
                <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
-               #
+               @{{ tabla_roles_labels[i] }}
             </a>
          </th>
          <th>
-            <a href="#!" class="btn btn-light" @click.prevent="cambiar_orden_lista('nom_role')">
-               <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
-               Nombre
-            </a>
-         </th>
-         <th>
-            <a href="#!" class="btn btn-light" @click.prevent="cambiar_orden_lista('det_role')">
-               <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
-               Detalle
-            </a>
-         </th>
-         <th>
-            <a href="#!" class="btn btn-light" @click.prevent="cambiar_orden_lista('id_permiso')">
-               <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
-               Permisos
-            </a>
-         </th>
-         <th style="min-width: 120px;">
             <a href="#!" class="btn btn-light" @click.prevent="cambiar_orden_lista('id_role')">
                <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
                Acción
@@ -41,6 +23,12 @@
 
 
          <template v-if="id_en_edicion != r.id_role || modal_actualizar_activo == true">
+
+            <td v-for="c,i in tabla_roles_campos" v-show="c">
+               @{{ (r['id_permiso'] = r['role_permiso']['id_permiso']) ? r[i] :'' }}
+            </td>
+
+            {{--
             <td>
                @{{ r.id_role }}
             </td>
@@ -51,9 +39,9 @@
                @{{ r.det_role }}
             </td>
             <td>
-               {{--@{{ r.role_permiso.id_permiso }}--}}
                @{{ (r.id_permiso = r.role_permiso.id_permiso) ? r.role_permiso.permiso.det_permiso : '' }}
             </td>
+            --}}
          </template>
 
          <template v-else>
