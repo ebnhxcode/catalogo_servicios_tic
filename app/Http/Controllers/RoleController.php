@@ -138,6 +138,10 @@ class RoleController extends Controller {
 
    }
 
+   public function estandares (Request $request) {
+
+
+   }
 
    public function index(Request $request) {
       if (!$request->wantsJson() && !$request->ajax()) {
