@@ -3240,6 +3240,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default.a, { dialog: true });
 
+//import Popover  from 'vue-js-popover';
+//Vue.use(Popover);
+
+//import VPopover from 'vue-js-popover';
+//Vue.use(VPopover, { tooltip: true });
+
 var RoleController = new Vue({
    el: '#RoleController',
    data: function data() {
@@ -3329,6 +3335,10 @@ var RoleController = new Vue({
    components: {},
    created: function created() {
       this.inicializar();
+
+      $(document).ready(function () {
+         $('[data-toggle="tooltip"]').tooltip();
+      });
 
       /*
       $(document).ready(function () {
@@ -3422,6 +3432,12 @@ var RoleController = new Vue({
          this.lista_actualizar_activo = false;
          this.id_en_edicion = null;
          this.dejar_de_editar_contador = 0;
+      },
+
+      eliminar: function eliminar() {
+         //Agregar el confirm
+
+
       },
 
       guardar: function guardar() {

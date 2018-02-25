@@ -44,28 +44,34 @@
 
          <td>
             <button class="btn btn-sm btn-primary"
-                    v-if="id_en_edicion != r.id_role && id_en_edicion == null && modal_actualizar_activo == false"
+                    v-show="id_en_edicion != r.id_role && id_en_edicion == null && modal_actualizar_activo == false"
+                    data-placement="top" data-toggle="tooltip" title="Editar desde aquí"
                     @click.prevent="editar(r.id_role)">
                <i class="fa fa-edit"></i>
             </button>
-            <button class="btn btn-sm btn-success" v-if="id_en_edicion == r.id_role && modal_actualizar_activo == false"
+            <button class="btn btn-sm btn-success" v-show="id_en_edicion == r.id_role && modal_actualizar_activo == false"
+                    data-placement="top" data-toggle="tooltip" title="Guardar"
                     @click.prevent="guardar_editado">
                <i class="fa fa-save"></i>
             </button>
 
             <button class="btn btn-sm btn-warning"
+                    data-placement="top" data-toggle="tooltip" title="Actualizar desde modal"
                     @click.prevent="mostrar_modal_actualizar(r.id_role)"
-                    v-if="id_en_edicion == null">
+                    v-show="id_en_edicion == null">
                <i class="fa fa-external-link" ></i>
             </button>
-            <button class="btn btn-sm btn-danger" v-if="id_en_edicion == null">
+            <button class="btn btn-sm btn-danger" v-show="id_en_edicion == null"
+                    data-placement="top" data-toggle="tooltip" title="Eliminar">
                <i class="fa fa-close"></i>
             </button>
             <button class="btn btn-sm btn-secondary"
+                    data-placement="top" data-toggle="tooltip" title="Dejar de editar"
                     @click.prevent="dejar_de_editar()"
-                    v-if="dejar_de_editar_contador>2 && id_en_edicion == r.id_role">
+                    v-show="dejar_de_editar_contador>2 && id_en_edicion == r.id_role">
                <i class="fa fa-close"></i>
             </button>
+
          </td>
       </tr>
 

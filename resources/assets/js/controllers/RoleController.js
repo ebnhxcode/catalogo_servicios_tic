@@ -7,7 +7,11 @@ import { inyeccion_funciones_compartidas } from './libs/HelperPackage';
 import VModal from 'vue-js-modal'
 Vue.use(VModal, {dialog: true});
 
+//import Popover  from 'vue-js-popover';
+//Vue.use(Popover);
 
+//import VPopover from 'vue-js-popover';
+//Vue.use(VPopover, { tooltip: true });
 
 const RoleController = new Vue({
    el: '#RoleController',
@@ -105,6 +109,10 @@ const RoleController = new Vue({
    created(){
       this.inicializar();
 
+      $(document).ready(function(){
+         $('[data-toggle="tooltip"]').tooltip();
+      });
+
       /*
       $(document).ready(function () {
          //Handle al recargar pagina
@@ -199,6 +207,9 @@ const RoleController = new Vue({
       },
 
       eliminar: function () {
+         //Agregar el confirm
+
+
 
       },
 
