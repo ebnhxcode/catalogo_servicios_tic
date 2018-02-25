@@ -28,20 +28,6 @@
                @{{ (r['id_permiso'] = r['role_permiso']['id_permiso']) ? r[i] :'' }}
             </td>
 
-            {{--
-            <td>
-               @{{ r.id_role }}
-            </td>
-            <td>
-               @{{ r.nom_role }}
-            </td>
-            <td>
-               @{{ r.det_role }}
-            </td>
-            <td>
-               @{{ (r.id_permiso = r.role_permiso.id_permiso) ? r.role_permiso.permiso.det_permiso : '' }}
-            </td>
-            --}}
          </template>
 
          <template v-else>
@@ -51,7 +37,7 @@
                   Id role: @{{ r.id_role }}
                </span>
             </td>
-            <td colspan="3">
+            <td :colspan="filterBy(tabla_roles_campos, true).length-1">
                <dl class="dl-vertical" style="overflow-y: auto;max-height: 450px;padding-bottom: 50px;">
                   @include('roles.partials.formulario_campos')
                </dl>
