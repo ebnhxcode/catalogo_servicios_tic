@@ -3321,6 +3321,8 @@ var RoleController = new Vue({
                'det_role': null,
                'id_permiso': null
             };
+         } else {
+            this.role = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.roles, 'role');
          }
       }
    },
@@ -3387,16 +3389,23 @@ var RoleController = new Vue({
             }
 
             if (_this2.mostrar_notificaciones(response) == true) {
+
                //Aqui que pregunte si el modal está activo para que lo cierre
-               //this.ocultar_modal('actualizar');
+               if (_this2.modal_actualizar_activo == true) {
+                  _this2.ocultar_modal('actualizar');
+                  _this2.modal_actualizar_activo = false;
+               }
+
+               _this2.lista_actualizar_activo = false;
+               _this2.id_en_edicion = null;
 
                _this2.role = {
                   'nom_role': null,
                   'det_role': null,
                   'id_permiso': null
                };
-               _this2.lista_actualizar_activo = false;
-               _this2.id_en_edicion = null;
+
+               //Recargar la lista
                _this2.inicializar();
             } else {
                _this2.dejar_de_editar_contador++;
@@ -3422,7 +3431,6 @@ var RoleController = new Vue({
          if (this.validar_campos() == false) {
             return;
          }
-
          //Se adjunta el token
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
          //Instancia nuevo form data

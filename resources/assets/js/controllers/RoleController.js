@@ -96,6 +96,8 @@ const RoleController = new Vue({
                'det_role':null,
                'id_permiso':null,
             };
+         } else {
+            this.role = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.roles,'role');
          }
       }
    },
@@ -160,17 +162,25 @@ const RoleController = new Vue({
             }
 
             if ( this.mostrar_notificaciones(response) == true ) {
+
                //Aqui que pregunte si el modal está activo para que lo cierre
-               //this.ocultar_modal('actualizar');
+               if (this.modal_actualizar_activo == true) {
+                  this.ocultar_modal('actualizar');
+                  this.modal_actualizar_activo = false;
+               }
+
+               this.lista_actualizar_activo = false;
+               this.id_en_edicion = null;
 
                this.role = {
                   'nom_role':null,
                   'det_role':null,
                   'id_permiso':null,
                };
-               this.lista_actualizar_activo = false;
-               this.id_en_edicion = null;
+
+               //Recargar la lista
                this.inicializar();
+
             } else {
                this.dejar_de_editar_contador ++;
             }

@@ -58,8 +58,6 @@
             </dd>
 
             <dt>Permiso</dt>
-
-
             <dd>
 
                <p class="control has-icon has-icon-right">
