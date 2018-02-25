@@ -1,11 +1,14 @@
 
-import swal from 'sweetalert2'
+import swal from 'sweetalert2';
 
 //Se importan todas las librerias compartidas y se cargan en el objeto instanciado como alias -> hp
 import { inyeccion_funciones_compartidas } from './libs/HelperPackage';
 
-import VModal from 'vue-js-modal'
+import VModal from 'vue-js-modal';
 Vue.use(VModal, {dialog: true});
+
+import Clipboard from 'v-clipboard';
+Vue.use(Clipboard);
 
 //Se importa plugin de filtros _ lodash
 //import { _ , range } from 'lodash';
@@ -147,19 +150,20 @@ const RoleController = new Vue({
             this.role = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.roles,'role');
          }
       },
+      //Roles se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
       roles: function (roles) {
          var self = this;
          this.excel_json_datos = [];
          return roles.map(function (role, index) {
             return self.excel_json_datos.push({
-               'id_role': role.id_role,
-               'nom_role': role.nom_role,
-               'det_role': role.det_role,
-               'id_permiso': role.id_permiso,
-               'id_usuario_registra': role.id_usuario_registra,
-               'id_usuario_modifica': role.id_usuario_modifica,
-               'created_at': role.created_at,
-               'updated_at': role.updated_at
+               'id_role': role.id_role || '-',
+               'nom_role': role.nom_role || '-',
+               'det_role': role.det_role || '-',
+               'id_permiso': role.id_permiso || '-',
+               'id_usuario_registra': role.id_usuario_registra || '-',
+               'id_usuario_modifica': role.id_usuario_modifica || '-',
+               'created_at': role.created_at || '-',
+               'updated_at': role.updated_at || '-'
             });
          });
       },

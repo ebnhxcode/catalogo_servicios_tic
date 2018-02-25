@@ -46,7 +46,10 @@
 
          <template v-else>
             <td>
-               @{{ r.id_role }}
+               <span v-clipboard="r.id_role" class="btn btn-light"
+                     data-placement="top" data-toggle="tooltip" title="Clic para copiar el id">
+                  Id role: @{{ r.id_role }}
+               </span>
             </td>
             <td colspan="3">
                <dl class="dl-vertical" style="overflow-y: auto;max-height: 450px;padding-bottom: 50px;">

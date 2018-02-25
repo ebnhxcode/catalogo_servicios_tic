@@ -3231,6 +3231,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_v_clipboard__);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 
@@ -3240,6 +3242,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default.a, { dialog: true });
+
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
 
 //Se importa plugin de filtros _ lodash
 //import { _ , range } from 'lodash';
@@ -3375,19 +3380,20 @@ var RoleController = new Vue({
             this.role = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.roles, 'role');
          }
       },
+      //Roles se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
       roles: function roles(_roles) {
          var self = this;
          this.excel_json_datos = [];
          return _roles.map(function (role, index) {
             return self.excel_json_datos.push({
-               'id_role': role.id_role,
-               'nom_role': role.nom_role,
-               'det_role': role.det_role,
-               'id_permiso': role.id_permiso,
-               'id_usuario_registra': role.id_usuario_registra,
-               'id_usuario_modifica': role.id_usuario_modifica,
-               'created_at': role.created_at,
-               'updated_at': role.updated_at
+               'id_role': role.id_role || '-',
+               'nom_role': role.nom_role || '-',
+               'det_role': role.det_role || '-',
+               'id_permiso': role.id_permiso || '-',
+               'id_usuario_registra': role.id_usuario_registra || '-',
+               'id_usuario_modifica': role.id_usuario_modifica || '-',
+               'created_at': role.created_at || '-',
+               'updated_at': role.updated_at || '-'
             });
          });
       }
@@ -3645,6 +3651,14 @@ var RoleController = new Vue({
 
    }
 });
+
+/***/ }),
+
+/***/ 57:
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(e,t){ true?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["v-clipboard"]=t():e["v-clipboard"]=t()}(this,function(){return function(e){function t(o){if(n[o])return n[o].exports;var r=n[o]={i:o,l:!1,exports:{}};return e[o].call(r.exports,r,r.exports,t),r.l=!0,r.exports}var n={};return t.m=e,t.c=n,t.i=function(e){return e},t.d=function(e,n,o){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:o})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="/dist/",t(t.s=0)}([function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o=function(e){var t=document.createElement("textarea"),n=!1;t.value=e,t.style.cssText="position:fixed;pointer-events:none;z-index:-9999;opacity:0;",document.body.appendChild(t),t.select();try{n=document.execCommand("copy")}catch(e){}return document.body.removeChild(t),n};t.default={install:function(e){e.prototype.$clipboard=o,e.directive("clipboard",{bind:function(e,t,n){e.addEventListener("click",function(e){if(t.hasOwnProperty("value")){var r=t.value,c={value:r,srcEvent:e},i=n.context;o(r)?i.$emit("copy",c):i.$emit("copyError",c)}})}})}}}])});
+//# sourceMappingURL=index.min.js.map
 
 /***/ })
 
