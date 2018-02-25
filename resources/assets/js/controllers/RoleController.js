@@ -7,6 +7,9 @@ import { inyeccion_funciones_compartidas } from './libs/HelperPackage';
 import VModal from 'vue-js-modal'
 Vue.use(VModal, {dialog: true});
 
+//Se importa plugin de filtros _ lodash
+//import { _ , range } from 'lodash';
+
 //import Popover  from 'vue-js-popover';
 //Vue.use(Popover);
 
@@ -87,6 +90,8 @@ const RoleController = new Vue({
          'id_en_edicion': null,
          'dejar_de_editar_contador': 0,
 
+         'orden_lista':'asc',
+
       }
    },
    computed: {},
@@ -151,6 +156,15 @@ const RoleController = new Vue({
          this.role = this.buscar_en_array_por_modelo_e_id(id_role,this.roles,'role');
 
       },
+
+      // change order variable direction
+      cambiar_orden_lista: function (columna) {
+         this.orden_lista == 'asc' ? this.orden_lista = 'desc' : this.orden_lista = 'asc';
+         this.ordenar_lista(columna);
+      },
+
+      // function to order lists
+      ordenar_lista: function (columna) { this.roles = _.orderBy(this.roles, columna, this.orden_lista); },
 
 
       guardar_editado: function () {

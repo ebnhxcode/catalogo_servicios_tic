@@ -3240,6 +3240,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default.a, { dialog: true });
 
+//Se importa plugin de filtros _ lodash
+//import { _ , range } from 'lodash';
+
 //import Popover  from 'vue-js-popover';
 //Vue.use(Popover);
 
@@ -3311,7 +3314,9 @@ var RoleController = new Vue({
          'lista_actualizar_activo': false,
 
          'id_en_edicion': null,
-         'dejar_de_editar_contador': 0
+         'dejar_de_editar_contador': 0,
+
+         'orden_lista': 'asc'
 
       };
    },
@@ -3378,6 +3383,17 @@ var RoleController = new Vue({
          //id_objeto + array de objetos + nombre del model en lower case
          this.role = null;
          this.role = this.buscar_en_array_por_modelo_e_id(id_role, this.roles, 'role');
+      },
+
+      // change order variable direction
+      cambiar_orden_lista: function cambiar_orden_lista(columna) {
+         this.orden_lista == 'asc' ? this.orden_lista = 'desc' : this.orden_lista = 'asc';
+         this.ordenar_lista(columna);
+      },
+
+      // function to order lists
+      ordenar_lista: function ordenar_lista(columna) {
+         this.roles = _.orderBy(this.roles, columna, this.orden_lista);
       },
 
       guardar_editado: function guardar_editado() {

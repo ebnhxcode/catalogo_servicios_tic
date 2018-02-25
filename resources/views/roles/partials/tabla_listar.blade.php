@@ -2,11 +2,36 @@
 
    <thead>
       <tr>
-         <th>#</th>
-         <th>Nombre</th>
-         <th>Detalle</th>
-         <th>Permisos</th>
-         <th style="min-width: 120px;">Acción</th>
+         <th>
+            <a href="#!" class="btn btn-light" @click.prevent="cambiar_orden_lista('id_role')">
+               <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
+               #
+            </a>
+         </th>
+         <th>
+            <a href="#!" class="btn btn-light" @click.prevent="cambiar_orden_lista('nom_role')">
+               <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
+               Nombre
+            </a>
+         </th>
+         <th>
+            <a href="#!" class="btn btn-light" @click.prevent="cambiar_orden_lista('det_role')">
+               <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
+               Detalle
+            </a>
+         </th>
+         <th>
+            <a href="#!" class="btn btn-light" @click.prevent="cambiar_orden_lista('id_permiso')">
+               <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
+               Permisos
+            </a>
+         </th>
+         <th style="min-width: 120px;">
+            <a href="#!" class="btn btn-light" @click.prevent="cambiar_orden_lista('id_role')">
+               <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
+               Acción
+            </a>
+         </th>
       </tr>
    </thead>
 
