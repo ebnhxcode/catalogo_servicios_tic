@@ -24,9 +24,28 @@
                   </button>
 
                   <button class="btn btn-sm btn-outline-secondary dropdown-toggle"
-                          data-placement="top" data-toggle="tooltip" title="Lista de opciones">
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Lista de opciones">
                      Opciones
                   </button>
+
+                  <div class="dropdown-menu">
+                     <a class="dropdown-item" href="#!">
+                        Descargar Excel
+                     </a>
+                     <a class="dropdown-item" href="#!" @click.prevent="inicializar">
+                        Actualizar tabla
+                     </a>
+                     <a class="dropdown-item" href="#!" @click.prevent="filtro_head=null">
+                        Limpiar filtro
+                     </a>
+                     <div class="dropdown-divider"></div>
+                     <a class="dropdown-item" href="{{ url('/home') }}">
+                        Volver al menú principal
+                     </a>
+                  </div>
+
+
+
 
                </div><!-- .btn-group mr-0 #mr->margin -->
 
