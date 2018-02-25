@@ -21,6 +21,7 @@ class RoleController extends Controller {
    private $validacion; //Uso en valicaciones de request
 
    public function __construct () {
+      #$this->middleware('auth');
       $this->nombre_modelo = "role";
       $this->nombre_tabla = "roles";
    }
