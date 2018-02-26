@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Permiso extends Model
-{
+class Permiso extends Model {
+
+   use SoftDeletes;
+   protected $dates = ['deleted_at'];
+
    protected $table = "permisos";
    protected $primaryKey = "id_permiso";
    protected $fillable = [

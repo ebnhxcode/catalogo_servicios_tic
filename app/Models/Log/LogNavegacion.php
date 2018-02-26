@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class LogNavegacion extends Model
-{
+class LogNavegacion extends Model {
+
+   use SoftDeletes;
+   protected $dates = ['deleted_at'];
+
    protected $table = 'log_navegacion';
    protected $primaryKey = 'id_log_navegacion';
    protected $fillable = [

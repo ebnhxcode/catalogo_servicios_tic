@@ -3,8 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class UsuarioEstado extends Model
-{
-    //
+class UsuarioEstado extends Model {
+
+   
+
 }

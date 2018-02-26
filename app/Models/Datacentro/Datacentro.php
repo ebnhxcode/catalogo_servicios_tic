@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Datacentro extends Model
-{
+class Datacentro extends Model {
+
+   use SoftDeletes;
+   protected $dates = ['deleted_at'];
+
    protected $table = "datacentros";
    protected $primaryKey = "id_datacentro";
    protected $fillable = [

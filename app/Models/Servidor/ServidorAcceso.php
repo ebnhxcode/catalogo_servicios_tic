@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ServidorAcceso extends Model
-{
+class ServidorAcceso extends Model {
+
+   use SoftDeletes;
+   protected $dates = ['deleted_at'];
+
    protected $table = "servidores_accesos";
    protected $primaryKey = "id_servidor_acceso";
    protected $fillable = [
