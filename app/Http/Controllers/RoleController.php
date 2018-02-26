@@ -14,6 +14,7 @@ class RoleController extends Controller {
    private $new_role;
    private $role_update;
    private $new_role_permiso;
+   private $role_permiso;
    private $permiso;
    private $permisos;
    private $nombre_modelo; //Se usa como prefijo en llamados en duro o definiciones similares
@@ -242,13 +243,14 @@ class RoleController extends Controller {
       ]);
    }
 
-   public function destroy(Request $request, $id) {
+   public function destroy($id) {
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario
       $this->validacion = Validator::make($request->all(), [
          'id_role' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|max:255',
       ]);
+
       #Valida si la informacion que se envia para editar al usuario son iguales los ids
-      if ($id != $request["id_$this->nombre_modelo"]) {
+      if ($this->es_vacio($id) == true) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
             'tipo' => 'error_datos_invalidos', //Para las notificaciones
@@ -256,8 +258,17 @@ class RoleController extends Controller {
          ]);
       }
 
-      $this->role = Role::find($request["id_$this->nombre_modelo"]);
-      return response()->json($this->role);
+      $this->role = Role::find($id);
+
+      #Valida si role existe y busca si tiene role_permiso
+      if ($this->role) {
+         $this->role_permiso = $this->role->role_permiso;
+         #Valida si role_permiso existe y lo elimina
+         if ($this->role_permiso) { $this->role_permiso->delete(); }
+         #Elimina el role
+         $this->role->delete();
+      }
+
 
       return response()->json([
          'status' => 200, //Para los popups con alertas de sweet alert

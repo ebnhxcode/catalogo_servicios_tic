@@ -3628,10 +3628,10 @@ var RoleController = new Vue({
                //Se adjunta el token
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
                //Instancia nuevo form data
-               var formData = new FormData();
-               formData.append('id_role', id_role);
+               //var formData = new FormData();
+               //formData.append('id_role', id_role);
                //console.log(formData);
-               _this3.$http.delete('/roles/' + id_role, formData).then(function (response) {
+               _this3.$http.delete('/roles/' + id_role).then(function (response) {
 
                   console.log(response);
                   if (response.status == 200) {
