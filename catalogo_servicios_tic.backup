@@ -87,7 +87,8 @@ CREATE TABLE actividades (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -118,7 +119,8 @@ CREATE TABLE actividades_tags (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -157,7 +159,8 @@ CREATE TABLE aplicaciones (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -177,7 +180,8 @@ CREATE TABLE aplicaciones_accesos (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -208,7 +212,8 @@ CREATE TABLE aplicaciones_estados (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -239,7 +244,8 @@ CREATE TABLE aplicaciones_tags (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -270,7 +276,8 @@ CREATE TABLE aplicaciones_tecnologias (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -301,7 +308,8 @@ CREATE TABLE cargos (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -334,7 +342,8 @@ CREATE TABLE catalogos_servicios (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -365,7 +374,8 @@ CREATE TABLE catalogos_servicios_tags (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -380,7 +390,8 @@ CREATE TABLE comuna (
     id_region character varying(255),
     nombre_comuna character varying(255),
     created_at timestamp(0) without time zone,
-    updated_at timestamp(0) without time zone
+    updated_at timestamp(0) without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -410,7 +421,8 @@ CREATE TABLE datacentros (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -444,7 +456,8 @@ CREATE TABLE dominios (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -477,7 +490,8 @@ CREATE TABLE entregas_credenciales_usuarios (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -498,7 +512,8 @@ CREATE TABLE establecimientos (
     vigencia_desde text,
     fecha_cierre text,
     created_at timestamp(0) without time zone,
-    updated_at timestamp(0) without time zone
+    updated_at timestamp(0) without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -529,7 +544,8 @@ CREATE TABLE estados (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -563,7 +579,8 @@ CREATE TABLE fuentes_aplicaciones (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -598,7 +615,8 @@ CREATE TABLE log_navegacion (
     latitude text,
     longitude text,
     created_at timestamp(0) without time zone,
-    updated_at timestamp(0) without time zone
+    updated_at timestamp(0) without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -612,7 +630,8 @@ CREATE TABLE pais (
     id_pais character varying(255),
     nombre_pais character varying(255),
     created_at timestamp(0) without time zone,
-    updated_at timestamp(0) without time zone
+    updated_at timestamp(0) without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -644,7 +663,8 @@ CREATE TABLE permisos (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -660,7 +680,8 @@ CREATE TABLE region (
     alias character varying(255),
     orden character varying(255),
     created_at timestamp(0) without time zone,
-    updated_at timestamp(0) without time zone
+    updated_at timestamp(0) without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -691,7 +712,8 @@ CREATE TABLE roles (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -722,7 +744,8 @@ CREATE TABLE roles_permisos (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -738,7 +761,8 @@ CREATE TABLE servicio_salud (
     nombre_servicio_salud character varying(255),
     orden character varying(255),
     created_at timestamp(0) without time zone,
-    updated_at timestamp(0) without time zone
+    updated_at timestamp(0) without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -771,7 +795,8 @@ CREATE TABLE servicios (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -802,7 +827,8 @@ CREATE TABLE servicios_estados (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -833,7 +859,8 @@ CREATE TABLE servicios_permisos (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -864,7 +891,8 @@ CREATE TABLE servicios_tags (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -899,7 +927,8 @@ CREATE TABLE servidor_aplicaciones (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -920,7 +949,8 @@ CREATE TABLE servidores_accesos (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -955,7 +985,8 @@ CREATE TABLE sistemas_operativos (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -987,7 +1018,8 @@ CREATE TABLE tags (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -1020,7 +1052,8 @@ CREATE TABLE tecnologia_desarrollo (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -1052,7 +1085,8 @@ CREATE TABLE tipos_aplicaciones (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -1084,7 +1118,8 @@ CREATE TABLE tipos_tecnologias_desarrollo (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -1121,7 +1156,8 @@ CREATE TABLE usuarios (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -1155,7 +1191,8 @@ CREATE TABLE usuarios_bitacora_servicios (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -1186,7 +1223,8 @@ CREATE TABLE usuarios_cargos (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -1217,7 +1255,8 @@ CREATE TABLE usuarios_estados (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -1248,7 +1287,8 @@ CREATE TABLE usuarios_roles (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -1279,7 +1319,8 @@ CREATE TABLE usuarios_servicios (
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
 );
 
 
@@ -1289,7 +1330,7 @@ ALTER TABLE usuarios_servicios OWNER TO postgres;
 -- Data for Name: actividades; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY actividades (id_actividad, nom_actividad, det_actividad, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY actividades (id_actividad, nom_actividad, det_actividad, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -1297,7 +1338,7 @@ COPY actividades (id_actividad, nom_actividad, det_actividad, id_usuario_registr
 -- Data for Name: actividades_tags; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY actividades_tags (id_actividad_tag, id_actividad, id_tag, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY actividades_tags (id_actividad_tag, id_actividad, id_tag, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -1305,7 +1346,7 @@ COPY actividades_tags (id_actividad_tag, id_actividad, id_tag, id_usuario_regist
 -- Data for Name: aplicaciones; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY aplicaciones (id_aplicacion, id_tipo_aplicacion, id_servicio, id_dominio, nom_aplicacion, det_aplicacion, alias, url_web, ip, subdominio, ssl_tls, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY aplicaciones (id_aplicacion, id_tipo_aplicacion, id_servicio, id_dominio, nom_aplicacion, det_aplicacion, alias, url_web, ip, subdominio, ssl_tls, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -1313,7 +1354,7 @@ COPY aplicaciones (id_aplicacion, id_tipo_aplicacion, id_servicio, id_dominio, n
 -- Data for Name: aplicaciones_accesos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY aplicaciones_accesos (id_acceso_aplicacion, id_aplicacion, id_servidor, username, password, email, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY aplicaciones_accesos (id_acceso_aplicacion, id_aplicacion, id_servidor, username, password, email, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -1321,7 +1362,7 @@ COPY aplicaciones_accesos (id_acceso_aplicacion, id_aplicacion, id_servidor, use
 -- Data for Name: aplicaciones_estados; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY aplicaciones_estados (id_aplicacion_estado, id_aplicacion, id_estado, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY aplicaciones_estados (id_aplicacion_estado, id_aplicacion, id_estado, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -1329,7 +1370,7 @@ COPY aplicaciones_estados (id_aplicacion_estado, id_aplicacion, id_estado, id_us
 -- Data for Name: aplicaciones_tags; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY aplicaciones_tags (id_aplicacion_tag, id_aplicacion, id_tag, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY aplicaciones_tags (id_aplicacion_tag, id_aplicacion, id_tag, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -1337,7 +1378,7 @@ COPY aplicaciones_tags (id_aplicacion_tag, id_aplicacion, id_tag, id_usuario_reg
 -- Data for Name: aplicaciones_tecnologias; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY aplicaciones_tecnologias (id_aplicacion_tecnologia, id_aplicacion, id_tecnologia, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY aplicaciones_tecnologias (id_aplicacion_tecnologia, id_aplicacion, id_tecnologia, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -1345,7 +1386,7 @@ COPY aplicaciones_tecnologias (id_aplicacion_tecnologia, id_aplicacion, id_tecno
 -- Data for Name: cargos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY cargos (id_cargo, nom_cargo, det_cargo, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY cargos (id_cargo, nom_cargo, det_cargo, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -1353,7 +1394,7 @@ COPY cargos (id_cargo, nom_cargo, det_cargo, id_usuario_registra, id_usuario_mod
 -- Data for Name: catalogos_servicios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY catalogos_servicios (id_catalogo_servicio, id_servicio, asunto, det_catalogo, avatar, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY catalogos_servicios (id_catalogo_servicio, id_servicio, asunto, det_catalogo, avatar, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -1361,7 +1402,7 @@ COPY catalogos_servicios (id_catalogo_servicio, id_servicio, asunto, det_catalog
 -- Data for Name: catalogos_servicios_tags; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY catalogos_servicios_tags (id_catalogo_servicio_tag, id_catalogo_servicio, id_tag, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY catalogos_servicios_tags (id_catalogo_servicio_tag, id_catalogo_servicio, id_tag, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -1369,353 +1410,353 @@ COPY catalogos_servicios_tags (id_catalogo_servicio_tag, id_catalogo_servicio, i
 -- Data for Name: comuna; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY comuna (id_comuna, id_region, nombre_comuna, created_at, updated_at) FROM stdin;
-1101	1	Iquique	2017-10-31 11:06:00	2017-10-31 11:06:00
-1107	1	Alto Hospicio	2017-10-31 11:06:00	2017-10-31 11:06:00
-1401	1	Pozo Almonte	2017-10-31 11:06:00	2017-10-31 11:06:00
-1402	1	Camiña	2017-10-31 11:06:00	2017-10-31 11:06:00
-1403	1	Colchane	2017-10-31 11:06:00	2017-10-31 11:06:00
-1404	1	Huara	2017-10-31 11:06:00	2017-10-31 11:06:00
-1405	1	Pica	2017-10-31 11:06:00	2017-10-31 11:06:00
-2101	2	Antofagasta	2017-10-31 11:06:00	2017-10-31 11:06:00
-2102	2	Mejillones	2017-10-31 11:06:00	2017-10-31 11:06:00
-2103	2	Sierra Gorda	2017-10-31 11:06:00	2017-10-31 11:06:00
-2104	2	Taltal	2017-10-31 11:06:00	2017-10-31 11:06:00
-2201	2	Calama	2017-10-31 11:06:00	2017-10-31 11:06:00
-2202	2	Ollagüe	2017-10-31 11:06:00	2017-10-31 11:06:00
-2203	2	San Pedro de Atacama	2017-10-31 11:06:00	2017-10-31 11:06:00
-2301	2	Tocopilla	2017-10-31 11:06:00	2017-10-31 11:06:00
-2302	2	Maria Elena	2017-10-31 11:06:00	2017-10-31 11:06:00
-3101	3	Copiapo	2017-10-31 11:06:00	2017-10-31 11:06:00
-3102	3	Caldera	2017-10-31 11:06:00	2017-10-31 11:06:00
-3103	3	Tierra Amarilla	2017-10-31 11:06:00	2017-10-31 11:06:00
-3201	3	Chañaral	2017-10-31 11:06:00	2017-10-31 11:06:00
-3202	3	Diego de Almagro	2017-10-31 11:06:00	2017-10-31 11:06:00
-3301	3	Vallenar	2017-10-31 11:06:00	2017-10-31 11:06:00
-3302	3	Alto del Carmen	2017-10-31 11:06:00	2017-10-31 11:06:00
-3303	3	Freirina	2017-10-31 11:06:00	2017-10-31 11:06:00
-3304	3	Huasco	2017-10-31 11:06:00	2017-10-31 11:06:00
-4101	4	La Serena	2017-10-31 11:06:00	2017-10-31 11:06:00
-4102	4	Coquimbo	2017-10-31 11:06:00	2017-10-31 11:06:00
-4103	4	Andacollo	2017-10-31 11:06:00	2017-10-31 11:06:00
-4104	4	La Higuera	2017-10-31 11:06:00	2017-10-31 11:06:00
-4105	4	Paiguano	2017-10-31 11:06:00	2017-10-31 11:06:00
-4106	4	Vicuña	2017-10-31 11:06:00	2017-10-31 11:06:00
-4201	4	Illapel	2017-10-31 11:06:00	2017-10-31 11:06:00
-4202	4	Canela	2017-10-31 11:06:00	2017-10-31 11:06:00
-4203	4	Los Vilos	2017-10-31 11:06:00	2017-10-31 11:06:00
-4204	4	Salamanca	2017-10-31 11:06:00	2017-10-31 11:06:00
-4301	4	Ovalle	2017-10-31 11:06:00	2017-10-31 11:06:00
-4302	4	Combarbalá	2017-10-31 11:06:00	2017-10-31 11:06:00
-4303	4	Monte Patria	2017-10-31 11:06:00	2017-10-31 11:06:00
-4304	4	Punitaqui	2017-10-31 11:06:00	2017-10-31 11:06:00
-4305	4	Río Hurtado	2017-10-31 11:06:00	2017-10-31 11:06:00
-5101	5	Valparaiso	2017-10-31 11:06:00	2017-10-31 11:06:00
-5102	5	Casablanca	2017-10-31 11:06:00	2017-10-31 11:06:00
-5103	5	Con Con	2017-10-31 11:06:00	2017-10-31 11:06:00
-5104	5	Juan Fernández	2017-10-31 11:06:00	2017-10-31 11:06:00
-5105	5	Puchuncaví	2017-10-31 11:06:00	2017-10-31 11:06:00
-5107	5	Quintero	2017-10-31 11:06:00	2017-10-31 11:06:00
-5109	5	Viña del Mar	2017-10-31 11:06:00	2017-10-31 11:06:00
-5201	5	Isla de Pascua	2017-10-31 11:06:00	2017-10-31 11:06:00
-5301	5	Los Andes	2017-10-31 11:06:00	2017-10-31 11:06:00
-5302	5	Calle Larga	2017-10-31 11:06:00	2017-10-31 11:06:00
-5303	5	Rinconada	2017-10-31 11:06:00	2017-10-31 11:06:00
-5304	5	San Esteban	2017-10-31 11:06:00	2017-10-31 11:06:00
-5401	5	La Ligua	2017-10-31 11:06:00	2017-10-31 11:06:00
-5402	5	Cabildo	2017-10-31 11:06:00	2017-10-31 11:06:00
-5403	5	Papudo	2017-10-31 11:06:00	2017-10-31 11:06:00
-5404	5	Petorca	2017-10-31 11:06:00	2017-10-31 11:06:00
-5405	5	Zapallar	2017-10-31 11:06:00	2017-10-31 11:06:00
-5501	5	Quillota	2017-10-31 11:06:00	2017-10-31 11:06:00
-5502	5	Calera	2017-10-31 11:06:00	2017-10-31 11:06:00
-5503	5	Hijuelas	2017-10-31 11:06:00	2017-10-31 11:06:00
-5504	5	La Cruz	2017-10-31 11:06:00	2017-10-31 11:06:00
-5506	5	Nogales	2017-10-31 11:06:00	2017-10-31 11:06:00
-5601	5	San Antonio	2017-10-31 11:06:00	2017-10-31 11:06:00
-5602	5	Algarrobo	2017-10-31 11:06:00	2017-10-31 11:06:00
-5603	5	Cartagena	2017-10-31 11:06:00	2017-10-31 11:06:00
-5604	5	El Quisco	2017-10-31 11:06:00	2017-10-31 11:06:00
-5605	5	El Tabo	2017-10-31 11:06:00	2017-10-31 11:06:00
-5606	5	Santo Domingo	2017-10-31 11:06:00	2017-10-31 11:06:00
-5701	5	San Felipe	2017-10-31 11:06:00	2017-10-31 11:06:00
-5702	5	Catemu	2017-10-31 11:06:00	2017-10-31 11:06:00
-5703	5	Llaillay	2017-10-31 11:06:00	2017-10-31 11:06:00
-5704	5	Panquehue	2017-10-31 11:06:00	2017-10-31 11:06:00
-5705	5	Putaendo	2017-10-31 11:06:00	2017-10-31 11:06:00
-5706	5	Santa Maria	2017-10-31 11:06:00	2017-10-31 11:06:00
-5801	5	Quilpue	2017-10-31 11:06:00	2017-10-31 11:06:00
-5802	5	Limache	2017-10-31 11:06:00	2017-10-31 11:06:00
-5803	5	Olmué	2017-10-31 11:06:00	2017-10-31 11:06:00
-5804	5	Villa Alemana	2017-10-31 11:06:00	2017-10-31 11:06:00
-6101	6	Rancagua	2017-10-31 11:06:00	2017-10-31 11:06:00
-6102	6	Codegua	2017-10-31 11:06:00	2017-10-31 11:06:00
-6103	6	Coinco	2017-10-31 11:06:00	2017-10-31 11:06:00
-6104	6	Coltauco	2017-10-31 11:06:00	2017-10-31 11:06:00
-6105	6	Doñihue	2017-10-31 11:06:00	2017-10-31 11:06:00
-6106	6	Graneros	2017-10-31 11:06:00	2017-10-31 11:06:00
-6107	6	Las Cabras	2017-10-31 11:06:00	2017-10-31 11:06:00
-6108	6	Machalí	2017-10-31 11:06:00	2017-10-31 11:06:00
-6109	6	Malloa	2017-10-31 11:06:00	2017-10-31 11:06:00
-6110	6	Mostazal	2017-10-31 11:06:00	2017-10-31 11:06:00
-6111	6	Olivar	2017-10-31 11:06:00	2017-10-31 11:06:00
-6112	6	Peumo	2017-10-31 11:06:00	2017-10-31 11:06:00
-6113	6	Pichidegua	2017-10-31 11:06:00	2017-10-31 11:06:00
-6114	6	Quinta de Tilcoco	2017-10-31 11:06:00	2017-10-31 11:06:00
-6115	6	Rengo	2017-10-31 11:06:00	2017-10-31 11:06:00
-6116	6	Requínoa	2017-10-31 11:06:00	2017-10-31 11:06:00
-6117	6	San Vicente	2017-10-31 11:06:00	2017-10-31 11:06:00
-6201	6	Pichilemu	2017-10-31 11:06:00	2017-10-31 11:06:00
-6202	6	La Estrella	2017-10-31 11:06:00	2017-10-31 11:06:00
-6203	6	Litueche	2017-10-31 11:06:00	2017-10-31 11:06:00
-6204	6	Marchihue	2017-10-31 11:06:00	2017-10-31 11:06:00
-6205	6	Navidad	2017-10-31 11:06:00	2017-10-31 11:06:00
-6206	6	Paredones	2017-10-31 11:06:00	2017-10-31 11:06:00
-6301	6	San Fernando	2017-10-31 11:06:00	2017-10-31 11:06:00
-6302	6	Chepica	2017-10-31 11:06:00	2017-10-31 11:06:00
-6303	6	Chimbarongo	2017-10-31 11:06:00	2017-10-31 11:06:00
-6304	6	Lolol	2017-10-31 11:06:00	2017-10-31 11:06:00
-6305	6	Nancagua	2017-10-31 11:06:00	2017-10-31 11:06:00
-6306	6	Palmilla	2017-10-31 11:06:00	2017-10-31 11:06:00
-6307	6	Peralillo	2017-10-31 11:06:00	2017-10-31 11:06:00
-6308	6	Placilla	2017-10-31 11:06:00	2017-10-31 11:06:00
-6309	6	Pumanque	2017-10-31 11:06:00	2017-10-31 11:06:00
-6310	6	Santa Cruz	2017-10-31 11:06:00	2017-10-31 11:06:00
-7101	7	Talca	2017-10-31 11:06:00	2017-10-31 11:06:00
-7102	7	Constitución	2017-10-31 11:06:00	2017-10-31 11:06:00
-7103	7	Curepto	2017-10-31 11:06:00	2017-10-31 11:06:00
-7104	7	Empedrado	2017-10-31 11:06:00	2017-10-31 11:06:00
-7105	7	Maule	2017-10-31 11:06:00	2017-10-31 11:06:00
-7106	7	Pelarco	2017-10-31 11:06:00	2017-10-31 11:06:00
-7107	7	Pencahue	2017-10-31 11:06:00	2017-10-31 11:06:00
-7108	7	Río Claro	2017-10-31 11:06:00	2017-10-31 11:06:00
-7109	7	San Clemente	2017-10-31 11:06:00	2017-10-31 11:06:00
-7110	7	San Rafael	2017-10-31 11:06:00	2017-10-31 11:06:00
-7201	7	Cauquenes	2017-10-31 11:06:00	2017-10-31 11:06:00
-7202	7	Chanco	2017-10-31 11:06:00	2017-10-31 11:06:00
-7203	7	Pelluhue	2017-10-31 11:06:00	2017-10-31 11:06:00
-7301	7	Curicó	2017-10-31 11:06:00	2017-10-31 11:06:00
-7302	7	Hualañé	2017-10-31 11:06:00	2017-10-31 11:06:00
-7303	7	Licantén	2017-10-31 11:06:00	2017-10-31 11:06:00
-7304	7	Molina	2017-10-31 11:06:00	2017-10-31 11:06:00
-7305	7	Rauco	2017-10-31 11:06:00	2017-10-31 11:06:00
-7306	7	Romeral	2017-10-31 11:06:00	2017-10-31 11:06:00
-7307	7	Sagrada Familia	2017-10-31 11:06:00	2017-10-31 11:06:00
-7308	7	Teno	2017-10-31 11:06:00	2017-10-31 11:06:00
-7309	7	Vichuquén	2017-10-31 11:06:00	2017-10-31 11:06:00
-7401	7	Linares	2017-10-31 11:06:00	2017-10-31 11:06:00
-7402	7	Colbún	2017-10-31 11:06:00	2017-10-31 11:06:00
-7403	7	Longaví	2017-10-31 11:06:00	2017-10-31 11:06:00
-7404	7	Parral	2017-10-31 11:06:00	2017-10-31 11:06:00
-7405	7	Retiro	2017-10-31 11:06:00	2017-10-31 11:06:00
-7406	7	San Javier	2017-10-31 11:06:00	2017-10-31 11:06:00
-7407	7	Villa Alegre	2017-10-31 11:06:00	2017-10-31 11:06:00
-7408	7	Yerbas Buenas	2017-10-31 11:06:00	2017-10-31 11:06:00
-8101	8	Concepción	2017-10-31 11:06:00	2017-10-31 11:06:00
-8102	8	Coronel	2017-10-31 11:06:00	2017-10-31 11:06:00
-8103	8	Chiguayante	2017-10-31 11:06:00	2017-10-31 11:06:00
-8104	8	Florida	2017-10-31 11:06:00	2017-10-31 11:06:00
-8105	8	Hualqui	2017-10-31 11:06:00	2017-10-31 11:06:00
-8106	8	Lota	2017-10-31 11:06:00	2017-10-31 11:06:00
-8107	8	Penco	2017-10-31 11:06:00	2017-10-31 11:06:00
-8108	8	San Pedro de la Paz	2017-10-31 11:06:00	2017-10-31 11:06:00
-8109	8	Santa Juana	2017-10-31 11:06:00	2017-10-31 11:06:00
-8110	8	Talcahuano	2017-10-31 11:06:00	2017-10-31 11:06:00
-8111	8	Tome	2017-10-31 11:06:00	2017-10-31 11:06:00
-8112	8	Hualpén	2017-10-31 11:06:00	2017-10-31 11:06:00
-8201	8	Lebu	2017-10-31 11:06:00	2017-10-31 11:06:00
-8202	8	Arauco	2017-10-31 11:06:00	2017-10-31 11:06:00
-8203	8	Cañete	2017-10-31 11:06:00	2017-10-31 11:06:00
-8204	8	Contulmo	2017-10-31 11:06:00	2017-10-31 11:06:00
-8205	8	Curanilahue	2017-10-31 11:06:00	2017-10-31 11:06:00
-8206	8	Los Álamos	2017-10-31 11:06:00	2017-10-31 11:06:00
-8207	8	Tirúa	2017-10-31 11:06:00	2017-10-31 11:06:00
-8301	8	Los Ángeles	2017-10-31 11:06:00	2017-10-31 11:06:00
-8302	8	Antuco	2017-10-31 11:06:00	2017-10-31 11:06:00
-8303	8	Cabrero	2017-10-31 11:06:00	2017-10-31 11:06:00
-8304	8	Laja	2017-10-31 11:06:00	2017-10-31 11:06:00
-8305	8	Mulchén	2017-10-31 11:06:00	2017-10-31 11:06:00
-8306	8	Nacimiento	2017-10-31 11:06:00	2017-10-31 11:06:00
-8307	8	Negrete	2017-10-31 11:06:00	2017-10-31 11:06:00
-8308	8	Quilaco	2017-10-31 11:06:00	2017-10-31 11:06:00
-8309	8	Quilleco	2017-10-31 11:06:00	2017-10-31 11:06:00
-8310	8	San Rosendo	2017-10-31 11:06:00	2017-10-31 11:06:00
-8311	8	Santa Bárbara	2017-10-31 11:06:00	2017-10-31 11:06:00
-8312	8	Tucapel	2017-10-31 11:06:00	2017-10-31 11:06:00
-8313	8	Yumbel	2017-10-31 11:06:00	2017-10-31 11:06:00
-8314	8	Alto Biobío	2017-10-31 11:06:00	2017-10-31 11:06:00
-8401	8	Chillán 	2017-10-31 11:06:00	2017-10-31 11:06:00
-8402	8	Bulnes	2017-10-31 11:06:00	2017-10-31 11:06:00
-8403	8	Cobquecura	2017-10-31 11:06:00	2017-10-31 11:06:00
-8404	8	Coelemu	2017-10-31 11:06:00	2017-10-31 11:06:00
-8405	8	Coihueco	2017-10-31 11:06:00	2017-10-31 11:06:00
-8406	8	Chillán Viejo	2017-10-31 11:06:00	2017-10-31 11:06:00
-8407	8	El Carmen	2017-10-31 11:06:00	2017-10-31 11:06:00
-8408	8	Ninhue	2017-10-31 11:06:00	2017-10-31 11:06:00
-8409	8	Ñiquén	2017-10-31 11:06:00	2017-10-31 11:06:00
-8410	8	Pemuco	2017-10-31 11:06:00	2017-10-31 11:06:00
-8411	8	Pinto	2017-10-31 11:06:00	2017-10-31 11:06:00
-8412	8	Portezuelo	2017-10-31 11:06:00	2017-10-31 11:06:00
-8413	8	Quillón	2017-10-31 11:06:00	2017-10-31 11:06:00
-8414	8	Quirihue	2017-10-31 11:06:00	2017-10-31 11:06:00
-8415	8	Ránquil	2017-10-31 11:06:00	2017-10-31 11:06:00
-8416	8	San Carlos	2017-10-31 11:06:00	2017-10-31 11:06:00
-8417	8	San Fabián	2017-10-31 11:06:00	2017-10-31 11:06:00
-8418	8	San Ignacio	2017-10-31 11:06:00	2017-10-31 11:06:00
-8419	8	San Nicolás	2017-10-31 11:06:00	2017-10-31 11:06:00
-8420	8	Treguaco	2017-10-31 11:06:00	2017-10-31 11:06:00
-8421	8	Yungay	2017-10-31 11:06:00	2017-10-31 11:06:00
-9101	9	Temuco	2017-10-31 11:06:00	2017-10-31 11:06:00
-9102	9	Carahue	2017-10-31 11:06:00	2017-10-31 11:06:00
-9103	9	Cunco	2017-10-31 11:06:00	2017-10-31 11:06:00
-9104	9	Curarrehue	2017-10-31 11:06:00	2017-10-31 11:06:00
-9105	9	Freire	2017-10-31 11:06:00	2017-10-31 11:06:00
-9106	9	Galvarino	2017-10-31 11:06:00	2017-10-31 11:06:00
-9107	9	Gorbea	2017-10-31 11:06:00	2017-10-31 11:06:00
-9108	9	Lautaro	2017-10-31 11:06:00	2017-10-31 11:06:00
-9109	9	Loncoche	2017-10-31 11:06:00	2017-10-31 11:06:00
-9110	9	Melipeuco	2017-10-31 11:06:00	2017-10-31 11:06:00
-9111	9	Nueva Imperial	2017-10-31 11:06:00	2017-10-31 11:06:00
-9112	9	Padre Las Casas	2017-10-31 11:06:00	2017-10-31 11:06:00
-9113	9	Perquenco	2017-10-31 11:06:00	2017-10-31 11:06:00
-9114	9	Pitrufquén	2017-10-31 11:06:00	2017-10-31 11:06:00
-9115	9	Pucón	2017-10-31 11:06:00	2017-10-31 11:06:00
-9116	9	Saavedra	2017-10-31 11:06:00	2017-10-31 11:06:00
-9117	9	Teodoro Schmidt	2017-10-31 11:06:00	2017-10-31 11:06:00
-9118	9	Toltén	2017-10-31 11:06:00	2017-10-31 11:06:00
-9119	9	Vilcún	2017-10-31 11:06:00	2017-10-31 11:06:00
-9120	9	Villarrica	2017-10-31 11:06:00	2017-10-31 11:06:00
-9121	9	Cholchol	2017-10-31 11:06:00	2017-10-31 11:06:00
-9201	9	Angol	2017-10-31 11:06:00	2017-10-31 11:06:00
-9202	9	Collipulli	2017-10-31 11:06:00	2017-10-31 11:06:00
-9203	9	Curacautín	2017-10-31 11:06:00	2017-10-31 11:06:00
-9204	9	Ercilla	2017-10-31 11:06:00	2017-10-31 11:06:00
-9205	9	Lonquimay	2017-10-31 11:06:00	2017-10-31 11:06:00
-9206	9	Los Sauces	2017-10-31 11:06:00	2017-10-31 11:06:00
-9207	9	Lumaco	2017-10-31 11:06:00	2017-10-31 11:06:00
-9208	9	Purén	2017-10-31 11:06:00	2017-10-31 11:06:00
-9209	9	Renaico	2017-10-31 11:06:00	2017-10-31 11:06:00
-9210	9	Traiguén	2017-10-31 11:06:00	2017-10-31 11:06:00
-9211	9	Victoria	2017-10-31 11:06:00	2017-10-31 11:06:00
-10101	10	Puerto Montt	2017-10-31 11:06:00	2017-10-31 11:06:00
-10102	10	Calbuco	2017-10-31 11:06:00	2017-10-31 11:06:00
-10103	10	Cochamó	2017-10-31 11:06:00	2017-10-31 11:06:00
-10104	10	Fresia	2017-10-31 11:06:00	2017-10-31 11:06:00
-10105	10	Frutillar	2017-10-31 11:06:00	2017-10-31 11:06:00
-10106	10	Los Muermos	2017-10-31 11:06:00	2017-10-31 11:06:00
-10107	10	Llanquihue	2017-10-31 11:06:00	2017-10-31 11:06:00
-10108	10	Maullín	2017-10-31 11:06:00	2017-10-31 11:06:00
-10109	10	Puerto Varas	2017-10-31 11:06:00	2017-10-31 11:06:00
-10201	10	Castro	2017-10-31 11:06:00	2017-10-31 11:06:00
-10202	10	Ancud	2017-10-31 11:06:00	2017-10-31 11:06:00
-10203	10	Chonchi	2017-10-31 11:06:00	2017-10-31 11:06:00
-10204	10	Curaco de Vélez	2017-10-31 11:06:00	2017-10-31 11:06:00
-10205	10	Dalcahue	2017-10-31 11:06:00	2017-10-31 11:06:00
-10206	10	Puqueldón	2017-10-31 11:06:00	2017-10-31 11:06:00
-10207	10	Queilén	2017-10-31 11:06:00	2017-10-31 11:06:00
-10208	10	Quellón	2017-10-31 11:06:00	2017-10-31 11:06:00
-10209	10	Quemchi	2017-10-31 11:06:00	2017-10-31 11:06:00
-10210	10	Quinchao	2017-10-31 11:06:00	2017-10-31 11:06:00
-10301	10	Osorno	2017-10-31 11:06:00	2017-10-31 11:06:00
-10302	10	Puerto Octay	2017-10-31 11:06:00	2017-10-31 11:06:00
-10303	10	Purranque	2017-10-31 11:06:00	2017-10-31 11:06:00
-10304	10	Puyehue	2017-10-31 11:06:00	2017-10-31 11:06:00
-10305	10	Río Negro	2017-10-31 11:06:00	2017-10-31 11:06:00
-10306	10	San Juan de la Costa	2017-10-31 11:06:00	2017-10-31 11:06:00
-10307	10	San Pablo	2017-10-31 11:06:00	2017-10-31 11:06:00
-10401	10	Chaitén	2017-10-31 11:06:00	2017-10-31 11:06:00
-10402	10	Futaleufú	2017-10-31 11:06:00	2017-10-31 11:06:00
-10403	10	Hualaihué	2017-10-31 11:06:00	2017-10-31 11:06:00
-10404	10	Palena	2017-10-31 11:06:00	2017-10-31 11:06:00
-11101	11	Coihaique	2017-10-31 11:06:00	2017-10-31 11:06:00
-11102	11	Lago Verde	2017-10-31 11:06:00	2017-10-31 11:06:00
-11201	11	Aisén	2017-10-31 11:06:00	2017-10-31 11:06:00
-11202	11	Cisnes	2017-10-31 11:06:00	2017-10-31 11:06:00
-11203	11	Guaitecas	2017-10-31 11:06:00	2017-10-31 11:06:00
-11301	11	Cochrane	2017-10-31 11:06:00	2017-10-31 11:06:00
-11302	11	O Higgins	2017-10-31 11:06:00	2017-10-31 11:06:00
-11303	11	Tortel	2017-10-31 11:06:00	2017-10-31 11:06:00
-11401	11	Chile Chico	2017-10-31 11:06:00	2017-10-31 11:06:00
-11402	11	Río Ibáñez	2017-10-31 11:06:00	2017-10-31 11:06:00
-12101	12	Punta Arenas	2017-10-31 11:06:00	2017-10-31 11:06:00
-12102	12	Laguna Blanca	2017-10-31 11:06:00	2017-10-31 11:06:00
-12103	12	Río Verde	2017-10-31 11:06:00	2017-10-31 11:06:00
-12104	12	San Gregorio	2017-10-31 11:06:00	2017-10-31 11:06:00
-12201	12	Cabo de Hornos	2017-10-31 11:06:00	2017-10-31 11:06:00
-12202	12	Antártica	2017-10-31 11:06:00	2017-10-31 11:06:00
-12301	12	Porvenir	2017-10-31 11:06:00	2017-10-31 11:06:00
-12302	12	Primavera	2017-10-31 11:06:00	2017-10-31 11:06:00
-12303	12	Timaukel	2017-10-31 11:06:00	2017-10-31 11:06:00
-12401	12	Natales	2017-10-31 11:06:00	2017-10-31 11:06:00
-12402	12	Torres del Paine	2017-10-31 11:06:00	2017-10-31 11:06:00
-13101	13	Santiago	2017-10-31 11:06:00	2017-10-31 11:06:00
-13102	13	Cerrillos	2017-10-31 11:06:00	2017-10-31 11:06:00
-13103	13	Cerro Navia	2017-10-31 11:06:00	2017-10-31 11:06:00
-13104	13	Conchalí	2017-10-31 11:06:00	2017-10-31 11:06:00
-13105	13	El Bosque	2017-10-31 11:06:00	2017-10-31 11:06:00
-13106	13	Estación Central	2017-10-31 11:06:00	2017-10-31 11:06:00
-13107	13	Huechuraba	2017-10-31 11:06:00	2017-10-31 11:06:00
-13108	13	Independencia	2017-10-31 11:06:00	2017-10-31 11:06:00
-13109	13	La Cisterna	2017-10-31 11:06:00	2017-10-31 11:06:00
-13110	13	La Florida	2017-10-31 11:06:00	2017-10-31 11:06:00
-13111	13	La Granja	2017-10-31 11:06:00	2017-10-31 11:06:00
-13112	13	La Pintana	2017-10-31 11:06:00	2017-10-31 11:06:00
-13113	13	La Reina	2017-10-31 11:06:00	2017-10-31 11:06:00
-13114	13	Las Condes	2017-10-31 11:06:00	2017-10-31 11:06:00
-13115	13	Lo Barnechea	2017-10-31 11:06:00	2017-10-31 11:06:00
-13116	13	Lo Espejo	2017-10-31 11:06:00	2017-10-31 11:06:00
-13117	13	Lo Prado	2017-10-31 11:06:00	2017-10-31 11:06:00
-13118	13	Macul	2017-10-31 11:06:00	2017-10-31 11:06:00
-13119	13	Maipu	2017-10-31 11:06:00	2017-10-31 11:06:00
-13120	13	Ñuñoa	2017-10-31 11:06:00	2017-10-31 11:06:00
-13121	13	Pedro Aguirre Cerda	2017-10-31 11:06:00	2017-10-31 11:06:00
-13122	13	Peñalolén	2017-10-31 11:06:00	2017-10-31 11:06:00
-13123	13	Providencia	2017-10-31 11:06:00	2017-10-31 11:06:00
-13124	13	Pudahuel	2017-10-31 11:06:00	2017-10-31 11:06:00
-13125	13	Quilicura	2017-10-31 11:06:00	2017-10-31 11:06:00
-13126	13	Quinta Normal	2017-10-31 11:06:00	2017-10-31 11:06:00
-13127	13	Recoleta	2017-10-31 11:06:00	2017-10-31 11:06:00
-13128	13	Renca	2017-10-31 11:06:00	2017-10-31 11:06:00
-13129	13	San Joaquín	2017-10-31 11:06:00	2017-10-31 11:06:00
-13130	13	San Miguel	2017-10-31 11:06:00	2017-10-31 11:06:00
-13131	13	San Ramón	2017-10-31 11:06:00	2017-10-31 11:06:00
-13132	13	Vitacura	2017-10-31 11:06:00	2017-10-31 11:06:00
-13201	13	Puente Alto	2017-10-31 11:06:00	2017-10-31 11:06:00
-13202	13	Pirque	2017-10-31 11:06:00	2017-10-31 11:06:00
-13203	13	San José de Maipo	2017-10-31 11:06:00	2017-10-31 11:06:00
-13301	13	Colina	2017-10-31 11:06:00	2017-10-31 11:06:00
-13302	13	Lampa	2017-10-31 11:06:00	2017-10-31 11:06:00
-13303	13	Tiltil	2017-10-31 11:06:00	2017-10-31 11:06:00
-13401	13	San Bernardo	2017-10-31 11:06:00	2017-10-31 11:06:00
-13402	13	Buin	2017-10-31 11:06:00	2017-10-31 11:06:00
-13403	13	Calera de Tango	2017-10-31 11:06:00	2017-10-31 11:06:00
-13404	13	Paine	2017-10-31 11:06:00	2017-10-31 11:06:00
-13501	13	Melipilla	2017-10-31 11:06:00	2017-10-31 11:06:00
-13502	13	Alhué	2017-10-31 11:06:00	2017-10-31 11:06:00
-13503	13	Curacaví	2017-10-31 11:06:00	2017-10-31 11:06:00
-13504	13	Maria Pinto	2017-10-31 11:06:00	2017-10-31 11:06:00
-13505	13	San Pedro	2017-10-31 11:06:00	2017-10-31 11:06:00
-13601	13	Talagante	2017-10-31 11:06:00	2017-10-31 11:06:00
-13602	13	El Monte	2017-10-31 11:06:00	2017-10-31 11:06:00
-13603	13	Isla de Maipo	2017-10-31 11:06:00	2017-10-31 11:06:00
-13604	13	Padre Hurtado	2017-10-31 11:06:00	2017-10-31 11:06:00
-13605	13	Peñaflor	2017-10-31 11:06:00	2017-10-31 11:06:00
-14101	14	Valdivia	2017-10-31 11:06:00	2017-10-31 11:06:00
-14102	14	Corral	2017-10-31 11:06:00	2017-10-31 11:06:00
-14103	14	Lanco	2017-10-31 11:06:00	2017-10-31 11:06:00
-14104	14	Los Lagos	2017-10-31 11:06:00	2017-10-31 11:06:00
-14105	14	Máfil	2017-10-31 11:06:00	2017-10-31 11:06:00
-14106	14	Mariquina	2017-10-31 11:06:00	2017-10-31 11:06:00
-14107	14	Paillaco	2017-10-31 11:06:00	2017-10-31 11:06:00
-14108	14	Panguipulli	2017-10-31 11:06:00	2017-10-31 11:06:00
-14201	14	La Unión	2017-10-31 11:06:00	2017-10-31 11:06:00
-14202	14	Futrono	2017-10-31 11:06:00	2017-10-31 11:06:00
-14203	14	Lago Ranco	2017-10-31 11:06:00	2017-10-31 11:06:00
-14204	14	Río Bueno	2017-10-31 11:06:00	2017-10-31 11:06:00
-15101	15	Arica	2017-10-31 11:06:00	2017-10-31 11:06:00
-15102	15	Camarones	2017-10-31 11:06:00	2017-10-31 11:06:00
-15201	15	Putre	2017-10-31 11:06:00	2017-10-31 11:06:00
-15202	15	General Lagos	2017-10-31 11:06:00	2017-10-31 11:06:00
+COPY comuna (id_comuna, id_region, nombre_comuna, created_at, updated_at, deleted_at) FROM stdin;
+1101	1	Iquique	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+1107	1	Alto Hospicio	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+1401	1	Pozo Almonte	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+1402	1	Camiña	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+1403	1	Colchane	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+1404	1	Huara	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+1405	1	Pica	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+2101	2	Antofagasta	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+2102	2	Mejillones	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+2103	2	Sierra Gorda	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+2104	2	Taltal	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+2201	2	Calama	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+2202	2	Ollagüe	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+2203	2	San Pedro de Atacama	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+2301	2	Tocopilla	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+2302	2	Maria Elena	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+3101	3	Copiapo	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+3102	3	Caldera	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+3103	3	Tierra Amarilla	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+3201	3	Chañaral	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+3202	3	Diego de Almagro	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+3301	3	Vallenar	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+3302	3	Alto del Carmen	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+3303	3	Freirina	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+3304	3	Huasco	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+4101	4	La Serena	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+4102	4	Coquimbo	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+4103	4	Andacollo	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+4104	4	La Higuera	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+4105	4	Paiguano	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+4106	4	Vicuña	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+4201	4	Illapel	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+4202	4	Canela	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+4203	4	Los Vilos	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+4204	4	Salamanca	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+4301	4	Ovalle	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+4302	4	Combarbalá	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+4303	4	Monte Patria	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+4304	4	Punitaqui	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+4305	4	Río Hurtado	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5101	5	Valparaiso	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5102	5	Casablanca	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5103	5	Con Con	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5104	5	Juan Fernández	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5105	5	Puchuncaví	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5107	5	Quintero	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5109	5	Viña del Mar	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5201	5	Isla de Pascua	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5301	5	Los Andes	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5302	5	Calle Larga	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5303	5	Rinconada	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5304	5	San Esteban	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5401	5	La Ligua	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5402	5	Cabildo	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5403	5	Papudo	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5404	5	Petorca	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5405	5	Zapallar	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5501	5	Quillota	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5502	5	Calera	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5503	5	Hijuelas	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5504	5	La Cruz	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5506	5	Nogales	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5601	5	San Antonio	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5602	5	Algarrobo	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5603	5	Cartagena	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5604	5	El Quisco	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5605	5	El Tabo	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5606	5	Santo Domingo	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5701	5	San Felipe	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5702	5	Catemu	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5703	5	Llaillay	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5704	5	Panquehue	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5705	5	Putaendo	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5706	5	Santa Maria	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5801	5	Quilpue	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5802	5	Limache	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5803	5	Olmué	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5804	5	Villa Alemana	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6101	6	Rancagua	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6102	6	Codegua	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6103	6	Coinco	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6104	6	Coltauco	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6105	6	Doñihue	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6106	6	Graneros	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6107	6	Las Cabras	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6108	6	Machalí	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6109	6	Malloa	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6110	6	Mostazal	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6111	6	Olivar	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6112	6	Peumo	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6113	6	Pichidegua	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6114	6	Quinta de Tilcoco	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6115	6	Rengo	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6116	6	Requínoa	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6117	6	San Vicente	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6201	6	Pichilemu	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6202	6	La Estrella	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6203	6	Litueche	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6204	6	Marchihue	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6205	6	Navidad	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6206	6	Paredones	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6301	6	San Fernando	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6302	6	Chepica	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6303	6	Chimbarongo	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6304	6	Lolol	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6305	6	Nancagua	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6306	6	Palmilla	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6307	6	Peralillo	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6308	6	Placilla	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6309	6	Pumanque	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6310	6	Santa Cruz	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7101	7	Talca	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7102	7	Constitución	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7103	7	Curepto	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7104	7	Empedrado	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7105	7	Maule	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7106	7	Pelarco	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7107	7	Pencahue	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7108	7	Río Claro	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7109	7	San Clemente	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7110	7	San Rafael	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7201	7	Cauquenes	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7202	7	Chanco	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7203	7	Pelluhue	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7301	7	Curicó	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7302	7	Hualañé	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7303	7	Licantén	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7304	7	Molina	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7305	7	Rauco	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7306	7	Romeral	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7307	7	Sagrada Familia	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7308	7	Teno	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7309	7	Vichuquén	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7401	7	Linares	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7402	7	Colbún	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7403	7	Longaví	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7404	7	Parral	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7405	7	Retiro	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7406	7	San Javier	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7407	7	Villa Alegre	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7408	7	Yerbas Buenas	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8101	8	Concepción	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8102	8	Coronel	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8103	8	Chiguayante	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8104	8	Florida	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8105	8	Hualqui	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8106	8	Lota	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8107	8	Penco	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8108	8	San Pedro de la Paz	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8109	8	Santa Juana	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8110	8	Talcahuano	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8111	8	Tome	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8112	8	Hualpén	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8201	8	Lebu	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8202	8	Arauco	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8203	8	Cañete	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8204	8	Contulmo	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8205	8	Curanilahue	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8206	8	Los Álamos	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8207	8	Tirúa	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8301	8	Los Ángeles	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8302	8	Antuco	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8303	8	Cabrero	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8304	8	Laja	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8305	8	Mulchén	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8306	8	Nacimiento	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8307	8	Negrete	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8308	8	Quilaco	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8309	8	Quilleco	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8310	8	San Rosendo	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8311	8	Santa Bárbara	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8312	8	Tucapel	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8313	8	Yumbel	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8314	8	Alto Biobío	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8401	8	Chillán 	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8402	8	Bulnes	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8403	8	Cobquecura	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8404	8	Coelemu	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8405	8	Coihueco	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8406	8	Chillán Viejo	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8407	8	El Carmen	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8408	8	Ninhue	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8409	8	Ñiquén	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8410	8	Pemuco	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8411	8	Pinto	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8412	8	Portezuelo	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8413	8	Quillón	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8414	8	Quirihue	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8415	8	Ránquil	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8416	8	San Carlos	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8417	8	San Fabián	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8418	8	San Ignacio	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8419	8	San Nicolás	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8420	8	Treguaco	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8421	8	Yungay	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9101	9	Temuco	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9102	9	Carahue	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9103	9	Cunco	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9104	9	Curarrehue	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9105	9	Freire	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9106	9	Galvarino	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9107	9	Gorbea	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9108	9	Lautaro	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9109	9	Loncoche	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9110	9	Melipeuco	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9111	9	Nueva Imperial	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9112	9	Padre Las Casas	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9113	9	Perquenco	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9114	9	Pitrufquén	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9115	9	Pucón	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9116	9	Saavedra	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9117	9	Teodoro Schmidt	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9118	9	Toltén	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9119	9	Vilcún	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9120	9	Villarrica	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9121	9	Cholchol	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9201	9	Angol	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9202	9	Collipulli	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9203	9	Curacautín	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9204	9	Ercilla	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9205	9	Lonquimay	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9206	9	Los Sauces	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9207	9	Lumaco	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9208	9	Purén	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9209	9	Renaico	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9210	9	Traiguén	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9211	9	Victoria	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10101	10	Puerto Montt	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10102	10	Calbuco	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10103	10	Cochamó	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10104	10	Fresia	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10105	10	Frutillar	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10106	10	Los Muermos	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10107	10	Llanquihue	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10108	10	Maullín	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10109	10	Puerto Varas	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10201	10	Castro	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10202	10	Ancud	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10203	10	Chonchi	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10204	10	Curaco de Vélez	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10205	10	Dalcahue	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10206	10	Puqueldón	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10207	10	Queilén	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10208	10	Quellón	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10209	10	Quemchi	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10210	10	Quinchao	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10301	10	Osorno	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10302	10	Puerto Octay	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10303	10	Purranque	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10304	10	Puyehue	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10305	10	Río Negro	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10306	10	San Juan de la Costa	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10307	10	San Pablo	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10401	10	Chaitén	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10402	10	Futaleufú	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10403	10	Hualaihué	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10404	10	Palena	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+11101	11	Coihaique	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+11102	11	Lago Verde	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+11201	11	Aisén	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+11202	11	Cisnes	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+11203	11	Guaitecas	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+11301	11	Cochrane	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+11302	11	O Higgins	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+11303	11	Tortel	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+11401	11	Chile Chico	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+11402	11	Río Ibáñez	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+12101	12	Punta Arenas	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+12102	12	Laguna Blanca	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+12103	12	Río Verde	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+12104	12	San Gregorio	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+12201	12	Cabo de Hornos	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+12202	12	Antártica	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+12301	12	Porvenir	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+12302	12	Primavera	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+12303	12	Timaukel	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+12401	12	Natales	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+12402	12	Torres del Paine	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13101	13	Santiago	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13102	13	Cerrillos	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13103	13	Cerro Navia	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13104	13	Conchalí	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13105	13	El Bosque	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13106	13	Estación Central	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13107	13	Huechuraba	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13108	13	Independencia	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13109	13	La Cisterna	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13110	13	La Florida	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13111	13	La Granja	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13112	13	La Pintana	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13113	13	La Reina	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13114	13	Las Condes	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13115	13	Lo Barnechea	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13116	13	Lo Espejo	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13117	13	Lo Prado	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13118	13	Macul	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13119	13	Maipu	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13120	13	Ñuñoa	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13121	13	Pedro Aguirre Cerda	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13122	13	Peñalolén	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13123	13	Providencia	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13124	13	Pudahuel	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13125	13	Quilicura	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13126	13	Quinta Normal	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13127	13	Recoleta	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13128	13	Renca	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13129	13	San Joaquín	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13130	13	San Miguel	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13131	13	San Ramón	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13132	13	Vitacura	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13201	13	Puente Alto	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13202	13	Pirque	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13203	13	San José de Maipo	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13301	13	Colina	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13302	13	Lampa	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13303	13	Tiltil	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13401	13	San Bernardo	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13402	13	Buin	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13403	13	Calera de Tango	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13404	13	Paine	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13501	13	Melipilla	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13502	13	Alhué	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13503	13	Curacaví	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13504	13	Maria Pinto	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13505	13	San Pedro	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13601	13	Talagante	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13602	13	El Monte	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13603	13	Isla de Maipo	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13604	13	Padre Hurtado	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13605	13	Peñaflor	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+14101	14	Valdivia	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+14102	14	Corral	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+14103	14	Lanco	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+14104	14	Los Lagos	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+14105	14	Máfil	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+14106	14	Mariquina	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+14107	14	Paillaco	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+14108	14	Panguipulli	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+14201	14	La Unión	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+14202	14	Futrono	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+14203	14	Lago Ranco	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+14204	14	Río Bueno	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+15101	15	Arica	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+15102	15	Camarones	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+15201	15	Putre	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+15202	15	General Lagos	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
 \.
 
 
@@ -1723,7 +1764,7 @@ COPY comuna (id_comuna, id_region, nombre_comuna, created_at, updated_at) FROM s
 -- Data for Name: datacentros; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY datacentros (id_datacentro, nom_datacentro, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY datacentros (id_datacentro, nom_datacentro, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -1731,7 +1772,7 @@ COPY datacentros (id_datacentro, nom_datacentro, id_usuario_registra, id_usuario
 -- Data for Name: dominios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY dominios (id_dominio, nom_dominio, det_dominio, ip_publica, ip_balanceador, dns_asoc_dominio, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY dominios (id_dominio, nom_dominio, det_dominio, ip_publica, ip_balanceador, dns_asoc_dominio, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -1739,7 +1780,7 @@ COPY dominios (id_dominio, nom_dominio, det_dominio, ip_publica, ip_balanceador,
 -- Data for Name: entregas_credenciales_usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY entregas_credenciales_usuarios (id_entrega_credencial_usuario, username, password, tiempo_expiracion, estado, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY entregas_credenciales_usuarios (id_entrega_credencial_usuario, username, password, tiempo_expiracion, estado, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -1747,7 +1788,7 @@ COPY entregas_credenciales_usuarios (id_entrega_credencial_usuario, username, pa
 -- Data for Name: establecimientos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY establecimientos (id_establecimiento, id_establecimiento_antiguo, id_servicio_salud, id_region, id_comuna, nombre_establecimiento, tipo_establecimiento, vigencia_desde, fecha_cierre, created_at, updated_at) FROM stdin;
+COPY establecimientos (id_establecimiento, id_establecimiento_antiguo, id_servicio_salud, id_region, id_comuna, nombre_establecimiento, tipo_establecimiento, vigencia_desde, fecha_cierre, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -1755,7 +1796,7 @@ COPY establecimientos (id_establecimiento, id_establecimiento_antiguo, id_servic
 -- Data for Name: estados; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY estados (id_estado, nom_estado, cod_estado, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY estados (id_estado, nom_estado, cod_estado, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -1763,7 +1804,7 @@ COPY estados (id_estado, nom_estado, cod_estado, id_usuario_registra, id_usuario
 -- Data for Name: fuentes_aplicaciones; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY fuentes_aplicaciones (id_fuente_aplicacion, id_aplicacion, id_servicio, url_descarga, nom_fuente, det_fuente, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY fuentes_aplicaciones (id_fuente_aplicacion, id_aplicacion, id_servicio, url_descarga, nom_fuente, det_fuente, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -1771,7 +1812,7 @@ COPY fuentes_aplicaciones (id_fuente_aplicacion, id_aplicacion, id_servicio, url
 -- Data for Name: log_navegacion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY log_navegacion (id_log_navegacion, id_usuario, cod_establecimiento, nom_usuario, email_usuario, path_url, ip, latitude, longitude, created_at, updated_at) FROM stdin;
+COPY log_navegacion (id_log_navegacion, id_usuario, cod_establecimiento, nom_usuario, email_usuario, path_url, ip, latitude, longitude, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -1779,247 +1820,247 @@ COPY log_navegacion (id_log_navegacion, id_usuario, cod_establecimiento, nom_usu
 -- Data for Name: pais; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY pais (id_pais, nombre_pais, created_at, updated_at) FROM stdin;
-4	AFGANISTÁN	2017-10-31 11:06:00	2017-10-31 11:06:00
-8	ALBANIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-10	ANTÁRTIDA	2017-10-31 11:06:00	2017-10-31 11:06:00
-12	ARGEL	2017-10-31 11:06:00	2017-10-31 11:06:00
-16	SAMOA AMERICANA	2017-10-31 11:06:00	2017-10-31 11:06:00
-20	ANDORRA	2017-10-31 11:06:00	2017-10-31 11:06:00
-24	ANGOLA	2017-10-31 11:06:00	2017-10-31 11:06:00
-28	ANTIGUA Y BARBUDA	2017-10-31 11:06:00	2017-10-31 11:06:00
-31	AZERBAIYÁN	2017-10-31 11:06:00	2017-10-31 11:06:00
-32	ARGENTINA	2017-10-31 11:06:00	2017-10-31 11:06:00
-36	AUSTRALIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-40	AUSTRIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-44	BAHAMAS	2017-10-31 11:06:00	2017-10-31 11:06:00
-48	BAHRÉIN	2017-10-31 11:06:00	2017-10-31 11:06:00
-50	BANGLADESH	2017-10-31 11:06:00	2017-10-31 11:06:00
-51	ARMENIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-52	BARBADOS	2017-10-31 11:06:00	2017-10-31 11:06:00
-56	BÉLGICA	2017-10-31 11:06:00	2017-10-31 11:06:00
-60	BERMUDAS	2017-10-31 11:06:00	2017-10-31 11:06:00
-64	BHUTÁN	2017-10-31 11:06:00	2017-10-31 11:06:00
-68	BOLIVIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-70	BOSNIA Y HERZEGOVINA	2017-10-31 11:06:00	2017-10-31 11:06:00
-72	BOTSUANA	2017-10-31 11:06:00	2017-10-31 11:06:00
-74	ISLA BOUVET	2017-10-31 11:06:00	2017-10-31 11:06:00
-76	BRASIL	2017-10-31 11:06:00	2017-10-31 11:06:00
-84	BELICE	2017-10-31 11:06:00	2017-10-31 11:06:00
-86	TERRITORIO BRITÁNICO DEL OCÉANO ÍNDICO	2017-10-31 11:06:00	2017-10-31 11:06:00
-90	ISLAS SOLOMÓN	2017-10-31 11:06:00	2017-10-31 11:06:00
-92	ISLAS VÍRGENES BRITÁNICAS	2017-10-31 11:06:00	2017-10-31 11:06:00
-96	BRUNÉI	2017-10-31 11:06:00	2017-10-31 11:06:00
-100	BULGARIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-104	MYANMAR	2017-10-31 11:06:00	2017-10-31 11:06:00
-108	BURUNDI	2017-10-31 11:06:00	2017-10-31 11:06:00
-112	BELARÚS	2017-10-31 11:06:00	2017-10-31 11:06:00
-116	CAMBOYA	2017-10-31 11:06:00	2017-10-31 11:06:00
-120	CAMERÚN	2017-10-31 11:06:00	2017-10-31 11:06:00
-124	CANADÁ	2017-10-31 11:06:00	2017-10-31 11:06:00
-132	CABO VERDE	2017-10-31 11:06:00	2017-10-31 11:06:00
-136	ISLAS CAIMÁN	2017-10-31 11:06:00	2017-10-31 11:06:00
-140	REPÚBLICA CENTRO-AFRICANA	2017-10-31 11:06:00	2017-10-31 11:06:00
-144	SRI LANKA	2017-10-31 11:06:00	2017-10-31 11:06:00
-148	CHAD	2017-10-31 11:06:00	2017-10-31 11:06:00
-152	CHILE	2017-10-31 11:06:00	2017-10-31 11:06:00
-156	CHINA	2017-10-31 11:06:00	2017-10-31 11:06:00
-158	TAIWÁN	2017-10-31 11:06:00	2017-10-31 11:06:00
-162	ISLAS CHRISTMAS	2017-10-31 11:06:00	2017-10-31 11:06:00
-166	ISLAS COCOS	2017-10-31 11:06:00	2017-10-31 11:06:00
-170	COLOMBIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-174	COMOROS	2017-10-31 11:06:00	2017-10-31 11:06:00
-175	MAYOTTE	2017-10-31 11:06:00	2017-10-31 11:06:00
-178	CONGO	2017-10-31 11:06:00	2017-10-31 11:06:00
-184	ISLAS COOK	2017-10-31 11:06:00	2017-10-31 11:06:00
-188	COSTA RICA	2017-10-31 11:06:00	2017-10-31 11:06:00
-191	CROACIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-192	CUBA	2017-10-31 11:06:00	2017-10-31 11:06:00
-196	CHIPRE	2017-10-31 11:06:00	2017-10-31 11:06:00
-203	REPÚBLICA CHECA	2017-10-31 11:06:00	2017-10-31 11:06:00
-204	BENIN	2017-10-31 11:06:00	2017-10-31 11:06:00
-208	DINAMARCA	2017-10-31 11:06:00	2017-10-31 11:06:00
-212	DOMÍNICA	2017-10-31 11:06:00	2017-10-31 11:06:00
-214	REPÚBLICA DOMINICANA	2017-10-31 11:06:00	2017-10-31 11:06:00
-218	ECUADOR	2017-10-31 11:06:00	2017-10-31 11:06:00
-222	EL SALVADOR	2017-10-31 11:06:00	2017-10-31 11:06:00
-226	GUINEA ECUATORIAL	2017-10-31 11:06:00	2017-10-31 11:06:00
-231	ETIOPÍA	2017-10-31 11:06:00	2017-10-31 11:06:00
-232	ERITREA	2017-10-31 11:06:00	2017-10-31 11:06:00
-233	ESTONIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-234	ISLAS FAROE	2017-10-31 11:06:00	2017-10-31 11:06:00
-238	ISLAS MALVINAS	2017-10-31 11:06:00	2017-10-31 11:06:00
-239	GEORGIA DEL SUR E ISLAS SANDWICH DEL SUR	2017-10-31 11:06:00	2017-10-31 11:06:00
-242	FIJI	2017-10-31 11:06:00	2017-10-31 11:06:00
-246	FINLANDIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-248	ISLAS ÁLAND	2017-10-31 11:06:00	2017-10-31 11:06:00
-250	FRANCIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-254	GUAYANA FRANCESA	2017-10-31 11:06:00	2017-10-31 11:06:00
-258	POLINESIA FRANCESA	2017-10-31 11:06:00	2017-10-31 11:06:00
-260	TERRITORIOS AUSTRALES FRANCESES	2017-10-31 11:06:00	2017-10-31 11:06:00
-262	YIBUTI	2017-10-31 11:06:00	2017-10-31 11:06:00
-266	GABÓN	2017-10-31 11:06:00	2017-10-31 11:06:00
-268	GEORGIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-270	GAMBIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-275	PALESTINA	2017-10-31 11:06:00	2017-10-31 11:06:00
-276	ALEMANIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-288	GHANA	2017-10-31 11:06:00	2017-10-31 11:06:00
-292	GIBRALTAR	2017-10-31 11:06:00	2017-10-31 11:06:00
-296	KIRIBATI	2017-10-31 11:06:00	2017-10-31 11:06:00
-300	GRECIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-304	GROENLANDIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-308	GRANADA	2017-10-31 11:06:00	2017-10-31 11:06:00
-312	GUADALUPE	2017-10-31 11:06:00	2017-10-31 11:06:00
-316	GUAM	2017-10-31 11:06:00	2017-10-31 11:06:00
-320	GUATEMALA	2017-10-31 11:06:00	2017-10-31 11:06:00
-324	GUINEA	2017-10-31 11:06:00	2017-10-31 11:06:00
-328	GUAYANA	2017-10-31 11:06:00	2017-10-31 11:06:00
-332	HAITÍ	2017-10-31 11:06:00	2017-10-31 11:06:00
-334	ISLAS HEARD Y MCDONALD	2017-10-31 11:06:00	2017-10-31 11:06:00
-336	CIUDAD DEL VATICANO	2017-10-31 11:06:00	2017-10-31 11:06:00
-340	HONDURAS	2017-10-31 11:06:00	2017-10-31 11:06:00
-344	HONG KONG	2017-10-31 11:06:00	2017-10-31 11:06:00
-348	HUNGRÍA	2017-10-31 11:06:00	2017-10-31 11:06:00
-352	ISLANDIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-356	INDIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-360	INDONESIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-364	IRÁN	2017-10-31 11:06:00	2017-10-31 11:06:00
-368	IRAK	2017-10-31 11:06:00	2017-10-31 11:06:00
-372	IRLANDA	2017-10-31 11:06:00	2017-10-31 11:06:00
-376	ISRAEL	2017-10-31 11:06:00	2017-10-31 11:06:00
-380	ITALIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-384	COSTA DE MARFIL	2017-10-31 11:06:00	2017-10-31 11:06:00
-388	JAMAICA	2017-10-31 11:06:00	2017-10-31 11:06:00
-392	JAPÓN	2017-10-31 11:06:00	2017-10-31 11:06:00
-398	KAZAJSTÁN	2017-10-31 11:06:00	2017-10-31 11:06:00
-400	JORDANIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-404	KENIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-408	COREA DEL NORTE	2017-10-31 11:06:00	2017-10-31 11:06:00
-410	COREA DEL SUR	2017-10-31 11:06:00	2017-10-31 11:06:00
-414	KUWAIT	2017-10-31 11:06:00	2017-10-31 11:06:00
-417	KIRGUISTÁN	2017-10-31 11:06:00	2017-10-31 11:06:00
-418	LAOS	2017-10-31 11:06:00	2017-10-31 11:06:00
-422	LÍBANO	2017-10-31 11:06:00	2017-10-31 11:06:00
-426	LESOTHO	2017-10-31 11:06:00	2017-10-31 11:06:00
-428	LETONIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-430	LIBERIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-434	LIBIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-438	LIECHTENSTEIN	2017-10-31 11:06:00	2017-10-31 11:06:00
-440	LITUANIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-442	LUXEMBURGO	2017-10-31 11:06:00	2017-10-31 11:06:00
-446	MACAO	2017-10-31 11:06:00	2017-10-31 11:06:00
-450	MADAGASCAR	2017-10-31 11:06:00	2017-10-31 11:06:00
-454	MALAWI	2017-10-31 11:06:00	2017-10-31 11:06:00
-458	MALASIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-462	MALDIVAS	2017-10-31 11:06:00	2017-10-31 11:06:00
-466	MALI	2017-10-31 11:06:00	2017-10-31 11:06:00
-470	MALTA	2017-10-31 11:06:00	2017-10-31 11:06:00
-474	MARTINICA	2017-10-31 11:06:00	2017-10-31 11:06:00
-478	MAURITANIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-480	MAURICIO	2017-10-31 11:06:00	2017-10-31 11:06:00
-484	MÉXICO	2017-10-31 11:06:00	2017-10-31 11:06:00
-492	MÓNACO	2017-10-31 11:06:00	2017-10-31 11:06:00
-496	MONGOLIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-498	MOLDOVA	2017-10-31 11:06:00	2017-10-31 11:06:00
-499	MONTENEGRO	2017-10-31 11:06:00	2017-10-31 11:06:00
-500	MONTSERRAT	2017-10-31 11:06:00	2017-10-31 11:06:00
-504	MARRUECOS	2017-10-31 11:06:00	2017-10-31 11:06:00
-508	MOZAMBIQUE	2017-10-31 11:06:00	2017-10-31 11:06:00
-512	OMÁN	2017-10-31 11:06:00	2017-10-31 11:06:00
-516	NAMIBIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-520	NAURU	2017-10-31 11:06:00	2017-10-31 11:06:00
-524	NEPAL	2017-10-31 11:06:00	2017-10-31 11:06:00
-528	PAÍSES BAJOS	2017-10-31 11:06:00	2017-10-31 11:06:00
-530	ANTILLAS NEERLANDESAS	2017-10-31 11:06:00	2017-10-31 11:06:00
-533	ARUBA	2017-10-31 11:06:00	2017-10-31 11:06:00
-540	NUEVA CALEDONIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-548	VANUATU	2017-10-31 11:06:00	2017-10-31 11:06:00
-554	NUEVA ZELANDA	2017-10-31 11:06:00	2017-10-31 11:06:00
-558	NICARAGUA	2017-10-31 11:06:00	2017-10-31 11:06:00
-562	NÍGER	2017-10-31 11:06:00	2017-10-31 11:06:00
-566	NIGERIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-570	NIUE	2017-10-31 11:06:00	2017-10-31 11:06:00
-574	ISLAS NORKFOLK	2017-10-31 11:06:00	2017-10-31 11:06:00
-578	NORUEGA	2017-10-31 11:06:00	2017-10-31 11:06:00
-583	MICRONESIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-584	ISLAS MARSHALL	2017-10-31 11:06:00	2017-10-31 11:06:00
-585	ISLAS PALAOS	2017-10-31 11:06:00	2017-10-31 11:06:00
-586	PAKISTÁN	2017-10-31 11:06:00	2017-10-31 11:06:00
-591	PANAMÁ	2017-10-31 11:06:00	2017-10-31 11:06:00
-598	PAPÚA NUEVA GUINEA	2017-10-31 11:06:00	2017-10-31 11:06:00
-600	PARAGUAY	2017-10-31 11:06:00	2017-10-31 11:06:00
-604	PERÚ	2017-10-31 11:06:00	2017-10-31 11:06:00
-608	FILIPINAS	2017-10-31 11:06:00	2017-10-31 11:06:00
-612	ISLAS PITCAIRN	2017-10-31 11:06:00	2017-10-31 11:06:00
-616	POLONIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-620	PORTUGAL	2017-10-31 11:06:00	2017-10-31 11:06:00
-624	GUINEA-BISSAU	2017-10-31 11:06:00	2017-10-31 11:06:00
-626	TIMOR-LESTE	2017-10-31 11:06:00	2017-10-31 11:06:00
-630	PUERTO RICO	2017-10-31 11:06:00	2017-10-31 11:06:00
-634	QATAR	2017-10-31 11:06:00	2017-10-31 11:06:00
-638	REUNIÓN	2017-10-31 11:06:00	2017-10-31 11:06:00
-642	RUMANÍA	2017-10-31 11:06:00	2017-10-31 11:06:00
-643	RUSIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-646	RUANDA	2017-10-31 11:06:00	2017-10-31 11:06:00
-652	SAN BARTOLOMÉ	2017-10-31 11:06:00	2017-10-31 11:06:00
-654	SANTA ELENA	2017-10-31 11:06:00	2017-10-31 11:06:00
-659	SAN CRISTÓBAL Y NIEVES	2017-10-31 11:06:00	2017-10-31 11:06:00
-660	ANGUILA	2017-10-31 11:06:00	2017-10-31 11:06:00
-662	SANTA LUCÍA	2017-10-31 11:06:00	2017-10-31 11:06:00
-666	SAN PEDRO Y MIQUELÓN	2017-10-31 11:06:00	2017-10-31 11:06:00
-670	SAN VICENTE Y LAS GRANADINAS	2017-10-31 11:06:00	2017-10-31 11:06:00
-674	SAN MARINO	2017-10-31 11:06:00	2017-10-31 11:06:00
-678	SANTO TOMÉ Y PRÍNCIPE	2017-10-31 11:06:00	2017-10-31 11:06:00
-682	ARABIA SAUDITA	2017-10-31 11:06:00	2017-10-31 11:06:00
-686	SENEGAL	2017-10-31 11:06:00	2017-10-31 11:06:00
-688	SERBIA Y MONTENEGRO	2017-10-31 11:06:00	2017-10-31 11:06:00
-690	SEYCHELLES	2017-10-31 11:06:00	2017-10-31 11:06:00
-694	SIERRA LEONA	2017-10-31 11:06:00	2017-10-31 11:06:00
-702	SINGAPUR	2017-10-31 11:06:00	2017-10-31 11:06:00
-703	ESLOVAQUIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-704	VIETNAM	2017-10-31 11:06:00	2017-10-31 11:06:00
-705	ESLOVENIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-706	SOMALIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-710	SUDÁFRICA	2017-10-31 11:06:00	2017-10-31 11:06:00
-724	ESPAÑA	2017-10-31 11:06:00	2017-10-31 11:06:00
-732	SAHARA OCCIDENTAL	2017-10-31 11:06:00	2017-10-31 11:06:00
-736	SUDÁN	2017-10-31 11:06:00	2017-10-31 11:06:00
-740	SURINAM	2017-10-31 11:06:00	2017-10-31 11:06:00
-744	ISLAS SVALBARD Y JAN MAYEN	2017-10-31 11:06:00	2017-10-31 11:06:00
-748	SUAZILANDIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-752	SUECIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-756	SUIZA	2017-10-31 11:06:00	2017-10-31 11:06:00
-760	SIRIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-762	TAYIKISTÁN	2017-10-31 11:06:00	2017-10-31 11:06:00
-764	TAILANDIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-768	TOGO	2017-10-31 11:06:00	2017-10-31 11:06:00
-772	TOKELAU	2017-10-31 11:06:00	2017-10-31 11:06:00
-776	TONGA	2017-10-31 11:06:00	2017-10-31 11:06:00
-780	TRINIDAD Y TOBAGO	2017-10-31 11:06:00	2017-10-31 11:06:00
-784	EMIRATOS ÁRABES UNIDOS	2017-10-31 11:06:00	2017-10-31 11:06:00
-788	TÚNEZ	2017-10-31 11:06:00	2017-10-31 11:06:00
-792	TURQUÍA	2017-10-31 11:06:00	2017-10-31 11:06:00
-795	TURKMENISTÁN	2017-10-31 11:06:00	2017-10-31 11:06:00
-796	ISLAS TURCAS Y CAICOS	2017-10-31 11:06:00	2017-10-31 11:06:00
-798	TUVALU	2017-10-31 11:06:00	2017-10-31 11:06:00
-800	UGANDA	2017-10-31 11:06:00	2017-10-31 11:06:00
-804	UCRANIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-807	MACEDONIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-818	EGIPTO	2017-10-31 11:06:00	2017-10-31 11:06:00
-826	REINO UNIDO	2017-10-31 11:06:00	2017-10-31 11:06:00
-831	GUERNSEY	2017-10-31 11:06:00	2017-10-31 11:06:00
-832	JERSEY	2017-10-31 11:06:00	2017-10-31 11:06:00
-833	ISLA DE MAN	2017-10-31 11:06:00	2017-10-31 11:06:00
-834	TANZANIA	2017-10-31 11:06:00	2017-10-31 11:06:00
-840	ESTADOS UNIDOS DE AMÉRICA	2017-10-31 11:06:00	2017-10-31 11:06:00
-850	ISLAS VÍRGENES DE LOS ESTADOS UNIDOS DE AMÉRICA	2017-10-31 11:06:00	2017-10-31 11:06:00
-854	BURKINA FASO	2017-10-31 11:06:00	2017-10-31 11:06:00
-858	URUGUAY	2017-10-31 11:06:00	2017-10-31 11:06:00
-860	UZBEKISTÁN	2017-10-31 11:06:00	2017-10-31 11:06:00
-862	VENEZUELA	2017-10-31 11:06:00	2017-10-31 11:06:00
-876	WALLIS Y FUTUNA	2017-10-31 11:06:00	2017-10-31 11:06:00
-882	SAMOA	2017-10-31 11:06:00	2017-10-31 11:06:00
-887	YEMEN	2017-10-31 11:06:00	2017-10-31 11:06:00
+COPY pais (id_pais, nombre_pais, created_at, updated_at, deleted_at) FROM stdin;
+4	AFGANISTÁN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8	ALBANIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10	ANTÁRTIDA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+12	ARGEL	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+16	SAMOA AMERICANA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+20	ANDORRA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+24	ANGOLA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+28	ANTIGUA Y BARBUDA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+31	AZERBAIYÁN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+32	ARGENTINA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+36	AUSTRALIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+40	AUSTRIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+44	BAHAMAS	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+48	BAHRÉIN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+50	BANGLADESH	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+51	ARMENIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+52	BARBADOS	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+56	BÉLGICA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+60	BERMUDAS	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+64	BHUTÁN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+68	BOLIVIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+70	BOSNIA Y HERZEGOVINA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+72	BOTSUANA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+74	ISLA BOUVET	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+76	BRASIL	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+84	BELICE	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+86	TERRITORIO BRITÁNICO DEL OCÉANO ÍNDICO	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+90	ISLAS SOLOMÓN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+92	ISLAS VÍRGENES BRITÁNICAS	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+96	BRUNÉI	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+100	BULGARIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+104	MYANMAR	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+108	BURUNDI	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+112	BELARÚS	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+116	CAMBOYA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+120	CAMERÚN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+124	CANADÁ	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+132	CABO VERDE	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+136	ISLAS CAIMÁN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+140	REPÚBLICA CENTRO-AFRICANA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+144	SRI LANKA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+148	CHAD	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+152	CHILE	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+156	CHINA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+158	TAIWÁN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+162	ISLAS CHRISTMAS	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+166	ISLAS COCOS	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+170	COLOMBIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+174	COMOROS	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+175	MAYOTTE	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+178	CONGO	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+184	ISLAS COOK	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+188	COSTA RICA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+191	CROACIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+192	CUBA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+196	CHIPRE	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+203	REPÚBLICA CHECA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+204	BENIN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+208	DINAMARCA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+212	DOMÍNICA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+214	REPÚBLICA DOMINICANA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+218	ECUADOR	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+222	EL SALVADOR	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+226	GUINEA ECUATORIAL	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+231	ETIOPÍA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+232	ERITREA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+233	ESTONIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+234	ISLAS FAROE	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+238	ISLAS MALVINAS	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+239	GEORGIA DEL SUR E ISLAS SANDWICH DEL SUR	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+242	FIJI	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+246	FINLANDIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+248	ISLAS ÁLAND	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+250	FRANCIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+254	GUAYANA FRANCESA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+258	POLINESIA FRANCESA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+260	TERRITORIOS AUSTRALES FRANCESES	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+262	YIBUTI	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+266	GABÓN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+268	GEORGIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+270	GAMBIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+275	PALESTINA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+276	ALEMANIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+288	GHANA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+292	GIBRALTAR	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+296	KIRIBATI	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+300	GRECIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+304	GROENLANDIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+308	GRANADA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+312	GUADALUPE	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+316	GUAM	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+320	GUATEMALA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+324	GUINEA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+328	GUAYANA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+332	HAITÍ	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+334	ISLAS HEARD Y MCDONALD	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+336	CIUDAD DEL VATICANO	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+340	HONDURAS	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+344	HONG KONG	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+348	HUNGRÍA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+352	ISLANDIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+356	INDIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+360	INDONESIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+364	IRÁN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+368	IRAK	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+372	IRLANDA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+376	ISRAEL	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+380	ITALIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+384	COSTA DE MARFIL	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+388	JAMAICA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+392	JAPÓN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+398	KAZAJSTÁN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+400	JORDANIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+404	KENIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+408	COREA DEL NORTE	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+410	COREA DEL SUR	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+414	KUWAIT	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+417	KIRGUISTÁN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+418	LAOS	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+422	LÍBANO	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+426	LESOTHO	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+428	LETONIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+430	LIBERIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+434	LIBIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+438	LIECHTENSTEIN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+440	LITUANIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+442	LUXEMBURGO	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+446	MACAO	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+450	MADAGASCAR	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+454	MALAWI	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+458	MALASIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+462	MALDIVAS	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+466	MALI	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+470	MALTA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+474	MARTINICA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+478	MAURITANIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+480	MAURICIO	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+484	MÉXICO	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+492	MÓNACO	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+496	MONGOLIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+498	MOLDOVA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+499	MONTENEGRO	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+500	MONTSERRAT	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+504	MARRUECOS	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+508	MOZAMBIQUE	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+512	OMÁN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+516	NAMIBIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+520	NAURU	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+524	NEPAL	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+528	PAÍSES BAJOS	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+530	ANTILLAS NEERLANDESAS	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+533	ARUBA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+540	NUEVA CALEDONIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+548	VANUATU	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+554	NUEVA ZELANDA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+558	NICARAGUA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+562	NÍGER	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+566	NIGERIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+570	NIUE	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+574	ISLAS NORKFOLK	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+578	NORUEGA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+583	MICRONESIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+584	ISLAS MARSHALL	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+585	ISLAS PALAOS	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+586	PAKISTÁN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+591	PANAMÁ	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+598	PAPÚA NUEVA GUINEA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+600	PARAGUAY	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+604	PERÚ	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+608	FILIPINAS	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+612	ISLAS PITCAIRN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+616	POLONIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+620	PORTUGAL	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+624	GUINEA-BISSAU	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+626	TIMOR-LESTE	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+630	PUERTO RICO	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+634	QATAR	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+638	REUNIÓN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+642	RUMANÍA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+643	RUSIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+646	RUANDA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+652	SAN BARTOLOMÉ	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+654	SANTA ELENA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+659	SAN CRISTÓBAL Y NIEVES	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+660	ANGUILA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+662	SANTA LUCÍA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+666	SAN PEDRO Y MIQUELÓN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+670	SAN VICENTE Y LAS GRANADINAS	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+674	SAN MARINO	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+678	SANTO TOMÉ Y PRÍNCIPE	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+682	ARABIA SAUDITA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+686	SENEGAL	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+688	SERBIA Y MONTENEGRO	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+690	SEYCHELLES	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+694	SIERRA LEONA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+702	SINGAPUR	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+703	ESLOVAQUIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+704	VIETNAM	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+705	ESLOVENIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+706	SOMALIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+710	SUDÁFRICA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+724	ESPAÑA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+732	SAHARA OCCIDENTAL	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+736	SUDÁN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+740	SURINAM	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+744	ISLAS SVALBARD Y JAN MAYEN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+748	SUAZILANDIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+752	SUECIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+756	SUIZA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+760	SIRIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+762	TAYIKISTÁN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+764	TAILANDIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+768	TOGO	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+772	TOKELAU	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+776	TONGA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+780	TRINIDAD Y TOBAGO	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+784	EMIRATOS ÁRABES UNIDOS	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+788	TÚNEZ	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+792	TURQUÍA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+795	TURKMENISTÁN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+796	ISLAS TURCAS Y CAICOS	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+798	TUVALU	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+800	UGANDA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+804	UCRANIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+807	MACEDONIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+818	EGIPTO	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+826	REINO UNIDO	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+831	GUERNSEY	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+832	JERSEY	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+833	ISLA DE MAN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+834	TANZANIA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+840	ESTADOS UNIDOS DE AMÉRICA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+850	ISLAS VÍRGENES DE LOS ESTADOS UNIDOS DE AMÉRICA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+854	BURKINA FASO	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+858	URUGUAY	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+860	UZBEKISTÁN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+862	VENEZUELA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+876	WALLIS Y FUTUNA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+882	SAMOA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+887	YEMEN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
 \.
 
 
@@ -2027,11 +2068,11 @@ COPY pais (id_pais, nombre_pais, created_at, updated_at) FROM stdin;
 -- Data for Name: permisos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY permisos (id_permiso, nom_permiso, det_permiso, cod_permiso, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
-15	R	R representa read, tiene permisos nivel 1 y puede solo visualizar.	1	\N	\N	2018-02-20 21:41:31	2018-02-20 21:41:31
-16	U	U representa update, tiene permisos nivel 3 y puede visualizar, crear y editar.	3	\N	\N	2018-02-20 21:42:05	2018-02-20 21:42:05
-17	D	D representa delete, tiene permisos nivel 4 y puede visualizar, crear, editar y hasta eliminar.	4	\N	\N	2018-02-20 21:42:31	2018-02-20 21:42:31
-14	C	C representa create, tiene permisos nivel 2 y puede crear y visualizar.	2	\N	\N	2018-02-20 21:41:09	2018-02-22 16:59:02
+COPY permisos (id_permiso, nom_permiso, det_permiso, cod_permiso, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+15	R	R representa read, tiene permisos nivel 1 y puede solo visualizar.	1	\N	\N	2018-02-20 21:41:31	2018-02-20 21:41:31	\N
+16	U	U representa update, tiene permisos nivel 3 y puede visualizar, crear y editar.	3	\N	\N	2018-02-20 21:42:05	2018-02-20 21:42:05	\N
+17	D	D representa delete, tiene permisos nivel 4 y puede visualizar, crear, editar y hasta eliminar.	4	\N	\N	2018-02-20 21:42:31	2018-02-20 21:42:31	\N
+14	C	C representa create, tiene permisos nivel 2 y puede crear y visualizar.	2	\N	\N	2018-02-20 21:41:09	2018-02-22 16:59:02	\N
 \.
 
 
@@ -2039,22 +2080,22 @@ COPY permisos (id_permiso, nom_permiso, det_permiso, cod_permiso, id_usuario_reg
 -- Data for Name: region; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY region (id_region, nombre_region, alias, orden, created_at, updated_at) FROM stdin;
-1	De Tarapacá	I	2	2017-10-31 11:06:00	2017-10-31 11:06:00
-2	De Antofagasta	II	3	2017-10-31 11:06:00	2017-10-31 11:06:00
-3	De Atacama	III	4	2017-10-31 11:06:00	2017-10-31 11:06:00
-4	De Coquimbo	IV	5	2017-10-31 11:06:00	2017-10-31 11:06:00
-5	De Valparaíso	V	6	2017-10-31 11:06:00	2017-10-31 11:06:00
-6	Del Libertador B. O´Higgins	VI	8	2017-10-31 11:06:00	2017-10-31 11:06:00
-7	Del Maule	VII	9	2017-10-31 11:06:00	2017-10-31 11:06:00
-8	Del Biobío	VIII	10	2017-10-31 11:06:00	2017-10-31 11:06:00
-9	De La Araucanía	IX	11	2017-10-31 11:06:00	2017-10-31 11:06:00
-10	De Los Lagos	X	13	2017-10-31 11:06:00	2017-10-31 11:06:00
-11	De Aisén del Gral.C.Ibañez del Campo	XI	14	2017-10-31 11:06:00	2017-10-31 11:06:00
-12	De Magallanes  y de La Antártica chilena	XII	15	2017-10-31 11:06:00	2017-10-31 11:06:00
-13	Metropolitana De Santiago	RM	7	2017-10-31 11:06:00	2017-10-31 11:06:00
-14	De Los Rios	XIV	12	2017-10-31 11:06:00	2017-10-31 11:06:00
-15	De Arica y Parinacota	XV	1	2017-10-31 11:06:00	2017-10-31 11:06:00
+COPY region (id_region, nombre_region, alias, orden, created_at, updated_at, deleted_at) FROM stdin;
+1	De Tarapacá	I	2	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+2	De Antofagasta	II	3	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+3	De Atacama	III	4	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+4	De Coquimbo	IV	5	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5	De Valparaíso	V	6	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6	Del Libertador B. O´Higgins	VI	8	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7	Del Maule	VII	9	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8	Del Biobío	VIII	10	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9	De La Araucanía	IX	11	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10	De Los Lagos	X	13	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+11	De Aisén del Gral.C.Ibañez del Campo	XI	14	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+12	De Magallanes  y de La Antártica chilena	XII	15	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13	Metropolitana De Santiago	RM	7	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+14	De Los Rios	XIV	12	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+15	De Arica y Parinacota	XV	1	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
 \.
 
 
@@ -2062,10 +2103,10 @@ COPY region (id_region, nombre_region, alias, orden, created_at, updated_at) FRO
 -- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY roles (id_role, nom_role, det_role, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
-55	Nivel 3	Nivel 3	\N	\N	2018-02-23 23:00:17	2018-02-25 03:13:24
-56	Role Enrolable	Role remain	\N	\N	2018-02-24 01:00:09	2018-02-25 16:14:37
-57	57 sdfsdf	dsfsdfsd\nfsad\n sdfda d\n ff sd f\ndsf \nads f\nsdf\n asd\nfsd \nfsda	\N	\N	2018-02-25 02:17:05	2018-02-25 16:14:56
+COPY roles (id_role, nom_role, det_role, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+55	Nivel 3	Nivel 3	\N	\N	2018-02-23 23:00:17	2018-02-25 03:13:24	\N
+56	Role Enrolable	Role remain	\N	\N	2018-02-24 01:00:09	2018-02-25 16:14:37	\N
+57	57 sdfsdf	dsfsdfsd\nfsad\n sdfda d\n ff sd f\ndsf \nads f\nsdf\n asd\nfsd \nfsda	\N	\N	2018-02-25 02:17:05	2018-02-25 16:14:56	\N
 \.
 
 
@@ -2073,54 +2114,54 @@ COPY roles (id_role, nom_role, det_role, id_usuario_registra, id_usuario_modific
 -- Data for Name: roles_permisos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY roles_permisos (id_role_permiso, id_role, id_permiso, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
-10	11	14	\N	\N	2018-02-22 14:08:23	2018-02-22 14:08:23
-11	12	14	\N	\N	2018-02-22 14:08:28	2018-02-22 14:08:28
-12	13	14	\N	\N	2018-02-22 14:08:33	2018-02-22 14:08:33
-13	10	15	\N	\N	2018-02-22 14:08:40	2018-02-22 14:08:40
-14	10	16	\N	\N	2018-02-22 14:08:44	2018-02-22 14:08:44
-15	10	17	\N	\N	2018-02-22 14:08:48	2018-02-22 14:08:48
-16	10	14	\N	\N	2018-02-22 14:19:50	2018-02-22 14:19:50
-9	10	10	\N	\N	2018-02-22 14:06:15	2018-02-22 18:22:22
-17	19	17	\N	\N	2018-02-22 21:09:18	2018-02-22 21:09:18
-18	20	15	\N	\N	2018-02-22 21:17:22	2018-02-22 21:17:22
-19	21	16	\N	\N	2018-02-22 21:18:26	2018-02-22 21:18:26
-20	22	17	\N	\N	2018-02-22 21:23:26	2018-02-22 21:23:26
-21	23	15	\N	\N	2018-02-22 21:23:49	2018-02-22 21:23:49
-22	24	17	\N	\N	2018-02-22 21:25:02	2018-02-22 21:25:02
-23	25	17	\N	\N	2018-02-23 04:12:59	2018-02-23 04:12:59
-24	26	17	\N	\N	2018-02-23 04:13:18	2018-02-23 04:13:18
-25	27	15	\N	\N	2018-02-23 12:47:06	2018-02-23 12:47:06
-26	28	15	\N	\N	2018-02-23 14:07:27	2018-02-23 14:07:27
-27	29	15	\N	\N	2018-02-23 14:40:08	2018-02-23 14:40:08
-28	30	15	\N	\N	2018-02-23 14:58:07	2018-02-23 14:58:07
-29	31	15	\N	\N	2018-02-23 14:59:58	2018-02-23 14:59:58
-30	32	15	\N	\N	2018-02-23 15:01:16	2018-02-23 15:01:16
-31	33	15	\N	\N	2018-02-23 15:02:09	2018-02-23 15:02:09
-32	34	15	\N	\N	2018-02-23 15:03:23	2018-02-23 15:03:23
-33	35	16	\N	\N	2018-02-23 15:05:13	2018-02-23 15:05:13
-34	36	17	\N	\N	2018-02-23 15:05:28	2018-02-23 15:05:28
-35	37	15	\N	\N	2018-02-23 15:07:06	2018-02-23 15:07:06
-37	39	14	\N	\N	2018-02-23 15:13:35	2018-02-23 19:28:48
-38	40	15	\N	\N	2018-02-23 15:14:26	2018-02-23 19:29:14
-36	38	14	\N	\N	2018-02-23 15:08:30	2018-02-23 19:29:34
-39	41	17	\N	\N	2018-02-23 20:21:08	2018-02-23 20:21:08
-40	42	15	\N	\N	2018-02-23 20:21:21	2018-02-23 20:21:21
-41	43	17	\N	\N	2018-02-23 21:11:42	2018-02-23 21:11:42
-42	44	17	\N	\N	2018-02-23 21:25:52	2018-02-23 21:25:52
-43	45	17	\N	\N	2018-02-23 21:26:29	2018-02-23 21:26:29
-44	46	16	\N	\N	2018-02-23 21:29:32	2018-02-23 21:29:32
-45	47	15	\N	\N	2018-02-23 21:32:38	2018-02-23 21:32:38
-46	48	15	\N	\N	2018-02-23 21:33:53	2018-02-23 21:33:53
-47	49	15	\N	\N	2018-02-23 21:35:51	2018-02-23 21:35:51
-48	50	16	\N	\N	2018-02-23 21:36:12	2018-02-23 21:36:12
-49	51	15	\N	\N	2018-02-23 21:37:10	2018-02-23 21:37:10
-50	52	15	\N	\N	2018-02-23 21:38:13	2018-02-23 21:38:13
-51	53	15	\N	\N	2018-02-23 21:44:27	2018-02-23 21:44:27
-52	54	15	\N	\N	2018-02-23 21:48:38	2018-02-23 21:48:38
-53	55	16	\N	\N	2018-02-23 23:00:17	2018-02-25 01:16:13
-55	57	16	\N	\N	2018-02-25 02:17:05	2018-02-25 04:40:04
-54	56	16	\N	\N	2018-02-24 01:00:09	2018-02-25 16:14:15
+COPY roles_permisos (id_role_permiso, id_role, id_permiso, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+10	11	14	\N	\N	2018-02-22 14:08:23	2018-02-22 14:08:23	\N
+11	12	14	\N	\N	2018-02-22 14:08:28	2018-02-22 14:08:28	\N
+12	13	14	\N	\N	2018-02-22 14:08:33	2018-02-22 14:08:33	\N
+13	10	15	\N	\N	2018-02-22 14:08:40	2018-02-22 14:08:40	\N
+14	10	16	\N	\N	2018-02-22 14:08:44	2018-02-22 14:08:44	\N
+15	10	17	\N	\N	2018-02-22 14:08:48	2018-02-22 14:08:48	\N
+16	10	14	\N	\N	2018-02-22 14:19:50	2018-02-22 14:19:50	\N
+9	10	10	\N	\N	2018-02-22 14:06:15	2018-02-22 18:22:22	\N
+17	19	17	\N	\N	2018-02-22 21:09:18	2018-02-22 21:09:18	\N
+18	20	15	\N	\N	2018-02-22 21:17:22	2018-02-22 21:17:22	\N
+19	21	16	\N	\N	2018-02-22 21:18:26	2018-02-22 21:18:26	\N
+20	22	17	\N	\N	2018-02-22 21:23:26	2018-02-22 21:23:26	\N
+21	23	15	\N	\N	2018-02-22 21:23:49	2018-02-22 21:23:49	\N
+22	24	17	\N	\N	2018-02-22 21:25:02	2018-02-22 21:25:02	\N
+23	25	17	\N	\N	2018-02-23 04:12:59	2018-02-23 04:12:59	\N
+24	26	17	\N	\N	2018-02-23 04:13:18	2018-02-23 04:13:18	\N
+25	27	15	\N	\N	2018-02-23 12:47:06	2018-02-23 12:47:06	\N
+26	28	15	\N	\N	2018-02-23 14:07:27	2018-02-23 14:07:27	\N
+27	29	15	\N	\N	2018-02-23 14:40:08	2018-02-23 14:40:08	\N
+28	30	15	\N	\N	2018-02-23 14:58:07	2018-02-23 14:58:07	\N
+29	31	15	\N	\N	2018-02-23 14:59:58	2018-02-23 14:59:58	\N
+30	32	15	\N	\N	2018-02-23 15:01:16	2018-02-23 15:01:16	\N
+31	33	15	\N	\N	2018-02-23 15:02:09	2018-02-23 15:02:09	\N
+32	34	15	\N	\N	2018-02-23 15:03:23	2018-02-23 15:03:23	\N
+33	35	16	\N	\N	2018-02-23 15:05:13	2018-02-23 15:05:13	\N
+34	36	17	\N	\N	2018-02-23 15:05:28	2018-02-23 15:05:28	\N
+35	37	15	\N	\N	2018-02-23 15:07:06	2018-02-23 15:07:06	\N
+37	39	14	\N	\N	2018-02-23 15:13:35	2018-02-23 19:28:48	\N
+38	40	15	\N	\N	2018-02-23 15:14:26	2018-02-23 19:29:14	\N
+36	38	14	\N	\N	2018-02-23 15:08:30	2018-02-23 19:29:34	\N
+39	41	17	\N	\N	2018-02-23 20:21:08	2018-02-23 20:21:08	\N
+40	42	15	\N	\N	2018-02-23 20:21:21	2018-02-23 20:21:21	\N
+41	43	17	\N	\N	2018-02-23 21:11:42	2018-02-23 21:11:42	\N
+42	44	17	\N	\N	2018-02-23 21:25:52	2018-02-23 21:25:52	\N
+43	45	17	\N	\N	2018-02-23 21:26:29	2018-02-23 21:26:29	\N
+44	46	16	\N	\N	2018-02-23 21:29:32	2018-02-23 21:29:32	\N
+45	47	15	\N	\N	2018-02-23 21:32:38	2018-02-23 21:32:38	\N
+46	48	15	\N	\N	2018-02-23 21:33:53	2018-02-23 21:33:53	\N
+47	49	15	\N	\N	2018-02-23 21:35:51	2018-02-23 21:35:51	\N
+48	50	16	\N	\N	2018-02-23 21:36:12	2018-02-23 21:36:12	\N
+49	51	15	\N	\N	2018-02-23 21:37:10	2018-02-23 21:37:10	\N
+50	52	15	\N	\N	2018-02-23 21:38:13	2018-02-23 21:38:13	\N
+51	53	15	\N	\N	2018-02-23 21:44:27	2018-02-23 21:44:27	\N
+52	54	15	\N	\N	2018-02-23 21:48:38	2018-02-23 21:48:38	\N
+53	55	16	\N	\N	2018-02-23 23:00:17	2018-02-25 01:16:13	\N
+55	57	16	\N	\N	2018-02-25 02:17:05	2018-02-25 04:40:04	\N
+54	56	16	\N	\N	2018-02-24 01:00:09	2018-02-25 16:14:15	\N
 \.
 
 
@@ -2128,36 +2169,36 @@ COPY roles_permisos (id_role_permiso, id_role, id_permiso, id_usuario_registra, 
 -- Data for Name: servicio_salud; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY servicio_salud (id_servicio_salud, id_region, nombre_servicio_salud, orden, created_at, updated_at) FROM stdin;
-1	15	Arica	1	2017-10-31 11:06:00	2017-10-31 11:06:00
-2	1	Iquique	2	2017-10-31 11:06:00	2017-10-31 11:06:00
-3	2	Antofagasta	3	2017-10-31 11:06:00	2017-10-31 11:06:00
-4	3	Atacama	4	2017-10-31 11:06:00	2017-10-31 11:06:00
-5	4	Coquimbo	5	2017-10-31 11:06:00	2017-10-31 11:06:00
-6	5	Valparaíso San Antonio	6	2017-10-31 11:06:00	2017-10-31 11:06:00
-7	5	Viña del Mar Quillota	7	2017-10-31 11:06:00	2017-10-31 11:06:00
-8	5	Aconcagua	8	2017-10-31 11:06:00	2017-10-31 11:06:00
-9	13	Metropolitano Norte	9	2017-10-31 11:06:00	2017-10-31 11:06:00
-10	13	Metropolitano Occidente	10	2017-10-31 11:06:00	2017-10-31 11:06:00
-11	13	Metropolitano Central	11	2017-10-31 11:06:00	2017-10-31 11:06:00
-12	13	Metropolitano Oriente	12	2017-10-31 11:06:00	2017-10-31 11:06:00
-13	13	Metropolitano Sur	13	2017-10-31 11:06:00	2017-10-31 11:06:00
-14	13	Metropolitano Sur Oriente	14	2017-10-31 11:06:00	2017-10-31 11:06:00
-15	6	Del Libertador B. O´Higgins	15	2017-10-31 11:06:00	2017-10-31 11:06:00
-16	7	Del Maule	16	2017-10-31 11:06:00	2017-10-31 11:06:00
-17	8	Ñuble	17	2017-10-31 11:06:00	2017-10-31 11:06:00
-18	8	Concepción	18	2017-10-31 11:06:00	2017-10-31 11:06:00
-19	8	Talcahuano	20	2017-10-31 11:06:00	2017-10-31 11:06:00
-20	8	Biobío	21	2017-10-31 11:06:00	2017-10-31 11:06:00
-21	9	Araucanía Sur	23	2017-10-31 11:06:00	2017-10-31 11:06:00
-22	14	Valdivia	24	2017-10-31 11:06:00	2017-10-31 11:06:00
-23	10	Osorno	25	2017-10-31 11:06:00	2017-10-31 11:06:00
-24	10	Del Reloncaví	26	2017-10-31 11:06:00	2017-10-31 11:06:00
-25	11	Aisén	28	2017-10-31 11:06:00	2017-10-31 11:06:00
-26	12	Magallanes	29	2017-10-31 11:06:00	2017-10-31 11:06:00
-28	8	Arauco	19	2017-10-31 11:06:00	2017-10-31 11:06:00
-29	9	Araucanía Norte	22	2017-10-31 11:06:00	2017-10-31 11:06:00
-33	10	Chiloé	27	2017-10-31 11:06:00	2017-10-31 11:06:00
+COPY servicio_salud (id_servicio_salud, id_region, nombre_servicio_salud, orden, created_at, updated_at, deleted_at) FROM stdin;
+1	15	Arica	1	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+2	1	Iquique	2	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+3	2	Antofagasta	3	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+4	3	Atacama	4	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+5	4	Coquimbo	5	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+6	5	Valparaíso San Antonio	6	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+7	5	Viña del Mar Quillota	7	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+8	5	Aconcagua	8	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+9	13	Metropolitano Norte	9	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+10	13	Metropolitano Occidente	10	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+11	13	Metropolitano Central	11	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+12	13	Metropolitano Oriente	12	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+13	13	Metropolitano Sur	13	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+14	13	Metropolitano Sur Oriente	14	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+15	6	Del Libertador B. O´Higgins	15	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+16	7	Del Maule	16	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+17	8	Ñuble	17	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+18	8	Concepción	18	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+19	8	Talcahuano	20	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+20	8	Biobío	21	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+21	9	Araucanía Sur	23	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+22	14	Valdivia	24	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+23	10	Osorno	25	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+24	10	Del Reloncaví	26	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+25	11	Aisén	28	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+26	12	Magallanes	29	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+28	8	Arauco	19	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+29	9	Araucanía Norte	22	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+33	10	Chiloé	27	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
 \.
 
 
@@ -2165,7 +2206,7 @@ COPY servicio_salud (id_servicio_salud, id_region, nombre_servicio_salud, orden,
 -- Data for Name: servicios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY servicios (id_servicio, id_actividad, id_usuario, nom_servicio, det_servicio, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY servicios (id_servicio, id_actividad, id_usuario, nom_servicio, det_servicio, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -2173,7 +2214,7 @@ COPY servicios (id_servicio, id_actividad, id_usuario, nom_servicio, det_servici
 -- Data for Name: servicios_estados; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY servicios_estados (id_servicio_estado, id_servicio, id_estado, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY servicios_estados (id_servicio_estado, id_servicio, id_estado, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -2181,7 +2222,7 @@ COPY servicios_estados (id_servicio_estado, id_servicio, id_estado, id_usuario_r
 -- Data for Name: servicios_permisos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY servicios_permisos (id_servicio_permiso, id_servicio, id_permiso, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY servicios_permisos (id_servicio_permiso, id_servicio, id_permiso, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -2189,7 +2230,7 @@ COPY servicios_permisos (id_servicio_permiso, id_servicio, id_permiso, id_usuari
 -- Data for Name: servicios_tags; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY servicios_tags (id_servicio_tag, id_servicio, id_tag, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY servicios_tags (id_servicio_tag, id_servicio, id_tag, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -2197,7 +2238,7 @@ COPY servicios_tags (id_servicio_tag, id_servicio, id_tag, id_usuario_registra, 
 -- Data for Name: servidor_aplicaciones; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY servidor_aplicaciones (id_servidor_aplicacion, id_datacentro, id_sistema_operativo, id_dominio, nom_servidor, ip_servidor, url_servidor, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY servidor_aplicaciones (id_servidor_aplicacion, id_datacentro, id_sistema_operativo, id_dominio, nom_servidor, ip_servidor, url_servidor, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -2205,7 +2246,7 @@ COPY servidor_aplicaciones (id_servidor_aplicacion, id_datacentro, id_sistema_op
 -- Data for Name: servidores_accesos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY servidores_accesos (id_servidor_acceso, id_aplicacion, id_servidor, username, password, tipo_acceso, puerto_acceso, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY servidores_accesos (id_servidor_acceso, id_aplicacion, id_servidor, username, password, tipo_acceso, puerto_acceso, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -2213,7 +2254,7 @@ COPY servidores_accesos (id_servidor_acceso, id_aplicacion, id_servidor, usernam
 -- Data for Name: sistemas_operativos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY sistemas_operativos (id_sistema_operativo, arquitectura, nom_so, det_so, vers_so, licencia_so, det_licencia, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY sistemas_operativos (id_sistema_operativo, arquitectura, nom_so, det_so, vers_so, licencia_so, det_licencia, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -2221,7 +2262,7 @@ COPY sistemas_operativos (id_sistema_operativo, arquitectura, nom_so, det_so, ve
 -- Data for Name: tags; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY tags (id_tag, nom_tag, det_tag, meta_tag, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY tags (id_tag, nom_tag, det_tag, meta_tag, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -2229,7 +2270,7 @@ COPY tags (id_tag, nom_tag, det_tag, meta_tag, id_usuario_registra, id_usuario_m
 -- Data for Name: tecnologia_desarrollo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY tecnologia_desarrollo (id_tecnologia_desarrollo, id_tipo_tecnologia, nom_tecnologia, det_tecnologia, vers_tecnologia, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY tecnologia_desarrollo (id_tecnologia_desarrollo, id_tipo_tecnologia, nom_tecnologia, det_tecnologia, vers_tecnologia, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -2237,7 +2278,7 @@ COPY tecnologia_desarrollo (id_tecnologia_desarrollo, id_tipo_tecnologia, nom_te
 -- Data for Name: tipos_aplicaciones; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY tipos_aplicaciones (id_tipo_aplicacion, nom_tipo_aplicacion, det_tipo_aplicacion, cod_tipo_aplicacion, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY tipos_aplicaciones (id_tipo_aplicacion, nom_tipo_aplicacion, det_tipo_aplicacion, cod_tipo_aplicacion, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -2245,7 +2286,7 @@ COPY tipos_aplicaciones (id_tipo_aplicacion, nom_tipo_aplicacion, det_tipo_aplic
 -- Data for Name: tipos_tecnologias_desarrollo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY tipos_tecnologias_desarrollo (id_tipo_tecnologia_desarrollo, nom_tipo, det_tipo, cod_tipo, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY tipos_tecnologias_desarrollo (id_tipo_tecnologia_desarrollo, nom_tipo, det_tipo, cod_tipo, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -2253,8 +2294,8 @@ COPY tipos_tecnologias_desarrollo (id_tipo_tecnologia_desarrollo, nom_tipo, det_
 -- Data for Name: usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY usuarios (id_usuario, nom_usuario, nom_completo, ape_paterno, ape_materno, username, email, password, remember_token, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
-1	Esteban	\N	\N	\N	\N	esteban.ramos@minsal.cl	$2y$10$56R..xvCC1igB5V0842UI.f2B5V2p7lopByoVEjig0R2BSgRosuEu	u1hyc9uMc0xwu2MMzCIDgbgVwLK8P1VFWFNPxQ1fUTe0uDlLKghr7cLI7dQ5	\N	\N	2018-02-19 18:08:14	2018-02-19 18:08:14
+COPY usuarios (id_usuario, nom_usuario, nom_completo, ape_paterno, ape_materno, username, email, password, remember_token, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+1	Esteban	\N	\N	\N	\N	esteban.ramos@minsal.cl	$2y$10$56R..xvCC1igB5V0842UI.f2B5V2p7lopByoVEjig0R2BSgRosuEu	u1hyc9uMc0xwu2MMzCIDgbgVwLK8P1VFWFNPxQ1fUTe0uDlLKghr7cLI7dQ5	\N	\N	2018-02-19 18:08:14	2018-02-19 18:08:14	\N
 \.
 
 
@@ -2262,7 +2303,7 @@ COPY usuarios (id_usuario, nom_usuario, nom_completo, ape_paterno, ape_materno, 
 -- Data for Name: usuarios_bitacora_servicios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY usuarios_bitacora_servicios (id_usuario_bitacora_servicio, id_usuario, id_servicio, id_actividad, asunto, det_bitacora, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY usuarios_bitacora_servicios (id_usuario_bitacora_servicio, id_usuario, id_servicio, id_actividad, asunto, det_bitacora, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -2270,7 +2311,7 @@ COPY usuarios_bitacora_servicios (id_usuario_bitacora_servicio, id_usuario, id_s
 -- Data for Name: usuarios_cargos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY usuarios_cargos (id_usuario_cargo, id_usuario, id_cargo, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY usuarios_cargos (id_usuario_cargo, id_usuario, id_cargo, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -2278,7 +2319,7 @@ COPY usuarios_cargos (id_usuario_cargo, id_usuario, id_cargo, id_usuario_registr
 -- Data for Name: usuarios_estados; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY usuarios_estados (id_usuario_estado, id_estado, id_usuario, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY usuarios_estados (id_usuario_estado, id_estado, id_usuario, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -2286,7 +2327,7 @@ COPY usuarios_estados (id_usuario_estado, id_estado, id_usuario, id_usuario_regi
 -- Data for Name: usuarios_roles; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY usuarios_roles (id_usuario_role, id_role, id_usuario, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY usuarios_roles (id_usuario_role, id_role, id_usuario, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
@@ -2294,7 +2335,7 @@ COPY usuarios_roles (id_usuario_role, id_role, id_usuario, id_usuario_registra, 
 -- Data for Name: usuarios_servicios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY usuarios_servicios (id_usuario_servicio, id_usuario, id_servicio, id_usuario_registra, id_usuario_modifica, created_at, updated_at) FROM stdin;
+COPY usuarios_servicios (id_usuario_servicio, id_usuario, id_servicio, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
