@@ -37,5 +37,5 @@ class UsuarioEstado extends Model {
    public function usuario_modifica() {
       return $this->belongsTo('App\User', 'id_usuario_modifica');
    }
-   
+
 }
