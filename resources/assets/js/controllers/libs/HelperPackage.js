@@ -202,7 +202,6 @@ export const inyeccion_funciones_compartidas = {
       },
       ocultar_modal: function (nom_modal) { this.$modal.hide(nom_modal); },
       // function to order lists
-      ordenar_lista: function (columna) { this.roles = _.orderBy(this.roles, columna, this.orden_lista); },
 
 
 

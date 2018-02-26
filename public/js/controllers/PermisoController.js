@@ -65,6 +65,116 @@
 /************************************************************************/
 /******/ ({
 
+/***/ 11:
+/***/ (function(module, exports) {
+
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file.
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier /* server only */
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = injectStyles
+  }
+
+  if (hook) {
+    var functional = options.functional
+    var existing = functional
+      ? options.render
+      : options.beforeCreate
+
+    if (!functional) {
+      // inject component registration as beforeCreate hook
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    } else {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return existing(h, context)
+      }
+    }
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+
 /***/ 38:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2310,11 +2420,9 @@ var inyeccion_funciones_compartidas = {
       },
       ocultar_modal: function ocultar_modal(nom_modal) {
          this.$modal.hide(nom_modal);
-      },
-      // function to order lists
-      ordenar_lista: function ordenar_lista(columna) {
-         this.roles = _.orderBy(this.roles, columna, this.orden_lista);
       }
+      // function to order lists
+
 
    }
 
@@ -3255,6 +3363,196 @@ var inyeccion_funciones_compartidas = {
 
 /***/ }),
 
+/***/ 41:
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(e,t){ true?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["v-clipboard"]=t():e["v-clipboard"]=t()}(this,function(){return function(e){function t(o){if(n[o])return n[o].exports;var r=n[o]={i:o,l:!1,exports:{}};return e[o].call(r.exports,r,r.exports,t),r.l=!0,r.exports}var n={};return t.m=e,t.c=n,t.i=function(e){return e},t.d=function(e,n,o){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:o})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="/dist/",t(t.s=0)}([function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o=function(e){var t=document.createElement("textarea"),n=!1;t.value=e,t.style.cssText="position:fixed;pointer-events:none;z-index:-9999;opacity:0;",document.body.appendChild(t),t.select();try{n=document.execCommand("copy")}catch(e){}return document.body.removeChild(t),n};t.default={install:function(e){e.prototype.$clipboard=o,e.directive("clipboard",{bind:function(e,t,n){e.addEventListener("click",function(e){if(t.hasOwnProperty("value")){var r=t.value,c={value:r,srcEvent:e},i=n.context;o(r)?i.$emit("copy",c):i.$emit("copyError",c)}})}})}}}])});
+//# sourceMappingURL=index.min.js.map
+
+/***/ }),
+
+/***/ 42:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(11)
+/* script */
+var __vue_script__ = __webpack_require__(43)
+/* template */
+var __vue_template__ = __webpack_require__(44)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/DownloadExcel.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-795cc6e8", Component.options)
+  } else {
+    hotAPI.reload("data-v-795cc6e8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 43:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+   name: 'download-excel',
+   props: {
+      'data': {
+         type: Array,
+         required: true
+      },
+      'fields': {
+         type: Object,
+         required: true
+      },
+      'name': {
+         type: String,
+         default: "data.xls"
+      }
+   },
+   //template: ``,
+   data: function data() {
+      return {
+         animate: true,
+         animation: ''
+      };
+   },
+   created: function created() {},
+   computed: {
+      id_name: function id_name() {
+         var now = new Date().getTime();
+         return 'export_' + now;
+      }
+   },
+   methods: {
+      emitXmlHeader: function emitXmlHeader() {
+         var headerRow = '<ss:Row>\n';
+         for (var colName in this.fields) {
+            headerRow += '  <ss:Cell>\n';
+            headerRow += '    <ss:Data ss:Type="String">';
+            headerRow += colName + '</ss:Data>\n';
+            headerRow += '  </ss:Cell>\n';
+         }
+         headerRow += '</ss:Row>\n';
+         return '<?xml version="1.0"?>\n' + '<ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">\n' + '<ss:Worksheet ss:Name="Sheet1">\n' + '<ss:Table>\n\n' + headerRow;
+      },
+
+      emitXmlFooter: function emitXmlFooter() {
+         return '\n</ss:Table>\n' + '</ss:Worksheet>\n' + '</ss:Workbook>\n';
+      },
+
+      jsonToSsXml: function jsonToSsXml(jsonObject) {
+         var row;
+         var col;
+         var xml;
+         //console.log(jsonObject);
+         var data = (typeof jsonObject === 'undefined' ? 'undefined' : _typeof(jsonObject)) != "object" ? JSON.parse(jsonObject) : jsonObject;
+
+         xml = this.emitXmlHeader();
+
+         for (row = 0; row < data.length; row++) {
+            xml += '<ss:Row>\n';
+
+            for (col in data[row]) {
+               xml += '  <ss:Cell>\n';
+               xml += '    <ss:Data ss:Type="' + this.fields[col] + '">';
+               xml += String(data[row][col]).replace(/[^a-zA-Z0-9\s\-ñíéáóú\#\,\.\;\:ÑÍÉÓÁÚ@_]/g, '') + '</ss:Data>\n';
+               xml += '  </ss:Cell>\n';
+            }
+
+            xml += '</ss:Row>\n';
+         }
+
+         xml += this.emitXmlFooter();
+         return xml;
+      },
+      generate_excel: function generate_excel(content, filename, contentType) {
+         var blob = new Blob([this.jsonToSsXml(this.data)], {
+            'type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+         });
+
+         var a = document.getElementById(this.id_name);
+         a.href = window.URL.createObjectURL(blob);
+         a.download = this.name;
+      }
+   }
+});
+
+/***/ }),
+
+/***/ 44:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "a",
+    {
+      attrs: { href: "#", id: _vm.id_name },
+      on: { click: _vm.generate_excel }
+    },
+    [_vm._t("default", [_vm._v("\n      Download Excel\n   ")])],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-795cc6e8", module.exports)
+  }
+}
+
+/***/ }),
+
 /***/ 61:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3268,23 +3566,40 @@ module.exports = __webpack_require__(62);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_js_modal__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_js_modal__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sweetalert2__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__libs_HelperPackage__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert2__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_v_clipboard__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_js_modal___default.a);
 
 
 //Se importan todas las librerias compartidas y se cargan en el objeto instanciado como alias -> hp
 
 
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default.a, { dialog: true });
+
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
+
+//import { DownloadExcel } from '../components/DownloadExcel.vue';
+//Vue.component('download-excel', DownloadExcel);
+Vue.component('download-excel', __webpack_require__(42));
+
 var PermisoController = new Vue({
    el: '#PermisoController',
    data: function data() {
       return {
+         'nombre_tabla': 'permisos', //nombre tabla o de ruta
+         'nombre_ruta': 'permisos', //nombre tabla o de ruta
+         'nombre_model': 'permiso',
+         'nombre_detalle': 'Permisos',
+         'nombre_controller': 'PermisoController',
+
          'filtro_head': null,
          'table': [{
             'value1': 'valuea1',
@@ -3325,77 +3640,290 @@ var PermisoController = new Vue({
          }],
          'permiso': {
             'nom_permiso': null,
-            'det_permiso': null,
-            'cod_permiso': null
+            'det_permiso': null
          },
          'permiso_limpio': {
             'nom_permiso': null,
-            'det_permiso': null,
-            'cod_permiso': null
+            'det_permiso': null
          },
          'permisos': [],
+         'datos_excel': [],
+
+         'campos_formularios': [],
+         'errores_campos': [],
 
          //Variables para validar si se está creando o editando
          'modal_crear_activo': false,
-         'modal_actualizar_activo': false
+         'modal_actualizar_activo': false,
+
+         //Estas var se deben conservar para todos los controllers por que se ejecutan para el modal crear (blanquea)
+         'lista_actualizar_activo': false,
+
+         'id_en_edicion': null,
+         'dejar_de_editar_contador': 0,
+
+         'orden_lista': 'asc',
+
+         'tabla_campos': {
+            'id_permiso': false,
+            'nom_permiso': true,
+            'det_permiso': false,
+            'id_usuario_registra': false,
+            'id_usuario_modifica': false,
+            'created_at': true,
+            'updated_at': false,
+            'deleted_at': false
+         },
+
+         'tabla_labels': {
+            'id_permiso': 'Id permiso',
+            'nom_permiso': 'Nombre del permiso',
+            'det_permiso': 'Detalle del permiso',
+            'id_usuario_registra': 'Usuario registra',
+            'id_usuario_modifica': 'Usuario Modifica',
+            'created_at': 'Creado en',
+            'updated_at': 'Actualizado en',
+            'deleted_at': 'Eliminado en'
+         },
+
+         'excel_json_campos': {
+            'id_permiso': 'String',
+            'nom_permiso': 'String',
+            'det_permiso': 'String',
+            'id_usuario_registra': 'String',
+            'id_usuario_modifica': 'String',
+            'created_at': 'String',
+            'updated_at': 'String',
+            'deleted_at': 'String'
+         },
+
+         'excel_json_datos': [],
+         'excel_data_contador': 0,
+
+         'append_to_json_excel': {}
+
       };
    },
 
    computed: {},
-   watch: {},
-   components: {},
+   watch: {
+      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el permiso
+      // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
+      id_en_edicion: function id_en_edicion(_id_en_edicion) {
+         if (_id_en_edicion == null) {
+            this.permiso = {
+               'nom_permiso': null,
+               'det_permiso': null
+            };
+         } else {
+            this.permiso = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.permisos, this.nombre_model);
+         }
+      },
+      //permisos se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
+      permisos: function permisos(_permisos) {
+         var self = this;
+         this.excel_json_datos = [];
+         return _permisos.map(function (permiso, index) {
+            return self.excel_json_datos.push({
+               'id_permiso': permiso.id_permiso || '-',
+               'nom_permiso': permiso.nom_permiso || '-',
+               'det_permiso': permiso.det_permiso || '-',
+               'id_usuario_registra': permiso.id_usuario_registra || '-',
+               'id_usuario_modifica': permiso.id_usuario_modifica || '-',
+               'created_at': permiso.created_at || '-',
+               'updated_at': permiso.updated_at || '-',
+               'deleted_at': permiso.deleted_at || '-'
+            });
+         });
+      }
+   },
+   components: {
+      //'download-excel': DownloadExcel,
+   },
    created: function created() {
       this.inicializar();
+
+      $(document).ready(function () {
+         $('[data-toggle="tooltip"]').tooltip();
+      });
+
+      /*
+       $(document).ready(function () {
+       //Handle al recargar pagina
+       window.onbeforeunload = function(e){
+       return "Estás seguro que deseas cerrar la ventana?";
+       };
+       window.onunload = function(e){
+       return "Cierre de la ventana";
+       };
+        });
+       */
    },
 
    ready: {},
    filters: {},
-   mixins: [__WEBPACK_IMPORTED_MODULE_2__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
+   mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
    methods: {
+
       inicializar: function inicializar() {
          var _this = this;
 
          this.$http.get('/permisos').then(function (response) {
             // success callback
             _this.permisos = response.body.permisos || null;
+            _this.datos_excel = response.body.permisos || null;
+            _this.permiso = {
+               'nom_permiso': null,
+               'det_permiso': null
+            };
          }, function (response) {
             // error callback
             _this.checkear_estado_respuesta_http(response.status);
          });
       },
 
-      guardar: function guardar() {
+      editar: function editar(id_permiso) {
+         this.lista_actualizar_activo = true;
+         this.id_en_edicion = id_permiso;
+
+         //id_objeto + array de objetos + nombre del model en lower case
+         this.permiso = null;
+         this.permiso = this.buscar_en_array_por_modelo_e_id(id_permiso, this.permisos, this.nombre_model);
+      },
+
+      guardar_editado: function guardar_editado() {
          var _this2 = this;
 
-         var self = this;
-         this.$validator.validateAll().then(function (resultado) {
+         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-            if (resultado === true) {
+         this.$http.put('/' + this.nombre_ruta + '/' + this.permiso.id_permiso, this.permiso).then(function (response) {
+            // success callback
+
+            if (response.status == 200) {
+               if (!_this2.es_null(response.body.permiso)) {
+                  _this2.lista_actualizar_activo = false;
+                  _this2.id_en_edicion = null;
+               }
+            } else {
+               _this2.checkear_estado_respuesta_http(response.status);
+               return false;
+            }
+
+            if (_this2.mostrar_notificaciones(response) == true) {
+
+               //Aqui que pregunte si el modal está activo para que lo cierre
+               if (_this2.modal_actualizar_activo == true) {
+                  _this2.ocultar_modal('actualizar');
+                  _this2.modal_actualizar_activo = false;
+               }
+
+               _this2.lista_actualizar_activo = false;
+               _this2.id_en_edicion = null;
+
+               //Recargar la lista
+               _this2.inicializar();
+            } else {
+               _this2.dejar_de_editar_contador++;
+            }
+         }, function (response) {
+            // error callback
+            _this2.checkear_estado_respuesta_http(response.status);
+         });
+
+         return;
+      },
+
+      eliminar: function eliminar(id_permiso) {
+         var _swal,
+             _this3 = this;
+
+         __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()((_swal = {
+            title: "¿Estás seguro/a?",
+            text: "¿Deseas confirmar la eliminación de este registro?",
+            type: "warning",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            confirmButtonColor: '#DD6B55',
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: 'Si, eliminar!'
+         }, _defineProperty(_swal, 'confirmButtonClass', "btn-warning"), _defineProperty(_swal, 'cancelButtonText', 'No, mantener.'), _swal)).then(function (result) {
+            if (result.value) {
+               //Se adjunta el token
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-               var formData = new FormData();
-               formData.append('nom_permiso', self.permiso.nom_permiso);
-               formData.append('det_permiso', self.permiso.det_permiso);
-               formData.append('cod_permiso', self.permiso.cod_permiso);
 
-               _this2.$http.post('/permisos', formData).then(function (response) {
-                  // success callback
-
+               _this3.$http.delete('/' + _this3.nombre_ruta + '/' + id_permiso).then(function (response) {
                   if (response.status == 200) {
-                     self.permiso = response.data.permiso;
-                     self.permisos.push(self.permiso);
-                     self.permiso = null;
-                     self.permiso = self.permiso_limpio;;
-
-                     self.ocultar_modal('crear');
+                     _this3.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
                   } else {
-                     self.checkear_estado_respuesta_http(response.status);
+                     _this3.checkear_estado_respuesta_http(response.status);
+                     return false;
+                  }
+
+                  if (_this3.mostrar_notificaciones(response) == true) {
+                     //Aqui que pregunte si el modal está activo para que lo cierre
+                     if (_this3.modal_actualizar_activo == true) {
+                        _this3.ocultar_modal('actualizar');
+                        _this3.modal_actualizar_activo = false;
+                     }
+                     _this3.lista_actualizar_activo = false;
+                     _this3.id_en_edicion = null;
+
+                     //Recargar la lista
+                     _this3.inicializar();
                   }
                }, function (response) {
                   // error callback
-                  self.checkear_estado_respuesta_http(response.status);
+                  _this3.checkear_estado_respuesta_http(response.status);
                });
+            } else if (result.dismiss === __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default.a.DismissReason.cancel) {
+               _this3.auto_alerta_corta("Cancelado", "Se ha cancelado la eliminación", "success");
             }
          });
+      },
+
+      guardar: function guardar() {
+         var _this4 = this;
+
+         //Ejecuta validacion sobre los campos con validaciones
+         if (this.validar_campos() == false) {
+            return;
+         }
+         //Se adjunta el token
+         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+         //Instancia nuevo form data
+         var formData = new FormData();
+         //Conforma objeto paramétrico para solicitud http
+         formData.append('nom_permiso', this.permiso.nom_permiso || null);
+         formData.append('det_permiso', this.permiso.det_permiso || null);
+         formData.append('id_permiso', this.permiso.id_permiso || null);
+
+         this.$http.post('/' + this.nombre_ruta, formData).then(function (response) {
+            // success callback
+
+            if (response.status == 200) {
+               _this4.inicializar();
+            } else {
+               _this4.checkear_estado_respuesta_http(response.status);
+               return false;
+            }
+
+            if (_this4.mostrar_notificaciones(response) == true) {
+               _this4.ocultar_modal('crear');
+               _this4.inicializar();
+
+               return;
+            }
+         }, function (response) {
+            // error callback
+            _this4.checkear_estado_respuesta_http(response.status);
+         });
+
+         return;
+      },
+
+      ordenar_lista: function ordenar_lista(columna) {
+         this.permisos = _.orderBy(this.permisos, columna, this.orden_lista);
       }
 
    }

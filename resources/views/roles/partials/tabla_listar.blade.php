@@ -9,7 +9,7 @@
             </a>
          </th>
          <th>
-            <a href="#!" class="btn btn-light" @click.prevent="cambiar_orden_lista('id_role')">
+            <a href="#!" class="btn btn-light" @click.prevent="cambiar_orden_lista(`id_${nombre_model}`)">
                <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
                Acción
             </a>
@@ -39,7 +39,7 @@
             </td>
             <td :colspan="filterBy(tabla_campos, true).length-1">
                <dl class="dl-vertical" style="overflow-y: auto;max-height: 450px;padding-bottom: 50px;">
-                  @include('roles.partials.formulario_campos')
+                  @include("$nombre_tabla.partials.formulario_campos")
                </dl>
             </td>
          </template>

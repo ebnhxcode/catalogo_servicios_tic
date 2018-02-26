@@ -151,9 +151,10 @@ class RoleController extends Controller {
 
    public function index(Request $request) {
       if (!$request->wantsJson() && !$request->ajax()) {
-         return view('roles.main', [
+         return view("$this->nombre_tabla.main", [
             'nombre_modelo' => $this->nombre_modelo,
             'nombre_tabla' => $this->nombre_tabla,
+            'nombre_ruta' => $this->nombre_ruta,
             'nombre_detalle' => $this->nombre_detalle,
             'nombre_controller' => $this->nombre_controller,
          ]);
@@ -171,7 +172,7 @@ class RoleController extends Controller {
    public function store(Request $request) {
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario
       $this->validacion = Validator::make($request->all(), [
-         'nom_role' => 'regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|unique:roles|max:255',
+         'nom_role' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|unique:$this->nombre_tabla|max:255",
          'det_role' => 'required|max:1000',
          'id_permiso' => 'required|integer',
       ]);
@@ -185,7 +186,7 @@ class RoleController extends Controller {
       }
       #Como pasó todas las validaciones, se asigna al objeto
       $this->role = $request->all();
-      #Se crea el nuevo role
+      #Se crea el nuevo registro
       $this->new_role = Role::create([
          'nom_role' => $this->role['nom_role'],
          'det_role' => $this->role['det_role']

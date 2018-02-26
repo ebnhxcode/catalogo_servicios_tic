@@ -19,7 +19,7 @@
 
          <dl class="dl-vertical" style="overflow-y: auto;max-height: 450px;padding-bottom: 50px;">
 
-            @include('roles.partials.formulario_campos')
+            @include("$nombre_tabla.partials.formulario_campos")
 
             <dt>Finalizar</dt>
             <dd>

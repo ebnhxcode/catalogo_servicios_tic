@@ -22,7 +22,6 @@
 
 <dt>Detalle Role</dt>
 <dd>
-
    <p class="control has-icon has-icon-right">
       <textarea cols="15" rows="2" v-model="role.det_role" name="det_role"
                 v-validate="'required'" data-vv-delay="500"
@@ -44,9 +43,7 @@
 
 <dt>Permiso</dt>
 <dd>
-
    <p class="control has-icon has-icon-right">
-
       <select class="form-control" v-model="role.id_permiso" name="id_permiso"
               v-validate="'required'" data-vv-delay="500">
          <option :value="p.id_permiso" v-for="p in permisos">
