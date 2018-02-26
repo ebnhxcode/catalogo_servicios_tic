@@ -19,12 +19,16 @@ class RoleController extends Controller {
    private $permisos;
    private $nombre_modelo; //Se usa como prefijo en llamados en duro o definiciones similares
    private $nombre_tabla; //Se usa como prefijo en llamados en duro o definiciones similares
+   private $nombre_detalle; //Se usa como prefijo en nombres o cabeceras
+   private $nombre_controller; //
    private $validacion; //Uso en valicaciones de request
 
    public function __construct () {
       #$this->middleware('auth');
       $this->nombre_modelo = "role";
       $this->nombre_tabla = "roles";
+      $this->nombre_detalle = "roles";
+      $this->nombre_controller = "RoleController";
    }
 
    private function es_vacio ($variable) {
@@ -146,7 +150,12 @@ class RoleController extends Controller {
 
    public function index(Request $request) {
       if (!$request->wantsJson() && !$request->ajax()) {
-         return view('roles.main');
+         return view('roles.main', [
+            'nombre_modelo' => $this->nombre_modelo,
+            'nombre_tabla' => $this->nombre_tabla,
+            'nombre_detalle' => $this->nombre_detalle,
+            'nombre_controller' => $this->nombre_controller,
+         ]);
       }
 
       $this->roles = Role::with('role_permiso.permiso')->get();

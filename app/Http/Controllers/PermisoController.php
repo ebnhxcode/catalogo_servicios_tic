@@ -10,6 +10,19 @@ class PermisoController extends Controller
     private $permisos;
     private $permiso;
     private $new_permiso;
+    private $nombre_modelo; //Se usa como prefijo en llamados en duro o definiciones similares
+    private $nombre_tabla; //Se usa como prefijo en llamados en duro o definiciones similares
+    private $nombre_detalle; //Se usa como prefijo en nombres o cabeceras
+    private $nombre_controller; //
+    private $validacion; //Uso en valicaciones de request
+
+    public function __construct () {
+        #$this->middleware('auth');
+        $this->nombre_modelo = "permiso";
+        $this->nombre_tabla = "permisos";
+        $this->nombre_detalle = "Permisos";
+        $this->nombre_controller = "PermisoController";
+    }
 
     public function index(Request $request) {
         if ($request->wantsJson()) {
@@ -20,7 +33,12 @@ class PermisoController extends Controller
             ]);
         }
 
-        return view('permisos.main');
+        return view('permisos.main', [
+            'nombre_modelo' => $this->nombre_modelo,
+            'nombre_tabla' => $this->nombre_tabla,
+            'nombre_detalle' => $this->nombre_detalle,
+            'nombre_controller' => $this->nombre_controller,
+         ]);
     }
 
 
