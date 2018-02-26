@@ -1,0 +1,92 @@
+#!/bin/bash
+
+function menu_seleccionar_opcion () {
+   OPCIONES=$@
+   ELECCION=$(dialog --clear \
+                --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPCIONES[@]}" \
+                2>&1 >/dev/tty)
+   echo $ELECCION
+}
+
+function menu_elegir_opcion () {
+   ELECCION=$1
+   RESULTADO=''
+   clear
+   case $ELECCION in
+      0)
+         clear
+         echo "Elegiste: ${DET_OPCIONES[$ELECCION]};"
+         exit #break
+         ;;
+      1)
+         clear
+         #echo "Elegiste: ${DET_OPCIONES[$ELECCION]};" >> $RESULTADO
+         if php -q ${PJ_PATH}\/artisan cache:clear ; then
+            #echo "$1;"  >> $RESULTADO
+            #echo "Cache limpiado;"  >> $RESULTADO
+            #$RESULTADO="${1}${RESULTADO}Cache limpiado;"
+            echo "${1};"
+            echo "${RESULTADO};"
+            echo "Cache limpiado;"
+         fi
+         if php -q ${PJ_PATH}\/artisan route:clear ; then
+            #echo "$1;"  >> $RESULTADO
+            #echo "Cache de rutas limpiado;"  >> $RESULTADO
+            #$RESULTADO="${1}${RESULTADO}Cache de rutas limpiado;"
+            echo "${1};"
+            echo "${RESULTADO};"
+            echo "Cache de rutas limpiado;"
+         fi
+         ;;
+      2)
+         clear
+         echo "Elegiste: ${DET_OPCIONES[$ELECCION]};"
+         ;;
+      3)
+         clear
+         echo "Elegiste: ${DET_OPCIONES[$ELECCION]};"
+         ;;
+
+      *)
+         clear
+         echo "Opción inválida"
+         ;;
+   esac
+   echo $RESULTADO
+}
+
+
+function menu_mostrar_resultados () {
+   echo $@
+
+   #RESULTADOS=$@
+
+   #select res in "$@"
+   #do
+       #echo "${RESULTADOS[res]}"
+   #    echo "$res"
+   #done
+
+}
+
+function pause () {
+   read -rsp "$1" -n 1 key #read -p "$*"
+}
+
+
+
+#comment multiline
+#Limpieza de script o libreria importada
+: "
+   # check if the file contains something we don't want
+   if egrep -q -v '^#|^[^ ]*=[^;]*' "$configfile"; then
+     echo "Config file is unclean, cleaning it..." >&2
+     # filter the original to a new file
+     egrep '^#|^[^ ]*=[^;&]*'  "$configfile" > "$configfile_secured"
+     configfile="$configfile_secured"
+   fi
+"

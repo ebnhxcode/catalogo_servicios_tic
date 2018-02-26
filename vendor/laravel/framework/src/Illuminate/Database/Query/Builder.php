@@ -583,7 +583,7 @@ class Builder
      *
      * @throws \InvalidArgumentException
      */
-    protected function prepareValueAndOperator($value, $operator, $useDefault = false)
+    public function prepareValueAndOperator($value, $operator, $useDefault = false)
     {
         if ($useDefault) {
             return [$operator, '='];
@@ -631,6 +631,10 @@ class Builder
      */
     public function orWhere($column, $operator = null, $value = null)
     {
+        list($value, $operator) = $this->prepareValueAndOperator(
+            $value, $operator, func_num_args() == 2
+        );
+
         return $this->where($column, $operator, $value, 'or');
     }
 
@@ -985,6 +989,10 @@ class Builder
      */
     public function orWhereDate($column, $operator, $value)
     {
+        list($value, $operator) = $this->prepareValueAndOperator(
+            $value, $operator, func_num_args() == 2
+        );
+
         return $this->whereDate($column, $operator, $value, 'or');
     }
 
@@ -1016,6 +1024,10 @@ class Builder
      */
     public function orWhereTime($column, $operator, $value = null)
     {
+        list($value, $operator) = $this->prepareValueAndOperator(
+            $value, $operator, func_num_args() == 2
+        );
+
         return $this->whereTime($column, $operator, $value, 'or');
     }
 
@@ -2507,8 +2519,8 @@ class Builder
             return $this->dynamicWhere($method, $parameters);
         }
 
-        $className = static::class;
+        $class = static::class;
 
-        throw new BadMethodCallException("Call to undefined method {$className}::{$method}()");
+        throw new BadMethodCallException("Method {$class}::{$method} does not exist.");
     }
 }
