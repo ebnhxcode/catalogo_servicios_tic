@@ -17,7 +17,14 @@ window.Vue = require('vue');
 //Libreria para trabajo con fechas
 // import moment from 'moment-es6';
 
+//Se importa plugin de filtros _ lodash
+//import { _ , range } from 'lodash';
 
+//import Popover  from 'vue-js-popover';
+//Vue.use(Popover);
+
+//import VPopover from 'vue-js-popover';
+//Vue.use(VPopover, { tooltip: true });
 
 // Se importa la libreria de notificaciones
 import Notifications from 'vue-notification';

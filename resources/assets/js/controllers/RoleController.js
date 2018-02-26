@@ -10,15 +10,6 @@ Vue.use(VModal, {dialog: true});
 import Clipboard from 'v-clipboard';
 Vue.use(Clipboard);
 
-//Se importa plugin de filtros _ lodash
-//import { _ , range } from 'lodash';
-
-//import Popover  from 'vue-js-popover';
-//Vue.use(Popover);
-
-//import VPopover from 'vue-js-popover';
-//Vue.use(VPopover, { tooltip: true });
-
 const RoleController = new Vue({
    el: '#RoleController',
    data(){
