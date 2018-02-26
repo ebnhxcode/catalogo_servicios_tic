@@ -66,6 +66,116 @@
 /******/ ({
 
 /***/ 37:
+/***/ (function(module, exports) {
+
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file.
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier /* server only */
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = injectStyles
+  }
+
+  if (hook) {
+    var functional = options.functional
+    var existing = functional
+      ? options.render
+      : options.beforeCreate
+
+    if (!functional) {
+      // inject component registration as beforeCreate hook
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    } else {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return existing(h, context)
+      }
+    }
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+
+/***/ 38:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -2089,7 +2199,7 @@ if (typeof window !== 'undefined' && window.Sweetalert2) window.sweetAlert = win
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return inyeccion_funciones_compartidas; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert2__);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -3230,15 +3340,13 @@ module.exports = __webpack_require__(56);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert2__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_v_clipboard__);
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -3252,14 +3360,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default.a, { dialog: true });
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
 
-//Se importa plugin de filtros _ lodash
-//import { _ , range } from 'lodash';
-
-//import Popover  from 'vue-js-popover';
-//Vue.use(Popover);
-
-//import VPopover from 'vue-js-popover';
-//Vue.use(VPopover, { tooltip: true });
+//import { DownloadExcel } from '../components/DownloadExcel.vue';
+//Vue.component('download-excel', DownloadExcel);
+Vue.component('download-excel', __webpack_require__(58));
 
 var RoleController = new Vue({
    el: '#RoleController',
@@ -3395,7 +3498,7 @@ var RoleController = new Vue({
       roles: function roles(_roles) {
          var self = this;
          this.excel_json_datos = [];
-         this.datos_excel = _roles.map(function (role, index) {
+         return _roles.map(function (role, index) {
             return self.excel_json_datos.push({
                'id_role': role.id_role || '-',
                'nom_role': role.nom_role || '-',
@@ -3408,93 +3511,10 @@ var RoleController = new Vue({
                'deleted_at': role.deleted_at || '-'
             });
          });
-         return this.datos_excel;
       }
    },
    components: {
-      'download-excel': {
-         props: {
-            'data': {
-               type: Array,
-               required: true
-            },
-            'fields': {
-               type: Object,
-               required: true
-            },
-            'name': {
-               type: String,
-               default: "data.xls"
-            }
-         },
-         template: '\n            <a\n               href="#"\n               :id="id_name"\n               @click="generate_excel">\n               <slot>\n                  Download Excel\n               </slot>\n            </a>\n         ',
-         name: 'download-excel',
-         data: function data() {
-            return {
-               animate: true,
-               animation: ''
-            };
-         },
-         created: function created() {},
-         computed: {
-            id_name: function id_name() {
-               var now = new Date().getTime();
-               return 'export_' + now;
-            }
-         },
-         methods: {
-            emitXmlHeader: function emitXmlHeader() {
-               var headerRow = '<ss:Row>\n';
-               for (var colName in this.fields) {
-                  headerRow += '  <ss:Cell>\n';
-                  headerRow += '    <ss:Data ss:Type="String">';
-                  headerRow += colName + '</ss:Data>\n';
-                  headerRow += '  </ss:Cell>\n';
-               }
-               headerRow += '</ss:Row>\n';
-               return '<?xml version="1.0"?>\n' + '<ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">\n' + '<ss:Worksheet ss:Name="Sheet1">\n' + '<ss:Table>\n\n' + headerRow;
-            },
-
-            emitXmlFooter: function emitXmlFooter() {
-               return '\n</ss:Table>\n' + '</ss:Worksheet>\n' + '</ss:Workbook>\n';
-            },
-
-            jsonToSsXml: function jsonToSsXml(jsonObject) {
-               var row;
-               var col;
-               var xml;
-               //console.log(jsonObject);
-               var data = (typeof jsonObject === 'undefined' ? 'undefined' : _typeof(jsonObject)) != "object" ? JSON.parse(jsonObject) : jsonObject;
-
-               xml = this.emitXmlHeader();
-
-               for (row = 0; row < data.length; row++) {
-                  xml += '<ss:Row>\n';
-
-                  for (col in data[row]) {
-                     xml += '  <ss:Cell>\n';
-                     xml += '    <ss:Data ss:Type="' + this.fields[col] + '">';
-                     xml += String(data[row][col]).replace(/[^a-zA-Z0-9\s\-ñíéáóú\#\,\.\;\:ÑÍÉÓÁÚ@_]/g, '') + '</ss:Data>\n';
-                     xml += '  </ss:Cell>\n';
-                  }
-
-                  xml += '</ss:Row>\n';
-               }
-
-               xml += this.emitXmlFooter();
-               return xml;
-            },
-            generate_excel: function generate_excel(content, filename, contentType) {
-               var blob = new Blob([this.jsonToSsXml(this.data)], {
-                  'type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-               });
-
-               var a = document.getElementById(this.id_name);
-               a.href = window.URL.createObjectURL(blob);
-               a.download = this.name;
-            }
-         }
-      }
+      //'download-excel': DownloadExcel,
    },
    created: function created() {
       this.inicializar();
@@ -3532,6 +3552,7 @@ var RoleController = new Vue({
             // success callback
             _this.roles = response.body.roles || null;
             _this.permisos = response.body.permisos || null;
+            _this.datos_excel = response.body.roles || null;
          }, function (response) {
             // error callback
             _this.checkear_estado_respuesta_http(response.status);
@@ -3743,6 +3764,188 @@ var RoleController = new Vue({
 
 !function(e,t){ true?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["v-clipboard"]=t():e["v-clipboard"]=t()}(this,function(){return function(e){function t(o){if(n[o])return n[o].exports;var r=n[o]={i:o,l:!1,exports:{}};return e[o].call(r.exports,r,r.exports,t),r.l=!0,r.exports}var n={};return t.m=e,t.c=n,t.i=function(e){return e},t.d=function(e,n,o){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:o})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="/dist/",t(t.s=0)}([function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o=function(e){var t=document.createElement("textarea"),n=!1;t.value=e,t.style.cssText="position:fixed;pointer-events:none;z-index:-9999;opacity:0;",document.body.appendChild(t),t.select();try{n=document.execCommand("copy")}catch(e){}return document.body.removeChild(t),n};t.default={install:function(e){e.prototype.$clipboard=o,e.directive("clipboard",{bind:function(e,t,n){e.addEventListener("click",function(e){if(t.hasOwnProperty("value")){var r=t.value,c={value:r,srcEvent:e},i=n.context;o(r)?i.$emit("copy",c):i.$emit("copyError",c)}})}})}}}])});
 //# sourceMappingURL=index.min.js.map
+
+/***/ }),
+
+/***/ 58:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(37)
+/* script */
+var __vue_script__ = __webpack_require__(59)
+/* template */
+var __vue_template__ = __webpack_require__(60)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/DownloadExcel.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-795cc6e8", Component.options)
+  } else {
+    hotAPI.reload("data-v-795cc6e8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 59:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+   name: 'download-excel',
+   props: {
+      'data': {
+         type: Array,
+         required: true
+      },
+      'fields': {
+         type: Object,
+         required: true
+      },
+      'name': {
+         type: String,
+         default: "data.xls"
+      }
+   },
+   //template: ``,
+   data: function data() {
+      return {
+         animate: true,
+         animation: ''
+      };
+   },
+   created: function created() {},
+   computed: {
+      id_name: function id_name() {
+         var now = new Date().getTime();
+         return 'export_' + now;
+      }
+   },
+   methods: {
+      emitXmlHeader: function emitXmlHeader() {
+         var headerRow = '<ss:Row>\n';
+         for (var colName in this.fields) {
+            headerRow += '  <ss:Cell>\n';
+            headerRow += '    <ss:Data ss:Type="String">';
+            headerRow += colName + '</ss:Data>\n';
+            headerRow += '  </ss:Cell>\n';
+         }
+         headerRow += '</ss:Row>\n';
+         return '<?xml version="1.0"?>\n' + '<ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">\n' + '<ss:Worksheet ss:Name="Sheet1">\n' + '<ss:Table>\n\n' + headerRow;
+      },
+
+      emitXmlFooter: function emitXmlFooter() {
+         return '\n</ss:Table>\n' + '</ss:Worksheet>\n' + '</ss:Workbook>\n';
+      },
+
+      jsonToSsXml: function jsonToSsXml(jsonObject) {
+         var row;
+         var col;
+         var xml;
+         //console.log(jsonObject);
+         var data = (typeof jsonObject === 'undefined' ? 'undefined' : _typeof(jsonObject)) != "object" ? JSON.parse(jsonObject) : jsonObject;
+
+         xml = this.emitXmlHeader();
+
+         for (row = 0; row < data.length; row++) {
+            xml += '<ss:Row>\n';
+
+            for (col in data[row]) {
+               xml += '  <ss:Cell>\n';
+               xml += '    <ss:Data ss:Type="' + this.fields[col] + '">';
+               xml += String(data[row][col]).replace(/[^a-zA-Z0-9\s\-ñíéáóú\#\,\.\;\:ÑÍÉÓÁÚ@_]/g, '') + '</ss:Data>\n';
+               xml += '  </ss:Cell>\n';
+            }
+
+            xml += '</ss:Row>\n';
+         }
+
+         xml += this.emitXmlFooter();
+         return xml;
+      },
+      generate_excel: function generate_excel(content, filename, contentType) {
+         var blob = new Blob([this.jsonToSsXml(this.data)], {
+            'type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+         });
+
+         var a = document.getElementById(this.id_name);
+         a.href = window.URL.createObjectURL(blob);
+         a.download = this.name;
+      }
+   }
+});
+
+/***/ }),
+
+/***/ 60:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "a",
+    {
+      attrs: { href: "#", id: _vm.id_name },
+      on: { click: _vm.generate_excel }
+    },
+    [_vm._t("default", [_vm._v("\n      Download Excel\n   ")])],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-795cc6e8", module.exports)
+  }
+}
 
 /***/ })
 

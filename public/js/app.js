@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 60);
+/******/ 	return __webpack_require__(__webpack_require__.s = 63);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -46837,8 +46837,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(6)))
 
 /***/ }),
-/* 37 */,
-/* 38 */
+/* 37 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -46947,6 +46946,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
+/* 38 */,
 /* 39 */,
 /* 40 */,
 /* 41 */,
@@ -46968,14 +46968,17 @@ module.exports = function normalizeComponent (
 /* 57 */,
 /* 58 */,
 /* 59 */,
-/* 60 */
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(61);
+module.exports = __webpack_require__(64);
 
 
 /***/ }),
-/* 61 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -46995,22 +46998,22 @@ window.Vue = __webpack_require__(12);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', __webpack_require__(62));
+Vue.component('example-component', __webpack_require__(65));
 
 var app = new Vue({
   el: '#app'
 });
 
 /***/ }),
-/* 62 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(38)
+var normalizeComponent = __webpack_require__(37)
 /* script */
-var __vue_script__ = __webpack_require__(63)
+var __vue_script__ = __webpack_require__(66)
 /* template */
-var __vue_template__ = __webpack_require__(64)
+var __vue_template__ = __webpack_require__(67)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -47049,7 +47052,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 63 */
+/* 66 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47078,7 +47081,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 64 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

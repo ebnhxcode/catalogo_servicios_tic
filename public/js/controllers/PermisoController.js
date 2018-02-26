@@ -60,12 +60,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 58);
+/******/ 	return __webpack_require__(__webpack_require__.s = 61);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 37:
+/***/ 38:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -2089,7 +2089,7 @@ if (typeof window !== 'undefined' && window.Sweetalert2) window.sweetAlert = win
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return inyeccion_funciones_compartidas; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert2__);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -3217,22 +3217,22 @@ var inyeccion_funciones_compartidas = {
 
 /***/ }),
 
-/***/ 58:
+/***/ 61:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(59);
+module.exports = __webpack_require__(62);
 
 
 /***/ }),
 
-/***/ 59:
+/***/ 62:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_js_modal__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_js_modal__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sweetalert2__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__libs_HelperPackage__ = __webpack_require__(39);
 
