@@ -7,6 +7,22 @@ import swal from 'sweetalert2'
 */
 export const inyeccion_funciones_compartidas = {
    methods: {
+      auto_alerta_corta: function (titulo,texto,tipo,tiempo=1500) {
+         swal({
+            title: titulo,
+            text: texto,
+            type: tipo,
+            timer: tiempo || 1500
+         });
+      },
+      auto_alerta_media: function (titulo,texto,tipo,tiempo=3000) {
+         swal({
+            title: titulo,
+            text: texto,
+            type: tipo,
+            timer: tiempo || 3000
+         });
+      },
       //Esta funcion en ingles es propia de los modal para hacer algo antes que se cierre
       before_close: function (event) {
          //console.log(event.name);
@@ -24,6 +40,12 @@ export const inyeccion_funciones_compartidas = {
       buscar_en_array_por_modelo_e_id: function (id, array, model) {
          for (let a in array) { if (array[a][`id_${model}`] == id) { return array[a]; } } return null;
       },
+      // change order variable direction
+      cambiar_orden_lista: function (columna) {
+         this.orden_lista == 'asc' ? this.orden_lista = 'desc' : this.orden_lista = 'asc';
+         this.ordenar_lista(columna);
+      },
+      cambiar_visibilidad: function (campo) { return this.tabla_campos[campo] = !this.tabla_campos[campo]; },
       checkear_estado_respuesta_http: function (status_code) {
          switch (status_code) {
             case 401:
@@ -72,6 +94,12 @@ export const inyeccion_funciones_compartidas = {
                });
                break;
          }
+      },
+
+      dejar_de_editar: function () {
+         this.lista_actualizar_activo = false;
+         this.id_en_edicion = null;
+         this.dejar_de_editar_contador = 0;
       },
 
       es_undefined:(v) => { return (typeof v == undefined)?true:false; },
@@ -173,7 +201,8 @@ export const inyeccion_funciones_compartidas = {
          return true;
       },
       ocultar_modal: function (nom_modal) { this.$modal.hide(nom_modal); },
-
+      // function to order lists
+      ordenar_lista: function (columna) { this.roles = _.orderBy(this.roles, columna, this.orden_lista); },
 
 
 

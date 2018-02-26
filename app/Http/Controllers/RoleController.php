@@ -18,15 +18,16 @@ class RoleController extends Controller {
    private $permiso;
    private $permisos;
    private $nombre_modelo; //Se usa como prefijo en llamados en duro o definiciones similares
-   private $nombre_tabla; //Se usa como prefijo en llamados en duro o definiciones similares
+   private $nombre_tabla; //Se usa como prefijo en llamados en duro o definiciones similares o de ruta
+   private $nombre_ruta; //Se usa como prefijo en llamados en duro o definiciones similares o de ruta
    private $nombre_detalle; //Se usa como prefijo en nombres o cabeceras
    private $nombre_controller; //
    private $validacion; //Uso en valicaciones de request
 
    public function __construct () {
       #$this->middleware('auth');
-      $this->nombre_modelo = "role";
-      $this->nombre_tabla = "roles";
+      $this->nombre_modelo = "role"; //nombre tabla o de ruta
+      $this->nombre_tabla = $this->nombre_ruta = "roles";
       $this->nombre_detalle = "Roles";
       $this->nombre_controller = "RoleController";
    }

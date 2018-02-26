@@ -2102,6 +2102,26 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 */
 var inyeccion_funciones_compartidas = {
    methods: {
+      auto_alerta_corta: function auto_alerta_corta(titulo, texto, tipo) {
+         var tiempo = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1500;
+
+         __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()({
+            title: titulo,
+            text: texto,
+            type: tipo,
+            timer: tiempo || 1500
+         });
+      },
+      auto_alerta_media: function auto_alerta_media(titulo, texto, tipo) {
+         var tiempo = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 3000;
+
+         __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()({
+            title: titulo,
+            text: texto,
+            type: tipo,
+            timer: tiempo || 3000
+         });
+      },
       //Esta funcion en ingles es propia de los modal para hacer algo antes que se cierre
       before_close: function before_close(event) {
          //console.log(event.name);
@@ -2122,6 +2142,14 @@ var inyeccion_funciones_compartidas = {
                return array[a];
             }
          }return null;
+      },
+      // change order variable direction
+      cambiar_orden_lista: function cambiar_orden_lista(columna) {
+         this.orden_lista == 'asc' ? this.orden_lista = 'desc' : this.orden_lista = 'asc';
+         this.ordenar_lista(columna);
+      },
+      cambiar_visibilidad: function cambiar_visibilidad(campo) {
+         return this.tabla_campos[campo] = !this.tabla_campos[campo];
       },
       checkear_estado_respuesta_http: function checkear_estado_respuesta_http(status_code) {
          switch (status_code) {
@@ -2171,6 +2199,12 @@ var inyeccion_funciones_compartidas = {
                });
                break;
          }
+      },
+
+      dejar_de_editar: function dejar_de_editar() {
+         this.lista_actualizar_activo = false;
+         this.id_en_edicion = null;
+         this.dejar_de_editar_contador = 0;
       },
 
       es_undefined: function es_undefined(v) {
@@ -2276,6 +2310,10 @@ var inyeccion_funciones_compartidas = {
       },
       ocultar_modal: function ocultar_modal(nom_modal) {
          this.$modal.hide(nom_modal);
+      },
+      // function to order lists
+      ordenar_lista: function ordenar_lista(columna) {
+         this.roles = _.orderBy(this.roles, columna, this.orden_lista);
       }
 
    }
