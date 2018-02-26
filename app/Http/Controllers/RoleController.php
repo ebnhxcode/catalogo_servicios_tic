@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class RoleController extends Controller {
+   private $nombre_modelo; //Se usa como prefijo en llamados en duro o definiciones similares
+   private $nombre_tabla; //Se usa como prefijo en llamados en duro o definiciones similares o de ruta
+   private $nombre_ruta; //Se usa como prefijo en llamados en duro o definiciones similares o de ruta
+   private $nombre_detalle; //Se usa como prefijo en nombres o cabeceras
+   private $nombre_controller; //
    private $roles;
    private $role;
    private $new_role;
@@ -17,11 +22,6 @@ class RoleController extends Controller {
    private $role_permiso;
    private $permiso;
    private $permisos;
-   private $nombre_modelo; //Se usa como prefijo en llamados en duro o definiciones similares
-   private $nombre_tabla; //Se usa como prefijo en llamados en duro o definiciones similares o de ruta
-   private $nombre_ruta; //Se usa como prefijo en llamados en duro o definiciones similares o de ruta
-   private $nombre_detalle; //Se usa como prefijo en nombres o cabeceras
-   private $nombre_controller; //
    private $validacion; //Uso en valicaciones de request
 
    public function __construct () {

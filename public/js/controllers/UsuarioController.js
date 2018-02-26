@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 59);
+/******/ 	return __webpack_require__(__webpack_require__.s = 63);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3553,15 +3553,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 59:
+/***/ 63:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(60);
+module.exports = __webpack_require__(64);
 
 
 /***/ }),
 
-/***/ 60:
+/***/ 64:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3590,31 +3590,38 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
 //Vue.component('download-excel', DownloadExcel);
 Vue.component('download-excel', __webpack_require__(42));
 
-var RoleController = new Vue({
-   el: '#RoleController',
+var UsuarioController = new Vue({
+   el: '#UsuarioController',
    data: function data() {
       return {
-         'nombre_tabla': 'roles', //nombre tabla o de ruta
-         'nombre_ruta': 'roles', //nombre tabla o de ruta
-         'nombre_model': 'role',
-         'nombre_detalle': 'Roles',
-         'nombre_controller': 'RoleController',
+         'nombre_tabla': 'usuarios', //nombre tabla o de ruta
+         'nombre_ruta': 'usuarios', //nombre tabla o de ruta
+         'nombre_model': 'usuario',
+         'nombre_detalle': 'Usuarios',
+         'nombre_controller': 'UsuarioController',
 
          'filtro_head': null,
-         'role': {
-            'nom_role': null,
-            'det_role': null,
-            'id_permiso': null
+         'usuario': {
+            'nom_usuario': null,
+            'nom_completo': null,
+            'ape_paterno': null,
+            'ape_materno': null,
+            'username': null,
+            'email': null,
+            'password': null
          },
-         'role_limpio': {
-            'nom_role': null,
-            'det_role': null,
-            'id_permiso': null
+         'usuario_limpio': {
+            'nom_usuario': null,
+            'nom_completo': null,
+            'ape_paterno': null,
+            'ape_materno': null,
+            'username': null,
+            'email': null,
+            'password': null
          },
-         'roles': [],
+         'usuarios': [],
          'datos_excel': [],
 
-         'permisos': [],
          'campos_formularios': [],
          'errores_campos': [],
 
@@ -3631,10 +3638,15 @@ var RoleController = new Vue({
          'orden_lista': 'asc',
 
          'tabla_campos': {
-            'id_role': false,
-            'nom_role': true,
-            'det_role': false,
-            'id_permiso': false,
+            'id_usuario': false,
+            'nom_usuario': true,
+            'nom_completo': false,
+            'ape_paterno': false,
+            'ape_materno': false,
+            'username': false,
+            'email': false,
+            'password': false,
+            'remember_token': false,
             'id_usuario_registra': false,
             'id_usuario_modifica': false,
             'created_at': true,
@@ -3643,10 +3655,15 @@ var RoleController = new Vue({
          },
 
          'tabla_labels': {
-            'id_role': 'Id role',
-            'nom_role': 'Nombre del role',
-            'det_role': 'Detalle del role',
-            'id_permiso': 'Permiso del role',
+            'id_usuario': 'Id usuario',
+            'nom_usuario': 'Nombre',
+            'nom_completo': 'Nombre completo',
+            'ape_paterno': 'Apellido paterno',
+            'ape_materno': 'Apellido materno',
+            'username': 'Nombre de usuario',
+            'email': 'Email',
+            'password': 'Password',
+            'remember_token': 'Remember token',
             'id_usuario_registra': 'Usuario registra',
             'id_usuario_modifica': 'Usuario Modifica',
             'created_at': 'Creado en',
@@ -3655,10 +3672,15 @@ var RoleController = new Vue({
          },
 
          'excel_json_campos': {
-            'id_role': 'String',
-            'nom_role': 'String',
-            'det_role': 'String',
-            'id_permiso': 'String',
+            'id_usuario': 'String',
+            'nom_usuario': 'String',
+            'nom_completo': 'String',
+            'ape_paterno': 'String',
+            'ape_materno': 'String',
+            'username': 'String',
+            'email': 'String',
+            'password': 'String',
+            'remember_token': 'String',
             'id_usuario_registra': 'String',
             'id_usuario_modifica': 'String',
             'created_at': 'String',
@@ -3676,34 +3698,38 @@ var RoleController = new Vue({
 
    computed: {},
    watch: {
-      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el role
+      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el usuario
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function id_en_edicion(_id_en_edicion) {
          if (_id_en_edicion == null) {
-            this.role = {
-               'nom_role': null,
-               'det_role': null,
-               'id_permiso': null
+            this.usuario = {
+               'nom_usuario': null,
+               'det_usuario': null
             };
          } else {
-            this.role = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.roles, this.nombre_model);
+            this.usuario = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.usuarios, this.nombre_model);
          }
       },
-      //Roles se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
-      roles: function roles(_roles) {
+      //usuarios se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
+      usuarios: function usuarios(_usuarios) {
          var self = this;
          this.excel_json_datos = [];
-         return _roles.map(function (role, index) {
+         return _usuarios.map(function (usuario, index) {
             return self.excel_json_datos.push({
-               'id_role': role.id_role || '-',
-               'nom_role': role.nom_role || '-',
-               'det_role': role.det_role || '-',
-               'id_permiso': role.id_permiso || '-',
-               'id_usuario_registra': role.id_usuario_registra || '-',
-               'id_usuario_modifica': role.id_usuario_modifica || '-',
-               'created_at': role.created_at || '-',
-               'updated_at': role.updated_at || '-',
-               'deleted_at': role.deleted_at || '-'
+               'id_usuario': usuario.id_usuario || '-',
+               'nom_usuario': usuario.nom_usuario || '-',
+               'nom_completo': usuario.nom_completo || '-',
+               'ape_paterno': usuario.ape_paterno || '-',
+               'ape_materno': usuario.ape_materno || '-',
+               'username': usuario.username || '-',
+               'email': usuario.email || '-',
+               'password': usuario.password || '-',
+               'remember_token': usuario.remember_token || '-',
+               'id_usuario_registra': usuario.id_usuario_registra || '-',
+               'id_usuario_modifica': usuario.id_usuario_modifica || '-',
+               'created_at': usuario.created_at || '-',
+               'updated_at': usuario.updated_at || '-',
+               'deleted_at': usuario.deleted_at || '-'
             });
          });
       }
@@ -3739,15 +3765,18 @@ var RoleController = new Vue({
       inicializar: function inicializar() {
          var _this = this;
 
-         this.$http.get('/roles').then(function (response) {
+         this.$http.get('/usuarios').then(function (response) {
             // success callback
-            _this.roles = response.body.roles || null;
-            _this.permisos = response.body.permisos || null;
-            _this.datos_excel = response.body.roles || null;
-            _this.role = {
-               'nom_role': null,
-               'det_role': null,
-               'id_permiso': null
+            _this.usuarios = response.body.usuarios || null;
+            _this.datos_excel = response.body.usuarios || null;
+            _this.usuario = {
+               'nom_usuario': null,
+               'nom_completo': null,
+               'ape_paterno': null,
+               'ape_materno': null,
+               'username': null,
+               'email': null,
+               'password': null
             };
          }, function (response) {
             // error callback
@@ -3755,13 +3784,13 @@ var RoleController = new Vue({
          });
       },
 
-      editar: function editar(id_role) {
+      editar: function editar(id_usuario) {
          this.lista_actualizar_activo = true;
-         this.id_en_edicion = id_role;
+         this.id_en_edicion = id_usuario;
 
          //id_objeto + array de objetos + nombre del model en lower case
-         this.role = null;
-         this.role = this.buscar_en_array_por_modelo_e_id(id_role, this.roles, this.nombre_model);
+         this.usuario = null;
+         this.usuario = this.buscar_en_array_por_modelo_e_id(id_usuario, this.usuarios, this.nombre_model);
       },
 
       guardar_editado: function guardar_editado() {
@@ -3769,11 +3798,11 @@ var RoleController = new Vue({
 
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-         this.$http.put('/' + this.nombre_ruta + '/' + this.role.id_role, this.role).then(function (response) {
+         this.$http.put('/' + this.nombre_ruta + '/' + this.usuario.id_usuario, this.usuario).then(function (response) {
             // success callback
 
             if (response.status == 200) {
-               if (!_this2.es_null(response.body.role)) {
+               if (!_this2.es_null(response.body.usuario)) {
                   _this2.lista_actualizar_activo = false;
                   _this2.id_en_edicion = null;
                }
@@ -3806,7 +3835,7 @@ var RoleController = new Vue({
          return;
       },
 
-      eliminar: function eliminar(id_role) {
+      eliminar: function eliminar(id_usuario) {
          var _swal,
              _this3 = this;
 
@@ -3825,7 +3854,7 @@ var RoleController = new Vue({
                //Se adjunta el token
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-               _this3.$http.delete('/' + _this3.nombre_ruta + '/' + id_role).then(function (response) {
+               _this3.$http.delete('/' + _this3.nombre_ruta + '/' + id_usuario).then(function (response) {
                   if (response.status == 200) {
                      _this3.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
                   } else {
@@ -3867,9 +3896,13 @@ var RoleController = new Vue({
          //Instancia nuevo form data
          var formData = new FormData();
          //Conforma objeto paramétrico para solicitud http
-         formData.append('nom_role', this.role.nom_role || null);
-         formData.append('det_role', this.role.det_role || null);
-         formData.append('id_permiso', this.role.id_permiso || null);
+         formData.append('nom_usuario', this.usuario.nom_usuario || null);
+         formData.append('nom_completo', this.usuario.nom_completo || null);
+         formData.append('ape_paterno', this.usuario.ape_paterno || null);
+         formData.append('ape_materno', this.usuario.ape_materno || null);
+         formData.append('username', this.usuario.username || null);
+         formData.append('email', this.usuario.email || null);
+         formData.append('password', this.usuario.password || null);
 
          this.$http.post('/' + this.nombre_ruta, formData).then(function (response) {
             // success callback
@@ -3896,7 +3929,7 @@ var RoleController = new Vue({
       },
 
       ordenar_lista: function ordenar_lista(columna) {
-         this.roles = _.orderBy(this.roles, columna, this.orden_lista);
+         this.usuarios = _.orderBy(this.usuarios, columna, this.orden_lista);
       }
 
    }

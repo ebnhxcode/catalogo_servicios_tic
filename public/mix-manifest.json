@@ -3,6 +3,7 @@
     "/css/app.css": "/css/app.css",
     "/js/controllers/HomeController.js": "/js/controllers/HomeController.js",
     "/js/app.js": "/js/app.js",
+    "/js/controllers/UsuarioController.js": "/js/controllers/UsuarioController.js",
     "/js/controllers/RoleController.js": "/js/controllers/RoleController.js",
     "/js/controllers/PermisoController.js": "/js/controllers/PermisoController.js"
 }

@@ -27,6 +27,8 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 //Route::resource('/catalogo_servicios', 'CatalogoServicioController');
 Route::resource('/roles', 'RoleController');
 Route::resource('/permisos', 'PermisoController');
+Route::resource('/usuarios', 'UsuarioController');
+
 Route::get('/estandares', 'RoleController@estandares');
 
 
