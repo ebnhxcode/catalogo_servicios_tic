@@ -383,10 +383,83 @@ const RoleController = new Vue({
          this.dejar_de_editar_contador = 0;
       },
 
-      eliminar: function () {
-         //Agregar el confirm
+      eliminar: function (id_role) {
 
+         swal({
+            title: "¿Estás seguro/a?",
+            text: "¿Deseas confirmar la eliminación de este registro?",
+            type: "warning",
 
+            showCancelButton: true,
+            closeOnConfirm: false,
+            closeOnCancel: false,
+
+            confirmButtonColor: '#DD6B55',
+
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: 'Si, eliminar!',
+
+            confirmButtonClass: "btn-warning",
+            cancelButtonText: 'No, mantener.'
+         }).then((result) => {
+            if (result.value) {
+               //Se adjunta el token
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               //Instancia nuevo form data
+               var formData = new FormData();
+               formData.append('id_role', id_role);
+               //console.log(formData);
+               this.$http.delete(`/roles/${id_role}`, formData).then(response => {
+
+                  console.log(response);
+                  if ( response.status == 200) {
+
+                     swal({
+                        title: "Deleted!",
+                        text: "Registro eliminado correctamente,",
+                        type: "success",
+                        timer: 1500
+                     });
+
+                  }else {
+                     this.checkear_estado_respuesta_http(response.status);
+                     return false;
+                  }
+
+                  if ( this.mostrar_notificaciones(response) == true ) {
+
+                     //Aqui que pregunte si el modal está activo para que lo cierre
+                     if (this.modal_actualizar_activo == true) {
+                        this.ocultar_modal('actualizar');
+                        this.modal_actualizar_activo = false;
+                     }
+
+                     this.lista_actualizar_activo = false;
+                     this.id_en_edicion = null;
+
+                     this.role = {
+                        'nom_role':null,
+                        'det_role':null,
+                        'id_permiso':null,
+                     };
+
+                     //Recargar la lista
+                     this.inicializar();
+                  }
+
+               }, response => { // error callback
+                  this.checkear_estado_respuesta_http(response.status);
+               });
+
+            } else if (result.dismiss === swal.DismissReason.cancel) {
+               swal({
+                  title: "Cancelado",
+                  text: "Se ha cancelado la eliminación",
+                  type: "success",
+                  timer: 1500
+               });
+            }
+         });
 
       },
 

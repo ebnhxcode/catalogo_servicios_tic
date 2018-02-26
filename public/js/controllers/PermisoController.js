@@ -2245,6 +2245,10 @@ var inyeccion_funciones_compartidas = {
                // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
                this.notificar('success', 'Actualización exitosa', mensajes, 'global');
                return true;break;
+            case 'eliminacion_exitosa':
+               // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
+               this.notificar('success', 'Eliminación exitosa', mensajes, 'global');
+               return true;break;
             case 'errores_campos_requeridos':
                // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
                this.notificar('warn', 'Advertencia campo requerido', mensajes, 'global');

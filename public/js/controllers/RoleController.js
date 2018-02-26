@@ -2245,6 +2245,10 @@ var inyeccion_funciones_compartidas = {
                // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
                this.notificar('success', 'Actualización exitosa', mensajes, 'global');
                return true;break;
+            case 'eliminacion_exitosa':
+               // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
+               this.notificar('success', 'Eliminación exitosa', mensajes, 'global');
+               return true;break;
             case 'errores_campos_requeridos':
                // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
                this.notificar('warn', 'Advertencia campo requerido', mensajes, 'global');
@@ -3235,6 +3239,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_v_clipboard__);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 //Se importan todas las librerias compartidas y se cargan en el objeto instanciado como alias -> hp
@@ -3599,14 +3605,85 @@ var RoleController = new Vue({
          this.dejar_de_editar_contador = 0;
       },
 
-      eliminar: function eliminar() {
-         //Agregar el confirm
+      eliminar: function eliminar(id_role) {
+         var _swal,
+             _this3 = this;
 
+         __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()((_swal = {
+            title: "¿Estás seguro/a?",
+            text: "¿Deseas confirmar la eliminación de este registro?",
+            type: "warning",
 
+            showCancelButton: true,
+            closeOnConfirm: false,
+            closeOnCancel: false,
+
+            confirmButtonColor: '#DD6B55',
+
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: 'Si, eliminar!'
+
+         }, _defineProperty(_swal, 'confirmButtonClass', "btn-warning"), _defineProperty(_swal, 'cancelButtonText', 'No, mantener.'), _swal)).then(function (result) {
+            if (result.value) {
+               //Se adjunta el token
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               //Instancia nuevo form data
+               var formData = new FormData();
+               formData.append('id_role', id_role);
+               //console.log(formData);
+               _this3.$http.delete('/roles/' + id_role, formData).then(function (response) {
+
+                  console.log(response);
+                  if (response.status == 200) {
+
+                     __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()({
+                        title: "Deleted!",
+                        text: "Registro eliminado correctamente,",
+                        type: "success",
+                        timer: 1500
+                     });
+                  } else {
+                     _this3.checkear_estado_respuesta_http(response.status);
+                     return false;
+                  }
+
+                  if (_this3.mostrar_notificaciones(response) == true) {
+
+                     //Aqui que pregunte si el modal está activo para que lo cierre
+                     if (_this3.modal_actualizar_activo == true) {
+                        _this3.ocultar_modal('actualizar');
+                        _this3.modal_actualizar_activo = false;
+                     }
+
+                     _this3.lista_actualizar_activo = false;
+                     _this3.id_en_edicion = null;
+
+                     _this3.role = {
+                        'nom_role': null,
+                        'det_role': null,
+                        'id_permiso': null
+                     };
+
+                     //Recargar la lista
+                     _this3.inicializar();
+                  }
+               }, function (response) {
+                  // error callback
+                  _this3.checkear_estado_respuesta_http(response.status);
+               });
+            } else if (result.dismiss === __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default.a.DismissReason.cancel) {
+               __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()({
+                  title: "Cancelado",
+                  text: "Se ha cancelado la eliminación",
+                  type: "success",
+                  timer: 1500
+               });
+            }
+         });
       },
 
       guardar: function guardar() {
-         var _this3 = this;
+         var _this4 = this;
 
          //Ejecuta validacion sobre los campos con validaciones
          if (this.validar_campos() == false) {
@@ -3625,16 +3702,16 @@ var RoleController = new Vue({
             // success callback
 
             if (response.status == 200) {
-               _this3.inicializar();
+               _this4.inicializar();
             } else {
-               _this3.checkear_estado_respuesta_http(response.status);
+               _this4.checkear_estado_respuesta_http(response.status);
                return false;
             }
 
-            if (_this3.mostrar_notificaciones(response) == true) {
-               _this3.ocultar_modal('crear');
-               _this3.role = null;
-               _this3.role = {
+            if (_this4.mostrar_notificaciones(response) == true) {
+               _this4.ocultar_modal('crear');
+               _this4.role = null;
+               _this4.role = {
                   'nom_role': null,
                   'det_role': null,
                   'id_permiso': null
@@ -3643,7 +3720,7 @@ var RoleController = new Vue({
             }
          }, function (response) {
             // error callback
-            _this3.checkear_estado_respuesta_http(response.status);
+            _this4.checkear_estado_respuesta_http(response.status);
          });
 
          return;

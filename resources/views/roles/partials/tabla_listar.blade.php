@@ -64,6 +64,7 @@
                <i class="fa fa-external-link" ></i>
             </button>
             <button class="btn btn-sm btn-danger" v-show="id_en_edicion == null"
+                    @click.prevent="eliminar(r.id_role)"
                     data-placement="top" data-toggle="tooltip" title="Eliminar">
                <i class="fa fa-close"></i>
             </button>

@@ -242,5 +242,12 @@ class RoleController extends Controller {
       ]);
    }
 
-   public function destroy($id) {}
+   public function destroy($id) {
+      return response()->json([
+         'status' => 200, //Para los popups con alertas de sweet alert
+         'tipo' => 'eliminacion_exitosa', //Para las notificaciones
+         'mensajes' => ["new_$this->nombre_modelo" => [0=>"Registro eliminado exitosamente."]],
+         //Para mostrar los mensajes que van desde el backend
+      ]);
+   }
 }

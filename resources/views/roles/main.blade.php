@@ -89,6 +89,7 @@
       </div>
 
       {{--<notifications group="top_center" position="top center" />--}}
+      {{--<v-dialog/>--}}
       <notifications group="global" position="bottom right" />
 
 
