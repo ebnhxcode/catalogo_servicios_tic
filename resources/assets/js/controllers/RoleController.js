@@ -103,7 +103,8 @@ const RoleController = new Vue({
             'id_usuario_registra':false,
             'id_usuario_modifica':false,
             'created_at':true,
-            'updated_at':false
+            'updated_at':false,
+            'deleted_at':false,
          },
 
          'tabla_roles_labels': {
@@ -114,7 +115,8 @@ const RoleController = new Vue({
             'id_usuario_registra':'Usuario registra',
             'id_usuario_modifica':'Usuario Modifica',
             'created_at':'Creado en',
-            'updated_at':'Actualizado en'
+            'updated_at':'Actualizado en',
+            'deleted_at':'Eliminado en'
          },
 
          'excel_json_campos': {
@@ -125,7 +127,8 @@ const RoleController = new Vue({
             'id_usuario_registra': 'String',
             'id_usuario_modifica': 'String',
             'created_at': 'String',
-            'updated_at': 'String'
+            'updated_at': 'String',
+            'deleted_at': 'String'
          },
 
          'excel_json_datos': [],
@@ -163,7 +166,8 @@ const RoleController = new Vue({
                'id_usuario_registra': role.id_usuario_registra || '-',
                'id_usuario_modifica': role.id_usuario_modifica || '-',
                'created_at': role.created_at || '-',
-               'updated_at': role.updated_at || '-'
+               'updated_at': role.updated_at || '-',
+               'deleted_at': role.deleted_at || '-'
             });
          });
       },
