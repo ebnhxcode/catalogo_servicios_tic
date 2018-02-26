@@ -79,6 +79,8 @@ const RoleController = new Vue({
             'id_permiso':null,
          },
          'roles':[],
+         'datos_excel':[],
+
          'permisos':[],
          'campos_formularios':[],
          'errores_campos':[],
@@ -95,7 +97,7 @@ const RoleController = new Vue({
 
          'orden_lista':'asc',
 
-         'tabla_roles_campos': {
+         'tabla_campos': {
             'id_role':false,
             'nom_role':true,
             'det_role':false,
@@ -107,7 +109,7 @@ const RoleController = new Vue({
             'deleted_at':false,
          },
 
-         'tabla_roles_labels': {
+         'tabla_labels': {
             'id_role':'Id role',
             'nom_role':'Nombre del role',
             'det_role':'Detalle del role',
@@ -157,7 +159,7 @@ const RoleController = new Vue({
       roles: function (roles) {
          var self = this;
          this.excel_json_datos = [];
-         return roles.map(function (role, index) {
+         this.datos_excel = roles.map(function (role, index) {
             return self.excel_json_datos.push({
                'id_role': role.id_role || '-',
                'nom_role': role.nom_role || '-',
@@ -170,6 +172,7 @@ const RoleController = new Vue({
                'deleted_at': role.deleted_at || '-'
             });
          });
+         return this.datos_excel;
       },
    },
    components: {
@@ -301,7 +304,7 @@ const RoleController = new Vue({
    methods: {
 
       cambiar_visibilidad: function (campo) {
-         return this.tabla_roles_campos[campo] = !this.tabla_roles_campos[campo];
+         return this.tabla_campos[campo] = !this.tabla_campos[campo];
       },
 
       inicializar: function () {

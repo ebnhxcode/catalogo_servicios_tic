@@ -1,5 +1,5 @@
 <!-- BEGIN HEADER -->
-@include('layouts.header_modal', ['nom_modal'=>'actualizar'])
+@include('layouts.modal.header_modal', ['nom_modal'=>'actualizar'])
 <!-- END HEADER -->
 
    <div class="row" style="margin: 10px;margin-top:20px;">
@@ -54,5 +54,5 @@
 
 
 <!-- BEGIN FOOTER -->
-@include('layouts.footer_modal')
+@include('layouts.modal.footer_modal')
    <!-- END FOOTER -->

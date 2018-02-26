@@ -1,5 +1,5 @@
 <!-- BEGIN HEADER -->
-@include('layouts.header_modal', ['nom_modal'=>'crear'])
+@include('layouts.modal.header_modal', ['nom_modal'=>'crear'])
 <!-- END HEADER -->
 
    <div class="row" style="margin: 10px;margin-top:20px;">
@@ -37,5 +37,5 @@
    </div><!-- .row -->
 
 <!-- BEGIN FOOTER -->
-@include('layouts.footer_modal')
+@include('layouts.modal.footer_modal')
 <!-- END FOOTER -->

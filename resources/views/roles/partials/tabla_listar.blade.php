@@ -2,10 +2,10 @@
 
    <thead>
       <tr>
-         <th v-for="c,i in tabla_roles_campos" v-if="c">
+         <th v-for="c,i in tabla_campos" v-if="c">
             <a href="#!" class="btn btn-light" @click.prevent="cambiar_orden_lista(i)">
                <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
-               @{{ tabla_roles_labels[i] }}
+               @{{ tabla_labels[i] }}
             </a>
          </th>
          <th>
@@ -24,7 +24,7 @@
 
          <template v-if="id_en_edicion != r.id_role || modal_actualizar_activo == true">
 
-            <td v-for="c,i in tabla_roles_campos" v-show="c">
+            <td v-for="c,i in tabla_campos" v-show="c">
                @{{ (r['id_permiso'] = r['role_permiso']['id_permiso']) ? r[i] :'' }}
             </td>
 
@@ -37,7 +37,7 @@
                   Id role: @{{ r.id_role }}
                </span>
             </td>
-            <td :colspan="filterBy(tabla_roles_campos, true).length-1">
+            <td :colspan="filterBy(tabla_campos, true).length-1">
                <dl class="dl-vertical" style="overflow-y: auto;max-height: 450px;padding-bottom: 50px;">
                   @include('roles.partials.formulario_campos')
                </dl>

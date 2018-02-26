@@ -27,7 +27,7 @@ class RoleController extends Controller {
       #$this->middleware('auth');
       $this->nombre_modelo = "role";
       $this->nombre_tabla = "roles";
-      $this->nombre_detalle = "roles";
+      $this->nombre_detalle = "Roles";
       $this->nombre_controller = "RoleController";
    }
 
