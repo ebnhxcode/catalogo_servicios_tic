@@ -10,7 +10,7 @@ class UsuarioRole extends Model {
    use SoftDeletes;
    protected $dates = ['deleted_at'];
 
-   protected $table = "usuario_role";
+   protected $table = "usuarios_roles";
    protected $primaryKey = "id_usuario_role";
    protected $fillable = [
       #columns

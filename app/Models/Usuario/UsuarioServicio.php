@@ -10,7 +10,7 @@ class UsuarioServicio extends Model {
    use SoftDeletes;
    protected $dates = ['deleted_at'];
 
-   protected $table = "usuario_servicio";
+   protected $table = "usuarios_servicios";
    protected $primaryKey = "id_usuario_servicio";
    protected $fillable = [
       #columns
