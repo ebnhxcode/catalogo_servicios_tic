@@ -4,7 +4,6 @@
     <list default="true" id="9c71587b-d991-482f-b19e-13dd138d49bc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/RoleController.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/RoleController.js" />
     </list>
     <ignored path="catalogo_servicios_tic.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,8 +35,8 @@
       <file leaf-file-name="RoleController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/RoleController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.77790433">
-              <caret line="267" column="25" selection-start-line="267" selection-start-column="25" selection-end-line="267" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.5113895">
+              <caret line="247" column="61" selection-start-line="247" selection-start-column="61" selection-end-line="247" selection-end-column="61" />
               <folding>
                 <element signature="e#978#3655#0#PHP" expanded="false" />
                 <element signature="e#3719#4113#0#PHP" expanded="false" />
@@ -678,15 +677,15 @@
     <property name="SearchEverywhereHistoryKey" value="RoleController&#9;FILE&#9;file:///var/www/html/catalogo_servicios_tic/app/Http/Controllers/RoleController.php&#10;web.php&#9;FILE&#9;file:///var/www/html/catalogo_servicios_tic/routes/web.php&#10;RoleCon&#9;FILE&#9;file:///var/www/html/catalogo_servicios_tic/app/Http/Controllers/RoleController.php&#10;web.p&#9;FILE&#9;file:///var/www/html/catalogo_servicios_tic/routes/web.php&#10;web.&#9;FILE&#9;file:///var/www/html/catalogo_servicios_tic/routes/web.php&#10;web&#9;FILE&#9;file:///var/www/html/catalogo_servicios_tic/webpack.mix.js&#10;class&#9;FILE&#9;file:///var/www/html/catalogo_servicios_tic/vendor/composer/autoload_classmap.php&#10;autocloa&#9;null&#9;null&#10;autoload&#9;FILE&#9;file:///var/www/html/catalogo_servicios_tic/vendor/composer/autoload_classmap.php" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/views" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/css" />
       <recent name="$PROJECT_DIR$/public/css/other_libs" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/public/js/other_libs" />
       <recent name="$PROJECT_DIR$/resources/assets/js" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views" />
     </key>
   </component>
   <component name="RunManager">
@@ -1339,8 +1338,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/RoleController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.77790433">
-          <caret line="267" column="25" selection-start-line="267" selection-start-column="25" selection-end-line="267" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.5113895">
+          <caret line="247" column="61" selection-start-line="247" selection-start-column="61" selection-end-line="247" selection-end-column="61" />
           <folding>
             <element signature="e#978#3655#0#PHP" expanded="false" />
             <element signature="e#3719#4113#0#PHP" expanded="false" />

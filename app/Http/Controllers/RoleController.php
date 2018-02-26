@@ -245,12 +245,12 @@ class RoleController extends Controller {
 
    public function destroy($id) {
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario
-      $this->validacion = Validator::make($request->all(), [
-         'id_role' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|max:255',
-      ]);
+      #$this->validacion = Validator::make($request->all(), [
+      #   'id_role' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|max:255',
+      #]);
 
       #Valida si la informacion que se envia para editar al usuario son iguales los ids
-      if ($this->es_vacio($id) == true) {
+      if ($this->es_vacio($id) == true || preg_match("/^[0-9]*$/",$id) == 0) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
             'tipo' => 'error_datos_invalidos', //Para las notificaciones
