@@ -9,5 +9,6 @@
     "/js/controllers/PermisoController.js": "/js/controllers/PermisoController.js",
     "/js/controllers/EstadoController.js": "/js/controllers/EstadoController.js",
     "/js/controllers/CargoController.js": "/js/controllers/CargoController.js",
+    "/js/controllers/AplicacionController.js": "/js/controllers/AplicacionController.js",
     "/js/controllers/ActividadController.js": "/js/controllers/ActividadController.js"
 }
