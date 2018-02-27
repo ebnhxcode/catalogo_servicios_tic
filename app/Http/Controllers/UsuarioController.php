@@ -62,7 +62,7 @@ class UsuarioController extends Controller {
          'ape_materno' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|max:255",
          'username' => "regex:/(^([a-zA-Z0-9_]+)(\d+)?$)/u|required|unique:$this->nombre_tabla|max:255",
          'email' => "email|required|unique:$this->nombre_tabla|max:255",
-         'password' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
+         'password' => "regex:/(^([a-zA-Z0-9_ !@#$%*&]{8,}+)(\d+)?$)/u|required|max:255",
       ]);
       #Se valida la respuesta con la salida de la validacion
       if ($this->validacion->fails() == true) {

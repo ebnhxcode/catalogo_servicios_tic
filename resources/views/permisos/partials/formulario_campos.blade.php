@@ -11,7 +11,7 @@
       </transition>
 
       <transition name="bounce">
-         <span v-show="errors.has('nom_permiso')" class="text-danger">
+         <span v-show="errors.has('nom_permiso')" class="text-danger small">
             @{{ errors.first('nom_permiso') }}
          </span>
       </transition>
@@ -33,7 +33,7 @@
       </transition>
 
       <transition name="bounce">
-         <span v-show="errors.has('det_permiso')" class="text-danger">
+         <span v-show="errors.has('det_permiso')" class="text-danger small">
             @{{ errors.first('det_permiso') }}
          </span>
       </transition>

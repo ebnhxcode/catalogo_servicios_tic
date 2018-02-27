@@ -45,7 +45,9 @@ Validator.extend('verify_password', {
    1 letra mayúscula,
    1 letra minúscula,
    1 número
-   y un carácter especial (Ej: , . _ & ? etc)`,
+   1 carácter especial (Ej: , . _ & ? etc)
+   y que sea mínimo de 8 caracteres
+   `,
    validate: value => {
       var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
       return strongRegex.test(value);

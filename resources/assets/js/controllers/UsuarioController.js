@@ -187,8 +187,6 @@ const UsuarioController = new Vue({
    methods: {
 
 
-
-
       inicializar: function () {
          this.$http.get('/usuarios').then(response => { // success callback
             this.usuarios = response.body.usuarios || null;

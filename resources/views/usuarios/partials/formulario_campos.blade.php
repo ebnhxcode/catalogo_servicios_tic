@@ -3,7 +3,7 @@
 <div class="row">
    <div class="col-sm-4 col-md-4">
 
-      <dt>Nombre Usuario</dt>
+      <dt>Nombre</dt>
       <dd>
          <p class="control has-icon has-icon-right">
             <input type="text" v-model="usuario.nom_usuario" name="nom_usuario"
@@ -15,7 +15,7 @@
             </transition>
 
             <transition name="bounce">
-               <span v-show="errors.has('nom_usuario')" class="text-danger">
+               <span v-show="errors.has('nom_usuario')" class="text-danger small">
                   @{{ errors.first('nom_usuario') }}
                </span>
             </transition>
@@ -23,13 +23,17 @@
       </dd>
 
    </div>
+
+   {{--
+
+   <!-- Lo vamos a dejar comentado porque se activara cuando el perfilamiento esté activo -->
    <div class="col-sm-4 col-md-4">
 
       <dt>Nombre Completo</dt>
       <dd>
          <p class="control has-icon has-icon-right">
             <input type="text" v-model="usuario.nom_completo" name="nom_completo"
-                   v-validate="{required:true,regex:/^[a-zA-Z0-9_ ]+$/i}" data-vv-delay="500"
+                   v-validate="{regex:/^[a-zA-Z0-9_ ]+$/i}" data-vv-delay="500"
                    class="form-control" />
 
             <transition name="bounce">
@@ -37,7 +41,7 @@
             </transition>
 
             <transition name="bounce">
-               <span v-show="errors.has('nom_completo')" class="text-danger">
+               <span v-show="errors.has('nom_completo')" class="text-danger small">
                   @{{ errors.first('nom_completo') }}
                </span>
             </transition>
@@ -45,13 +49,17 @@
       </dd>
 
    </div>
+
+   --}}
+
+
    <div class="col-sm-4 col-md-4">
 
       <dt>Apellido Paterno</dt>
       <dd>
          <p class="control has-icon has-icon-right">
             <input type="text" v-model="usuario.ape_paterno" name="ape_paterno"
-                   v-validate="{required:true,regex:/^[a-zA-Z0-9_ ]+$/i}" data-vv-delay="500"
+                   v-validate="{regex:/^[a-zA-Z0-9_ ]+$/i}" data-vv-delay="500"
                    class="form-control" />
 
             <transition name="bounce">
@@ -59,7 +67,7 @@
             </transition>
 
             <transition name="bounce">
-               <span v-show="errors.has('ape_paterno')" class="text-danger">
+               <span v-show="errors.has('ape_paterno')" class="text-danger small">
                   @{{ errors.first('ape_paterno') }}
                </span>
             </transition>
@@ -73,7 +81,7 @@
       <dd>
          <p class="control has-icon has-icon-right">
             <input type="text" v-model="usuario.ape_materno" name="ape_materno"
-                   v-validate="{required:true,regex:/^[a-zA-Z0-9_ ]+$/i}" data-vv-delay="500"
+                   v-validate="{regex:/^[a-zA-Z0-9_ ]+$/i}" data-vv-delay="500"
                    class="form-control" />
 
             <transition name="bounce">
@@ -81,7 +89,7 @@
             </transition>
 
             <transition name="bounce">
-               <span v-show="errors.has('ape_materno')" class="text-danger">
+               <span v-show="errors.has('ape_materno')" class="text-danger small">
                   @{{ errors.first('ape_materno') }}
                </span>
             </transition>
@@ -91,7 +99,7 @@
    </div>
    <div class="col-sm-4 col-md-4">
 
-      <dt>Nombre de Usuario</dt>
+      <dt>Alias</dt>
       <dd>
          <p class="control has-icon has-icon-right">
             <input type="text" v-model="usuario.username" name="username"
@@ -103,7 +111,7 @@
             </transition>
 
             <transition name="bounce">
-               <span v-show="errors.has('username')" class="text-danger">
+               <span v-show="errors.has('username')" class="text-danger small">
                   @{{ errors.first('username') }}
                </span>
             </transition>
@@ -113,7 +121,7 @@
    </div>
    <div class="col-sm-4 col-md-4">
 
-      <dt>Email Usuario</dt>
+      <dt>Email</dt>
       <dd>
          <p class="control has-icon has-icon-right">
             <input type="text" v-model="usuario.email" name="email"
@@ -125,7 +133,7 @@
             </transition>
 
             <transition name="bounce">
-               <span v-show="errors.has('email')" class="text-danger">
+               <span v-show="errors.has('email')" class="text-danger small">
                   @{{ errors.first('email') }}
                </span>
             </transition>
@@ -147,7 +155,7 @@
             </transition>
 
             <transition name="bounce">
-               <span v-show="errors.has('password')" class="text-danger">
+               <span v-show="errors.has('password')" class="text-danger small">
                   @{{ errors.first('password') }}
                </span>
             </transition>
