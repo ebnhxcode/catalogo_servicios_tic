@@ -14,36 +14,30 @@ Vue.use(Clipboard);
 //Vue.component('download-excel', DownloadExcel);
 Vue.component('download-excel', require('../components/DownloadExcel.vue'));
 
-const UsuarioController = new Vue({
-   el: '#UsuarioController',
+const ServicioController = new Vue({
+   el: '#ServicioController',
    data(){
       return {
-         'nombre_tabla':'usuarios', //nombre tabla o de ruta
-         'nombre_ruta':'usuarios', //nombre tabla o de ruta
-         'nombre_model':'usuario',
-         'nombre_detalle':'Usuarios',
-         'nombre_controller':'UsuarioController',
+         'nombre_tabla':'servicios', //nombre tabla o de ruta
+         'nombre_ruta':'servicios', //nombre tabla o de ruta
+         'nombre_model':'servicio',
+         'nombre_detalle':'Servicios',
+         'nombre_controller':'ServicioController',
 
          'filtro_head':null,
-         'usuario':{
-            'nom_usuario':null,
-            'nom_completo':null,
-            'ape_paterno':null,
-            'ape_materno':null,
-            'username':null,
-            'email':null,
-            'password':null,
+         'servicio':{
+            'nom_servicio':null,
+            'det_servicio':null,
+            'id_actividad':null,
+            'id_usuario':null,
          },
-         'usuario_limpio':{
-            'nom_usuario':null,
-            'nom_completo':null,
-            'ape_paterno':null,
-            'ape_materno':null,
-            'username':null,
-            'email':null,
-            'password':null,
+         'servicio_limpio':{
+            'nom_servicio':null,
+            'det_servicio':null,
+            'id_actividad':null,
+            'id_usuario':null,
          },
-         'usuarios':[],
+         'servicios':[],
          'datos_excel':[],
 
          'campos_formularios':[],
@@ -62,15 +56,10 @@ const UsuarioController = new Vue({
          'orden_lista':'asc',
 
          'tabla_campos': {
+            'id_servicio':false,
+            'nom_servicio':true,
+            'det_servicio':true,
             'id_usuario':false,
-            'nom_usuario':true,
-            'nom_completo':false,
-            'ape_paterno':false,
-            'ape_materno':false,
-            'username':false,
-            'email':false,
-            'password':false,
-            'remember_token':false,
             'id_usuario_registra':false,
             'id_usuario_modifica':false,
             'created_at':true,
@@ -79,25 +68,25 @@ const UsuarioController = new Vue({
          },
 
          'tabla_labels': {
-            'id_usuario':'Id usuario',
-            'nom_usuario':'Nombre',
+            'id_servicio':'Id servicio',
+            'nom_servicio':'Nombre',
             'nom_completo':'Nombre completo',
             'ape_paterno':'Apellido paterno',
             'ape_materno':'Apellido materno',
-            'username':'Nombre de usuario',
+            'username':'Nombre de servicio',
             'email':'Email',
             'password':'Password',
             'remember_token':'Remember token',
-            'id_usuario_registra':'Usuario registra',
-            'id_usuario_modifica':'Usuario Modifica',
+            'id_servicio_registra':'servicio registra',
+            'id_servicio_modifica':'servicio Modifica',
             'created_at':'Creado en',
             'updated_at':'Actualizado en',
             'deleted_at':'Eliminado en'
          },
 
          'excel_json_campos': {
-            'id_usuario': 'String',
-            'nom_usuario': 'String',
+            'id_servicio': 'String',
+            'nom_servicio': 'String',
             'nom_completo': 'String',
             'ape_paterno': 'String',
             'ape_materno': 'String',
@@ -105,8 +94,8 @@ const UsuarioController = new Vue({
             'email': 'String',
             'password': 'String',
             'remember_token': 'String',
-            'id_usuario_registra': 'String',
-            'id_usuario_modifica': 'String',
+            'id_servicio_registra': 'String',
+            'id_servicio_modifica': 'String',
             'created_at': 'String',
             'updated_at': 'String',
             'deleted_at': 'String'
@@ -121,38 +110,38 @@ const UsuarioController = new Vue({
    },
    computed: {},
    watch: {
-      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el usuario
+      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el servicio
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function (id_en_edicion) {
          if (id_en_edicion == null) {
-            this.usuario = {
-               'nom_usuario':null,
-               'det_usuario':null,
+            this.servicio = {
+               'nom_servicio':null,
+               'det_servicio':null,
             };
          } else {
-            this.usuario = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.usuarios,this.nombre_model);
+            this.servicio = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.servicios,this.nombre_model);
          }
       },
-      //usuarios se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
-      usuarios: function (usuarios) {
+      //servicios se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
+      servicios: function (servicios) {
          var self = this;
          this.excel_json_datos = [];
-         return usuarios.map(function (usuario, index) {
+         return servicios.map(function (servicio, index) {
             return self.excel_json_datos.push({
-               'id_usuario': usuario.id_usuario|| '-',
-               'nom_usuario': usuario.nom_usuario|| '-',
-               'nom_completo': usuario.nom_completo|| '-',
-               'ape_paterno': usuario.ape_paterno|| '-',
-               'ape_materno': usuario.ape_materno|| '-',
-               'username': usuario.username|| '-',
-               'email': usuario.email|| '-',
-               'password': usuario.password|| '-',
-               'remember_token': usuario.remember_token|| '-',
-               'id_usuario_registra': usuario.id_usuario_registra|| '-',
-               'id_usuario_modifica': usuario.id_usuario_modifica|| '-',
-               'created_at': usuario.created_at|| '-',
-               'updated_at': usuario.updated_at|| '-',
-               'deleted_at': usuario.deleted_at|| '-'
+               'id_servicio': servicio.id_servicio|| '-',
+               'nom_servicio': servicio.nom_servicio|| '-',
+               'nom_completo': servicio.nom_completo|| '-',
+               'ape_paterno': servicio.ape_paterno|| '-',
+               'ape_materno': servicio.ape_materno|| '-',
+               'username': servicio.username|| '-',
+               'email': servicio.email|| '-',
+               'password': servicio.password|| '-',
+               'remember_token': servicio.remember_token|| '-',
+               'id_servicio_registra': servicio.id_servicio_registra|| '-',
+               'id_servicio_modifica': servicio.id_servicio_modifica|| '-',
+               'created_at': servicio.created_at|| '-',
+               'updated_at': servicio.updated_at|| '-',
+               'deleted_at': servicio.deleted_at|| '-'
             });
          });
       },
@@ -188,11 +177,11 @@ const UsuarioController = new Vue({
 
 
       inicializar: function () {
-         this.$http.get('/usuarios').then(response => { // success callback
-            this.usuarios = response.body.usuarios || null;
-            this.datos_excel = response.body.usuarios || null;
-            this.usuario = {
-               'nom_usuario':null,
+         this.$http.get('/servicios').then(response => { // success callback
+            this.servicios = response.body.servicios || null;
+            this.datos_excel = response.body.servicios || null;
+            this.servicio = {
+               'nom_servicio':null,
                'nom_completo':null,
                'ape_paterno':null,
                'ape_materno':null,
@@ -206,13 +195,13 @@ const UsuarioController = new Vue({
       },
 
 
-      editar: function (id_usuario) {
+      editar: function (id_servicio) {
          this.lista_actualizar_activo = true;
-         this.id_en_edicion = id_usuario;
+         this.id_en_edicion = id_servicio;
 
          //id_objeto + array de objetos + nombre del model en lower case
-         this.usuario = null;
-         this.usuario = this.buscar_en_array_por_modelo_e_id(id_usuario,this.usuarios,this.nombre_model);
+         this.servicio = null;
+         this.servicio = this.buscar_en_array_por_modelo_e_id(id_servicio,this.servicios,this.nombre_model);
 
       },
 
@@ -220,10 +209,10 @@ const UsuarioController = new Vue({
 
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-         this.$http.put(`/${this.nombre_ruta}/${this.usuario.id_usuario}`, this.usuario).then(response => { // success callback
+         this.$http.put(`/${this.nombre_ruta}/${this.servicio.id_servicio}`, this.servicio).then(response => { // success callback
 
             if (response.status == 200) {
-               if ( !this.es_null(response.body.usuario) ) {
+               if ( !this.es_null(response.body.servicio) ) {
                   this.lista_actualizar_activo = false;
                   this.id_en_edicion = null;
                }
@@ -259,7 +248,7 @@ const UsuarioController = new Vue({
 
 
 
-      eliminar: function (id_usuario) {
+      eliminar: function (id_servicio) {
          swal({
             title: "¿Estás seguro/a?",
             text: "¿Deseas confirmar la eliminación de este registro?",
@@ -277,7 +266,7 @@ const UsuarioController = new Vue({
                //Se adjunta el token
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-               this.$http.delete(`/${this.nombre_ruta}/${id_usuario}`).then(response => {
+               this.$http.delete(`/${this.nombre_ruta}/${id_servicio}`).then(response => {
                   if ( response.status == 200) {
                      this.auto_alerta_corta("Eliminado!","Registro eliminado correctamente","success");
                   }else {
@@ -317,13 +306,13 @@ const UsuarioController = new Vue({
          //Instancia nuevo form data
          var formData = new  FormData();
          //Conforma objeto paramétrico para solicitud http
-         formData.append('nom_usuario', this.usuario.nom_usuario || null );
-         formData.append('nom_completo', this.usuario.nom_completo || null );
-         formData.append('ape_paterno', this.usuario.ape_paterno || null );
-         formData.append('ape_materno', this.usuario.ape_materno || null );
-         formData.append('username', this.usuario.username || null );
-         formData.append('email', this.usuario.email || null );
-         formData.append('password', this.usuario.password || null );
+         formData.append('nom_servicio', this.servicio.nom_servicio || null );
+         formData.append('nom_completo', this.servicio.nom_completo || null );
+         formData.append('ape_paterno', this.servicio.ape_paterno || null );
+         formData.append('ape_materno', this.servicio.ape_materno || null );
+         formData.append('username', this.servicio.username || null );
+         formData.append('email', this.servicio.email || null );
+         formData.append('password', this.servicio.password || null );
 
          this.$http.post(`/${this.nombre_ruta}`, formData).then(response => { // success callback
 
@@ -348,7 +337,7 @@ const UsuarioController = new Vue({
          return;
       },
 
-      ordenar_lista: function (columna) { this.usuarios = _.orderBy(this.usuarios, columna, this.orden_lista); },
+      ordenar_lista: function (columna) { this.servicios = _.orderBy(this.servicios, columna, this.orden_lista); },
 
    }
 });

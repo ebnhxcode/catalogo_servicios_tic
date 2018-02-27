@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class RoleController extends Controller {
+   private $usuario_auth;
+
    private $nombre_modelo; //Se usa como prefijo en llamados en duro o definiciones similares
    private $nombre_tabla; //Se usa como prefijo en llamados en duro o definiciones similares o de ruta
    private $nombre_ruta; //Se usa como prefijo en llamados en duro o definiciones similares o de ruta
@@ -31,6 +33,7 @@ class RoleController extends Controller {
       $this->nombre_tabla = $this->nombre_ruta = "roles";
       $this->nombre_detalle = "Roles";
       $this->nombre_controller = "RoleController";
+      $this->usuario_auth = Auth::user();
    }
 
    private function es_vacio ($variable) {
@@ -58,6 +61,7 @@ class RoleController extends Controller {
          'status' => 200,
          'roles' => $this->roles,
          'permisos' => $this->permisos,
+         'usuario_auth' => $this->usuario_auth,
       ]);
    }
 

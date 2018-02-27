@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class UsuarioController extends Controller {
+   private $usuario_auth;
 
    private $nombre_modelo;
    private $nombre_tabla;
@@ -26,6 +27,7 @@ class UsuarioController extends Controller {
       $this->nombre_tabla = $this->nombre_ruta = "usuarios";
       $this->nombre_detalle = "Usuarios";
       $this->nombre_controller = "UsuarioController";
+      $this->usuario_auth = Auth::user();
    }
 
    private function es_vacio ($variable) {
@@ -51,6 +53,7 @@ class UsuarioController extends Controller {
       return response()->json([
          'status' => 200,
          'usuarios' => $this->usuarios,
+         'usuario_auth' => $this->usuario_auth,
       ]);
    }
 

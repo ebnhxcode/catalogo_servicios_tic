@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class PermisoController extends Controller {
+   private $usuario_auth;
+
    private $nombre_modelo; //Se usa como prefijo en llamados en duro o definiciones similares
    private $nombre_tabla; //Se usa como prefijo en llamados en duro o definiciones similares
    private $nombre_ruta;
@@ -25,6 +27,7 @@ class PermisoController extends Controller {
       $this->nombre_tabla = $this->nombre_ruta = "permisos";
       $this->nombre_detalle = "Permisos";
       $this->nombre_controller = "PermisoController";
+      $this->usuario_auth = Auth::user();
    }
 
    private function es_vacio ($variable) {
@@ -51,6 +54,7 @@ class PermisoController extends Controller {
       return response()->json([
          'status' => 200,
          'permisos' => $this->permisos,
+         'usuario_auth' => $this->usuario_auth,
       ]);
    }
 
