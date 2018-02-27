@@ -30,6 +30,8 @@ Route::resource('/permisos', 'PermisoController');
 Route::resource('/usuarios', 'UsuarioController');
 Route::resource('/servicios', 'ServicioController');
 Route::resource('/actividades', 'ActividadController');
+Route::resource('/cargos', 'CargoController');
+Route::resource('/estados', 'EstadoController');
 
 Route::get('/estandares', 'RoleController@estandares');
 
