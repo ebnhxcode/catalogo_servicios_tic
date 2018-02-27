@@ -22,12 +22,11 @@ class ServicioController extends Controller {
     private $validacion;
 
     public function __construct () {
-        #$this->middleware('auth');
+        $this->middleware('auth');
         $this->nombre_modelo = "servicio"; //nombre tabla o de ruta
         $this->nombre_tabla = $this->nombre_ruta = "servicios";
         $this->nombre_detalle = "Servicios";
         $this->nombre_controller = "ServicioController";
-        $this->usuario_auth = Auth::user();
     }
 
     private function es_vacio ($variable) {
@@ -49,6 +48,7 @@ class ServicioController extends Controller {
             ]);
         }
 
+        $this->usuario_auth = Auth::user();
         $this->servicios = Servicio::all();
         return response()->json([
            'status' => 200,

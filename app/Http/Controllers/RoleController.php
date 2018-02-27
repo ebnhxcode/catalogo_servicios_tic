@@ -28,12 +28,11 @@ class RoleController extends Controller {
    private $validacion; //Uso en valicaciones de request
 
    public function __construct () {
-      #$this->middleware('auth');
+      $this->middleware('auth');
       $this->nombre_modelo = "role"; //nombre tabla o de ruta
       $this->nombre_tabla = $this->nombre_ruta = "roles";
       $this->nombre_detalle = "Roles";
       $this->nombre_controller = "RoleController";
-      $this->usuario_auth = Auth::user();
    }
 
    private function es_vacio ($variable) {
@@ -55,6 +54,7 @@ class RoleController extends Controller {
          ]);
       }
 
+      $this->usuario_auth = Auth::user();
       $this->roles = Role::with('role_permiso.permiso')->get();
       $this->permisos = Permiso::all();
       return response()->json([

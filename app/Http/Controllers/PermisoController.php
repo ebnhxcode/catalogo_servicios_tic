@@ -22,12 +22,11 @@ class PermisoController extends Controller {
    private $validacion; //Uso en valicaciones de request
 
    public function __construct() {
-      #$this->middleware('auth');
+      $this->middleware('auth');
       $this->nombre_modelo = "permiso";
       $this->nombre_tabla = $this->nombre_ruta = "permisos";
       $this->nombre_detalle = "Permisos";
       $this->nombre_controller = "PermisoController";
-      $this->usuario_auth = Auth::user();
    }
 
    private function es_vacio ($variable) {
@@ -50,6 +49,7 @@ class PermisoController extends Controller {
       }
 
       #$this->roles = Role::with('role_permiso.permiso')->get();
+      $this->usuario_auth = Auth::user();
       $this->permisos = Permiso::all();
       return response()->json([
          'status' => 200,
