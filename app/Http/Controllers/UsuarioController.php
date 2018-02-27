@@ -112,7 +112,8 @@ class UsuarioController extends Controller {
          'ape_materno' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|max:255",
          'username' => "regex:/(^([a-zA-Z0-9_.]+)(\d+)?$)/u|required|max:255",
          'email' => "email|required|max:255",
-         'password' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
+         #'password' => "regex:/(^([a-zA-Z0-9_ !@#$%*&]{8,20}+)(\d+)?$)/u|required|max:255",
+         'password' => "regex:/(^([a-zA-Z0-9_ !@#$%*&]{8,20}+)(\d+)?$)/u|max:255",
       ]);
       #Valida si la informacion que se envia para editar al usuario son iguales los ids
       if ($id != $request["id_$this->nombre_modelo"]) {
