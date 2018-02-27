@@ -22,12 +22,14 @@ class ActividadController extends Controller {
    private $validacion;
 
    public function __construct () {
-      #$this->middleware('auth');
+      $this->middleware('auth');
       $this->nombre_modelo = "actividad"; //nombre tabla o de ruta
       $this->nombre_tabla = $this->nombre_ruta = "actividades";
-      $this->nombre_detalle = "actividades";
-      $this->nombre_controller = "actividadController";
+      $this->nombre_detalle = "Actividades";
+      $this->nombre_controller = "ActividadController";
       $this->usuario_auth = Auth::user();
+
+      dd(Auth::user());
    }
 
    private function es_vacio ($variable) {
@@ -115,8 +117,7 @@ class ActividadController extends Controller {
             'mensajes' => $this->validacion->messages(), //Para mostrar los mensajes que van desde el backend
          ]);
       }
-      $this->actividad = actividad::find($request["id_$this->nombre_modelo"]);
-      $request['id_usuario'] = Auth::user()->id_usuario;
+      $this->actividad = Actividad::find($request["id_$this->nombre_modelo"]);
       $request['id_usuario_modifica'] = Auth::user()->id_usuario;
       $this->actividad->update($request->all());
 
@@ -140,7 +141,7 @@ class ActividadController extends Controller {
          ]);
       }
 
-      $this->actividad = actividad::find($id);
+      $this->actividad = Actividad::find($id);
 
       #Valida si actividad existe y busca si tiene actividad_permiso
       if ($this->actividad) {

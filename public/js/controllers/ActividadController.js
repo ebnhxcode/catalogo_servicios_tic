@@ -60,12 +60,41 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 69);
+/******/ 	return __webpack_require__(__webpack_require__.s = 67);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 1:
+/***/ 10:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "a",
+    {
+      attrs: { href: "#", id: _vm.id_name },
+      on: { click: _vm.generate_excel }
+    },
+    [_vm._t("default", [_vm._v("\n      Download Excel\n   ")])],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-795cc6e8", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -2084,7 +2113,7 @@ if (typeof window !== 'undefined' && window.Sweetalert2) window.sweetAlert = win
 
 /***/ }),
 
-/***/ 2:
+/***/ 3:
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -2194,12 +2223,12 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return inyeccion_funciones_compartidas; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert2__);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -2460,7 +2489,7 @@ var inyeccion_funciones_compartidas = {
 
 /***/ }),
 
-/***/ 5:
+/***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
 !function(root, factory) {
@@ -3363,81 +3392,25 @@ var inyeccion_funciones_compartidas = {
 
 /***/ }),
 
-/***/ 6:
+/***/ 67:
 /***/ (function(module, exports, __webpack_require__) {
 
-!function(e,t){ true?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["v-clipboard"]=t():e["v-clipboard"]=t()}(this,function(){return function(e){function t(o){if(n[o])return n[o].exports;var r=n[o]={i:o,l:!1,exports:{}};return e[o].call(r.exports,r,r.exports,t),r.l=!0,r.exports}var n={};return t.m=e,t.c=n,t.i=function(e){return e},t.d=function(e,n,o){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:o})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="/dist/",t(t.s=0)}([function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o=function(e){var t=document.createElement("textarea"),n=!1;t.value=e,t.style.cssText="position:fixed;pointer-events:none;z-index:-9999;opacity:0;",document.body.appendChild(t),t.select();try{n=document.execCommand("copy")}catch(e){}return document.body.removeChild(t),n};t.default={install:function(e){e.prototype.$clipboard=o,e.directive("clipboard",{bind:function(e,t,n){e.addEventListener("click",function(e){if(t.hasOwnProperty("value")){var r=t.value,c={value:r,srcEvent:e},i=n.context;o(r)?i.$emit("copy",c):i.$emit("copyError",c)}})}})}}}])});
-//# sourceMappingURL=index.min.js.map
-
-/***/ }),
-
-/***/ 69:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(70);
+module.exports = __webpack_require__(68);
 
 
 /***/ }),
 
-/***/ 7:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(2)
-/* script */
-var __vue_script__ = __webpack_require__(8)
-/* template */
-var __vue_template__ = __webpack_require__(9)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/DownloadExcel.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-795cc6e8", Component.options)
-  } else {
-    hotAPI.reload("data-v-795cc6e8", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 70:
+/***/ 68:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert2__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_v_clipboard__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -3454,38 +3427,28 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
 
 //import { DownloadExcel } from '../components/DownloadExcel.vue';
 //Vue.component('download-excel', DownloadExcel);
-Vue.component('download-excel', __webpack_require__(7));
+Vue.component('download-excel', __webpack_require__(8));
 
-var UsuarioController = new Vue({
-   el: '#UsuarioController',
+var ActividadController = new Vue({
+   el: '#ActividadController',
    data: function data() {
       return {
-         'nombre_tabla': 'usuarios', //nombre tabla o de ruta
-         'nombre_ruta': 'usuarios', //nombre tabla o de ruta
-         'nombre_model': 'usuario',
-         'nombre_detalle': 'Usuarios',
-         'nombre_controller': 'UsuarioController',
+         'nombre_tabla': 'actividades', //nombre tabla o de ruta
+         'nombre_ruta': 'actividades', //nombre tabla o de ruta
+         'nombre_model': 'actividad',
+         'nombre_detalle': 'Actividades',
+         'nombre_controller': 'ActividadController',
 
          'filtro_head': null,
-         'usuario': {
-            'nom_usuario': null,
-            'nom_completo': null,
-            'ape_paterno': null,
-            'ape_materno': null,
-            'username': null,
-            'email': null,
-            'password': null
+         'actividad': {
+            'nom_actividad': null,
+            'det_actividad': null
          },
-         'usuario_limpio': {
-            'nom_usuario': null,
-            'nom_completo': null,
-            'ape_paterno': null,
-            'ape_materno': null,
-            'username': null,
-            'email': null,
-            'password': null
+         'actividad_limpio': {
+            'nom_actividad': null,
+            'det_actividad': null
          },
-         'usuarios': [],
+         'actividades': [],
          'datos_excel': [],
 
          'campos_formularios': [],
@@ -3504,15 +3467,9 @@ var UsuarioController = new Vue({
          'orden_lista': 'asc',
 
          'tabla_campos': {
-            'id_usuario': false,
-            'nom_usuario': true,
-            'nom_completo': false,
-            'ape_paterno': false,
-            'ape_materno': false,
-            'username': false,
-            'email': false,
-            'password': false,
-            'remember_token': false,
+            'id_actividad': false,
+            'nom_actividad': true,
+            'det_actividad': true,
             'id_usuario_registra': false,
             'id_usuario_modifica': false,
             'created_at': true,
@@ -3521,32 +3478,20 @@ var UsuarioController = new Vue({
          },
 
          'tabla_labels': {
-            'id_usuario': 'Id usuario',
-            'nom_usuario': 'Nombre',
-            'nom_completo': 'Nombre completo',
-            'ape_paterno': 'Apellido paterno',
-            'ape_materno': 'Apellido materno',
-            'username': 'Nombre de usuario',
-            'email': 'Email',
-            'password': 'Password',
-            'remember_token': 'Remember token',
+            'id_actividad': 'Id actividad',
+            'nom_actividad': 'Nombre',
+            'det_actividad': 'Detalle',
             'id_usuario_registra': 'Usuario registra',
-            'id_usuario_modifica': 'Usuario Modifica',
+            'id_usuario_modifica': 'Usuario modifica',
             'created_at': 'Creado en',
             'updated_at': 'Actualizado en',
             'deleted_at': 'Eliminado en'
          },
 
          'excel_json_campos': {
-            'id_usuario': 'String',
-            'nom_usuario': 'String',
-            'nom_completo': 'String',
-            'ape_paterno': 'String',
-            'ape_materno': 'String',
-            'username': 'String',
-            'email': 'String',
-            'password': 'String',
-            'remember_token': 'String',
+            'id_actividad': 'String',
+            'nom_actividad': 'String',
+            'det_actividad': 'String',
             'id_usuario_registra': 'String',
             'id_usuario_modifica': 'String',
             'created_at': 'String',
@@ -3564,38 +3509,29 @@ var UsuarioController = new Vue({
 
    computed: {},
    watch: {
-      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el usuario
+      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el actividad
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function id_en_edicion(_id_en_edicion) {
          if (_id_en_edicion == null) {
-            this.usuario = {
-               'nom_usuario': null,
-               'det_usuario': null
-            };
+            this.limpiar_objeto_clase_local();
          } else {
-            this.usuario = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.usuarios, this.nombre_model);
+            this.actividad = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.actividades, this.nombre_model);
          }
       },
-      //usuarios se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
-      usuarios: function usuarios(_usuarios) {
+      //actividades se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
+      actividades: function actividades(_actividades) {
          var self = this;
          this.excel_json_datos = [];
-         return _usuarios.map(function (usuario, index) {
+         return _actividades.map(function (actividad, index) {
             return self.excel_json_datos.push({
-               'id_usuario': usuario.id_usuario || '-',
-               'nom_usuario': usuario.nom_usuario || '-',
-               'nom_completo': usuario.nom_completo || '-',
-               'ape_paterno': usuario.ape_paterno || '-',
-               'ape_materno': usuario.ape_materno || '-',
-               'username': usuario.username || '-',
-               'email': usuario.email || '-',
-               'password': usuario.password || '-',
-               'remember_token': usuario.remember_token || '-',
-               'id_usuario_registra': usuario.id_usuario_registra || '-',
-               'id_usuario_modifica': usuario.id_usuario_modifica || '-',
-               'created_at': usuario.created_at || '-',
-               'updated_at': usuario.updated_at || '-',
-               'deleted_at': usuario.deleted_at || '-'
+               'id_actividad': actividad.id_actividad || '-',
+               'nom_actividad': actividad.nom_actividad || '-',
+               'det_actividad': actividad.det_actividad || '-',
+               'id_actividad_registra': actividad.id_actividad_registra || '-',
+               'id_actividad_modifica': actividad.id_actividad_modifica || '-',
+               'created_at': actividad.created_at || '-',
+               'updated_at': actividad.updated_at || '-',
+               'deleted_at': actividad.deleted_at || '-'
             });
          });
       }
@@ -3628,35 +3564,34 @@ var UsuarioController = new Vue({
    mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
    methods: {
 
+      limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
+         this.actividad = {
+            'nom_actividad': null,
+            'det_actividad': null
+         };
+      },
+
       inicializar: function inicializar() {
          var _this = this;
 
-         this.$http.get('/usuarios').then(function (response) {
+         this.$http.get('/actividades').then(function (response) {
             // success callback
-            _this.usuarios = response.body.usuarios || null;
-            _this.datos_excel = response.body.usuarios || null;
-            _this.usuario = {
-               'nom_usuario': null,
-               'nom_completo': null,
-               'ape_paterno': null,
-               'ape_materno': null,
-               'username': null,
-               'email': null,
-               'password': null
-            };
+            _this.actividades = response.body.actividades || null;
+            _this.datos_excel = response.body.actividades || null;
+            _this.limpiar_objeto_clase_local();
          }, function (response) {
             // error callback
             _this.checkear_estado_respuesta_http(response.status);
          });
       },
 
-      editar: function editar(id_usuario) {
+      editar: function editar(id_actividad) {
          this.lista_actualizar_activo = true;
-         this.id_en_edicion = id_usuario;
+         this.id_en_edicion = id_actividad;
 
          //id_objeto + array de objetos + nombre del model en lower case
-         this.usuario = null;
-         this.usuario = this.buscar_en_array_por_modelo_e_id(id_usuario, this.usuarios, this.nombre_model);
+         this.actividad = null;
+         this.actividad = this.buscar_en_array_por_modelo_e_id(id_actividad, this.actividades, this.nombre_model);
       },
 
       guardar_editado: function guardar_editado() {
@@ -3664,11 +3599,11 @@ var UsuarioController = new Vue({
 
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-         this.$http.put('/' + this.nombre_ruta + '/' + this.usuario.id_usuario, this.usuario).then(function (response) {
+         this.$http.put('/' + this.nombre_ruta + '/' + this.actividad.id_actividad, this.actividad).then(function (response) {
             // success callback
 
             if (response.status == 200) {
-               if (!_this2.es_null(response.body.usuario)) {
+               if (!_this2.es_null(response.body.actividad)) {
                   _this2.lista_actualizar_activo = false;
                   _this2.id_en_edicion = null;
                }
@@ -3701,7 +3636,7 @@ var UsuarioController = new Vue({
          return;
       },
 
-      eliminar: function eliminar(id_usuario) {
+      eliminar: function eliminar(id_actividad) {
          var _swal,
              _this3 = this;
 
@@ -3720,7 +3655,7 @@ var UsuarioController = new Vue({
                //Se adjunta el token
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-               _this3.$http.delete('/' + _this3.nombre_ruta + '/' + id_usuario).then(function (response) {
+               _this3.$http.delete('/' + _this3.nombre_ruta + '/' + id_actividad).then(function (response) {
                   if (response.status == 200) {
                      _this3.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
                   } else {
@@ -3762,13 +3697,8 @@ var UsuarioController = new Vue({
          //Instancia nuevo form data
          var formData = new FormData();
          //Conforma objeto paramétrico para solicitud http
-         formData.append('nom_usuario', this.usuario.nom_usuario || null);
-         formData.append('nom_completo', this.usuario.nom_completo || null);
-         formData.append('ape_paterno', this.usuario.ape_paterno || null);
-         formData.append('ape_materno', this.usuario.ape_materno || null);
-         formData.append('username', this.usuario.username || null);
-         formData.append('email', this.usuario.email || null);
-         formData.append('password', this.usuario.password || null);
+         formData.append('nom_actividad', this.actividad.nom_actividad || null);
+         formData.append('det_actividad', this.actividad.det_actividad || null);
 
          this.$http.post('/' + this.nombre_ruta, formData).then(function (response) {
             // success callback
@@ -3795,7 +3725,7 @@ var UsuarioController = new Vue({
       },
 
       ordenar_lista: function ordenar_lista(columna) {
-         this.usuarios = _.orderBy(this.usuarios, columna, this.orden_lista);
+         this.actividades = _.orderBy(this.actividades, columna, this.orden_lista);
       }
 
    }
@@ -3803,7 +3733,63 @@ var UsuarioController = new Vue({
 
 /***/ }),
 
+/***/ 7:
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(e,t){ true?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["v-clipboard"]=t():e["v-clipboard"]=t()}(this,function(){return function(e){function t(o){if(n[o])return n[o].exports;var r=n[o]={i:o,l:!1,exports:{}};return e[o].call(r.exports,r,r.exports,t),r.l=!0,r.exports}var n={};return t.m=e,t.c=n,t.i=function(e){return e},t.d=function(e,n,o){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:o})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="/dist/",t(t.s=0)}([function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o=function(e){var t=document.createElement("textarea"),n=!1;t.value=e,t.style.cssText="position:fixed;pointer-events:none;z-index:-9999;opacity:0;",document.body.appendChild(t),t.select();try{n=document.execCommand("copy")}catch(e){}return document.body.removeChild(t),n};t.default={install:function(e){e.prototype.$clipboard=o,e.directive("clipboard",{bind:function(e,t,n){e.addEventListener("click",function(e){if(t.hasOwnProperty("value")){var r=t.value,c={value:r,srcEvent:e},i=n.context;o(r)?i.$emit("copy",c):i.$emit("copyError",c)}})}})}}}])});
+//# sourceMappingURL=index.min.js.map
+
+/***/ }),
+
 /***/ 8:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(9)
+/* template */
+var __vue_template__ = __webpack_require__(10)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/DownloadExcel.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-795cc6e8", Component.options)
+  } else {
+    hotAPI.reload("data-v-795cc6e8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 9:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3905,35 +3891,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       }
    }
 });
-
-/***/ }),
-
-/***/ 9:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "a",
-    {
-      attrs: { href: "#", id: _vm.id_name },
-      on: { click: _vm.generate_excel }
-    },
-    [_vm._t("default", [_vm._v("\n      Download Excel\n   ")])],
-    2
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-795cc6e8", module.exports)
-  }
-}
 
 /***/ })
 

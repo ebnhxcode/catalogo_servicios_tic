@@ -14,36 +14,26 @@ Vue.use(Clipboard);
 //Vue.component('download-excel', DownloadExcel);
 Vue.component('download-excel', require('../components/DownloadExcel.vue'));
 
-const UsuarioController = new Vue({
-   el: '#UsuarioController',
+const ActividadController = new Vue({
+   el: '#ActividadController',
    data(){
       return {
-         'nombre_tabla':'usuarios', //nombre tabla o de ruta
-         'nombre_ruta':'usuarios', //nombre tabla o de ruta
-         'nombre_model':'usuario',
-         'nombre_detalle':'Usuarios',
-         'nombre_controller':'UsuarioController',
+         'nombre_tabla':'actividades', //nombre tabla o de ruta
+         'nombre_ruta':'actividades', //nombre tabla o de ruta
+         'nombre_model':'actividad',
+         'nombre_detalle':'Actividades',
+         'nombre_controller':'ActividadController',
 
          'filtro_head':null,
-         'usuario':{
-            'nom_usuario':null,
-            'nom_completo':null,
-            'ape_paterno':null,
-            'ape_materno':null,
-            'username':null,
-            'email':null,
-            'password':null,
+         'actividad':{
+            'nom_actividad':null,
+            'det_actividad':null,
          },
-         'usuario_limpio':{
-            'nom_usuario':null,
-            'nom_completo':null,
-            'ape_paterno':null,
-            'ape_materno':null,
-            'username':null,
-            'email':null,
-            'password':null,
+         'actividad_limpio':{
+            'nom_actividad':null,
+            'det_actividad':null,
          },
-         'usuarios':[],
+         'actividades':[],
          'datos_excel':[],
 
          'campos_formularios':[],
@@ -62,15 +52,9 @@ const UsuarioController = new Vue({
          'orden_lista':'asc',
 
          'tabla_campos': {
-            'id_usuario':false,
-            'nom_usuario':true,
-            'nom_completo':false,
-            'ape_paterno':false,
-            'ape_materno':false,
-            'username':false,
-            'email':false,
-            'password':false,
-            'remember_token':false,
+            'id_actividad':false,
+            'nom_actividad':true,
+            'det_actividad':true,
             'id_usuario_registra':false,
             'id_usuario_modifica':false,
             'created_at':true,
@@ -79,32 +63,20 @@ const UsuarioController = new Vue({
          },
 
          'tabla_labels': {
-            'id_usuario':'Id usuario',
-            'nom_usuario':'Nombre',
-            'nom_completo':'Nombre completo',
-            'ape_paterno':'Apellido paterno',
-            'ape_materno':'Apellido materno',
-            'username':'Nombre de usuario',
-            'email':'Email',
-            'password':'Password',
-            'remember_token':'Remember token',
+            'id_actividad':'Id actividad',
+            'nom_actividad':'Nombre',
+            'det_actividad':'Detalle',
             'id_usuario_registra':'Usuario registra',
-            'id_usuario_modifica':'Usuario Modifica',
+            'id_usuario_modifica':'Usuario modifica',
             'created_at':'Creado en',
             'updated_at':'Actualizado en',
             'deleted_at':'Eliminado en'
          },
 
          'excel_json_campos': {
-            'id_usuario': 'String',
-            'nom_usuario': 'String',
-            'nom_completo': 'String',
-            'ape_paterno': 'String',
-            'ape_materno': 'String',
-            'username': 'String',
-            'email': 'String',
-            'password': 'String',
-            'remember_token': 'String',
+            'id_actividad': 'String',
+            'nom_actividad': 'String',
+            'det_actividad': 'String',
             'id_usuario_registra': 'String',
             'id_usuario_modifica': 'String',
             'created_at': 'String',
@@ -121,38 +93,29 @@ const UsuarioController = new Vue({
    },
    computed: {},
    watch: {
-      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el usuario
+      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el actividad
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function (id_en_edicion) {
          if (id_en_edicion == null) {
-            this.usuario = {
-               'nom_usuario':null,
-               'det_usuario':null,
-            };
+            this.limpiar_objeto_clase_local();
          } else {
-            this.usuario = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.usuarios,this.nombre_model);
+            this.actividad = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.actividades,this.nombre_model);
          }
       },
-      //usuarios se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
-      usuarios: function (usuarios) {
+      //actividades se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
+      actividades: function (actividades) {
          var self = this;
          this.excel_json_datos = [];
-         return usuarios.map(function (usuario, index) {
+         return actividades.map(function (actividad, index) {
             return self.excel_json_datos.push({
-               'id_usuario': usuario.id_usuario|| '-',
-               'nom_usuario': usuario.nom_usuario|| '-',
-               'nom_completo': usuario.nom_completo|| '-',
-               'ape_paterno': usuario.ape_paterno|| '-',
-               'ape_materno': usuario.ape_materno|| '-',
-               'username': usuario.username|| '-',
-               'email': usuario.email|| '-',
-               'password': usuario.password|| '-',
-               'remember_token': usuario.remember_token|| '-',
-               'id_usuario_registra': usuario.id_usuario_registra|| '-',
-               'id_usuario_modifica': usuario.id_usuario_modifica|| '-',
-               'created_at': usuario.created_at|| '-',
-               'updated_at': usuario.updated_at|| '-',
-               'deleted_at': usuario.deleted_at|| '-'
+               'id_actividad': actividad.id_actividad|| '-',
+               'nom_actividad': actividad.nom_actividad|| '-',
+               'det_actividad': actividad.det_actividad|| '-',
+               'id_actividad_registra': actividad.id_actividad_registra|| '-',
+               'id_actividad_modifica': actividad.id_actividad_modifica|| '-',
+               'created_at': actividad.created_at|| '-',
+               'updated_at': actividad.updated_at|| '-',
+               'deleted_at': actividad.deleted_at|| '-'
             });
          });
       },
@@ -186,33 +149,32 @@ const UsuarioController = new Vue({
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
 
+      limpiar_objeto_clase_local: function () {
+         this.actividad = {
+            'nom_actividad':null,
+            'det_actividad':null,
+         };
+      },
+
 
       inicializar: function () {
-         this.$http.get('/usuarios').then(response => { // success callback
-            this.usuarios = response.body.usuarios || null;
-            this.datos_excel = response.body.usuarios || null;
-            this.usuario = {
-               'nom_usuario':null,
-               'nom_completo':null,
-               'ape_paterno':null,
-               'ape_materno':null,
-               'username':null,
-               'email':null,
-               'password':null,
-            };
+         this.$http.get('/actividades').then(response => { // success callback
+            this.actividades = response.body.actividades || null;
+            this.datos_excel = response.body.actividades || null;
+            this.limpiar_objeto_clase_local();
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);
          });
       },
 
 
-      editar: function (id_usuario) {
+      editar: function (id_actividad) {
          this.lista_actualizar_activo = true;
-         this.id_en_edicion = id_usuario;
+         this.id_en_edicion = id_actividad;
 
          //id_objeto + array de objetos + nombre del model en lower case
-         this.usuario = null;
-         this.usuario = this.buscar_en_array_por_modelo_e_id(id_usuario,this.usuarios,this.nombre_model);
+         this.actividad = null;
+         this.actividad = this.buscar_en_array_por_modelo_e_id(id_actividad,this.actividades,this.nombre_model);
 
       },
 
@@ -220,10 +182,10 @@ const UsuarioController = new Vue({
 
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-         this.$http.put(`/${this.nombre_ruta}/${this.usuario.id_usuario}`, this.usuario).then(response => { // success callback
+         this.$http.put(`/${this.nombre_ruta}/${this.actividad.id_actividad}`, this.actividad).then(response => { // success callback
 
             if (response.status == 200) {
-               if ( !this.es_null(response.body.usuario) ) {
+               if ( !this.es_null(response.body.actividad) ) {
                   this.lista_actualizar_activo = false;
                   this.id_en_edicion = null;
                }
@@ -259,7 +221,7 @@ const UsuarioController = new Vue({
 
 
 
-      eliminar: function (id_usuario) {
+      eliminar: function (id_actividad) {
          swal({
             title: "¿Estás seguro/a?",
             text: "¿Deseas confirmar la eliminación de este registro?",
@@ -277,7 +239,7 @@ const UsuarioController = new Vue({
                //Se adjunta el token
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-               this.$http.delete(`/${this.nombre_ruta}/${id_usuario}`).then(response => {
+               this.$http.delete(`/${this.nombre_ruta}/${id_actividad}`).then(response => {
                   if ( response.status == 200) {
                      this.auto_alerta_corta("Eliminado!","Registro eliminado correctamente","success");
                   }else {
@@ -317,13 +279,8 @@ const UsuarioController = new Vue({
          //Instancia nuevo form data
          var formData = new  FormData();
          //Conforma objeto paramétrico para solicitud http
-         formData.append('nom_usuario', this.usuario.nom_usuario || null );
-         formData.append('nom_completo', this.usuario.nom_completo || null );
-         formData.append('ape_paterno', this.usuario.ape_paterno || null );
-         formData.append('ape_materno', this.usuario.ape_materno || null );
-         formData.append('username', this.usuario.username || null );
-         formData.append('email', this.usuario.email || null );
-         formData.append('password', this.usuario.password || null );
+         formData.append('nom_actividad', this.actividad.nom_actividad || null );
+         formData.append('det_actividad', this.actividad.det_actividad || null );
 
          this.$http.post(`/${this.nombre_ruta}`, formData).then(response => { // success callback
 
@@ -348,7 +305,7 @@ const UsuarioController = new Vue({
          return;
       },
 
-      ordenar_lista: function (columna) { this.usuarios = _.orderBy(this.usuarios, columna, this.orden_lista); },
+      ordenar_lista: function (columna) { this.actividades = _.orderBy(this.actividades, columna, this.orden_lista); },
 
    }
 });
