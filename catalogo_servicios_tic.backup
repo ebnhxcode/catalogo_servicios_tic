@@ -623,6 +623,41 @@ CREATE TABLE log_navegacion (
 ALTER TABLE log_navegacion OWNER TO postgres;
 
 --
+-- Name: migrations; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE migrations (
+    id integer NOT NULL,
+    migration character varying(255) NOT NULL,
+    batch integer NOT NULL
+);
+
+
+ALTER TABLE migrations OWNER TO postgres;
+
+--
+-- Name: migrations_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE migrations_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE migrations_id_seq OWNER TO postgres;
+
+--
+-- Name: migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE migrations_id_seq OWNED BY migrations.id;
+
+
+--
 -- Name: pais; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -636,6 +671,19 @@ CREATE TABLE pais (
 
 
 ALTER TABLE pais OWNER TO postgres;
+
+--
+-- Name: password_resets; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE password_resets (
+    email character varying(255) NOT NULL,
+    token character varying(255) NOT NULL,
+    created_at timestamp(0) without time zone
+);
+
+
+ALTER TABLE password_resets OWNER TO postgres;
 
 --
 -- Name: permisos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -1327,6 +1375,13 @@ CREATE TABLE usuarios_servicios (
 ALTER TABLE usuarios_servicios OWNER TO postgres;
 
 --
+-- Name: migrations id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY migrations ALTER COLUMN id SET DEFAULT nextval('migrations_id_seq'::regclass);
+
+
+--
 -- Data for Name: actividades; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1817,6 +1872,16 @@ COPY log_navegacion (id_log_navegacion, id_usuario, cod_establecimiento, nom_usu
 
 
 --
+-- Data for Name: migrations; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY migrations (id, migration, batch) FROM stdin;
+1	2014_10_12_000000_create_users_table	1
+2	2014_10_12_100000_create_password_resets_table	1
+\.
+
+
+--
 -- Data for Name: pais; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -2061,6 +2126,14 @@ COPY pais (id_pais, nombre_pais, created_at, updated_at, deleted_at) FROM stdin;
 876	WALLIS Y FUTUNA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
 882	SAMOA	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
 887	YEMEN	2017-10-31 11:06:00	2017-10-31 11:06:00	\N
+\.
+
+
+--
+-- Data for Name: password_resets; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY password_resets (email, token, created_at) FROM stdin;
 \.
 
 
@@ -2311,6 +2384,7 @@ COPY tipos_tecnologias_desarrollo (id_tipo_tecnologia_desarrollo, nom_tipo, det_
 
 COPY usuarios (id_usuario, nom_usuario, nom_completo, ape_paterno, ape_materno, username, email, password, remember_token, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 1	Esteban	\N	\N	\N	\N	esteban.ramos@minsal.cl	$2y$10$56R..xvCC1igB5V0842UI.f2B5V2p7lopByoVEjig0R2BSgRosuEu	u1hyc9uMc0xwu2MMzCIDgbgVwLK8P1VFWFNPxQ1fUTe0uDlLKghr7cLI7dQ5	\N	\N	2018-02-19 18:08:14	2018-02-19 18:08:14	\N
+2	edsaf	null	null	null	aasdasd	esteban.ramos@minsaasdl.cl	$2y$10$EMV5tnLbwP5gAhTXjmVVu.rsn8bkQ9dIt9iay1e6Vj7AenetPnqsy	\N	\N	\N	2018-02-27 13:25:49	2018-02-27 13:25:49	\N
 \.
 
 
@@ -2474,6 +2548,13 @@ SELECT pg_catalog.setval('log_navegacion_id_seq', 1, false);
 
 
 --
+-- Name: migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('migrations_id_seq', 2, true);
+
+
+--
 -- Name: permisos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -2589,7 +2670,7 @@ SELECT pg_catalog.setval('usuarios_estados_id_seq', 1, false);
 -- Name: usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('usuarios_id_seq', 1, true);
+SELECT pg_catalog.setval('usuarios_id_seq', 2, true);
 
 
 --
@@ -2743,6 +2824,14 @@ ALTER TABLE ONLY log_navegacion
 
 
 --
+-- Name: migrations migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY migrations
+    ADD CONSTRAINT migrations_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: permisos permisos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -2892,6 +2981,13 @@ ALTER TABLE ONLY usuarios_roles
 
 ALTER TABLE ONLY usuarios_servicios
     ADD CONSTRAINT usuarios_servicios_pkey PRIMARY KEY (id_usuario_servicio);
+
+
+--
+-- Name: password_resets_email_index; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX password_resets_email_index ON password_resets USING btree (email);
 
 
 --
