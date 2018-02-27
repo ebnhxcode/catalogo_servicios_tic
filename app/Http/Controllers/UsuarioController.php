@@ -154,7 +154,6 @@ class UsuarioController extends Controller {
          $this->usuario->delete();
       }
 
-
       return response()->json([
          'status' => 200, //Para los popups con alertas de sweet alert
          'tipo' => 'eliminacion_exitosa', //Para las notificaciones
