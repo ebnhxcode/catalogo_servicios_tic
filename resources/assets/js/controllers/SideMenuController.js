@@ -118,6 +118,10 @@ const SideMenuController = new Vue({
                'url':'/estados',
             },
             {
+               'title':'Actividades',
+               'url':'/actividades',
+            },
+            {
                'title':'Servicios',
                'url':'/servicios',
             },
