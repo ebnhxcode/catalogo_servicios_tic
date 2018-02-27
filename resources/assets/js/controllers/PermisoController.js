@@ -35,6 +35,7 @@ const PermisoController = new Vue({
          },
          'permisos':[],
          'datos_excel':[],
+         'usuario_auth':{},
 
          'campos_formularios':[],
          'errores_campos':[],
@@ -163,6 +164,7 @@ const PermisoController = new Vue({
          this.$http.get('/permisos').then(response => { // success callback
             this.permisos = response.body.permisos || null;
             this.datos_excel = response.body.permisos || null;
+            this.usuario_auth = response.body.usuario_auth || null;
             this.limpiar_objeto_clase_local();
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);

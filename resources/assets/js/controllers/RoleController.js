@@ -37,6 +37,7 @@ const RoleController = new Vue({
          },
          'roles':[],
          'datos_excel':[],
+         'usuario_auth':{},
 
          'permisos':[],
          'campos_formularios':[],
@@ -169,6 +170,7 @@ const RoleController = new Vue({
             this.roles = response.body.roles || null;
             this.permisos = response.body.permisos || null;
             this.datos_excel = response.body.roles || null;
+            this.usuario_auth = response.body.usuario_auth || null;
             this.limpiar_objeto_clase_local();
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);

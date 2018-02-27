@@ -39,6 +39,7 @@ const ServicioController = new Vue({
          },
          'servicios':[],
          'datos_excel':[],
+         'usuario_auth':{},
 
          'campos_formularios':[],
          'errores_campos':[],
@@ -175,7 +176,7 @@ const ServicioController = new Vue({
          this.$http.get('/servicios').then(response => { // success callback
             this.servicios = response.body.servicios || null;
             this.datos_excel = response.body.servicios || null;
-
+            this.usuario_auth = response.body.usuario_auth || null;
             this.limpiar_objeto_clase_local();
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);

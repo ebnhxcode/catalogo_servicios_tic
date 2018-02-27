@@ -45,6 +45,7 @@ const UsuarioController = new Vue({
          },
          'usuarios':[],
          'datos_excel':[],
+         'usuario_auth':{},
 
          'campos_formularios':[],
          'errores_campos':[],
@@ -200,6 +201,7 @@ const UsuarioController = new Vue({
          this.$http.get('/usuarios').then(response => { // success callback
             this.usuarios = response.body.usuarios || null;
             this.datos_excel = response.body.usuarios || null;
+            this.usuario_auth = response.body.usuario_auth || null;
             this.limpiar_objeto_clase_local();
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);
