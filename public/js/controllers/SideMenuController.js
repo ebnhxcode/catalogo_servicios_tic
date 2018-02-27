@@ -46907,6 +46907,17 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_notification___default.a);
 __WEBPACK_IMPORTED_MODULE_2_vee_validate__["a" /* Validator */].localize('es', __WEBPACK_IMPORTED_MODULE_1_vee_validate_dist_locale_es___default.a);
 Vue.use(__WEBPACK_IMPORTED_MODULE_2_vee_validate__["b" /* default */], { locale: 'es' });
 
+//Se extiende el componente
+__WEBPACK_IMPORTED_MODULE_2_vee_validate__["a" /* Validator */].extend('verify_password', {
+   getMessage: function getMessage(field) {
+      return '\n   La contrase\xF1a debe contener al menos:\n   1 letra may\xFAscula,\n   1 letra min\xFAscula,\n   1 n\xFAmero\n   y un car\xE1cter especial (Ej: , . _ & ? etc)';
+   },
+   validate: function validate(value) {
+      var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+      return strongRegex.test(value);
+   }
+});
+
 //Se importa plugin de Request y Response Http
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_resource__["a" /* default */]);

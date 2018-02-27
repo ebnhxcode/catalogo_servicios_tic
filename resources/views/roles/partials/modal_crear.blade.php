@@ -10,11 +10,8 @@
             ❌
             </button>
          </div>
-         <!--################################-->
-         <!-- Desde aquí comienza desarrollo -->
-         <!--################################-->
 
-         <h2>Nuevo Role</h2>
+         <h2>Nuevo {{$nombre_modelo}}</h2>
          <hr>
 
          <dl class="dl-vertical" style="overflow-y: auto;max-height: 450px;padding-bottom: 50px;">
@@ -28,10 +25,6 @@
                </button>
             </dd>
 
-
-            <!--################################-->
-            <!-- Desde aquí finaliza desarrollo -->
-            <!--################################-->
          </dl><!-- .dl-vertical -->
       </div><!-- .col-* -->
    </div><!-- .row -->

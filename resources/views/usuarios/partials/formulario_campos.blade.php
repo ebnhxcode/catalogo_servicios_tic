@@ -1,7 +1,7 @@
 
 
 <div class="row">
-   <div class="col-md-6">
+   <div class="col-sm-4 col-md-4">
 
       <dt>Nombre Usuario</dt>
       <dd>
@@ -15,12 +15,15 @@
             </transition>
 
             <transition name="bounce">
-         <span v-show="errors.has('nom_usuario')" class="text-danger">
-            @{{ errors.first('nom_usuario') }}
-         </span>
+               <span v-show="errors.has('nom_usuario')" class="text-danger">
+                  @{{ errors.first('nom_usuario') }}
+               </span>
             </transition>
          </p>
       </dd>
+
+   </div>
+   <div class="col-sm-4 col-md-4">
 
       <dt>Nombre Completo</dt>
       <dd>
@@ -34,13 +37,15 @@
             </transition>
 
             <transition name="bounce">
-         <span v-show="errors.has('nom_completo')" class="text-danger">
-            @{{ errors.first('nom_completo') }}
-         </span>
+               <span v-show="errors.has('nom_completo')" class="text-danger">
+                  @{{ errors.first('nom_completo') }}
+               </span>
             </transition>
          </p>
       </dd>
 
+   </div>
+   <div class="col-sm-4 col-md-4">
 
       <dt>Apellido Paterno</dt>
       <dd>
@@ -54,13 +59,15 @@
             </transition>
 
             <transition name="bounce">
-         <span v-show="errors.has('ape_paterno')" class="text-danger">
-            @{{ errors.first('ape_paterno') }}
-         </span>
+               <span v-show="errors.has('ape_paterno')" class="text-danger">
+                  @{{ errors.first('ape_paterno') }}
+               </span>
             </transition>
          </p>
       </dd>
 
+   </div>
+   <div class="col-sm-4 col-md-4">
 
       <dt>Apellido Materno</dt>
       <dd>
@@ -74,16 +81,15 @@
             </transition>
 
             <transition name="bounce">
-         <span v-show="errors.has('ape_materno')" class="text-danger">
-            @{{ errors.first('ape_materno') }}
-         </span>
+               <span v-show="errors.has('ape_materno')" class="text-danger">
+                  @{{ errors.first('ape_materno') }}
+               </span>
             </transition>
          </p>
       </dd>
 
-
    </div>
-   <div class="col-md-6">
+   <div class="col-sm-4 col-md-4">
 
       <dt>Nombre de Usuario</dt>
       <dd>
@@ -97,12 +103,15 @@
             </transition>
 
             <transition name="bounce">
-         <span v-show="errors.has('username')" class="text-danger">
-            @{{ errors.first('username') }}
-         </span>
+               <span v-show="errors.has('username')" class="text-danger">
+                  @{{ errors.first('username') }}
+               </span>
             </transition>
          </p>
       </dd>
+
+   </div>
+   <div class="col-sm-4 col-md-4">
 
       <dt>Email Usuario</dt>
       <dd>
@@ -116,13 +125,34 @@
             </transition>
 
             <transition name="bounce">
-         <span v-show="errors.has('email')" class="text-danger">
-            @{{ errors.first('email') }}
-         </span>
+               <span v-show="errors.has('email')" class="text-danger">
+                  @{{ errors.first('email') }}
+               </span>
             </transition>
          </p>
       </dd>
 
+   </div>
+   <div class="col-sm-4 col-md-4">
+
+      <dt>Password</dt>
+      <dd>
+         <p class="control has-icon has-icon-right">
+            <input type="password" v-model="usuario.password" name="password"
+                   v-validate="{required:true,verify_password:true}" data-vv-delay="500"
+                   class="form-control" />
+
+            <transition name="bounce">
+               <i v-show="errors.has('password')" class="fa fa-exclamation-circle"></i>
+            </transition>
+
+            <transition name="bounce">
+               <span v-show="errors.has('password')" class="text-danger">
+                  @{{ errors.first('password') }}
+               </span>
+            </transition>
+         </p>
+      </dd>
 
    </div>
 </div>

@@ -38,6 +38,20 @@ import VeeValidate, { Validator } from 'vee-validate';
 Validator.localize('es', es);
 Vue.use(VeeValidate, {locale: 'es'});
 
+//Se extiende el componente
+Validator.extend('verify_password', {
+   getMessage: field => `
+   La contraseña debe contener al menos:
+   1 letra mayúscula,
+   1 letra minúscula,
+   1 número
+   y un carácter especial (Ej: , . _ & ? etc)`,
+   validate: value => {
+      var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+      return strongRegex.test(value);
+   }
+});
+
 //Se importa plugin de Request y Response Http
 import VueResource from 'vue-resource';
 Vue.use(VueResource);

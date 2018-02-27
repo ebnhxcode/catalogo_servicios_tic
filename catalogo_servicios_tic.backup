@@ -2073,6 +2073,7 @@ COPY permisos (id_permiso, nom_permiso, det_permiso, cod_permiso, id_usuario_reg
 16	U	U representa update, tiene permisos nivel 3 y puede visualizar, crear y editar.	3	\N	\N	2018-02-20 21:42:05	2018-02-20 21:42:05	\N
 17	D	D representa delete, tiene permisos nivel 4 y puede visualizar, crear, editar y hasta eliminar.	4	\N	\N	2018-02-20 21:42:31	2018-02-20 21:42:31	\N
 14	C	C representa create, tiene permisos nivel 2 y puede crear y visualizar.	2	\N	\N	2018-02-20 21:41:09	2018-02-22 16:59:02	\N
+18	sda	asdsada	\N	\N	\N	2018-02-26 21:18:26	2018-02-26 21:18:32	2018-02-26 21:18:32
 \.
 
 
@@ -2104,9 +2105,16 @@ COPY region (id_region, nombre_region, alias, orden, created_at, updated_at, del
 --
 
 COPY roles (id_role, nom_role, det_role, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
-55	Nivel 3	Nivel 3	\N	\N	2018-02-23 23:00:17	2018-02-25 03:13:24	\N
-56	Role Enrolable	Role remain	\N	\N	2018-02-24 01:00:09	2018-02-25 16:14:37	\N
-57	57 sdfsdf	dsfsdfsd\nfsad\n sdfda d\n ff sd f\ndsf \nads f\nsdf\n asd\nfsd \nfsda	\N	\N	2018-02-25 02:17:05	2018-02-25 16:14:56	\N
+55	Nivel 3	Nivel 3	\N	\N	2018-02-23 23:00:17	2018-02-26 15:27:01	2018-02-26 15:27:01
+56	Role Enrolable	Role remain	\N	\N	2018-02-24 01:00:09	2018-02-26 15:30:07	2018-02-26 15:30:07
+57	57 sdfsdf	dsfsdfsd\nfsad\n sdfda d\n ff sd f\ndsf \nads f\nsdf\n asd\nfsd \nfsda	\N	\N	2018-02-25 02:17:05	2018-02-26 15:49:13	2018-02-26 15:49:13
+59	fsfsd	fsd	\N	\N	2018-02-26 16:18:34	2018-02-26 16:18:38	2018-02-26 16:18:38
+58	role	role	\N	\N	2018-02-26 15:49:22	2018-02-26 16:19:04	2018-02-26 16:19:04
+61	no editable	pq no se peue	\N	\N	2018-02-26 19:30:21	2018-02-26 20:22:37	2018-02-26 20:22:37
+60	role	role	\N	\N	2018-02-26 16:19:11	2018-02-26 20:22:39	2018-02-26 20:22:39
+62	role 1	role 1	\N	\N	2018-02-26 20:22:50	2018-02-26 20:22:50	\N
+63	role 2	role 2	\N	\N	2018-02-26 20:22:57	2018-02-26 20:22:57	\N
+64	role 3	role 3	\N	\N	2018-02-26 20:23:13	2018-02-26 20:23:13	\N
 \.
 
 
@@ -2159,9 +2167,16 @@ COPY roles_permisos (id_role_permiso, id_role, id_permiso, id_usuario_registra, 
 50	52	15	\N	\N	2018-02-23 21:38:13	2018-02-23 21:38:13	\N
 51	53	15	\N	\N	2018-02-23 21:44:27	2018-02-23 21:44:27	\N
 52	54	15	\N	\N	2018-02-23 21:48:38	2018-02-23 21:48:38	\N
-53	55	16	\N	\N	2018-02-23 23:00:17	2018-02-25 01:16:13	\N
-55	57	16	\N	\N	2018-02-25 02:17:05	2018-02-25 04:40:04	\N
-54	56	16	\N	\N	2018-02-24 01:00:09	2018-02-25 16:14:15	\N
+53	55	16	\N	\N	2018-02-23 23:00:17	2018-02-26 15:27:01	2018-02-26 15:27:01
+54	56	16	\N	\N	2018-02-24 01:00:09	2018-02-26 15:30:07	2018-02-26 15:30:07
+55	57	16	\N	\N	2018-02-25 02:17:05	2018-02-26 15:49:13	2018-02-26 15:49:13
+57	59	14	\N	\N	2018-02-26 16:18:34	2018-02-26 16:18:38	2018-02-26 16:18:38
+56	58	15	\N	\N	2018-02-26 15:49:22	2018-02-26 16:19:04	2018-02-26 16:19:04
+59	61	16	\N	\N	2018-02-26 19:30:21	2018-02-26 20:22:37	2018-02-26 20:22:37
+58	60	15	\N	\N	2018-02-26 16:19:11	2018-02-26 20:22:39	2018-02-26 20:22:39
+60	62	15	\N	\N	2018-02-26 20:22:50	2018-02-26 20:22:50	\N
+61	63	16	\N	\N	2018-02-26 20:22:57	2018-02-26 20:22:57	\N
+62	64	14	\N	\N	2018-02-26 20:23:13	2018-02-26 20:23:13	\N
 \.
 
 
@@ -2462,21 +2477,21 @@ SELECT pg_catalog.setval('log_navegacion_id_seq', 1, false);
 -- Name: permisos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('permisos_id_seq', 17, true);
+SELECT pg_catalog.setval('permisos_id_seq', 18, true);
 
 
 --
 -- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('roles_id_seq', 57, true);
+SELECT pg_catalog.setval('roles_id_seq', 64, true);
 
 
 --
 -- Name: roles_permisos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('roles_permisos_id_seq', 55, true);
+SELECT pg_catalog.setval('roles_permisos_id_seq', 62, true);
 
 
 --

@@ -2,7 +2,7 @@
 <modal name="{{$nom_modal}}"
        @before-close="before_close"
        :reset="true"
-       :width="600"
+       :width="720"
        :min-width="500"
        :height="550"
        :min-height="550"
