@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Permiso;
 use App\RolePermiso;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class PermisoController extends Controller {
@@ -60,7 +61,7 @@ class PermisoController extends Controller {
          'det_permiso' => 'required|max:1000',
       ]);
       #Se valida la respuesta con la salida de la validacion
-      if ($this->validacion->fails() == true) {
+      if ($this->validacion->fails() == true && !Auth::guest()) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
             'tipo' => 'errores_campos_requeridos', //Para las notificaciones
@@ -73,7 +74,9 @@ class PermisoController extends Controller {
       #Se crea el nuevo registro
       $this->new_permiso = Permiso::create([
          'nom_permiso' => $this->permiso['nom_permiso'],
-         'det_permiso' => $this->permiso['det_permiso']
+         'det_permiso' => $this->permiso['det_permiso'],
+         'id_usuario_registra' => Auth::user()->id_usuario,
+         'id_usuario_modifica' => Auth::user()->id_usuario,
       ]);
 
       unset($this->permiso, $this->validacion /*$this->validacion,$this->new_role,*/);
@@ -102,7 +105,7 @@ class PermisoController extends Controller {
          ]);
       }
       #Se valida la respuesta con la salida de la validacion
-      if ($this->validacion->fails() == true) {
+      if ($this->validacion->fails() == true && !Auth::guest()) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
             'tipo' => 'errores_campos_requeridos', //Para las notificaciones
@@ -110,6 +113,7 @@ class PermisoController extends Controller {
          ]);
       }
       $this->permiso = Permiso::find($request["id_$this->nombre_modelo"]);
+      $request['id_usuario_modifica'] = Auth::user()->id_usuario;
       $this->permiso->update($request->all());
 
       #unset($this->new_role_permiso, $this->permiso);

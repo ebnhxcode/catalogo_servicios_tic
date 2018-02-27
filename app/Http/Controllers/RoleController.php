@@ -6,6 +6,7 @@ use App\Permiso;
 use App\Role;
 use App\RolePermiso;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class RoleController extends Controller {
@@ -68,7 +69,7 @@ class RoleController extends Controller {
          'id_permiso' => 'required|integer',
       ]);
       #Se valida la respuesta con la salida de la validacion
-      if ($this->validacion->fails() == true) {
+      if ($this->validacion->fails() == true && !Auth::guest()) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
             'tipo' => 'errores_campos_requeridos', //Para las notificaciones
@@ -80,7 +81,9 @@ class RoleController extends Controller {
       #Se crea el nuevo registro
       $this->new_role = Role::create([
          'nom_role' => $this->role['nom_role'],
-         'det_role' => $this->role['det_role']
+         'det_role' => $this->role['det_role'],
+         'id_usuario_registra' => Auth::user()->id_usuario,
+         'id_usuario_modifica' => Auth::user()->id_usuario,
       ]);
       #Al ser un nuevo registro se crea tambien el objeto relacional, role_permiso
       $this->new_role_permiso = RolePermiso::create([
@@ -114,7 +117,7 @@ class RoleController extends Controller {
          ]);
       }
       #Se valida la respuesta con la salida de la validacion
-      if ($this->validacion->fails() == true) {
+      if ($this->validacion->fails() == true && !Auth::guest()) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
             'tipo' => 'errores_campos_requeridos', //Para las notificaciones
@@ -122,7 +125,9 @@ class RoleController extends Controller {
          ]);
       }
       $this->role = Role::find($request["id_$this->nombre_modelo"]);
+      $request['id_usuario_modifica'] = Auth::user()->id_usuario;
       $this->role->update($request->all());
+
       if ( isset($this->role) && $this->role->role_permiso != null) {
          $this->permiso = $this->role->role_permiso->permiso;
          if ( ! in_array($this->permiso->id_permiso, [$request["id_permiso"],null,'null',''] )) {

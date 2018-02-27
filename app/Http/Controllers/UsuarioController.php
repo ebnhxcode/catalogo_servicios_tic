@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class UsuarioController extends Controller {
@@ -14,7 +15,7 @@ class UsuarioController extends Controller {
    private $nombre_detalle;
    private $nombre_controller;
 
-
+   private $usuarios;
    private $usuario;
    private $new_usuario;
    private $validacion;
@@ -65,7 +66,7 @@ class UsuarioController extends Controller {
          'password' => "regex:/(^([a-zA-Z0-9_ !@#$%*&]{8,20}+)(\d+)?$)/u|required|max:255",
       ]);
       #Se valida la respuesta con la salida de la validacion
-      if ($this->validacion->fails() == true) {
+      if ($this->validacion->fails() == true && !Auth::guest()) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
             'tipo' => 'errores_campos_requeridos', //Para las notificaciones
@@ -82,7 +83,9 @@ class UsuarioController extends Controller {
          'ape_materno' => $this->usuario['ape_materno'],
          'username' => $this->usuario['username'],
          'email' => $this->usuario['email'],
-         'password' => bcrypt($this->usuario['password'])
+         'password' => bcrypt($this->usuario['password']),
+         'id_usuario_registra' => Auth::user()->id_usuario,
+         'id_usuario_modifica' => Auth::user()->id_usuario,
       ]);
 
       unset($this->usuario, $this->validacion/*$this->validacion,$this->new_usuario, $this->new_usuario_permiso*/);
@@ -117,7 +120,7 @@ class UsuarioController extends Controller {
          ]);
       }
       #Se valida la respuesta con la salida de la validacion
-      if ($this->validacion->fails() == true) {
+      if ($this->validacion->fails() == true && !Auth::guest()) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
             'tipo' => 'errores_campos_requeridos', //Para las notificaciones
@@ -125,6 +128,7 @@ class UsuarioController extends Controller {
          ]);
       }
       $this->usuario = User::find($request["id_$this->nombre_modelo"]);
+      $request['id_usuario_modifica'] = Auth::user()->id_usuario;
       $this->usuario->update($request->all());
 
       #unset($this->new_usuario_permiso, $this->permiso);

@@ -39,6 +39,11 @@ mix.js('resources/assets/js/controllers/HomeController.js','public/js/controller
 mix.js('resources/assets/js/controllers/RoleController.js','public/js/controllers/RoleController.js');
 mix.js('resources/assets/js/controllers/PermisoController.js','public/js/controllers/PermisoController.js');
 mix.js('resources/assets/js/controllers/UsuarioController.js','public/js/controllers/UsuarioController.js');
+mix.js('resources/assets/js/controllers/ServicioController.js','public/js/controllers/ServicioController.js');
+mix.js('resources/assets/js/controllers/AplicacionController.js','public/js/controllers/AplicacionController.js');
+mix.js('resources/assets/js/controllers/ActividadController.js','public/js/controllers/ActividadController.js');
+mix.js('resources/assets/js/controllers/EstadoController.js','public/js/controllers/EstadoController.js');
+mix.js('resources/assets/js/controllers/CargoController.js','public/js/controllers/CargoController.js');
 //mix.js('resources/assets/js/components/DownloadExcel.vue','public/js/components/DownloadExcel.js');
 
 mix.js('resources/assets/js/app.js', 'public/js')
