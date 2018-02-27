@@ -23,7 +23,7 @@
             <button class="btn btn-success" @click.prevent="guardar_editado">
                Guardar
             </button>
-            <button class="btn btn-danger float-right" @click.prevent="eliminar(usuario.id_usuario)">
+            <button class="btn btn-danger float-right" @click.prevent="eliminar(servicio.id_servicio)">
                Eliminar
             </button>
          </dd>

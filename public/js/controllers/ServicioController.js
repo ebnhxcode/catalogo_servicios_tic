@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 61);
+/******/ 	return __webpack_require__(__webpack_require__.s = 65);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3371,15 +3371,15 @@ var inyeccion_funciones_compartidas = {
 
 /***/ }),
 
-/***/ 61:
+/***/ 65:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(62);
+module.exports = __webpack_require__(66);
 
 
 /***/ }),
 
-/***/ 62:
+/***/ 66:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3408,26 +3408,30 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
 //Vue.component('download-excel', DownloadExcel);
 Vue.component('download-excel', __webpack_require__(7));
 
-var PermisoController = new Vue({
-   el: '#PermisoController',
+var ServicioController = new Vue({
+   el: '#ServicioController',
    data: function data() {
       return {
-         'nombre_tabla': 'permisos', //nombre tabla o de ruta
-         'nombre_ruta': 'permisos', //nombre tabla o de ruta
-         'nombre_model': 'permiso',
-         'nombre_detalle': 'Permisos',
-         'nombre_controller': 'PermisoController',
+         'nombre_tabla': 'servicios', //nombre tabla o de ruta
+         'nombre_ruta': 'servicios', //nombre tabla o de ruta
+         'nombre_model': 'servicio',
+         'nombre_detalle': 'Servicios',
+         'nombre_controller': 'ServicioController',
 
          'filtro_head': null,
-         'permiso': {
-            'nom_permiso': null,
-            'det_permiso': null
+         'servicio': {
+            'nom_servicio': null,
+            'det_servicio': null,
+            'id_actividad': null,
+            'id_usuario': null
          },
-         'permiso_limpio': {
-            'nom_permiso': null,
-            'det_permiso': null
+         'servicio_limpio': {
+            'nom_servicio': null,
+            'det_servicio': null,
+            'id_actividad': null,
+            'id_usuario': null
          },
-         'permisos': [],
+         'servicios': [],
          'datos_excel': [],
          'usuario_auth': {},
 
@@ -3447,9 +3451,11 @@ var PermisoController = new Vue({
          'orden_lista': 'asc',
 
          'tabla_campos': {
-            'id_permiso': false,
-            'nom_permiso': true,
-            'det_permiso': false,
+            'id_servicio': false,
+            'nom_servicio': true,
+            'det_servicio': true,
+            'id_actividad': false,
+            'id_usuario': false,
             'id_usuario_registra': false,
             'id_usuario_modifica': false,
             'created_at': true,
@@ -3458,20 +3464,24 @@ var PermisoController = new Vue({
          },
 
          'tabla_labels': {
-            'id_permiso': 'Id permiso',
-            'nom_permiso': 'Nombre permiso',
-            'det_permiso': 'Detalle permiso',
-            'id_usuario_registra': 'Usuario registra',
-            'id_usuario_modifica': 'Usuario Modifica',
+            'id_servicio': 'Id Servicio',
+            'nom_servicio': 'Nombre servicio',
+            'det_servicio': 'Email',
+            'id_actividad': 'Password',
+            'id_usuario': 'Remember token',
+            'id_usuario_registra': 'servicio registra',
+            'id_usuario_modifica': 'servicio Modifica',
             'created_at': 'Creado en',
             'updated_at': 'Actualizado en',
             'deleted_at': 'Eliminado en'
          },
 
          'excel_json_campos': {
-            'id_permiso': 'String',
-            'nom_permiso': 'String',
-            'det_permiso': 'String',
+            'id_servicio': 'String',
+            'nom_servicio': 'String',
+            'det_servicio': 'String',
+            'id_actividad': 'String',
+            'id_usuario': 'String',
             'id_usuario_registra': 'String',
             'id_usuario_modifica': 'String',
             'created_at': 'String',
@@ -3489,32 +3499,31 @@ var PermisoController = new Vue({
 
    computed: {},
    watch: {
-      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el permiso
+      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el servicio
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function id_en_edicion(_id_en_edicion) {
          if (_id_en_edicion == null) {
-            this.permiso = {
-               'nom_permiso': null,
-               'det_permiso': null
-            };
+            this.limpiar_objeto_clase_local();
          } else {
-            this.permiso = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.permisos, this.nombre_model);
+            this.servicio = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.servicios, this.nombre_model);
          }
       },
-      //permisos se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
-      permisos: function permisos(_permisos) {
+      //servicios se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
+      servicios: function servicios(_servicios) {
          var self = this;
          this.excel_json_datos = [];
-         return _permisos.map(function (permiso, index) {
+         return _servicios.map(function (servicio, index) {
             return self.excel_json_datos.push({
-               'id_permiso': permiso.id_permiso || '-',
-               'nom_permiso': permiso.nom_permiso || '-',
-               'det_permiso': permiso.det_permiso || '-',
-               'id_usuario_registra': permiso.id_usuario_registra || '-',
-               'id_usuario_modifica': permiso.id_usuario_modifica || '-',
-               'created_at': permiso.created_at || '-',
-               'updated_at': permiso.updated_at || '-',
-               'deleted_at': permiso.deleted_at || '-'
+               'id_servicio': servicio.id_servicio || '-',
+               'nom_servicio': servicio.nom_servicio || '-',
+               'det_servicio': servicio.det_servicio || '-',
+               'id_actividad': servicio.id_actividad || '-',
+               'id_usuario': servicio.id_usuario || '-',
+               'id_usuario_registra': servicio.id_usuario_registra || '-',
+               'id_usuario_modifica': servicio.id_usuario_modifica || '-',
+               'created_at': servicio.created_at || '-',
+               'updated_at': servicio.updated_at || '-',
+               'deleted_at': servicio.deleted_at || '-'
             });
          });
       }
@@ -3530,16 +3539,16 @@ var PermisoController = new Vue({
       });
 
       /*
-       $(document).ready(function () {
-       //Handle al recargar pagina
-       window.onbeforeunload = function(e){
-       return "Estás seguro que deseas cerrar la ventana?";
-       };
-       window.onunload = function(e){
-       return "Cierre de la ventana";
-       };
-        });
-       */
+      $(document).ready(function () {
+         //Handle al recargar pagina
+         window.onbeforeunload = function(e){
+            return "Estás seguro que deseas cerrar la ventana?";
+         };
+         window.onunload = function(e){
+            return "Cierre de la ventana";
+         };
+       });
+      */
    },
 
    ready: {},
@@ -3548,19 +3557,21 @@ var PermisoController = new Vue({
    methods: {
 
       limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
-         this.permiso = {
-            'nom_permiso': null,
-            'det_permiso': null
+         this.servicio = {
+            'nom_servicio': null,
+            'det_servicio': null,
+            'id_actividad': null,
+            'id_usuario': null
          };
       },
 
       inicializar: function inicializar() {
          var _this = this;
 
-         this.$http.get('/permisos').then(function (response) {
+         this.$http.get('/servicios').then(function (response) {
             // success callback
-            _this.permisos = response.body.permisos || null;
-            _this.datos_excel = response.body.permisos || null;
+            _this.servicios = response.body.servicios || null;
+            _this.datos_excel = response.body.servicios || null;
             _this.usuario_auth = response.body.usuario_auth || null;
             _this.limpiar_objeto_clase_local();
          }, function (response) {
@@ -3569,13 +3580,13 @@ var PermisoController = new Vue({
          });
       },
 
-      editar: function editar(id_permiso) {
+      editar: function editar(id_servicio) {
          this.lista_actualizar_activo = true;
-         this.id_en_edicion = id_permiso;
+         this.id_en_edicion = id_servicio;
 
          //id_objeto + array de objetos + nombre del model en lower case
-         this.permiso = null;
-         this.permiso = this.buscar_en_array_por_modelo_e_id(id_permiso, this.permisos, this.nombre_model);
+         this.servicio = null;
+         this.servicio = this.buscar_en_array_por_modelo_e_id(id_servicio, this.servicios, this.nombre_model);
       },
 
       guardar_editado: function guardar_editado() {
@@ -3583,11 +3594,11 @@ var PermisoController = new Vue({
 
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-         this.$http.put('/' + this.nombre_ruta + '/' + this.permiso.id_permiso, this.permiso).then(function (response) {
+         this.$http.put('/' + this.nombre_ruta + '/' + this.servicio.id_servicio, this.servicio).then(function (response) {
             // success callback
 
             if (response.status == 200) {
-               if (!_this2.es_null(response.body.permiso)) {
+               if (!_this2.es_null(response.body.servicio)) {
                   _this2.lista_actualizar_activo = false;
                   _this2.id_en_edicion = null;
                }
@@ -3620,7 +3631,7 @@ var PermisoController = new Vue({
          return;
       },
 
-      eliminar: function eliminar(id_permiso) {
+      eliminar: function eliminar(id_servicio) {
          var _swal,
              _this3 = this;
 
@@ -3639,7 +3650,7 @@ var PermisoController = new Vue({
                //Se adjunta el token
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-               _this3.$http.delete('/' + _this3.nombre_ruta + '/' + id_permiso).then(function (response) {
+               _this3.$http.delete('/' + _this3.nombre_ruta + '/' + id_servicio).then(function (response) {
                   if (response.status == 200) {
                      _this3.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
                   } else {
@@ -3681,9 +3692,9 @@ var PermisoController = new Vue({
          //Instancia nuevo form data
          var formData = new FormData();
          //Conforma objeto paramétrico para solicitud http
-         formData.append('nom_permiso', this.permiso.nom_permiso || null);
-         formData.append('det_permiso', this.permiso.det_permiso || null);
-         formData.append('id_permiso', this.permiso.id_permiso || null);
+         formData.append('nom_servicio', this.servicio.nom_servicio || null);
+         formData.append('det_servicio', this.servicio.det_servicio || null);
+         formData.append('id_actividad', this.servicio.id_actividad || null);
 
          this.$http.post('/' + this.nombre_ruta, formData).then(function (response) {
             // success callback
@@ -3710,7 +3721,7 @@ var PermisoController = new Vue({
       },
 
       ordenar_lista: function ordenar_lista(columna) {
-         this.permisos = _.orderBy(this.permisos, columna, this.orden_lista);
+         this.servicios = _.orderBy(this.servicios, columna, this.orden_lista);
       }
 
    }

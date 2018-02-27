@@ -296,12 +296,8 @@ const ServicioController = new Vue({
          var formData = new  FormData();
          //Conforma objeto paramétrico para solicitud http
          formData.append('nom_servicio', this.servicio.nom_servicio || null );
-         formData.append('nom_completo', this.servicio.nom_completo || null );
-         formData.append('ape_paterno', this.servicio.ape_paterno || null );
-         formData.append('ape_materno', this.servicio.ape_materno || null );
-         formData.append('username', this.servicio.username || null );
-         formData.append('email', this.servicio.email || null );
-         formData.append('password', this.servicio.password || null );
+         formData.append('det_servicio', this.servicio.det_servicio || null );
+         formData.append('id_actividad', this.servicio.id_actividad || null );
 
          this.$http.post(`/${this.nombre_ruta}`, formData).then(response => { // success callback
 

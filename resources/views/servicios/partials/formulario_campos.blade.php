@@ -1,22 +1,22 @@
 
 
 <div class="row">
-   <div class="col-sm-4 col-md-4">
+   <div class="col-sm-6 col-md-6">
 
-      <dt>Nombre</dt>
+      <dt>Nombre servicio</dt>
       <dd>
          <p class="control has-icon has-icon-right">
-            <input type="text" v-model="usuario.nom_usuario" name="nom_usuario"
+            <input type="text" v-model="servicio.nom_servicio" name="nom_servicio"
                    v-validate="{required:true,regex:/^[a-zA-Z0-9_ ]+$/i}" data-vv-delay="500"
                    class="form-control" />
 
             <transition name="bounce">
-               <i v-show="errors.has('nom_usuario')" class="fa fa-exclamation-circle"></i>
+               <i v-show="errors.has('nom_servicio')" class="fa fa-exclamation-circle"></i>
             </transition>
 
             <transition name="bounce">
-               <span v-show="errors.has('nom_usuario')" class="text-danger small">
-                  @{{ errors.first('nom_usuario') }}
+               <span v-show="errors.has('nom_servicio')" class="text-danger small">
+                  @{{ errors.first('nom_servicio') }}
                </span>
             </transition>
          </p>
@@ -24,145 +24,60 @@
 
    </div>
 
-   {{--
-
-   <!-- Lo vamos a dejar comentado porque se activara cuando el perfilamiento esté activo -->
-   <div class="col-sm-4 col-md-4">
-
-      <dt>Nombre Completo</dt>
+   <div class="col-sm-6 col-md-6">
+      <dt>Detalle servicio</dt>
       <dd>
          <p class="control has-icon has-icon-right">
-            <input type="text" v-model="usuario.nom_completo" name="nom_completo"
-                   v-validate="{regex:/^[a-zA-Z0-9_ ]+$/i}" data-vv-delay="500"
-                   class="form-control" />
+      <textarea cols="15" rows="2" v-model="servicio.det_servicio" name="det_servicio"
+                v-validate="'required'" data-vv-delay="500"
+                class="form-control"></textarea>
 
             <transition name="bounce">
-               <i v-show="errors.has('nom_completo')" class="fa fa-exclamation-circle"></i>
+               <i v-show="errors.has('det_servicio')" class="fa fa-exclamation-circle"></i>
             </transition>
 
             <transition name="bounce">
-               <span v-show="errors.has('nom_completo')" class="text-danger small">
-                  @{{ errors.first('nom_completo') }}
-               </span>
+         <span v-show="errors.has('det_servicio')" class="text-danger small">
+            @{{ errors.first('det_servicio') }}
+         </span>
             </transition>
          </p>
       </dd>
-
    </div>
 
-   --}}
 
+   <div class="col-sm-6 col-md-6">
 
-   <div class="col-sm-4 col-md-4">
-
-      <dt>Apellido Paterno</dt>
+      {{--
+      <dt>Actividad</dt>
       <dd>
          <p class="control has-icon has-icon-right">
-            <input type="text" v-model="usuario.ape_paterno" name="ape_paterno"
-                   v-validate="{regex:/^[a-zA-Z0-9_ ]+$/i}" data-vv-delay="500"
-                   class="form-control" />
+            <select class="form-control" v-model="servicio.id_permiso" name="id_permiso"
+                    v-validate="'required'" data-vv-delay="500">
+               <option :value="p.id_permiso" v-for="p in permisos">
+                  @{{ `${p.nom_permiso} -> ${p.det_permiso}` }}
+               </option>
+            </select>
 
             <transition name="bounce">
-               <i v-show="errors.has('ape_paterno')" class="fa fa-exclamation-circle"></i>
+               <i v-show="errors.has('id_permiso')" class="fa fa-exclamation-circle"></i>
             </transition>
 
             <transition name="bounce">
-               <span v-show="errors.has('ape_paterno')" class="text-danger small">
-                  @{{ errors.first('ape_paterno') }}
-               </span>
-            </transition>
-         </p>
-      </dd>
-
-   </div>
-   <div class="col-sm-4 col-md-4">
-
-      <dt>Apellido Materno</dt>
-      <dd>
-         <p class="control has-icon has-icon-right">
-            <input type="text" v-model="usuario.ape_materno" name="ape_materno"
-                   v-validate="{regex:/^[a-zA-Z0-9_ ]+$/i}" data-vv-delay="500"
-                   class="form-control" />
-
-            <transition name="bounce">
-               <i v-show="errors.has('ape_materno')" class="fa fa-exclamation-circle"></i>
-            </transition>
-
-            <transition name="bounce">
-               <span v-show="errors.has('ape_materno')" class="text-danger small">
-                  @{{ errors.first('ape_materno') }}
-               </span>
+         <span v-show="errors.has('id_permiso')" class="text-danger small">
+            @{{ errors.first('id_permiso') }}
+         </span>
             </transition>
          </p>
+
       </dd>
+      --}}
 
    </div>
-   <div class="col-sm-4 col-md-4">
 
-      <dt>Alias</dt>
-      <dd>
-         <p class="control has-icon has-icon-right">
-            <input type="text" v-model="usuario.username" name="username"
-                   v-validate="{required:true,regex:/^[a-zA-Z0-9_ ]+$/i}" data-vv-delay="500"
-                   class="form-control" />
 
-            <transition name="bounce">
-               <i v-show="errors.has('username')" class="fa fa-exclamation-circle"></i>
-            </transition>
 
-            <transition name="bounce">
-               <span v-show="errors.has('username')" class="text-danger small">
-                  @{{ errors.first('username') }}
-               </span>
-            </transition>
-         </p>
-      </dd>
 
-   </div>
-   <div class="col-sm-4 col-md-4">
-
-      <dt>Email</dt>
-      <dd>
-         <p class="control has-icon has-icon-right">
-            <input type="text" v-model="usuario.email" name="email"
-                   v-validate="{required:true,email:true}" data-vv-delay="500"
-                   class="form-control" />
-
-            <transition name="bounce">
-               <i v-show="errors.has('email')" class="fa fa-exclamation-circle"></i>
-            </transition>
-
-            <transition name="bounce">
-               <span v-show="errors.has('email')" class="text-danger small">
-                  @{{ errors.first('email') }}
-               </span>
-            </transition>
-         </p>
-      </dd>
-
-   </div>
-   <div class="col-sm-4 col-md-4">
-
-      <dt>Password</dt>
-      <dd>
-         <p class="control has-icon has-icon-right">
-            <input type="password" v-model="usuario.password" name="password"
-                   v-validate="{required:true,verify_password:true}" data-vv-delay="500"
-                   class="form-control" />
-
-            <transition name="bounce">
-               <i v-show="errors.has('password')" class="fa fa-exclamation-circle"></i>
-            </transition>
-
-            <transition name="bounce">
-               <span v-show="errors.has('password')" class="text-danger small">
-                  @{{ errors.first('password') }}
-               </span>
-            </transition>
-         </p>
-      </dd>
-
-   </div>
 </div>
 
 

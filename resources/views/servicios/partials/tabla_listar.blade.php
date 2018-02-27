@@ -18,22 +18,22 @@
    </thead>
 
    <tbody>
-   <tr v-for="u in filterBy(usuarios, filtro_head)"
-       @dblclick.prevent="editar(u.id_usuario)">
+   <tr v-for="s in filterBy(servicios, filtro_head)"
+       @dblclick.prevent="editar(s.id_servicio)">
 
-      <template v-if="id_en_edicion != u.id_usuario || modal_actualizar_activo == true">
+      <template v-if="id_en_edicion != s.id_servicio || modal_actualizar_activo == true">
 
          <td v-for="c,i in tabla_campos" v-show="c">
-            @{{ u[i] }}
+            @{{ s[i] }}
          </td>
 
       </template>
 
       <template v-else>
          <td>
-            <span v-clipboard="u.id_usuario" class="btn btn-light"
+            <span v-clipboard="s.id_servicio" class="btn btn-light"
                   data-placement="top" data-toggle="tooltip" title="Clic para copiar el id">
-               Id usuario: @{{ u.id_usuario }}
+               Id servicio: @{{ s.id_servicio }}
             </span>
          </td>
          <td :colspan="filterBy(tabla_campos, true).length-1">
@@ -45,12 +45,12 @@
 
       <td>
          <button class="btn btn-sm btn-primary"
-                 v-show="id_en_edicion != u.id_usuario && id_en_edicion == null && modal_actualizar_activo == false"
+                 v-show="id_en_edicion != s.id_servicio && id_en_edicion == null && modal_actualizar_activo == false"
                  data-placement="top" data-toggle="tooltip" title="Editar desde aquí"
-                 @click.prevent="editar(u.id_usuario)">
+                 @click.prevent="editar(s.id_servicio)">
             <i class="fa fa-edit"></i>
          </button>
-         <button class="btn btn-sm btn-success" v-show="id_en_edicion == u.id_usuario && modal_actualizar_activo == false"
+         <button class="btn btn-sm btn-success" v-show="id_en_edicion == s.id_servicio && modal_actualizar_activo == false"
                  data-placement="top" data-toggle="tooltip" title="Guardar"
                  @click.prevent="guardar_editado">
             <i class="fa fa-save"></i>
@@ -58,26 +58,26 @@
 
          <button class="btn btn-sm btn-warning"
                  data-placement="top" data-toggle="tooltip" title="Actualizar desde modal"
-                 @click.prevent="mostrar_modal_actualizar(u.id_usuario)"
+                 @click.prevent="mostrar_modal_actualizar(s.id_servicio)"
                  v-show="id_en_edicion == null">
             <i class="fa fa-external-link" ></i>
          </button>
          <button class="btn btn-sm btn-danger" v-show="id_en_edicion == null"
-                 @click.prevent="eliminar(u.id_usuario)"
+                 @click.prevent="eliminar(s.id_servicio)"
                  data-placement="top" data-toggle="tooltip" title="Eliminar">
             <i class="fa fa-close"></i>
          </button>
          <button class="btn btn-sm btn-secondary"
                  data-placement="top" data-toggle="tooltip" title="Dejar de editar"
                  @click.prevent="dejar_de_editar()"
-                 v-show="dejar_de_editar_contador>2 && id_en_edicion == u.id_usuario">
+                 v-show="dejar_de_editar_contador>2 && id_en_edicion == s.id_servicio">
             <i class="fa fa-close"></i>
          </button>
 
       </td>
    </tr>
 
-   <tr v-if="usuarios && usuarios.length == 0 || filterBy(usuarios, filtro_head).length == 0">
+   <tr v-if="servicios && servicios.length == 0 || filterBy(servicios, filtro_head).length == 0">
       <td colspan="5">No hay más registros</td>
    </tr>
 
