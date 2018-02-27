@@ -16,6 +16,7 @@ class Cargo extends Model {
       #columns
       'nom_cargo',
       'det_cargo',
+      'cod_cargo',
 
       #relaciones -> pks
 

@@ -15,6 +15,7 @@ class Estado extends Model {
    protected $fillable = [
       #columns
       'nom_estado',
+      'det_estado',
       'cod_estado',
 
       #relaciones -> pks
