@@ -59,6 +59,7 @@ const ServicioController = new Vue({
             'id_servicio':false,
             'nom_servicio':true,
             'det_servicio':true,
+            'id_actividad':false,
             'id_usuario':false,
             'id_usuario_registra':false,
             'id_usuario_modifica':false,
@@ -68,37 +69,29 @@ const ServicioController = new Vue({
          },
 
          'tabla_labels': {
-            'id_servicio':'Id servicio',
-            'nom_servicio':'Nombre',
-            'nom_completo':'Nombre completo',
-            'ape_paterno':'Apellido paterno',
-            'ape_materno':'Apellido materno',
-            'username':'Nombre de servicio',
-            'email':'Email',
-            'password':'Password',
-            'remember_token':'Remember token',
-            'id_servicio_registra':'servicio registra',
-            'id_servicio_modifica':'servicio Modifica',
+            'id_servicio':'Id Servicio',
+            'nom_servicio':'Nombre servicio',
+            'det_servicio':'Email',
+            'id_actividad':'Password',
+            'id_usuario':'Remember token',
+            'id_usuario_registra':'servicio registra',
+            'id_usuario_modifica':'servicio Modifica',
             'created_at':'Creado en',
             'updated_at':'Actualizado en',
-            'deleted_at':'Eliminado en'
+            'deleted_at':'Eliminado en',
          },
 
          'excel_json_campos': {
-            'id_servicio': 'String',
-            'nom_servicio': 'String',
-            'nom_completo': 'String',
-            'ape_paterno': 'String',
-            'ape_materno': 'String',
-            'username': 'String',
-            'email': 'String',
-            'password': 'String',
-            'remember_token': 'String',
-            'id_servicio_registra': 'String',
-            'id_servicio_modifica': 'String',
-            'created_at': 'String',
-            'updated_at': 'String',
-            'deleted_at': 'String'
+            'id_servicio':'String',
+            'nom_servicio':'String',
+            'det_servicio':'String',
+            'id_actividad':'String',
+            'id_usuario':'String',
+            'id_usuario_registra':'String',
+            'id_usuario_modifica':'String',
+            'created_at':'String',
+            'updated_at':'String',
+            'deleted_at':'String',
          },
 
          'excel_json_datos': [],
@@ -114,10 +107,8 @@ const ServicioController = new Vue({
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function (id_en_edicion) {
          if (id_en_edicion == null) {
-            this.servicio = {
-               'nom_servicio':null,
-               'det_servicio':null,
-            };
+            this.limpiar_objeto_clase_local();
+
          } else {
             this.servicio = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.servicios,this.nombre_model);
          }
@@ -128,20 +119,16 @@ const ServicioController = new Vue({
          this.excel_json_datos = [];
          return servicios.map(function (servicio, index) {
             return self.excel_json_datos.push({
-               'id_servicio': servicio.id_servicio|| '-',
-               'nom_servicio': servicio.nom_servicio|| '-',
-               'nom_completo': servicio.nom_completo|| '-',
-               'ape_paterno': servicio.ape_paterno|| '-',
-               'ape_materno': servicio.ape_materno|| '-',
-               'username': servicio.username|| '-',
-               'email': servicio.email|| '-',
-               'password': servicio.password|| '-',
-               'remember_token': servicio.remember_token|| '-',
-               'id_servicio_registra': servicio.id_servicio_registra|| '-',
-               'id_servicio_modifica': servicio.id_servicio_modifica|| '-',
-               'created_at': servicio.created_at|| '-',
-               'updated_at': servicio.updated_at|| '-',
-               'deleted_at': servicio.deleted_at|| '-'
+               'id_servicio': servicio.id_servicio || '-',
+               'nom_servicio': servicio.nom_servicio || '-',
+               'det_servicio': servicio.det_servicio || '-',
+               'id_actividad': servicio.id_actividad || '-',
+               'id_usuario': servicio.id_usuario || '-',
+               'id_usuario_registra': servicio.id_usuario_registra || '-',
+               'id_usuario_modifica': servicio.id_usuario_modifica || '-',
+               'created_at': servicio.created_at || '-',
+               'updated_at': servicio.updated_at || '-',
+               'deleted_at': servicio.deleted_at || '-',
             });
          });
       },
@@ -175,20 +162,21 @@ const ServicioController = new Vue({
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
 
+      limpiar_objeto_clase_local: function () {
+         this.servicio = {
+            'nom_servicio':null,
+            'det_servicio':null,
+            'id_actividad':null,
+            'id_usuario':null,
+         };
+      },
 
       inicializar: function () {
          this.$http.get('/servicios').then(response => { // success callback
             this.servicios = response.body.servicios || null;
             this.datos_excel = response.body.servicios || null;
-            this.servicio = {
-               'nom_servicio':null,
-               'nom_completo':null,
-               'ape_paterno':null,
-               'ape_materno':null,
-               'username':null,
-               'email':null,
-               'password':null,
-            };
+
+            this.limpiar_objeto_clase_local();
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);
          });

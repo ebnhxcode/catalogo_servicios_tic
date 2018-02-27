@@ -64,8 +64,8 @@ const PermisoController = new Vue({
 
          'tabla_labels': {
             'id_permiso':'Id permiso',
-            'nom_permiso':'Nombre del permiso',
-            'det_permiso':'Detalle del permiso',
+            'nom_permiso':'Nombre permiso',
+            'det_permiso':'Detalle permiso',
             'id_usuario_registra':'Usuario registra',
             'id_usuario_modifica':'Usuario Modifica',
             'created_at':'Creado en',
@@ -152,14 +152,18 @@ const PermisoController = new Vue({
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
 
+      limpiar_objeto_clase_local: function () {
+         this.permiso = {
+            'nom_permiso':null,
+            'det_permiso':null,
+         };
+      },
+
       inicializar: function () {
          this.$http.get('/permisos').then(response => { // success callback
             this.permisos = response.body.permisos || null;
             this.datos_excel = response.body.permisos || null;
-            this.permiso = {
-               'nom_permiso':null,
-               'det_permiso':null,
-            };
+            this.limpiar_objeto_clase_local();
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);
          });

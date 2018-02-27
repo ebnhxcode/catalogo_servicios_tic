@@ -84,7 +84,7 @@ const UsuarioController = new Vue({
             'nom_completo':'Nombre completo',
             'ape_paterno':'Apellido paterno',
             'ape_materno':'Apellido materno',
-            'username':'Nombre de usuario',
+            'username':'Nombre usuario',
             'email':'Email',
             'password':'Password',
             'remember_token':'Remember token',
@@ -125,10 +125,7 @@ const UsuarioController = new Vue({
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function (id_en_edicion) {
          if (id_en_edicion == null) {
-            this.usuario = {
-               'nom_usuario':null,
-               'det_usuario':null,
-            };
+            this.limpiar_objeto_clase_local();
          } else {
             this.usuario = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.usuarios,this.nombre_model);
          }
@@ -186,20 +183,24 @@ const UsuarioController = new Vue({
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
 
+      limpiar_objeto_clase_local: function () {
+         this.usuario = {
+            'nom_usuario':null,
+            'nom_completo':null,
+            'ape_paterno':null,
+            'ape_materno':null,
+            'username':null,
+            'email':null,
+            'password':null,
+         };
+      },
+
 
       inicializar: function () {
          this.$http.get('/usuarios').then(response => { // success callback
             this.usuarios = response.body.usuarios || null;
             this.datos_excel = response.body.usuarios || null;
-            this.usuario = {
-               'nom_usuario':null,
-               'nom_completo':null,
-               'ape_paterno':null,
-               'ape_materno':null,
-               'username':null,
-               'email':null,
-               'password':null,
-            };
+            this.limpiar_objeto_clase_local();
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);
          });

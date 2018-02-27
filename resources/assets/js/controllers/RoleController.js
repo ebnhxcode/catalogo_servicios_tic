@@ -68,9 +68,9 @@ const RoleController = new Vue({
 
          'tabla_labels': {
             'id_role':'Id role',
-            'nom_role':'Nombre del role',
-            'det_role':'Detalle del role',
-            'id_permiso':'Permiso del role',
+            'nom_role':'Nombre role',
+            'det_role':'Detalle role',
+            'id_permiso':'Permiso role',
             'id_usuario_registra':'Usuario registra',
             'id_usuario_modifica':'Usuario Modifica',
             'created_at':'Creado en',
@@ -103,11 +103,7 @@ const RoleController = new Vue({
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function (id_en_edicion) {
          if (id_en_edicion == null) {
-            this.role = {
-               'nom_role':null,
-               'det_role':null,
-               'id_permiso':null,
-            };
+            this.limpiar_objeto_clase_local();
          } else {
             this.role = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.roles,this.nombre_model);
          }
@@ -160,19 +156,20 @@ const RoleController = new Vue({
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
 
-
-
+      limpiar_objeto_clase_local: function () {
+         this.role = {
+            'nom_role':null,
+            'det_role':null,
+            'id_permiso':null,
+         };
+      },
 
       inicializar: function () {
          this.$http.get('/roles').then(response => { // success callback
             this.roles = response.body.roles || null;
             this.permisos = response.body.permisos || null;
             this.datos_excel = response.body.roles || null;
-            this.role = {
-               'nom_role':null,
-               'det_role':null,
-               'id_permiso':null,
-            };
+            this.limpiar_objeto_clase_local();
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);
          });
