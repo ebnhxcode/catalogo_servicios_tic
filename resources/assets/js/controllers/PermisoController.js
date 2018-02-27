@@ -68,7 +68,7 @@ const PermisoController = new Vue({
             'nom_permiso':'Nombre permiso',
             'det_permiso':'Detalle permiso',
             'id_usuario_registra':'Usuario registra',
-            'id_usuario_modifica':'Usuario Modifica',
+            'id_usuario_modifica':'Usuario modifica',
             'created_at':'Creado en',
             'updated_at':'Actualizado en',
             'deleted_at':'Eliminado en'
