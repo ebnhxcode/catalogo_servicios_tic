@@ -27,7 +27,7 @@
       <dd>
          <p class="control has-icon has-icon-right">
             <textarea cols="15" rows="2" v-model="role.det_role" name="det_role"
-                      v-validate="'required'" data-vv-delay="500"
+                      v-validate="{required:true,regex:/^[a-zA-Z0-9_ ,.!@#$%*&]+$/i}" data-vv-delay="500"
                       class="form-control"></textarea>
 
             <transition name="bounce">
@@ -49,7 +49,7 @@
       <dd>
          <p class="control has-icon has-icon-right">
             <select class="form-control" v-model="role.id_permiso" name="id_permiso"
-                    v-validate="'required'" data-vv-delay="500">
+                    v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
                <option :value="p.id_permiso" v-for="p in permisos">
                   @{{ `${p.nom_permiso} -> ${p.det_permiso}` }}
                </option>

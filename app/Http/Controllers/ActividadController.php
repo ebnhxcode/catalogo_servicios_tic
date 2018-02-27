@@ -62,7 +62,7 @@ class ActividadController extends Controller {
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario
       $this->validacion = Validator::make($request->all(), [
          'nom_actividad' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
-         'det_actividad' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
+         'det_actividad' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
       ]);
       #Se valida la respuesta con la salida de la validacion
       if ($this->validacion->fails() == true && !Auth::guest()) {
@@ -98,7 +98,7 @@ class ActividadController extends Controller {
       $this->validacion = Validator::make($request->all(), [
          'id_actividad' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|max:255',
          'nom_actividad' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
-         'det_actividad' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
+         'det_actividad' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
       ]);
       #Valida si la informacion que se envia para editar al actividad son iguales los ids
       if ($id != $request["id_$this->nombre_modelo"]) {

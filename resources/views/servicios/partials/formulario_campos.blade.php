@@ -29,7 +29,7 @@
       <dd>
          <p class="control has-icon has-icon-right">
       <textarea cols="15" rows="2" v-model="servicio.det_servicio" name="det_servicio"
-                v-validate="{required:true,regex:/^[a-zA-Z0-9_ ]+$/i}" data-vv-delay="500"
+                v-validate="{required:true,regex:/^[a-zA-Z0-9_ ,.!@#$%*&]+$/i}" data-vv-delay="500"
                 class="form-control"></textarea>
 
             <transition name="bounce">
@@ -51,7 +51,7 @@
       <dd>
          <p class="control has-icon has-icon-right">
             <select class="form-control" v-model="servicio.id_actividad" name="id_actividad"
-                    v-validate="{required:true,,regex:/^[0-9]+$/i" data-vv-delay="500">
+                    v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
                <option :value="a.id_actividad" v-for="a in actividades">
                   @{{ `${a.nom_actividad} -> ${a.det_actividad}` }}
                </option>

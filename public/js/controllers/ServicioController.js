@@ -3488,11 +3488,11 @@ var ServicioController = new Vue({
          'tabla_labels': {
             'id_servicio': 'Id Servicio',
             'nom_servicio': 'Nombre servicio',
-            'det_servicio': 'Email',
-            'id_actividad': 'Password',
-            'id_usuario': 'Remember token',
-            'id_usuario_registra': 'servicio registra',
-            'id_usuario_modifica': 'servicio Modifica',
+            'det_servicio': 'Detalle servicio',
+            'id_actividad': 'Id Actividad',
+            'id_usuario': 'Id Usuario',
+            'id_usuario_registra': 'Usuario registra',
+            'id_usuario_modifica': 'Usuario modifica',
             'created_at': 'Creado en',
             'updated_at': 'Actualizado en',
             'deleted_at': 'Eliminado en'
@@ -3724,7 +3724,6 @@ var ServicioController = new Vue({
 
             if (response.status == 200) {
                if (!_this4.es_null(response.body.servicio)) {
-                  _this4.lista_actualizar_activo = false;
                   _this4.id_en_edicion = null;
                }
                //this.inicializar();

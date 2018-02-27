@@ -62,7 +62,7 @@ class PermisoController extends Controller {
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario
       $this->validacion = Validator::make($request->all(), [
          'nom_permiso' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|unique:$this->nombre_tabla|max:255",
-         'det_permiso' => 'required|max:1000',
+         'det_permiso' => 'regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:1000',
       ]);
       #Se valida la respuesta con la salida de la validacion
       if ($this->validacion->fails() == true && !Auth::guest()) {
@@ -98,7 +98,7 @@ class PermisoController extends Controller {
       $this->validacion = Validator::make($request->all(), [
          'id_permiso' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|max:255',
          'nom_permiso' => 'regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255',
-         'det_permiso' => 'required|max:1000',
+         'det_permiso' => 'regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:1000',
       ]);
       #Valida si la informacion que se envia para editar al usuario son iguales los ids
       if ($id != $request["id_$this->nombre_modelo"]) {

@@ -3483,7 +3483,7 @@ var PermisoController = new Vue({
             'nom_permiso': 'Nombre permiso',
             'det_permiso': 'Detalle permiso',
             'id_usuario_registra': 'Usuario registra',
-            'id_usuario_modifica': 'Usuario Modifica',
+            'id_usuario_modifica': 'Usuario modifica',
             'created_at': 'Creado en',
             'updated_at': 'Actualizado en',
             'deleted_at': 'Eliminado en'
@@ -3710,7 +3710,10 @@ var PermisoController = new Vue({
             // success callback
 
             if (response.status == 200) {
-               _this4.inicializar();
+               if (!_this4.es_null(response.body.servicio)) {
+                  _this4.id_en_edicion = null;
+               }
+               //this.inicializar();
             } else {
                _this4.checkear_estado_respuesta_http(response.status);
                return false;

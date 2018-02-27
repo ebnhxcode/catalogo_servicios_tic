@@ -69,7 +69,7 @@ class RoleController extends Controller {
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario
       $this->validacion = Validator::make($request->all(), [
          'nom_role' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|unique:$this->nombre_tabla|max:255",
-         'det_role' => 'required|max:1000',
+         'det_role' => 'regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:1000',
          'id_permiso' => 'required|integer',
       ]);
       #Se valida la respuesta con la salida de la validacion
@@ -109,7 +109,7 @@ class RoleController extends Controller {
       $this->validacion = Validator::make($request->all(), [
          'id_role' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|max:255',
          'nom_role' => 'regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255',
-         'det_role' => 'required|max:1000',
+         'det_role' => 'regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:1000',
          'id_permiso' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
       ]);
       #Valida si la informacion que se envia para editar al usuario son iguales los ids
