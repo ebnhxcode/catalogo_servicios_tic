@@ -22,7 +22,7 @@
          </p>
       </dd>
 
-   </div>
+   </div><!-- .col -->
 
    {{--
 
@@ -74,7 +74,7 @@
          </p>
       </dd>
 
-   </div>
+   </div><!-- .col -->
    <div class="col-sm-4 col-md-4">
 
       <dt>Apellido Materno</dt>
@@ -96,7 +96,7 @@
          </p>
       </dd>
 
-   </div>
+   </div><!-- .col -->
    <div class="col-sm-4 col-md-4">
 
       <dt>Alias</dt>
@@ -118,7 +118,7 @@
          </p>
       </dd>
 
-   </div>
+   </div><!-- .col -->
    <div class="col-sm-4 col-md-4">
 
       <dt>Email</dt>
@@ -140,7 +140,7 @@
          </p>
       </dd>
 
-   </div>
+   </div><!-- .col -->
    <div class="col-sm-4 col-md-4">
 
       <dt>Password</dt>
@@ -162,8 +162,8 @@
          </p>
       </dd>
 
-   </div>
-</div>
+   </div><!-- .col -->
+</div><!-- .row -->
 
 
 

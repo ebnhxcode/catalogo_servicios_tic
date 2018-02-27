@@ -22,9 +22,9 @@
          </p>
       </dd>
 
-   </div>
-
+   </div><!-- .col -->
    <div class="col-sm-6 col-md-6">
+
       <dt>Detalle actividad</dt>
       <dd>
          <p class="control has-icon has-icon-right">
@@ -43,9 +43,7 @@
             </transition>
          </p>
       </dd>
-   </div>
 
-</div>
+   </div><!-- .col -->
 
-
-
+</div><!-- .row -->

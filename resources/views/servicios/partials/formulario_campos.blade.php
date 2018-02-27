@@ -22,7 +22,7 @@
          </p>
       </dd>
 
-   </div>
+   </div><!-- .col -->
    <div class="col-sm-12 col-md-12">
 
       <dt>Detalle servicio</dt>
@@ -44,7 +44,7 @@
          </p>
       </dd>
 
-   </div>
+   </div><!-- .col -->
    <div class="col-sm-12 col-md-12">
 
       <dt>Actividad</dt>
@@ -70,7 +70,7 @@
 
       </dd>
 
-   </div>
+   </div><!-- .col -->
 
 
 </div><!-- .row -->
