@@ -24,7 +24,7 @@
       <template v-if="id_en_edicion != a.id_actividad || modal_actualizar_activo == true">
 
          <td v-for="c,i in tabla_campos" v-show="c">
-            @{{ s[i] }}
+            @{{ a[i] }}
          </td>
 
       </template>

@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Actividad;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Auth;
+
 use Illuminate\Support\Facades\Validator;
 
 class ActividadController extends Controller {
@@ -27,9 +28,6 @@ class ActividadController extends Controller {
       $this->nombre_tabla = $this->nombre_ruta = "actividades";
       $this->nombre_detalle = "Actividades";
       $this->nombre_controller = "ActividadController";
-      $this->usuario_auth = Auth::user();
-
-      dd(Auth::user());
    }
 
    private function es_vacio ($variable) {
@@ -51,7 +49,8 @@ class ActividadController extends Controller {
          ]);
       }
 
-      $this->actividades = actividad::all();
+      $this->usuario_auth = Auth::user();
+      $this->actividades = Actividad::all();
       return response()->json([
          'status' => 200,
          'actividades' => $this->actividades,
@@ -76,7 +75,7 @@ class ActividadController extends Controller {
       #Como pasó todas las validaciones, se asigna al objeto
       $this->actividad = $request->all();
       #Se crea el nuevo registro
-      $this->new_actividad = actividad::create([
+      $this->new_actividad = Actividad::create([
          'nom_actividad' => $this->actividad['nom_actividad'],
          'det_actividad' => $this->actividad['det_actividad'],
          'id_usuario_registra' => Auth::user()->id_usuario,
