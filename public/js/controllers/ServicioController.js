@@ -3452,6 +3452,7 @@ var ServicioController = new Vue({
             'id_actividad': null,
             'id_usuario': null
          },
+         'actividades': [],
          'servicios': [],
          'datos_excel': [],
          'usuario_auth': {},
@@ -3591,6 +3592,7 @@ var ServicioController = new Vue({
 
          this.$http.get('/servicios').then(function (response) {
             // success callback
+            _this.actividades = response.body.actividades || null;
             _this.servicios = response.body.servicios || null;
             _this.datos_excel = response.body.servicios || null;
             _this.usuario_auth = response.body.usuario_auth || null;
@@ -3721,7 +3723,11 @@ var ServicioController = new Vue({
             // success callback
 
             if (response.status == 200) {
-               _this4.inicializar();
+               if (!_this4.es_null(response.body.servicio)) {
+                  _this4.lista_actualizar_activo = false;
+                  _this4.id_en_edicion = null;
+               }
+               //this.inicializar();
             } else {
                _this4.checkear_estado_respuesta_http(response.status);
                return false;

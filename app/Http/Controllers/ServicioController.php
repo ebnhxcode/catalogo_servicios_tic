@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Servicio;
+use App\Actividad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -16,6 +17,7 @@ class ServicioController extends Controller {
     private $nombre_detalle;
     private $nombre_controller;
 
+    private $actividades;
     private $servicios;
     private $servicio;
     private $new_servicio;
@@ -49,9 +51,11 @@ class ServicioController extends Controller {
         }
 
         $this->usuario_auth = Auth::user();
+        $this->actividades = Actividad::all();
         $this->servicios = Servicio::all();
         return response()->json([
            'status' => 200,
+           'actividades' => $this->actividades,
            'servicios' => $this->servicios,
            'usuario_auth' => $this->usuario_auth,
         ]);

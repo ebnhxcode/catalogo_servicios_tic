@@ -285,7 +285,10 @@ const ActividadController = new Vue({
          this.$http.post(`/${this.nombre_ruta}`, formData).then(response => { // success callback
 
             if ( response.status == 200) {
-               this.inicializar();
+               if ( !this.es_null(response.body.servicio) ) {
+                  this.id_en_edicion = null;
+               }
+               //this.inicializar();
             } else {
                this.checkear_estado_respuesta_http(response.status);
                return false;

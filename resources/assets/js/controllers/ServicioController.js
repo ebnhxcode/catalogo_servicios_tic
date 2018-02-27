@@ -37,6 +37,7 @@ const ServicioController = new Vue({
             'id_actividad':null,
             'id_usuario':null,
          },
+         'actividades':[],
          'servicios':[],
          'datos_excel':[],
          'usuario_auth':{},
@@ -174,6 +175,7 @@ const ServicioController = new Vue({
 
       inicializar: function () {
          this.$http.get('/servicios').then(response => { // success callback
+            this.actividades = response.body.actividades || null;
             this.servicios = response.body.servicios || null;
             this.datos_excel = response.body.servicios || null;
             this.usuario_auth = response.body.usuario_auth || null;
@@ -302,7 +304,10 @@ const ServicioController = new Vue({
          this.$http.post(`/${this.nombre_ruta}`, formData).then(response => { // success callback
 
             if ( response.status == 200) {
-               this.inicializar();
+               if ( !this.es_null(response.body.servicio) ) {
+                  this.id_en_edicion = null;
+               }
+               //this.inicializar();
             } else {
                this.checkear_estado_respuesta_http(response.status);
                return false;

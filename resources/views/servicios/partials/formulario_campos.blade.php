@@ -1,7 +1,7 @@
 
 
 <div class="row">
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-12 col-md-12">
 
       <dt>Nombre servicio</dt>
       <dd>
@@ -24,7 +24,7 @@
 
    </div>
 
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-12 col-md-12">
       <dt>Detalle servicio</dt>
       <dd>
          <p class="control has-icon has-icon-right">
@@ -46,32 +46,30 @@
    </div>
 
 
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-12 col-md-12">
 
-      {{--
       <dt>Actividad</dt>
       <dd>
          <p class="control has-icon has-icon-right">
-            <select class="form-control" v-model="servicio.id_permiso" name="id_permiso"
+            <select class="form-control" v-model="servicio.id_actividad" name="id_actividad"
                     v-validate="'required'" data-vv-delay="500">
-               <option :value="p.id_permiso" v-for="p in permisos">
-                  @{{ `${p.nom_permiso} -> ${p.det_permiso}` }}
+               <option :value="a.id_actividad" v-for="a in actividades">
+                  @{{ `${a.nom_actividad} -> ${a.det_actividad}` }}
                </option>
             </select>
 
             <transition name="bounce">
-               <i v-show="errors.has('id_permiso')" class="fa fa-exclamation-circle"></i>
+               <i v-show="errors.has('id_actividad')" class="fa fa-exclamation-circle"></i>
             </transition>
 
             <transition name="bounce">
-         <span v-show="errors.has('id_permiso')" class="text-danger small">
-            @{{ errors.first('id_permiso') }}
-         </span>
+               <span v-show="errors.has('id_actividad')" class="text-danger small">
+                  @{{ errors.first('id_actividad') }}
+               </span>
             </transition>
          </p>
 
       </dd>
-      --}}
 
    </div>
 
