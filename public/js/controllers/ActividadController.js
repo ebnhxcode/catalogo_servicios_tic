@@ -3427,6 +3427,7 @@ var ActividadController = new Vue({
             'nom_actividad': null,
             'det_actividad': null
          },
+         'tipos_actividades': [],
          'actividades': [],
          'datos_excel': [],
 
@@ -3556,6 +3557,7 @@ var ActividadController = new Vue({
          this.$http.get('/actividades').then(function (response) {
             // success callback
             _this.actividades = response.body.actividades || null;
+            _this.tipos_actividades = response.body.tipos_actividades || null;
             _this.datos_excel = response.body.actividades || null;
             _this.limpiar_objeto_clase_local();
          }, function (response) {

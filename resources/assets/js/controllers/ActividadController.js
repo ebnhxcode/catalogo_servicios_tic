@@ -33,6 +33,7 @@ const ActividadController = new Vue({
             'nom_actividad':null,
             'det_actividad':null,
          },
+         'tipos_actividades':[],
          'actividades':[],
          'datos_excel':[],
 
@@ -160,6 +161,7 @@ const ActividadController = new Vue({
       inicializar: function () {
          this.$http.get('/actividades').then(response => { // success callback
             this.actividades = response.body.actividades || null;
+            this.tipos_actividades = response.body.tipos_actividades || null;
             this.datos_excel = response.body.actividades || null;
             this.limpiar_objeto_clase_local();
          }, response => { // error callback

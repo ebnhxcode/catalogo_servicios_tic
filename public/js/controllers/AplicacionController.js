@@ -3492,6 +3492,7 @@ var AplicacionController = new Vue({
             'id_servicio': null
          },
          'actividades': [],
+         'tipos_aplicaciones': [],
          'aplicaciones': [],
          'datos_excel': [],
          'usuario_auth': {},
