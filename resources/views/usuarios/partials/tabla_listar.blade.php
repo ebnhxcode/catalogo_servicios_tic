@@ -5,7 +5,7 @@
       <th v-for="c,i in tabla_campos" v-if="c">
          <a href="#!" class="btn btn-light" @click.prevent="cambiar_orden_lista(i)">
             <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
-            @{{ tabla_labels[i] }}
+            @{{ tabla_labels[i] }}dd
          </a>
       </th>
       <th>

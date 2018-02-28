@@ -107,9 +107,9 @@ class UsuarioController extends Controller {
       $this->validacion = Validator::make($request->all(), [
          'id_usuario' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|max:255',
          'nom_usuario' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
-         'nom_completo' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|max:255",
-         'ape_paterno' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|max:255",
-         'ape_materno' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|max:255",
+         #'nom_completo' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|max:255",
+         #'ape_paterno' => "regex:/(^([a-zA-Z0-9_]+)(\d+)?$)/u|max:255",
+         #'ape_materno' => "regex:/(^([a-zA-Z0-9_]+)(\d+)?$)/u|max:255",
          'username' => "regex:/(^([a-zA-Z0-9_.]+)(\d+)?$)/u|required|max:255",
          'email' => "email|required|max:255",
          #'password' => "regex:/(^([a-zA-Z0-9_ !@#$%*&]{8,20}+)(\d+)?$)/u|required|max:255",

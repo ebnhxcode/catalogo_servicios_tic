@@ -65,6 +65,16 @@ class AplicacionController extends Controller {
       $this->validacion = Validator::make($request->all(), [
          'nom_aplicacion' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
          'det_aplicacion' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
+         'alias' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
+         'url_web' => "url|required|max:255",
+         'ip' => "required|max:255",
+         'subdominio' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
+         'ssl_tls' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
+
+         'id_dominio' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
+         'id_servicio' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
+         'id_tipo_aplicacion' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
+
       ]);
       #Se valida la respuesta con la salida de la validacion
       if ($this->validacion->fails() == true && !Auth::guest()) {
@@ -101,6 +111,15 @@ class AplicacionController extends Controller {
          'id_aplicacion' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|max:255',
          'nom_aplicacion' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
          'det_aplicacion' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
+         'alias' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
+         'url_web' => "url|required|max:255",
+         'ip' => "required|max:255",
+         'subdominio' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
+         'ssl_tls' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
+
+         'id_dominio' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
+         'id_servicio' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
+         'id_tipo_aplicacion' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
       ]);
       #Valida si la informacion que se envia para editar al aplicacion son iguales los ids
       if ($id != $request["id_$this->nombre_modelo"]) {

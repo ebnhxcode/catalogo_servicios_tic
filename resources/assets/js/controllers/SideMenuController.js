@@ -65,6 +65,10 @@ import { _ , range } from 'lodash';
 import Vue2Filters from 'vue2-filters';
 Vue.use(Vue2Filters);
 
+//Se importa plugin de toggle-button
+import ToggleButton from 'vue-js-toggle-button';
+Vue.use(ToggleButton);
+
 
 //Instancia controller de side menu en main app template
 const SideMenuController = new Vue({

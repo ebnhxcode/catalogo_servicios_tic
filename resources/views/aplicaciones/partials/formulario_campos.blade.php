@@ -117,7 +117,7 @@
       <dt>Dominio</dt>
       <dd>
          <p class="control has-icon has-icon-right">
-            <select class="form-control" v-model="role.id_dominio" name="id_dominio"
+            <select class="form-control" v-model="aplicacion.id_dominio" name="id_dominio"
                     v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
                <option value="1">
                   Minsal
@@ -128,11 +128,6 @@
                </option>
                --}}
             </select>
-
-
-            <input type="text" v-model="aplicacion.id_dominio" name="ip"
-                   v-validate="{required:true,regex:/^[a-zA-Z0-9_ .,:/#$%&@!?+=()]+$/i}" data-vv-delay="500"
-                   class="form-control" />
 
             <transition name="bounce">
                <i v-show="errors.has('id_dominio')" class="fa fa-exclamation-circle"></i>
@@ -146,6 +141,111 @@
          </p>
       </dd>
 
+   </div><!-- .col -->
+   <div class="col-sm-6 col-md-6">
+
+      <dt>Subdominio</dt>
+      <dd>
+         <p class="control has-icon has-icon-right">
+
+            <input type="text" v-model="aplicacion.subdominio" name="subdominio"
+                   v-validate="{required:true,regex:/^[a-zA-Z0-9_ .,:/#$%&@!?+=()]+$/i}" data-vv-delay="500"
+                   class="form-control" />
+
+            <transition name="bounce">
+               <i v-show="errors.has('subdominio')" class="fa fa-exclamation-circle"></i>
+            </transition>
+
+            <transition name="bounce">
+               <span v-show="errors.has('subdominio')" class="text-danger small">
+                  @{{ errors.first('subdominio') }}
+               </span>
+            </transition>
+         </p>
+      </dd>
+
+   </div><!-- .col -->
+   <div class="col-sm-6 col-md-6">
+
+      <dt>SSL/TLS</dt>
+      <dd>
+         <p class="control has-icon has-icon-right">
+
+            <toggle-button name="ssl_tls" v-model="aplicacion.ssl_tls"/>
+
+            <transition name="bounce">
+               <i v-show="errors.has('ssl_tls')" class="fa fa-exclamation-circle"></i>
+            </transition>
+
+            <transition name="bounce">
+               <span v-show="errors.has('ssl_tls')" class="text-danger small">
+                  @{{ errors.first('ssl_tls') }}
+               </span>
+            </transition>
+         </p>
+      </dd>
+
+   </div><!-- .col -->
+   <div class="col-sm-6 col-md-6">
+
+      <dt>Servicio</dt>
+      <dd>
+         <p class="control has-icon has-icon-right">
+            <select class="form-control" v-model="aplicacion.id_servicio" name="id_servicio"
+                    v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
+               <option value="1">Servicio 1 </option>
+               <option value="2">Servicio 2 </option>
+               <option value="3">Servicio 3 </option>
+               <option value="4">Servicio 4 </option>
+               {{--
+               <option :value="p.id_permiso" v-for="p in permisos">
+                  @{{ `${p.nom_permiso} -> ${p.det_permiso}` }}
+               </option>
+               --}}
+            </select>
+
+            <transition name="bounce">
+               <i v-show="errors.has('id_servicio')" class="fa fa-exclamation-circle"></i>
+            </transition>
+
+            <transition name="bounce">
+               <span v-show="errors.has('id_servicio')" class="text-danger small">
+                  @{{ errors.first('id_servicio') }}
+               </span>
+            </transition>
+         </p>
+      </dd>
+
+   </div><!-- .col -->
+   <div class="col-sm-6 col-md-6">
+
+      <dt>Tipo aplicación</dt>
+      <dd>
+         <p class="control has-icon has-icon-right">
+            <select class="form-control" v-model="aplicacion.id_tipo_aplicacion" name="id_tipo_aplicacion"
+                    v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
+               <option value="1">Tipo 1 </option>
+               <option value="2">Tipo 2 </option>
+               <option value="3">Tipo 3 </option>
+               <option value="4">Tipo 4 </option>
+               {{--
+               <option :value="p.id_permiso" v-for="p in permisos">
+                  @{{ `${p.nom_permiso} -> ${p.det_permiso}` }}
+               </option>
+               --}}
+            </select>
+
+            <transition name="bounce">
+               <i v-show="errors.has('id_tipo_aplicacion')" class="fa fa-exclamation-circle"></i>
+            </transition>
+
+            <transition name="bounce">
+               <span v-show="errors.has('id_tipo_aplicacion')" class="text-danger small">
+                  @{{ errors.first('id_tipo_aplicacion') }}
+               </span>
+            </transition>
+         </p>
+      </dd>
 
    </div><!-- .col -->
 
