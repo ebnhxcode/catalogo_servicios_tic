@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 76);
+/******/ 	return __webpack_require__(__webpack_require__.s = 78);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -46984,14 +46984,16 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* 73 */,
 /* 74 */,
 /* 75 */,
-/* 76 */
+/* 76 */,
+/* 77 */,
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(77);
+module.exports = __webpack_require__(79);
 
 
 /***/ }),
-/* 77 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -47011,22 +47013,22 @@ window.Vue = __webpack_require__(19);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', __webpack_require__(78));
+Vue.component('example-component', __webpack_require__(80));
 
 var app = new Vue({
   el: '#app'
 });
 
 /***/ }),
-/* 78 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(79)
+var __vue_script__ = __webpack_require__(81)
 /* template */
-var __vue_template__ = __webpack_require__(80)
+var __vue_template__ = __webpack_require__(82)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -47065,7 +47067,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 79 */
+/* 81 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47094,7 +47096,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 80 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

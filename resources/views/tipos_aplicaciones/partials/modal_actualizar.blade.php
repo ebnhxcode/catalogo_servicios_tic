@@ -11,7 +11,7 @@
          </button>
       </div>
 
-      <h2>Actualizar {{$nombre_modelo}}</h2>
+      <h2>Actualizar {{$nombre_detalle_singular}}</h2>
       <hr>
 
       <dl class="dl-vertical" style="overflow-y: auto;max-height: 450px;padding-bottom: 50px;">

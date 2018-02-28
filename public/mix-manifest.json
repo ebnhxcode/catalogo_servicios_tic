@@ -4,6 +4,7 @@
     "/js/controllers/HomeController.js": "/js/controllers/HomeController.js",
     "/js/app.js": "/js/app.js",
     "/js/controllers/UsuarioController.js": "/js/controllers/UsuarioController.js",
+    "/js/controllers/TipoAplicacionController.js": "/js/controllers/TipoAplicacionController.js",
     "/js/controllers/ServicioController.js": "/js/controllers/ServicioController.js",
     "/js/controllers/RoleController.js": "/js/controllers/RoleController.js",
     "/js/controllers/PermisoController.js": "/js/controllers/PermisoController.js",

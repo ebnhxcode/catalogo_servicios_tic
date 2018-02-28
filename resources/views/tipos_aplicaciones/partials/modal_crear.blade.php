@@ -1,17 +1,17 @@
 <!-- BEGIN HEADER -->
-@include('layouts.modal.header_modal', ['nom_modal'=>'actualizar'])
+@include('layouts.modal.header_modal', ['nom_modal'=>'crear'])
 <!-- END HEADER -->
 
 <div class="row" style="margin: 10px;margin-top:20px;">
    <div class="col-md-12">
 
       <div class="float-right">
-         <button @click.prevent="ocultar_modal('actualizar')" class="btn btn-sm btn-danger">
+         <button @click.prevent="ocultar_modal('crear')" class="btn btn-sm btn-danger">
             ❌
          </button>
       </div>
 
-      <h2>Actualizar {{$nombre_modelo}}</h2>
+      <h2>Nuevo {{$nombre_detalle_singular}}</h2>
       <hr>
 
       <dl class="dl-vertical" style="overflow-y: auto;max-height: 450px;padding-bottom: 50px;">
@@ -20,18 +20,14 @@
 
          <dt>Finalizar</dt>
          <dd>
-            <button class="btn btn-success" @click.prevent="guardar_editado">
+            <button class="btn btn-success" @click.prevent="guardar">
                Guardar
-            </button>
-            <button class="btn btn-danger float-right" @click.prevent="eliminar(tipo_aplicacion.id_tipo_aplicacion)">
-               Eliminar
             </button>
          </dd>
 
       </dl><!-- .dl-vertical -->
    </div><!-- .col-* -->
 </div><!-- .row -->
-
 
 <!-- BEGIN FOOTER -->
 @include('layouts.modal.footer_modal')

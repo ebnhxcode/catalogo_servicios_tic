@@ -78,9 +78,10 @@ class CargoController extends Controller {
       #Como pasó todas las validaciones, se asigna al objeto
       $this->cargo = $request->all();
       #Se crea el nuevo registro
-      $this->new_cargo = cargo::create([
+      $this->new_cargo = Cargo::create([
          'nom_cargo' => $this->cargo['nom_cargo'],
          'det_cargo' => $this->cargo['det_cargo'],
+         'cod_cargo' => $this->cargo['cod_cargo'],
          'id_usuario_registra' => Auth::user()->id_usuario,
          'id_usuario_modifica' => Auth::user()->id_usuario,
       ]);
@@ -120,7 +121,7 @@ class CargoController extends Controller {
             'mensajes' => $this->validacion->messages(), //Para mostrar los mensajes que van desde el backend
          ]);
       }
-      $this->cargo = cargo::find($request["id_$this->nombre_modelo"]);
+      $this->cargo = Cargo::find($request["id_$this->nombre_modelo"]);
       $request['id_usuario_modifica'] = Auth::user()->id_usuario;
       $this->cargo->update($request->all());
 
@@ -144,7 +145,7 @@ class CargoController extends Controller {
          ]);
       }
 
-      $this->cargo = cargo::find($id);
+      $this->cargo = Cargo::find($id);
 
       #Valida si cargo existe y busca si tiene cargo_permiso
       if ($this->cargo) {

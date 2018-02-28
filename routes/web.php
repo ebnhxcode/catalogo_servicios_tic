@@ -33,6 +33,7 @@ Route::resource('/actividades', 'ActividadController');
 Route::resource('/cargos', 'CargoController');
 Route::resource('/estados', 'EstadoController');
 Route::resource('/aplicaciones', 'AplicacionController');
+Route::resource('/tipos_aplicaciones', 'TipoAplicacionController');
 
 Route::get('/estandares', 'RoleController@estandares');
 

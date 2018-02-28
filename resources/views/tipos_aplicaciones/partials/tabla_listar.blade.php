@@ -18,22 +18,21 @@
    </thead>
 
    <tbody>
-   <tr v-for="cr in filterBy(cargos, filtro_head)"
-       @dblclick.prevent="editar(cr.id_cargo)">
+   <tr v-for="t in filterBy(tipos_aplicaciones, filtro_head)"
+       @dblclick.prevent="editar(t.id_tipo_aplicacion)">
 
-      <template v-if="id_en_edicion != cr.id_cargo || modal_actualizar_activo == true">
-
+      <template v-if="id_en_edicion != t.id_tipo_aplicacion || modal_actualizar_activo == true">
          <td v-for="c,i in tabla_campos" v-show="c">
-            @{{ cr[i] }}
+            @{{ t[i] }}
          </td>
 
       </template>
 
       <template v-else>
          <td>
-            <span v-clipboard="cr.id_cargo" class="btn btn-light"
+            <span v-clipboard="t.id_tipo_aplicacion" class="btn btn-light"
                   data-placement="top" data-toggle="tooltip" title="Clic para copiar el id">
-               Id cargo: @{{ cr.id_cargo }}
+               Id tipo_aplicacion: @{{ t.id_tipo_aplicacion }}
             </span>
          </td>
          <td :colspan="filterBy(tabla_campos, true).length-1">
@@ -45,12 +44,12 @@
 
       <td>
          <button class="btn btn-sm btn-primary"
-                 v-show="id_en_edicion != cr.id_cargo && id_en_edicion == null && modal_actualizar_activo == false"
+                 v-show="id_en_edicion != t.id_tipo_aplicacion && id_en_edicion == null && modal_actualizar_activo == false"
                  data-placement="top" data-toggle="tooltip" title="Editar desde aquí"
-                 @click.prevent="editar(cr.id_cargo)">
+                 @click.prevent="editar(t.id_tipo_aplicacion)">
             <i class="fa fa-edit"></i>
          </button>
-         <button class="btn btn-sm btn-success" v-show="id_en_edicion == cr.id_cargo && modal_actualizar_activo == false"
+         <button class="btn btn-sm btn-success" v-show="id_en_edicion == t.id_tipo_aplicacion && modal_actualizar_activo == false"
                  data-placement="top" data-toggle="tooltip" title="Guardar"
                  @click.prevent="guardar_editado">
             <i class="fa fa-save"></i>
@@ -58,26 +57,26 @@
 
          <button class="btn btn-sm btn-warning"
                  data-placement="top" data-toggle="tooltip" title="Actualizar desde modal"
-                 @click.prevent="mostrar_modal_actualizar(cr.id_cargo)"
+                 @click.prevent="mostrar_modal_actualizar(t.id_tipo_aplicacion)"
                  v-show="id_en_edicion == null">
             <i class="fa fa-external-link" ></i>
          </button>
          <button class="btn btn-sm btn-danger" v-show="id_en_edicion == null"
-                 @click.prevent="eliminar(cr.id_cargo)"
+                 @click.prevent="eliminar(t.id_tipo_aplicacion)"
                  data-placement="top" data-toggle="tooltip" title="Eliminar">
             <i class="fa fa-close"></i>
          </button>
          <button class="btn btn-sm btn-secondary"
                  data-placement="top" data-toggle="tooltip" title="Dejar de editar"
                  @click.prevent="dejar_de_editar()"
-                 v-show="dejar_de_editar_contador>2 && id_en_edicion == cr.id_cargo">
+                 v-show="dejar_de_editar_contador>2 && id_en_edicion == t.id_tipo_aplicacion">
             <i class="fa fa-close"></i>
          </button>
 
       </td>
    </tr>
 
-   <tr v-if="cargos && cargos.length == 0 || filterBy(cargos, filtro_head).length == 0">
+   <tr v-if="tipos_aplicaciones && tipos_aplicaciones.length == 0 || filterBy(tipos_aplicaciones, filtro_head).length == 0">
       <td colspan="5">No hay más registros</td>
    </tr>
 
