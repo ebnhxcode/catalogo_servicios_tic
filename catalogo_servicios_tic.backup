@@ -309,7 +309,8 @@ CREATE TABLE cargos (
     id_usuario_modifica integer,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    deleted_at timestamp without time zone
+    deleted_at timestamp without time zone,
+    cod_cargo text
 );
 
 
@@ -545,7 +546,8 @@ CREATE TABLE estados (
     id_usuario_modifica integer,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    deleted_at timestamp without time zone
+    deleted_at timestamp without time zone,
+    det_estado text
 );
 
 
@@ -1386,6 +1388,17 @@ ALTER TABLE ONLY migrations ALTER COLUMN id SET DEFAULT nextval('migrations_id_s
 --
 
 COPY actividades (id_actividad, nom_actividad, det_actividad, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+3	Seguimiento	Seguimiento	1	1	2018-02-27 18:32:09	2018-02-27 18:32:09	\N
+4	Desarrollo	Desarrollo	1	1	2018-02-27 18:32:18	2018-02-27 18:32:18	\N
+5	Requerimientos	Requerimientos	1	1	2018-02-27 18:32:32	2018-02-27 18:32:32	\N
+6	Migraciones	Migraciones	1	1	2018-02-27 18:32:39	2018-02-27 18:32:39	\N
+8	Descargas Masivas	Descargas Masivas	1	1	2018-02-27 18:33:04	2018-02-27 18:33:04	\N
+9	Tareas Programadas	Tareas Programadas	1	1	2018-02-27 18:33:17	2018-02-27 18:33:17	\N
+10	Homologacion de Proyectos	Homologacion de proyectos	1	1	2018-02-27 18:33:38	2018-02-27 18:34:11	\N
+1	Mantencion	Mantencion	1	4	2018-02-27 18:26:10	2018-02-28 04:07:20	\N
+7	Cargas Masivas	Cargas Masivas	1	4	2018-02-27 18:32:52	2018-02-28 04:11:37	\N
+11	Cubicacion Maquina	Cubicacion Maquina	1	4	2018-02-27 18:33:57	2018-02-28 05:58:27	\N
+2	Soporte	Soporte	1	4	2018-02-27 18:31:56	2018-02-28 05:58:33	\N
 \.
 
 
@@ -1441,7 +1454,7 @@ COPY aplicaciones_tecnologias (id_aplicacion_tecnologia, id_aplicacion, id_tecno
 -- Data for Name: cargos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY cargos (id_cargo, nom_cargo, det_cargo, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+COPY cargos (id_cargo, nom_cargo, det_cargo, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, cod_cargo) FROM stdin;
 \.
 
 
@@ -1851,7 +1864,9 @@ COPY establecimientos (id_establecimiento, id_establecimiento_antiguo, id_servic
 -- Data for Name: estados; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY estados (id_estado, nom_estado, cod_estado, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+COPY estados (id_estado, nom_estado, cod_estado, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, det_estado) FROM stdin;
+1	qwe	\N	1	1	2018-02-27 20:00:36	2018-02-27 20:00:54	2018-02-27 20:00:54	qwe
+2	Activo	\N	1	1	2018-02-27 20:18:02	2018-02-27 20:18:02	\N	Estado activo
 \.
 
 
@@ -2147,6 +2162,7 @@ COPY permisos (id_permiso, nom_permiso, det_permiso, cod_permiso, id_usuario_reg
 17	D	D representa delete, tiene permisos nivel 4 y puede visualizar, crear, editar y hasta eliminar.	4	\N	\N	2018-02-20 21:42:31	2018-02-20 21:42:31	\N
 14	C	C representa create, tiene permisos nivel 2 y puede crear y visualizar.	2	\N	\N	2018-02-20 21:41:09	2018-02-22 16:59:02	\N
 18	sda	asdsada	\N	\N	\N	2018-02-26 21:18:26	2018-02-26 21:18:32	2018-02-26 21:18:32
+19	wqeqwe	qweq	\N	1	1	2018-02-27 19:29:29	2018-02-27 19:29:36	2018-02-27 19:29:36
 \.
 
 
@@ -2188,6 +2204,7 @@ COPY roles (id_role, nom_role, det_role, id_usuario_registra, id_usuario_modific
 62	role 1	role 1	\N	\N	2018-02-26 20:22:50	2018-02-26 20:22:50	\N
 63	role 2	role 2	\N	\N	2018-02-26 20:22:57	2018-02-26 20:22:57	\N
 64	role 3	role 3	\N	\N	2018-02-26 20:23:13	2018-02-26 20:23:13	\N
+65	role new	role a.s,da	\N	\N	2018-02-27 19:29:06	2018-02-27 19:29:19	2018-02-27 19:29:19
 \.
 
 
@@ -2250,6 +2267,7 @@ COPY roles_permisos (id_role_permiso, id_role, id_permiso, id_usuario_registra, 
 60	62	15	\N	\N	2018-02-26 20:22:50	2018-02-26 20:22:50	\N
 61	63	16	\N	\N	2018-02-26 20:22:57	2018-02-26 20:22:57	\N
 62	64	14	\N	\N	2018-02-26 20:23:13	2018-02-26 20:23:13	\N
+63	65	17	\N	\N	2018-02-27 19:29:06	2018-02-27 19:29:19	2018-02-27 19:29:19
 \.
 
 
@@ -2295,6 +2313,10 @@ COPY servicio_salud (id_servicio_salud, id_region, nombre_servicio_salud, orden,
 --
 
 COPY servicios (id_servicio, id_actividad, id_usuario, nom_servicio, det_servicio, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+2	4	1	Wordpress	Servicio que se encarga de mantener y administrar los sitios hechos en wordpress	1	1	2018-02-27 19:04:06	2018-02-27 19:06:11	\N
+1	4	1	Sitios Web	Servicio que realiza el equipo de soporte	1	1	2018-02-27 18:58:58	2018-02-27 19:06:51	\N
+3	4	1	Sitios en Yii	Desarrollos que se han realizado en Yii Framework.	1	1	2018-02-27 19:04:06	2018-02-27 19:35:09	\N
+4	4	1	Web Minsal	Desarrollos relacionados al servicio web minsal	1	1	2018-02-27 19:35:43	2018-02-27 19:35:43	\N
 \.
 
 
@@ -2383,8 +2405,10 @@ COPY tipos_tecnologias_desarrollo (id_tipo_tecnologia_desarrollo, nom_tipo, det_
 --
 
 COPY usuarios (id_usuario, nom_usuario, nom_completo, ape_paterno, ape_materno, username, email, password, remember_token, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
-1	Esteban	\N	\N	\N	\N	esteban.ramos@minsal.cl	$2y$10$56R..xvCC1igB5V0842UI.f2B5V2p7lopByoVEjig0R2BSgRosuEu	u1hyc9uMc0xwu2MMzCIDgbgVwLK8P1VFWFNPxQ1fUTe0uDlLKghr7cLI7dQ5	\N	\N	2018-02-19 18:08:14	2018-02-19 18:08:14	\N
-2	edsaf	null	null	null	aasdasd	esteban.ramos@minsaasdl.cl	$2y$10$EMV5tnLbwP5gAhTXjmVVu.rsn8bkQ9dIt9iay1e6Vj7AenetPnqsy	\N	\N	\N	2018-02-27 13:25:49	2018-02-27 13:25:49	\N
+3	qweqwe	null	null	null	qwe	esteban.ramos@minsawqel.cl	$2y$10$/wzbajETfyaumw8bTd8GHu3Ml50hxxbjb2HYduh4Cm5SDnpM5aYWW	\N	\N	\N	2018-02-27 19:30:51	2018-02-27 19:32:25	2018-02-27 19:32:25
+2	edsaf	null	null	null	aasdasd	esteban.ramos@minsaasdl.cl	$2y$10$EMV5tnLbwP5gAhTXjmVVu.rsn8bkQ9dIt9iay1e6Vj7AenetPnqsy	\N	\N	\N	2018-02-27 13:25:49	2018-02-27 19:32:28	2018-02-27 19:32:28
+1	Esteban	\N	\N	\N	\N	esteban.ramos@minsal.cl	$2y$10$56R..xvCC1igB5V0842UI.f2B5V2p7lopByoVEjig0R2BSgRosuEu	Qya1IjuaQ6Wjz3Q4OwKsoYqFHSEFqwu6wFNh1hdyj7UdVI4oUqVOX5rKDiy6	\N	\N	2018-02-19 18:08:14	2018-02-27 23:36:15	2018-02-27 23:36:15
+4	Esteban	\N	\N	\N	fsdsf	esteban.ramos.f@gmail.com	$2y$10$UNXFgYFjLZzwVS3Z7Ps5Q.Yfl5cGurn/sUzUT8sYbMFjT..SaubL.	\N	\N	\N	2018-02-27 23:36:43	2018-02-27 23:42:23	\N
 \.
 
 
@@ -2446,7 +2470,7 @@ SELECT pg_catalog.setval('accesos_servidores_id_seq', 1, false);
 -- Name: actividades_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('actividades_id_seq', 1, false);
+SELECT pg_catalog.setval('actividades_id_seq', 11, true);
 
 
 --
@@ -2530,7 +2554,7 @@ SELECT pg_catalog.setval('entregas_credenciales_usuarios_id_seq', 1, false);
 -- Name: estados_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('estados_id_seq', 1, false);
+SELECT pg_catalog.setval('estados_id_seq', 2, true);
 
 
 --
@@ -2558,21 +2582,21 @@ SELECT pg_catalog.setval('migrations_id_seq', 2, true);
 -- Name: permisos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('permisos_id_seq', 18, true);
+SELECT pg_catalog.setval('permisos_id_seq', 19, true);
 
 
 --
 -- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('roles_id_seq', 64, true);
+SELECT pg_catalog.setval('roles_id_seq', 65, true);
 
 
 --
 -- Name: roles_permisos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('roles_permisos_id_seq', 62, true);
+SELECT pg_catalog.setval('roles_permisos_id_seq', 63, true);
 
 
 --
@@ -2586,7 +2610,7 @@ SELECT pg_catalog.setval('servicios_estados_id_seq', 1, false);
 -- Name: servicios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('servicios_id_seq', 1, false);
+SELECT pg_catalog.setval('servicios_id_seq', 4, true);
 
 
 --
@@ -2670,7 +2694,7 @@ SELECT pg_catalog.setval('usuarios_estados_id_seq', 1, false);
 -- Name: usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('usuarios_id_seq', 2, true);
+SELECT pg_catalog.setval('usuarios_id_seq', 4, true);
 
 
 --
