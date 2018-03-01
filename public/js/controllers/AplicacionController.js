@@ -3669,6 +3669,7 @@ var AplicacionController = new Vue({
          this.$http.get('/aplicaciones').then(function (response) {
             // success callback
             _this.actividades = response.body.actividades || null;
+            _this.tipos_aplicaciones = response.body.tipos_aplicaciones || null;
             _this.aplicaciones = response.body.aplicaciones || null;
             _this.datos_excel = response.body.aplicaciones || null;
             _this.usuario_auth = response.body.usuario_auth || null;
