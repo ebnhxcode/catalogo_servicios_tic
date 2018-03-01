@@ -1455,6 +1455,8 @@ COPY aplicaciones_tecnologias (id_aplicacion_tecnologia, id_aplicacion, id_tecno
 --
 
 COPY cargos (id_cargo, nom_cargo, det_cargo, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, cod_cargo) FROM stdin;
+2	fd	sdfsd	4	4	2018-02-28 13:06:40	2018-02-28 13:06:42	2018-02-28 13:06:42	\N
+1	sadd	adsd	4	4	2018-02-28 12:36:44	2018-02-28 23:47:17	\N	sdsadeds7ctgibk2
 \.
 
 
@@ -2157,12 +2159,12 @@ COPY password_resets (email, token, created_at) FROM stdin;
 --
 
 COPY permisos (id_permiso, nom_permiso, det_permiso, cod_permiso, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
-15	R	R representa read, tiene permisos nivel 1 y puede solo visualizar.	1	\N	\N	2018-02-20 21:41:31	2018-02-20 21:41:31	\N
-16	U	U representa update, tiene permisos nivel 3 y puede visualizar, crear y editar.	3	\N	\N	2018-02-20 21:42:05	2018-02-20 21:42:05	\N
-17	D	D representa delete, tiene permisos nivel 4 y puede visualizar, crear, editar y hasta eliminar.	4	\N	\N	2018-02-20 21:42:31	2018-02-20 21:42:31	\N
-14	C	C representa create, tiene permisos nivel 2 y puede crear y visualizar.	2	\N	\N	2018-02-20 21:41:09	2018-02-22 16:59:02	\N
 18	sda	asdsada	\N	\N	\N	2018-02-26 21:18:26	2018-02-26 21:18:32	2018-02-26 21:18:32
 19	wqeqwe	qweq	\N	1	1	2018-02-27 19:29:29	2018-02-27 19:29:36	2018-02-27 19:29:36
+15	R	R representa read, tiene permisos nivel 1 y puede solo visualizar.	1	\N	4	2018-02-20 21:41:31	2018-02-28 23:06:43	\N
+17	D	D representa delete, tiene permisos nivel 4 y puede visualizar, crear, editar y hasta eliminar.	4	\N	4	2018-02-20 21:42:31	2018-02-28 23:06:53	\N
+14	C	C representa create, tiene permisos nivel 2 y puede crear y visualizar.	2	\N	4	2018-02-20 21:41:09	2018-02-28 23:09:03	\N
+16	U	U representa update, tiene permisos nivel 3 y puede visualizar, crear y editar.	3	\N	4	2018-02-20 21:42:05	2018-03-01 00:14:25	\N
 \.
 
 
@@ -2205,6 +2207,7 @@ COPY roles (id_role, nom_role, det_role, id_usuario_registra, id_usuario_modific
 63	role 2	role 2	\N	\N	2018-02-26 20:22:57	2018-02-26 20:22:57	\N
 64	role 3	role 3	\N	\N	2018-02-26 20:23:13	2018-02-26 20:23:13	\N
 65	role new	role a.s,da	\N	\N	2018-02-27 19:29:06	2018-02-27 19:29:19	2018-02-27 19:29:19
+66	Role 4	Role 4	\N	\N	2018-02-28 23:44:07	2018-02-28 23:44:07	\N
 \.
 
 
@@ -2268,6 +2271,7 @@ COPY roles_permisos (id_role_permiso, id_role, id_permiso, id_usuario_registra, 
 61	63	16	\N	\N	2018-02-26 20:22:57	2018-02-26 20:22:57	\N
 62	64	14	\N	\N	2018-02-26 20:23:13	2018-02-26 20:23:13	\N
 63	65	17	\N	\N	2018-02-27 19:29:06	2018-02-27 19:29:19	2018-02-27 19:29:19
+64	66	17	\N	\N	2018-02-28 23:44:07	2018-02-28 23:44:07	\N
 \.
 
 
@@ -2389,6 +2393,14 @@ COPY tecnologia_desarrollo (id_tecnologia_desarrollo, id_tipo_tecnologia, nom_te
 --
 
 COPY tipos_aplicaciones (id_tipo_aplicacion, nom_tipo_aplicacion, det_tipo_aplicacion, cod_tipo_aplicacion, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+2	ds	ad	sa	4	4	2018-02-28 13:26:03	2018-02-28 13:26:05	2018-02-28 13:26:05
+1	Aplicacion Nativa	Aplicacion Nativa con algun lenguaje en particular	038238fdds	4	4	2018-02-28 13:25:51	2018-02-28 14:04:11	\N
+3	Aplicacion punto Net	Aplicacion .Net	null	4	4	2018-02-28 14:04:39	2018-02-28 14:04:39	\N
+4	Wordpress	Wordpress	null	4	4	2018-02-28 14:05:01	2018-02-28 14:05:01	\N
+5	Joomla	Joomla	null	4	4	2018-02-28 14:05:07	2018-02-28 14:05:07	\N
+6	Aplicacion Php	Aplicacion php	null	4	4	2018-02-28 14:05:19	2018-02-28 14:05:19	\N
+7	Php Yii Framework	Php Yii Framework	null	4	4	2018-02-28 14:05:40	2018-02-28 14:05:40	\N
+8	Laravel Php Framework	Laravel Php Framework	null	4	4	2018-02-28 14:05:49	2018-02-28 14:05:49	\N
 \.
 
 
@@ -2512,7 +2524,7 @@ SELECT pg_catalog.setval('aplicaciones_tecnologias_id_seq', 1, false);
 -- Name: cargos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('cargos_id_seq', 1, false);
+SELECT pg_catalog.setval('cargos_id_seq', 2, true);
 
 
 --
@@ -2589,14 +2601,14 @@ SELECT pg_catalog.setval('permisos_id_seq', 19, true);
 -- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('roles_id_seq', 65, true);
+SELECT pg_catalog.setval('roles_id_seq', 66, true);
 
 
 --
 -- Name: roles_permisos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('roles_permisos_id_seq', 63, true);
+SELECT pg_catalog.setval('roles_permisos_id_seq', 64, true);
 
 
 --
@@ -2659,7 +2671,7 @@ SELECT pg_catalog.setval('tecnologia_desarrollo_id_seq', 1, false);
 -- Name: tipos_aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('tipos_aplicaciones_id_seq', 1, false);
+SELECT pg_catalog.setval('tipos_aplicaciones_id_seq', 8, true);
 
 
 --
