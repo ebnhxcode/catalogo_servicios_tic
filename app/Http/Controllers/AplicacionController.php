@@ -74,7 +74,6 @@ class AplicacionController extends Controller {
          'ip' => "required|max:255",
          'subdominio' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
          'ssl_tls' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
-
          'id_dominio' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
          'id_servicio' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
          'id_tipo_aplicacion' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
@@ -91,9 +90,18 @@ class AplicacionController extends Controller {
       #Como pasó todas las validaciones, se asigna al objeto
       $this->aplicacion = $request->all();
       #Se crea el nuevo registro
-      $this->new_aplicacion = aplicacion::create([
+      $this->new_aplicacion = Aplicacion::create([
          'nom_aplicacion' => $this->aplicacion['nom_aplicacion'],
          'det_aplicacion' => $this->aplicacion['det_aplicacion'],
+         'alias' => $this->aplicacion['alias'],
+         'url_web' => $this->aplicacion['url_web'],
+         'ip' => $this->aplicacion['ip'],
+         'subdominio' => $this->aplicacion['subdominio'],
+         'ssl_tls' => $this->aplicacion['ssl_tls'],
+         'id_dominio' => $this->aplicacion['id_dominio'],
+         'id_servicio' => $this->aplicacion['id_servicio'],
+         'id_tipo_aplicacion' => $this->aplicacion['id_tipo_aplicacion'],
+
          'id_usuario_registra' => Auth::user()->id_usuario,
          'id_usuario_modifica' => Auth::user()->id_usuario,
       ]);
@@ -120,7 +128,6 @@ class AplicacionController extends Controller {
          'ip' => "required|max:255",
          'subdominio' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
          'ssl_tls' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
-
          'id_dominio' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
          'id_servicio' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
          'id_tipo_aplicacion' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
@@ -141,7 +148,7 @@ class AplicacionController extends Controller {
             'mensajes' => $this->validacion->messages(), //Para mostrar los mensajes que van desde el backend
          ]);
       }
-      $this->aplicacion = aplicacion::find($request["id_$this->nombre_modelo"]);
+      $this->aplicacion = Aplicacion::find($request["id_$this->nombre_modelo"]);
       $request['id_usuario_modifica'] = Auth::user()->id_usuario;
       $this->aplicacion->update($request->all());
 
@@ -165,7 +172,7 @@ class AplicacionController extends Controller {
          ]);
       }
 
-      $this->aplicacion = aplicacion::find($id);
+      $this->aplicacion = Aplicacion::find($id);
 
       #Valida si aplicacion existe y busca si tiene aplicacion_permiso
       if ($this->aplicacion) {

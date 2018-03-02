@@ -223,8 +223,6 @@
       <dd>
          <p class="control has-icon has-icon-right">
 
-            @{{ tipos_aplicaciones }}
-
             <select class="form-control" v-model="aplicacion.id_tipo_aplicacion" name="id_tipo_aplicacion"
                     v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
                <option :value="t.id_tipo_aplicacion" v-for="t in tipos_aplicaciones">
