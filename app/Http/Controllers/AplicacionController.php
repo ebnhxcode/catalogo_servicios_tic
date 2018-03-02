@@ -73,7 +73,7 @@ class AplicacionController extends Controller {
          'url_web' => "url|required|max:255",
          'ip' => "required|max:255",
          'subdominio' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
-         'ssl_tls' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
+         #'ssl_tls' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
          'id_dominio' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
          'id_servicio' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
          'id_tipo_aplicacion' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
@@ -87,6 +87,7 @@ class AplicacionController extends Controller {
             'mensajes' => $this->validacion->messages(), //Para mostrar los mensajes que van desde el backend
          ]);
       }
+      $request['ssl_tls'] = in_array($request['ssl_tls'], [true,'true']) ? true : false ;
       #Como pasó todas las validaciones, se asigna al objeto
       $this->aplicacion = $request->all();
       #Se crea el nuevo registro
@@ -128,7 +129,7 @@ class AplicacionController extends Controller {
          'ip' => "required|max:255",
          'subdominio' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
          #'ssl_tls' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
-         'ssl_tls' => "required|max:255",
+         #'ssl_tls' => "required|max:255",
          'id_dominio' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
          'id_servicio' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
          'id_tipo_aplicacion' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
@@ -149,8 +150,13 @@ class AplicacionController extends Controller {
             'mensajes' => $this->validacion->messages(), //Para mostrar los mensajes que van desde el backend
          ]);
       }
+
       $this->aplicacion = Aplicacion::find($request["id_$this->nombre_modelo"]);
       $request['id_usuario_modifica'] = Auth::user()->id_usuario;
+
+
+
+      $request['ssl_tls'] = in_array($request['ssl_tls'], [true,'true']) ? 'true' : 'false' ;
       $this->aplicacion->update($request->all());
 
       #unset($this->new_aplicacion_permiso, $this->permiso);

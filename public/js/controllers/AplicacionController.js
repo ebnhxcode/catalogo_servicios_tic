@@ -3689,6 +3689,11 @@ var AplicacionController = new Vue({
          this.aplicacion = this.buscar_en_array_por_modelo_e_id(id_aplicacion, this.aplicaciones, this.nombre_model);
       },
 
+      prueba: function prueba(event) {
+
+         console.log(event);
+      },
+
       guardar_editado: function guardar_editado() {
          var _this2 = this;
 
@@ -3792,6 +3797,7 @@ var AplicacionController = new Vue({
          //Instancia nuevo form data
          var formData = new FormData();
          //Conforma objeto paramétrico para solicitud http
+
          formData.append('nom_aplicacion', this.aplicacion.nom_aplicacion || null);
          formData.append('det_aplicacion', this.aplicacion.det_aplicacion || null);
          formData.append('alias', this.aplicacion.alias || null);

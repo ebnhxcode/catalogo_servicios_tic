@@ -170,9 +170,30 @@
       <dt>SSL/TLS</dt>
       <dd>
          <p class="control has-icon has-icon-right">
-            <toggle-button name="ssl_tls" :value="false"
-                           color="#82C7EB"
-                           :sync="true" v-model="aplicacion.ssl_tls"/>
+
+            <toggle-button
+               :value="aplicacion.ssl_tls=(en_array([true, 'true'], aplicacion.ssl_tls)?true:false)"
+               :width="90"
+               :labels="{checked: 'SSL Activo <i class=`fa fa-check`></i>', unchecked: 'Sin SSL'}"
+               v-model="aplicacion.ssl_tls"/>
+
+            {{--
+            <span v-if="en_array([true, 'true'], aplicacion.ssl_tls)">
+               <toggle-button
+                  :value="aplicacion.ssl_tls=true"
+                  :width="90"
+                  :labels="{checked: 'SSL Activo', unchecked: 'Sin SSL'}"
+                  v-model="aplicacion.ssl_tls"/>
+            </span>
+
+            <span v-else>
+               <toggle-button
+                  :value="aplicacion.ssl_tls=false"
+                  :width="90"
+                  :labels="{checked: 'SSL Activo', unchecked: 'Sin SSL'}"
+                  v-model="aplicacion.ssl_tls"/>
+            </span>
+            --}}
 
 
             <transition name="bounce">
@@ -185,8 +206,6 @@
                </span>
             </transition>
          </p>
-
-         @{{ aplicacion.ssl_tls }}
       </dd>
 
    </div><!-- .col -->

@@ -32,7 +32,7 @@ const AplicacionController = new Vue({
             'url_web':null,
             'ip':null,
             'subdominio':null,
-            'ssl_tls':null,
+            'ssl_tls':false,
             'id_dominio':null,
             'id_tipo_aplicacion':null,
             'id_servicio':null,
@@ -44,7 +44,7 @@ const AplicacionController = new Vue({
             'url_web':null,
             'ip':null,
             'subdominio':null,
-            'ssl_tls':null,
+            'ssl_tls':false,
             'id_dominio':null,
             'id_tipo_aplicacion':null,
             'id_servicio':null,
@@ -215,7 +215,7 @@ const AplicacionController = new Vue({
             'url_web':null,
             'ip':null,
             'subdominio':null,
-            'ssl_tls':null,
+            'ssl_tls':false,
             'id_dominio':null,
             'id_tipo_aplicacion':null,
             'id_servicio':null,
@@ -244,6 +244,11 @@ const AplicacionController = new Vue({
          this.aplicacion = null;
          this.aplicacion = this.buscar_en_array_por_modelo_e_id(id_aplicacion,this.aplicaciones,this.nombre_model);
 
+      },
+
+      prueba: function (event) {
+
+         console.log(event);
       },
 
       guardar_editado: function () {
@@ -347,13 +352,14 @@ const AplicacionController = new Vue({
          //Instancia nuevo form data
          var formData = new  FormData();
          //Conforma objeto paramétrico para solicitud http
+
          formData.append('nom_aplicacion', this.aplicacion.nom_aplicacion || null );
          formData.append('det_aplicacion', this.aplicacion.det_aplicacion || null );
-         formData.append('alias', this.aplicacion.alias|| null );
-         formData.append('url_web', this.aplicacion.url_web|| null );
-         formData.append('ip', this.aplicacion.ip|| null );
+         formData.append('alias', this.aplicacion.alias || null );
+         formData.append('url_web', this.aplicacion.url_web || null );
+         formData.append('ip', this.aplicacion.ip || null );
          formData.append('subdominio', this.aplicacion.subdominio|| null );
-         formData.append('ssl_tls', this.aplicacion.ssl_tls|| null );
+         formData.append('ssl_tls', this.aplicacion.ssl_tls || null );
          formData.append('id_dominio', this.aplicacion.id_dominio || null );
          formData.append('id_servicio', this.aplicacion.id_servicio || null );
          formData.append('id_tipo_aplicacion', this.aplicacion.id_tipo_aplicacion || null );
