@@ -8,8 +8,8 @@
 <!-- Sección de los modals que despliegan segun la gestión -->
 <div>
    <!-- dir ./partials -->
-   @include("$nombre_tabla.partials.modal_crear")
-   @include("$nombre_tabla.partials.modal_actualizar")
+   @include("layouts.modal.modal_crear")
+   @include("layouts.modal.modal_actualizar")
 </div>
 
 {{--<notifications group="top_center" position="top center" />--}}

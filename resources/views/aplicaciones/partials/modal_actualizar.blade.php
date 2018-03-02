@@ -11,9 +11,10 @@
       <button class="btn btn-success" @click.prevent="guardar_editado">
          Guardar
       </button>
-      <button class="btn btn-danger float-right" @click.prevent="eliminar(aplicacion.id_aplicacion)">
+      <button class="btn btn-danger float-right" @click.prevent="{{ "eliminar($nombre_modelo.id_$nombre_modelo)" }}">
          Eliminar
       </button>
+
    </dd>
 
 <!-- BEGIN FOOTER -->
