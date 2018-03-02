@@ -3794,7 +3794,14 @@ var AplicacionController = new Vue({
          //Conforma objeto paramétrico para solicitud http
          formData.append('nom_aplicacion', this.aplicacion.nom_aplicacion || null);
          formData.append('det_aplicacion', this.aplicacion.det_aplicacion || null);
-         formData.append('id_actividad', this.aplicacion.id_actividad || null);
+         formData.append('alias', this.aplicacion.alias || null);
+         formData.append('url_web', this.aplicacion.url_web || null);
+         formData.append('ip', this.aplicacion.ip || null);
+         formData.append('subdominio', this.aplicacion.subdominio || null);
+         formData.append('ssl_tls', this.aplicacion.ssl_tls || null);
+         formData.append('id_dominio', this.aplicacion.id_dominio || null);
+         formData.append('id_servicio', this.aplicacion.id_servicio || null);
+         formData.append('id_tipo_aplicacion', this.aplicacion.id_tipo_aplicacion || null);
 
          this.$http.post('/' + this.nombre_ruta, formData).then(function (response) {
             // success callback

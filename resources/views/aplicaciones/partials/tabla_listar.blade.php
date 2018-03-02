@@ -19,9 +19,9 @@
 
    <tbody>
    <tr v-for="a in filterBy(aplicaciones, filtro_head)"
-       @dblclick.prevent="editar(p.id_aplicacion)">
+       @dblclick.prevent="editar(a.id_aplicacion)">
 
-      <template v-if="id_en_edicion != p.id_aplicacion || modal_actualizar_activo == true">
+      <template v-if="id_en_edicion != a.id_aplicacion || modal_actualizar_activo == true">
 
          <td v-for="c,i in tabla_campos" v-show="c">
             @{{ a[i] }}
@@ -31,9 +31,9 @@
 
       <template v-else>
          <td>
-            <span v-clipboard="p.id_aplicacion" class="btn btn-light"
+            <span v-clipboard="a.id_aplicacion" class="btn btn-light"
                   data-placement="top" data-toggle="tooltip" title="Clic para copiar el id">
-               Id aplicacion: @{{ p.id_aplicacion }}
+               Id aplicacion: @{{ a.id_aplicacion }}
             </span>
          </td>
          <td :colspan="filterBy(tabla_campos, true).length-1">
@@ -45,12 +45,12 @@
 
       <td>
          <button class="btn btn-sm btn-primary"
-                 v-show="id_en_edicion != p.id_aplicacion && id_en_edicion == null && modal_actualizar_activo == false"
+                 v-show="id_en_edicion != a.id_aplicacion && id_en_edicion == null && modal_actualizar_activo == false"
                  data-placement="top" data-toggle="tooltip" title="Editar desde aquí"
-                 @click.prevent="editar(p.id_aplicacion)">
+                 @click.prevent="editar(a.id_aplicacion)">
             <i class="fa fa-edit"></i>
          </button>
-         <button class="btn btn-sm btn-success" v-show="id_en_edicion == p.id_aplicacion && modal_actualizar_activo == false"
+         <button class="btn btn-sm btn-success" v-show="id_en_edicion == a.id_aplicacion && modal_actualizar_activo == false"
                  data-placement="top" data-toggle="tooltip" title="Guardar"
                  @click.prevent="guardar_editado">
             <i class="fa fa-save"></i>
@@ -58,19 +58,19 @@
 
          <button class="btn btn-sm btn-warning"
                  data-placement="top" data-toggle="tooltip" title="Actualizar desde modal"
-                 @click.prevent="mostrar_modal_actualizar(p.id_aplicacion)"
+                 @click.prevent="mostrar_modal_actualizar(a.id_aplicacion)"
                  v-show="id_en_edicion == null">
             <i class="fa fa-external-link" ></i>
          </button>
          <button class="btn btn-sm btn-danger" v-show="id_en_edicion == null"
-                 @click.prevent="eliminar(p.id_aplicacion)"
+                 @click.prevent="eliminar(a.id_aplicacion)"
                  data-placement="top" data-toggle="tooltip" title="Eliminar">
             <i class="fa fa-close"></i>
          </button>
          <button class="btn btn-sm btn-secondary"
                  data-placement="top" data-toggle="tooltip" title="Dejar de editar"
                  @click.prevent="dejar_de_editar()"
-                 v-show="dejar_de_editar_contador>2 && id_en_edicion == p.id_aplicacion">
+                 v-show="dejar_de_editar_contador>2 && id_en_edicion == a.id_aplicacion">
             <i class="fa fa-close"></i>
          </button>
 

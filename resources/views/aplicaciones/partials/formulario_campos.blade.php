@@ -170,8 +170,10 @@
       <dt>SSL/TLS</dt>
       <dd>
          <p class="control has-icon has-icon-right">
+            <toggle-button name="ssl_tls" :value="false"
+                           color="#82C7EB"
+                           :sync="true" v-model="aplicacion.ssl_tls"/>
 
-            <toggle-button name="ssl_tls" v-model="aplicacion.ssl_tls"/>
 
             <transition name="bounce">
                <i v-show="errors.has('ssl_tls')" class="fa fa-exclamation-circle"></i>
@@ -183,6 +185,8 @@
                </span>
             </transition>
          </p>
+
+         @{{ aplicacion.ssl_tls }}
       </dd>
 
    </div><!-- .col -->
