@@ -25,11 +25,4 @@
         <h2>Actualizar {{$nombre_modelo}}</h2>
         <hr>
 
-        <dl class="dl-vertical" style="overflow-y: scroll;max-height: auto;padding-bottom: 50px;">
-
-
-
-
-
-
-
+        <dl class="dl-vertical" style="{{--overflow-y: scroll;max-height: auto;padding-bottom: 50px;--}}">

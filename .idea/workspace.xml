@@ -9,26 +9,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9c71587b-d991-482f-b19e-13dd138d49bc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/actividades/partials/modal_actualizar.blade.php" afterPath="$PROJECT_DIR$/resources/views/actividades/partials/modal_actualizar.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/actividades/partials/modal_crear.blade.php" afterPath="$PROJECT_DIR$/resources/views/actividades/partials/modal_crear.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/aplicaciones/partials/modal_actualizar.blade.php" afterPath="$PROJECT_DIR$/resources/views/aplicaciones/partials/modal_actualizar.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/aplicaciones/partials/modal_crear.blade.php" afterPath="$PROJECT_DIR$/resources/views/aplicaciones/partials/modal_crear.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/cargos/partials/modal_actualizar.blade.php" afterPath="$PROJECT_DIR$/resources/views/cargos/partials/modal_actualizar.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/cargos/partials/modal_crear.blade.php" afterPath="$PROJECT_DIR$/resources/views/cargos/partials/modal_crear.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/estados/partials/modal_actualizar.blade.php" afterPath="$PROJECT_DIR$/resources/views/estados/partials/modal_actualizar.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/estados/partials/modal_crear.blade.php" afterPath="$PROJECT_DIR$/resources/views/estados/partials/modal_crear.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/modal/footer_modal.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/modal/footer_modal.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/modal/header_modal.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/modal/header_modal.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/permisos/partials/modal_actualizar.blade.php" afterPath="$PROJECT_DIR$/resources/views/permisos/partials/modal_actualizar.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/permisos/partials/modal_crear.blade.php" afterPath="$PROJECT_DIR$/resources/views/permisos/partials/modal_crear.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/roles/partials/modal_actualizar.blade.php" afterPath="$PROJECT_DIR$/resources/views/roles/partials/modal_actualizar.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/roles/partials/modal_crear.blade.php" afterPath="$PROJECT_DIR$/resources/views/roles/partials/modal_crear.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/servicios/partials/modal_actualizar.blade.php" afterPath="$PROJECT_DIR$/resources/views/servicios/partials/modal_actualizar.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/servicios/partials/modal_crear.blade.php" afterPath="$PROJECT_DIR$/resources/views/servicios/partials/modal_crear.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/tipos_aplicaciones/partials/modal_actualizar.blade.php" afterPath="$PROJECT_DIR$/resources/views/tipos_aplicaciones/partials/modal_actualizar.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/tipos_aplicaciones/partials/modal_crear.blade.php" afterPath="$PROJECT_DIR$/resources/views/tipos_aplicaciones/partials/modal_crear.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/usuarios/partials/modal_actualizar.blade.php" afterPath="$PROJECT_DIR$/resources/views/usuarios/partials/modal_actualizar.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/usuarios/partials/modal_crear.blade.php" afterPath="$PROJECT_DIR$/resources/views/usuarios/partials/modal_crear.blade.php" />
     </list>
     <ignored path="catalogo_servicios_tic.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -56,28 +37,7 @@
     <favorites_list name="catalogo_servicios_tic" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="modal_actualizar.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/usuarios/partials/modal_actualizar.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2665148">
-              <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="modal_crear.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/usuarios/partials/modal_crear.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.5">
-              <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -116,7 +76,6 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/AplicacionController.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/AplicacionController.js" />
         <option value="$PROJECT_DIR$/resources/views/aplicaciones/partials/formulario_campos.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/modal/header_modal.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/modal/footer_modal.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/cargos/partials/modal_actualizar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/aplicaciones/partials/modal_actualizar.blade.php" />
@@ -136,6 +95,7 @@
         <option value="$PROJECT_DIR$/resources/views/tipos_aplicaciones/partials/modal_actualizar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/usuarios/partials/modal_crear.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/usuarios/partials/modal_actualizar.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/modal/header_modal.blade.php" />
       </list>
     </option>
   </component>
@@ -1530,14 +1490,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/modal/header_modal.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1332574">
-          <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/cargos/partials/modal_actualizar.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.0">
@@ -1730,19 +1682,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/usuarios/partials/modal_crear.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5">
-          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/usuarios/partials/modal_actualizar.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2665148">
           <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/usuarios/partials/modal_crear.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22209567">
+          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/modal/header_modal.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3997722">
+          <caret line="27" column="106" selection-start-line="27" selection-start-column="106" selection-end-line="27" selection-end-column="106" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#dl#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
