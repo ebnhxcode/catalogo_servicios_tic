@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 64);
+/******/ 	return __webpack_require__(__webpack_require__.s = 78);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3419,396 +3419,6 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 64:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(65);
-
-
-/***/ }),
-
-/***/ 65:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert2__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_v_clipboard__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-//Se importan todas las librerias compartidas y se cargan en el objeto instanciado como alias -> hp
-
-
-
-Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default.a, { dialog: true });
-
-
-Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
-
-//import { DownloadExcel } from '../components/DownloadExcel.vue';
-//Vue.component('download-excel', DownloadExcel);
-Vue.component('download-excel', __webpack_require__(6));
-
-var UsuarioController = new Vue({
-   el: '#UsuarioController',
-   data: function data() {
-      return {
-         'nombre_tabla': 'usuarios', //nombre tabla o de ruta
-         'nombre_ruta': 'usuarios', //nombre tabla o de ruta
-         'nombre_model': 'usuario',
-         'nombre_detalle': 'Usuarios',
-         'nombre_controller': 'UsuarioController',
-
-         'filtro_head': null,
-         'usuario': {
-            'nom_usuario': null,
-            'nom_completo': null,
-            'ape_paterno': null,
-            'ape_materno': null,
-            'username': null,
-            'email': null,
-            'password': null
-         },
-         'usuario_limpio': {
-            'nom_usuario': null,
-            'nom_completo': null,
-            'ape_paterno': null,
-            'ape_materno': null,
-            'username': null,
-            'email': null,
-            'password': null
-         },
-         'usuarios': [],
-         'datos_excel': [],
-         'usuario_auth': {},
-
-         'campos_formularios': [],
-         'errores_campos': [],
-
-         //Variables para validar si se está creando o editando
-         'modal_crear_activo': false,
-         'modal_actualizar_activo': false,
-
-         //Estas var se deben conservar para todos los controllers por que se ejecutan para el modal crear (blanquea)
-         'lista_actualizar_activo': false,
-
-         'id_en_edicion': null,
-         'dejar_de_editar_contador': 0,
-
-         'orden_lista': 'asc',
-
-         'tabla_campos': {
-            'id_usuario': false,
-            'nom_usuario': true,
-            'nom_completo': false,
-            'ape_paterno': false,
-            'ape_materno': false,
-            'username': false,
-            'email': false,
-            'password': false,
-            'remember_token': false,
-            'id_usuario_registra': false,
-            'id_usuario_modifica': false,
-            'created_at': true,
-            'updated_at': false,
-            'deleted_at': false
-         },
-
-         'tabla_labels': {
-            'id_usuario': 'Id usuario',
-            'nom_usuario': 'Nombre',
-            'nom_completo': 'Nombre completo',
-            'ape_paterno': 'Apellido paterno',
-            'ape_materno': 'Apellido materno',
-            'username': 'Nombre usuario',
-            'email': 'Email',
-            'password': 'Password',
-            'remember_token': 'Remember token',
-            'id_usuario_registra': 'Usuario registra',
-            'id_usuario_modifica': 'Usuario modifica',
-            'created_at': 'Creado en',
-            'updated_at': 'Actualizado en',
-            'deleted_at': 'Eliminado en'
-         },
-
-         'excel_json_campos': {
-            'id_usuario': 'String',
-            'nom_usuario': 'String',
-            'nom_completo': 'String',
-            'ape_paterno': 'String',
-            'ape_materno': 'String',
-            'username': 'String',
-            'email': 'String',
-            'password': 'String',
-            'remember_token': 'String',
-            'id_usuario_registra': 'String',
-            'id_usuario_modifica': 'String',
-            'created_at': 'String',
-            'updated_at': 'String',
-            'deleted_at': 'String'
-         },
-
-         'excel_json_datos': [],
-         'excel_data_contador': 0,
-
-         'append_to_json_excel': {}
-
-      };
-   },
-
-   computed: {},
-   watch: {
-      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el usuario
-      // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
-      id_en_edicion: function id_en_edicion(_id_en_edicion) {
-         if (_id_en_edicion == null) {
-            this.limpiar_objeto_clase_local();
-         } else {
-            this.usuario = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.usuarios, this.nombre_model);
-         }
-      },
-      //usuarios se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
-      usuarios: function usuarios(_usuarios) {
-         var self = this;
-         this.excel_json_datos = [];
-         return _usuarios.map(function (usuario, index) {
-            return self.excel_json_datos.push({
-               'id_usuario': usuario.id_usuario || '-',
-               'nom_usuario': usuario.nom_usuario || '-',
-               'nom_completo': usuario.nom_completo || '-',
-               'ape_paterno': usuario.ape_paterno || '-',
-               'ape_materno': usuario.ape_materno || '-',
-               'username': usuario.username || '-',
-               'email': usuario.email || '-',
-               'password': usuario.password || '-',
-               'remember_token': usuario.remember_token || '-',
-               'id_usuario_registra': usuario.id_usuario_registra || '-',
-               'id_usuario_modifica': usuario.id_usuario_modifica || '-',
-               'created_at': usuario.created_at || '-',
-               'updated_at': usuario.updated_at || '-',
-               'deleted_at': usuario.deleted_at || '-'
-            });
-         });
-      }
-   },
-   components: {
-      //'download-excel': DownloadExcel,
-   },
-   created: function created() {
-      this.inicializar();
-
-      $(document).ready(function () {
-         $('[data-toggle="tooltip"]').tooltip();
-      });
-
-      /*
-      $(document).ready(function () {
-         //Handle al recargar pagina
-         window.onbeforeunload = function(e){
-            return "Estás seguro que deseas cerrar la ventana?";
-         };
-         window.onunload = function(e){
-            return "Cierre de la ventana";
-         };
-       });
-      */
-   },
-
-   ready: {},
-   filters: {},
-   mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
-   methods: {
-
-      limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
-         this.usuario = {
-            'nom_usuario': null,
-            'nom_completo': null,
-            'ape_paterno': null,
-            'ape_materno': null,
-            'username': null,
-            'email': null,
-            'password': null
-         };
-      },
-
-      inicializar: function inicializar() {
-         var _this = this;
-
-         this.$http.get('/usuarios').then(function (response) {
-            // success callback
-            _this.usuarios = response.body.usuarios || null;
-            _this.datos_excel = response.body.usuarios || null;
-            _this.usuario_auth = response.body.usuario_auth || null;
-            _this.limpiar_objeto_clase_local();
-         }, function (response) {
-            // error callback
-            _this.checkear_estado_respuesta_http(response.status);
-         });
-      },
-
-      editar: function editar(id_usuario) {
-         this.lista_actualizar_activo = true;
-         this.id_en_edicion = id_usuario;
-
-         //id_objeto + array de objetos + nombre del model en lower case
-         this.usuario = null;
-         this.usuario = this.buscar_en_array_por_modelo_e_id(id_usuario, this.usuarios, this.nombre_model);
-      },
-
-      guardar_editado: function guardar_editado() {
-         var _this2 = this;
-
-         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-
-         this.$http.put('/' + this.nombre_ruta + '/' + this.usuario.id_usuario, this.usuario).then(function (response) {
-            // success callback
-
-            if (response.status == 200) {
-               if (!_this2.es_null(response.body.usuario)) {
-                  _this2.lista_actualizar_activo = false;
-                  _this2.id_en_edicion = null;
-               }
-            } else {
-               _this2.checkear_estado_respuesta_http(response.status);
-               return false;
-            }
-
-            if (_this2.mostrar_notificaciones(response) == true) {
-
-               //Aqui que pregunte si el modal está activo para que lo cierre
-               if (_this2.modal_actualizar_activo == true) {
-                  _this2.ocultar_modal('actualizar');
-                  _this2.modal_actualizar_activo = false;
-               }
-
-               _this2.lista_actualizar_activo = false;
-               _this2.id_en_edicion = null;
-
-               //Recargar la lista
-               _this2.inicializar();
-            } else {
-               _this2.dejar_de_editar_contador++;
-            }
-         }, function (response) {
-            // error callback
-            _this2.checkear_estado_respuesta_http(response.status);
-         });
-
-         return;
-      },
-
-      eliminar: function eliminar(id_usuario) {
-         var _swal,
-             _this3 = this;
-
-         __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()((_swal = {
-            title: "¿Estás seguro/a?",
-            text: "¿Deseas confirmar la eliminación de este registro?",
-            type: "warning",
-            showCancelButton: true,
-            closeOnConfirm: false,
-            closeOnCancel: false,
-            confirmButtonColor: '#DD6B55',
-            confirmButtonClass: "btn-danger",
-            confirmButtonText: 'Si, eliminar!'
-         }, _defineProperty(_swal, 'confirmButtonClass', "btn-warning"), _defineProperty(_swal, 'cancelButtonText', 'No, mantener.'), _swal)).then(function (result) {
-            if (result.value) {
-               //Se adjunta el token
-               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-
-               _this3.$http.delete('/' + _this3.nombre_ruta + '/' + id_usuario).then(function (response) {
-                  if (response.status == 200) {
-                     _this3.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
-                  } else {
-                     _this3.checkear_estado_respuesta_http(response.status);
-                     return false;
-                  }
-
-                  if (_this3.mostrar_notificaciones(response) == true) {
-                     //Aqui que pregunte si el modal está activo para que lo cierre
-                     if (_this3.modal_actualizar_activo == true) {
-                        _this3.ocultar_modal('actualizar');
-                        _this3.modal_actualizar_activo = false;
-                     }
-                     _this3.lista_actualizar_activo = false;
-                     _this3.id_en_edicion = null;
-
-                     //Recargar la lista
-                     _this3.inicializar();
-                  }
-               }, function (response) {
-                  // error callback
-                  _this3.checkear_estado_respuesta_http(response.status);
-               });
-            } else if (result.dismiss === __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default.a.DismissReason.cancel) {
-               _this3.auto_alerta_corta("Cancelado", "Se ha cancelado la eliminación", "success");
-            }
-         });
-      },
-
-      guardar: function guardar() {
-         var _this4 = this;
-
-         //Ejecuta validacion sobre los campos con validaciones
-         if (this.validar_campos() == false) {
-            return;
-         }
-         //Se adjunta el token
-         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-         //Instancia nuevo form data
-         var formData = new FormData();
-         //Conforma objeto paramétrico para solicitud http
-         formData.append('nom_usuario', this.usuario.nom_usuario || null);
-         formData.append('nom_completo', this.usuario.nom_completo || null);
-         formData.append('ape_paterno', this.usuario.ape_paterno || null);
-         formData.append('ape_materno', this.usuario.ape_materno || null);
-         formData.append('username', this.usuario.username || null);
-         formData.append('email', this.usuario.email || null);
-         formData.append('password', this.usuario.password || null);
-
-         this.$http.post('/' + this.nombre_ruta, formData).then(function (response) {
-            // success callback
-
-            if (response.status == 200) {
-               if (!_this4.es_null(response.body.servicio)) {
-                  _this4.id_en_edicion = null;
-               }
-               //this.inicializar();
-            } else {
-               _this4.checkear_estado_respuesta_http(response.status);
-               return false;
-            }
-
-            if (_this4.mostrar_notificaciones(response) == true) {
-               _this4.ocultar_modal('crear');
-               _this4.inicializar();
-
-               return;
-            }
-         }, function (response) {
-            // error callback
-            _this4.checkear_estado_respuesta_http(response.status);
-         });
-
-         return;
-      },
-
-      ordenar_lista: function ordenar_lista(columna) {
-         this.usuarios = _.orderBy(this.usuarios, columna, this.orden_lista);
-      }
-
-   }
-});
-
-/***/ }),
-
 /***/ 7:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3909,6 +3519,382 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
          a.href = window.URL.createObjectURL(blob);
          a.download = this.name;
       }
+   }
+});
+
+/***/ }),
+
+/***/ 78:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(79);
+
+
+/***/ }),
+
+/***/ 79:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert2__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_v_clipboard__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+//Se importan todas las librerias compartidas y se cargan en el objeto instanciado como alias -> hp
+
+
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default.a, { dialog: true });
+
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
+
+//import { DownloadExcel } from '../components/DownloadExcel.vue';
+//Vue.component('download-excel', DownloadExcel);
+Vue.component('download-excel', __webpack_require__(6));
+
+var DominioController = new Vue({
+   el: '#DominioController',
+   data: function data() {
+      return {
+         'nombre_tabla': 'dominios', //nombre tabla o de ruta
+         'nombre_ruta': 'dominios', //nombre tabla o de ruta
+         'nombre_model': 'dominio',
+         'nombre_detalle': 'Dominios',
+         'nombre_controller': 'DominioController',
+
+         'filtro_head': null,
+         'dominio': {
+            'nom_dominio': null,
+            'det_dominio': null,
+            'ip_publica': null,
+            'ip_balanceador': null,
+            'dns_asoc_dominio': null
+         },
+         'dominio_limpio': {
+            'nom_dominio': null,
+            'det_dominio': null,
+            'ip_publica': null,
+            'ip_balanceador': null,
+            'dns_asoc_dominio': null
+         },
+         'dominios': [],
+         'datos_excel': [],
+         'usuario_auth': {},
+
+         'campos_formularios': [],
+         'errores_campos': [],
+
+         //Variables para validar si se está creando o editando
+         'modal_crear_activo': false,
+         'modal_actualizar_activo': false,
+
+         //Estas var se deben conservar para todos los controllers por que se ejecutan para el modal crear (blanquea)
+         'lista_actualizar_activo': false,
+
+         'id_en_edicion': null,
+         'dejar_de_editar_contador': 0,
+
+         'orden_lista': 'asc',
+
+         'tabla_campos': {
+            'id_dominio': false,
+            'nom_dominio': true,
+            'det_dominio': false,
+            'ip_publica': false,
+            'ip_balanceador': false,
+            'dns_asoc_dominio': false,
+            'id_usuario_registra': false,
+            'id_usuario_modifica': false,
+            'created_at': true,
+            'updated_at': false,
+            'deleted_at': false
+         },
+
+         'tabla_labels': {
+            'id_dominio': 'Id dominio',
+            'nom_dominio': 'Nombre dominio',
+            'det_dominio': 'Detalle dominio',
+            'ip_publica': 'Ip Publica',
+            'ip_balanceador': 'Ip Balanceador',
+            'dns_asoc_dominio': 'DNS asociado dominio',
+            'id_usuario_registra': 'Usuario registra',
+            'id_usuario_modifica': 'Usuario modifica',
+            'created_at': 'Creado en',
+            'updated_at': 'Actualizado en',
+            'deleted_at': 'Eliminado en'
+         },
+
+         'excel_json_campos': {
+            'id_dominio': 'String',
+            'nom_dominio': 'String',
+            'det_dominio': 'String',
+            'ip_publica': 'String',
+            'ip_balanceador': 'String',
+            'dns_asoc_dominio': 'String',
+            'id_usuario_registra': 'String',
+            'id_usuario_modifica': 'String',
+            'created_at': 'String',
+            'updated_at': 'String',
+            'deleted_at': 'String'
+         },
+
+         'excel_json_datos': [],
+         'excel_data_contador': 0,
+
+         'append_to_json_excel': {}
+
+      };
+   },
+
+   computed: {},
+   watch: {
+      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el dominio
+      // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
+      id_en_edicion: function id_en_edicion(_id_en_edicion) {
+         if (_id_en_edicion == null) {
+            this.dominio = {
+               'nom_dominio': null,
+               'det_dominio': null,
+               'ip_publica': null,
+               'ip_balanceador': null,
+               'dns_asoc_dominio': null
+            };
+         } else {
+            this.dominio = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.dominios, this.nombre_model);
+         }
+      },
+      //dominios se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
+      dominios: function dominios(_dominios) {
+         var self = this;
+         this.excel_json_datos = [];
+         return _dominios.map(function (dominio, index) {
+            return self.excel_json_datos.push({
+               'id_dominio': dominio.id_dominio || '-',
+               'nom_dominio': dominio.nom_dominio || '-',
+               'det_dominio': dominio.det_dominio || '-',
+               'ip_publica': dominio.ip_publica || '-',
+               'ip_balanceador': dominio.ip_balanceador || '-',
+               'dns_asoc_dominio': dominio.dns_asoc_dominio || '-',
+               'id_usuario_registra': dominio.id_usuario_registra || '-',
+               'id_usuario_modifica': dominio.id_usuario_modifica || '-',
+               'created_at': dominio.created_at || '-',
+               'updated_at': dominio.updated_at || '-',
+               'deleted_at': dominio.deleted_at || '-'
+            });
+         });
+      }
+   },
+   components: {
+      //'download-excel': DownloadExcel,
+   },
+   created: function created() {
+      this.inicializar();
+
+      $(document).ready(function () {
+         $('[data-toggle="tooltip"]').tooltip();
+      });
+
+      /*
+       $(document).ready(function () {
+       //Handle al recargar pagina
+       window.onbeforeunload = function(e){
+       return "Estás seguro que deseas cerrar la ventana?";
+       };
+       window.onunload = function(e){
+       return "Cierre de la ventana";
+       };
+        });
+       */
+   },
+
+   ready: {},
+   filters: {},
+   mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
+   methods: {
+
+      limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
+         this.dominio = {
+            'nom_dominio': null,
+            'det_dominio': null,
+            'ip_publica': null,
+            'ip_balanceador': null,
+            'dns_asoc_dominio': null
+         };
+      },
+
+      inicializar: function inicializar() {
+         var _this = this;
+
+         this.$http.get('/dominios').then(function (response) {
+            // success callback
+            _this.dominios = response.body.dominios || null;
+            _this.datos_excel = response.body.dominios || null;
+            _this.usuario_auth = response.body.usuario_auth || null;
+            _this.limpiar_objeto_clase_local();
+         }, function (response) {
+            // error callback
+            _this.checkear_estado_respuesta_http(response.status);
+         });
+      },
+
+      editar: function editar(id_dominio) {
+         this.lista_actualizar_activo = true;
+         this.id_en_edicion = id_dominio;
+
+         //id_objeto + array de objetos + nombre del model en lower case
+         this.dominio = null;
+         this.dominio = this.buscar_en_array_por_modelo_e_id(id_dominio, this.dominios, this.nombre_model);
+      },
+
+      guardar_editado: function guardar_editado() {
+         var _this2 = this;
+
+         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+         this.$http.put('/' + this.nombre_ruta + '/' + this.dominio.id_dominio, this.dominio).then(function (response) {
+            // success callback
+
+            if (response.status == 200) {
+               if (!_this2.es_null(response.body.dominio)) {
+                  _this2.lista_actualizar_activo = false;
+                  _this2.id_en_edicion = null;
+               }
+            } else {
+               _this2.checkear_estado_respuesta_http(response.status);
+               return false;
+            }
+
+            if (_this2.mostrar_notificaciones(response) == true) {
+
+               //Aqui que pregunte si el modal está activo para que lo cierre
+               if (_this2.modal_actualizar_activo == true) {
+                  _this2.ocultar_modal('actualizar');
+                  _this2.modal_actualizar_activo = false;
+               }
+
+               _this2.lista_actualizar_activo = false;
+               _this2.id_en_edicion = null;
+
+               //Recargar la lista
+               _this2.inicializar();
+            } else {
+               _this2.dejar_de_editar_contador++;
+            }
+         }, function (response) {
+            // error callback
+            _this2.checkear_estado_respuesta_http(response.status);
+         });
+
+         return;
+      },
+
+      eliminar: function eliminar(id_dominio) {
+         var _swal,
+             _this3 = this;
+
+         __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()((_swal = {
+            title: "¿Estás seguro/a?",
+            text: "¿Deseas confirmar la eliminación de este registro?",
+            type: "warning",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            confirmButtonColor: '#DD6B55',
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: 'Si, eliminar!'
+         }, _defineProperty(_swal, 'confirmButtonClass', "btn-warning"), _defineProperty(_swal, 'cancelButtonText', 'No, mantener.'), _swal)).then(function (result) {
+            if (result.value) {
+               //Se adjunta el token
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+               _this3.$http.delete('/' + _this3.nombre_ruta + '/' + id_dominio).then(function (response) {
+                  if (response.status == 200) {
+                     _this3.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
+                  } else {
+                     _this3.checkear_estado_respuesta_http(response.status);
+                     return false;
+                  }
+
+                  if (_this3.mostrar_notificaciones(response) == true) {
+                     //Aqui que pregunte si el modal está activo para que lo cierre
+                     if (_this3.modal_actualizar_activo == true) {
+                        _this3.ocultar_modal('actualizar');
+                        _this3.modal_actualizar_activo = false;
+                     }
+                     _this3.lista_actualizar_activo = false;
+                     _this3.id_en_edicion = null;
+
+                     //Recargar la lista
+                     _this3.inicializar();
+                  }
+               }, function (response) {
+                  // error callback
+                  _this3.checkear_estado_respuesta_http(response.status);
+               });
+            } else if (result.dismiss === __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default.a.DismissReason.cancel) {
+               _this3.auto_alerta_corta("Cancelado", "Se ha cancelado la eliminación", "success");
+            }
+         });
+      },
+
+      guardar: function guardar() {
+         var _this4 = this;
+
+         //Ejecuta validacion sobre los campos con validaciones
+         if (this.validar_campos() == false) {
+            return;
+         }
+         //Se adjunta el token
+         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+         //Instancia nuevo form data
+         var formData = new FormData();
+         //Conforma objeto paramétrico para solicitud http
+         formData.append('nom_dominio', this.dominio.nom_dominio || null);
+         formData.append('det_dominio', this.dominio.det_dominio || null);
+         formData.append('ip_publica', this.dominio.ip_publica || null);
+         formData.append('ip_balanceador', this.dominio.ip_balanceador || null);
+         formData.append('dns_asoc_dominio', this.dominio.dns_asoc_dominio || null);
+
+         this.$http.post('/' + this.nombre_ruta, formData).then(function (response) {
+            // success callback
+
+            if (response.status == 200) {
+               if (!_this4.es_null(response.body.servicio)) {
+                  _this4.id_en_edicion = null;
+               }
+               //this.inicializar();
+            } else {
+               _this4.checkear_estado_respuesta_http(response.status);
+               return false;
+            }
+
+            if (_this4.mostrar_notificaciones(response) == true) {
+               _this4.ocultar_modal('crear');
+               _this4.inicializar();
+
+               return;
+            }
+         }, function (response) {
+            // error callback
+            _this4.checkear_estado_respuesta_http(response.status);
+         });
+
+         return;
+      },
+
+      ordenar_lista: function ordenar_lista(columna) {
+         this.dominios = _.orderBy(this.dominios, columna, this.orden_lista);
+      }
+
    }
 });
 

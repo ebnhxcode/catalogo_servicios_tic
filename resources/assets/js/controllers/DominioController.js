@@ -14,28 +14,32 @@ Vue.use(Clipboard);
 //Vue.component('download-excel', DownloadExcel);
 Vue.component('download-excel', require('../components/DownloadExcel.vue'));
 
-const EstadoController = new Vue({
-   el: '#EstadoController',
+const DominioController = new Vue({
+   el: '#DominioController',
    data(){
       return {
-         'nombre_tabla':'estados', //nombre tabla o de ruta
-         'nombre_ruta':'estados', //nombre tabla o de ruta
-         'nombre_model':'estado',
-         'nombre_detalle':'Estados',
-         'nombre_controller':'EstadoController',
+         'nombre_tabla':'dominios', //nombre tabla o de ruta
+         'nombre_ruta':'dominios', //nombre tabla o de ruta
+         'nombre_model':'dominio',
+         'nombre_detalle':'Dominios',
+         'nombre_controller':'DominioController',
 
          'filtro_head':null,
-         'estado':{
-            'nom_estado':null,
-            'det_estado':null,
-            'cod_estado':null,
+         'dominio':{
+            'nom_dominio':null,
+            'det_dominio':null,
+            'ip_publica':null,
+            'ip_balanceador':null,
+            'dns_asoc_dominio':null,
          },
-         'estado_limpio':{
-            'nom_estado':null,
-            'det_estado':null,
-            'cod_estado':null,
+         'dominio_limpio':{
+            'nom_dominio':null,
+            'det_dominio':null,
+            'ip_publica':null,
+            'ip_balanceador':null,
+            'dns_asoc_dominio':null,
          },
-         'estados':[],
+         'dominios':[],
          'datos_excel':[],
          'usuario_auth':{},
 
@@ -55,10 +59,12 @@ const EstadoController = new Vue({
          'orden_lista':'asc',
 
          'tabla_campos': {
-            'id_estado':false,
-            'nom_estado':true,
-            'det_estado':false,
-            'cod_estado':false,
+            'id_dominio':false,
+            'nom_dominio':true,
+            'det_dominio':false,
+            'ip_publica':false,
+            'ip_balanceador':false,
+            'dns_asoc_dominio':false,
             'id_usuario_registra':false,
             'id_usuario_modifica':false,
             'created_at':true,
@@ -67,10 +73,12 @@ const EstadoController = new Vue({
          },
 
          'tabla_labels': {
-            'id_estado':'Id estado',
-            'nom_estado':'Nombre estado',
-            'det_estado':'Detalle estado',
-            'cod_estado':'Codigo estado',
+            'id_dominio':'Id dominio',
+            'nom_dominio':'Nombre dominio',
+            'det_dominio':'Detalle dominio',
+            'ip_publica':'Ip Publica',
+            'ip_balanceador':'Ip Balanceador',
+            'dns_asoc_dominio':'DNS asociado dominio',
             'id_usuario_registra':'Usuario registra',
             'id_usuario_modifica':'Usuario modifica',
             'created_at':'Creado en',
@@ -79,10 +87,12 @@ const EstadoController = new Vue({
          },
 
          'excel_json_campos': {
-            'id_estado': 'String',
-            'nom_estado': 'String',
-            'det_estado': 'String',
-            'cod_estado': 'String',
+            'id_dominio': 'String',
+            'nom_dominio': 'String',
+            'det_dominio': 'String',
+            'ip_publica': 'String',
+            'ip_balanceador': 'String',
+            'dns_asoc_dominio': 'String',
             'id_usuario_registra': 'String',
             'id_usuario_modifica': 'String',
             'created_at': 'String',
@@ -99,34 +109,38 @@ const EstadoController = new Vue({
    },
    computed: {},
    watch: {
-      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el estado
+      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el dominio
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function (id_en_edicion) {
          if (id_en_edicion == null) {
-            this.estado = {
-               'nom_estado':null,
-               'det_estado':null,
-               'cod_estado':null,
+            this.dominio = {
+               'nom_dominio':null,
+               'det_dominio':null,
+               'ip_publica':null,
+               'ip_balanceador':null,
+               'dns_asoc_dominio':null,
             };
          } else {
-            this.estado = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.estados,this.nombre_model);
+            this.dominio = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.dominios,this.nombre_model);
          }
       },
-      //estados se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
-      estados: function (estados) {
+      //dominios se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
+      dominios: function (dominios) {
          var self = this;
          this.excel_json_datos = [];
-         return estados.map(function (estado, index) {
+         return dominios.map(function (dominio, index) {
             return self.excel_json_datos.push({
-               'id_estado': estado.id_estado || '-',
-               'nom_estado': estado.nom_estado || '-',
-               'det_estado': estado.det_estado || '-',
-               'cod_estado': estado.cod_estado || '-',
-               'id_usuario_registra': estado.id_usuario_registra || '-',
-               'id_usuario_modifica': estado.id_usuario_modifica || '-',
-               'created_at': estado.created_at || '-',
-               'updated_at': estado.updated_at || '-',
-               'deleted_at': estado.deleted_at || '-'
+               'id_dominio': dominio.id_dominio || '-',
+               'nom_dominio': dominio.nom_dominio || '-',
+               'det_dominio': dominio.det_dominio || '-',
+               'ip_publica': dominio.ip_publica || '-',
+               'ip_balanceador': dominio.ip_balanceador || '-',
+               'dns_asoc_dominio': dominio.dns_asoc_dominio || '-',
+               'id_usuario_registra': dominio.id_usuario_registra || '-',
+               'id_usuario_modifica': dominio.id_usuario_modifica || '-',
+               'created_at': dominio.created_at || '-',
+               'updated_at': dominio.updated_at || '-',
+               'deleted_at': dominio.deleted_at || '-'
             });
          });
       },
@@ -161,17 +175,19 @@ const EstadoController = new Vue({
    methods: {
 
       limpiar_objeto_clase_local: function () {
-         this.estado = {
-            'nom_estado':null,
-            'det_estado':null,
-            'cod_estado':null,
+         this.dominio = {
+            'nom_dominio':null,
+            'det_dominio':null,
+            'ip_publica':null,
+            'ip_balanceador':null,
+            'dns_asoc_dominio':null,
          };
       },
 
       inicializar: function () {
-         this.$http.get('/estados').then(response => { // success callback
-            this.estados = response.body.estados || null;
-            this.datos_excel = response.body.estados || null;
+         this.$http.get('/dominios').then(response => { // success callback
+            this.dominios = response.body.dominios || null;
+            this.datos_excel = response.body.dominios || null;
             this.usuario_auth = response.body.usuario_auth || null;
             this.limpiar_objeto_clase_local();
          }, response => { // error callback
@@ -180,13 +196,13 @@ const EstadoController = new Vue({
       },
 
 
-      editar: function (id_estado) {
+      editar: function (id_dominio) {
          this.lista_actualizar_activo = true;
-         this.id_en_edicion = id_estado;
+         this.id_en_edicion = id_dominio;
 
          //id_objeto + array de objetos + nombre del model en lower case
-         this.estado = null;
-         this.estado = this.buscar_en_array_por_modelo_e_id(id_estado,this.estados,this.nombre_model);
+         this.dominio = null;
+         this.dominio = this.buscar_en_array_por_modelo_e_id(id_dominio,this.dominios,this.nombre_model);
 
       },
 
@@ -194,10 +210,10 @@ const EstadoController = new Vue({
 
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-         this.$http.put(`/${this.nombre_ruta}/${this.estado.id_estado}`, this.estado).then(response => { // success callback
+         this.$http.put(`/${this.nombre_ruta}/${this.dominio.id_dominio}`, this.dominio).then(response => { // success callback
 
             if (response.status == 200) {
-               if ( !this.es_null(response.body.estado) ) {
+               if ( !this.es_null(response.body.dominio) ) {
                   this.lista_actualizar_activo = false;
                   this.id_en_edicion = null;
                }
@@ -233,7 +249,7 @@ const EstadoController = new Vue({
 
 
 
-      eliminar: function (id_estado) {
+      eliminar: function (id_dominio) {
          swal({
             title: "¿Estás seguro/a?",
             text: "¿Deseas confirmar la eliminación de este registro?",
@@ -251,7 +267,7 @@ const EstadoController = new Vue({
                //Se adjunta el token
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-               this.$http.delete(`/${this.nombre_ruta}/${id_estado}`).then(response => {
+               this.$http.delete(`/${this.nombre_ruta}/${id_dominio}`).then(response => {
                   if ( response.status == 200) {
                      this.auto_alerta_corta("Eliminado!","Registro eliminado correctamente","success");
                   }else {
@@ -291,9 +307,11 @@ const EstadoController = new Vue({
          //Instancia nuevo form data
          var formData = new  FormData();
          //Conforma objeto paramétrico para solicitud http
-         formData.append('nom_estado', this.estado.nom_estado || null );
-         formData.append('det_estado', this.estado.det_estado || null );
-         formData.append('cod_estado',this.estado.cod_estado || null );
+         formData.append('nom_dominio', this.dominio.nom_dominio || null );
+         formData.append('det_dominio', this.dominio.det_dominio || null );
+         formData.append('ip_publica',this.dominio.ip_publica || null );
+         formData.append('ip_balanceador',this.dominio.ip_balanceador || null );
+         formData.append('dns_asoc_dominio',this.dominio.dns_asoc_dominio || null );
 
          this.$http.post(`/${this.nombre_ruta}`, formData).then(response => { // success callback
 
@@ -321,7 +339,7 @@ const EstadoController = new Vue({
          return;
       },
 
-      ordenar_lista: function (columna) { this.estados = _.orderBy(this.estados, columna, this.orden_lista); },
+      ordenar_lista: function (columna) { this.dominios = _.orderBy(this.dominios, columna, this.orden_lista); },
 
    }
 });
