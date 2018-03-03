@@ -51,6 +51,7 @@ const AplicacionController = new Vue({
          },
          'actividades':[],
          'tipos_aplicaciones':[],
+         'servicios':[],
          'aplicaciones':[],
          'datos_excel':[],
          'usuario_auth':{},
@@ -226,6 +227,7 @@ const AplicacionController = new Vue({
          this.$http.get('/aplicaciones').then(response => { // success callback
             this.actividades = response.body.actividades || null;
             this.tipos_aplicaciones = response.body.tipos_aplicaciones || null;
+            this.servicios = response.body.servicios || null;
             this.aplicaciones = response.body.aplicaciones || null;
             this.datos_excel = response.body.aplicaciones || null;
             this.usuario_auth = response.body.usuario_auth || null;

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Aplicacion;
+use App\Servicio;
 use App\TipoAplicacion;
 use Illuminate\Http\Request;
 use Auth;
@@ -20,6 +21,7 @@ class AplicacionController extends Controller {
 
    private $aplicaciones;
    private $tipos_aplicaciones;
+   private $servicios;
    private $aplicacion;
    private $new_aplicacion;
    private $validacion;
@@ -55,10 +57,12 @@ class AplicacionController extends Controller {
       $this->usuario_auth = Auth::user();
       $this->tipos_aplicaciones = TipoAplicacion::all();
       $this->aplicaciones = Aplicacion::all();
+      $this->servicios = Servicio::all();
       return response()->json([
          'status' => 200,
          'tipos_aplicaciones' => $this->tipos_aplicaciones,
          'aplicaciones' => $this->aplicaciones,
+         'servicios' => $this->servicios,
          'usuario_auth' => $this->usuario_auth,
       ]);
    }

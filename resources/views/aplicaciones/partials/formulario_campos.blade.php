@@ -216,15 +216,9 @@
          <p class="control has-icon has-icon-right">
             <select class="form-control" v-model="aplicacion.id_servicio" name="id_servicio"
                     v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
-               <option value="1">Servicio 1 </option>
-               <option value="2">Servicio 2 </option>
-               <option value="3">Servicio 3 </option>
-               <option value="4">Servicio 4 </option>
-               {{--
-               <option :value="p.id_permiso" v-for="p in permisos">
-                  @{{ `${p.nom_permiso} -> ${p.det_permiso}` }}
+               <option :value="s.id_servicio" v-for="s in servicios">
+                  @{{ `${s.nom_servicio} -> ${s.det_servicio}` }}
                </option>
-               --}}
             </select>
 
             <transition name="bounce">
