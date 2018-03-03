@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Aplicacion;
+use App\Dominio;
 use App\Servicio;
 use App\TipoAplicacion;
 use Illuminate\Http\Request;
@@ -58,11 +59,13 @@ class AplicacionController extends Controller {
       $this->tipos_aplicaciones = TipoAplicacion::all();
       $this->aplicaciones = Aplicacion::all();
       $this->servicios = Servicio::all();
+      $this->dominios = Dominio::all();
       return response()->json([
          'status' => 200,
          'tipos_aplicaciones' => $this->tipos_aplicaciones,
          'aplicaciones' => $this->aplicaciones,
          'servicios' => $this->servicios,
+         'dominios' => $this->dominios,
          'usuario_auth' => $this->usuario_auth,
       ]);
    }

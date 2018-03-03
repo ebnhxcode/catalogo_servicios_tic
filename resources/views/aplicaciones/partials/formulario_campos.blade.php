@@ -119,14 +119,9 @@
          <p class="control has-icon has-icon-right">
             <select class="form-control" v-model="aplicacion.id_dominio" name="id_dominio"
                     v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
-               <option value="1">
-                  Minsal
+               <option :value="d.id_dominio" v-for="d in dominios">
+                  @{{ `${d.nom_dominio} -> ${d.det_dominio}` }}
                </option>
-               {{--
-               <option :value="p.id_permiso" v-for="p in permisos">
-                  @{{ `${p.nom_permiso} -> ${p.det_permiso}` }}
-               </option>
-               --}}
             </select>
 
             <transition name="bounce">

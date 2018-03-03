@@ -3599,6 +3599,7 @@ var AplicacionController = new Vue({
          'actividades': [],
          'tipos_aplicaciones': [],
          'servicios': [],
+         'dominios': [],
          'aplicaciones': [],
          'datos_excel': [],
          'usuario_auth': {},
@@ -3777,6 +3778,7 @@ var AplicacionController = new Vue({
             _this.actividades = response.body.actividades || null;
             _this.tipos_aplicaciones = response.body.tipos_aplicaciones || null;
             _this.servicios = response.body.servicios || null;
+            _this.dominios = response.body.dominios || null;
             _this.aplicaciones = response.body.aplicaciones || null;
             _this.datos_excel = response.body.aplicaciones || null;
             _this.usuario_auth = response.body.usuario_auth || null;
