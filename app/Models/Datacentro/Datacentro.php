@@ -15,6 +15,7 @@ class Datacentro extends Model {
    protected $fillable = [
       #columns
       'nom_datacentro',
+      'det_datacentro',
 
       #relaciones -> pks
 

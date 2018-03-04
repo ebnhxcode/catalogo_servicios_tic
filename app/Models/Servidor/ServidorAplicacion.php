@@ -11,16 +11,19 @@ class ServidorAplicacion extends Model {
    protected $dates = ['deleted_at'];
 
    protected $table = "servidores_aplicacion";
-   protected $primaryKey = "id_servidor_aplicacion";
+   protected $primaryKey = "id_servidor";
    protected $fillable = [
       #columns
-      'username',
-      'password',
-      'email',
+      'nom_servidor',
+      'det_servidor',
+      'ip_servidor',
+      'url_servidor',
+
 
       #relaciones -> pks
-      'id_aplicacion',
-      'id_servidor',
+      'id_datacentro',
+      'id_sistema_operativo',
+      'id_dominio',
 
       'id_usuario_registra',
       'id_usuario_modifica',
@@ -28,10 +31,6 @@ class ServidorAplicacion extends Model {
 
    public function aplicacion() {
       return $this->belongsTo('App\Aplicacion', 'id_aplicacion');
-   }
-
-   public function servidor() {
-      return $this->belongsTo('App\Servidor', 'id_servidor');
    }
 
    public function usuario_registra() {
