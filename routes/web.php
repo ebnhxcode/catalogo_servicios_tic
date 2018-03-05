@@ -35,6 +35,7 @@ Route::resource('/estados', 'EstadoController');
 Route::resource('/aplicaciones', 'AplicacionController');
 Route::resource('/tipos_aplicaciones', 'TipoAplicacionController');
 Route::resource('/dominios', 'DominioController');
+Route::resource('/servidores', 'ServidorController');
 
 Route::get('/estandares', 'RoleController@estandares');
 

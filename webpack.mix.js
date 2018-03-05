@@ -46,6 +46,7 @@ mix.js('resources/assets/js/controllers/CargoController.js','public/js/controlle
 mix.js('resources/assets/js/controllers/AplicacionController.js','public/js/controllers/AplicacionController.js');
 mix.js('resources/assets/js/controllers/TipoAplicacionController.js','public/js/controllers/TipoAplicacionController.js');
 mix.js('resources/assets/js/controllers/DominioController.js','public/js/controllers/DominioController.js');
+mix.js('resources/assets/js/controllers/ServidorController.js','public/js/controllers/ServidorController.js');
 
 mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');
