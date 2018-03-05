@@ -962,10 +962,10 @@ CREATE SEQUENCE public.servidor_aplicaciones_id_seq
 ALTER TABLE public.servidor_aplicaciones_id_seq OWNER TO postgres;
 
 --
--- Name: servidor_aplicaciones; Type: TABLE; Schema: public; Owner: postgres
+-- Name: servidores; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.servidor_aplicaciones (
+CREATE TABLE public.servidores (
     id_servidor integer DEFAULT nextval('public.servidor_aplicaciones_id_seq'::regclass) NOT NULL,
     id_datacentro integer,
     id_sistema_operativo integer,
@@ -982,7 +982,7 @@ CREATE TABLE public.servidor_aplicaciones (
 );
 
 
-ALTER TABLE public.servidor_aplicaciones OWNER TO postgres;
+ALTER TABLE public.servidores OWNER TO postgres;
 
 --
 -- Name: servidores_accesos; Type: TABLE; Schema: public; Owner: postgres
@@ -1388,7 +1388,6 @@ ALTER TABLE ONLY public.migrations ALTER COLUMN id SET DEFAULT nextval('public.m
 --
 
 COPY public.actividades (id_actividad, nom_actividad, det_actividad, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
-4	Desarrollo	Desarrollo	1	1	2018-02-27 18:32:18	2018-02-27 18:32:18	\N
 5	Requerimientos	Requerimientos	1	1	2018-02-27 18:32:32	2018-02-27 18:32:32	\N
 6	Migraciones	Migraciones	1	1	2018-02-27 18:32:39	2018-02-27 18:32:39	\N
 8	Descargas Masivas	Descargas Masivas	1	1	2018-02-27 18:33:04	2018-02-27 18:33:04	\N
@@ -1399,6 +1398,7 @@ COPY public.actividades (id_actividad, nom_actividad, det_actividad, id_usuario_
 11	Cubicacion Maquina	Cubicacion Maquina	1	4	2018-02-27 18:33:57	2018-02-28 05:58:27	\N
 2	Soporte	Soporte	1	4	2018-02-27 18:31:56	2018-02-28 05:58:33	\N
 3	Seguimiento	Seguimiento	1	4	2018-02-27 18:32:09	2018-03-04 12:28:10	\N
+4	Desarrollo	Desarrollo	1	4	2018-02-27 18:32:18	2018-03-05 20:56:13	\N
 \.
 
 
@@ -2324,10 +2324,10 @@ COPY public.servicio_salud (id_servicio_salud, id_region, nombre_servicio_salud,
 --
 
 COPY public.servicios (id_servicio, id_actividad, id_usuario, nom_servicio, det_servicio, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
-2	4	1	Wordpress	Servicio que se encarga de mantener y administrar los sitios hechos en wordpress	1	1	2018-02-27 19:04:06	2018-02-27 19:06:11	\N
 1	4	1	Sitios Web	Servicio que realiza el equipo de soporte	1	1	2018-02-27 18:58:58	2018-02-27 19:06:51	\N
 3	4	1	Sitios en Yii	Desarrollos que se han realizado en Yii Framework.	1	1	2018-02-27 19:04:06	2018-02-27 19:35:09	\N
 4	4	1	Web Minsal	Desarrollos relacionados al servicio web minsal	1	1	2018-02-27 19:35:43	2018-02-27 19:35:43	\N
+2	4	4	Wordpress	Servicio que se encarga de mantener y administrar los sitios hechos en wordpress	1	4	2018-02-27 19:04:06	2018-03-05 20:56:33	\N
 \.
 
 
@@ -2356,10 +2356,10 @@ COPY public.servicios_tags (id_servicio_tag, id_servicio, id_tag, id_usuario_reg
 
 
 --
--- Data for Name: servidor_aplicaciones; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: servidores; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.servidor_aplicaciones (id_servidor, id_datacentro, id_sistema_operativo, id_dominio, nom_servidor, ip_servidor, url_servidor, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, det_servidor) FROM stdin;
+COPY public.servidores (id_servidor, id_datacentro, id_sistema_operativo, id_dominio, nom_servidor, ip_servidor, url_servidor, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, det_servidor) FROM stdin;
 \.
 
 
@@ -2931,10 +2931,10 @@ ALTER TABLE ONLY public.servicios_tags
 
 
 --
--- Name: servidor_aplicaciones servidor_aplicaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: servidores servidor_aplicaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.servidor_aplicaciones
+ALTER TABLE ONLY public.servidores
     ADD CONSTRAINT servidor_aplicaciones_pkey PRIMARY KEY (id_servidor);
 
 
