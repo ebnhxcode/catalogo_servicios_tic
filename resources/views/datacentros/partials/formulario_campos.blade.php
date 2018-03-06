@@ -2,20 +2,20 @@
 <div class="row">
    <div class="col-sm-12 col-md-12">
 
-      <dt>Nombre estado</dt>
+      <dt>Nombre datacentro</dt>
       <dd>
          <p class="control has-icon has-icon-right">
-            <input type="text" v-model="estado.nom_estado" name="nom_estado"
+            <input type="text" v-model="datacentro.nom_datacentro" name="nom_datacentro"
                    v-validate="{required:true,regex:/^[a-zA-Z0-9_ ]+$/i}" data-vv-delay="500"
                    class="form-control" />
 
             <transition name="bounce">
-               <i v-show="errors.has('nom_estado')" class="fa fa-exclamation-circle"></i>
+               <i v-show="errors.has('nom_datacentro')" class="fa fa-exclamation-circle"></i>
             </transition>
 
             <transition name="bounce">
-               <span v-show="errors.has('nom_estado')" class="text-danger small">
-                  @{{ errors.first('nom_estado') }}
+               <span v-show="errors.has('nom_datacentro')" class="text-danger small">
+                  @{{ errors.first('nom_datacentro') }}
                </span>
             </transition>
          </p>
@@ -25,21 +25,21 @@
    </div><!-- .col -->
    <div class="col-sm-12 col-md-12">
 
-      <dt>Detalle estado</dt>
+      <dt>Detalle datacentro</dt>
       <dd>
 
          <p class="control has-icon has-icon-right">
-            <textarea cols="15" rows="2" v-model="estado.det_estado" name="det_estado"
+            <textarea cols="15" rows="2" v-model="datacentro.det_datacentro" name="det_datacentro"
                       v-validate="{required:true,regex:/^[a-zA-Z0-9_ ,.!@#$%*&]+$/i}" data-vv-delay="500"
                       class="form-control"></textarea>
 
             <transition name="bounce">
-               <i v-show="errors.has('det_estado')" class="fa fa-exclamation-circle"></i>
+               <i v-show="errors.has('det_datacentro')" class="fa fa-exclamation-circle"></i>
             </transition>
 
             <transition name="bounce">
-               <span v-show="errors.has('det_estado')" class="text-danger small">
-                  @{{ errors.first('det_estado') }}
+               <span v-show="errors.has('det_datacentro')" class="text-danger small">
+                  @{{ errors.first('det_datacentro') }}
                </span>
             </transition>
          </p>
@@ -48,21 +48,21 @@
    </div><!-- .col -->
    <div class="col-sm-12 col-md-12">
 
-      <dt>Codigo estado</dt>
+      <dt>Codigo datacentro</dt>
       <dd>
 
          <p class="control has-icon has-icon-right">
-            <input type="text" v-model="estado.cod_estado" name="cod_estado"
+            <input type="text" v-model="datacentro.cod_datacentro" name="cod_datacentro"
                    v-validate="{regex:/^[a-zA-Z0-9_ ,.!@#$%*&]+$/i}" data-vv-delay="500"
                    class="form-control" />
 
             <transition name="bounce">
-               <i v-show="errors.has('cod_estado')" class="fa fa-exclamation-circle"></i>
+               <i v-show="errors.has('cod_datacentro')" class="fa fa-exclamation-circle"></i>
             </transition>
 
             <transition name="bounce">
-               <span v-show="errors.has('cod_estado')" class="text-danger small">
-                  @{{ errors.first('cod_estado') }}
+               <span v-show="errors.has('cod_datacentro')" class="text-danger small">
+                  @{{ errors.first('cod_datacentro') }}
                </span>
             </transition>
          </p>

@@ -16,6 +16,7 @@ class Datacentro extends Model {
       #columns
       'nom_datacentro',
       'det_datacentro',
+      'cod_datacentro',
 
       #relaciones -> pks
 

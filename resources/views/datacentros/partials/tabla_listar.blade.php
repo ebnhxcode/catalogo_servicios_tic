@@ -18,22 +18,22 @@
    </thead>
 
    <tbody>
-   <tr v-for="e in filterBy(estados, filtro_head)"
-       @dblclick.prevent="editar(e.id_estado)">
+   <tr v-for="d in filterBy(datacentros, filtro_head)"
+       @dblclick.prevent="editar(d.id_datacentro)">
 
-      <template v-if="id_en_edicion != e.id_estado || modal_actualizar_activo == true">
+      <template v-if="id_en_edicion != d.id_datacentro || modal_actualizar_activo == true">
 
          <td v-for="c,i in tabla_campos" v-show="c">
-            @{{ e[i] }}
+            @{{ d[i] }}
          </td>
 
       </template>
 
       <template v-else>
          <td>
-            <span v-clipboard="e.id_estado" class="btn btn-light"
+            <span v-clipboard="d.id_datacentro" class="btn btn-light"
                   data-placement="top" data-toggle="tooltip" title="Clic para copiar el id">
-               Id estado: @{{ e.id_estado }}
+               Id datacentro: @{{ d.id_datacentro }}
             </span>
          </td>
          <td :colspan="filterBy(tabla_campos, true).length-1">
@@ -45,12 +45,12 @@
 
       <td>
          <button class="btn btn-sm btn-primary"
-                 v-show="id_en_edicion != e.id_estado && id_en_edicion == null && modal_actualizar_activo == false"
+                 v-show="id_en_edicion != d.id_datacentro && id_en_edicion == null && modal_actualizar_activo == false"
                  data-placement="top" data-toggle="tooltip" title="Editar desde aquí"
-                 @click.prevent="editar(e.id_estado)">
+                 @click.prevent="editar(d.id_datacentro)">
             <i class="fa fa-edit"></i>
          </button>
-         <button class="btn btn-sm btn-success" v-show="id_en_edicion == e.id_estado && modal_actualizar_activo == false"
+         <button class="btn btn-sm btn-success" v-show="id_en_edicion == d.id_datacentro && modal_actualizar_activo == false"
                  data-placement="top" data-toggle="tooltip" title="Guardar"
                  @click.prevent="guardar_editado">
             <i class="fa fa-save"></i>
@@ -58,26 +58,26 @@
 
          <button class="btn btn-sm btn-warning"
                  data-placement="top" data-toggle="tooltip" title="Actualizar desde modal"
-                 @click.prevent="mostrar_modal_actualizar(e.id_estado)"
+                 @click.prevent="mostrar_modal_actualizar(d.id_datacentro)"
                  v-show="id_en_edicion == null">
             <i class="fa fa-external-link" ></i>
          </button>
          <button class="btn btn-sm btn-danger" v-show="id_en_edicion == null"
-                 @click.prevent="eliminar(e.id_estado)"
+                 @click.prevent="eliminar(d.id_datacentro)"
                  data-placement="top" data-toggle="tooltip" title="Eliminar">
             <i class="fa fa-close"></i>
          </button>
          <button class="btn btn-sm btn-secondary"
                  data-placement="top" data-toggle="tooltip" title="Dejar de editar"
                  @click.prevent="dejar_de_editar()"
-                 v-show="dejar_de_editar_contador>2 && id_en_edicion == e.id_estado">
+                 v-show="dejar_de_editar_contador>2 && id_en_edicion == d.id_datacentro">
             <i class="fa fa-close"></i>
          </button>
 
       </td>
    </tr>
 
-   <tr v-if="estados && estados.length == 0 || filterBy(estados, filtro_head).length == 0">
+   <tr v-if="datacentros && datacentros.length == 0 || filterBy(datacentros, filtro_head).length == 0">
       <td colspan="5">No hay más registros</td>
    </tr>
 
