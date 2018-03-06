@@ -1,5 +1,5 @@
 <div class="row">
-   <div class="col-sm-12 col-md-12">
+   <div class="col-sm-6 col-md-6">
 
       <dt>Nombre Role</dt>
       <dd>
@@ -21,12 +21,12 @@
       </dd>
 
    </div><!-- .col -->
-   <div class="col-sm-12 col-md-12">
+   <div class="col-sm-6 col-md-6">
 
       <dt>Detalle Role</dt>
       <dd>
          <p class="control has-icon has-icon-right">
-            <textarea cols="15" rows="2" v-model="role.det_role" name="det_role"
+            <textarea cols="15" rows="1" v-model="role.det_role" name="det_role"
                       v-validate="{required:true,regex:/^[a-zA-Z0-9_ ,.!@#$%*&]+$/i}" data-vv-delay="500"
                       class="form-control"></textarea>
 
@@ -43,7 +43,7 @@
       </dd>
 
    </div><!-- .col -->
-   <div class="col-sm-12 col-md-12">
+   <div class="col-sm-6 col-md-6">
 
       <dt>Permiso</dt>
       <dd>

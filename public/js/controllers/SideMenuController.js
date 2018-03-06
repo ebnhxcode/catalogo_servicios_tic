@@ -46981,6 +46981,9 @@ var SideMenuController = new Vue({
             'title': 'Servicios',
             'url': '/servicios'
          }, {
+            'title': 'Tipos Aplicaciones',
+            'url': '/tipos_aplicaciones'
+         }, {
             'title': 'Aplicaciones',
             'url': '/aplicaciones'
          }, {

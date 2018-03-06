@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Permiso;
 use App\RolePermiso;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Auth;
 use Illuminate\Support\Facades\Validator;
 
 class PermisoController extends Controller {
@@ -65,7 +65,7 @@ class PermisoController extends Controller {
          'det_permiso' => 'regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:1000',
       ]);
       #Se valida la respuesta con la salida de la validacion
-      if ($this->validacion->fails() == true && !Auth::guest()) {
+      if ($this->validacion->fails() == true) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
             'tipo' => 'errores_campos_requeridos', //Para las notificaciones
@@ -109,7 +109,7 @@ class PermisoController extends Controller {
          ]);
       }
       #Se valida la respuesta con la salida de la validacion
-      if ($this->validacion->fails() == true && !Auth::guest()) {
+      if ($this->validacion->fails() == true) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
             'tipo' => 'errores_campos_requeridos', //Para las notificaciones

@@ -29,7 +29,7 @@
       <dd>
 
          <p class="control has-icon has-icon-right">
-            <textarea cols="15" rows="2" v-model="datacentro.det_datacentro" name="det_datacentro"
+            <textarea cols="15" rows="1" v-model="datacentro.det_datacentro" name="det_datacentro"
                       v-validate="{required:true,regex:/^[a-zA-Z0-9_ ,.!@#$%*&]+$/i}" data-vv-delay="500"
                       class="form-control"></textarea>
 

@@ -3575,12 +3575,22 @@ var TipoAplicacionController = new Vue({
          'tipo_aplicacion': {
             'nom_tipo_aplicacion': null,
             'det_tipo_aplicacion': null,
-            'cod_tipo_aplicacion': null
+            'cod_tipo_aplicacion': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          },
          'tipo_aplicacion_limpio': {
             'nom_tipo_aplicacion': null,
             'det_tipo_aplicacion': null,
-            'cod_tipo_aplicacion': null
+            'cod_tipo_aplicacion': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          },
          'tipos_aplicaciones': [],
          'datos_excel': [],
@@ -3651,11 +3661,7 @@ var TipoAplicacionController = new Vue({
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function id_en_edicion(_id_en_edicion) {
          if (_id_en_edicion == null) {
-            this.tipo_aplicacion = {
-               'nom_tipo_aplicacion': null,
-               'det_tipo_aplicacion': null,
-               'cod_tipo_aplicacion': null
-            };
+            this.limpiar_objeto_clase_local();
          } else {
             this.tipo_aplicacion = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.tipos_aplicaciones, this.nombre_model);
          }
@@ -3711,7 +3717,12 @@ var TipoAplicacionController = new Vue({
          this.tipo_aplicacion = {
             'nom_tipo_aplicacion': null,
             'det_tipo_aplicacion': null,
-            'cod_tipo_aplicacion': null
+            'cod_tipo_aplicacion': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          };
       },
 

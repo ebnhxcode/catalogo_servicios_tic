@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Auth;
 use Illuminate\Support\Facades\Validator;
 
 class UsuarioController extends Controller {
@@ -69,7 +69,7 @@ class UsuarioController extends Controller {
          'password' => "regex:/(^([a-zA-Z0-9_ !@#$%*&]{8,20}+)(\d+)?$)/u|required|max:255",
       ]);
       #Se valida la respuesta con la salida de la validacion
-      if ($this->validacion->fails() == true && !Auth::guest()) {
+      if ($this->validacion->fails() == true) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
             'tipo' => 'errores_campos_requeridos', //Para las notificaciones
@@ -113,7 +113,7 @@ class UsuarioController extends Controller {
          'username' => "regex:/(^([a-zA-Z0-9_.]+)(\d+)?$)/u|required|max:255",
          'email' => "email|required|max:255",
          #'password' => "regex:/(^([a-zA-Z0-9_ !@#$%*&]{8,20}+)(\d+)?$)/u|required|max:255",
-         'password' => "regex:/(^([a-zA-Z0-9_ !@#$%*&]{8,20}+)(\d+)?$)/u|max:255",
+         'password' => "regex:/(^([a-zA-Z0-9_ !@#$%*&]{8,20}+)(\d+)?$)/u|required|max:255",
       ]);
       #Valida si la informacion que se envia para editar al usuario son iguales los ids
       if ($id != $request["id_$this->nombre_modelo"]) {
@@ -124,7 +124,7 @@ class UsuarioController extends Controller {
          ]);
       }
       #Se valida la respuesta con la salida de la validacion
-      if ($this->validacion->fails() == true && !Auth::guest()) {
+      if ($this->validacion->fails() == true) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
             'tipo' => 'errores_campos_requeridos', //Para las notificaciones
@@ -133,6 +133,7 @@ class UsuarioController extends Controller {
       }
       $this->usuario = User::find($request["id_$this->nombre_modelo"]);
       $request['id_usuario_modifica'] = Auth::user()->id_usuario;
+      $request['password'] = bcrypt($request["password"]);
       $this->usuario->update($request->all());
 
       #unset($this->new_usuario_permiso, $this->permiso);

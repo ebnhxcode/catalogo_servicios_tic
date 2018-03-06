@@ -61,7 +61,7 @@
       <dd>
 
          <p class="control has-icon has-icon-right">
-            <textarea cols="15" rows="2" v-model="sistema_operativo.det_sistema_operativo" name="det_sistema_operativo"
+            <textarea cols="15" rows="1" v-model="sistema_operativo.det_sistema_operativo" name="det_sistema_operativo"
                       v-validate="{required:true,regex:/^[a-zA-Z0-9_ ,.!@#$%*&]+$/i}" data-vv-delay="500"
                       class="form-control"></textarea>
 
@@ -138,7 +138,7 @@
       <dd>
 
          <p class="control has-icon has-icon-right">
-            <textarea cols="15" rows="2" v-model="sistema_operativo.det_licencia_sistema_operativo" name="det_licencia_sistema_operativo"
+            <textarea cols="15" rows="1" v-model="sistema_operativo.det_licencia_sistema_operativo" name="det_licencia_sistema_operativo"
                       v-validate="{regex:/^[a-zA-Z0-9_ ,.!@#$%*&]+$/i}" data-vv-delay="500"
                       class="form-control"></textarea>
 

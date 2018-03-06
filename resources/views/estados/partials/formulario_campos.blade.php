@@ -1,6 +1,6 @@
 
 <div class="row">
-   <div class="col-sm-12 col-md-12">
+   <div class="col-sm-6 col-md-6">
 
       <dt>Nombre estado</dt>
       <dd>
@@ -23,13 +23,13 @@
 
 
    </div><!-- .col -->
-   <div class="col-sm-12 col-md-12">
+   <div class="col-sm-6 col-md-6">
 
       <dt>Detalle estado</dt>
       <dd>
 
          <p class="control has-icon has-icon-right">
-            <textarea cols="15" rows="2" v-model="estado.det_estado" name="det_estado"
+            <textarea cols="15" rows="1" v-model="estado.det_estado" name="det_estado"
                       v-validate="{required:true,regex:/^[a-zA-Z0-9_ ,.!@#$%*&]+$/i}" data-vv-delay="500"
                       class="form-control"></textarea>
 
@@ -46,7 +46,7 @@
       </dd>
 
    </div><!-- .col -->
-   <div class="col-sm-12 col-md-12">
+   <div class="col-sm-6 col-md-6">
 
       <dt>Codigo estado</dt>
       <dd>

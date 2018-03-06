@@ -28,10 +28,20 @@ const ActividadController = new Vue({
          'actividad':{
             'nom_actividad':null,
             'det_actividad':null,
+            'id_usuario_registra':null,
+            'id_usuario_modifica':null,
+            'created_at':null,
+            'updated_at':null,
+            'deleted_at':null,
          },
          'actividad_limpio':{
             'nom_actividad':null,
             'det_actividad':null,
+            'id_usuario_registra':null,
+            'id_usuario_modifica':null,
+            'created_at':null,
+            'updated_at':null,
+            'deleted_at':null,
          },
          'tipos_actividades':[],
          'actividades':[],
@@ -154,6 +164,11 @@ const ActividadController = new Vue({
          this.actividad = {
             'nom_actividad':null,
             'det_actividad':null,
+            'id_usuario_registra':null,
+            'id_usuario_modifica':null,
+            'created_at':null,
+            'updated_at':null,
+            'deleted_at':null,
          };
       },
 

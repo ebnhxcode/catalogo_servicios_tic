@@ -3474,7 +3474,13 @@ var UsuarioController = new Vue({
             'ape_materno': null,
             'username': null,
             'email': null,
-            'password': null
+            'password': null,
+            'remember_token': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          },
          'usuario_limpio': {
             'nom_usuario': null,
@@ -3483,7 +3489,13 @@ var UsuarioController = new Vue({
             'ape_materno': null,
             'username': null,
             'email': null,
-            'password': null
+            'password': null,
+            'remember_token': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          },
          'usuarios': [],
          'datos_excel': [],
@@ -3609,16 +3621,16 @@ var UsuarioController = new Vue({
       });
 
       /*
-      $(document).ready(function () {
-         //Handle al recargar pagina
-         window.onbeforeunload = function(e){
-            return "Estás seguro que deseas cerrar la ventana?";
-         };
-         window.onunload = function(e){
-            return "Cierre de la ventana";
-         };
-       });
-      */
+       $(document).ready(function () {
+       //Handle al recargar pagina
+       window.onbeforeunload = function(e){
+       return "Estás seguro que deseas cerrar la ventana?";
+       };
+       window.onunload = function(e){
+       return "Cierre de la ventana";
+       };
+        });
+       */
    },
 
    ready: {},
@@ -3634,7 +3646,13 @@ var UsuarioController = new Vue({
             'ape_materno': null,
             'username': null,
             'email': null,
-            'password': null
+            'password': null,
+            'remember_token': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          };
       },
 

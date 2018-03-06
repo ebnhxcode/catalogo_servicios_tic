@@ -3707,20 +3707,7 @@ var SistemaOperativoController = new Vue({
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function id_en_edicion(_id_en_edicion) {
          if (_id_en_edicion == null) {
-            this.sistema_operativo = {
-               'id_sistema_operativo': null,
-               'arquitectura': null,
-               'nom_sistema_operativo': null,
-               'det_sistema_operativo': null,
-               'vers_sistema_operativo': null,
-               'lic_sistema_operativo': null,
-               'det_licencia_sistema_operativo': null,
-               'id_usuario_registra': null,
-               'id_usuario_modifica': null,
-               'created_at': null,
-               'updated_at': null,
-               'deleted_at': null
-            };
+            this.limpiar_objeto_clase_local();
          } else {
             this.sistema_operativo = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.sistemas_operativos, this.nombre_model);
          }

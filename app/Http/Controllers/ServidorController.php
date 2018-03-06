@@ -64,9 +64,9 @@ class ServidorController extends Controller {
       return response()->json([
          'status' => 200,
          'servidores' => $this->servidores,
-         'datacentros ' => $this->datacentros,
-         'dominios ' => $this->dominios,
-         'sistemas_operativos ' => $this->sistemas_operativos,
+         'datacentros' => $this->datacentros,
+         'dominios' => $this->dominios,
+         'sistemas_operativos' => $this->sistemas_operativos,
          'usuario_auth' => $this->usuario_auth,
       ]);
    }

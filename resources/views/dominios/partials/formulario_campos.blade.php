@@ -29,7 +29,7 @@
       <dd>
 
          <p class="control has-icon has-icon-right">
-            <textarea cols="15" rows="2" v-model="dominio.det_dominio" name="det_dominio"
+            <textarea cols="15" rows="1" v-model="dominio.det_dominio" name="det_dominio"
                       v-validate="{required:true,regex:/^[a-zA-Z0-9_ ,.!@#$%*&]+$/i}" data-vv-delay="500"
                       class="form-control"></textarea>
 

@@ -36,6 +36,11 @@ const AplicacionController = new Vue({
             'id_dominio':null,
             'id_tipo_aplicacion':null,
             'id_servicio':null,
+            'id_usuario_registra':null,
+            'id_usuario_modifica':null,
+            'created_at':null,
+            'updated_at':null,
+            'deleted_at':null,
          },
          'aplicacion_limpio':{
             'nom_aplicacion':null,
@@ -48,6 +53,11 @@ const AplicacionController = new Vue({
             'id_dominio':null,
             'id_tipo_aplicacion':null,
             'id_servicio':null,
+            'id_usuario_registra':null,
+            'id_usuario_modifica':null,
+            'created_at':null,
+            'updated_at':null,
+            'deleted_at':null,
          },
          'actividades':[],
          'tipos_aplicaciones':[],
@@ -148,7 +158,6 @@ const AplicacionController = new Vue({
       id_en_edicion: function (id_en_edicion) {
          if (id_en_edicion == null) {
             this.limpiar_objeto_clase_local();
-
          } else {
             this.aplicacion = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.aplicaciones,this.nombre_model);
          }
@@ -221,6 +230,11 @@ const AplicacionController = new Vue({
             'id_dominio':null,
             'id_tipo_aplicacion':null,
             'id_servicio':null,
+            'id_usuario_registra':null,
+            'id_usuario_modifica':null,
+            'created_at':null,
+            'updated_at':null,
+            'deleted_at':null,
          };
       },
 

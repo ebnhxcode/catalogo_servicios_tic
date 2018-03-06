@@ -1,4 +1,3 @@
-
 import swal from 'sweetalert2';
 
 //Se importan todas las librerias compartidas y se cargan en el objeto instanciado como alias -> hp
@@ -18,64 +17,74 @@ const TipoAplicacionController = new Vue({
    el: '#TipoAplicacionController',
    data(){
       return {
-         'nombre_tabla':'tipos_aplicaciones', //nombre tabla o de ruta
-         'nombre_ruta':'tipos_aplicaciones', //nombre tabla o de ruta
-         'nombre_model':'tipo_aplicacion',
-         'nombre_detalle':'Tipos Aplicaciones',
-         'nombre_controller':'TipoAplicacionController',
+         'nombre_tabla': 'tipos_aplicaciones', //nombre tabla o de ruta
+         'nombre_ruta': 'tipos_aplicaciones', //nombre tabla o de ruta
+         'nombre_model': 'tipo_aplicacion',
+         'nombre_detalle': 'Tipos Aplicaciones',
+         'nombre_controller': 'TipoAplicacionController',
 
-         'filtro_head':null,
-         'tipo_aplicacion':{
-            'nom_tipo_aplicacion':null,
-            'det_tipo_aplicacion':null,
-            'cod_tipo_aplicacion':null,
+         'filtro_head': null,
+         'tipo_aplicacion': {
+            'nom_tipo_aplicacion': null,
+            'det_tipo_aplicacion': null,
+            'cod_tipo_aplicacion': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null,
          },
-         'tipo_aplicacion_limpio':{
-            'nom_tipo_aplicacion':null,
-            'det_tipo_aplicacion':null,
-            'cod_tipo_aplicacion':null,
+         'tipo_aplicacion_limpio': {
+            'nom_tipo_aplicacion': null,
+            'det_tipo_aplicacion': null,
+            'cod_tipo_aplicacion': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null,
          },
-         'tipos_aplicaciones':[],
-         'datos_excel':[],
-         'usuario_auth':{},
+         'tipos_aplicaciones': [],
+         'datos_excel': [],
+         'usuario_auth': {},
 
-         'campos_formularios':[],
-         'errores_campos':[],
+         'campos_formularios': [],
+         'errores_campos': [],
 
          //Variables para validar si se está creando o editando
          'modal_crear_activo': false,
          'modal_actualizar_activo': false,
 
          //Estas var se deben conservar para todos los controllers por que se ejecutan para el modal crear (blanquea)
-         'lista_actualizar_activo':false,
+         'lista_actualizar_activo': false,
 
          'id_en_edicion': null,
          'dejar_de_editar_contador': 0,
 
-         'orden_lista':'asc',
+         'orden_lista': 'asc',
 
          'tabla_campos': {
-            'id_tipo_aplicacion':false,
-            'nom_tipo_aplicacion':true,
-            'det_tipo_aplicacion':false,
-            'cod_tipo_aplicacion':false,
-            'id_usuario_registra':false,
-            'id_usuario_modifica':false,
-            'created_at':true,
-            'updated_at':false,
-            'deleted_at':false,
+            'id_tipo_aplicacion': false,
+            'nom_tipo_aplicacion': true,
+            'det_tipo_aplicacion': false,
+            'cod_tipo_aplicacion': false,
+            'id_usuario_registra': false,
+            'id_usuario_modifica': false,
+            'created_at': true,
+            'updated_at': false,
+            'deleted_at': false,
          },
 
          'tabla_labels': {
-            'id_tipo_aplicacion':'Id tipo aplicacion',
-            'nom_tipo_aplicacion':'Nombre tipo aplicacion',
-            'det_tipo_aplicacion':'Detalle tipo aplicacion',
-            'cod_tipo_aplicacion':'Codigo tipo aplicacion',
-            'id_usuario_registra':'Usuario registra',
-            'id_usuario_modifica':'Usuario modifica',
-            'created_at':'Creado en',
-            'updated_at':'Actualizado en',
-            'deleted_at':'Eliminado en'
+            'id_tipo_aplicacion': 'Id tipo aplicacion',
+            'nom_tipo_aplicacion': 'Nombre tipo aplicacion',
+            'det_tipo_aplicacion': 'Detalle tipo aplicacion',
+            'cod_tipo_aplicacion': 'Codigo tipo aplicacion',
+            'id_usuario_registra': 'Usuario registra',
+            'id_usuario_modifica': 'Usuario modifica',
+            'created_at': 'Creado en',
+            'updated_at': 'Actualizado en',
+            'deleted_at': 'Eliminado en'
          },
 
          'excel_json_campos': {
@@ -103,13 +112,9 @@ const TipoAplicacionController = new Vue({
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function (id_en_edicion) {
          if (id_en_edicion == null) {
-            this.tipo_aplicacion = {
-               'nom_tipo_aplicacion':null,
-               'det_tipo_aplicacion':null,
-               'cod_tipo_aplicacion':null,
-            };
+            this.limpiar_objeto_clase_local();
          } else {
-            this.tipo_aplicacion = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.tipos_aplicaciones,this.nombre_model);
+            this.tipo_aplicacion = this.buscar_en_array_por_modelo_e_id(id_en_edicion, this.tipos_aplicaciones, this.nombre_model);
          }
       },
       //tipos_aplicaciones se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
@@ -137,7 +142,7 @@ const TipoAplicacionController = new Vue({
    created(){
       this.inicializar();
 
-      $(document).ready(function(){
+      $(document).ready(function () {
          $('[data-toggle="tooltip"]').tooltip();
       });
 
@@ -157,14 +162,19 @@ const TipoAplicacionController = new Vue({
    },
    ready: {},
    filters: {},
-   mixins: [ inyeccion_funciones_compartidas ],
+   mixins: [inyeccion_funciones_compartidas],
    methods: {
 
       limpiar_objeto_clase_local: function () {
          this.tipo_aplicacion = {
-            'nom_tipo_aplicacion':null,
-            'det_tipo_aplicacion':null,
-            'cod_tipo_aplicacion':null,
+            'nom_tipo_aplicacion': null,
+            'det_tipo_aplicacion': null,
+            'cod_tipo_aplicacion': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null,
          };
       },
 
@@ -186,7 +196,7 @@ const TipoAplicacionController = new Vue({
 
          //id_objeto + array de objetos + nombre del model en lower case
          this.tipo_aplicacion = null;
-         this.tipo_aplicacion = this.buscar_en_array_por_modelo_e_id(id_tipo_aplicacion,this.tipos_aplicaciones,this.nombre_model);
+         this.tipo_aplicacion = this.buscar_en_array_por_modelo_e_id(id_tipo_aplicacion, this.tipos_aplicaciones, this.nombre_model);
 
       },
 
@@ -197,7 +207,7 @@ const TipoAplicacionController = new Vue({
          this.$http.put(`/${this.nombre_ruta}/${this.tipo_aplicacion.id_tipo_aplicacion}`, this.tipo_aplicacion).then(response => { // success callback
 
             if (response.status == 200) {
-               if ( !this.es_null(response.body.tipo_aplicacion) ) {
+               if (!this.es_null(response.body.tipo_aplicacion)) {
                   this.lista_actualizar_activo = false;
                   this.id_en_edicion = null;
                }
@@ -206,7 +216,7 @@ const TipoAplicacionController = new Vue({
                return false;
             }
 
-            if ( this.mostrar_notificaciones(response) == true ) {
+            if (this.mostrar_notificaciones(response) == true) {
 
                //Aqui que pregunte si el modal está activo para que lo cierre
                if (this.modal_actualizar_activo == true) {
@@ -221,7 +231,7 @@ const TipoAplicacionController = new Vue({
                this.inicializar();
 
             } else {
-               this.dejar_de_editar_contador ++;
+               this.dejar_de_editar_contador++;
             }
 
          }, response => { // error callback
@@ -230,7 +240,6 @@ const TipoAplicacionController = new Vue({
 
          return;
       },
-
 
 
       eliminar: function (id_tipo_aplicacion) {
@@ -252,14 +261,14 @@ const TipoAplicacionController = new Vue({
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
                this.$http.delete(`/${this.nombre_ruta}/${id_tipo_aplicacion}`).then(response => {
-                  if ( response.status == 200) {
-                     this.auto_alerta_corta("Eliminado!","Registro eliminado correctamente","success");
-                  }else {
+                  if (response.status == 200) {
+                     this.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
+                  } else {
                      this.checkear_estado_respuesta_http(response.status);
                      return false;
                   }
 
-                  if ( this.mostrar_notificaciones(response) == true ) {
+                  if (this.mostrar_notificaciones(response) == true) {
                      //Aqui que pregunte si el modal está activo para que lo cierre
                      if (this.modal_actualizar_activo == true) {
                         this.ocultar_modal('actualizar');
@@ -275,7 +284,7 @@ const TipoAplicacionController = new Vue({
                   this.checkear_estado_respuesta_http(response.status);
                });
             } else if (result.dismiss === swal.DismissReason.cancel) {
-               this.auto_alerta_corta("Cancelado","Se ha cancelado la eliminación","success");
+               this.auto_alerta_corta("Cancelado", "Se ha cancelado la eliminación", "success");
             }
          });
 
@@ -289,16 +298,16 @@ const TipoAplicacionController = new Vue({
          //Se adjunta el token
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
          //Instancia nuevo form data
-         var formData = new  FormData();
+         var formData = new FormData();
          //Conforma objeto paramétrico para solicitud http
-         formData.append('nom_tipo_aplicacion', this.tipo_aplicacion.nom_tipo_aplicacion || null );
-         formData.append('det_tipo_aplicacion', this.tipo_aplicacion.det_tipo_aplicacion || null );
-         formData.append('cod_tipo_aplicacion',this.tipo_aplicacion.cod_tipo_aplicacion || null );
+         formData.append('nom_tipo_aplicacion', this.tipo_aplicacion.nom_tipo_aplicacion || null);
+         formData.append('det_tipo_aplicacion', this.tipo_aplicacion.det_tipo_aplicacion || null);
+         formData.append('cod_tipo_aplicacion', this.tipo_aplicacion.cod_tipo_aplicacion || null);
 
          this.$http.post(`/${this.nombre_ruta}`, formData).then(response => { // success callback
 
-            if ( response.status == 200) {
-               if ( !this.es_null(response.body.servicio) ) {
+            if (response.status == 200) {
+               if (!this.es_null(response.body.servicio)) {
                   this.id_en_edicion = null;
                }
                //this.inicializar();
@@ -307,11 +316,11 @@ const TipoAplicacionController = new Vue({
                return false;
             }
 
-            if ( this.mostrar_notificaciones(response) == true ) {
+            if (this.mostrar_notificaciones(response) == true) {
                this.ocultar_modal('crear');
                this.inicializar();
 
-               return ;
+               return;
             }
 
          }, response => { // error callback
@@ -321,7 +330,9 @@ const TipoAplicacionController = new Vue({
          return;
       },
 
-      ordenar_lista: function (columna) { this.tipos_aplicaciones = _.orderBy(this.tipos_aplicaciones, columna, this.orden_lista); },
+      ordenar_lista: function (columna) {
+         this.tipos_aplicaciones = _.orderBy(this.tipos_aplicaciones, columna, this.orden_lista);
+      },
 
    }
 });

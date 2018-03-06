@@ -3575,12 +3575,22 @@ var EstadoController = new Vue({
          'estado': {
             'nom_estado': null,
             'det_estado': null,
-            'cod_estado': null
+            'cod_estado': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          },
          'estado_limpio': {
             'nom_estado': null,
             'det_estado': null,
-            'cod_estado': null
+            'cod_estado': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          },
          'estados': [],
          'datos_excel': [],
@@ -3651,11 +3661,7 @@ var EstadoController = new Vue({
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function id_en_edicion(_id_en_edicion) {
          if (_id_en_edicion == null) {
-            this.estado = {
-               'nom_estado': null,
-               'det_estado': null,
-               'cod_estado': null
-            };
+            this.limpiar_objeto_clase_local();
          } else {
             this.estado = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.estados, this.nombre_model);
          }
@@ -3711,7 +3717,12 @@ var EstadoController = new Vue({
          this.estado = {
             'nom_estado': null,
             'det_estado': null,
-            'cod_estado': null
+            'cod_estado': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          };
       },
 

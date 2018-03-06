@@ -29,7 +29,7 @@
       <dd>
 
          <p class="control has-icon has-icon-right">
-            <textarea cols="15" rows="2" v-model="servidor.det_servidor" name="det_servidor"
+            <textarea cols="15" rows="1" v-model="servidor.det_servidor" name="det_servidor"
                       v-validate="{required:true,regex:/^[a-zA-Z0-9_ ,.!@#$%*&]+$/i}" data-vv-delay="500"
                       class="form-control"></textarea>
 
@@ -128,7 +128,7 @@
             <select class="form-control" v-model="servidor.id_sistema_operativo" name="id_sistema_operativo"
                     v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
                <option :value="s.id_sistema_operativo" v-for="s in sistemas_operativos">
-                  @{{ `${s.nom_sistema_operativo} -> ${d.det_sistema_operativo}` }}
+                  @{{ `${s.nom_sistema_operativo} -> ${s.det_sistema_operativo}` }}
                </option>
             </select>
 
@@ -151,7 +151,7 @@
       <dd>
          <p class="control has-icon has-icon-right">
             <select class="form-control" v-model="servidor.id_dominio" name="id_dominio"
-                    v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
+                    v-validate="{regex:/^[0-9]+$/i}" data-vv-delay="500">
                <option :value="d.id_dominio" v-for="d in dominios">
                   @{{ `${d.nom_dominio} -> ${d.det_dominio}` }}
                </option>

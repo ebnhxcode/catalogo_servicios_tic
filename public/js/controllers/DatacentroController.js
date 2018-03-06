@@ -3604,12 +3604,22 @@ var DatacentroController = new Vue({
          'datacentro': {
             'nom_datacentro': null,
             'det_datacentro': null,
-            'cod_datacentro': null
+            'cod_datacentro': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          },
          'datacentro_limpio': {
             'nom_datacentro': null,
             'det_datacentro': null,
-            'cod_datacentro': null
+            'cod_datacentro': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          },
          'datacentros': [],
          'datos_excel': [],
@@ -3680,10 +3690,7 @@ var DatacentroController = new Vue({
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function id_en_edicion(_id_en_edicion) {
          if (_id_en_edicion == null) {
-            this.datacentro = {
-               'nom_datacentro': null,
-               'det_datacentro': null
-            };
+            this.limpiar_objeto_clase_local();
          } else {
             this.datacentro = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.datacentros, this.nombre_model);
          }
@@ -3739,7 +3746,12 @@ var DatacentroController = new Vue({
          this.datacentro = {
             'nom_datacentro': null,
             'det_datacentro': null,
-            'cod_datacentro': null
+            'cod_datacentro': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          };
       },
 

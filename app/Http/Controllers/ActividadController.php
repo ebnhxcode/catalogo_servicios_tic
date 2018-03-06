@@ -65,7 +65,7 @@ class ActividadController extends Controller {
          'det_actividad' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
       ]);
       #Se valida la respuesta con la salida de la validacion
-      if ($this->validacion->fails() == true && !Auth::guest()) {
+      if ($this->validacion->fails() == true) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
             'tipo' => 'errores_campos_requeridos', //Para las notificaciones
@@ -109,7 +109,7 @@ class ActividadController extends Controller {
          ]);
       }
       #Se valida la respuesta con la salida de la validacion
-      if ($this->validacion->fails() == true && !Auth::guest()) {
+      if ($this->validacion->fails() == true) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
             'tipo' => 'errores_campos_requeridos', //Para las notificaciones

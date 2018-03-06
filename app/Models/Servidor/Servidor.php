@@ -29,9 +29,6 @@ class Servidor extends Model {
       'id_usuario_modifica',
    ];
 
-   public function aplicacion() {
-      return $this->belongsTo('App\Aplicacion', 'id_aplicacion');
-   }
 
    public function usuario_registra() {
       return $this->belongsTo('App\User', 'id_usuario_registra');

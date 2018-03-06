@@ -71,7 +71,7 @@ class TipoAplicacionController extends Controller {
          'cod_tipo_aplicacion' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|max:255",
       ]);
       #Se valida la respuesta con la salida de la validacion
-      if ($this->validacion->fails() == true && !Auth::guest()) {
+      if ($this->validacion->fails() == true) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
             'tipo' => 'errores_campos_requeridos', //Para las notificaciones
@@ -117,7 +117,7 @@ class TipoAplicacionController extends Controller {
          ]);
       }
       #Se valida la respuesta con la salida de la validacion
-      if ($this->validacion->fails() == true && !Auth::guest()) {
+      if ($this->validacion->fails() == true) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
             'tipo' => 'errores_campos_requeridos', //Para las notificaciones

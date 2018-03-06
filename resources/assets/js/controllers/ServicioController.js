@@ -30,12 +30,22 @@ const ServicioController = new Vue({
             'det_servicio':null,
             'id_actividad':null,
             'id_usuario':null,
+            'id_usuario_registra':null,
+            'id_usuario_modifica':null,
+            'created_at':null,
+            'updated_at':null,
+            'deleted_at':null,
          },
          'servicio_limpio':{
             'nom_servicio':null,
             'det_servicio':null,
             'id_actividad':null,
             'id_usuario':null,
+            'id_usuario_registra':null,
+            'id_usuario_modifica':null,
+            'created_at':null,
+            'updated_at':null,
+            'deleted_at':null,
          },
          'actividades':[],
          'servicios':[],
@@ -110,7 +120,6 @@ const ServicioController = new Vue({
       id_en_edicion: function (id_en_edicion) {
          if (id_en_edicion == null) {
             this.limpiar_objeto_clase_local();
-
          } else {
             this.servicio = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.servicios,this.nombre_model);
          }
@@ -170,6 +179,11 @@ const ServicioController = new Vue({
             'det_servicio':null,
             'id_actividad':null,
             'id_usuario':null,
+            'id_usuario_registra':null,
+            'id_usuario_modifica':null,
+            'created_at':null,
+            'updated_at':null,
+            'deleted_at':null,
          };
       },
 

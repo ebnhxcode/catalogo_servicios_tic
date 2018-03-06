@@ -3470,12 +3470,22 @@ var RoleController = new Vue({
          'role': {
             'nom_role': null,
             'det_role': null,
-            'id_permiso': null
+            'id_permiso': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          },
          'role_limpio': {
             'nom_role': null,
             'det_role': null,
-            'id_permiso': null
+            'id_permiso': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          },
          'roles': [],
          'datos_excel': [],
@@ -3603,7 +3613,12 @@ var RoleController = new Vue({
          this.role = {
             'nom_role': null,
             'det_role': null,
-            'id_permiso': null
+            'id_permiso': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          };
       },
 

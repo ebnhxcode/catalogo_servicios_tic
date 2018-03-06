@@ -3575,12 +3575,22 @@ var CargoController = new Vue({
          'cargo': {
             'nom_cargo': null,
             'det_cargo': null,
-            'cod_cargo': null
+            'cod_cargo': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          },
          'cargo_limpio': {
             'nom_cargo': null,
             'det_cargo': null,
-            'cod_cargo': null
+            'cod_cargo': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          },
          'cargos': [],
          'datos_excel': [],
@@ -3651,10 +3661,7 @@ var CargoController = new Vue({
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function id_en_edicion(_id_en_edicion) {
          if (_id_en_edicion == null) {
-            this.cargo = {
-               'nom_cargo': null,
-               'det_cargo': null
-            };
+            this.limpiar_objeto_clase_local();
          } else {
             this.cargo = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.cargos, this.nombre_model);
          }
@@ -3710,7 +3717,12 @@ var CargoController = new Vue({
          this.cargo = {
             'nom_cargo': null,
             'det_cargo': null,
-            'cod_cargo': null
+            'cod_cargo': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          };
       },
 

@@ -1,7 +1,7 @@
 
 
 <div class="row">
-   <div class="col-sm-4 col-md-4">
+   <div class="col-sm-6 col-md-6">
 
       <dt>Nombre</dt>
       <dd>
@@ -27,7 +27,7 @@
    {{--
 
    <!-- Lo vamos a dejar comentado porque se activara cuando el perfilamiento esté activo -->
-   <div class="col-sm-4 col-md-4">
+   <div class="col-sm-6 col-md-6">
 
       <dt>Nombre Completo</dt>
       <dd>
@@ -53,7 +53,7 @@
    --}}
 
 
-   <div class="col-sm-4 col-md-4">
+   <div class="col-sm-6 col-md-6">
 
       <dt>Apellido Paterno</dt>
       <dd>
@@ -75,7 +75,7 @@
       </dd>
 
    </div><!-- .col -->
-   <div class="col-sm-4 col-md-4">
+   <div class="col-sm-6 col-md-6">
 
       <dt>Apellido Materno</dt>
       <dd>
@@ -97,7 +97,7 @@
       </dd>
 
    </div><!-- .col -->
-   <div class="col-sm-4 col-md-4">
+   <div class="col-sm-6 col-md-6">
 
       <dt>Alias</dt>
       <dd>
@@ -119,7 +119,7 @@
       </dd>
 
    </div><!-- .col -->
-   <div class="col-sm-4 col-md-4">
+   <div class="col-sm-6 col-md-6">
 
       <dt>Email</dt>
       <dd>
@@ -141,12 +141,15 @@
       </dd>
 
    </div><!-- .col -->
-   <div class="col-sm-4 col-md-4">
+   <div class="col-sm-6 col-md-6">
 
       <dt>Password</dt>
       <dd>
          <p class="control has-icon has-icon-right">
             <input type="password" v-model="usuario.password" name="password"
+                   autocomplete="new-password"
+                   aria-autocomplete="none"
+                   autocomplete="off"
                    v-validate="{required:true,verify_password:true}" data-vv-delay="500"
                    class="form-control" />
 
@@ -156,7 +159,7 @@
 
             <transition name="bounce">
                <span v-show="errors.has('password')" class="text-danger small">
-                  @{{ errors.first('password') }}
+                  @{{ errors.first('password') }}, para finalizar debe ingresar su contraseña.
                </span>
             </transition>
          </p>

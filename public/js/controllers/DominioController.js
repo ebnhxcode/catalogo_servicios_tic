@@ -3577,14 +3577,24 @@ var DominioController = new Vue({
             'det_dominio': null,
             'ip_publica': null,
             'ip_balanceador': null,
-            'dns_asoc_dominio': null
+            'dns_asoc_dominio': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          },
          'dominio_limpio': {
             'nom_dominio': null,
             'det_dominio': null,
             'ip_publica': null,
             'ip_balanceador': null,
-            'dns_asoc_dominio': null
+            'dns_asoc_dominio': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          },
          'dominios': [],
          'datos_excel': [],
@@ -3661,13 +3671,7 @@ var DominioController = new Vue({
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function id_en_edicion(_id_en_edicion) {
          if (_id_en_edicion == null) {
-            this.dominio = {
-               'nom_dominio': null,
-               'det_dominio': null,
-               'ip_publica': null,
-               'ip_balanceador': null,
-               'dns_asoc_dominio': null
-            };
+            this.limpiar_objeto_clase_local();
          } else {
             this.dominio = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.dominios, this.nombre_model);
          }
@@ -3727,7 +3731,12 @@ var DominioController = new Vue({
             'det_dominio': null,
             'ip_publica': null,
             'ip_balanceador': null,
-            'dns_asoc_dominio': null
+            'dns_asoc_dominio': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          };
       },
 

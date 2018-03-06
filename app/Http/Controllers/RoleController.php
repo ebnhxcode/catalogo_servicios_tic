@@ -6,7 +6,7 @@ use App\Permiso;
 use App\Role;
 use App\RolePermiso;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Auth;
 use Illuminate\Support\Facades\Validator;
 
 class RoleController extends Controller {
@@ -73,7 +73,7 @@ class RoleController extends Controller {
          'id_permiso' => 'required|integer',
       ]);
       #Se valida la respuesta con la salida de la validacion
-      if ($this->validacion->fails() == true && !Auth::guest()) {
+      if ($this->validacion->fails() == true) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
             'tipo' => 'errores_campos_requeridos', //Para las notificaciones
@@ -121,7 +121,7 @@ class RoleController extends Controller {
          ]);
       }
       #Se valida la respuesta con la salida de la validacion
-      if ($this->validacion->fails() == true && !Auth::guest()) {
+      if ($this->validacion->fails() == true) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
             'tipo' => 'errores_campos_requeridos', //Para las notificaciones

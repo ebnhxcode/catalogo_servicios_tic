@@ -15,6 +15,9 @@ class Role extends Model {
    protected $fillable=[
       'nom_role',
       'det_role',
+
+      'id_usuario_registra',
+      'id_usuario_modifica',
    ];
 
    #TODAS LAS RELACIONES BELONGS TO

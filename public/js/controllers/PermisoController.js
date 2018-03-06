@@ -3469,11 +3469,23 @@ var PermisoController = new Vue({
          'filtro_head': null,
          'permiso': {
             'nom_permiso': null,
-            'det_permiso': null
+            'det_permiso': null,
+            'cod_permiso': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          },
          'permiso_limpio': {
             'nom_permiso': null,
-            'det_permiso': null
+            'det_permiso': null,
+            'cod_permiso': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          },
          'permisos': [],
          'datos_excel': [],
@@ -3498,6 +3510,7 @@ var PermisoController = new Vue({
             'id_permiso': false,
             'nom_permiso': true,
             'det_permiso': false,
+            'cod_permiso': false,
             'id_usuario_registra': false,
             'id_usuario_modifica': false,
             'created_at': true,
@@ -3509,6 +3522,7 @@ var PermisoController = new Vue({
             'id_permiso': 'Id permiso',
             'nom_permiso': 'Nombre permiso',
             'det_permiso': 'Detalle permiso',
+            'cod_permiso': 'Código permiso',
             'id_usuario_registra': 'Usuario registra',
             'id_usuario_modifica': 'Usuario modifica',
             'created_at': 'Creado en',
@@ -3520,6 +3534,7 @@ var PermisoController = new Vue({
             'id_permiso': 'String',
             'nom_permiso': 'String',
             'det_permiso': 'String',
+            'cod_permiso': 'String',
             'id_usuario_registra': 'String',
             'id_usuario_modifica': 'String',
             'created_at': 'String',
@@ -3541,10 +3556,7 @@ var PermisoController = new Vue({
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function id_en_edicion(_id_en_edicion) {
          if (_id_en_edicion == null) {
-            this.permiso = {
-               'nom_permiso': null,
-               'det_permiso': null
-            };
+            this.limpiar_objeto_clase_local();
          } else {
             this.permiso = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.permisos, this.nombre_model);
          }
@@ -3558,6 +3570,7 @@ var PermisoController = new Vue({
                'id_permiso': permiso.id_permiso || '-',
                'nom_permiso': permiso.nom_permiso || '-',
                'det_permiso': permiso.det_permiso || '-',
+               'cod_permiso': permiso.cod_permiso || '-',
                'id_usuario_registra': permiso.id_usuario_registra || '-',
                'id_usuario_modifica': permiso.id_usuario_modifica || '-',
                'created_at': permiso.created_at || '-',
@@ -3598,7 +3611,13 @@ var PermisoController = new Vue({
       limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
          this.permiso = {
             'nom_permiso': null,
-            'det_permiso': null
+            'det_permiso': null,
+            'cod_permiso': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          };
       },
 
@@ -3731,6 +3750,7 @@ var PermisoController = new Vue({
          //Conforma objeto paramétrico para solicitud http
          formData.append('nom_permiso', this.permiso.nom_permiso || null);
          formData.append('det_permiso', this.permiso.det_permiso || null);
+         formData.append('cod_permiso', this.permiso.cod_permiso || null);
          formData.append('id_permiso', this.permiso.id_permiso || null);
 
          this.$http.post('/' + this.nombre_ruta, formData).then(function (response) {

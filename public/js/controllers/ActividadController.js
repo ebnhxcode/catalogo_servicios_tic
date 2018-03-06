@@ -3469,11 +3469,21 @@ var ActividadController = new Vue({
          'filtro_head': null,
          'actividad': {
             'nom_actividad': null,
-            'det_actividad': null
+            'det_actividad': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          },
          'actividad_limpio': {
             'nom_actividad': null,
-            'det_actividad': null
+            'det_actividad': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          },
          'tipos_actividades': [],
          'actividades': [],
@@ -3595,7 +3605,12 @@ var ActividadController = new Vue({
       limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
          this.actividad = {
             'nom_actividad': null,
-            'det_actividad': null
+            'det_actividad': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          };
       },
 

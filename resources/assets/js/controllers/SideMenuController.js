@@ -130,6 +130,10 @@ const SideMenuController = new Vue({
                'url':'/servicios',
             },
             {
+               'title':'Tipos Aplicaciones',
+               'url':'/tipos_aplicaciones',
+            },
+            {
                'title':'Aplicaciones',
                'url':'/aplicaciones',
             },

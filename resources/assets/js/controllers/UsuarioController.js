@@ -1,4 +1,3 @@
-
 import swal from 'sweetalert2';
 
 //Se importan todas las librerias compartidas y se cargan en el objeto instanciado como alias -> hp
@@ -18,82 +17,94 @@ const UsuarioController = new Vue({
    el: '#UsuarioController',
    data(){
       return {
-         'nombre_tabla':'usuarios', //nombre tabla o de ruta
-         'nombre_ruta':'usuarios', //nombre tabla o de ruta
-         'nombre_model':'usuario',
-         'nombre_detalle':'Usuarios',
-         'nombre_controller':'UsuarioController',
+         'nombre_tabla': 'usuarios', //nombre tabla o de ruta
+         'nombre_ruta': 'usuarios', //nombre tabla o de ruta
+         'nombre_model': 'usuario',
+         'nombre_detalle': 'Usuarios',
+         'nombre_controller': 'UsuarioController',
 
-         'filtro_head':null,
-         'usuario':{
-            'nom_usuario':null,
-            'nom_completo':null,
-            'ape_paterno':null,
-            'ape_materno':null,
-            'username':null,
-            'email':null,
-            'password':null,
+         'filtro_head': null,
+         'usuario': {
+            'nom_usuario': null,
+            'nom_completo': null,
+            'ape_paterno': null,
+            'ape_materno': null,
+            'username': null,
+            'email': null,
+            'password': null,
+            'remember_token': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null,
          },
-         'usuario_limpio':{
-            'nom_usuario':null,
-            'nom_completo':null,
-            'ape_paterno':null,
-            'ape_materno':null,
-            'username':null,
-            'email':null,
-            'password':null,
+         'usuario_limpio': {
+            'nom_usuario': null,
+            'nom_completo': null,
+            'ape_paterno': null,
+            'ape_materno': null,
+            'username': null,
+            'email': null,
+            'password': null,
+            'remember_token': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null,
          },
-         'usuarios':[],
-         'datos_excel':[],
-         'usuario_auth':{},
+         'usuarios': [],
+         'datos_excel': [],
+         'usuario_auth': {},
 
-         'campos_formularios':[],
-         'errores_campos':[],
+         'campos_formularios': [],
+         'errores_campos': [],
 
          //Variables para validar si se está creando o editando
          'modal_crear_activo': false,
          'modal_actualizar_activo': false,
 
          //Estas var se deben conservar para todos los controllers por que se ejecutan para el modal crear (blanquea)
-         'lista_actualizar_activo':false,
+         'lista_actualizar_activo': false,
 
          'id_en_edicion': null,
          'dejar_de_editar_contador': 0,
 
-         'orden_lista':'asc',
+         'orden_lista': 'asc',
 
          'tabla_campos': {
-            'id_usuario':false,
-            'nom_usuario':true,
-            'nom_completo':false,
-            'ape_paterno':false,
-            'ape_materno':false,
-            'username':false,
-            'email':false,
-            'password':false,
-            'remember_token':false,
-            'id_usuario_registra':false,
-            'id_usuario_modifica':false,
-            'created_at':true,
-            'updated_at':false,
-            'deleted_at':false,
+            'id_usuario': false,
+            'nom_usuario': true,
+            'nom_completo': false,
+            'ape_paterno': false,
+            'ape_materno': false,
+            'username': false,
+            'email': false,
+            'password': false,
+            'remember_token': false,
+            'id_usuario_registra': false,
+            'id_usuario_modifica': false,
+            'created_at': true,
+            'updated_at': false,
+            'deleted_at': false,
          },
 
          'tabla_labels': {
-            'id_usuario':'Id usuario',
-            'nom_usuario':'Nombre',
-            'nom_completo':'Nombre completo',
-            'ape_paterno':'Apellido paterno',
-            'ape_materno':'Apellido materno',
-            'username':'Nombre usuario',
-            'email':'Email',
-            'password':'Password',
-            'remember_token':'Remember token',
-            'id_usuario_registra':'Usuario registra',
-            'id_usuario_modifica':'Usuario modifica',
-            'created_at':'Creado en',
-            'updated_at':'Actualizado en',
-            'deleted_at':'Eliminado en'
+            'id_usuario': 'Id usuario',
+            'nom_usuario': 'Nombre',
+            'nom_completo': 'Nombre completo',
+            'ape_paterno': 'Apellido paterno',
+            'ape_materno': 'Apellido materno',
+            'username': 'Nombre usuario',
+            'email': 'Email',
+            'password': 'Password',
+            'remember_token': 'Remember token',
+            'id_usuario_registra': 'Usuario registra',
+            'id_usuario_modifica': 'Usuario modifica',
+            'created_at': 'Creado en',
+            'updated_at': 'Actualizado en',
+            'deleted_at': 'Eliminado en'
          },
 
          'excel_json_campos': {
@@ -128,7 +139,7 @@ const UsuarioController = new Vue({
          if (id_en_edicion == null) {
             this.limpiar_objeto_clase_local();
          } else {
-            this.usuario = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.usuarios,this.nombre_model);
+            this.usuario = this.buscar_en_array_por_modelo_e_id(id_en_edicion, this.usuarios, this.nombre_model);
          }
       },
       //usuarios se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
@@ -137,20 +148,20 @@ const UsuarioController = new Vue({
          this.excel_json_datos = [];
          return usuarios.map(function (usuario, index) {
             return self.excel_json_datos.push({
-               'id_usuario': usuario.id_usuario|| '-',
-               'nom_usuario': usuario.nom_usuario|| '-',
-               'nom_completo': usuario.nom_completo|| '-',
-               'ape_paterno': usuario.ape_paterno|| '-',
-               'ape_materno': usuario.ape_materno|| '-',
-               'username': usuario.username|| '-',
-               'email': usuario.email|| '-',
-               'password': usuario.password|| '-',
-               'remember_token': usuario.remember_token|| '-',
-               'id_usuario_registra': usuario.id_usuario_registra|| '-',
-               'id_usuario_modifica': usuario.id_usuario_modifica|| '-',
-               'created_at': usuario.created_at|| '-',
-               'updated_at': usuario.updated_at|| '-',
-               'deleted_at': usuario.deleted_at|| '-'
+               'id_usuario': usuario.id_usuario || '-',
+               'nom_usuario': usuario.nom_usuario || '-',
+               'nom_completo': usuario.nom_completo || '-',
+               'ape_paterno': usuario.ape_paterno || '-',
+               'ape_materno': usuario.ape_materno || '-',
+               'username': usuario.username || '-',
+               'email': usuario.email || '-',
+               'password': usuario.password || '-',
+               'remember_token': usuario.remember_token || '-',
+               'id_usuario_registra': usuario.id_usuario_registra || '-',
+               'id_usuario_modifica': usuario.id_usuario_modifica || '-',
+               'created_at': usuario.created_at || '-',
+               'updated_at': usuario.updated_at || '-',
+               'deleted_at': usuario.deleted_at || '-'
             });
          });
       },
@@ -161,38 +172,44 @@ const UsuarioController = new Vue({
    created(){
       this.inicializar();
 
-      $(document).ready(function(){
+      $(document).ready(function () {
          $('[data-toggle="tooltip"]').tooltip();
       });
 
       /*
-      $(document).ready(function () {
-         //Handle al recargar pagina
-         window.onbeforeunload = function(e){
-            return "Estás seguro que deseas cerrar la ventana?";
-         };
-         window.onunload = function(e){
-            return "Cierre de la ventana";
-         };
+       $(document).ready(function () {
+       //Handle al recargar pagina
+       window.onbeforeunload = function(e){
+       return "Estás seguro que deseas cerrar la ventana?";
+       };
+       window.onunload = function(e){
+       return "Cierre de la ventana";
+       };
 
-      });
-      */
+       });
+       */
 
    },
    ready: {},
    filters: {},
-   mixins: [ inyeccion_funciones_compartidas ],
+   mixins: [inyeccion_funciones_compartidas],
    methods: {
 
       limpiar_objeto_clase_local: function () {
          this.usuario = {
-            'nom_usuario':null,
-            'nom_completo':null,
-            'ape_paterno':null,
-            'ape_materno':null,
-            'username':null,
-            'email':null,
-            'password':null,
+            'nom_usuario': null,
+            'nom_completo': null,
+            'ape_paterno': null,
+            'ape_materno': null,
+            'username': null,
+            'email': null,
+            'password': null,
+            'remember_token': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null,
          };
       },
 
@@ -215,7 +232,7 @@ const UsuarioController = new Vue({
 
          //id_objeto + array de objetos + nombre del model en lower case
          this.usuario = null;
-         this.usuario = this.buscar_en_array_por_modelo_e_id(id_usuario,this.usuarios,this.nombre_model);
+         this.usuario = this.buscar_en_array_por_modelo_e_id(id_usuario, this.usuarios, this.nombre_model);
 
       },
 
@@ -226,7 +243,7 @@ const UsuarioController = new Vue({
          this.$http.put(`/${this.nombre_ruta}/${this.usuario.id_usuario}`, this.usuario).then(response => { // success callback
 
             if (response.status == 200) {
-               if ( !this.es_null(response.body.usuario) ) {
+               if (!this.es_null(response.body.usuario)) {
                   this.lista_actualizar_activo = false;
                   this.id_en_edicion = null;
                }
@@ -235,7 +252,7 @@ const UsuarioController = new Vue({
                return false;
             }
 
-            if ( this.mostrar_notificaciones(response) == true ) {
+            if (this.mostrar_notificaciones(response) == true) {
 
                //Aqui que pregunte si el modal está activo para que lo cierre
                if (this.modal_actualizar_activo == true) {
@@ -250,7 +267,7 @@ const UsuarioController = new Vue({
                this.inicializar();
 
             } else {
-               this.dejar_de_editar_contador ++;
+               this.dejar_de_editar_contador++;
             }
 
          }, response => { // error callback
@@ -259,7 +276,6 @@ const UsuarioController = new Vue({
 
          return;
       },
-
 
 
       eliminar: function (id_usuario) {
@@ -281,14 +297,14 @@ const UsuarioController = new Vue({
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
                this.$http.delete(`/${this.nombre_ruta}/${id_usuario}`).then(response => {
-                  if ( response.status == 200) {
-                     this.auto_alerta_corta("Eliminado!","Registro eliminado correctamente","success");
-                  }else {
+                  if (response.status == 200) {
+                     this.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
+                  } else {
                      this.checkear_estado_respuesta_http(response.status);
                      return false;
                   }
 
-                  if ( this.mostrar_notificaciones(response) == true ) {
+                  if (this.mostrar_notificaciones(response) == true) {
                      //Aqui que pregunte si el modal está activo para que lo cierre
                      if (this.modal_actualizar_activo == true) {
                         this.ocultar_modal('actualizar');
@@ -304,7 +320,7 @@ const UsuarioController = new Vue({
                   this.checkear_estado_respuesta_http(response.status);
                });
             } else if (result.dismiss === swal.DismissReason.cancel) {
-               this.auto_alerta_corta("Cancelado","Se ha cancelado la eliminación","success");
+               this.auto_alerta_corta("Cancelado", "Se ha cancelado la eliminación", "success");
             }
          });
 
@@ -318,20 +334,20 @@ const UsuarioController = new Vue({
          //Se adjunta el token
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
          //Instancia nuevo form data
-         var formData = new  FormData();
+         var formData = new FormData();
          //Conforma objeto paramétrico para solicitud http
-         formData.append('nom_usuario', this.usuario.nom_usuario || null );
-         formData.append('nom_completo', this.usuario.nom_completo || null );
-         formData.append('ape_paterno', this.usuario.ape_paterno || null );
-         formData.append('ape_materno', this.usuario.ape_materno || null );
-         formData.append('username', this.usuario.username || null );
-         formData.append('email', this.usuario.email || null );
-         formData.append('password', this.usuario.password || null );
+         formData.append('nom_usuario', this.usuario.nom_usuario || null);
+         formData.append('nom_completo', this.usuario.nom_completo || null);
+         formData.append('ape_paterno', this.usuario.ape_paterno || null);
+         formData.append('ape_materno', this.usuario.ape_materno || null);
+         formData.append('username', this.usuario.username || null);
+         formData.append('email', this.usuario.email || null);
+         formData.append('password', this.usuario.password || null);
 
          this.$http.post(`/${this.nombre_ruta}`, formData).then(response => { // success callback
 
-            if ( response.status == 200) {
-               if ( !this.es_null(response.body.servicio) ) {
+            if (response.status == 200) {
+               if (!this.es_null(response.body.servicio)) {
                   this.id_en_edicion = null;
                }
                //this.inicializar();
@@ -340,11 +356,11 @@ const UsuarioController = new Vue({
                return false;
             }
 
-            if ( this.mostrar_notificaciones(response) == true ) {
+            if (this.mostrar_notificaciones(response) == true) {
                this.ocultar_modal('crear');
                this.inicializar();
 
-               return ;
+               return;
             }
 
          }, response => { // error callback
@@ -354,7 +370,9 @@ const UsuarioController = new Vue({
          return;
       },
 
-      ordenar_lista: function (columna) { this.usuarios = _.orderBy(this.usuarios, columna, this.orden_lista); },
+      ordenar_lista: function (columna) {
+         this.usuarios = _.orderBy(this.usuarios, columna, this.orden_lista);
+      },
 
    }
 });

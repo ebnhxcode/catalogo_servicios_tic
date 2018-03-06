@@ -3608,7 +3608,12 @@ var ServidorController = new Vue({
             'url_servidor': null,
             'id_datacentro': null,
             'id_sistema_operativo': null,
-            'id_dominio': null
+            'id_dominio': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          },
          'servidor_limpio': {
             'nom_servidor': true,
@@ -3617,7 +3622,12 @@ var ServidorController = new Vue({
             'url_servidor': null,
             'id_datacentro': null,
             'id_sistema_operativo': null,
-            'id_dominio': null
+            'id_dominio': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          },
          'datacentros': [],
          'sistemas_operativos': [],
@@ -3774,7 +3784,12 @@ var ServidorController = new Vue({
             'url_servidor': null,
             'id_datacentro': null,
             'id_sistema_operativo': null,
-            'id_dominio': null
+            'id_dominio': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          };
       },
 

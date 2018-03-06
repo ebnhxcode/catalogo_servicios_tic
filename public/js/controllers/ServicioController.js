@@ -3471,13 +3471,23 @@ var ServicioController = new Vue({
             'nom_servicio': null,
             'det_servicio': null,
             'id_actividad': null,
-            'id_usuario': null
+            'id_usuario': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          },
          'servicio_limpio': {
             'nom_servicio': null,
             'det_servicio': null,
             'id_actividad': null,
-            'id_usuario': null
+            'id_usuario': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          },
          'actividades': [],
          'servicios': [],
@@ -3610,7 +3620,12 @@ var ServicioController = new Vue({
             'nom_servicio': null,
             'det_servicio': null,
             'id_actividad': null,
-            'id_usuario': null
+            'id_usuario': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
          };
       },
 

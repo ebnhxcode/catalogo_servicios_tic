@@ -28,7 +28,7 @@
       <dt>Detalle actividad</dt>
       <dd>
          <p class="control has-icon has-icon-right">
-      <textarea cols="15" rows="2" v-model="actividad.det_actividad" name="det_actividad"
+      <textarea cols="15" rows="1" v-model="actividad.det_actividad" name="det_actividad"
                 v-validate="{required:true,regex:/^[a-zA-Z0-9_ ,.!@#$%*&]+$/i}" data-vv-delay="500"
                 class="form-control"></textarea>
 
