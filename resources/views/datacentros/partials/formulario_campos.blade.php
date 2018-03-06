@@ -1,6 +1,6 @@
 
 <div class="row">
-   <div class="col-sm-12 col-md-12">
+   <div class="col-sm-6 col-md-6">
 
       <dt>Nombre datacentro</dt>
       <dd>
@@ -23,7 +23,7 @@
 
 
    </div><!-- .col -->
-   <div class="col-sm-12 col-md-12">
+   <div class="col-sm-6 col-md-6">
 
       <dt>Detalle datacentro</dt>
       <dd>
@@ -46,7 +46,7 @@
       </dd>
 
    </div><!-- .col -->
-   <div class="col-sm-12 col-md-12">
+   <div class="col-sm-6 col-md-6">
 
       <dt>Codigo datacentro</dt>
       <dd>
