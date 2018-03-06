@@ -46996,6 +46996,9 @@ var SideMenuController = new Vue({
             'title': 'Datacentros',
             'url': '/datacentros'
          }, {
+            'title': 'Sistemas Operativos',
+            'url': '/sistemas_operativos'
+         }, {
             'title': 'Credenciales',
             'url': '/credenciales'
          }]

@@ -14,28 +14,46 @@ Vue.use(Clipboard);
 //Vue.component('download-excel', DownloadExcel);
 Vue.component('download-excel', require('../components/DownloadExcel.vue'));
 
-const TipoAplicacionController = new Vue({
-   el: '#TipoAplicacionController',
+const SistemaOperativoController = new Vue({
+   el: '#SistemaOperativoController',
    data(){
       return {
-         'nombre_tabla':'tipos_aplicaciones', //nombre tabla o de ruta
-         'nombre_ruta':'tipos_aplicaciones', //nombre tabla o de ruta
-         'nombre_model':'tipo_aplicacion',
-         'nombre_detalle':'Tipos Aplicaciones',
-         'nombre_controller':'TipoAplicacionController',
+         'nombre_tabla':'sistemas_operativos', //nombre tabla o de ruta
+         'nombre_ruta':'sistemas_operativos', //nombre tabla o de ruta
+         'nombre_model':'sistema_operativo',
+         'nombre_detalle':'Sistemas Operativos',
+         'nombre_controller':'SistemaOperativoController',
 
          'filtro_head':null,
-         'tipo_aplicacion':{
-            'nom_tipo_aplicacion':null,
-            'det_tipo_aplicacion':null,
-            'cod_tipo_aplicacion':null,
+         'sistema_operativo':{
+            'id_sistema_operativo':null,
+            'arquitectura':null,
+            'nom_sistema_operativo':null,
+            'det_sistema_operativo':null,
+            'vers_sistema_operativo':null,
+            'lic_sistema_operativo':null,
+            'det_licencia_sistema_operativo':null,
+            'id_usuario_registra':null,
+            'id_usuario_modifica':null,
+            'created_at':null,
+            'updated_at':null,
+            'deleted_at':null,
          },
-         'tipo_aplicacion_limpio':{
-            'nom_tipo_aplicacion':null,
-            'det_tipo_aplicacion':null,
-            'cod_tipo_aplicacion':null,
+         'sistema_operativo_limpio':{
+            'id_sistema_operativo':null,
+            'arquitectura':null,
+            'nom_sistema_operativo':null,
+            'det_sistema_operativo':null,
+            'vers_sistema_operativo':null,
+            'lic_sistema_operativo':null,
+            'det_licencia_sistema_operativo':null,
+            'id_usuario_registra':null,
+            'id_usuario_modifica':null,
+            'created_at':null,
+            'updated_at':null,
+            'deleted_at':null,
          },
-         'tipos_aplicaciones':[],
+         'sistemas_operativos':[],
          'datos_excel':[],
          'usuario_auth':{},
 
@@ -55,10 +73,13 @@ const TipoAplicacionController = new Vue({
          'orden_lista':'asc',
 
          'tabla_campos': {
-            'id_tipo_aplicacion':false,
-            'nom_tipo_aplicacion':true,
-            'det_tipo_aplicacion':false,
-            'cod_tipo_aplicacion':false,
+            'id_sistema_operativo':false,
+            'arquitectura':false,
+            'nom_sistema_operativo':true,
+            'det_sistema_operativo':false,
+            'vers_sistema_operativo':false,
+            'lic_sistema_operativo':false,
+            'det_licencia_sistema_operativo':false,
             'id_usuario_registra':false,
             'id_usuario_modifica':false,
             'created_at':true,
@@ -67,10 +88,13 @@ const TipoAplicacionController = new Vue({
          },
 
          'tabla_labels': {
-            'id_tipo_aplicacion':'Id tipo aplicacion',
-            'nom_tipo_aplicacion':'Nombre tipo aplicacion',
-            'det_tipo_aplicacion':'Detalle tipo aplicacion',
-            'cod_tipo_aplicacion':'Codigo tipo aplicacion',
+            'id_sistema_operativo':'Id tipo aplicacion',
+            'arquitectura':'Arquitectura',
+            'nom_sistema_operativo':'Nombre SO',
+            'det_sistema_operativo':'Detalle SO',
+            'vers_sistema_operativo':'Version SO',
+            'lic_sistema_operativo':'Licencia SO',
+            'det_licencia_sistema_operativo':'Detalle licencia SO',
             'id_usuario_registra':'Usuario registra',
             'id_usuario_modifica':'Usuario modifica',
             'created_at':'Creado en',
@@ -79,10 +103,13 @@ const TipoAplicacionController = new Vue({
          },
 
          'excel_json_campos': {
-            'id_tipo_aplicacion': 'String',
-            'nom_tipo_aplicacion': 'String',
-            'det_tipo_aplicacion': 'String',
-            'cod_tipo_aplicacion': 'String',
+            'id_sistema_operativo': 'String',
+            'arquitectura': 'String',
+            'nom_sistema_operativo': 'String',
+            'det_sistema_operativo': 'String',
+            'vers_sistema_operativo': 'String',
+            'lic_sistema_operativo': 'String',
+            'det_licencia_sistema_operativo': 'String',
             'id_usuario_registra': 'String',
             'id_usuario_modifica': 'String',
             'created_at': 'String',
@@ -99,34 +126,46 @@ const TipoAplicacionController = new Vue({
    },
    computed: {},
    watch: {
-      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el tipo_aplicacion
+      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el sistema_operativo
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function (id_en_edicion) {
          if (id_en_edicion == null) {
-            this.tipo_aplicacion = {
-               'nom_tipo_aplicacion':null,
-               'det_tipo_aplicacion':null,
-               'cod_tipo_aplicacion':null,
+            this.sistema_operativo = {
+               'id_sistema_operativo':null,
+               'arquitectura':null,
+               'nom_sistema_operativo':null,
+               'det_sistema_operativo':null,
+               'vers_sistema_operativo':null,
+               'lic_sistema_operativo':null,
+               'det_licencia_sistema_operativo':null,
+               'id_usuario_registra':null,
+               'id_usuario_modifica':null,
+               'created_at':null,
+               'updated_at':null,
+               'deleted_at':null,
             };
          } else {
-            this.tipo_aplicacion = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.tipos_aplicaciones,this.nombre_model);
+            this.sistema_operativo = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.sistemas_operativos,this.nombre_model);
          }
       },
-      //tipos_aplicaciones se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
-      tipos_aplicaciones: function (tipos_aplicaciones) {
+      //sistemas_operativos se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
+      sistemas_operativos: function (sistemas_operativos) {
          var self = this;
          this.excel_json_datos = [];
-         return tipos_aplicaciones.map(function (tipo_aplicacion, index) {
+         return sistemas_operativos.map(function (sistema_operativo, index) {
             return self.excel_json_datos.push({
-               'id_tipo_aplicacion': tipo_aplicacion.id_tipo_aplicacion || '-',
-               'nom_tipo_aplicacion': tipo_aplicacion.nom_tipo_aplicacion || '-',
-               'det_tipo_aplicacion': tipo_aplicacion.det_tipo_aplicacion || '-',
-               'cod_tipo_aplicacion': tipo_aplicacion.cod_tipo_aplicacion || '-',
-               'id_usuario_registra': tipo_aplicacion.id_usuario_registra || '-',
-               'id_usuario_modifica': tipo_aplicacion.id_usuario_modifica || '-',
-               'created_at': tipo_aplicacion.created_at || '-',
-               'updated_at': tipo_aplicacion.updated_at || '-',
-               'deleted_at': tipo_aplicacion.deleted_at || '-'
+               'id_sistema_operativo': sistema_operativo.id_sistema_operativo || '-',
+               'arquitectura': sistema_operativo.arquitectura || '-',
+               'nom_sistema_operativo': sistema_operativo.nom_sistema_operativo || '-',
+               'det_sistema_operativo': sistema_operativo.det_sistema_operativo || '-',
+               'vers_sistema_operativo': sistema_operativo.vers_sistema_operativo || '-',
+               'lic_sistema_operativo': sistema_operativo.lic_sistema_operativo || '-',
+               'det_licencia_sistema_operativo': sistema_operativo.det_licencia_sistema_operativo || '-',
+               'id_usuario_registra': sistema_operativo.id_usuario_registra || '-',
+               'id_usuario_modifica': sistema_operativo.id_usuario_modifica || '-',
+               'created_at': sistema_operativo.created_at || '-',
+               'updated_at': sistema_operativo.updated_at || '-',
+               'deleted_at': sistema_operativo.deleted_at || '-'
             });
          });
       },
@@ -161,17 +200,26 @@ const TipoAplicacionController = new Vue({
    methods: {
 
       limpiar_objeto_clase_local: function () {
-         this.tipo_aplicacion = {
-            'nom_tipo_aplicacion':null,
-            'det_tipo_aplicacion':null,
-            'cod_tipo_aplicacion':null,
+         this.sistema_operativo = {
+            'id_sistema_operativo':false,
+            'arquitectura':true,
+            'nom_sistema_operativo':true,
+            'det_sistema_operativo':false,
+            'vers_sistema_operativo':false,
+            'lic_sistema_operativo':false,
+            'det_licencia_sistema_operativo':false,
+            'id_usuario_registra':false,
+            'id_usuario_modifica':false,
+            'created_at':true,
+            'updated_at':false,
+            'deleted_at':false,
          };
       },
 
       inicializar: function () {
-         this.$http.get('/tipos_aplicaciones').then(response => { // success callback
-            this.tipos_aplicaciones = response.body.tipos_aplicaciones || null;
-            this.datos_excel = response.body.tipos_aplicaciones || null;
+         this.$http.get('/sistemas_operativos').then(response => { // success callback
+            this.sistemas_operativos = response.body.sistemas_operativos || null;
+            this.datos_excel = response.body.sistemas_operativos || null;
             this.usuario_auth = response.body.usuario_auth || null;
             this.limpiar_objeto_clase_local();
          }, response => { // error callback
@@ -180,13 +228,13 @@ const TipoAplicacionController = new Vue({
       },
 
 
-      editar: function (id_tipo_aplicacion) {
+      editar: function (id_sistema_operativo) {
          this.lista_actualizar_activo = true;
-         this.id_en_edicion = id_tipo_aplicacion;
+         this.id_en_edicion = id_sistema_operativo;
 
          //id_objeto + array de objetos + nombre del model en lower case
-         this.tipo_aplicacion = null;
-         this.tipo_aplicacion = this.buscar_en_array_por_modelo_e_id(id_tipo_aplicacion,this.tipos_aplicaciones,this.nombre_model);
+         this.sistema_operativo = null;
+         this.sistema_operativo = this.buscar_en_array_por_modelo_e_id(id_sistema_operativo,this.sistemas_operativos,this.nombre_model);
 
       },
 
@@ -194,10 +242,10 @@ const TipoAplicacionController = new Vue({
 
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-         this.$http.put(`/${this.nombre_ruta}/${this.tipo_aplicacion.id_tipo_aplicacion}`, this.tipo_aplicacion).then(response => { // success callback
+         this.$http.put(`/${this.nombre_ruta}/${this.sistema_operativo.id_sistema_operativo}`, this.sistema_operativo).then(response => { // success callback
 
             if (response.status == 200) {
-               if ( !this.es_null(response.body.tipo_aplicacion) ) {
+               if ( !this.es_null(response.body.sistema_operativo) ) {
                   this.lista_actualizar_activo = false;
                   this.id_en_edicion = null;
                }
@@ -233,7 +281,7 @@ const TipoAplicacionController = new Vue({
 
 
 
-      eliminar: function (id_tipo_aplicacion) {
+      eliminar: function (id_sistema_operativo) {
          swal({
             title: "¿Estás seguro/a?",
             text: "¿Deseas confirmar la eliminación de este registro?",
@@ -251,7 +299,7 @@ const TipoAplicacionController = new Vue({
                //Se adjunta el token
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-               this.$http.delete(`/${this.nombre_ruta}/${id_tipo_aplicacion}`).then(response => {
+               this.$http.delete(`/${this.nombre_ruta}/${id_sistema_operativo}`).then(response => {
                   if ( response.status == 200) {
                      this.auto_alerta_corta("Eliminado!","Registro eliminado correctamente","success");
                   }else {
@@ -291,9 +339,12 @@ const TipoAplicacionController = new Vue({
          //Instancia nuevo form data
          var formData = new  FormData();
          //Conforma objeto paramétrico para solicitud http
-         formData.append('nom_tipo_aplicacion', this.tipo_aplicacion.nom_tipo_aplicacion || null );
-         formData.append('det_tipo_aplicacion', this.tipo_aplicacion.det_tipo_aplicacion || null );
-         formData.append('cod_tipo_aplicacion',this.tipo_aplicacion.cod_tipo_aplicacion || null );
+         formData.append('arquitectura', this.sistema_operativo.arquitectura || null );
+         formData.append('nom_sistema_operativo', this.sistema_operativo.nom_sistema_operativo || null );
+         formData.append('det_sistema_operativo', this.sistema_operativo.det_sistema_operativo || null );
+         formData.append('vers_sistema_operativo', this.sistema_operativo.vers_sistema_operativo || null );
+         formData.append('lic_sistema_operativo', this.sistema_operativo.lic_sistema_operativo || null );
+         formData.append('det_licencia_sistema_operativo', this.sistema_operativo.det_licencia_sistema_operativo || null );
 
          this.$http.post(`/${this.nombre_ruta}`, formData).then(response => { // success callback
 
@@ -321,7 +372,7 @@ const TipoAplicacionController = new Vue({
          return;
       },
 
-      ordenar_lista: function (columna) { this.tipos_aplicaciones = _.orderBy(this.tipos_aplicaciones, columna, this.orden_lista); },
+      ordenar_lista: function (columna) { this.sistemas_operativos = _.orderBy(this.sistemas_operativos, columna, this.orden_lista); },
 
    }
 });

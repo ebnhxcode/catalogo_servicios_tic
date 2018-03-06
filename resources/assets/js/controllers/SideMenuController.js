@@ -150,6 +150,10 @@ const SideMenuController = new Vue({
                'url':'/datacentros',
             },
             {
+               'title':'Sistemas Operativos',
+               'url':'/sistemas_operativos',
+            },
+            {
                'title':'Credenciales',
                'url':'/credenciales',
             },

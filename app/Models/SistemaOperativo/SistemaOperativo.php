@@ -15,11 +15,11 @@ class SistemaOperativo extends Model {
    protected $fillable = [
       #columns
       'arquitectura',
-      'nom_so',
-      'det_so',
-      'vers_so',
-      'licencia_so',
-      'det_licencia',
+      'nom_sistema_operativo',
+      'det_sistema_operativo',
+      'vers_sistema_operativo',
+      'lic_sistema_operativo',
+      'det_licencia_sistema_operativo',
 
       #relaciones -> pks
 
