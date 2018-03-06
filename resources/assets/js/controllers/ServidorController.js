@@ -43,9 +43,8 @@ const ServidorController = new Vue({
             'id_sistema_operativo':null,
             'id_dominio':null,
          },
-         'actividades':[],
-         'tipos_servidores':[],
-         'servicios':[],
+         'datacentros':[],
+         'sistemas_operativos':[],
          'dominios':[],
          'servidores':[],
          'datos_excel':[],
@@ -337,9 +336,9 @@ const ServidorController = new Vue({
          formData.append('url_servidor', this.servidor.url_servidor || null );
          formData.append('ip_servidor', this.servidor.ip_servidor || null );
 
+         formData.append('id_datacentro', this.servidor.id_datacentro || null );
+         formData.append('id_sistema_operativo', this.servidor.id_sistema_operativo || null );
          formData.append('id_dominio', this.servidor.id_dominio || null );
-         formData.append('id_servicio', this.servidor.id_servicio || null );
-         formData.append('id_tipo_servidor', this.servidor.id_tipo_servidor || null );
 
          this.$http.post(`/${this.nombre_ruta}`, formData).then(response => { // success callback
 
