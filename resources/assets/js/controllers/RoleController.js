@@ -81,24 +81,24 @@ const RoleController = new Vue({
             'id_role':'Id role',
             'nom_role':'Nombre role',
             'det_role':'Detalle role',
-            'id_permiso':'Permiso role',
             'id_usuario_registra':'Usuario registra',
             'id_usuario_modifica':'Usuario modifica',
             'created_at':'Creado en',
             'updated_at':'Actualizado en',
-            'deleted_at':'Eliminado en'
+            'deleted_at':'Eliminado en',
+            'id_permiso':'Permiso role',
          },
 
          'excel_json_campos': {
             'id_role': 'String',
             'nom_role': 'String',
             'det_role': 'String',
-            'id_permiso': 'String',
             'id_usuario_registra': 'String',
             'id_usuario_modifica': 'String',
             'created_at': 'String',
             'updated_at': 'String',
-            'deleted_at': 'String'
+            'deleted_at': 'String',
+            'id_permiso': 'String',
          },
 
          'excel_json_datos': [],
@@ -128,12 +128,12 @@ const RoleController = new Vue({
                'id_role': role.id_role || '-',
                'nom_role': role.nom_role || '-',
                'det_role': role.det_role || '-',
-               'id_permiso': role.id_permiso || '-',
                'id_usuario_registra': role.id_usuario_registra || '-',
                'id_usuario_modifica': role.id_usuario_modifica || '-',
                'created_at': role.created_at || '-',
                'updated_at': role.updated_at || '-',
-               'deleted_at': role.deleted_at || '-'
+               'deleted_at': role.deleted_at || '-',
+               'id_permiso': (role.permiso) ? role.permiso.id_permiso : '-',
             });
          });
       },

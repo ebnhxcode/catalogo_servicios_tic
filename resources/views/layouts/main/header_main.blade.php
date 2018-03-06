@@ -19,7 +19,7 @@
                   <button class="btn btn-sm btn-outline-success"
                           data-placement="top" data-toggle="tooltip" title="Crear nuevo/a {{$nombre_modelo}}"
                           @click.prevent="mostrar_modal_crear">
-                     Crear nuevo/a {{$nombre_modelo}}
+                     Crear {{str_replace('_',' ',$nombre_modelo)}}
                   </button>
 
                   <button class="btn btn-sm btn-outline-secondary dropdown-toggle"

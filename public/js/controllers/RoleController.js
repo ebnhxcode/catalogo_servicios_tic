@@ -3439,6 +3439,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_v_clipboard__);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -3523,24 +3525,24 @@ var RoleController = new Vue({
             'id_role': 'Id role',
             'nom_role': 'Nombre role',
             'det_role': 'Detalle role',
-            'id_permiso': 'Permiso role',
             'id_usuario_registra': 'Usuario registra',
             'id_usuario_modifica': 'Usuario modifica',
             'created_at': 'Creado en',
             'updated_at': 'Actualizado en',
-            'deleted_at': 'Eliminado en'
+            'deleted_at': 'Eliminado en',
+            'id_permiso': 'Permiso role'
          },
 
          'excel_json_campos': {
             'id_role': 'String',
             'nom_role': 'String',
             'det_role': 'String',
-            'id_permiso': 'String',
             'id_usuario_registra': 'String',
             'id_usuario_modifica': 'String',
             'created_at': 'String',
             'updated_at': 'String',
-            'deleted_at': 'String'
+            'deleted_at': 'String',
+            'id_permiso': 'String'
          },
 
          'excel_json_datos': [],
@@ -3566,18 +3568,17 @@ var RoleController = new Vue({
       roles: function roles(_roles) {
          var self = this;
          this.excel_json_datos = [];
-         return _roles.map(function (role, index) {
-            return self.excel_json_datos.push({
+         return this.datos_excel.map(function (role, index) {
+            return (typeof role === 'undefined' ? 'undefined' : _typeof(role)) !== 'object' ? self.excel_json_datos.push({
                'id_role': role.id_role || '-',
                'nom_role': role.nom_role || '-',
                'det_role': role.det_role || '-',
-               'id_permiso': role.id_permiso || '-',
                'id_usuario_registra': role.id_usuario_registra || '-',
                'id_usuario_modifica': role.id_usuario_modifica || '-',
                'created_at': role.created_at || '-',
                'updated_at': role.updated_at || '-',
                'deleted_at': role.deleted_at || '-'
-            });
+            }) : null;
          });
       }
    },
