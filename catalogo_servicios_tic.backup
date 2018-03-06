@@ -422,7 +422,9 @@ CREATE TABLE public.datacentros (
     id_usuario_modifica integer,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    deleted_at timestamp without time zone
+    deleted_at timestamp without time zone,
+    det_datacentro text,
+    cod_datacentro text
 );
 
 
@@ -1027,11 +1029,11 @@ ALTER TABLE public.sistemas_operativos_id_seq OWNER TO postgres;
 CREATE TABLE public.sistemas_operativos (
     id_sistema_operativo integer DEFAULT nextval('public.sistemas_operativos_id_seq'::regclass) NOT NULL,
     arquitectura text,
-    nom_so text,
-    det_so text,
-    vers_so text,
-    licencia_so text,
-    det_licencia text,
+    nom_sistema_operativo text,
+    det_sistema_operativo text,
+    vers_sistema_operativo text,
+    lic_sistema_operativo text,
+    det_licencia_sistema_operativo text,
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
@@ -1388,9 +1390,6 @@ ALTER TABLE ONLY public.migrations ALTER COLUMN id SET DEFAULT nextval('public.m
 --
 
 COPY public.actividades (id_actividad, nom_actividad, det_actividad, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
-5	Requerimientos	Requerimientos	1	1	2018-02-27 18:32:32	2018-02-27 18:32:32	\N
-6	Migraciones	Migraciones	1	1	2018-02-27 18:32:39	2018-02-27 18:32:39	\N
-8	Descargas Masivas	Descargas Masivas	1	1	2018-02-27 18:33:04	2018-02-27 18:33:04	\N
 9	Tareas Programadas	Tareas Programadas	1	1	2018-02-27 18:33:17	2018-02-27 18:33:17	\N
 10	Homologacion de Proyectos	Homologacion de proyectos	1	1	2018-02-27 18:33:38	2018-02-27 18:34:11	\N
 1	Mantencion	Mantencion	1	4	2018-02-27 18:26:10	2018-02-28 04:07:20	\N
@@ -1399,6 +1398,9 @@ COPY public.actividades (id_actividad, nom_actividad, det_actividad, id_usuario_
 2	Soporte	Soporte	1	4	2018-02-27 18:31:56	2018-02-28 05:58:33	\N
 3	Seguimiento	Seguimiento	1	4	2018-02-27 18:32:09	2018-03-04 12:28:10	\N
 4	Desarrollo	Desarrollo	1	4	2018-02-27 18:32:18	2018-03-05 20:56:13	\N
+5	Requerimientos	Requerimientos	1	4	2018-02-27 18:32:32	2018-03-06 06:34:43	\N
+6	Migraciones	Migraciones	1	4	2018-02-27 18:32:39	2018-03-06 06:34:46	\N
+8	Descargas Masivas	Descargas Masivas	1	4	2018-02-27 18:33:04	2018-03-06 06:42:00	\N
 \.
 
 
@@ -1460,7 +1462,10 @@ COPY public.aplicaciones_tecnologias (id_aplicacion_tecnologia, id_aplicacion, i
 
 COPY public.cargos (id_cargo, nom_cargo, det_cargo, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, cod_cargo) FROM stdin;
 2	fd	sdfsd	4	4	2018-02-28 13:06:40	2018-02-28 13:06:42	2018-02-28 13:06:42	\N
-1	sadd	adsd	4	4	2018-02-28 12:36:44	2018-02-28 23:47:17	\N	sdsadeds7ctgibk2
+1	Desarrollador	Desarrollador	4	4	2018-02-28 12:36:44	2018-03-06 06:26:24	\N	sdsadeds7ctgibk2
+3	Lider de equipo	Lider de equipo	4	4	2018-03-06 06:26:40	2018-03-06 06:26:40	\N	df7y83iomdfs
+4	Jefe de Area	Jefe de Area	4	4	2018-03-06 06:26:56	2018-03-06 06:26:56	\N	8ui4jtrkn2
+5	fsdffd	fsdf	4	4	2018-03-06 06:27:08	2018-03-06 06:27:10	2018-03-06 06:27:10	sdf
 \.
 
 
@@ -1838,7 +1843,10 @@ COPY public.comuna (id_comuna, id_region, nombre_comuna, created_at, updated_at,
 -- Data for Name: datacentros; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.datacentros (id_datacentro, nom_datacentro, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+COPY public.datacentros (id_datacentro, nom_datacentro, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, det_datacentro, cod_datacentro) FROM stdin;
+1	CPD	4	4	2018-03-06 01:31:31	2018-03-06 01:31:31	\N	Datacentro local en minsal	CPD001
+2	Convergente	4	4	2018-03-06 01:32:08	2018-03-06 01:32:08	\N	Datacentro convergente ubicado en puerto montt.	CVGT001
+3	asdfsdf	4	4	2018-03-06 06:46:05	2018-03-06 06:46:07	2018-03-06 06:46:07	afd	af
 \.
 
 
@@ -1850,6 +1858,7 @@ COPY public.dominios (id_dominio, nom_dominio, det_dominio, ip_publica, ip_balan
 1	Minsal	minsal.cl	5.5.5.5	5.5.5.5	2.2.2.2	4	4	2018-03-02 21:12:55	2018-03-03 17:21:51	\N
 2	Red Salud	redsalud.gob.cl	0.0.0.0	0.0.0.0	0.0.0.0	4	4	2018-03-03 17:22:21	2018-03-03 17:22:21	\N
 3	Gob	gob.cl	0.0.0.0	0.0.0.0	0.0.0.0	4	4	2018-03-03 17:22:46	2018-03-03 17:22:46	\N
+4	ewqeq	qweqwe	1.1.1.1	1.1.1.1	1.1.1.1	4	4	2018-03-06 06:43:10	2018-03-06 06:43:15	2018-03-06 06:43:15
 \.
 
 
@@ -1876,6 +1885,9 @@ COPY public.establecimientos (id_establecimiento, id_establecimiento_antiguo, id
 COPY public.estados (id_estado, nom_estado, cod_estado, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, det_estado) FROM stdin;
 1	qwe	\N	1	1	2018-02-27 20:00:36	2018-02-27 20:00:54	2018-02-27 20:00:54	qwe
 2	Activo	ds	1	4	2018-02-27 20:18:02	2018-03-02 20:33:59	\N	Estado activo
+3	Inactivo	74ug	4	4	2018-03-06 06:30:37	2018-03-06 06:30:37	\N	Inactivo
+4	Ausente	93jrf	4	4	2018-03-06 06:30:45	2018-03-06 06:30:45	\N	Ausente
+5	Vacaciones	8i4f	4	4	2018-03-06 06:30:55	2018-03-06 06:30:55	\N	Vacaciones
 \.
 
 
@@ -2172,6 +2184,7 @@ COPY public.permisos (id_permiso, nom_permiso, det_permiso, cod_permiso, id_usua
 17	D	D representa delete, tiene permisos nivel 4 y puede visualizar, crear, editar y hasta eliminar.	4	\N	4	2018-02-20 21:42:31	2018-02-28 23:06:53	\N
 14	C	C representa create, tiene permisos nivel 2 y puede crear y visualizar.	2	\N	4	2018-02-20 21:41:09	2018-02-28 23:09:03	\N
 16	U	U representa update, tiene permisos nivel 3 y puede visualizar, crear y editar.	3	\N	4	2018-02-20 21:42:05	2018-03-01 00:14:25	\N
+20	H	Triple combo kill	\N	4	4	2018-03-06 05:58:57	2018-03-06 05:58:57	\N
 \.
 
 
@@ -2210,11 +2223,13 @@ COPY public.roles (id_role, nom_role, det_role, id_usuario_registra, id_usuario_
 58	role	role	\N	\N	2018-02-26 15:49:22	2018-02-26 16:19:04	2018-02-26 16:19:04
 61	no editable	pq no se peue	\N	\N	2018-02-26 19:30:21	2018-02-26 20:22:37	2018-02-26 20:22:37
 60	role	role	\N	\N	2018-02-26 16:19:11	2018-02-26 20:22:39	2018-02-26 20:22:39
-62	role 1	role 1	\N	\N	2018-02-26 20:22:50	2018-02-26 20:22:50	\N
-63	role 2	role 2	\N	\N	2018-02-26 20:22:57	2018-02-26 20:22:57	\N
-64	role 3	role 3	\N	\N	2018-02-26 20:23:13	2018-02-26 20:23:13	\N
 65	role new	role a.s,da	\N	\N	2018-02-27 19:29:06	2018-02-27 19:29:19	2018-02-27 19:29:19
 66	Role 4	Role 4	\N	\N	2018-02-28 23:44:07	2018-02-28 23:44:07	\N
+67	dfasfd	fasdf	\N	\N	2018-03-06 05:51:18	2018-03-06 05:51:22	2018-03-06 05:51:22
+62	role 1	role 1	\N	\N	2018-02-26 20:22:50	2018-03-06 05:55:47	\N
+63	role 2	role 2	\N	4	2018-02-26 20:22:57	2018-03-06 05:57:47	\N
+64	role 3	role 3	\N	4	2018-02-26 20:23:13	2018-03-06 05:57:52	\N
+68	sfdafsdf	sdfsdf	4	4	2018-03-06 07:05:15	2018-03-06 07:05:15	\N
 \.
 
 
@@ -2279,6 +2294,8 @@ COPY public.roles_permisos (id_role_permiso, id_role, id_permiso, id_usuario_reg
 62	64	14	\N	\N	2018-02-26 20:23:13	2018-02-26 20:23:13	\N
 63	65	17	\N	\N	2018-02-27 19:29:06	2018-02-27 19:29:19	2018-02-27 19:29:19
 64	66	17	\N	\N	2018-02-28 23:44:07	2018-02-28 23:44:07	\N
+65	67	17	\N	\N	2018-03-06 05:51:18	2018-03-06 05:51:22	2018-03-06 05:51:22
+66	68	14	\N	\N	2018-03-06 07:05:15	2018-03-06 07:05:15	\N
 \.
 
 
@@ -2324,10 +2341,12 @@ COPY public.servicio_salud (id_servicio_salud, id_region, nombre_servicio_salud,
 --
 
 COPY public.servicios (id_servicio, id_actividad, id_usuario, nom_servicio, det_servicio, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
-1	4	1	Sitios Web	Servicio que realiza el equipo de soporte	1	1	2018-02-27 18:58:58	2018-02-27 19:06:51	\N
-3	4	1	Sitios en Yii	Desarrollos que se han realizado en Yii Framework.	1	1	2018-02-27 19:04:06	2018-02-27 19:35:09	\N
 4	4	1	Web Minsal	Desarrollos relacionados al servicio web minsal	1	1	2018-02-27 19:35:43	2018-02-27 19:35:43	\N
 2	4	4	Wordpress	Servicio que se encarga de mantener y administrar los sitios hechos en wordpress	1	4	2018-02-27 19:04:06	2018-03-05 20:56:33	\N
+1	4	4	Sitios Web	Servicio que realiza el equipo de soporte	1	4	2018-02-27 18:58:58	2018-03-06 06:39:45	\N
+5	7	4	eqweqwe	wqe	4	4	2018-03-06 06:39:50	2018-03-06 06:39:53	2018-03-06 06:39:53
+3	4	4	Sitios en Yii	Desarrollos que se han realizado en Yii Framework.	1	4	2018-02-27 19:04:06	2018-03-06 06:41:35	\N
+6	10	4	sdaf	fsadf	4	4	2018-03-06 06:41:42	2018-03-06 06:41:45	2018-03-06 06:41:45
 \.
 
 
@@ -2360,6 +2379,9 @@ COPY public.servicios_tags (id_servicio_tag, id_servicio, id_tag, id_usuario_reg
 --
 
 COPY public.servidores (id_servidor, id_datacentro, id_sistema_operativo, id_dominio, nom_servidor, ip_servidor, url_servidor, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, det_servidor) FROM stdin;
+3	\N	\N	\N	DEL	8.8.8.8	http://asd-asd.asd.asd	4	4	2018-03-05 21:28:32	2018-03-05 21:28:35	2018-03-05 21:28:35	DEL
+1	2	4	2	CVGT	8.8.8.8	http://qwe.qwe.qwe	4	4	2018-03-05 21:26:30	2018-03-06 04:47:04	\N	CVGT
+2	1	3	1	IP	8.8.8.8	http://www.www.www	4	4	2018-03-05 21:28:03	2018-03-06 04:47:21	\N	IP
 \.
 
 
@@ -2375,7 +2397,12 @@ COPY public.servidores_accesos (id_servidor_acceso, id_aplicacion, id_servidor, 
 -- Data for Name: sistemas_operativos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.sistemas_operativos (id_sistema_operativo, arquitectura, nom_so, det_so, vers_so, licencia_so, det_licencia, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+COPY public.sistemas_operativos (id_sistema_operativo, arquitectura, nom_sistema_operativo, det_sistema_operativo, vers_sistema_operativo, lic_sistema_operativo, det_licencia_sistema_operativo, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+2	x64	true	null	null	no	null	4	4	2018-03-06 04:21:30	2018-03-06 04:34:47	\N
+4	x86	Linux	Centos	7.4	no	GNU	4	4	2018-03-06 04:33:08	2018-03-06 04:34:58	\N
+1	x64	nombre	nombre	null	no	no tiene licencia	4	4	2018-03-06 03:51:20	2018-03-06 04:35:06	\N
+3	x86	Windows	Windows 10 Profesional	10	si	null	4	4	2018-03-06 04:30:40	2018-03-06 04:35:12	\N
+5	x64	dfasfd	sfafasd	fsf	no	sdaf	4	4	2018-03-06 06:46:36	2018-03-06 06:46:40	2018-03-06 06:46:40
 \.
 
 
@@ -2384,6 +2411,8 @@ COPY public.sistemas_operativos (id_sistema_operativo, arquitectura, nom_so, det
 --
 
 COPY public.tags (id_tag, nom_tag, det_tag, meta_tag, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+1	Tag 1	Tag 1	tagsdf ata at	4	4	2018-03-06 13:16:09	2018-03-06 13:16:09	\N
+2	Tag 2	Tag 2	tagfkdb32	4	4	2018-03-06 17:54:02	2018-03-06 17:54:02	\N
 \.
 
 
@@ -2408,6 +2437,8 @@ COPY public.tipos_aplicaciones (id_tipo_aplicacion, nom_tipo_aplicacion, det_tip
 6	Aplicacion Php	Aplicacion php	null	4	4	2018-02-28 14:05:19	2018-02-28 14:05:19	\N
 7	Php Yii Framework	Php Yii Framework	null	4	4	2018-02-28 14:05:40	2018-02-28 14:05:40	\N
 8	Laravel Php Framework	Laravel Php Framework	null	4	4	2018-02-28 14:05:49	2018-02-28 14:05:49	\N
+9	Fremework	Codeigniter	CI	4	4	2018-03-06 05:05:19	2018-03-06 05:05:19	\N
+10	qewe	wqew	e	4	4	2018-03-06 06:40:12	2018-03-06 06:40:15	2018-03-06 06:40:15
 \.
 
 
@@ -2427,7 +2458,8 @@ COPY public.usuarios (id_usuario, nom_usuario, nom_completo, ape_paterno, ape_ma
 3	qweqwe	null	null	null	qwe	esteban.ramos@minsawqel.cl	$2y$10$/wzbajETfyaumw8bTd8GHu3Ml50hxxbjb2HYduh4Cm5SDnpM5aYWW	\N	\N	\N	2018-02-27 19:30:51	2018-02-27 19:32:25	2018-02-27 19:32:25
 2	edsaf	null	null	null	aasdasd	esteban.ramos@minsaasdl.cl	$2y$10$EMV5tnLbwP5gAhTXjmVVu.rsn8bkQ9dIt9iay1e6Vj7AenetPnqsy	\N	\N	\N	2018-02-27 13:25:49	2018-02-27 19:32:28	2018-02-27 19:32:28
 1	Esteban	\N	\N	\N	\N	esteban.ramos@minsal.cl	$2y$10$56R..xvCC1igB5V0842UI.f2B5V2p7lopByoVEjig0R2BSgRosuEu	Qya1IjuaQ6Wjz3Q4OwKsoYqFHSEFqwu6wFNh1hdyj7UdVI4oUqVOX5rKDiy6	\N	\N	2018-02-19 18:08:14	2018-02-27 23:36:15	2018-02-27 23:36:15
-4	Esteban	\N	\N	\N	fsdsf	esteban.ramos.f@gmail.com	$2y$10$UNXFgYFjLZzwVS3Z7Ps5Q.Yfl5cGurn/sUzUT8sYbMFjT..SaubL.	\N	\N	\N	2018-02-27 23:36:43	2018-02-27 23:42:23	\N
+4	Esteban	\N	\N	\N	fsdsf	esteban.ramos.f@gmail.com	$2y$10$9GLVRd8r7SWSrb5LKDvUbuotkQjtoZOilUtpcmnOdzZiCIzUYMj4e	\N	\N	\N	2018-02-27 23:36:43	2018-03-06 06:24:06	\N
+5	asds	null	asd	asd	asd	estasddeban.ramos.f@gmail.com	$2y$10$efcUhxc91net4pQsHaEOuucB682MsKzYciRQyqtGahn7lZ4/fJp/S	\N	\N	\N	2018-03-06 06:10:38	2018-03-06 06:24:26	2018-03-06 06:24:26
 \.
 
 
@@ -2531,7 +2563,7 @@ SELECT pg_catalog.setval('public.aplicaciones_tecnologias_id_seq', 1, false);
 -- Name: cargos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.cargos_id_seq', 2, true);
+SELECT pg_catalog.setval('public.cargos_id_seq', 5, true);
 
 
 --
@@ -2552,14 +2584,14 @@ SELECT pg_catalog.setval('public.catalogos_servicios_tags_id_seq', 1, false);
 -- Name: datacentros_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.datacentros_id_seq', 1, false);
+SELECT pg_catalog.setval('public.datacentros_id_seq', 3, true);
 
 
 --
 -- Name: dominios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.dominios_id_seq', 3, true);
+SELECT pg_catalog.setval('public.dominios_id_seq', 4, true);
 
 
 --
@@ -2573,7 +2605,7 @@ SELECT pg_catalog.setval('public.entregas_credenciales_usuarios_id_seq', 1, fals
 -- Name: estados_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.estados_id_seq', 2, true);
+SELECT pg_catalog.setval('public.estados_id_seq', 5, true);
 
 
 --
@@ -2601,21 +2633,21 @@ SELECT pg_catalog.setval('public.migrations_id_seq', 2, true);
 -- Name: permisos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.permisos_id_seq', 19, true);
+SELECT pg_catalog.setval('public.permisos_id_seq', 20, true);
 
 
 --
 -- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.roles_id_seq', 66, true);
+SELECT pg_catalog.setval('public.roles_id_seq', 68, true);
 
 
 --
 -- Name: roles_permisos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.roles_permisos_id_seq', 64, true);
+SELECT pg_catalog.setval('public.roles_permisos_id_seq', 66, true);
 
 
 --
@@ -2629,7 +2661,7 @@ SELECT pg_catalog.setval('public.servicios_estados_id_seq', 1, false);
 -- Name: servicios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.servicios_id_seq', 4, true);
+SELECT pg_catalog.setval('public.servicios_id_seq', 6, true);
 
 
 --
@@ -2650,21 +2682,21 @@ SELECT pg_catalog.setval('public.servicios_tags_id_seq', 1, false);
 -- Name: servidor_aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.servidor_aplicaciones_id_seq', 1, false);
+SELECT pg_catalog.setval('public.servidor_aplicaciones_id_seq', 3, true);
 
 
 --
 -- Name: sistemas_operativos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.sistemas_operativos_id_seq', 1, false);
+SELECT pg_catalog.setval('public.sistemas_operativos_id_seq', 5, true);
 
 
 --
 -- Name: tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.tags_id_seq', 1, false);
+SELECT pg_catalog.setval('public.tags_id_seq', 2, true);
 
 
 --
@@ -2678,7 +2710,7 @@ SELECT pg_catalog.setval('public.tecnologia_desarrollo_id_seq', 1, false);
 -- Name: tipos_aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.tipos_aplicaciones_id_seq', 8, true);
+SELECT pg_catalog.setval('public.tipos_aplicaciones_id_seq', 10, true);
 
 
 --
@@ -2713,7 +2745,7 @@ SELECT pg_catalog.setval('public.usuarios_estados_id_seq', 1, false);
 -- Name: usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.usuarios_id_seq', 4, true);
+SELECT pg_catalog.setval('public.usuarios_id_seq', 5, true);
 
 
 --
