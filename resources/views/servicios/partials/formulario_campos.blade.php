@@ -1,7 +1,7 @@
 
 
 <div class="row">
-   <div class="col-sm-12 col-md-12">
+   <div class="col-sm-6 col-md-6">
 
       <dt>Nombre servicio</dt>
       <dd>
@@ -23,7 +23,7 @@
       </dd>
 
    </div><!-- .col -->
-   <div class="col-sm-12 col-md-12">
+   <div class="col-sm-6 col-md-6">
 
       <dt>Detalle servicio</dt>
       <dd>
@@ -45,7 +45,7 @@
       </dd>
 
    </div><!-- .col -->
-   <div class="col-sm-12 col-md-12">
+   <div class="col-sm-6 col-md-6">
 
       <dt>Actividad</dt>
       <dd>

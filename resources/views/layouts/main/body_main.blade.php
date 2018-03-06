@@ -12,7 +12,12 @@
       <label :class="v==true?'btn btn-success active':'btn btn-light'" @click.prevent="cambiar_visibilidad(c)"
              {{--data-placement="top" data-toggle="tooltip" :title="`Clic para ${(v==true)?'ocultar':'mostrar'}`">--}}
              data-placement="top" data-toggle="tooltip" title="Clic para mostrar u ocultar">
-         <input type="checkbox" autocomplete="off"> <span style="font-size: 85%;"><i class="fa fa-check" v-if="v==true"></i> @{{ tabla_labels[c] }}</span>
+         <input type="checkbox" autocomplete="off">
+         <span style="font-size: 85%;">
+            <i class="fa fa-check" v-if="v==true"></i>
+            <i class="fa fa-eye" v-if="v==true"></i>
+            @{{ tabla_labels[c] }}
+         </span>
       </label>
    </div>
 </template>
