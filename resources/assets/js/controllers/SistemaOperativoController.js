@@ -201,18 +201,18 @@ const SistemaOperativoController = new Vue({
 
       limpiar_objeto_clase_local: function () {
          this.sistema_operativo = {
-            'id_sistema_operativo':false,
-            'arquitectura':true,
-            'nom_sistema_operativo':true,
-            'det_sistema_operativo':false,
-            'vers_sistema_operativo':false,
-            'lic_sistema_operativo':false,
-            'det_licencia_sistema_operativo':false,
-            'id_usuario_registra':false,
-            'id_usuario_modifica':false,
-            'created_at':true,
-            'updated_at':false,
-            'deleted_at':false,
+            'id_sistema_operativo':null,
+            'arquitectura':null,
+            'nom_sistema_operativo':null,
+            'det_sistema_operativo':null,
+            'vers_sistema_operativo':null,
+            'lic_sistema_operativo':null,
+            'det_licencia_sistema_operativo':null,
+            'id_usuario_registra':null,
+            'id_usuario_modifica':null,
+            'created_at':null,
+            'updated_at':null,
+            'deleted_at':null,
          };
       },
 

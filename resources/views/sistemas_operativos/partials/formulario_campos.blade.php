@@ -87,7 +87,7 @@
       <dd>
          <p class="control has-icon has-icon-right">
             <input type="text" v-model="sistema_operativo.vers_sistema_operativo" name="vers_sistema_operativo"
-                   v-validate="{regex:/^[a-zA-Z0-9_ ]+$/i}" data-vv-delay="500"
+                   v-validate="{regex:/^[a-zA-Z0-9_ ,.-]+$/i}" data-vv-delay="500"
                    class="form-control" />
 
             <transition name="bounce">
@@ -111,19 +111,19 @@
       <dd>
          <p class="control has-icon has-icon-right">
 
-            <select class="form-control" v-model="sistema_operativo.licencia_sistema_operativo" name="licencia_sistema_operativo"
+            <select class="form-control" v-model="sistema_operativo.lic_sistema_operativo" name="lic_sistema_operativo"
                     v-validate="{regex:/^[a-zA-Z]+$/i}" data-vv-delay="500">
                <option value="si">Si</option>
                <option value="no">No</option>
             </select>
 
             <transition name="bounce">
-               <i v-show="errors.has('licencia_sistema_operativo')" class="fa fa-exclamation-circle"></i>
+               <i v-show="errors.has('lic_sistema_operativo')" class="fa fa-exclamation-circle"></i>
             </transition>
 
             <transition name="bounce">
-               <span v-show="errors.has('licencia_sistema_operativo')" class="text-danger small">
-                  @{{ errors.first('licencia_sistema_operativo') }}
+               <span v-show="errors.has('lic_sistema_operativo')" class="text-danger small">
+                  @{{ errors.first('lic_sistema_operativo') }}
                </span>
             </transition>
          </p>
