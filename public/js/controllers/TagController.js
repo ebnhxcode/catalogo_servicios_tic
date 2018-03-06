@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 74);
+/******/ 	return __webpack_require__(__webpack_require__.s = 86);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3524,15 +3524,44 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 /***/ }),
 
-/***/ 74:
+/***/ 8:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(75);
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "a",
+    {
+      attrs: { href: "#", id: _vm.id_name },
+      on: { click: _vm.generate_excel }
+    },
+    [_vm._t("default", [_vm._v("\n      Download Excel\n   ")])],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-795cc6e8", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 86:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(87);
 
 
 /***/ }),
 
-/***/ 75:
+/***/ 87:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3561,59 +3590,42 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
 //Vue.component('download-excel', DownloadExcel);
 Vue.component('download-excel', __webpack_require__(6));
 
-var AplicacionController = new Vue({
-   el: '#AplicacionController',
+var TagController = new Vue({
+   el: '#TagController',
    data: function data() {
       return {
-         'nombre_tabla': 'aplicaciones', //nombre tabla o de ruta
-         'nombre_ruta': 'aplicaciones', //nombre tabla o de ruta
-         'nombre_model': 'aplicacion',
-         'nombre_detalle': 'Aplicaciones',
-         'nombre_controller': 'AplicacionController',
+         'nombre_tabla': 'tags', //nombre tabla o de ruta
+         'nombre_ruta': 'tags', //nombre tabla o de ruta
+         'nombre_model': 'tag',
+         'nombre_detalle': 'Tags',
+         'nombre_controller': 'TagController',
 
          'filtro_head': null,
-         'aplicacion': {
-            'nom_aplicacion': null,
-            'det_aplicacion': null,
-            'alias': null,
-            'url_web': null,
-            'ip': null,
-            'subdominio': null,
-            'ssl_tls': false,
-            'id_dominio': null,
-            'id_tipo_aplicacion': null,
-            'id_servicio': null,
+         'tag': {
+            'nom_tag': null,
+            'det_tag': null,
+            'meta_tag': null,
             'id_usuario_registra': null,
             'id_usuario_modifica': null,
             'created_at': null,
             'updated_at': null,
             'deleted_at': null
          },
-         'aplicacion_limpio': {
-            'nom_aplicacion': null,
-            'det_aplicacion': null,
-            'alias': null,
-            'url_web': null,
-            'ip': null,
-            'subdominio': null,
-            'ssl_tls': false,
-            'id_dominio': null,
-            'id_tipo_aplicacion': null,
-            'id_servicio': null,
+         'tag_limpio': {
+            'nom_tag': null,
+            'det_tag': null,
+            'meta_tag': null,
             'id_usuario_registra': null,
             'id_usuario_modifica': null,
             'created_at': null,
             'updated_at': null,
             'deleted_at': null
          },
-         'actividades': [],
-         'tipos_aplicaciones': [],
-         'servicios': [],
-         'dominios': [],
-         'aplicaciones': [],
+         'tags': [],
          'datos_excel': [],
          'usuario_auth': {},
 
+         'permisos': [],
          'campos_formularios': [],
          'errores_campos': [],
 
@@ -3630,18 +3642,10 @@ var AplicacionController = new Vue({
          'orden_lista': 'asc',
 
          'tabla_campos': {
-            'id_aplicacion': false,
-            'nom_aplicacion': true,
-            'det_aplicacion': true,
-            'alias': false,
-            'url_web': false,
-            'ip': false,
-            'subdominio': false,
-            'ssl_tls': false,
-            'id_dominio': false,
-            'id_tipo_aplicacion': false,
-            'id_servicio': false,
-
+            'id_tag': false,
+            'nom_tag': true,
+            'det_tag': false,
+            'meta_tag': false,
             'id_usuario_registra': false,
             'id_usuario_modifica': false,
             'created_at': true,
@@ -3650,19 +3654,10 @@ var AplicacionController = new Vue({
          },
 
          'tabla_labels': {
-            'id_aplicacion': 'Id aplicacion',
-
-            'nom_aplicacion': 'Nombre aplicacion',
-            'det_aplicacion': 'Detalle aplicacion',
-            'alias': 'Alias',
-            'url_web': 'Url',
-            'ip': 'Ip',
-            'subdominio': 'Subdominio',
-            'ssl_tls': 'SSL/TLS',
-            'id_dominio': 'Id Dominio',
-            'id_tipo_aplicacion': 'Id Tipo App',
-            'id_servicio': 'Id Servicio',
-
+            'id_tag': 'Id tag',
+            'nom_tag': 'Nombre tag',
+            'det_tag': 'Detalle tag',
+            'meta_tag': 'Meta tag',
             'id_usuario_registra': 'Usuario registra',
             'id_usuario_modifica': 'Usuario modifica',
             'created_at': 'Creado en',
@@ -3671,19 +3666,10 @@ var AplicacionController = new Vue({
          },
 
          'excel_json_campos': {
-            'id_aplicacion': 'String',
-
-            'nom_aplicacion': 'String',
-            'det_aplicacion': 'String',
-            'alias': 'String',
-            'url_web': 'String',
-            'ip': 'String',
-            'subdominio': 'String',
-            'ssl_tls': 'String',
-            'id_dominio': 'String',
-            'id_tipo_aplicacion': 'String',
-            'id_servicio': 'String',
-
+            'id_tag': 'String',
+            'nom_tag': 'String',
+            'det_tag': 'String',
+            'meta_tag': 'String',
             'id_usuario_registra': 'String',
             'id_usuario_modifica': 'String',
             'created_at': 'String',
@@ -3701,38 +3687,30 @@ var AplicacionController = new Vue({
 
    computed: {},
    watch: {
-      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el aplicacion
+      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el tag
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function id_en_edicion(_id_en_edicion) {
          if (_id_en_edicion == null) {
             this.limpiar_objeto_clase_local();
          } else {
-            this.aplicacion = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.aplicaciones, this.nombre_model);
+            this.tag = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.tags, this.nombre_model);
          }
       },
-      //aplicaciones se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
-      aplicaciones: function aplicaciones(_aplicaciones) {
+      //tags se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
+      tags: function tags(_tags) {
          var self = this;
          this.excel_json_datos = [];
-         return _aplicaciones.map(function (aplicacion, index) {
+         return _tags.map(function (tag, index) {
             return self.excel_json_datos.push({
-               'id_aplicacion': aplicacion.id_aplicacion || '-',
-
-               'nom_aplicacion': aplicacion.nom_aplicacion || '-',
-               'det_aplicacion': aplicacion.det_aplicacion || '-',
-               'alias': aplicacion.alias || '-',
-               'url_web': aplicacion.url_web || '-',
-               'ip': aplicacion.ip || '-',
-               'subdominio': aplicacion.subdominio || '-',
-               'ssl_tls': aplicacion.ssl_tls || '-',
-               'id_dominio': aplicacion.id_dominio || '-',
-               'id_tipo_aplicacion': aplicacion.id_tipo_aplicacion || '-',
-
-               'id_usuario_registra': aplicacion.id_usuario_registra || '-',
-               'id_usuario_modifica': aplicacion.id_usuario_modifica || '-',
-               'created_at': aplicacion.created_at || '-',
-               'updated_at': aplicacion.updated_at || '-',
-               'deleted_at': aplicacion.deleted_at || '-'
+               'id_tag': tag.id_tag || '-',
+               'nom_tag': tag.nom_tag || '-',
+               'det_tag': tag.det_tag || '-',
+               'meta_tag': tag.meta_tag || '-',
+               'id_usuario_registra': tag.id_usuario_registra || '-',
+               'id_usuario_modifica': tag.id_usuario_modifica || '-',
+               'created_at': tag.created_at || '-',
+               'updated_at': tag.updated_at || '-',
+               'deleted_at': tag.deleted_at || '-'
             });
          });
       }
@@ -3766,17 +3744,11 @@ var AplicacionController = new Vue({
    methods: {
 
       limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
-         this.aplicacion = {
-            'nom_aplicacion': null,
-            'det_aplicacion': null,
-            'alias': null,
-            'url_web': null,
-            'ip': null,
-            'subdominio': null,
-            'ssl_tls': false,
-            'id_dominio': null,
-            'id_tipo_aplicacion': null,
-            'id_servicio': null,
+         this.tag = {
+            'nom_tag': null,
+            'det_tag': null,
+            'meta_tag': null,
+            'id_permiso': null,
             'id_usuario_registra': null,
             'id_usuario_modifica': null,
             'created_at': null,
@@ -3788,14 +3760,11 @@ var AplicacionController = new Vue({
       inicializar: function inicializar() {
          var _this = this;
 
-         this.$http.get('/aplicaciones').then(function (response) {
+         this.$http.get('/tags').then(function (response) {
             // success callback
-            _this.actividades = response.body.actividades || null;
-            _this.tipos_aplicaciones = response.body.tipos_aplicaciones || null;
-            _this.servicios = response.body.servicios || null;
-            _this.dominios = response.body.dominios || null;
-            _this.aplicaciones = response.body.aplicaciones || null;
-            _this.datos_excel = response.body.aplicaciones || null;
+            _this.tags = response.body.tags || null;
+            _this.permisos = response.body.permisos || null;
+            _this.datos_excel = response.body.tags || null;
             _this.usuario_auth = response.body.usuario_auth || null;
             _this.limpiar_objeto_clase_local();
          }, function (response) {
@@ -3804,18 +3773,13 @@ var AplicacionController = new Vue({
          });
       },
 
-      editar: function editar(id_aplicacion) {
+      editar: function editar(id_tag) {
          this.lista_actualizar_activo = true;
-         this.id_en_edicion = id_aplicacion;
+         this.id_en_edicion = id_tag;
 
          //id_objeto + array de objetos + nombre del model en lower case
-         this.aplicacion = null;
-         this.aplicacion = this.buscar_en_array_por_modelo_e_id(id_aplicacion, this.aplicaciones, this.nombre_model);
-      },
-
-      prueba: function prueba(event) {
-
-         console.log(event);
+         this.tag = null;
+         this.tag = this.buscar_en_array_por_modelo_e_id(id_tag, this.tags, this.nombre_model);
       },
 
       guardar_editado: function guardar_editado() {
@@ -3823,11 +3787,11 @@ var AplicacionController = new Vue({
 
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-         this.$http.put('/' + this.nombre_ruta + '/' + this.aplicacion.id_aplicacion, this.aplicacion).then(function (response) {
+         this.$http.put('/' + this.nombre_ruta + '/' + this.tag.id_tag, this.tag).then(function (response) {
             // success callback
 
             if (response.status == 200) {
-               if (!_this2.es_null(response.body.aplicacion)) {
+               if (!_this2.es_null(response.body.tag)) {
                   _this2.lista_actualizar_activo = false;
                   _this2.id_en_edicion = null;
                }
@@ -3860,7 +3824,7 @@ var AplicacionController = new Vue({
          return;
       },
 
-      eliminar: function eliminar(id_aplicacion) {
+      eliminar: function eliminar(id_tag) {
          var _swal,
              _this3 = this;
 
@@ -3879,7 +3843,7 @@ var AplicacionController = new Vue({
                //Se adjunta el token
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-               _this3.$http.delete('/' + _this3.nombre_ruta + '/' + id_aplicacion).then(function (response) {
+               _this3.$http.delete('/' + _this3.nombre_ruta + '/' + id_tag).then(function (response) {
                   if (response.status == 200) {
                      _this3.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
                   } else {
@@ -3921,23 +3885,15 @@ var AplicacionController = new Vue({
          //Instancia nuevo form data
          var formData = new FormData();
          //Conforma objeto paramétrico para solicitud http
-
-         formData.append('nom_aplicacion', this.aplicacion.nom_aplicacion || null);
-         formData.append('det_aplicacion', this.aplicacion.det_aplicacion || null);
-         formData.append('alias', this.aplicacion.alias || null);
-         formData.append('url_web', this.aplicacion.url_web || null);
-         formData.append('ip', this.aplicacion.ip || null);
-         formData.append('subdominio', this.aplicacion.subdominio || null);
-         formData.append('ssl_tls', this.aplicacion.ssl_tls || null);
-         formData.append('id_dominio', this.aplicacion.id_dominio || null);
-         formData.append('id_servicio', this.aplicacion.id_servicio || null);
-         formData.append('id_tipo_aplicacion', this.aplicacion.id_tipo_aplicacion || null);
+         formData.append('nom_tag', this.tag.nom_tag || null);
+         formData.append('det_tag', this.tag.det_tag || null);
+         formData.append('meta_tag', this.tag.meta_tag || null);
 
          this.$http.post('/' + this.nombre_ruta, formData).then(function (response) {
             // success callback
 
             if (response.status == 200) {
-               if (!_this4.es_null(response.body.aplicacion)) {
+               if (!_this4.es_null(response.body.servicio)) {
                   _this4.id_en_edicion = null;
                }
                //this.inicializar();
@@ -3961,40 +3917,11 @@ var AplicacionController = new Vue({
       },
 
       ordenar_lista: function ordenar_lista(columna) {
-         this.aplicaciones = _.orderBy(this.aplicaciones, columna, this.orden_lista);
+         this.tags = _.orderBy(this.tags, columna, this.orden_lista);
       }
 
    }
 });
-
-/***/ }),
-
-/***/ 8:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "a",
-    {
-      attrs: { href: "#", id: _vm.id_name },
-      on: { click: _vm.generate_excel }
-    },
-    [_vm._t("default", [_vm._v("\n      Download Excel\n   ")])],
-    2
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-795cc6e8", module.exports)
-  }
-}
 
 /***/ })
 

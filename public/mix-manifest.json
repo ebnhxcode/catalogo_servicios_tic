@@ -5,6 +5,7 @@
     "/js/app.js": "/js/app.js",
     "/js/controllers/UsuarioController.js": "/js/controllers/UsuarioController.js",
     "/js/controllers/TipoAplicacionController.js": "/js/controllers/TipoAplicacionController.js",
+    "/js/controllers/TagController.js": "/js/controllers/TagController.js",
     "/js/controllers/SistemaOperativoController.js": "/js/controllers/SistemaOperativoController.js",
     "/js/controllers/ServidorController.js": "/js/controllers/ServidorController.js",
     "/js/controllers/ServicioController.js": "/js/controllers/ServicioController.js",

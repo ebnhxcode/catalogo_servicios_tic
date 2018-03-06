@@ -38,6 +38,7 @@ Route::resource('/dominios', 'DominioController');
 Route::resource('/servidores', 'ServidorController');
 Route::resource('/datacentros', 'DatacentroController');
 Route::resource('/sistemas_operativos', 'SistemaOperativoController');
+Route::resource('/tags', 'TagController');
 
 Route::get('/estandares', 'RoleController@estandares');
 

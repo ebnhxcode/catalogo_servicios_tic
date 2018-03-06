@@ -49,6 +49,7 @@ mix.js('resources/assets/js/controllers/DominioController.js','public/js/control
 mix.js('resources/assets/js/controllers/ServidorController.js','public/js/controllers/ServidorController.js');
 mix.js('resources/assets/js/controllers/DatacentroController.js','public/js/controllers/DatacentroController.js');
 mix.js('resources/assets/js/controllers/SistemaOperativoController.js','public/js/controllers/SistemaOperativoController.js');
+mix.js('resources/assets/js/controllers/TagController.js','public/js/controllers/TagController.js');
 
 mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');
