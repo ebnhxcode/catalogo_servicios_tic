@@ -3605,10 +3605,8 @@ var ServidorController = new Vue({
             'nom_servidor': null,
             'det_servidor': null,
             'ip_servidor': null,
-            'url_servidor': null,
             'id_datacentro': null,
             'id_sistema_operativo': null,
-            'id_dominio': null,
             'id_usuario_registra': null,
             'id_usuario_modifica': null,
             'created_at': null,
@@ -3616,13 +3614,11 @@ var ServidorController = new Vue({
             'deleted_at': null
          },
          'servidor_limpio': {
-            'nom_servidor': true,
+            'nom_servidor': null,
             'det_servidor': null,
             'ip_servidor': null,
-            'url_servidor': null,
             'id_datacentro': null,
             'id_sistema_operativo': null,
-            'id_dominio': null,
             'id_usuario_registra': null,
             'id_usuario_modifica': null,
             'created_at': null,
@@ -3655,10 +3651,8 @@ var ServidorController = new Vue({
             'nom_servidor': false,
             'det_servidor': true,
             'ip_servidor': true,
-            'url_servidor': false,
             'id_datacentro': false,
             'id_sistema_operativo': false,
-            'id_dominio': false,
 
             'id_usuario_registra': false,
             'id_usuario_modifica': false,
@@ -3673,10 +3667,8 @@ var ServidorController = new Vue({
             'nom_servidor': 'Nombre servidor',
             'det_servidor': 'Detalle servidor',
             'ip_servidor': 'Ip servidor',
-            'url_servidor': 'Url servidor',
             'id_datacentro': 'Id Datacrentro',
             'id_sistema_operativo': 'Id Sistema Operativo',
-            'id_dominio': 'Id Dominio',
 
             'id_usuario_registra': 'Usuario registra',
             'id_usuario_modifica': 'Usuario modifica',
@@ -3691,10 +3683,8 @@ var ServidorController = new Vue({
             'nom_servidor': 'String',
             'det_servidor': 'String',
             'ip_servidor': 'String',
-            'url_servidor': 'String',
             'id_datacentro': 'String',
             'id_sistema_operativo': 'String',
-            'id_dominio': 'String',
 
             'id_usuario_registra': 'String',
             'id_usuario_modifica': 'String',
@@ -3733,11 +3723,9 @@ var ServidorController = new Vue({
                'nom_servidor': servidor.nom_servidor || '-',
                'det_servidor': servidor.det_servidor || '-',
                'ip_servidor': servidor.ip_servidor || '-',
-               'url_servidor': servidor.url_servidor || '-',
 
                'id_datacentro': servidor.id_datacentro || '-',
                'id_sistema_operativo': servidor.id_sistema_operativo || '-',
-               'id_dominio': servidor.id_dominio || '-',
 
                'id_usuario_registra': servidor.id_usuario_registra || '-',
                'id_usuario_modifica': servidor.id_usuario_modifica || '-',
@@ -3781,10 +3769,8 @@ var ServidorController = new Vue({
             'nom_servidor': null,
             'det_servidor': null,
             'ip_servidor': null,
-            'url_servidor': null,
             'id_datacentro': null,
             'id_sistema_operativo': null,
-            'id_dominio': null,
             'id_usuario_registra': null,
             'id_usuario_modifica': null,
             'created_at': null,
@@ -3800,7 +3786,6 @@ var ServidorController = new Vue({
             // success callback
             _this.servidores = response.body.servidores || null;
             _this.datos_excel = response.body.servidores || null;
-            _this.dominios = response.body.dominios || null;
             _this.datacentros = response.body.datacentros || null;
             _this.sistemas_operativos = response.body.sistemas_operativos || null;
 
@@ -3927,12 +3912,10 @@ var ServidorController = new Vue({
 
          formData.append('nom_servidor', this.servidor.nom_servidor || null);
          formData.append('det_servidor', this.servidor.det_servidor || null);
-         formData.append('url_servidor', this.servidor.url_servidor || null);
          formData.append('ip_servidor', this.servidor.ip_servidor || null);
 
          formData.append('id_datacentro', this.servidor.id_datacentro || null);
          formData.append('id_sistema_operativo', this.servidor.id_sistema_operativo || null);
-         formData.append('id_dominio', this.servidor.id_dominio || null);
 
          this.$http.post('/' + this.nombre_ruta, formData).then(function (response) {
             // success callback

@@ -17,13 +17,10 @@ class Servidor extends Model {
       'nom_servidor',
       'det_servidor',
       'ip_servidor',
-      'url_servidor',
-
 
       #relaciones -> pks
       'id_datacentro',
       'id_sistema_operativo',
-      'id_dominio',
 
       'id_usuario_registra',
       'id_usuario_modifica',

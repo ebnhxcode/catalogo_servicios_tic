@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Servidor;
 use App\Datacentro;
-use App\Dominio;
 use App\SistemaOperativo;
 use Illuminate\Http\Request;
 use Auth;
@@ -22,7 +21,6 @@ class ServidorController extends Controller {
 
    private $servidores;
    private $datacentros;
-   private $dominios;
    private $sistemas_operativos;
    private $servidor;
    private $new_servidor;
@@ -59,13 +57,11 @@ class ServidorController extends Controller {
       $this->usuario_auth = Auth::user();
       $this->servidores = Servidor::all();
       $this->datacentros = Datacentro::all();
-      $this->dominios = Dominio::all();
       $this->sistemas_operativos = SistemaOperativo::all();
       return response()->json([
          'status' => 200,
          'servidores' => $this->servidores,
          'datacentros' => $this->datacentros,
-         'dominios' => $this->dominios,
          'sistemas_operativos' => $this->sistemas_operativos,
          'usuario_auth' => $this->usuario_auth,
       ]);
@@ -78,11 +74,9 @@ class ServidorController extends Controller {
          'nom_servidor' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
          'det_servidor' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
          'ip_servidor' => "ip|max:255",
-         'url_servidor' => "url|max:255",
 
          'id_datacentro' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
          'id_sistema_operativo' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
-         'id_dominio' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
       ]);
       #Se valida la respuesta con la salida de la validacion
       if ($this->validacion->fails() == true && !Auth::guest()) {
@@ -99,11 +93,9 @@ class ServidorController extends Controller {
          'nom_servidor' => $this->servidor['nom_servidor'],
          'det_servidor' => $this->servidor['det_servidor'],
          'ip_servidor' => $this->servidor['ip_servidor'],
-         'url_servidor' => $this->servidor['url_servidor'],
 
          'id_datacentro' => $this->servidor['id_datacentro'],
          'id_sistema_operativo' => $this->servidor['id_sistema_operativo'],
-         'id_dominio' => $this->servidor['id_dominio'],
 
          'id_usuario_registra' => Auth::user()->id_usuario,
          'id_usuario_modifica' => Auth::user()->id_usuario,
@@ -127,11 +119,9 @@ class ServidorController extends Controller {
          'nom_servidor' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
          'det_servidor' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
          'ip_servidor' => "ip|max:255",
-         'url_servidor' => "url|max:255",
 
          'id_datacentro' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
          'id_sistema_operativo' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
-         'id_dominio' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
       ]);
       #Valida si la informacion que se envia para editar al servidor son iguales los ids
       if ($id != $request["id_$this->nombre_modelo"]) {
