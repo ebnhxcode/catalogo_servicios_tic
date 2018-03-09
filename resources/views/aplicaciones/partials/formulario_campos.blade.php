@@ -1,6 +1,6 @@
-
+<h5>Datos básicos</h5>
 <div class="row">
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-3 col-md-3">
 
       <dt>Nombre aplicacion</dt>
       <dd>
@@ -22,6 +22,30 @@
       </dd>
 
    </div><!-- .col -->
+
+   <div class="col-sm-3 col-md-3">
+
+      <dt>Alias
+      <dd>
+         <p class="control has-icon has-icon-right">
+            <input type="text" v-model="aplicacion.alias" name="alias"
+                   v-validate="{required:true,regex:/^[a-zA-Z0-9_ ]+$/i}" data-vv-delay="500"
+                   class="form-control" />
+
+            <transition name="bounce">
+               <i v-show="errors.has('alias')" class="fa fa-exclamation-circle"></i>
+            </transition>
+
+            <transition name="bounce">
+               <span v-show="errors.has('alias')" class="text-danger small">
+                  @{{ errors.first('alias') }}
+               </span>
+            </transition>
+         </p>
+      </dd>
+
+   </div><!-- .col -->
+
    <div class="col-sm-6 col-md-6">
 
       <dt>Detalle aplicacion</dt>
@@ -45,29 +69,14 @@
       </dd>
 
    </div><!-- .col -->
-   <div class="col-sm-6 col-md-6">
 
-      <dt>Alias
-      <dd>
-         <p class="control has-icon has-icon-right">
-            <input type="text" v-model="aplicacion.alias" name="alias"
-                   v-validate="{required:true,regex:/^[a-zA-Z0-9_ ]+$/i}" data-vv-delay="500"
-                   class="form-control" />
+</div><!-- .row -->
 
-            <transition name="bounce">
-               <i v-show="errors.has('alias')" class="fa fa-exclamation-circle"></i>
-            </transition>
 
-            <transition name="bounce">
-               <span v-show="errors.has('alias')" class="text-danger small">
-                  @{{ errors.first('alias') }}
-               </span>
-            </transition>
-         </p>
-      </dd>
+<h5>Datos de red</h5>
+<div class="row">
 
-   </div><!-- .col -->
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-3 col-md-3">
 
       <dt>Url de la aplicacion</dt>
       <dd>
@@ -90,29 +99,8 @@
       </dd>
 
    </div><!-- .col -->
-   <div class="col-sm-6 col-md-6">
 
-      <dt>Ip de la aplicacion</dt>
-      <dd>
-         <p class="control has-icon has-icon-right">
-            <input type="text" v-model="aplicacion.ip" name="ip"
-                   v-validate="{required:true,ip:true}" data-vv-delay="500"
-                   class="form-control" />
-
-            <transition name="bounce">
-               <i v-show="errors.has('ip')" class="fa fa-exclamation-circle"></i>
-            </transition>
-
-            <transition name="bounce">
-               <span v-show="errors.has('ip')" class="text-danger small">
-                  @{{ errors.first('ip') }}
-               </span>
-            </transition>
-         </p>
-      </dd>
-
-   </div><!-- .col -->
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-3 col-md-3">
 
       <dt>Dominio</dt>
       <dd>
@@ -137,7 +125,7 @@
       </dd>
 
    </div><!-- .col -->
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-3 col-md-3">
 
       <dt>Subdominio</dt>
       <dd>
@@ -160,7 +148,29 @@
       </dd>
 
    </div><!-- .col -->
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-3 col-md-3">
+
+      <dt>Ip de la aplicacion</dt>
+      <dd>
+         <p class="control has-icon has-icon-right">
+            <input type="text" v-model="aplicacion.ip" name="ip"
+                   v-validate="{required:true,ip:true}" data-vv-delay="500"
+                   class="form-control" />
+
+            <transition name="bounce">
+               <i v-show="errors.has('ip')" class="fa fa-exclamation-circle"></i>
+            </transition>
+
+            <transition name="bounce">
+               <span v-show="errors.has('ip')" class="text-danger small">
+                  @{{ errors.first('ip') }}
+               </span>
+            </transition>
+         </p>
+      </dd>
+
+   </div><!-- .col -->
+   <div class="col-sm-3 col-md-3">
 
       <dt>SSL/TLS</dt>
       <dd>
@@ -204,6 +214,12 @@
       </dd>
 
    </div><!-- .col -->
+</div><!-- .row -->
+
+
+<h5>Datos de asociación</h5>
+<div class="row">
+
    <div class="col-sm-6 col-md-6">
 
       <dt>Servicio</dt>
