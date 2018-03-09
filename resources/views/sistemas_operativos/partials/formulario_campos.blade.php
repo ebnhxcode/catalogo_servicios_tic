@@ -1,7 +1,8 @@
 
+<h5>Datos básicos descriptivos</h5>
 <div class="row">
 
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-2 col-md-2">
 
       <dt>Arquitectura</dt>
       <dd>
@@ -32,7 +33,7 @@
 
 
 
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-5 col-md-5">
 
       <dt>Nombre sistema operativo</dt>
       <dd>
@@ -55,7 +56,7 @@
 
 
    </div><!-- .col -->
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-5 col-md-5">
 
       <dt>Detalle sistema operativo</dt>
       <dd>
@@ -79,9 +80,13 @@
 
    </div><!-- .col -->
 
+</div><!-- .row -->
 
 
-   <div class="col-sm-6 col-md-6">
+<h5>Versiones, licencia y detalles</h5>
+<div class="row">
+
+   <div class="col-sm-4 col-md-4">
 
       <dt>Versión sistema operativo</dt>
       <dd>
@@ -105,7 +110,7 @@
 
    </div><!-- .col -->
 
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-4 col-md-4">
 
       <dt>Licencia sistema operativo</dt>
       <dd>
@@ -132,7 +137,7 @@
 
    </div><!-- .col -->
 
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-4 col-md-4">
 
       <dt>Detalle licencia</dt>
       <dd>
