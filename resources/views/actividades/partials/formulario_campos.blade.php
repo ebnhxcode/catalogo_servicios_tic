@@ -1,5 +1,4 @@
-
-
+<h5>Datos básicos</h5>
 <div class="row">
    <div class="col-sm-6 col-md-6">
 
