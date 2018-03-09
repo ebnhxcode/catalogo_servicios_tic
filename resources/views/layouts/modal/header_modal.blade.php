@@ -3,7 +3,7 @@
        @before-close="before_close"
        :reset="true"
        width="90%"
-       :min-width="550"
+       :min-width="320"
        :height="'auto'"
        :min-height="600"
        :adaptive="true"
