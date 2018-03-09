@@ -1,7 +1,7 @@
 
-
+<h5>Datos básicos</h5>
 <div class="row">
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-4 col-md-4">
 
       <dt>Nombre</dt>
       <dd>
@@ -24,36 +24,8 @@
 
    </div><!-- .col -->
 
-   {{--
 
-   <!-- Lo vamos a dejar comentado porque se activara cuando el perfilamiento esté activo -->
-   <div class="col-sm-6 col-md-6">
-
-      <dt>Nombre Completo</dt>
-      <dd>
-         <p class="control has-icon has-icon-right">
-            <input type="text" v-model="usuario.nom_completo" name="nom_completo"
-                   v-validate="{regex:/^[a-zA-Z0-9_ ]+$/i}" data-vv-delay="500"
-                   class="form-control" />
-
-            <transition name="bounce">
-               <i v-show="errors.has('nom_completo')" class="fa fa-exclamation-circle"></i>
-            </transition>
-
-            <transition name="bounce">
-               <span v-show="errors.has('nom_completo')" class="text-danger small">
-                  @{{ errors.first('nom_completo') }}
-               </span>
-            </transition>
-         </p>
-      </dd>
-
-   </div>
-
-   --}}
-
-
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-4 col-md-4">
 
       <dt>Apellido Paterno</dt>
       <dd>
@@ -75,7 +47,7 @@
       </dd>
 
    </div><!-- .col -->
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-4 col-md-4">
 
       <dt>Apellido Materno</dt>
       <dd>
@@ -97,7 +69,40 @@
       </dd>
 
    </div><!-- .col -->
-   <div class="col-sm-6 col-md-6">
+
+
+</div><!-- .row -->
+
+
+<h5>Datos opcionales</h5>
+<div class="row">
+
+
+   <!-- Lo vamos a dejar comentado porque se activara cuando el perfilamiento esté activo -->
+   <div class="col-sm-8 col-md-8">
+
+      <dt>Nombre Completo</dt>
+      <dd>
+         <p class="control has-icon has-icon-right">
+            <input type="text" v-model="usuario.nom_completo" name="nom_completo"
+                   v-validate="{regex:/^[a-zA-Z0-9_ ]+$/i}" data-vv-delay="500"
+                   class="form-control" placeholder="(opcional)" />
+
+            <transition name="bounce">
+               <i v-show="errors.has('nom_completo')" class="fa fa-exclamation-circle"></i>
+            </transition>
+
+            <transition name="bounce">
+               <span v-show="errors.has('nom_completo')" class="text-danger small">
+                  @{{ errors.first('nom_completo') }}
+               </span>
+            </transition>
+         </p>
+      </dd>
+
+   </div>
+
+   <div class="col-sm-4 col-md-4">
 
       <dt>Alias</dt>
       <dd>
@@ -119,6 +124,12 @@
       </dd>
 
    </div><!-- .col -->
+
+</div><!-- .row -->
+
+
+<h5>Email y Password</h5>
+<div class="row">
    <div class="col-sm-6 col-md-6">
 
       <dt>Email</dt>
@@ -141,6 +152,7 @@
       </dd>
 
    </div><!-- .col -->
+
    <div class="col-sm-6 col-md-6">
 
       <dt>Password</dt>
