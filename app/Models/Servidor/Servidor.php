@@ -18,6 +18,14 @@ class Servidor extends Model {
       'det_servidor',
       'ip_servidor',
 
+      'ram',
+      'memoria_dd',
+      'swap',
+      'procesador',
+      'frec_procesador',
+      'nucleos',
+      'usuarios_pactados',
+
       #relaciones -> pks
       'id_datacentro',
       'id_sistema_operativo',

@@ -3605,6 +3605,13 @@ var ServidorController = new Vue({
             'nom_servidor': null,
             'det_servidor': null,
             'ip_servidor': null,
+            'ram': null,
+            'memoria_dd': null,
+            'swap': null,
+            'procesador': null,
+            'frec_procesador': null,
+            'nucleos': null,
+            'usuarios_pactados': null,
             'id_datacentro': null,
             'id_sistema_operativo': null,
             'id_usuario_registra': null,
@@ -3617,6 +3624,13 @@ var ServidorController = new Vue({
             'nom_servidor': null,
             'det_servidor': null,
             'ip_servidor': null,
+            'ram': null,
+            'memoria_dd': null,
+            'swap': null,
+            'procesador': null,
+            'frec_procesador': null,
+            'nucleos': null,
+            'usuarios_pactados': null,
             'id_datacentro': null,
             'id_sistema_operativo': null,
             'id_usuario_registra': null,
@@ -3651,6 +3665,13 @@ var ServidorController = new Vue({
             'nom_servidor': false,
             'det_servidor': true,
             'ip_servidor': true,
+            'ram': false,
+            'memoria_dd': false,
+            'swap': false,
+            'procesador': false,
+            'frec_procesador': false,
+            'nucleos': false,
+            'usuarios_pactados': false,
             'id_datacentro': false,
             'id_sistema_operativo': false,
 
@@ -3667,6 +3688,14 @@ var ServidorController = new Vue({
             'nom_servidor': 'Nombre servidor',
             'det_servidor': 'Detalle servidor',
             'ip_servidor': 'Ip servidor',
+            'ram': 'Ram',
+            'memoria_dd': 'Memoria Disco',
+            'swap': 'Swap',
+            'procesador': 'Procesador',
+            'frec_procesador': 'Frec. Procesador',
+            'nucleos': 'Nucleos',
+            'usuarios_pactados': 'Usuarios pactados',
+
             'id_datacentro': 'Id Datacrentro',
             'id_sistema_operativo': 'Id Sistema Operativo',
 
@@ -3683,6 +3712,13 @@ var ServidorController = new Vue({
             'nom_servidor': 'String',
             'det_servidor': 'String',
             'ip_servidor': 'String',
+            'ram': 'String',
+            'memoria_dd': 'String',
+            'swap': 'String',
+            'procesador': 'String',
+            'frec_procesador': 'String',
+            'nucleos': 'String',
+            'usuarios_pactados': 'String',
             'id_datacentro': 'String',
             'id_sistema_operativo': 'String',
 
@@ -3723,6 +3759,13 @@ var ServidorController = new Vue({
                'nom_servidor': servidor.nom_servidor || '-',
                'det_servidor': servidor.det_servidor || '-',
                'ip_servidor': servidor.ip_servidor || '-',
+               'ram': servidor.ram || '-',
+               'memoria_dd': servidor.memoria_dd || '-',
+               'swap': servidor.swap || '-',
+               'procesador': servidor.procesador || '-',
+               'frec_procesador': servidor.frec_procesador || '-',
+               'nucleos': servidor.nucleos || '-',
+               'usuarios_pactados': servidor.usuarios_pactados || '-',
 
                'id_datacentro': servidor.id_datacentro || '-',
                'id_sistema_operativo': servidor.id_sistema_operativo || '-',
@@ -3769,6 +3812,13 @@ var ServidorController = new Vue({
             'nom_servidor': null,
             'det_servidor': null,
             'ip_servidor': null,
+            'ram': null,
+            'memoria_dd': null,
+            'swap': null,
+            'procesador': null,
+            'frec_procesador': null,
+            'nucleos': null,
+            'usuarios_pactados': null,
             'id_datacentro': null,
             'id_sistema_operativo': null,
             'id_usuario_registra': null,
@@ -3913,6 +3963,13 @@ var ServidorController = new Vue({
          formData.append('nom_servidor', this.servidor.nom_servidor || null);
          formData.append('det_servidor', this.servidor.det_servidor || null);
          formData.append('ip_servidor', this.servidor.ip_servidor || null);
+         formData.append('ram', this.servidor.ram || null);
+         formData.append('memoria_dd', this.servidor.memoria_dd || null);
+         formData.append('swap', this.servidor.swap || null);
+         formData.append('procesador', this.servidor.procesador || null);
+         formData.append('frec_procesador', this.servidor.frec_procesador || null);
+         formData.append('nucleos', this.servidor.nucleos || null);
+         formData.append('usuarios_pactados', this.servidor.usuarios_pactados || null);
 
          formData.append('id_datacentro', this.servidor.id_datacentro || null);
          formData.append('id_sistema_operativo', this.servidor.id_sistema_operativo || null);

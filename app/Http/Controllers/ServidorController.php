@@ -75,6 +75,14 @@ class ServidorController extends Controller {
          'det_servidor' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
          'ip_servidor' => "ip|max:255",
 
+         'ram' => "nullable|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'memoria_dd' => "nullable|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'swap' => "nullable|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'procesador' => "nullable|regex:/(^([a-zA-Z]+)(\d+)?$)/u|max:255",
+         'frec_procesador' => "nullable|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'nucleos' => "nullable|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'usuarios_pactados' => "nullable|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+
          'id_datacentro' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
          'id_sistema_operativo' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
       ]);
@@ -93,6 +101,14 @@ class ServidorController extends Controller {
          'nom_servidor' => $this->servidor['nom_servidor'],
          'det_servidor' => $this->servidor['det_servidor'],
          'ip_servidor' => $this->servidor['ip_servidor'],
+
+         'ram' => $this->servidor['ram'],
+         'memoria_dd' => $this->servidor['memoria_dd'],
+         'swap' => $this->servidor['swap'],
+         'procesador' => $this->servidor['procesador'],
+         'frec_procesador' => $this->servidor['frec_procesador'],
+         'nucleos' => $this->servidor['nucleos'],
+         'usuarios_pactados' => $this->servidor['usuarios_pactados'],
 
          'id_datacentro' => $this->servidor['id_datacentro'],
          'id_sistema_operativo' => $this->servidor['id_sistema_operativo'],
@@ -119,6 +135,14 @@ class ServidorController extends Controller {
          'nom_servidor' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
          'det_servidor' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
          'ip_servidor' => "ip|max:255",
+
+         'ram' => "nullable|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'memoria_dd' => "nullable|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'swap' => "nullable|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'procesador' => "nullable|regex:/(^([a-zA-Z]+)(\d+)?$)/u|max:255",
+         'frec_procesador' => "nullable|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'nucleos' => "nullable|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'usuarios_pactados' => "nullable|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
 
          'id_datacentro' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
          'id_sistema_operativo' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
