@@ -169,6 +169,8 @@ const ServidorController = new Vue({
             this.limpiar_objeto_clase_local();
          } else {
             this.servidor = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.servidores,this.nombre_model);
+            //Aca se hizo el cambio de buscar el registro completo en la base de datos con la relacion a traves del metodo show
+            this.servidor = this.mostrar(id_en_edicion, this.nombre_tabla, this.nombre_model);
          }
       },
       //servidores se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
@@ -230,6 +232,17 @@ const ServidorController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
+
+      mostrar: function (id, tabla, modelo) {
+
+         this.$http.get(`/${tabla}/${id}`).then(response => { // success callback
+            return response.body[modelo];
+
+         }, response => { // error callback
+            this.checkear_estado_respuesta_http(response.status);
+         });
+
+      },
 
       limpiar_objeto_clase_local: function () {
          this.servidor = {

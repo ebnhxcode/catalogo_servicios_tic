@@ -67,6 +67,12 @@ class ServidorController extends Controller {
       ]);
    }
 
+   public function show (Request $request, $id) {
+
+
+
+   }
+
 
    public function store(Request $request) {
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario

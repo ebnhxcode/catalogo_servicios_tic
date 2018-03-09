@@ -22,7 +22,7 @@
             </button>
         </div>
 
-        <h2>@{{ (modal_crear_activo === true) ? 'Crear' : 'Actualizar'}} {{str_replace('_',' ',$nombre_modelo)}}</h2>
+        <h2>@{{ (modal_crear_activo === true) ? 'Crear' : 'Visualizar o Actualizar'}} {{str_replace('_',' ',$nombre_modelo)}}</h2>
         <!--hr-->
         <br>
         <dl class="dl-vertical" style="{{--overflow-y: scroll;max-height: auto;padding-bottom: 50px;--}}">

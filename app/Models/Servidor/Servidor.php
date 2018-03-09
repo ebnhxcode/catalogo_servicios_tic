@@ -42,4 +42,15 @@ class Servidor extends Model {
    public function usuario_modifica() {
       return $this->belongsTo('App\User', 'id_usuario_modifica');
    }
+
+
+
+   public function datacentro () {
+      return $this->belongsTo(Datacentro::class, 'id_datacentro');
+   }
+
+   public function sistema_operativo () {
+      return $this->belongsTo(SistemaOperativo::class, 'id_sistema_operativo');
+   }
+
 }
