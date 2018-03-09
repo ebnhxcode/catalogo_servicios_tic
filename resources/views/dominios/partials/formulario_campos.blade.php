@@ -1,4 +1,4 @@
-
+<h5>Datos básicos</h5>
 <div class="row">
    <div class="col-sm-6 col-md-6">
 
@@ -46,7 +46,12 @@
       </dd>
 
    </div><!-- .col -->
-   <div class="col-sm-6 col-md-6">
+</div><!-- .row -->
+
+
+<h5>Información de direcciones de red</h5>
+<div class="row">
+   <div class="col-sm-4 col-md-4">
 
       <dt>Ip pública</dt>
       <dd>
@@ -69,7 +74,7 @@
 
    </div><!-- .col -->
 
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-4 col-md-4">
 
       <dt>Ip balanceador</dt>
       <dd>
@@ -92,7 +97,7 @@
 
    </div><!-- .col -->
 
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-4 col-md-4">
 
       <dt>DNS Asociado</dt>
       <dd>
