@@ -9,7 +9,7 @@
        :adaptive="true"
        :resizable="true"
        :scrollable="true"
-       :draggable="true">
+       {{--:draggable="true"--}}>
 <!-- END HEADER -->
 
 
