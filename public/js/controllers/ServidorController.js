@@ -3649,9 +3649,10 @@ var ServidorController = new Vue({
          'campos_formularios': [],
          'errores_campos': [],
 
-         //Variables para validar si se está creando o editando
+         //Variables para validar si se está creando o editando, variables del modal
          'modal_crear_activo': false,
          'modal_actualizar_activo': false,
+         'modal_width': 90,
 
          //Estas var se deben conservar para todos los controllers por que se ejecutan para el modal crear (blanquea)
          'lista_actualizar_activo': false,
@@ -3745,7 +3746,13 @@ var ServidorController = new Vue({
          if (_id_en_edicion == null) {
             this.limpiar_objeto_clase_local();
          } else {
-            this.servidor = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.servidores, this.nombre_model);
+            //this.servidor = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.servidores,this.nombre_model);
+            //Aca se hizo el cambio de buscar el registro completo en la base de datos con la relacion a traves del metodo show
+            //this.servidor = {};
+            this.servidor = this.mostrar(_id_en_edicion, this.nombre_tabla, this.nombre_model);
+            //this.mostrar(id_en_edicion, this.nombre_tabla, this.nombre_model);
+            //console.log(this.mostrar(id_en_edicion, this.nombre_tabla, this.nombre_model));
+            //console.log(this.servidor);
          }
       },
       //servidores se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
@@ -3807,6 +3814,20 @@ var ServidorController = new Vue({
    mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
    methods: {
 
+      mostrar: function mostrar(id, tabla, modelo) {
+         var _this = this;
+
+         this.$http.get('/' + tabla + '/' + id).then(function (response) {
+            // success callback
+            //console.log(response.body[modelo][0]);
+            console.log(response.body[modelo]);
+            return response.body[modelo];
+         }, function (response) {
+            // error callback
+            _this.checkear_estado_respuesta_http(response.status);
+         });
+      },
+
       limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
          this.servidor = {
             'nom_servidor': null,
@@ -3830,20 +3851,20 @@ var ServidorController = new Vue({
       },
 
       inicializar: function inicializar() {
-         var _this = this;
+         var _this2 = this;
 
          this.$http.get('/servidores').then(function (response) {
             // success callback
-            _this.servidores = response.body.servidores || null;
-            _this.datos_excel = response.body.servidores || null;
-            _this.datacentros = response.body.datacentros || null;
-            _this.sistemas_operativos = response.body.sistemas_operativos || null;
+            _this2.servidores = response.body.servidores || null;
+            _this2.datos_excel = response.body.servidores || null;
+            _this2.datacentros = response.body.datacentros || null;
+            _this2.sistemas_operativos = response.body.sistemas_operativos || null;
 
-            _this.usuario_auth = response.body.usuario_auth || null;
-            _this.limpiar_objeto_clase_local();
+            _this2.usuario_auth = response.body.usuario_auth || null;
+            _this2.limpiar_objeto_clase_local();
          }, function (response) {
             // error callback
-            _this.checkear_estado_respuesta_http(response.status);
+            _this2.checkear_estado_respuesta_http(response.status);
          });
       },
 
@@ -3857,7 +3878,7 @@ var ServidorController = new Vue({
       },
 
       guardar_editado: function guardar_editado() {
-         var _this2 = this;
+         var _this3 = this;
 
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
@@ -3865,34 +3886,34 @@ var ServidorController = new Vue({
             // success callback
 
             if (response.status == 200) {
-               if (!_this2.es_null(response.body.servidor)) {
-                  _this2.lista_actualizar_activo = false;
-                  _this2.id_en_edicion = null;
+               if (!_this3.es_null(response.body.servidor)) {
+                  _this3.lista_actualizar_activo = false;
+                  _this3.id_en_edicion = null;
                }
             } else {
-               _this2.checkear_estado_respuesta_http(response.status);
+               _this3.checkear_estado_respuesta_http(response.status);
                return false;
             }
 
-            if (_this2.mostrar_notificaciones(response) == true) {
+            if (_this3.mostrar_notificaciones(response) == true) {
 
                //Aqui que pregunte si el modal está activo para que lo cierre
-               if (_this2.modal_actualizar_activo == true) {
-                  _this2.ocultar_modal('actualizar');
-                  _this2.modal_actualizar_activo = false;
+               if (_this3.modal_actualizar_activo == true) {
+                  _this3.ocultar_modal('actualizar');
+                  _this3.modal_actualizar_activo = false;
                }
 
-               _this2.lista_actualizar_activo = false;
-               _this2.id_en_edicion = null;
+               _this3.lista_actualizar_activo = false;
+               _this3.id_en_edicion = null;
 
                //Recargar la lista
-               _this2.inicializar();
+               _this3.inicializar();
             } else {
-               _this2.dejar_de_editar_contador++;
+               _this3.dejar_de_editar_contador++;
             }
          }, function (response) {
             // error callback
-            _this2.checkear_estado_respuesta_http(response.status);
+            _this3.checkear_estado_respuesta_http(response.status);
          });
 
          return;
@@ -3900,7 +3921,7 @@ var ServidorController = new Vue({
 
       eliminar: function eliminar(id_servidor) {
          var _swal,
-             _this3 = this;
+             _this4 = this;
 
          __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()((_swal = {
             title: "¿Estás seguro/a?",
@@ -3917,38 +3938,38 @@ var ServidorController = new Vue({
                //Se adjunta el token
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-               _this3.$http.delete('/' + _this3.nombre_ruta + '/' + id_servidor).then(function (response) {
+               _this4.$http.delete('/' + _this4.nombre_ruta + '/' + id_servidor).then(function (response) {
                   if (response.status == 200) {
-                     _this3.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
+                     _this4.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
                   } else {
-                     _this3.checkear_estado_respuesta_http(response.status);
+                     _this4.checkear_estado_respuesta_http(response.status);
                      return false;
                   }
 
-                  if (_this3.mostrar_notificaciones(response) == true) {
+                  if (_this4.mostrar_notificaciones(response) == true) {
                      //Aqui que pregunte si el modal está activo para que lo cierre
-                     if (_this3.modal_actualizar_activo == true) {
-                        _this3.ocultar_modal('actualizar');
-                        _this3.modal_actualizar_activo = false;
+                     if (_this4.modal_actualizar_activo == true) {
+                        _this4.ocultar_modal('actualizar');
+                        _this4.modal_actualizar_activo = false;
                      }
-                     _this3.lista_actualizar_activo = false;
-                     _this3.id_en_edicion = null;
+                     _this4.lista_actualizar_activo = false;
+                     _this4.id_en_edicion = null;
 
                      //Recargar la lista
-                     _this3.inicializar();
+                     _this4.inicializar();
                   }
                }, function (response) {
                   // error callback
-                  _this3.checkear_estado_respuesta_http(response.status);
+                  _this4.checkear_estado_respuesta_http(response.status);
                });
             } else if (result.dismiss === __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default.a.DismissReason.cancel) {
-               _this3.auto_alerta_corta("Cancelado", "Se ha cancelado la eliminación", "success");
+               _this4.auto_alerta_corta("Cancelado", "Se ha cancelado la eliminación", "success");
             }
          });
       },
 
       guardar: function guardar() {
-         var _this4 = this;
+         var _this5 = this;
 
          //Ejecuta validacion sobre los campos con validaciones
          if (this.validar_campos() == false) {
@@ -3978,24 +3999,24 @@ var ServidorController = new Vue({
             // success callback
 
             if (response.status == 200) {
-               if (!_this4.es_null(response.body.servidor)) {
-                  _this4.id_en_edicion = null;
+               if (!_this5.es_null(response.body.servidor)) {
+                  _this5.id_en_edicion = null;
                }
                //this.inicializar();
             } else {
-               _this4.checkear_estado_respuesta_http(response.status);
+               _this5.checkear_estado_respuesta_http(response.status);
                return false;
             }
 
-            if (_this4.mostrar_notificaciones(response) == true) {
-               _this4.ocultar_modal('crear');
-               _this4.inicializar();
+            if (_this5.mostrar_notificaciones(response) == true) {
+               _this5.ocultar_modal('crear');
+               _this5.inicializar();
 
                return;
             }
          }, function (response) {
             // error callback
-            _this4.checkear_estado_respuesta_http(response.status);
+            _this5.checkear_estado_respuesta_http(response.status);
          });
 
          return;

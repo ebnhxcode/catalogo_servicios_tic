@@ -53,4 +53,8 @@ class Servidor extends Model {
       return $this->belongsTo(SistemaOperativo::class, 'id_sistema_operativo');
    }
 
+   public function aplicaciones () {
+      return $this->hasMany(Aplicacion::class, 'id_aplicacion');
+   }
+
 }

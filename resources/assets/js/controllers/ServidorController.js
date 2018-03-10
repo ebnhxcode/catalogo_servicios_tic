@@ -73,9 +73,10 @@ const ServidorController = new Vue({
          'campos_formularios':[],
          'errores_campos':[],
 
-         //Variables para validar si se está creando o editando
+         //Variables para validar si se está creando o editando, variables del modal
          'modal_crear_activo': false,
          'modal_actualizar_activo': false,
+         'modal_width': 90,
 
          //Estas var se deben conservar para todos los controllers por que se ejecutan para el modal crear (blanquea)
          'lista_actualizar_activo':false,
@@ -168,9 +169,13 @@ const ServidorController = new Vue({
          if (id_en_edicion == null) {
             this.limpiar_objeto_clase_local();
          } else {
-            this.servidor = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.servidores,this.nombre_model);
+            //this.servidor = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.servidores,this.nombre_model);
             //Aca se hizo el cambio de buscar el registro completo en la base de datos con la relacion a traves del metodo show
+            //this.servidor = {};
             this.servidor = this.mostrar(id_en_edicion, this.nombre_tabla, this.nombre_model);
+            //this.mostrar(id_en_edicion, this.nombre_tabla, this.nombre_model);
+            //console.log(this.mostrar(id_en_edicion, this.nombre_tabla, this.nombre_model));
+            //console.log(this.servidor);
          }
       },
       //servidores se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
@@ -234,8 +239,9 @@ const ServidorController = new Vue({
    methods: {
 
       mostrar: function (id, tabla, modelo) {
-
          this.$http.get(`/${tabla}/${id}`).then(response => { // success callback
+            //console.log(response.body[modelo][0]);
+            console.log(response.body[modelo]);
             return response.body[modelo];
 
          }, response => { // error callback

@@ -32,23 +32,27 @@ class Aplicacion extends Model {
    ];
 
    public function dominio() {
-      return $this->belongsTo('App\Dominio', 'id_dominio');
+      return $this->belongsTo(Dominio::class, 'id_dominio');
    }
 
    public function servicio() {
-      return $this->belongsTo('App\Servicio', 'id_servicio');
+      return $this->belongsTo(Servicio::class, 'id_servicio');
+   }
+
+   public function servidor () {
+      return $this->belongsTo(Servidor::class, 'id_servidor');
    }
 
    public function tipo_aplicacion() {
-      return $this->belongsTo('App\Servicio', 'id_tipo_aplicacion');
+      return $this->belongsTo(TipoAplicacion::class, 'id_tipo_aplicacion');
    }
 
    public function usuario_registra() {
-      return $this->belongsTo('App\User', 'id_usuario_registra');
+      return $this->belongsTo(User::class, 'id_usuario_registra');
    }
 
    public function usuario_modifica() {
-      return $this->belongsTo('App\User', 'id_usuario_modifica');
+      return $this->belongsTo(User::class, 'id_usuario_modifica');
    }
 
 
