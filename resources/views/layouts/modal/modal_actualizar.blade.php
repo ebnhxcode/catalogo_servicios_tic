@@ -54,8 +54,8 @@
 
                   @{{ `${tabla_labels['swap']}`}}
                   <span class="text-success float-right">
-                     @{{`${servidor.swap || 0}`.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}}
-                  </span> mb <br>
+                     @{{`${servidor.swap || 0}`.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}} mb
+                  </span> <br>
 
                   @{{ `${tabla_labels['procesador']}`}}
                   <span class="text-success float-right">
