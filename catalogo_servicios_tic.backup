@@ -971,16 +971,24 @@ CREATE TABLE public.servidores (
     id_servidor integer DEFAULT nextval('public.servidor_aplicaciones_id_seq'::regclass) NOT NULL,
     id_datacentro integer,
     id_sistema_operativo integer,
-    id_dominio integer,
     nom_servidor text,
     ip_servidor text,
-    url_servidor text,
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     deleted_at timestamp without time zone,
-    det_servidor text
+    det_servidor text,
+    ram integer,
+    memoria_dd integer,
+    swap integer,
+    procesador text,
+    frec_procesador integer,
+    nucleos integer,
+    usuarios_pactados integer,
+    mac text,
+    nodo text,
+    interface text
 );
 
 
@@ -1421,6 +1429,7 @@ COPY public.aplicaciones (id_aplicacion, id_tipo_aplicacion, id_servicio, id_dom
 3	4	2	1	sdfsadfsa	fsdfsadf	safasdfsadf	http://ww.ww.ww	3.3.3.3	eweq	1	4	4	2018-03-02 20:37:15	2018-03-02 20:37:34	2018-03-02 20:37:34
 2	1	1	1	fsfsadfsadf	sdfsadfsad	fsdafsd	http://weq.qweqw.qwe	1.1.1.1	fsdf	true	4	4	2018-03-02 15:12:17	2018-03-02 20:37:37	2018-03-02 20:37:37
 4	3	2	1	Aplicacion wanderful	la aplicacion bla bla	dfjaskfh adfh	http://rqr.fadfa.cl	3.3.3.3	eweq	false	4	4	2018-03-03 17:12:09	2018-03-03 17:12:26	\N
+5	1	7	1	Soap	Servicio soap sigte	soap_sigte	http://soapsigte.minsal.cl	1.1.1.1	soapsigte.minsal.cl	false	4	4	2018-03-07 13:54:13	2018-03-07 13:54:18	\N
 \.
 
 
@@ -2184,7 +2193,7 @@ COPY public.permisos (id_permiso, nom_permiso, det_permiso, cod_permiso, id_usua
 17	D	D representa delete, tiene permisos nivel 4 y puede visualizar, crear, editar y hasta eliminar.	4	\N	4	2018-02-20 21:42:31	2018-02-28 23:06:53	\N
 14	C	C representa create, tiene permisos nivel 2 y puede crear y visualizar.	2	\N	4	2018-02-20 21:41:09	2018-02-28 23:09:03	\N
 16	U	U representa update, tiene permisos nivel 3 y puede visualizar, crear y editar.	3	\N	4	2018-02-20 21:42:05	2018-03-01 00:14:25	\N
-20	H	Triple combo kill	\N	4	4	2018-03-06 05:58:57	2018-03-06 05:58:57	\N
+20	H	Triple combo kill	\N	4	4	2018-03-06 05:58:57	2018-03-07 13:50:48	2018-03-07 13:50:48
 \.
 
 
@@ -2229,7 +2238,7 @@ COPY public.roles (id_role, nom_role, det_role, id_usuario_registra, id_usuario_
 62	role 1	role 1	\N	\N	2018-02-26 20:22:50	2018-03-06 05:55:47	\N
 63	role 2	role 2	\N	4	2018-02-26 20:22:57	2018-03-06 05:57:47	\N
 64	role 3	role 3	\N	4	2018-02-26 20:23:13	2018-03-06 05:57:52	\N
-68	sfdafsdf	sdfsdf	4	4	2018-03-06 07:05:15	2018-03-06 07:05:15	\N
+68	sfdafsdf	sdfsdf	4	4	2018-03-06 07:05:15	2018-03-07 13:51:02	2018-03-07 13:51:02
 \.
 
 
@@ -2295,7 +2304,7 @@ COPY public.roles_permisos (id_role_permiso, id_role, id_permiso, id_usuario_reg
 63	65	17	\N	\N	2018-02-27 19:29:06	2018-02-27 19:29:19	2018-02-27 19:29:19
 64	66	17	\N	\N	2018-02-28 23:44:07	2018-02-28 23:44:07	\N
 65	67	17	\N	\N	2018-03-06 05:51:18	2018-03-06 05:51:22	2018-03-06 05:51:22
-66	68	14	\N	\N	2018-03-06 07:05:15	2018-03-06 07:05:15	\N
+66	68	14	\N	\N	2018-03-06 07:05:15	2018-03-07 13:51:02	2018-03-07 13:51:02
 \.
 
 
@@ -2347,6 +2356,7 @@ COPY public.servicios (id_servicio, id_actividad, id_usuario, nom_servicio, det_
 5	7	4	eqweqwe	wqe	4	4	2018-03-06 06:39:50	2018-03-06 06:39:53	2018-03-06 06:39:53
 3	4	4	Sitios en Yii	Desarrollos que se han realizado en Yii Framework.	1	4	2018-02-27 19:04:06	2018-03-06 06:41:35	\N
 6	10	4	sdaf	fsadf	4	4	2018-03-06 06:41:42	2018-03-06 06:41:45	2018-03-06 06:41:45
+7	1	4	Sigte	Sistema de gestion de tiempos de espera	4	4	2018-03-07 13:52:04	2018-03-07 13:52:04	\N
 \.
 
 
@@ -2378,10 +2388,11 @@ COPY public.servicios_tags (id_servicio_tag, id_servicio, id_tag, id_usuario_reg
 -- Data for Name: servidores; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.servidores (id_servidor, id_datacentro, id_sistema_operativo, id_dominio, nom_servidor, ip_servidor, url_servidor, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, det_servidor) FROM stdin;
-3	\N	\N	\N	DEL	8.8.8.8	http://asd-asd.asd.asd	4	4	2018-03-05 21:28:32	2018-03-05 21:28:35	2018-03-05 21:28:35	DEL
-1	2	4	2	CVGT	8.8.8.8	http://qwe.qwe.qwe	4	4	2018-03-05 21:26:30	2018-03-06 04:47:04	\N	CVGT
-2	1	3	1	IP	8.8.8.8	http://www.www.www	4	4	2018-03-05 21:28:03	2018-03-06 04:47:21	\N	IP
+COPY public.servidores (id_servidor, id_datacentro, id_sistema_operativo, nom_servidor, ip_servidor, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, det_servidor, ram, memoria_dd, swap, procesador, frec_procesador, nucleos, usuarios_pactados, mac, nodo, interface) FROM stdin;
+3	\N	\N	DEL	8.8.8.8	4	4	2018-03-05 21:28:32	2018-03-05 21:28:35	2018-03-05 21:28:35	DEL	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+1	2	4	CVGT	8.8.8.8	4	4	2018-03-05 21:26:30	2018-03-11 17:47:14	\N	CVGT server detail	2048	30000	8000	intel	2400	2	3	\N	\N	\N
+2	1	3	IP	8.8.8.8	4	4	2018-03-05 21:28:03	2018-03-11 23:21:11	\N	IP	4234	2342	34	amd	234	234	342	1b:23:2a:e3:11:ab	\N	\N
+4	1	4	MNSOAPSIGTE	1.1.1.1	4	4	2018-03-07 13:57:52	2018-03-11 23:22:08	\N	Servidor sigte	1024	30000	8000	amd	2400	2	1	ab:13:1b:f5:2d:4a	\N	\N
 \.
 
 
@@ -2403,6 +2414,7 @@ COPY public.sistemas_operativos (id_sistema_operativo, arquitectura, nom_sistema
 1	x64	nombre	nombre	null	no	no tiene licencia	4	4	2018-03-06 03:51:20	2018-03-06 04:35:06	\N
 3	x86	Windows	Windows 10 Profesional	10	si	null	4	4	2018-03-06 04:30:40	2018-03-06 04:35:12	\N
 5	x64	dfasfd	sfafasd	fsf	no	sdaf	4	4	2018-03-06 06:46:36	2018-03-06 06:46:40	2018-03-06 06:46:40
+6	x86	Centos	Centos linux	7.4	si	saddsdas asdas asdasd as as	4	4	2018-03-09 04:34:23	2018-03-09 04:34:23	\N
 \.
 
 
@@ -2458,8 +2470,8 @@ COPY public.usuarios (id_usuario, nom_usuario, nom_completo, ape_paterno, ape_ma
 3	qweqwe	null	null	null	qwe	esteban.ramos@minsawqel.cl	$2y$10$/wzbajETfyaumw8bTd8GHu3Ml50hxxbjb2HYduh4Cm5SDnpM5aYWW	\N	\N	\N	2018-02-27 19:30:51	2018-02-27 19:32:25	2018-02-27 19:32:25
 2	edsaf	null	null	null	aasdasd	esteban.ramos@minsaasdl.cl	$2y$10$EMV5tnLbwP5gAhTXjmVVu.rsn8bkQ9dIt9iay1e6Vj7AenetPnqsy	\N	\N	\N	2018-02-27 13:25:49	2018-02-27 19:32:28	2018-02-27 19:32:28
 1	Esteban	\N	\N	\N	\N	esteban.ramos@minsal.cl	$2y$10$56R..xvCC1igB5V0842UI.f2B5V2p7lopByoVEjig0R2BSgRosuEu	Qya1IjuaQ6Wjz3Q4OwKsoYqFHSEFqwu6wFNh1hdyj7UdVI4oUqVOX5rKDiy6	\N	\N	2018-02-19 18:08:14	2018-02-27 23:36:15	2018-02-27 23:36:15
-4	Esteban	\N	\N	\N	fsdsf	esteban.ramos.f@gmail.com	$2y$10$9GLVRd8r7SWSrb5LKDvUbuotkQjtoZOilUtpcmnOdzZiCIzUYMj4e	\N	\N	\N	2018-02-27 23:36:43	2018-03-06 06:24:06	\N
 5	asds	null	asd	asd	asd	estasddeban.ramos.f@gmail.com	$2y$10$efcUhxc91net4pQsHaEOuucB682MsKzYciRQyqtGahn7lZ4/fJp/S	\N	\N	\N	2018-03-06 06:10:38	2018-03-06 06:24:26	2018-03-06 06:24:26
+4	Esteban	\N	\N	\N	fsdsf	esteban.ramos.f@gmail.com	$2y$10$cscGquwp5bmSKYM0z7E7VOIachU.sIknWkhpo05O/5nexzLVMimQm	\N	\N	\N	2018-02-27 23:36:43	2018-03-09 04:16:15	\N
 \.
 
 
@@ -2542,7 +2554,7 @@ SELECT pg_catalog.setval('public.aplicaciones_estados_id_seq', 1, false);
 -- Name: aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.aplicaciones_id_seq', 4, true);
+SELECT pg_catalog.setval('public.aplicaciones_id_seq', 5, true);
 
 
 --
@@ -2661,7 +2673,7 @@ SELECT pg_catalog.setval('public.servicios_estados_id_seq', 1, false);
 -- Name: servicios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.servicios_id_seq', 6, true);
+SELECT pg_catalog.setval('public.servicios_id_seq', 7, true);
 
 
 --
@@ -2682,14 +2694,14 @@ SELECT pg_catalog.setval('public.servicios_tags_id_seq', 1, false);
 -- Name: servidor_aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.servidor_aplicaciones_id_seq', 3, true);
+SELECT pg_catalog.setval('public.servidor_aplicaciones_id_seq', 4, true);
 
 
 --
 -- Name: sistemas_operativos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.sistemas_operativos_id_seq', 5, true);
+SELECT pg_catalog.setval('public.sistemas_operativos_id_seq', 6, true);
 
 
 --
