@@ -38,7 +38,7 @@ import VeeValidate, { Validator } from 'vee-validate';
 Validator.localize('es', es);
 Vue.use(VeeValidate, {locale: 'es'});
 
-//Se extiende el componente
+//Se extiende el componente para validar un password
 Validator.extend('verify_password', {
    getMessage: field => `
    La contraseña debe contener al menos:
@@ -51,6 +51,17 @@ Validator.extend('verify_password', {
    validate: value => {
       var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,20})");
       return strongRegex.test(value);
+   }
+});
+
+//Se extiende el componente para validar una mac
+Validator.extend('mac', {
+   getMessage: field => `
+      Formato mac incorrecto
+   `,
+   validate: value => {
+      var regexp = /^(([A-Fa-f0-9]{2}[:]){5}[A-Fa-f0-9]{2}[,]?)+$/i;
+      return regexp.test(value)
    }
 });
 

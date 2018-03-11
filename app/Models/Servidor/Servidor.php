@@ -26,6 +26,10 @@ class Servidor extends Model {
       'nucleos',
       'usuarios_pactados',
 
+      'mac',
+      'nodo',
+      'interface',
+
       #relaciones -> pks
       'id_datacentro',
       'id_sistema_operativo',

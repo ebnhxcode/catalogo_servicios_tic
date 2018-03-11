@@ -19,25 +19,29 @@
                      <dd class="col-md-12">@{{ servidor.det_servidor || '' }}</dd>
 
                      <dt class="col-md-6">@{{ `${tabla_labels['ip_servidor']}`}}</dt>
-                     <dd class="col-md-6 text-success">@{{`${servidor.ip_servidor || 0}`}}</dd>
+                     <dd class="col-md-6">@{{`${servidor.ip_servidor || 0}`}}</dd>
+
+                     <dt class="col-md-6">@{{ `${tabla_labels['mac']}`}}</dt>
+                     <dd class="col-md-6">@{{`${servidor.mac|| 0}`}}</dd>
 
                      <dt class="col-md-6">@{{ `${tabla_labels['ram']}`}}</dt>
-                     <dd class="col-md-6 text-success">@{{separar_miles(`${servidor.ram || 0}`)}} mb</dd>
+                     <dd class="col-md-6">@{{separar_miles(`${servidor.ram || 0}`)}} mb</dd>
 
                      <dt class="col-md-6">@{{ `${tabla_labels['memoria_dd']}`}}</dt>
-                     <dd class="col-md-6 text-success">@{{separar_miles(`${servidor.memoria_dd || 0}`)}} mb</dd>
+                     <dd class="col-md-6">@{{separar_miles(`${servidor.memoria_dd || 0}`)}} mb</dd>
 
                      <dt class="col-md-6">@{{ `${tabla_labels['swap']}`}}</dt>
-                     <dd class="col-md-6 text-success">@{{separar_miles(`${servidor.swap || 0}`)}} mb</dd>
+                     <dd class="col-md-6">@{{separar_miles(`${servidor.swap || 0}`)}} mb</dd>
 
                      <dt class="col-md-6">@{{ `${tabla_labels['procesador']}`}}</dt>
-                     <dd class="col-md-6 text-success">@{{`${servidor.procesador || 0}`}}</dd>
+                     <dd class="col-md-6">@{{`${servidor.procesador || 0}`}}</dd>
 
                      <dt class="col-md-6">@{{ `${tabla_labels['frec_procesador']}`}}</dt>
-                     <dd class="col-md-6 text-success">@{{separar_miles(`${servidor.frec_procesador || 0}`)}} mhz</dd>
+                     <dd class="col-md-6">@{{separar_miles(`${servidor.frec_procesador || 0}`)}} mhz</dd>
 
                      <dt class="col-md-6">@{{ `${tabla_labels['nucleos']}`}}</dt>
-                     <dd class="col-md-6 text-success">@{{`${servidor.nucleos || 0}`}}</dd>
+                     <dd class="col-md-6">@{{`${servidor.nucleos || 0}`}}</dd>
+                  </dl>
 
                   <dl v-else>
                      No hay información del servidor.
@@ -48,7 +52,7 @@
             </div>
          </div>
 
-         <hr>
+         <br>
 
          <!-- este bloque será reemplazado dinamicamente -->
          <div class="card" style="{{--width: 18rem;--}}">
@@ -61,13 +65,13 @@
                   <dl class="row" v-if="servidor.datacentro">
 
                      <dt class="col-md-6">Nombre datacentro</dt>
-                     <dd class="col-md-6 text-success">@{{ servidor.datacentro.nom_datacentro || 0 }}</dd>
+                     <dd class="col-md-6">@{{ servidor.datacentro.nom_datacentro || 0 }}</dd>
 
                      <dt class="col-md-6">Detalle datacentro</dt>
-                     <dd class="col-md-6 text-success">@{{ servidor.datacentro.det_datacentro || 0 }}</dd>
+                     <dd class="col-md-6">@{{ servidor.datacentro.det_datacentro || 0 }}</dd>
 
                      <dt class="col-md-6">Código datacentro</dt>
-                     <dd class="col-md-6 text-success">@{{ servidor.datacentro.cod_datacentro || 0 }}</dd>
+                     <dd class="col-md-6">@{{ servidor.datacentro.cod_datacentro || 0 }}</dd>
 
                   </dl>
                   <dl v-else>
@@ -80,7 +84,7 @@
          </div>
 
 
-         <hr>
+         <br>
 
          <!-- este bloque será reemplazado dinamicamente -->
          <div class="card" style="{{--width: 18rem;--}}">
@@ -93,18 +97,18 @@
                <dl class="row" v-if="servidor.sistema_operativo">
 
                   <dt class="col-md-6">Nombre SO</dt>
-                  <dd class="col-md-6 text-success">@{{ servidor.sistema_operativo.nom_sistema_operativo|| 0 }}</dd>
+                  <dd class="col-md-6">@{{ servidor.sistema_operativo.nom_sistema_operativo|| 0 }}</dd>
 
                   <dt class="col-md-6">Arquitectura</dt>
-                  <dd class="col-md-6 text-success">@{{ servidor.sistema_operativo.arquitectura || 0 }}</dd>
+                  <dd class="col-md-6">@{{ servidor.sistema_operativo.arquitectura || 0 }}</dd>
 
                   <dt class="col-md-6">Detalle SO</dt>
-                  <dd class="col-md-6 text-success">@{{ servidor.sistema_operativo.det_sistema_operativo || 0 }}</dd>
+                  <dd class="col-md-6">@{{ servidor.sistema_operativo.det_sistema_operativo || 0 }}</dd>
 
 
                </dl>
                <dl v-else>
-                  No hay información de ubicación.
+                  No hay información de sistema operativo.
                </dl>
 
                </p>
@@ -117,32 +121,25 @@
       </div>
       <div class="col-sm-8 col-md-8">
 
+         <h4>Aplicaciones cargadas</h4>
 
-
-         <table class="table table-striped table-hover table-sm" v-if="servidor.datacentro">
+         <table class="table table-striped table-hover table-sm" v-if="servidor.aplicacion">
             <thead>
-               <th colspan="3">Nombre</th>
+               <tr>
+                  <th></th>
+               </tr>
             </thead>
             <tbody>
-
-
                <tr>
-                  <td colspan="3">
-                        <pre style="font-family: 'Trebuchet MS';">
-                           @{{ servidor.datacentro }}
-                        </pre>
-                  </td>
+
                </tr>
-
-
             </tbody>
 
-
          </table>
+         <div class="card card-body bg-light">
+            Hasta el momento no existen aplicaciones cargadas en este servidor.
+         </div>
 
-         <pre>
-            @{{ servidor }}
-         </pre>
 
       </div>
    </div>

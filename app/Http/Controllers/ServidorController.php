@@ -115,9 +115,12 @@ class ServidorController extends Controller {
          'frec_procesador' => "nullable|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
          'nucleos' => "nullable|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
          'usuarios_pactados' => "nullable|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'mac' => "nullable|regex:/(^([a-zA-Z0-9_ :]+)(\d+)?$)/u|max:255",
+         'nodo' => "nullable|regex:/(^([a-zA-Z0-9_ :]+)(\d+)?$)/u|max:255",
+         'interface' => "nullable|regex:/(^([a-zA-Z0-9_ :]+)(\d+)?$)/u|max:255",
 
-         'id_datacentro' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
-         'id_sistema_operativo' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'id_datacentro' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
+         'id_sistema_operativo' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
       ]);
       #Se valida la respuesta con la salida de la validacion
       if ($this->validacion->fails() == true && !Auth::guest()) {
@@ -142,6 +145,10 @@ class ServidorController extends Controller {
          'frec_procesador' => $this->servidor['frec_procesador'],
          'nucleos' => $this->servidor['nucleos'],
          'usuarios_pactados' => $this->servidor['usuarios_pactados'],
+
+         'mac' => $this->servidor['mac'],
+         'nodo' => $this->servidor['nodo'],
+         'interface' => $this->servidor['interface'],
 
          'id_datacentro' => $this->servidor['id_datacentro'],
          'id_sistema_operativo' => $this->servidor['id_sistema_operativo'],
@@ -176,9 +183,12 @@ class ServidorController extends Controller {
          'frec_procesador' => "nullable|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
          'nucleos' => "nullable|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
          'usuarios_pactados' => "nullable|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'mac' => "nullable|regex:/(^([a-zA-Z0-9_ :]+)(\d+)?$)/u|max:255",
+         'nodo' => "nullable|regex:/(^([a-zA-Z0-9_ :]+)(\d+)?$)/u|max:255",
+         'interface' => "nullable|regex:/(^([a-zA-Z0-9_ :]+)(\d+)?$)/u|max:255",
 
-         'id_datacentro' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
-         'id_sistema_operativo' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'id_datacentro' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
+         'id_sistema_operativo' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
       ]);
       #Valida si la informacion que se envia para editar al servidor son iguales los ids
       if ($id != $request["id_$this->nombre_modelo"]) {

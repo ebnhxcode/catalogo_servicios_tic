@@ -3614,6 +3614,9 @@ var ServidorController = new Vue({
             'frec_procesador': null,
             'nucleos': null,
             'usuarios_pactados': null,
+            'mac': null,
+            'nodo': null,
+            'interface': null,
             'id_datacentro': null,
             'id_sistema_operativo': null,
             'id_usuario_registra': null,
@@ -3633,6 +3636,9 @@ var ServidorController = new Vue({
             'frec_procesador': null,
             'nucleos': null,
             'usuarios_pactados': null,
+            'mac': null,
+            'nodo': null,
+            'interface': null,
             'id_datacentro': null,
             'id_sistema_operativo': null,
             'id_usuario_registra': null,
@@ -3675,6 +3681,9 @@ var ServidorController = new Vue({
             'frec_procesador': false,
             'nucleos': false,
             'usuarios_pactados': false,
+            'mac': false,
+            'nodo': false,
+            'interface': false,
             'id_datacentro': false,
             'id_sistema_operativo': false,
 
@@ -3698,6 +3707,9 @@ var ServidorController = new Vue({
             'frec_procesador': 'Frec. Procesador',
             'nucleos': 'Nucleos',
             'usuarios_pactados': 'Usuarios pactados',
+            'mac': 'Mac',
+            'nodo': 'Nodo',
+            'interface': 'Interface',
 
             'id_datacentro': 'Id Datacrentro',
             'id_sistema_operativo': 'Id Sistema Operativo',
@@ -3722,6 +3734,9 @@ var ServidorController = new Vue({
             'frec_procesador': 'String',
             'nucleos': 'String',
             'usuarios_pactados': 'String',
+            'mac': 'String',
+            'nodo': 'String',
+            'interface': 'String',
             'id_datacentro': 'String',
             'id_sistema_operativo': 'String',
 
@@ -3844,6 +3859,9 @@ var ServidorController = new Vue({
             'frec_procesador': null,
             'nucleos': null,
             'usuarios_pactados': null,
+            'mac': null,
+            'nodo': null,
+            'interface': null,
             'id_datacentro': null,
             'id_sistema_operativo': null,
             'id_usuario_registra': null,
@@ -3995,6 +4013,9 @@ var ServidorController = new Vue({
          formData.append('frec_procesador', this.servidor.frec_procesador || null);
          formData.append('nucleos', this.servidor.nucleos || null);
          formData.append('usuarios_pactados', this.servidor.usuarios_pactados || null);
+         formData.append('mac', this.servidor.mac || null);
+         formData.append('nodo', this.servidor.nodo || null);
+         formData.append('interface', this.servidor.interface || null);
 
          formData.append('id_datacentro', this.servidor.id_datacentro || null);
          formData.append('id_sistema_operativo', this.servidor.id_sistema_operativo || null);

@@ -81,6 +81,30 @@
    </div><!-- .col -->
 
 
+   <div class="col-sm-6 col-md-6">
+
+      <dt>Mac</dt>
+      <dd>
+
+         <p class="control has-icon has-icon-right">
+            <input type="text" v-model="servidor.mac" name="mac"
+                   v-validate="{mac:true}" data-vv-delay="500"
+                   class="form-control" />
+
+            <transition name="bounce">
+               <i v-show="errors.has('mac')" class="fa fa-exclamation-circle"></i>
+            </transition>
+
+            <transition name="bounce">
+               <span v-show="errors.has('mac')" class="text-danger small">
+                  @{{ errors.first('mac') }}
+               </span>
+            </transition>
+         </p>
+      </dd>
+
+   </div><!-- .col -->
+
 
    <div class="col-sm-6 col-md-6">
 
@@ -107,7 +131,7 @@
       </dd>
    </div><!-- .col -->
 
-   <div class="col-sm-12 col-md-12">
+   <div class="col-sm-6 col-md-6">
 
       <dt>Sistema Operativo</dt>
       <dd>
