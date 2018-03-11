@@ -22,7 +22,8 @@
 <div class="tab-content">
 
    <!-- La vista principal que se incluye en el modal de actualizar o gestionar el registro unico -->
-   @include('servidores.partials.vista_principal')
+   @include("$nombre_tabla.partials.vista_principal")
+
 
    <!-- La subvista que se encarga de importar los campos del formulario -->
    <div class="tab-pane" id="vista_actualizar_tab" role="tabpanel" aria-labelledby="vista_actualizar_tab">

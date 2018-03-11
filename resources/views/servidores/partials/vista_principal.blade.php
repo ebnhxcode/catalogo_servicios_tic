@@ -49,8 +49,8 @@
 
                </p>
                {{--<a href="#" class="btn btn-primary">Go somewhere</a>--}}
-            </div>
-         </div>
+            </div><!-- .card-body -->
+         </div><!-- .card -->
 
          <br>
 
@@ -80,8 +80,8 @@
 
                </p>
                {{--<a href="#" class="btn btn-primary">Go somewhere</a>--}}
-            </div>
-         </div>
+            </div><!-- .card-body -->
+         </div><!-- .card -->
 
 
          <br>
@@ -113,12 +113,12 @@
 
                </p>
                {{--<a href="#" class="btn btn-primary">Go somewhere</a>--}}
-            </div>
-         </div>
+            </div><!-- .card-body -->
+         </div><!-- .card -->
 
 
 
-      </div>
+      </div><!-- .row -->
       <div class="col-sm-8 col-md-8">
 
          <h4>Aplicaciones cargadas</h4>
@@ -135,16 +135,16 @@
                </tr>
             </tbody>
 
-         </table>
+         </table><!-- .table -->
          <div class="card card-body bg-light">
             Hasta el momento no existen aplicaciones cargadas en este servidor.
-         </div>
+         </div><!-- .card -->
 
 
-      </div>
-   </div>
+      </div><!-- .col -->
+   </div><!-- .row -->
 
 
 
 
-</div>
+</div><!-- .tab-pane .active #vista_principal_tab -->

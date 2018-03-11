@@ -309,6 +309,7 @@
 </div><!-- .row -->
 
 
+{{--
 <h5>Acuerdo de usuarios por sistema</h5>
 <div class="row">
    <div class="col-sm-6 col-md-6">
@@ -335,3 +336,4 @@
    </div><!-- .col -->
 
 </div><!-- .row -->
+--}}
