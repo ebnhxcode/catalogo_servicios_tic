@@ -2420,9 +2420,11 @@ var inyeccion_funciones_compartidas = {
       },
       ocultar_modal: function ocultar_modal(nom_modal) {
          this.$modal.hide(nom_modal);
-      }
+      },
       // function to order lists
-
+      separar_miles: function separar_miles(num) {
+         return num.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+      }
 
    }
 
@@ -3797,18 +3799,6 @@ var ServidorController = new Vue({
       $(document).ready(function () {
          $('[data-toggle="tooltip"]').tooltip();
       });
-
-      /*
-       $(document).ready(function () {
-       //Handle al recargar pagina
-       window.onbeforeunload = function(e){
-       return "Estás seguro que deseas cerrar la ventana?";
-       };
-       window.onunload = function(e){
-       return "Cierre de la ventana";
-       };
-        });
-       */
    },
 
    ready: {},
@@ -3821,10 +3811,7 @@ var ServidorController = new Vue({
 
          this.$http.get('/' + this.nombre_tabla + '/' + id).then(function (response) {
             // success callback
-            //console.log(response.body[modelo][0]);
-            //var obj = console.log(response.body[`${this.nombre_model}`]);
-            var obj = response.body['' + _this2.nombre_model];
-            return obj;
+            return response.body['' + _this2.nombre_model];
          }, function (response) {
             // error callback
             _this2.checkear_estado_respuesta_http(response.status);

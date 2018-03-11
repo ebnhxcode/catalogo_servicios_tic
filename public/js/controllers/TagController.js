@@ -2420,9 +2420,11 @@ var inyeccion_funciones_compartidas = {
       },
       ocultar_modal: function ocultar_modal(nom_modal) {
          this.$modal.hide(nom_modal);
-      }
+      },
       // function to order lists
-
+      separar_miles: function separar_miles(num) {
+         return num.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+      }
 
    }
 

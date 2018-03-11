@@ -20,77 +20,11 @@
 
 <!-- Tab panes -->
 <div class="tab-content">
-   <div class="tab-pane active" id="vista_principal_tab" role="tabpanel" aria-labelledby="vista_principal_tab">
 
-      <br>
+   <!-- La vista principal que se incluye en el modal de actualizar o gestionar el registro unico -->
+   @include('servidores.partials.vista_principal')
 
-      <div class="row">
-         <div class="col-sm-4 col-md-4">
-
-            <div class="card" style="width: 18rem;">
-               <img class="card-img-top" src="{{ url('/img/source.gif') }}" alt="Card image cap">
-               <div class="card-body">
-                  <h5 class="card-title">
-                     @{{ servidor.nom_servidor || '' }} <span class="badge badge-success float-right">estado:up</span>
-                  </h5>
-                  <p class="card-text">
-                     @{{ servidor.det_servidor || '' }}
-
-
-                  @{{ `${tabla_labels['ip_servidor']}`}}
-                  <span class="text-success float-right">
-                     @{{`${servidor.ip_servidor || 0}`}}
-                  </span> <br>
-
-                  @{{ `${tabla_labels['ram']}`}}
-                  <span class="text-success float-right">
-                     @{{`${servidor.ram || 0}`.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}} mb
-                  </span> <br>
-
-                  @{{ `${tabla_labels['memoria_dd']}`}}
-                  <span class="text-success float-right">
-                     @{{`${servidor.memoria_dd || 0}`.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}} mb
-                  </span> <br>
-
-                  @{{ `${tabla_labels['swap']}`}}
-                  <span class="text-success float-right">
-                     @{{`${servidor.swap || 0}`.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}} mb
-                  </span> <br>
-
-                  @{{ `${tabla_labels['procesador']}`}}
-                  <span class="text-success float-right">
-                     @{{`${servidor.procesador || 0}`}}
-                  </span> <br>
-
-                  @{{ `${tabla_labels['frec_procesador']}`}}
-                  <span class="text-success float-right">
-                     @{{`${servidor.frec_procesador || 0}`.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}} mhz
-                  </span> <br>
-
-                  @{{ `${tabla_labels['nucleos']}`}}
-                  <span class="text-success float-right">
-                     @{{`${servidor.nucleos || 0}`}}
-                  </span> <br>
-
-
-                  </p>
-                  {{--<a href="#" class="btn btn-primary">Go somewhere</a>--}}
-               </div>
-            </div>
-
-         </div>
-         <div class="col-sm-8 col-md-8">
-
-
-
-
-         </div>
-      </div>
-
-
-
-
-   </div>
+   <!-- La subvista que se encarga de importar los campos del formulario -->
    <div class="tab-pane" id="vista_actualizar_tab" role="tabpanel" aria-labelledby="vista_actualizar_tab">
 
       <br>

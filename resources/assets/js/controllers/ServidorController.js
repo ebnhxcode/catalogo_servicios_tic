@@ -217,32 +217,16 @@ const ServidorController = new Vue({
          $('[data-toggle="tooltip"]').tooltip();
       });
 
-      /*
-       $(document).ready(function () {
-       //Handle al recargar pagina
-       window.onbeforeunload = function(e){
-       return "Estás seguro que deseas cerrar la ventana?";
-       };
-       window.onunload = function(e){
-       return "Cierre de la ventana";
-       };
-
-       });
-       */
-
    },
    ready: {},
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
 
+
       encontrar: function (id) {
          this.$http.get(`/${this.nombre_tabla}/${id}`).then(response => { // success callback
-            //console.log(response.body[modelo][0]);
-            //var obj = console.log(response.body[`${this.nombre_model}`]);
-            var obj = response.body[`${this.nombre_model}`];
-            return obj;
-
+            return response.body[`${this.nombre_model}`];
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);
          });
