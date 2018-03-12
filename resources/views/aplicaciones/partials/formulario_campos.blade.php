@@ -220,7 +220,7 @@
 <h5>Datos de asociación</h5>
 <div class="row">
 
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-4 col-md-4">
 
       <dt>Servicio</dt>
       <dd>
@@ -245,7 +245,7 @@
       </dd>
 
    </div><!-- .col -->
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-4 col-md-4">
 
       <dt>Tipo aplicación</dt>
       <dd>
@@ -265,6 +265,32 @@
             <transition name="bounce">
                <span v-show="errors.has('id_tipo_aplicacion')" class="text-danger small">
                   @{{ errors.first('id_tipo_aplicacion') }}
+               </span>
+            </transition>
+         </p>
+      </dd>
+
+   </div><!-- .col -->
+   <div class="col-sm-4 col-md-4">
+
+      <dt>Servidor</dt>
+      <dd>
+         <p class="control has-icon has-icon-right">
+
+            <select class="form-control" v-model="aplicacion.id_servidor" name="id_servidor"
+                    v-validate="{regex:/^[0-9]+$/i}" data-vv-delay="500">
+               <option :value="s.id_servidor" v-for="s in servidores">
+                  @{{ `${s.nom_servidor} -> ${s.det_servidor}` }}
+               </option>
+            </select>
+
+            <transition name="bounce">
+               <i v-show="errors.has('id_servidor')" class="fa fa-exclamation-circle"></i>
+            </transition>
+
+            <transition name="bounce">
+               <span v-show="errors.has('id_servidor')" class="text-danger small">
+                  @{{ errors.first('id_servidor') }}
                </span>
             </transition>
          </p>

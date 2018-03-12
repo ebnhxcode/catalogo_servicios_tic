@@ -24,6 +24,7 @@ class Aplicacion extends Model {
 
       #relaciones -> pks
       'id_dominio',
+      'id_servidor',
       'id_servicio',
       'id_tipo_aplicacion',
 

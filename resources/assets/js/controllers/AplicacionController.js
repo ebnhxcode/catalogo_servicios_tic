@@ -35,6 +35,7 @@ const AplicacionController = new Vue({
             'ssl_tls':false,
             'id_dominio':null,
             'id_tipo_aplicacion':null,
+            'id_servidor':null,
             'id_servicio':null,
             'id_usuario_registra':null,
             'id_usuario_modifica':null,
@@ -52,6 +53,7 @@ const AplicacionController = new Vue({
             'ssl_tls':false,
             'id_dominio':null,
             'id_tipo_aplicacion':null,
+            'id_servidor':null,
             'id_servicio':null,
             'id_usuario_registra':null,
             'id_usuario_modifica':null,
@@ -61,6 +63,7 @@ const AplicacionController = new Vue({
          },
          'actividades':[],
          'tipos_aplicaciones':[],
+         'servidores':[],
          'servicios':[],
          'dominios':[],
          'aplicaciones':[],
@@ -93,6 +96,7 @@ const AplicacionController = new Vue({
             'ssl_tls':false,
             'id_dominio':false,
             'id_tipo_aplicacion':false,
+            'id_servidor':false,
             'id_servicio':false,
 
             'id_usuario_registra':false,
@@ -114,6 +118,7 @@ const AplicacionController = new Vue({
             'ssl_tls':'SSL/TLS',
             'id_dominio':'Id Dominio',
             'id_tipo_aplicacion':'Id Tipo App',
+            'id_servidor':'Id Servidor',
             'id_servicio':'Id Servicio',
 
             'id_usuario_registra':'Usuario registra',
@@ -135,6 +140,7 @@ const AplicacionController = new Vue({
             'ssl_tls':'String',
             'id_dominio':'String',
             'id_tipo_aplicacion':'String',
+            'id_servidor':'String',
             'id_servicio':'String',
 
             'id_usuario_registra':'String',
@@ -179,6 +185,8 @@ const AplicacionController = new Vue({
                'ssl_tls': aplicacion.ssl_tls || '-',
                'id_dominio': aplicacion.id_dominio || '-',
                'id_tipo_aplicacion': aplicacion.id_tipo_aplicacion || '-',
+               'id_servidor': aplicacion.id_servidor || '-',
+               'id_servicio': aplicacion.id_servicio || '-',
 
                'id_usuario_registra': aplicacion.id_usuario_registra || '-',
                'id_usuario_modifica': aplicacion.id_usuario_modifica || '-',
@@ -229,6 +237,7 @@ const AplicacionController = new Vue({
             'ssl_tls':false,
             'id_dominio':null,
             'id_tipo_aplicacion':null,
+            'id_servidor':null,
             'id_servicio':null,
             'id_usuario_registra':null,
             'id_usuario_modifica':null,
@@ -242,6 +251,7 @@ const AplicacionController = new Vue({
          this.$http.get('/aplicaciones').then(response => { // success callback
             this.actividades = response.body.actividades || null;
             this.tipos_aplicaciones = response.body.tipos_aplicaciones || null;
+            this.servidores = response.body.servidores || null;
             this.servicios = response.body.servicios || null;
             this.dominios = response.body.dominios || null;
             this.aplicaciones = response.body.aplicaciones || null;
@@ -379,6 +389,7 @@ const AplicacionController = new Vue({
          formData.append('subdominio', this.aplicacion.subdominio|| null );
          formData.append('ssl_tls', this.aplicacion.ssl_tls || null );
          formData.append('id_dominio', this.aplicacion.id_dominio || null );
+         formData.append('id_servidor', this.aplicacion.id_servidor || null );
          formData.append('id_servicio', this.aplicacion.id_servicio || null );
          formData.append('id_tipo_aplicacion', this.aplicacion.id_tipo_aplicacion || null );
 

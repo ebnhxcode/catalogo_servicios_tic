@@ -22,7 +22,11 @@
 <div class="tab-content">
 
    <!-- La vista principal que se incluye en el modal de actualizar o gestionar el registro unico -->
-   @include("$nombre_tabla.partials.vista_principal")
+   @if(view()->exists("$nombre_tabla.partials.vista_principal"))
+      @include("$nombre_tabla.partials.vista_principal")
+   @endif
+
+
 
 
    <!-- La subvista que se encarga de importar los campos del formulario -->

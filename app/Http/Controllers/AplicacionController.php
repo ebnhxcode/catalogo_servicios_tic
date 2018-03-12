@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Aplicacion;
 use App\Dominio;
 use App\Servicio;
+use App\Servidor;
 use App\TipoAplicacion;
 use Illuminate\Http\Request;
 use Auth;
@@ -58,6 +59,7 @@ class AplicacionController extends Controller {
       $this->usuario_auth = Auth::user();
       $this->tipos_aplicaciones = TipoAplicacion::all();
       $this->aplicaciones = Aplicacion::all();
+      $this->servidores = Servidor::all();
       $this->servicios = Servicio::all();
       $this->dominios = Dominio::all();
       return response()->json([
@@ -65,6 +67,7 @@ class AplicacionController extends Controller {
          'tipos_aplicaciones' => $this->tipos_aplicaciones,
          'aplicaciones' => $this->aplicaciones,
          'servicios' => $this->servicios,
+         'servidores' => $this->servidores,
          'dominios' => $this->dominios,
          'usuario_auth' => $this->usuario_auth,
       ]);
@@ -83,6 +86,7 @@ class AplicacionController extends Controller {
          #'ssl_tls' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
          'id_dominio' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
          'id_servicio' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
+         'id_servidor' => 'regex:/(^([0-9]+)(\d+)?$)/u|integer',
          'id_tipo_aplicacion' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
 
       ]);
@@ -108,6 +112,7 @@ class AplicacionController extends Controller {
          'ssl_tls' => $this->aplicacion['ssl_tls'],
          'id_dominio' => $this->aplicacion['id_dominio'],
          'id_servicio' => $this->aplicacion['id_servicio'],
+         'id_servidor' => $this->aplicacion['id_servidor'],
          'id_tipo_aplicacion' => $this->aplicacion['id_tipo_aplicacion'],
 
          'id_usuario_registra' => Auth::user()->id_usuario,
@@ -139,6 +144,7 @@ class AplicacionController extends Controller {
          #'ssl_tls' => "required|max:255",
          'id_dominio' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
          'id_servicio' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
+         'id_servidor' => 'regex:/(^([0-9]+)(\d+)?$)/u|integer',
          'id_tipo_aplicacion' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
       ]);
       #Valida si la informacion que se envia para editar al aplicacion son iguales los ids
