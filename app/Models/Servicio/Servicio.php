@@ -25,19 +25,23 @@ class Servicio extends Model {
       'id_usuario_modifica',
    ];
 
-   public function actividad() {
+   public function actividad () {
       return $this->belongsTo(Actividad::class, 'id_actividad');
    }
 
-   public function usuario() {
+   public function aplicaciones () {
+      return $this->hasMany(Aplicacion::class, 'id_servicio');
+   }
+
+   public function usuario () {
       return $this->belongsTo(User::class, 'id_usuario');
    }
 
-   public function usuario_registra() {
+   public function usuario_registra () {
       return $this->belongsTo(User::class, 'id_usuario_registra');
    }
 
-   public function usuario_modifica() {
+   public function usuario_modifica () {
       return $this->belongsTo(User::class, 'id_usuario_modifica');
    }
 }

@@ -109,7 +109,12 @@ const ActividadController = new Vue({
          if (id_en_edicion == null) {
             this.limpiar_objeto_clase_local();
          } else {
-            this.actividad = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.actividades,this.nombre_model);
+            //this.actividad = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.actividades,this.nombre_model);
+            this.$http.get(`/${this.nombre_tabla}/${id_en_edicion}`).then(response => { // success callback
+               this.actividad = response.body[`${this.nombre_model}`];
+            }, response => { // error callback
+               this.checkear_estado_respuesta_http(response.status);
+            });
          }
       },
       //actividades se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid

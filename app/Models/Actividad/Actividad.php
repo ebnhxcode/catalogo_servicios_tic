@@ -23,6 +23,10 @@ class Actividad extends Model {
       'id_usuario_modifica',
    ];
 
+   public function servicios () {
+      return $this->hasMany(Servicio::class, 'id_actividad');
+   }
+
    public function usuario_registra() {
       return $this->belongsTo('App\User', 'id_usuario_registra');
    }
