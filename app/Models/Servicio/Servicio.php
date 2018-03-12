@@ -26,18 +26,18 @@ class Servicio extends Model {
    ];
 
    public function actividad() {
-      return $this->belongsTo('App\Actividad', 'id_actividad');
+      return $this->belongsTo(Actividad::class, 'id_actividad');
    }
 
    public function usuario() {
-      return $this->belongsTo('App\User', 'id_usuario');
+      return $this->belongsTo(User::class, 'id_usuario');
    }
 
    public function usuario_registra() {
-      return $this->belongsTo('App\User', 'id_usuario_registra');
+      return $this->belongsTo(User::class, 'id_usuario_registra');
    }
 
    public function usuario_modifica() {
-      return $this->belongsTo('App\User', 'id_usuario_modifica');
+      return $this->belongsTo(User::class, 'id_usuario_modifica');
    }
 }

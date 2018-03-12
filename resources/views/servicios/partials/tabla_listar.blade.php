@@ -60,13 +60,15 @@
                  data-placement="top" data-toggle="tooltip" title="Actualizar desde modal"
                  @click.prevent="mostrar_modal_actualizar(s.id_servicio)"
                  v-show="id_en_edicion == null">
-            <i class="fa fa-external-link" ></i>
+            <i class="fa fa-cogs" ></i>
          </button>
+         {{--
          <button class="btn btn-sm btn-danger" v-show="id_en_edicion == null"
                  @click.prevent="eliminar(s.id_servicio)"
                  data-placement="top" data-toggle="tooltip" title="Eliminar">
             <i class="fa fa-close"></i>
          </button>
+         --}}
          <button class="btn btn-sm btn-secondary"
                  data-placement="top" data-toggle="tooltip" title="Dejar de editar"
                  @click.prevent="dejar_de_editar()"
