@@ -31,6 +31,26 @@ import Notifications from 'vue-notification';
 // Se instala el plugin importado
 Vue.use(Notifications);
 
+/*
+ //Se habilitara cuando se implemente el vuerouter
+import VueProgressBar from 'vue-progressbar';
+
+const options = {
+   color: '#bffaf3',
+   failedColor: '#874b4b',
+   thickness: '5px',
+   transition: {
+      speed: '0.2s',
+      opacity: '0.6s',
+      termination: 300
+   },
+   autoRevert: true,
+   location: 'left',
+   inverse: false
+}
+
+Vue.use(VueProgressBar, options);
+*/
 
 import es from 'vee-validate/dist/locale/es';
 import VeeValidate, { Validator } from 'vee-validate';
@@ -96,6 +116,10 @@ const SideMenuController = new Vue({
             {
                'title':'Servicios',
                'url':'/servicios',
+            },
+            {
+               'title':'Servidores',
+               'url':'/servidores',
             },
             {
                'title':'Aplicaciones',

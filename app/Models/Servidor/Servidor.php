@@ -58,7 +58,7 @@ class Servidor extends Model {
    }
 
    public function aplicaciones () {
-      return $this->hasMany(Aplicacion::class, 'id_aplicacion');
+      return $this->hasMany(Aplicacion::class, 'id_servidor');
    }
 
 }

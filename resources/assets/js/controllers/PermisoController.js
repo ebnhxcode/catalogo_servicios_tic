@@ -184,7 +184,7 @@ const PermisoController = new Vue({
             this.permisos = response.body.permisos || null;
             this.datos_excel = response.body.permisos || null;
             this.usuario_auth = response.body.usuario_auth || null;
-            this.limpiar_objeto_clase_local();
+            //this.limpiar_objeto_clase_local();
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);
          });
@@ -208,10 +208,12 @@ const PermisoController = new Vue({
          this.$http.put(`/${this.nombre_ruta}/${this.permiso.id_permiso}`, this.permiso).then(response => { // success callback
 
             if (response.status == 200) {
+               /*
                if ( !this.es_null(response.body.permiso) ) {
                   this.lista_actualizar_activo = false;
                   this.id_en_edicion = null;
                }
+               */
             } else {
                this.checkear_estado_respuesta_http(response.status);
                return false;
@@ -219,14 +221,16 @@ const PermisoController = new Vue({
 
             if ( this.mostrar_notificaciones(response) == true ) {
 
-               //Aqui que pregunte si el modal está activo para que lo cierre
-               if (this.modal_actualizar_activo == true) {
-                  this.ocultar_modal('actualizar');
-                  this.modal_actualizar_activo = false;
-               }
+               /*
+                //Aqui que pregunte si el modal está activo para que lo cierre
+                if (this.modal_actualizar_activo == true) {
+                this.ocultar_modal('actualizar');
+                this.modal_actualizar_activo = false;
+                }
 
-               this.lista_actualizar_activo = false;
-               this.id_en_edicion = null;
+                this.lista_actualizar_activo = false;
+                this.id_en_edicion = null;
+               */
 
                //Recargar la lista
                this.inicializar();

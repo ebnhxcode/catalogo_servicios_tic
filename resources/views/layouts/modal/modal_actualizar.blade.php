@@ -9,8 +9,8 @@
 <!-- Nav tabs -->
 <ul class="nav nav-tabs justify-content-center" id="tab_panel" role="tablist">
    <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" href="#vista_principal_tab" role="tab"
-         aria-controls="vista_principal" aria-selected="true">General</a>
+      <a class="nav-link" data-toggle="tab" href="#vista_principal_tab" role="tab"
+         aria-controls="vista_principal" aria-selected="true">Vista General</a>
    </li>
    <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#vista_actualizar_tab" role="tab"
@@ -30,7 +30,7 @@
 
 
    <!-- La subvista que se encarga de importar los campos del formulario -->
-   <div class="tab-pane" id="vista_actualizar_tab" role="tabpanel" aria-labelledby="vista_actualizar_tab">
+   <div class="tab-pane fade" id="vista_actualizar_tab" role="tabpanel" aria-labelledby="vista_actualizar_tab">
 
       <br>
 

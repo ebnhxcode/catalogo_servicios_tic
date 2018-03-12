@@ -3624,7 +3624,7 @@ var ActividadController = new Vue({
             _this.actividades = response.body.actividades || null;
             _this.tipos_actividades = response.body.tipos_actividades || null;
             _this.datos_excel = response.body.actividades || null;
-            _this.limpiar_objeto_clase_local();
+            //this.limpiar_objeto_clase_local();
          }, function (response) {
             // error callback
             _this.checkear_estado_respuesta_http(response.status);
@@ -3649,10 +3649,12 @@ var ActividadController = new Vue({
             // success callback
 
             if (response.status == 200) {
-               if (!_this2.es_null(response.body.actividad)) {
-                  _this2.lista_actualizar_activo = false;
-                  _this2.id_en_edicion = null;
+               /*
+               if ( !this.es_null(response.body.actividad) ) {
+                  this.lista_actualizar_activo = false;
+                  this.id_en_edicion = null;
                }
+               */
             } else {
                _this2.checkear_estado_respuesta_http(response.status);
                return false;
@@ -3660,14 +3662,15 @@ var ActividadController = new Vue({
 
             if (_this2.mostrar_notificaciones(response) == true) {
 
-               //Aqui que pregunte si el modal está activo para que lo cierre
-               if (_this2.modal_actualizar_activo == true) {
-                  _this2.ocultar_modal('actualizar');
-                  _this2.modal_actualizar_activo = false;
-               }
-
-               _this2.lista_actualizar_activo = false;
-               _this2.id_en_edicion = null;
+               /*
+                //Aqui que pregunte si el modal está activo para que lo cierre
+                if (this.modal_actualizar_activo == true) {
+                this.ocultar_modal('actualizar');
+                this.modal_actualizar_activo = false;
+                }
+                 this.lista_actualizar_activo = false;
+                this.id_en_edicion = null;
+               */
 
                //Recargar la lista
                _this2.inicializar();

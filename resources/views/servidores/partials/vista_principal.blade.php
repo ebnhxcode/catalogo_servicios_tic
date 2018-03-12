@@ -123,20 +123,22 @@
 
          <h4>Aplicaciones cargadas</h4>
 
-         <table class="table table-striped table-hover table-sm" v-if="servidor.aplicacion">
+         <table class="table table-striped table-hover table-sm" v-if="servidor.aplicaciones && servidor.aplicaciones.length > 0">
             <thead>
                <tr>
-                  <th></th>
+                  <th>Nombre</th>
+                  <th>Descripción</th>
                </tr>
             </thead>
             <tbody>
-               <tr>
-
+               <tr v-for="app in servidor.aplicaciones">
+                  <td>@{{ app.nom_aplicacion }}</td>
+                  <td>@{{ app.det_aplicacion }}</td>
                </tr>
             </tbody>
 
          </table><!-- .table -->
-         <div class="card card-body bg-light">
+         <div class="card card-body bg-light" v-else>
             Hasta el momento no existen aplicaciones cargadas en este servidor.
          </div><!-- .card -->
 

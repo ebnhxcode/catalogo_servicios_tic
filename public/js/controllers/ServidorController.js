@@ -3883,7 +3883,7 @@ var ServidorController = new Vue({
             _this4.sistemas_operativos = response.body.sistemas_operativos || null;
 
             _this4.usuario_auth = response.body.usuario_auth || null;
-            _this4.limpiar_objeto_clase_local();
+            //this.limpiar_objeto_clase_local();
          }, function (response) {
             // error callback
             _this4.checkear_estado_respuesta_http(response.status);
@@ -3908,10 +3908,12 @@ var ServidorController = new Vue({
             // success callback
 
             if (response.status == 200) {
-               if (!_this5.es_null(response.body.servidor)) {
-                  _this5.lista_actualizar_activo = false;
-                  _this5.id_en_edicion = null;
+               /*
+               if ( !this.es_null(response.body.servidor) ) {
+                  this.lista_actualizar_activo = false;
+                  this.id_en_edicion = null;
                }
+               */
             } else {
                _this5.checkear_estado_respuesta_http(response.status);
                return false;
@@ -3919,14 +3921,15 @@ var ServidorController = new Vue({
 
             if (_this5.mostrar_notificaciones(response) == true) {
 
-               //Aqui que pregunte si el modal está activo para que lo cierre
-               if (_this5.modal_actualizar_activo == true) {
-                  _this5.ocultar_modal('actualizar');
-                  _this5.modal_actualizar_activo = false;
-               }
-
-               _this5.lista_actualizar_activo = false;
-               _this5.id_en_edicion = null;
+               /*
+                //Aqui que pregunte si el modal está activo para que lo cierre
+                if (this.modal_actualizar_activo == true) {
+                this.ocultar_modal('actualizar');
+                this.modal_actualizar_activo = false;
+                }
+                 this.lista_actualizar_activo = false;
+                this.id_en_edicion = null;
+               */
 
                //Recargar la lista
                _this5.inicializar();

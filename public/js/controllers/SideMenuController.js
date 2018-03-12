@@ -46903,6 +46903,27 @@ window.Vue = __webpack_require__(19);
 // Se instala el plugin importado
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_notification___default.a);
 
+/*
+ //Se habilitara cuando se implemente el vuerouter
+import VueProgressBar from 'vue-progressbar';
+
+const options = {
+   color: '#bffaf3',
+   failedColor: '#874b4b',
+   thickness: '5px',
+   transition: {
+      speed: '0.2s',
+      opacity: '0.6s',
+      termination: 300
+   },
+   autoRevert: true,
+   location: 'left',
+   inverse: false
+}
+
+Vue.use(VueProgressBar, options);
+*/
+
 
 
 
@@ -46959,6 +46980,9 @@ var SideMenuController = new Vue({
          }, {
             'title': 'Servicios',
             'url': '/servicios'
+         }, {
+            'title': 'Servidores',
+            'url': '/servidores'
          }, {
             'title': 'Aplicaciones',
             'url': '/aplicaciones'

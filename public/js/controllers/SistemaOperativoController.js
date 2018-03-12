@@ -3789,7 +3789,7 @@ var SistemaOperativoController = new Vue({
             _this.sistemas_operativos = response.body.sistemas_operativos || null;
             _this.datos_excel = response.body.sistemas_operativos || null;
             _this.usuario_auth = response.body.usuario_auth || null;
-            _this.limpiar_objeto_clase_local();
+            //this.limpiar_objeto_clase_local();
          }, function (response) {
             // error callback
             _this.checkear_estado_respuesta_http(response.status);
@@ -3814,10 +3814,12 @@ var SistemaOperativoController = new Vue({
             // success callback
 
             if (response.status == 200) {
-               if (!_this2.es_null(response.body.sistema_operativo)) {
-                  _this2.lista_actualizar_activo = false;
-                  _this2.id_en_edicion = null;
+               /*
+               if ( !this.es_null(response.body.sistema_operativo) ) {
+                  this.lista_actualizar_activo = false;
+                  this.id_en_edicion = null;
                }
+               */
             } else {
                _this2.checkear_estado_respuesta_http(response.status);
                return false;
@@ -3825,14 +3827,15 @@ var SistemaOperativoController = new Vue({
 
             if (_this2.mostrar_notificaciones(response) == true) {
 
-               //Aqui que pregunte si el modal está activo para que lo cierre
-               if (_this2.modal_actualizar_activo == true) {
-                  _this2.ocultar_modal('actualizar');
-                  _this2.modal_actualizar_activo = false;
-               }
-
-               _this2.lista_actualizar_activo = false;
-               _this2.id_en_edicion = null;
+               /*
+                //Aqui que pregunte si el modal está activo para que lo cierre
+                if (this.modal_actualizar_activo == true) {
+                this.ocultar_modal('actualizar');
+                this.modal_actualizar_activo = false;
+                }
+                 this.lista_actualizar_activo = false;
+                this.id_en_edicion = null;
+               */
 
                //Recargar la lista
                _this2.inicializar();

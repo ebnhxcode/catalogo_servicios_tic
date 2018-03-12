@@ -16,6 +16,9 @@
 {{--<v-dialog/>--}}
 <notifications group="global" position="bottom right" />
 
+{{-- Se habilitara cuando se implemente el vuerouter --}}
+{{--<vue-progress-bar></vue-progress-bar>--}}
+
 <!-- Para cada modulo establecer estas funcionalidades parametricas como opciones configurables -->
 <!-- Por lo tanto podemos dejar estas opciones como datos en una bd segun modulo:usuario -->
 <!-- Opciones como colores, templates especiales, etc -->

@@ -208,7 +208,7 @@ const SistemaOperativoController = new Vue({
             this.sistemas_operativos = response.body.sistemas_operativos || null;
             this.datos_excel = response.body.sistemas_operativos || null;
             this.usuario_auth = response.body.usuario_auth || null;
-            this.limpiar_objeto_clase_local();
+            //this.limpiar_objeto_clase_local();
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);
          });
@@ -232,10 +232,12 @@ const SistemaOperativoController = new Vue({
          this.$http.put(`/${this.nombre_ruta}/${this.sistema_operativo.id_sistema_operativo}`, this.sistema_operativo).then(response => { // success callback
 
             if (response.status == 200) {
+               /*
                if ( !this.es_null(response.body.sistema_operativo) ) {
                   this.lista_actualizar_activo = false;
                   this.id_en_edicion = null;
                }
+               */
             } else {
                this.checkear_estado_respuesta_http(response.status);
                return false;
@@ -243,14 +245,16 @@ const SistemaOperativoController = new Vue({
 
             if ( this.mostrar_notificaciones(response) == true ) {
 
-               //Aqui que pregunte si el modal está activo para que lo cierre
-               if (this.modal_actualizar_activo == true) {
-                  this.ocultar_modal('actualizar');
-                  this.modal_actualizar_activo = false;
-               }
+               /*
+                //Aqui que pregunte si el modal está activo para que lo cierre
+                if (this.modal_actualizar_activo == true) {
+                this.ocultar_modal('actualizar');
+                this.modal_actualizar_activo = false;
+                }
 
-               this.lista_actualizar_activo = false;
-               this.id_en_edicion = null;
+                this.lista_actualizar_activo = false;
+                this.id_en_edicion = null;
+               */
 
                //Recargar la lista
                this.inicializar();

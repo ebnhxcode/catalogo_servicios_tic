@@ -178,7 +178,7 @@ const ActividadController = new Vue({
             this.actividades = response.body.actividades || null;
             this.tipos_actividades = response.body.tipos_actividades || null;
             this.datos_excel = response.body.actividades || null;
-            this.limpiar_objeto_clase_local();
+            //this.limpiar_objeto_clase_local();
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);
          });
@@ -202,10 +202,12 @@ const ActividadController = new Vue({
          this.$http.put(`/${this.nombre_ruta}/${this.actividad.id_actividad}`, this.actividad).then(response => { // success callback
 
             if (response.status == 200) {
+               /*
                if ( !this.es_null(response.body.actividad) ) {
                   this.lista_actualizar_activo = false;
                   this.id_en_edicion = null;
                }
+               */
             } else {
                this.checkear_estado_respuesta_http(response.status);
                return false;
@@ -213,14 +215,16 @@ const ActividadController = new Vue({
 
             if ( this.mostrar_notificaciones(response) == true ) {
 
-               //Aqui que pregunte si el modal está activo para que lo cierre
-               if (this.modal_actualizar_activo == true) {
-                  this.ocultar_modal('actualizar');
-                  this.modal_actualizar_activo = false;
-               }
+               /*
+                //Aqui que pregunte si el modal está activo para que lo cierre
+                if (this.modal_actualizar_activo == true) {
+                this.ocultar_modal('actualizar');
+                this.modal_actualizar_activo = false;
+                }
 
-               this.lista_actualizar_activo = false;
-               this.id_en_edicion = null;
+                this.lista_actualizar_activo = false;
+                this.id_en_edicion = null;
+               */
 
                //Recargar la lista
                this.inicializar();
