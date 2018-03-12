@@ -73,6 +73,39 @@ class AplicacionController extends Controller {
       ]);
    }
 
+   public function show (Request $request, $id) {
+      $result = preg_match('/(^([0-9]+)(\d+)?$)/u', $id);
+      if ($this->es_vacio($id) == true || $result == 0) {
+         return response()->json([
+            'status' => 200, //Para los popups con alertas de sweet alert
+            'tipo' => 'error_datos_invalidos', //Para las notificaciones
+            'mensajes' => ["new_$this->nombre_modelo" => [0=>"Lo buscado, no se encontró."]],
+         ]);
+      }
+
+      $this->aplicacion = Aplicacion::where("id_$this->nombre_modelo",'=',$id)->with([
+         'dominio','servidor','servicio','tipo_aplicacion'])->first();
+
+      #dd($this->aplicacion);
+
+      #Valida si aplicacion existe
+      if ($this->aplicacion) {
+         return response()->json([
+            'status' => 200, //Para los popups con alertas de sweet alert
+            'tipo' => 'eliminacion_exitosa', //Para las notificaciones
+            'mensajes' => ["new_$this->nombre_modelo" => [0=>"Registro encontrado exitosamente."]],
+            'aplicacion' => $this->aplicacion,
+            //Para mostrar los mensajes que van desde el backend
+         ]);
+      }else{
+         return response()->json([
+            'status' => 200, //Para los popups con alertas de sweet alert
+            'tipo' => 'error_datos_invalidos', //Para las notificaciones
+            'mensajes' => ["new_$this->nombre_modelo" => [0=>"Lo buscado, no se encontró."]],
+         ]);
+      }
+
+   }
 
    public function store(Request $request) {
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario

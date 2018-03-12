@@ -177,7 +177,8 @@
          <p class="control has-icon has-icon-right">
 
             <toggle-button
-               :value="aplicacion.ssl_tls=(en_array([true, 'true'], aplicacion.ssl_tls)?true:false)"
+               :sync="true"
+               :value="aplicacion.ssl_tls=(en_array([true, 'true', 1], aplicacion.ssl_tls)?true:false)"
                :width="90"
                :labels="{checked: 'SSL Activo <i class=`fa fa-check`></i>', unchecked: 'Sin SSL'}"
                v-model="aplicacion.ssl_tls"/>

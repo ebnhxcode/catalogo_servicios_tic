@@ -118,7 +118,7 @@
 
 
 
-      </div><!-- .row -->
+      </div><!-- .col -->
       <div class="col-sm-8 col-md-8">
 
          <h4>Aplicaciones cargadas</h4>

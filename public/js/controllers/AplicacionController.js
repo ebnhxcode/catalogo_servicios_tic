@@ -3711,10 +3711,19 @@ var AplicacionController = new Vue({
       //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el aplicacion
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function id_en_edicion(_id_en_edicion) {
+         var _this = this;
+
          if (_id_en_edicion == null) {
             this.limpiar_objeto_clase_local();
          } else {
-            this.aplicacion = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.aplicaciones, this.nombre_model);
+            //this.aplicacion = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.aplicaciones,this.nombre_model);
+            this.$http.get('/' + this.nombre_tabla + '/' + _id_en_edicion).then(function (response) {
+               // success callback
+               _this.aplicacion = response.body['' + _this.nombre_model];
+            }, function (response) {
+               // error callback
+               _this.checkear_estado_respuesta_http(response.status);
+            });
          }
       },
       //aplicaciones se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
@@ -3796,22 +3805,22 @@ var AplicacionController = new Vue({
       },
 
       inicializar: function inicializar() {
-         var _this = this;
+         var _this2 = this;
 
          this.$http.get('/aplicaciones').then(function (response) {
             // success callback
-            _this.actividades = response.body.actividades || null;
-            _this.tipos_aplicaciones = response.body.tipos_aplicaciones || null;
-            _this.servidores = response.body.servidores || null;
-            _this.servicios = response.body.servicios || null;
-            _this.dominios = response.body.dominios || null;
-            _this.aplicaciones = response.body.aplicaciones || null;
-            _this.datos_excel = response.body.aplicaciones || null;
-            _this.usuario_auth = response.body.usuario_auth || null;
+            _this2.actividades = response.body.actividades || null;
+            _this2.tipos_aplicaciones = response.body.tipos_aplicaciones || null;
+            _this2.servidores = response.body.servidores || null;
+            _this2.servicios = response.body.servicios || null;
+            _this2.dominios = response.body.dominios || null;
+            _this2.aplicaciones = response.body.aplicaciones || null;
+            _this2.datos_excel = response.body.aplicaciones || null;
+            _this2.usuario_auth = response.body.usuario_auth || null;
             //this.limpiar_objeto_clase_local();
          }, function (response) {
             // error callback
-            _this.checkear_estado_respuesta_http(response.status);
+            _this2.checkear_estado_respuesta_http(response.status);
          });
       },
 
@@ -3830,7 +3839,7 @@ var AplicacionController = new Vue({
       },
 
       guardar_editado: function guardar_editado() {
-         var _this2 = this;
+         var _this3 = this;
 
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
@@ -3845,11 +3854,11 @@ var AplicacionController = new Vue({
                }
                */
             } else {
-               _this2.checkear_estado_respuesta_http(response.status);
+               _this3.checkear_estado_respuesta_http(response.status);
                return false;
             }
 
-            if (_this2.mostrar_notificaciones(response) == true) {
+            if (_this3.mostrar_notificaciones(response) == true) {
 
                /*
                 //Aqui que pregunte si el modal está activo para que lo cierre
@@ -3862,11 +3871,11 @@ var AplicacionController = new Vue({
                */
 
                //Recargar la lista
-               _this2.inicializar();
+               _this3.inicializar();
             }
          }, function (response) {
             // error callback
-            _this2.checkear_estado_respuesta_http(response.status);
+            _this3.checkear_estado_respuesta_http(response.status);
          });
 
          return;
@@ -3874,7 +3883,7 @@ var AplicacionController = new Vue({
 
       eliminar: function eliminar(id_aplicacion) {
          var _swal,
-             _this3 = this;
+             _this4 = this;
 
          __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()((_swal = {
             title: "¿Estás seguro/a?",
@@ -3891,38 +3900,38 @@ var AplicacionController = new Vue({
                //Se adjunta el token
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-               _this3.$http.delete('/' + _this3.nombre_ruta + '/' + id_aplicacion).then(function (response) {
+               _this4.$http.delete('/' + _this4.nombre_ruta + '/' + id_aplicacion).then(function (response) {
                   if (response.status == 200) {
-                     _this3.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
+                     _this4.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
                   } else {
-                     _this3.checkear_estado_respuesta_http(response.status);
+                     _this4.checkear_estado_respuesta_http(response.status);
                      return false;
                   }
 
-                  if (_this3.mostrar_notificaciones(response) == true) {
+                  if (_this4.mostrar_notificaciones(response) == true) {
                      //Aqui que pregunte si el modal está activo para que lo cierre
-                     if (_this3.modal_actualizar_activo == true) {
-                        _this3.ocultar_modal('actualizar');
-                        _this3.modal_actualizar_activo = false;
+                     if (_this4.modal_actualizar_activo == true) {
+                        _this4.ocultar_modal('actualizar');
+                        _this4.modal_actualizar_activo = false;
                      }
-                     _this3.lista_actualizar_activo = false;
-                     _this3.id_en_edicion = null;
+                     _this4.lista_actualizar_activo = false;
+                     _this4.id_en_edicion = null;
 
                      //Recargar la lista
-                     _this3.inicializar();
+                     _this4.inicializar();
                   }
                }, function (response) {
                   // error callback
-                  _this3.checkear_estado_respuesta_http(response.status);
+                  _this4.checkear_estado_respuesta_http(response.status);
                });
             } else if (result.dismiss === __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default.a.DismissReason.cancel) {
-               _this3.auto_alerta_corta("Cancelado", "Se ha cancelado la eliminación", "success");
+               _this4.auto_alerta_corta("Cancelado", "Se ha cancelado la eliminación", "success");
             }
          });
       },
 
       guardar: function guardar() {
-         var _this4 = this;
+         var _this5 = this;
 
          //Ejecuta validacion sobre los campos con validaciones
          if (this.validar_campos() == false) {
@@ -3950,24 +3959,24 @@ var AplicacionController = new Vue({
             // success callback
 
             if (response.status == 200) {
-               if (!_this4.es_null(response.body.aplicacion)) {
-                  _this4.id_en_edicion = null;
+               if (!_this5.es_null(response.body.aplicacion)) {
+                  _this5.id_en_edicion = null;
                }
                //this.inicializar();
             } else {
-               _this4.checkear_estado_respuesta_http(response.status);
+               _this5.checkear_estado_respuesta_http(response.status);
                return false;
             }
 
-            if (_this4.mostrar_notificaciones(response) == true) {
-               _this4.ocultar_modal('crear');
-               _this4.inicializar();
+            if (_this5.mostrar_notificaciones(response) == true) {
+               _this5.ocultar_modal('crear');
+               _this5.inicializar();
 
                return;
             }
          }, function (response) {
             // error callback
-            _this4.checkear_estado_respuesta_http(response.status);
+            _this5.checkear_estado_respuesta_http(response.status);
          });
 
          return;
