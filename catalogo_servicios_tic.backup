@@ -1429,9 +1429,9 @@ COPY public.aplicaciones (id_aplicacion, id_tipo_aplicacion, id_servicio, id_dom
 1	4	2	1	aplicacion wander	djfakdfdkgsfjf ahsg hjadsf j dfh sdjh fjhds gfjhsdk sd jhgfsdhjkh sdgfh sdj	gsdfhsdk h dh s	http://www.asdfs.cl	2.2.2.2	dsf	true	4	4	2018-03-02 04:10:17	2018-03-02 19:32:08	2018-03-02 19:32:08	\N
 3	4	2	1	sdfsadfsa	fsdfsadf	safasdfsadf	http://ww.ww.ww	3.3.3.3	eweq	1	4	4	2018-03-02 20:37:15	2018-03-02 20:37:34	2018-03-02 20:37:34	\N
 2	1	1	1	fsfsadfsadf	sdfsadfsad	fsdafsd	http://weq.qweqw.qwe	1.1.1.1	fsdf	true	4	4	2018-03-02 15:12:17	2018-03-02 20:37:37	2018-03-02 20:37:37	\N
-4	3	2	1	Aplicacion 1	la aplicacion prueba 1	app001	http://rqr.fadfa.cl	3.3.3.3	app001	true	4	4	2018-03-03 17:12:09	2018-03-12 01:28:50	\N	4
-5	1	7	1	Soap	Servicio soap sigte	soap_sigte	http://soapsigte.minsal.cl	1.1.1.1	soapsigte.minsal.cl	false	4	4	2018-03-07 13:54:13	2018-03-12 01:55:31	\N	4
-6	3	1	1	Aplicacion 2	aplicacion 2 test	app001minsal	http://test2.minsal.cl	10.8.12.1	test2	1	4	4	2018-03-12 02:06:27	2018-03-12 02:06:27	\N	1
+4	3	2	1	Aplicacion 1	la aplicacion prueba 1	app001	http://rqr.fadfa.cl	3.3.3.3	app001	true	4	4	2018-03-03 17:12:09	2018-03-12 03:27:40	\N	4
+6	3	2	1	Aplicacion 2	aplicacion 2 test	app001minsal	http://test2.minsal.cl	10.8.12.1	test2	true	4	4	2018-03-12 02:06:27	2018-03-12 15:45:02	\N	1
+5	1	2	1	Soap	Servicio soap sigte	soap_sigte	http://soapsigte.minsal.cl	1.1.1.1	soapsigte.minsal.cl	true	4	4	2018-03-07 13:54:13	2018-03-12 15:45:09	\N	4
 \.
 
 
@@ -2352,13 +2352,13 @@ COPY public.servicio_salud (id_servicio_salud, id_region, nombre_servicio_salud,
 --
 
 COPY public.servicios (id_servicio, id_actividad, id_usuario, nom_servicio, det_servicio, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
-4	4	1	Web Minsal	Desarrollos relacionados al servicio web minsal	1	1	2018-02-27 19:35:43	2018-02-27 19:35:43	\N
 2	4	4	Wordpress	Servicio que se encarga de mantener y administrar los sitios hechos en wordpress	1	4	2018-02-27 19:04:06	2018-03-05 20:56:33	\N
 1	4	4	Sitios Web	Servicio que realiza el equipo de soporte	1	4	2018-02-27 18:58:58	2018-03-06 06:39:45	\N
 5	7	4	eqweqwe	wqe	4	4	2018-03-06 06:39:50	2018-03-06 06:39:53	2018-03-06 06:39:53
 3	4	4	Sitios en Yii	Desarrollos que se han realizado en Yii Framework.	1	4	2018-02-27 19:04:06	2018-03-06 06:41:35	\N
 6	10	4	sdaf	fsadf	4	4	2018-03-06 06:41:42	2018-03-06 06:41:45	2018-03-06 06:41:45
-7	1	4	Sigte	Sistema de gestion de tiempos de espera	4	4	2018-03-07 13:52:04	2018-03-07 13:52:04	\N
+7	1	4	Sigte	Sistema de gestion de tiempos de espera	4	4	2018-03-07 13:52:04	2018-03-12 04:43:53	\N
+4	4	4	Web Minsal	Desarrollos relacionados al servicio web minsal	1	4	2018-02-27 19:35:43	2018-03-12 04:50:25	\N
 \.
 
 
@@ -2392,9 +2392,9 @@ COPY public.servicios_tags (id_servicio_tag, id_servicio, id_tag, id_usuario_reg
 
 COPY public.servidores (id_servidor, id_datacentro, id_sistema_operativo, nom_servidor, ip_servidor, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, det_servidor, ram, memoria_dd, swap, procesador, frec_procesador, nucleos, usuarios_pactados, mac, nodo, interface) FROM stdin;
 3	\N	\N	DEL	8.8.8.8	4	4	2018-03-05 21:28:32	2018-03-05 21:28:35	2018-03-05 21:28:35	DEL	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-4	1	4	MNSOAPSIGTE	1.1.1.1	4	4	2018-03-07 13:57:52	2018-03-11 23:22:08	\N	Servidor sigte	1024	30000	8000	amd	2400	2	1	ab:13:1b:f5:2d:4a	\N	\N
 2	1	6	IP	8.8.8.8	4	4	2018-03-05 21:28:03	2018-03-12 01:40:58	\N	IP	4234	2342	34	amd	234	234	342	1b:23:2a:e3:11:ab	\N	\N
 1	2	4	APP01QAMINSAL	8.8.8.8	4	4	2018-03-05 21:26:30	2018-03-12 02:02:18	\N	Servidor de webminsal	2048	30000	8000	intel	2400	2	3	\N	\N	\N
+4	1	6	MNSOAPSIGTE	1.1.1.1	4	4	2018-03-07 13:57:52	2018-03-12 04:53:02	\N	Servidor sigte	1024	30000	8000	amd	2400	2	1	ab:13:1b:f5:2d:4a	\N	\N
 \.
 
 
@@ -2482,6 +2482,8 @@ COPY public.usuarios (id_usuario, nom_usuario, nom_completo, ape_paterno, ape_ma
 --
 
 COPY public.usuarios_bitacora_servicios (id_usuario_bitacora_servicio, id_usuario, id_servicio, id_actividad, asunto, det_bitacora, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+1	4	2	1	Cambio en tv minsal	Se realiza cambio menor en formulario de tv minsal.	4	4	2018-03-12 14:49:51	2018-03-12 16:09:17	\N
+2	4	2	1	Nuevo cambio tv minsal	Cambio menor tv minsal	4	4	2018-03-12 14:55:59	2018-03-12 16:09:23	\N
 \.
 
 
@@ -2738,7 +2740,7 @@ SELECT pg_catalog.setval('public.tipos_tecnologias_desarrollo_id_seq', 1, false)
 -- Name: usuarios_bitacora_servicios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.usuarios_bitacora_servicios_id_seq', 1, false);
+SELECT pg_catalog.setval('public.usuarios_bitacora_servicios_id_seq', 2, true);
 
 
 --
