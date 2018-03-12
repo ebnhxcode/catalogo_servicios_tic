@@ -29,7 +29,7 @@
 
       <div class="card-columns {{--card-deck--}}">
 
-         <div class="card bg-dark text-white border-primary mb-3" v-for="i in filterBy(home_items, filtro_head)">
+         <div class="card bg-info text-white border-light mb-3" v-for="i in filterBy(home_items, filtro_head)">
             <div class="card-header">@{{ i.title }}</div>
             <div class="card-body">
                <h5 class="card-title">
