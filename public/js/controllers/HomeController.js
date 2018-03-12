@@ -2466,20 +2466,20 @@ var HomeController = new Vue({
             'image': '/img/aplicación-web-y-de-escritorio-01.jpg'
          }, {
             'title': 'Actividades',
-            'detail': '',
+            'detail': 'Módulo de actividades, permite conocer la amplia variedad de servicios y trabajos otorgados por tic.',
             'url': '/actividades',
             'route': 'actividades',
             'class_obj': 'actividad',
             'image': '/img/shutterstock.jpg'
          }, {
             'title': 'Catálogos',
-            'detail': '',
+            'detail': 'Módulo de catálogos, permite conocer a nivel macro de origen a fin el desarrollo de un proyecto y sus contenidos.',
             'url': '/catalogos',
             'route': 'catalogos',
             'class_obj': 'catalogo'
          }, {
             'title': 'Bitácoras',
-            'detail': '',
+            'detail': 'Módulo de bitácoras, permite al usuario generar bitacoras sobre los servicios trabajados.',
             'url': '/usuarios_bitacora_servicios',
             'route': 'usuarios_bitacora_servicios',
             'class_obj': 'usuario_bitacora_servicio',

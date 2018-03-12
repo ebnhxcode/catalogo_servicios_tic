@@ -8,6 +8,18 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 border-bottom">
          <h2 class="h2">{{$nombre_detalle}}</h2>
 
+         <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="input-group input-group-sm">
+
+               <div class="btn-group mr-2">
+                  <input type="text" class="form-control input-sm"
+                         data-placement="top" data-toggle="tooltip" title="Filtrar en la lista"
+                         placeholder="filtrar en la lista" v-model="filtro_head" id="filtro_head">
+               </div><!-- .btn-group mr-2 #mr->margin -->
+
+
+            </div><!-- input-* -->
+         </div><!-- .btn .btn-toolbar -->
 
       </div><!-- .d-flex .justify-* .flex-wrap .flex-md-nowrap .align-items-center -->
 
@@ -17,7 +29,7 @@
 
       <div class="card-columns {{--card-deck--}}">
 
-         <div class="card bg-light mb-3" v-for="i in home_items">
+         <div class="card bg-dark text-white border-primary mb-3" v-for="i in filterBy(home_items, filtro_head)">
             <div class="card-header">@{{ i.title }}</div>
             <div class="card-body">
                <h5 class="card-title">
