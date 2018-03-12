@@ -2435,7 +2435,57 @@ var HomeController = new Vue({
             'updated_at': null,
             'deleted_at': null
          },
-         'home_items': [],
+
+         'home_items': [{
+            'title': 'Dashboard',
+            'detail': 'Menú para acceder a los servicios del catálogo',
+            'url': '/dashboard',
+            'route': 'home',
+            'class_obj': 'home',
+            'image': '/img/logo.png'
+         }, {
+            'title': 'Servicios',
+            'detail': 'Módulo de servicios, permite conocer servidores y aplicaciones.',
+            'url': '/servicios',
+            'route': 'servicios',
+            'class_obj': 'servicio',
+            'image': '/img/servicio.jpg'
+         }, {
+            'title': 'Servidores',
+            'detail': 'Módulo de servidores, permite conocer información respecto al servidor y aplicaciones desplegadas.',
+            'url': '/servidores',
+            'route': 'servidores',
+            'class_obj': 'servidor',
+            'image': '/img/source.gif'
+         }, {
+            'title': 'Aplicaciones',
+            'detail': 'Módulo de aplicaciones, permite conocer detalles de la aplicación y su ubicación.',
+            'url': '/aplicaciones',
+            'route': 'aplicaciones',
+            'class_obj': 'aplicacion',
+            'image': '/img/aplicación-web-y-de-escritorio-01.jpg'
+         }, {
+            'title': 'Actividades',
+            'detail': '',
+            'url': '/actividades',
+            'route': 'actividades',
+            'class_obj': 'actividad',
+            'image': '/img/shutterstock.jpg'
+         }, {
+            'title': 'Catálogos',
+            'detail': '',
+            'url': '/catalogos',
+            'route': 'catalogos',
+            'class_obj': 'catalogo'
+         }, {
+            'title': 'Bitácoras',
+            'detail': '',
+            'url': '/usuarios_bitacora_servicios',
+            'route': 'usuarios_bitacora_servicios',
+            'class_obj': 'usuario_bitacora_servicio',
+            'image': '/img/bitacora.png'
+         }],
+
          'usuario_auth': {},
 
          'campos_formularios': [],
