@@ -2,7 +2,7 @@
 <div class="row">
    <div class="col-sm-4 col-md-4">
 
-      <dt>Nombre tipo aplicacion</dt>
+      <dt>Nombre cargo</dt>
       <dd>
          <p class="control has-icon has-icon-right">
             <input type="text" v-model="cargo.nom_cargo" name="nom_cargo"

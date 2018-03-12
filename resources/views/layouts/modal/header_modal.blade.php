@@ -23,7 +23,7 @@
         </div>
 
         <h2>@{{ (modal_crear_activo === true) ? 'Crear' : ''/*Visualizar o Actualizar*/}}
-           {{strtoupper(substr($nombre_modelo,0,1)).substr($nombre_modelo,1)}}
+           {{str_replace('_',' ',strtoupper(substr($nombre_modelo,0,1)).substr($nombre_modelo,1))}}
            {{--str_replace('_',' ',$nombre_modelo)--}}
         </h2>
         <!--hr-->
