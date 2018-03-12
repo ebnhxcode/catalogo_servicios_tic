@@ -1,5 +1,7 @@
 <!-- BEGIN HEADER -->
-@include('layouts.modal.header_modal', ['nom_modal'=>'actualizar'])
+@if(view()->exists('layouts.modal.header_modal'))
+   @include('layouts.modal.header_modal', ['nom_modal'=>'actualizar'])
+@endif
 <!-- END HEADER -->
 
 
@@ -34,7 +36,9 @@
 
       <br>
 
-      @include("$nombre_tabla.partials.formulario_campos")
+      @if(view()->exists("$nombre_tabla.partials.formulario_campos"))
+         @include("$nombre_tabla.partials.formulario_campos")
+      @endif
 
       <dt>Finalizar</dt>
 
@@ -54,5 +58,7 @@
 
 
 <!-- BEGIN FOOTER -->
-@include('layouts.modal.footer_modal')
+@if(view()->exists("layouts.modal.footer_modal"))
+   @include("layouts.modal.footer_modal")
+@endif
 <!-- END FOOTER -->

@@ -44,5 +44,7 @@
 <!-- Sección de la tabla que lista los elementos del módulo -->
 <div class="table-responsive">
    <!-- dir ./partials -->
-   @include("$nombre_tabla.partials.tabla_listar")
+   @if(view()->exists("$nombre_tabla.partials.tabla_listar"))
+      @include("$nombre_tabla.partials.tabla_listar")
+   @endif
 </div>

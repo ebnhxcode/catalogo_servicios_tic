@@ -1,9 +1,11 @@
 <!-- BEGIN HEADER -->
-@include('layouts.modal.header_modal', ['nom_modal'=>'crear'])
+@if(view()->exists('layouts.modal.header_modal'))
+   @include('layouts.modal.header_modal', ['nom_modal'=>'crear'])
+@endif
    <!-- END HEADER -->
-
-   @include("$nombre_tabla.partials.formulario_campos")
-
+   @if(view()->exists("$nombre_tabla.partials.formulario_campos"))
+      @include("$nombre_tabla.partials.formulario_campos")
+   @endif
    <dt>Finalizar</dt>
    <dd>
       <button class="btn btn-success" @click.prevent="guardar">
@@ -12,5 +14,8 @@
    </dd>
 
 <!-- BEGIN FOOTER -->
-@include('layouts.modal.footer_modal')
-   <!-- END FOOTER -->
+@if(view()->exists('layouts.modal.footer_modal'))
+   @include('layouts.modal.footer_modal')
+@endif
+
+<!-- END FOOTER -->
