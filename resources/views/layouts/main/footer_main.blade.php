@@ -8,12 +8,17 @@
 <!-- Sección de los modals que despliegan segun la gestión -->
 <div>
    <!-- dir ./partials -->
+   @include("layouts.modal.modal_crear")
+   @include("layouts.modal.modal_actualizar")
+   {{--
    @if(view()->exists("$nombre_tabla.partials.modal_crear"))
       @include("layouts.modal.modal_crear")
    @endif
    @if(view()->exists("$nombre_tabla.partials.modal_actualizar"))
       @include("layouts.modal.modal_actualizar")
    @endif
+   --}}
+
 </div>
 
 {{--<notifications group="top_center" position="top center" />--}}
