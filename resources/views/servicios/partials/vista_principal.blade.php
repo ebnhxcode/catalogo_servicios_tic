@@ -64,6 +64,52 @@
 
       <div class="col-sm-8 col-md-8">
 
+         <h4>Servidores</h4>
+
+         {{--
+         <table class="table table-striped table-hover table-sm" v-if="servidor.aplicaciones && servidor.aplicaciones.length > 0">
+            <thead>
+            <tr>
+               <th>Nombre</th>
+               <th>Descripción</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="app in servidor.aplicaciones">
+               <td>@{{ app.nom_aplicacion }}</td>
+               <td>@{{ app.det_aplicacion }}</td>
+            </tr>
+            </tbody>
+
+         </table><!-- .table -->
+         --}}
+         <div class="card card-body bg-light">
+            Hasta el momento no existen servidores registrados en este servicio.
+         </div><!-- .card -->
+
+         <h4>Aplicaciones</h4>
+
+         {{--
+         <table class="table table-striped table-hover table-sm" v-if="servidor.aplicaciones && servidor.aplicaciones.length > 0">
+            <thead>
+            <tr>
+               <th>Nombre</th>
+               <th>Descripción</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="app in servidor.aplicaciones">
+               <td>@{{ app.nom_aplicacion }}</td>
+               <td>@{{ app.det_aplicacion }}</td>
+            </tr>
+            </tbody>
+
+         </table><!-- .table -->
+         --}}
+         <div class="card card-body bg-light">
+            Hasta el momento no existen aplicaciones cargadas en este servicio.
+         </div><!-- .card -->
+
          <h4>Fuentes aplicaciones</h4>
 
          {{--
@@ -113,8 +159,24 @@
 
          <br>
          <h4>Bitácoras en este servicio</h4>
+         <table class="table table-striped table-hover table-sm" v-if="servidor.usuarios_bitacora_servicios &&
+            servidor.usuarios_bitacora_servicios.length > 0">
+            <thead>
+            <tr>
+               <th>Nombre</th>
+               <th>Descripción</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="b in servidor.usuarios_bitacora_servicios">
+               <td>@{{ b.asunto }}</td>
+               <td>@{{ b.det_bitacora }}</td>
+            </tr>
+            </tbody>
+
+         </table><!-- .table -->
          <div class="card card-body bg-light">
-            Hasta el momento no existen tecnologías registradas.
+            Hasta el momento no existen bitácoras registradas.
          </div><!-- .card -->
 
 

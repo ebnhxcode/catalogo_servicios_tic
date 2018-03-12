@@ -3493,6 +3493,7 @@ var ServicioController = new Vue({
          },
          'actividades': [],
          'servicios': [],
+         'usuarios_bitacora_servicios': [],
          'datos_excel': [],
          'usuario_auth': {},
 
@@ -3646,6 +3647,7 @@ var ServicioController = new Vue({
             // success callback
             _this2.actividades = response.body.actividades || null;
             _this2.servicios = response.body.servicios || null;
+            _this2.usuarios_bitacora_servicios = response.body.usuarios_bitacora_servicios || null;
             _this2.datos_excel = response.body.servicios || null;
             _this2.usuario_auth = response.body.usuario_auth || null;
             //this.limpiar_objeto_clase_local();

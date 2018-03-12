@@ -49,6 +49,7 @@ const ServicioController = new Vue({
          },
          'actividades':[],
          'servicios':[],
+         'usuarios_bitacora_servicios':[],
          'datos_excel':[],
          'usuario_auth':{},
 
@@ -195,6 +196,7 @@ const ServicioController = new Vue({
          this.$http.get('/servicios').then(response => { // success callback
             this.actividades = response.body.actividades || null;
             this.servicios = response.body.servicios || null;
+            this.usuarios_bitacora_servicios = response.body.usuarios_bitacora_servicios || null;
             this.datos_excel = response.body.servicios || null;
             this.usuario_auth = response.body.usuario_auth || null;
             //this.limpiar_objeto_clase_local();
