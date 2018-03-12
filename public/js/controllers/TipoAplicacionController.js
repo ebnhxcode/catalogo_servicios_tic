@@ -3609,7 +3609,6 @@ var TipoAplicacionController = new Vue({
          'lista_actualizar_activo': false,
 
          'id_en_edicion': null,
-         'dejar_de_editar_contador': 0,
 
          'orden_lista': 'asc',
 
@@ -3785,8 +3784,6 @@ var TipoAplicacionController = new Vue({
                 */
                //Recargar la lista
                _this2.inicializar();
-            } else {
-               _this2.dejar_de_editar_contador++;
             }
          }, function (response) {
             // error callback

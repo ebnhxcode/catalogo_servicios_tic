@@ -3666,7 +3666,6 @@ var ServidorController = new Vue({
          'lista_actualizar_activo': false,
 
          'id_en_edicion': null,
-         'dejar_de_editar_contador': 0,
 
          'orden_lista': 'asc',
 
@@ -3933,8 +3932,6 @@ var ServidorController = new Vue({
 
                //Recargar la lista
                _this5.inicializar();
-            } else {
-               _this5.dejar_de_editar_contador++;
             }
          }, function (response) {
             // error callback

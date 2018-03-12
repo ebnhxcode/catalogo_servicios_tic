@@ -69,7 +69,7 @@
          <button class="btn btn-sm btn-secondary"
                  data-placement="top" data-toggle="tooltip" title="Dejar de editar"
                  @click.prevent="dejar_de_editar()"
-                 v-show="dejar_de_editar_contador>2 && id_en_edicion == s.id_sistema_operativo">
+                 v-show="id_en_edicion == s.id_sistema_operativo">
             <i class="fa fa-close"></i>
          </button>
 

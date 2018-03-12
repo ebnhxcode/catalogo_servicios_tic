@@ -61,7 +61,6 @@ const TagController = new Vue({
          'lista_actualizar_activo':false,
 
          'id_en_edicion': null,
-         'dejar_de_editar_contador': 0,
 
          'orden_lista':'asc',
 
@@ -238,8 +237,6 @@ const TagController = new Vue({
                //Recargar la lista
                this.inicializar();
 
-            } else {
-               this.dejar_de_editar_contador ++;
             }
 
          }, response => { // error callback
