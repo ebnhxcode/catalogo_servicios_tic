@@ -4,6 +4,7 @@
     "/js/controllers/HomeController.js": "/js/controllers/HomeController.js",
     "/js/app.js": "/js/app.js",
     "/js/controllers/UsuarioController.js": "/js/controllers/UsuarioController.js",
+    "/js/controllers/UsuarioBitacoraServicioController.js": "/js/controllers/UsuarioBitacoraServicioController.js",
     "/js/controllers/TipoAplicacionController.js": "/js/controllers/TipoAplicacionController.js",
     "/js/controllers/TagController.js": "/js/controllers/TagController.js",
     "/js/controllers/SistemaOperativoController.js": "/js/controllers/SistemaOperativoController.js",

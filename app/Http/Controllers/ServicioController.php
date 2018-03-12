@@ -136,7 +136,7 @@ class ServicioController extends Controller {
     public function update(Request $request, $id) {
         #Se realiza validacion de los parametros de entrada que vienen desde el formulario
         $this->validacion = Validator::make($request->all(), [
-           'id_servicio' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|max:255',
+           "id_{$this->nombre_modelo}" => 'regex:/(^([0-9]+)(\d+)?$)/u|required|max:255',
            'nom_servicio' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
            'det_servicio' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
            'id_actividad' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",

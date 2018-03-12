@@ -133,6 +133,10 @@ const SideMenuController = new Vue({
                'title':'Catálogos',
                'url':'/catalogos',
             },
+            {
+               'title':'Bitácoras',
+               'url':'/usuarios_bitacora_servicios',
+            },
          ],
 
          'mantenedores':[

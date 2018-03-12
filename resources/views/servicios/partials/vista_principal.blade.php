@@ -111,6 +111,12 @@
             Hasta el momento no existen accesos disponibles.
          </div><!-- .card -->
 
+         <br>
+         <h4>Bitácoras en este servicio</h4>
+         <div class="card card-body bg-light">
+            Hasta el momento no existen tecnologías registradas.
+         </div><!-- .card -->
+
 
       </div><!-- .col -->
 
