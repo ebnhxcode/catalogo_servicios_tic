@@ -103,6 +103,11 @@ class UsuarioController extends Controller {
    }
 
    public function store(Request $request) {
+
+
+      return $request->all();
+
+
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario
       $this->validacion = Validator::make($request->all(), [
          'nom_usuario' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
@@ -126,8 +131,6 @@ class UsuarioController extends Controller {
       }
       #Como pasó todas las validaciones, se asigna al objeto
       $this->usuario = $request->all();
-
-      return $request->all();
 
       #Se crea el nuevo registro
       $this->new_usuario = User::create([

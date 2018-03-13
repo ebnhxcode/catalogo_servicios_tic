@@ -3585,6 +3585,9 @@ var UsuarioController = new Vue({
             'remember_token': null,
             'id_usuario_registra': null,
             'id_usuario_modifica': null,
+            'id_role': null,
+            'id_estado': null,
+            'id_cargo': null,
             'created_at': null,
             'updated_at': null,
             'deleted_at': null
@@ -3600,11 +3603,17 @@ var UsuarioController = new Vue({
             'remember_token': null,
             'id_usuario_registra': null,
             'id_usuario_modifica': null,
+            'id_role': null,
+            'id_estado': null,
+            'id_cargo': null,
             'created_at': null,
             'updated_at': null,
             'deleted_at': null
          },
          'usuarios': [],
+         'roles': [],
+         'estados': [],
+         'cargos': [],
          'datos_excel': [],
          'usuario_auth': {},
 
@@ -3634,6 +3643,9 @@ var UsuarioController = new Vue({
             'remember_token': false,
             'id_usuario_registra': false,
             'id_usuario_modifica': false,
+            'id_role': false,
+            'id_estado': false,
+            'id_cargo': false,
             'created_at': true,
             'updated_at': false,
             'deleted_at': false
@@ -3651,6 +3663,9 @@ var UsuarioController = new Vue({
             'remember_token': 'Remember token',
             'id_usuario_registra': 'Usuario registra',
             'id_usuario_modifica': 'Usuario modifica',
+            'id_role': 'Id role',
+            'id_estado': 'Id estado',
+            'id_cargo': 'Id cargo',
             'created_at': 'Creado en',
             'updated_at': 'Actualizado en',
             'deleted_at': 'Eliminado en'
@@ -3668,6 +3683,9 @@ var UsuarioController = new Vue({
             'remember_token': 'String',
             'id_usuario_registra': 'String',
             'id_usuario_modifica': 'String',
+            'id_role': 'String',
+            'id_estado': 'String',
+            'id_cargo': 'String',
             'created_at': 'String',
             'updated_at': 'String',
             'deleted_at': 'String'
@@ -3718,6 +3736,9 @@ var UsuarioController = new Vue({
                'remember_token': usuario.remember_token || '-',
                'id_usuario_registra': usuario.id_usuario_registra || '-',
                'id_usuario_modifica': usuario.id_usuario_modifica || '-',
+               'id_role': usuario.id_role || '-',
+               'id_estado': usuario.id_estado || '-',
+               'id_cargo': usuario.id_cargo || '-',
                'created_at': usuario.created_at || '-',
                'updated_at': usuario.updated_at || '-',
                'deleted_at': usuario.deleted_at || '-'
@@ -3765,6 +3786,9 @@ var UsuarioController = new Vue({
             'remember_token': null,
             'id_usuario_registra': null,
             'id_usuario_modifica': null,
+            'id_role': null,
+            'id_estado': null,
+            'id_cargo': null,
             'created_at': null,
             'updated_at': null,
             'deleted_at': null
@@ -3910,6 +3934,9 @@ var UsuarioController = new Vue({
          formData.append('username', this.usuario.username || null);
          formData.append('email', this.usuario.email || null);
          formData.append('password', this.usuario.password || null);
+         formData.append('id_role', this.usuario.id_role || null);
+         formData.append('id_estado', this.usuario.id_estado || null);
+         formData.append('id_cargo', this.usuario.id_cargo || null);
 
          this.$http.post('/' + this.nombre_ruta, formData).then(function (response) {
             // success callback
