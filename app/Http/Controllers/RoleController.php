@@ -65,6 +65,39 @@ class RoleController extends Controller {
       ]);
    }
 
+   public function show (Request $request, $id) {
+      $result = preg_match('/(^([0-9]+)(\d+)?$)/u', $id);
+      if ($this->es_vacio($id) == true || $result == 0) {
+         return response()->json([
+            'status' => 200, //Para los popups con alertas de sweet alert
+            'tipo' => 'error_datos_invalidos', //Para las notificaciones
+            'mensajes' => ["new_$this->nombre_modelo" => [0=>"Lo buscado, no se encontró."]],
+         ]);
+      }
+
+      $this->role = Role::where("id_$this->nombre_modelo",'=',$id)->with(['role_permiso.permiso'])->first();
+
+      #dd($this->role);
+
+      #Valida si role existe y busca si tiene servidor_permiso
+      if ($this->role) {
+         return response()->json([
+            'status' => 200, //Para los popups con alertas de sweet alert
+            'tipo' => 'eliminacion_exitosa', //Para las notificaciones
+            'mensajes' => ["new_$this->nombre_modelo" => [0=>"Registro encontrado exitosamente."]],
+            'role' => $this->role,
+            //Para mostrar los mensajes que van desde el backend
+         ]);
+      }else{
+         return response()->json([
+            'status' => 200, //Para los popups con alertas de sweet alert
+            'tipo' => 'error_datos_invalidos', //Para las notificaciones
+            'mensajes' => ["new_$this->nombre_modelo" => [0=>"Lo buscado, no se encontró."]],
+         ]);
+      }
+
+   }
+
    public function store(Request $request) {
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario
       $this->validacion = Validator::make($request->all(), [

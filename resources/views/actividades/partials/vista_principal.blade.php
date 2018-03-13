@@ -84,6 +84,12 @@
          </div><!-- .card -->
 
          <br>
+         <h4>Servidores</h4>
+         <div class="card card-body bg-light">
+            Hasta el momento no existen servidores ingresados.
+         </div><!-- .card -->
+
+         <br>
          <h4>Tags</h4>
          <div class="card card-body bg-light">
             Hasta el momento no existen tags.

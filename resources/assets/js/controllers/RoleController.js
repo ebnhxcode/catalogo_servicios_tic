@@ -115,7 +115,12 @@ const RoleController = new Vue({
          if (id_en_edicion == null) {
             this.limpiar_objeto_clase_local();
          } else {
-            this.role = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.roles,this.nombre_model);
+            //this.role = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.roles,this.nombre_model);
+            this.$http.get(`/${this.nombre_tabla}/${id_en_edicion}`).then(response => { // success callback
+               this.role = response.body[`${this.nombre_model}`];
+            }, response => { // error callback
+               this.checkear_estado_respuesta_http(response.status);
+            });
          }
       },
       //Roles se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
