@@ -23,19 +23,19 @@ class UsuarioEstado extends Model {
    ];
 
    public function usuario () {
-      return $this->belongsTo('App\User', 'id_usuario');
+      return $this->belongsTo(User::class, 'id_usuario');
    }
 
    public function estado () {
-      return $this->belongsTo('App\Estado', 'id_estado');
+      return $this->belongsTo(Estado::class, 'id_estado');
    }
 
-   public function usuario_registra() {
-      return $this->belongsTo('App\User', 'id_usuario_registra');
+   public function usuario_registra () {
+      return $this->belongsTo(User::class, 'id_usuario_registra');
    }
 
-   public function usuario_modifica() {
-      return $this->belongsTo('App\User', 'id_usuario_modifica');
+   public function usuario_modifica () {
+      return $this->belongsTo(User::class, 'id_usuario_modifica');
    }
 
 }

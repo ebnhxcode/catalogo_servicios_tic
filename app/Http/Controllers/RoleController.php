@@ -126,6 +126,8 @@ class RoleController extends Controller {
       $this->new_role_permiso = RolePermiso::create([
          'id_role' => $this->new_role->id_role,
          'id_permiso' => $this->role['id_permiso'],
+         'id_usuario_registra' => Auth::user()->id_usuario,
+         'id_usuario_modifica' => Auth::user()->id_usuario,
       ]);
       unset($this->role, $this->permiso, /*$this->validacion,$this->new_role,*/ $this->new_role_permiso);
       return response()->json([
@@ -165,17 +167,24 @@ class RoleController extends Controller {
       $request['id_usuario_modifica'] = Auth::user()->id_usuario;
       $this->role->update($request->all());
 
-      if ( isset($this->role) && $this->role->role_permiso != null) {
-         $this->permiso = $this->role->role_permiso->permiso;
-         if ( ! in_array($this->permiso->id_permiso, [$request["id_permiso"],null,'null',''] )) {
-            $this->role->role_permiso->id_permiso = $request["id_permiso"];
-            $this->role->role_permiso->save();
+      if ( isset($this->role) ) {
+
+         #Guardar relacion del permiso, en caso que exista valor
+         if ($this->role->role_permiso != null) {
+            $this->permiso = $this->role->role_permiso->permiso;
+            if (!in_array($this->permiso->id_permiso, [$request["id_permiso"], null, 'null', ''])) {
+               $this->role->role_permiso->id_permiso = $request["id_permiso"];
+               $this->role->role_permiso->id_usuario_modifica = Auth::user()->id_usuario;
+               $this->role->role_permiso->save();
+            }
+         } else {
+            $this->new_role_permiso = RolePermiso::create([
+               'id_role' => $this->role['id_role'],
+               'id_permiso' => $this->role['id_permiso'],
+               'id_usuario_registra' => Auth::user()->id_usuario,
+               'id_usuario_modifica' => Auth::user()->id_usuario,
+            ]);
          }
-      } else {
-         $this->new_role_permiso = RolePermiso::create([
-            'id_role' => $this->role['id_role'],
-            'id_permiso' => $this->role['id_permiso'],
-         ]);
       }
       #unset($this->new_role_permiso, $this->permiso);
       return response()->json([

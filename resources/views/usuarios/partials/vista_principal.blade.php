@@ -48,14 +48,14 @@
                </h5>
                <p class="card-text">
 
-               <dl class="row" v-if="usuario.usuario_roles &&
-                  usuario.usuario_roles.length > 0">
+               <dl class="row" v-if="usuario.usuario_role &&
+                  usuario.usuario_role.length > 0">
 
                   <dt class="col-md-6">Role usuario</dt>
-                  <dd class="col-md-6">@{{ usuario.usuario_roles.role.nom_role }}</dd>
+                  <dd class="col-md-6">@{{ usuario.usuario_role.role.nom_role }}</dd>
 
                   <dt class="col-md-6">Detalle Role</dt>
-                  <dd class="col-md-6">@{{ usuario.usuario_roles.role.det_role }}</dd>
+                  <dd class="col-md-6">@{{ usuario.usuario_role.role.det_role }}</dd>
 
                </dl>
                <dl v-else>
@@ -106,14 +106,14 @@
                </h5>
                <p class="card-text">
 
-               <dl class="row" v-if="usuario.usuario_cargos &&
-                  usuario.usuario_cargos.length > 0">
+               <dl class="row" v-if="usuario.usuario_cargo &&
+                  usuario.usuario_cargo.length > 0">
 
                   <dt class="col-md-6">Cargo usuario</dt>
-                  <dd class="col-md-6">@{{ usuario.usuario_cargos.cargos.nom_cargo }}</dd>
+                  <dd class="col-md-6">@{{ usuario.usuario_cargo.cargos.nom_cargo }}</dd>
 
                   <dt class="col-md-6">Detalle cargo</dt>
-                  <dd class="col-md-6">@{{ usuario.usuario_cargos.cargos.det_cargo }}</dd>
+                  <dd class="col-md-6">@{{ usuario.usuario_cargo.cargos.det_cargo }}</dd>
 
                </dl>
                <dl v-else>

@@ -23,19 +23,19 @@ class UsuarioCargo extends Model {
    ];
 
    public function usuario () {
-      return $this->belongsTo('App\User', 'id_usuario');
+      return $this->belongsTo(User::class, 'id_usuario');
    }
 
    public function cargo () {
-      return $this->belongsTo('App\Cargo', 'id_cargo');
+      return $this->belongsTo(Cargo::class, 'id_cargo');
    }
 
    public function usuario_registra() {
-      return $this->belongsTo('App\User', 'id_usuario_registra');
+      return $this->belongsTo(User::class, 'id_usuario_registra');
    }
 
    public function usuario_modifica() {
-      return $this->belongsTo('App\User', 'id_usuario_modifica');
+      return $this->belongsTo(User::class, 'id_usuario_modifica');
    }
 
 }

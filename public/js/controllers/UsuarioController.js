@@ -3713,6 +3713,9 @@ var UsuarioController = new Vue({
             this.$http.get('/' + this.nombre_tabla + '/' + _id_en_edicion).then(function (response) {
                // success callback
                _this.usuario = response.body['' + _this.nombre_model];
+               _this.usuario.id_role = _this.usuario.usuario_role.id_role || null;
+               _this.usuario.id_estado = _this.usuario.usuario_estado.id_estado || null;
+               _this.usuario.id_cargo = _this.usuario.usuario_cargo.id_cargo || null;
             }, function (response) {
                // error callback
                _this.checkear_estado_respuesta_http(response.status);

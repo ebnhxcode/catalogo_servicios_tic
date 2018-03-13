@@ -3566,7 +3566,7 @@ var RoleController = new Vue({
             this.$http.get('/' + this.nombre_tabla + '/' + _id_en_edicion).then(function (response) {
                // success callback
                _this.role = response.body['' + _this.nombre_model];
-               _this.role.id_permiso = _this.role.role_permiso.id_permiso;
+               _this.role.id_permiso = _this.role.role_permiso.id_permiso || null;
             }, function (response) {
                // error callback
                _this.checkear_estado_respuesta_http(response.status);

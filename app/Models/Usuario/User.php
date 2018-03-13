@@ -39,12 +39,12 @@ class User extends Authenticatable
       return $this->hasOne(UsuarioEstado::class, 'id_usuario');
    }
 
-   public function usuario_roles () {
-      return $this->hasMany(UsuarioRole::class, 'id_usuario');
+   public function usuario_role () {
+      return $this->hasOne(UsuarioRole::class, 'id_usuario');
    }
 
-   public function usuario_cargos () {
-      return $this->hasMany(UsuarioCargo::class, 'id_usuario');
+   public function usuario_cargo () {
+      return $this->hasOne(UsuarioCargo::class, 'id_usuario');
    }
 
    public function usuarios_servicios () {

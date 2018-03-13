@@ -6,6 +6,9 @@ use App\Cargo;
 use App\Estado;
 use App\Role;
 use App\User;
+use App\UsuarioRole;
+use App\UsuarioEstado;
+use App\UsuarioCargo;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\Validator;
@@ -21,7 +24,13 @@ class UsuarioController extends Controller {
 
    private $usuarios;
    private $usuario;
+   private $role;
+   private $estado;
+   private $cargo;
    private $new_usuario;
+   private $new_usuario_role;
+   private $new_usuario_estado;
+   private $new_usuario_cargo;
    private $validacion;
 
    public function __construct () {
@@ -78,7 +87,7 @@ class UsuarioController extends Controller {
       }
 
       $this->usuario = User::where("id_$this->nombre_modelo",'=',$id)->with([
-         'usuario_estado','usuario_roles','usuario_cargos','usuario_bitacora_servicios'
+         'usuario_estado.estado','usuario_role.role','usuario_cargo.cargo','usuario_bitacora_servicios'
       ])->first();
 
       #dd($this->usuario);
@@ -102,19 +111,16 @@ class UsuarioController extends Controller {
 
    }
 
+
    public function store(Request $request) {
-
-
-      return $request->all();
-
 
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario
       $this->validacion = Validator::make($request->all(), [
          'nom_usuario' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
          'nom_completo' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|max:255",
-         'id_role' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
-         'id_estado' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
-         'id_cargo' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'id_role' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
+         'id_estado' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
+         'id_cargo' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
          'ape_paterno' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|max:255",
          'ape_materno' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|max:255",
          'username' => "regex:/(^([a-zA-Z0-9_.]+)(\d+)?$)/u|required|unique:$this->nombre_tabla|max:255",
@@ -129,8 +135,32 @@ class UsuarioController extends Controller {
             'mensajes' => $this->validacion->messages(), //Para mostrar los mensajes que van desde el backend
          ]);
       }
-      #Como pasó todas las validaciones, se asigna al objeto
+      #Como pasó todas las validaciones, se asigna al
+      # objeto
       $this->usuario = $request->all();
+      #Guardar relacion del role, en caso que exista valor
+      $this->new_usuario_role = UsuarioRole::create([
+         'id_usuario' => Auth::user()->id_usuario,
+         'id_role' => $request->id_role,
+         'id_usuario_registra' => Auth::user()->id_usuario,
+         'id_usuario_modifica' => Auth::user()->id_usuario,
+      ]);
+      #Guardar relacion del estado, en caso que exista valor
+      $this->new_usuario_estado = UsuarioEstado::create([
+         'id_usuario' => Auth::user()->id_usuario,
+         'id_estado' => $request->id_estado,
+         'id_usuario_registra' => Auth::user()->id_usuario,
+         'id_usuario_modifica' => Auth::user()->id_usuario,
+      ]);
+      #Guardar relacion del cargo, en caso que exista valor
+      $this->new_usuario_cargo = UsuarioCargo::create([
+         'id_usuario' => Auth::user()->id_usuario,
+         'id_cargo' => $request->id_cargo,
+         'id_usuario_registra' => Auth::user()->id_usuario,
+         'id_usuario_modifica' => Auth::user()->id_usuario,
+      ]);
+
+
 
       #Se crea el nuevo registro
       $this->new_usuario = User::create([
@@ -162,11 +192,11 @@ class UsuarioController extends Controller {
          'id_usuario' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|max:255',
          'nom_usuario' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
          #'nom_completo' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|max:255",
-         #'ape_paterno' => "regex:/(^([a-zA-Z0-9_]+)(\d+)?$)/u|max:255",
-         #'ape_materno' => "regex:/(^([a-zA-Z0-9_]+)(\d+)?$)/u|max:255",
-         'id_role' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
-         'id_estado' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
-         'id_cargo' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         #'ape_paterno' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|max:255",
+         #'ape_materno' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|max:255",
+         'id_role' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
+         'id_estado' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
+         'id_cargo' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
          'username' => "regex:/(^([a-zA-Z0-9_.]+)(\d+)?$)/u|required|max:255",
          'email' => "email|required|max:255",
          #'password' => "regex:/(^([a-zA-Z0-9_ !@#$%*&]{8,20}+)(\d+)?$)/u|required|max:255",
@@ -192,6 +222,63 @@ class UsuarioController extends Controller {
       $request['id_usuario_modifica'] = Auth::user()->id_usuario;
       $request['password'] = bcrypt($request["password"]);
       $this->usuario->update($request->all());
+
+      if (isset($this->usuario)) {
+
+         #Actualizar o asoc. nuevo role usuario
+         if ( $this->usuario->usuario_role != null) {
+            $this->role = $this->usuario->usuario_role->role;
+            if ( ! in_array($this->role->id_role, [$request["id_role"],null,'null',''] )) {
+               $this->usuario->usuario_role->id_role = $request["id_role"];
+               $this->usuario->usuario_role->id_usuario_modifica = Auth::user()->id_usuario;
+               $this->usuario->usuario_role->save();
+            }
+         } else {
+            $this->new_usuario_role = UsuarioRole::create([
+               'id_usuario' => $this->usuario['id_usuario'],
+               'id_role' => $request['id_role'],
+               'id_usuario_registra' => Auth::user()->id_usuario,
+               'id_usuario_modifica' => Auth::user()->id_usuario,
+            ]);
+         }
+
+         #Actualizar o asoc. nuevo estado usuario
+         if ( $this->usuario->usuario_estado != null) {
+            $this->estado = $this->usuario->usuario_estado->estado;
+            if ( ! in_array($this->estado->id_estado, [$request["id_estado"],null,'null',''] )) {
+               $this->usuario->usuario_estado->id_estado = $request["id_estado"];
+               $this->usuario->usuario_estado->id_usuario_modifica = Auth::user()->id_usuario;
+               $this->usuario->usuario_estado->save();
+            }
+         } else {
+            $this->new_usuario_estado = UsuarioEstado::create([
+               'id_usuario' => $this->usuario['id_usuario'],
+               'id_estado' => $request['id_estado'],
+               'id_usuario_registra' => Auth::user()->id_usuario,
+               'id_usuario_modifica' => Auth::user()->id_usuario,
+            ]);
+         }
+
+
+         #Actualizar o asoc. nuevo cargo usuario
+         if ( $this->usuario->usuario_cargo != null) {
+            $this->cargo = $this->usuario->usuario_cargo->cargo;
+            if ( ! in_array($this->cargo->id_cargo, [$request["id_cargo"],null,'null',''] )) {
+               $this->usuario->usuario_cargo->id_cargo = $request["id_cargo"];
+               $this->usuario->usuario_cargo->id_usuario_modifica = Auth::user()->id_usuario;
+               $this->usuario->usuario_cargo->save();
+            }
+         } else {
+            $this->new_usuario_cargo = UsuarioCargo::create([
+               'id_usuario' => $this->usuario['id_usuario'],
+               'id_cargo' => $request['id_cargo'],
+               'id_usuario_registra' => Auth::user()->id_usuario,
+               'id_usuario_modifica' => Auth::user()->id_usuario,
+            ]);
+         }
+
+      }
+
 
       #unset($this->new_usuario_permiso, $this->permiso);
       return response()->json([
