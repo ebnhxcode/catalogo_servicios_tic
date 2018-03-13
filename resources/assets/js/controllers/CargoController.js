@@ -322,7 +322,7 @@ const CargoController = new Vue({
             if ( this.mostrar_notificaciones(response) == true ) {
                this.ocultar_modal('crear');
                this.inicializar();
-
+               this.limpiar_objeto_clase_local();
                return ;
             }
 

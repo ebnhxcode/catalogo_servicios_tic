@@ -44,5 +44,8 @@ class Role extends Model {
       return $this->hasMany(UsuarioRole::class ,'id_role');
    }
 
+   public function role_usuario () {
+      return $this->hasOne(UsuarioRole::class ,'id_role');
+   }
 
 }

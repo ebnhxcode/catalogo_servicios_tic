@@ -223,7 +223,7 @@ const UsuarioController = new Vue({
    mixins: [inyeccion_funciones_compartidas],
    methods: {
 
-      limpiar_objeto_clase_local: function () {
+       limpiar_objeto_clase_local: function () {
          this.usuario = {
             'nom_usuario': null,
             'nom_completo': null,
@@ -387,7 +387,7 @@ const UsuarioController = new Vue({
          this.$http.post(`/${this.nombre_ruta}`, formData).then(response => { // success callback
 
             if (response.status == 200) {
-               if (!this.es_null(response.body.servicio)) {
+               if (!this.es_null(response.body.usuario)) {
                   this.id_en_edicion = null;
                }
                //this.inicializar();
@@ -399,6 +399,7 @@ const UsuarioController = new Vue({
             if (this.mostrar_notificaciones(response) == true) {
                this.ocultar_modal('crear');
                this.inicializar();
+               this.limpiar_objeto_clase_local();
 
                return;
             }

@@ -90,6 +90,11 @@ class UsuarioController extends Controller {
          'usuario_estado.estado','usuario_role.role','usuario_cargo.cargo','usuario_bitacora_servicios'
       ])->first();
 
+      /*
+      $this->usuario = User::where("id_$this->nombre_modelo",'=',$id)->with([
+         'usuario_estado.estado','usuario_role.role','usuario_cargo.cargo','usuario_bitacora_servicios'
+      ])->first();
+      */
       #dd($this->usuario);
 
       #Valida si usuario existe y busca si tiene servidor_permiso
@@ -136,31 +141,9 @@ class UsuarioController extends Controller {
          ]);
       }
       #Como pasó todas las validaciones, se asigna al
+
       # objeto
       $this->usuario = $request->all();
-      #Guardar relacion del role, en caso que exista valor
-      $this->new_usuario_role = UsuarioRole::create([
-         'id_usuario' => Auth::user()->id_usuario,
-         'id_role' => $request->id_role,
-         'id_usuario_registra' => Auth::user()->id_usuario,
-         'id_usuario_modifica' => Auth::user()->id_usuario,
-      ]);
-      #Guardar relacion del estado, en caso que exista valor
-      $this->new_usuario_estado = UsuarioEstado::create([
-         'id_usuario' => Auth::user()->id_usuario,
-         'id_estado' => $request->id_estado,
-         'id_usuario_registra' => Auth::user()->id_usuario,
-         'id_usuario_modifica' => Auth::user()->id_usuario,
-      ]);
-      #Guardar relacion del cargo, en caso que exista valor
-      $this->new_usuario_cargo = UsuarioCargo::create([
-         'id_usuario' => Auth::user()->id_usuario,
-         'id_cargo' => $request->id_cargo,
-         'id_usuario_registra' => Auth::user()->id_usuario,
-         'id_usuario_modifica' => Auth::user()->id_usuario,
-      ]);
-
-
 
       #Se crea el nuevo registro
       $this->new_usuario = User::create([
@@ -174,6 +157,29 @@ class UsuarioController extends Controller {
          'id_usuario_registra' => Auth::user()->id_usuario,
          'id_usuario_modifica' => Auth::user()->id_usuario,
       ]);
+
+      #Guardar relacion del role, en caso que exista valor
+      $this->new_usuario_role = UsuarioRole::create([
+         'id_usuario' => $this->new_usuario->id_usuario,
+         'id_role' => $this->usuario['id_role'],
+         'id_usuario_registra' => Auth::user()->id_usuario,
+         'id_usuario_modifica' => Auth::user()->id_usuario,
+      ]);
+      #Guardar relacion del estado, en caso que exista valor
+      $this->new_usuario_estado = UsuarioEstado::create([
+         'id_usuario' => $this->new_usuario->id_usuario,
+         'id_estado' => $this->usuario['id_estado'],
+         'id_usuario_registra' => Auth::user()->id_usuario,
+         'id_usuario_modifica' => Auth::user()->id_usuario,
+      ]);
+      #Guardar relacion del cargo, en caso que exista valor
+      $this->new_usuario_cargo = UsuarioCargo::create([
+         'id_usuario' => $this->new_usuario->id_usuario,
+         'id_cargo' => $this->usuario['id_cargo'],
+         'id_usuario_registra' => Auth::user()->id_usuario,
+         'id_usuario_modifica' => Auth::user()->id_usuario,
+      ]);
+
 
       unset($this->usuario, $this->validacion/*$this->validacion,$this->new_usuario, $this->new_usuario_permiso*/);
 

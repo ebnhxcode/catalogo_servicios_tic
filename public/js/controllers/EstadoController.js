@@ -3875,7 +3875,7 @@ var EstadoController = new Vue({
             if (_this4.mostrar_notificaciones(response) == true) {
                _this4.ocultar_modal('crear');
                _this4.inicializar();
-
+               _this4.limpiar_objeto_clase_local();
                return;
             }
          }, function (response) {

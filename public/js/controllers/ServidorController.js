@@ -4036,7 +4036,7 @@ var ServidorController = new Vue({
             if (_this7.mostrar_notificaciones(response) == true) {
                _this7.ocultar_modal('crear');
                _this7.inicializar();
-
+               _this7.limpiar_objeto_clase_local();
                return;
             }
          }, function (response) {

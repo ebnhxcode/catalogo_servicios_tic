@@ -3945,7 +3945,7 @@ var UsuarioController = new Vue({
             // success callback
 
             if (response.status == 200) {
-               if (!_this5.es_null(response.body.servicio)) {
+               if (!_this5.es_null(response.body.usuario)) {
                   _this5.id_en_edicion = null;
                }
                //this.inicializar();
@@ -3957,6 +3957,7 @@ var UsuarioController = new Vue({
             if (_this5.mostrar_notificaciones(response) == true) {
                _this5.ocultar_modal('crear');
                _this5.inicializar();
+               _this5.limpiar_objeto_clase_local();
 
                return;
             }

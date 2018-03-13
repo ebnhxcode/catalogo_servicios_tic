@@ -3911,7 +3911,7 @@ var UsuarioBitacoraServicioController = new Vue({
             if (_this5.mostrar_notificaciones(response) == true) {
                _this5.ocultar_modal('crear');
                _this5.inicializar();
-
+               _this5.limpiar_objeto_clase_local();
                return;
             }
          }, function (response) {
