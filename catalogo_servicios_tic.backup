@@ -2473,7 +2473,11 @@ COPY public.usuarios (id_usuario, nom_usuario, nom_completo, ape_paterno, ape_ma
 2	edsaf	null	null	null	aasdasd	esteban.ramos@minsaasdl.cl	$2y$10$EMV5tnLbwP5gAhTXjmVVu.rsn8bkQ9dIt9iay1e6Vj7AenetPnqsy	\N	\N	\N	2018-02-27 13:25:49	2018-02-27 19:32:28	2018-02-27 19:32:28
 1	Esteban	\N	\N	\N	\N	esteban.ramos@minsal.cl	$2y$10$56R..xvCC1igB5V0842UI.f2B5V2p7lopByoVEjig0R2BSgRosuEu	Qya1IjuaQ6Wjz3Q4OwKsoYqFHSEFqwu6wFNh1hdyj7UdVI4oUqVOX5rKDiy6	\N	\N	2018-02-19 18:08:14	2018-02-27 23:36:15	2018-02-27 23:36:15
 5	asds	null	asd	asd	asd	estasddeban.ramos.f@gmail.com	$2y$10$efcUhxc91net4pQsHaEOuucB682MsKzYciRQyqtGahn7lZ4/fJp/S	\N	\N	\N	2018-03-06 06:10:38	2018-03-06 06:24:26	2018-03-06 06:24:26
-4	Esteban	\N	\N	\N	fsdsf	esteban.ramos.f@gmail.com	$2y$10$4uyuYE2vEhfV5zdzp8o4f.LuzSlq3YRhcnH2R1mkT0PulWZfkpCVu	PbPf3H2ZAuBQvSYkmIUAuAj8XKmSaBzltsUWVAzqrzeHagbNsftLWKM1HeyO	\N	\N	2018-02-27 23:36:43	2018-03-13 15:17:36	\N
+4	Esteban	\N	\N	\N	fsdsf	esteban.ramos.f@gmail.com	$2y$10$mjzNB3ss2/DbBWI5MfqNC.syFVgAGBTzVw81Mi47w57i.mlH9hVMi	PbPf3H2ZAuBQvSYkmIUAuAj8XKmSaBzltsUWVAzqrzeHagbNsftLWKM1HeyO	\N	\N	2018-02-27 23:36:43	2018-03-13 18:57:14	\N
+8	Sergio	Sergio Roca Munoz	Roca	Munoz	sroca	sergio.roca@minsal.cl	$2y$10$6.lEOWKTifqAm1Gq0IbZoePx2yES/iDhVRobBRWG7PAxmikiGf9J2	\N	\N	\N	2018-03-13 19:12:12	2018-03-13 19:12:12	\N
+9	Victoria	Victoria Garrido	Garrido	null	vgarrido	vgarrido@minsal.cl	$2y$10$aKTubg.6fZlUAZ2P7xrkfuHULt4fMFVOFwKj6TwwyjhdrZAS5Tb0W	\N	\N	\N	2018-03-13 19:13:40	2018-03-13 19:13:40	\N
+6	wererwe	rwerwer	werwer	werwer	werwerwe	ewrwe@ewre.dfssdf	$2y$10$SmkQ3TBcV0Tpio.sBrR10uTD5hjueAoq0gXKCTR/6WmMhSRiNPlhS	\N	\N	\N	2018-03-13 18:57:50	2018-03-13 19:13:49	2018-03-13 19:13:49
+7	adsdad	sdasdsa	sdsadas	dasda	dasd	asdasd@sad.ad	$2y$10$ez0ZyUI7umQ6wyBiPSfRTOvaoEuGJnie1fbnAep0hRdrbaIKDgevC	\N	\N	\N	2018-03-13 19:01:00	2018-03-13 19:13:55	2018-03-13 19:13:55
 \.
 
 
@@ -2492,6 +2496,13 @@ COPY public.usuarios_bitacora_servicios (id_usuario_bitacora_servicio, id_usuari
 --
 
 COPY public.usuarios_cargos (id_usuario_cargo, id_usuario, id_cargo, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+4	4	1	4	4	2018-03-13 18:57:14	2018-03-13 18:57:14	\N
+5	4	1	4	4	2018-03-13 18:57:50	2018-03-13 18:57:50	\N
+6	6	3	4	4	2018-03-13 18:58:22	2018-03-13 18:58:22	\N
+7	4	1	4	4	2018-03-13 19:01:00	2018-03-13 19:01:00	\N
+8	7	3	4	4	2018-03-13 19:10:36	2018-03-13 19:10:36	\N
+9	4	3	4	4	2018-03-13 19:12:12	2018-03-13 19:12:12	\N
+10	4	1	4	4	2018-03-13 19:13:40	2018-03-13 19:13:40	\N
 \.
 
 
@@ -2500,6 +2511,13 @@ COPY public.usuarios_cargos (id_usuario_cargo, id_usuario, id_cargo, id_usuario_
 --
 
 COPY public.usuarios_estados (id_usuario_estado, id_estado, id_usuario, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+4	2	4	4	4	2018-03-13 18:57:14	2018-03-13 18:57:14	\N
+5	4	4	4	4	2018-03-13 18:57:50	2018-03-13 18:57:50	\N
+6	2	6	4	4	2018-03-13 18:58:22	2018-03-13 18:58:22	\N
+7	2	4	4	4	2018-03-13 19:01:00	2018-03-13 19:01:00	\N
+8	2	7	4	4	2018-03-13 19:10:36	2018-03-13 19:10:36	\N
+9	2	4	4	4	2018-03-13 19:12:12	2018-03-13 19:12:12	\N
+10	2	4	4	4	2018-03-13 19:13:40	2018-03-13 19:13:40	\N
 \.
 
 
@@ -2508,6 +2526,13 @@ COPY public.usuarios_estados (id_usuario_estado, id_estado, id_usuario, id_usuar
 --
 
 COPY public.usuarios_roles (id_usuario_role, id_role, id_usuario, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+4	62	4	4	4	2018-03-13 18:57:14	2018-03-13 18:57:14	\N
+5	63	4	4	4	2018-03-13 18:57:50	2018-03-13 18:57:50	\N
+6	63	6	4	4	2018-03-13 18:58:22	2018-03-13 18:58:22	\N
+7	62	4	4	4	2018-03-13 19:01:00	2018-03-13 19:01:00	\N
+8	62	7	4	4	2018-03-13 19:10:36	2018-03-13 19:10:36	\N
+9	62	4	4	4	2018-03-13 19:12:12	2018-03-13 19:12:12	\N
+10	62	4	4	4	2018-03-13 19:13:39	2018-03-13 19:13:39	\N
 \.
 
 
@@ -2747,28 +2772,28 @@ SELECT pg_catalog.setval('public.usuarios_bitacora_servicios_id_seq', 2, true);
 -- Name: usuarios_cargos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.usuarios_cargos_id_seq', 1, false);
+SELECT pg_catalog.setval('public.usuarios_cargos_id_seq', 10, true);
 
 
 --
 -- Name: usuarios_estados_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.usuarios_estados_id_seq', 1, false);
+SELECT pg_catalog.setval('public.usuarios_estados_id_seq', 10, true);
 
 
 --
 -- Name: usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.usuarios_id_seq', 5, true);
+SELECT pg_catalog.setval('public.usuarios_id_seq', 9, true);
 
 
 --
 -- Name: usuarios_roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.usuarios_roles_id_seq', 1, false);
+SELECT pg_catalog.setval('public.usuarios_roles_id_seq', 10, true);
 
 
 --
