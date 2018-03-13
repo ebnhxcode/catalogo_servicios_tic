@@ -30,11 +30,8 @@
             </div><!-- .card-body -->
          </div><!-- .card -->
 
-         <br>
 
-      </div><!-- .col -->
-
-
+      </div><!-- .col-* -->
    </div><!-- .row -->
 
 </div><!-- .tab-pane .active #vista_principal_tab -->

@@ -2235,12 +2235,12 @@ COPY public.roles (id_role, nom_role, det_role, id_usuario_registra, id_usuario_
 61	no editable	pq no se peue	\N	\N	2018-02-26 19:30:21	2018-02-26 20:22:37	2018-02-26 20:22:37
 60	role	role	\N	\N	2018-02-26 16:19:11	2018-02-26 20:22:39	2018-02-26 20:22:39
 65	role new	role a.s,da	\N	\N	2018-02-27 19:29:06	2018-02-27 19:29:19	2018-02-27 19:29:19
-66	Role 4	Role 4	\N	\N	2018-02-28 23:44:07	2018-02-28 23:44:07	\N
 67	dfasfd	fasdf	\N	\N	2018-03-06 05:51:18	2018-03-06 05:51:22	2018-03-06 05:51:22
 63	role 2	role 2	\N	4	2018-02-26 20:22:57	2018-03-06 05:57:47	\N
 64	role 3	role 3	\N	4	2018-02-26 20:23:13	2018-03-06 05:57:52	\N
 68	sfdafsdf	sdfsdf	4	4	2018-03-06 07:05:15	2018-03-07 13:51:02	2018-03-07 13:51:02
 62	role 1	role 1	\N	4	2018-02-26 20:22:50	2018-03-12 01:48:29	\N
+66	Role 4	Role 4	\N	4	2018-02-28 23:44:07	2018-03-13 15:11:06	\N
 \.
 
 
@@ -2301,12 +2301,12 @@ COPY public.roles_permisos (id_role_permiso, id_role, id_permiso, id_usuario_reg
 59	61	16	\N	\N	2018-02-26 19:30:21	2018-02-26 20:22:37	2018-02-26 20:22:37
 58	60	15	\N	\N	2018-02-26 16:19:11	2018-02-26 20:22:39	2018-02-26 20:22:39
 60	62	15	\N	\N	2018-02-26 20:22:50	2018-02-26 20:22:50	\N
-61	63	16	\N	\N	2018-02-26 20:22:57	2018-02-26 20:22:57	\N
 62	64	14	\N	\N	2018-02-26 20:23:13	2018-02-26 20:23:13	\N
 63	65	17	\N	\N	2018-02-27 19:29:06	2018-02-27 19:29:19	2018-02-27 19:29:19
-64	66	17	\N	\N	2018-02-28 23:44:07	2018-02-28 23:44:07	\N
 65	67	17	\N	\N	2018-03-06 05:51:18	2018-03-06 05:51:22	2018-03-06 05:51:22
 66	68	14	\N	\N	2018-03-06 07:05:15	2018-03-07 13:51:02	2018-03-07 13:51:02
+64	66	14	\N	\N	2018-02-28 23:44:07	2018-03-13 15:11:06	\N
+61	63	15	\N	\N	2018-02-26 20:22:57	2018-03-13 15:15:24	\N
 \.
 
 
@@ -2473,7 +2473,7 @@ COPY public.usuarios (id_usuario, nom_usuario, nom_completo, ape_paterno, ape_ma
 2	edsaf	null	null	null	aasdasd	esteban.ramos@minsaasdl.cl	$2y$10$EMV5tnLbwP5gAhTXjmVVu.rsn8bkQ9dIt9iay1e6Vj7AenetPnqsy	\N	\N	\N	2018-02-27 13:25:49	2018-02-27 19:32:28	2018-02-27 19:32:28
 1	Esteban	\N	\N	\N	\N	esteban.ramos@minsal.cl	$2y$10$56R..xvCC1igB5V0842UI.f2B5V2p7lopByoVEjig0R2BSgRosuEu	Qya1IjuaQ6Wjz3Q4OwKsoYqFHSEFqwu6wFNh1hdyj7UdVI4oUqVOX5rKDiy6	\N	\N	2018-02-19 18:08:14	2018-02-27 23:36:15	2018-02-27 23:36:15
 5	asds	null	asd	asd	asd	estasddeban.ramos.f@gmail.com	$2y$10$efcUhxc91net4pQsHaEOuucB682MsKzYciRQyqtGahn7lZ4/fJp/S	\N	\N	\N	2018-03-06 06:10:38	2018-03-06 06:24:26	2018-03-06 06:24:26
-4	Esteban	\N	\N	\N	fsdsf	esteban.ramos.f@gmail.com	$2y$10$cscGquwp5bmSKYM0z7E7VOIachU.sIknWkhpo05O/5nexzLVMimQm	\N	\N	\N	2018-02-27 23:36:43	2018-03-09 04:16:15	\N
+4	Esteban	\N	\N	\N	fsdsf	esteban.ramos.f@gmail.com	$2y$10$4uyuYE2vEhfV5zdzp8o4f.LuzSlq3YRhcnH2R1mkT0PulWZfkpCVu	PbPf3H2ZAuBQvSYkmIUAuAj8XKmSaBzltsUWVAzqrzeHagbNsftLWKM1HeyO	\N	\N	2018-02-27 23:36:43	2018-03-13 15:17:36	\N
 \.
 
 

@@ -32,27 +32,27 @@ class User extends Authenticatable
    ];
 
    public function usuario_bitacora_servicios () {
-      return $this->hasMany('App\UsuarioBitacoraServicio', 'id_usuario');
+      return $this->hasMany(UsuarioBitacoraServicio::class, 'id_usuario');
    }
 
    public function usuario_estado () {
-      return $this->hasOne('App\UsuarioEstado', 'id_usuario');
+      return $this->hasOne(UsuarioEstado::class, 'id_usuario');
    }
 
    public function usuario_roles () {
-      return $this->hasMany('App\UsuarioRole', 'id_usuario');
+      return $this->hasMany(UsuarioRole::class, 'id_usuario');
    }
 
    public function usuario_cargos () {
-      return $this->hasMany('App\UsuarioCargos', 'id_usuario');
+      return $this->hasMany(UsuarioCargo::class, 'id_usuario');
    }
 
    public function usuarios_servicios () {
-      return $this->hasMany('App\UsuarioServicio', 'id_usuario');
+      return $this->hasMany(UsuarioServicio::class, 'id_usuario');
    }
 
    public function servicios () {
-      return $this->hasMany('App\Servicio', 'id_usuario');
+      return $this->hasMany(Servicio::class, 'id_usuario');
    }
 
 

@@ -138,7 +138,12 @@ const UsuarioController = new Vue({
          if (id_en_edicion == null) {
             this.limpiar_objeto_clase_local();
          } else {
-            this.usuario = this.buscar_en_array_por_modelo_e_id(id_en_edicion, this.usuarios, this.nombre_model);
+            //this.usuario = this.buscar_en_array_por_modelo_e_id(id_en_edicion, this.usuarios, this.nombre_model);
+            this.$http.get(`/${this.nombre_tabla}/${id_en_edicion}`).then(response => { // success callback
+               this.usuario = response.body[`${this.nombre_model}`];
+            }, response => { // error callback
+               this.checkear_estado_respuesta_http(response.status);
+            });
          }
       },
       //usuarios se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
@@ -216,6 +221,9 @@ const UsuarioController = new Vue({
       inicializar: function () {
          this.$http.get('/usuarios').then(response => { // success callback
             this.usuarios = response.body.usuarios || null;
+            this.roles = response.body.roles || null;
+            this.estados = response.body.estados || null;
+            this.cargos = response.body.cargos || null;
             this.datos_excel = response.body.usuarios || null;
             this.usuario_auth = response.body.usuario_auth || null;
             //this.limpiar_objeto_clase_local();

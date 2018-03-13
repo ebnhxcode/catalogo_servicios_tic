@@ -118,6 +118,7 @@ const RoleController = new Vue({
             //this.role = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.roles,this.nombre_model);
             this.$http.get(`/${this.nombre_tabla}/${id_en_edicion}`).then(response => { // success callback
                this.role = response.body[`${this.nombre_model}`];
+               this.role.id_permiso = this.role.role_permiso.id_permiso
             }, response => { // error callback
                this.checkear_estado_respuesta_http(response.status);
             });

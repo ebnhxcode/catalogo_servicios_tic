@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () { return view('welcome'); });
 
 Auth::routes();
 
@@ -22,6 +20,9 @@ Route::get('/rolestest', 'RoleController@rolestest')->name('rolestest');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+Route::get('/', function () {
+    return redirect()->to('/login');
+});
 
 
 //Route::resource('/catalogo_servicios', 'CatalogoServicioController');

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Cargo;
+use App\Estado;
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use Auth;
@@ -50,11 +53,53 @@ class UsuarioController extends Controller {
 
       $this->usuario_auth = Auth::user();
       $this->usuarios = User::all();
+      $this->roles = Role::all();
+      $this->estados = Estado::all();
+      $this->cargos = Cargo::all();
+
       return response()->json([
          'status' => 200,
          'usuarios' => $this->usuarios,
+         'roles' => $this->roles,
+         'estados' => $this->estados,
+         'cargos' => $this->cargos,
          'usuario_auth' => $this->usuario_auth,
       ]);
+   }
+
+   public function show (Request $request, $id) {
+      $result = preg_match('/(^([0-9]+)(\d+)?$)/u', $id);
+      if ($this->es_vacio($id) == true || $result == 0) {
+         return response()->json([
+            'status' => 200, //Para los popups con alertas de sweet alert
+            'tipo' => 'error_datos_invalidos', //Para las notificaciones
+            'mensajes' => ["new_$this->nombre_modelo" => [0=>"Lo buscado, no se encontró."]],
+         ]);
+      }
+
+      $this->usuario = User::where("id_$this->nombre_modelo",'=',$id)->with([
+         'usuario_estado','usuario_roles','usuario_cargos','usuario_bitacora_servicios'
+      ])->first();
+
+      #dd($this->usuario);
+
+      #Valida si usuario existe y busca si tiene servidor_permiso
+      if ($this->usuario) {
+         return response()->json([
+            'status' => 200, //Para los popups con alertas de sweet alert
+            'tipo' => 'eliminacion_exitosa', //Para las notificaciones
+            'mensajes' => ["new_$this->nombre_modelo" => [0=>"Registro encontrado exitosamente."]],
+            'usuario' => $this->usuario,
+            //Para mostrar los mensajes que van desde el backend
+         ]);
+      }else{
+         return response()->json([
+            'status' => 200, //Para los popups con alertas de sweet alert
+            'tipo' => 'error_datos_invalidos', //Para las notificaciones
+            'mensajes' => ["new_$this->nombre_modelo" => [0=>"Lo buscado, no se encontró."]],
+         ]);
+      }
+
    }
 
    public function store(Request $request) {
@@ -62,6 +107,9 @@ class UsuarioController extends Controller {
       $this->validacion = Validator::make($request->all(), [
          'nom_usuario' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
          'nom_completo' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|max:255",
+         'id_role' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'id_estado' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'id_cargo' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
          'ape_paterno' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|max:255",
          'ape_materno' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|max:255",
          'username' => "regex:/(^([a-zA-Z0-9_.]+)(\d+)?$)/u|required|unique:$this->nombre_tabla|max:255",
@@ -78,6 +126,9 @@ class UsuarioController extends Controller {
       }
       #Como pasó todas las validaciones, se asigna al objeto
       $this->usuario = $request->all();
+
+      return $request->all();
+
       #Se crea el nuevo registro
       $this->new_usuario = User::create([
          'nom_usuario' => $this->usuario['nom_usuario'],
@@ -110,6 +161,9 @@ class UsuarioController extends Controller {
          #'nom_completo' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|max:255",
          #'ape_paterno' => "regex:/(^([a-zA-Z0-9_]+)(\d+)?$)/u|max:255",
          #'ape_materno' => "regex:/(^([a-zA-Z0-9_]+)(\d+)?$)/u|max:255",
+         'id_role' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'id_estado' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'id_cargo' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
          'username' => "regex:/(^([a-zA-Z0-9_.]+)(\d+)?$)/u|required|max:255",
          'email' => "email|required|max:255",
          #'password' => "regex:/(^([a-zA-Z0-9_ !@#$%*&]{8,20}+)(\d+)?$)/u|required|max:255",

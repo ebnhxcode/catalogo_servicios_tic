@@ -178,7 +178,97 @@
       </dd>
 
    </div><!-- .col -->
+
+
+
 </div><!-- .row -->
 
+
+<h5>Rol, estado y cargo</h5>
+<div class="row">
+   <div class="col-sm-4 col-md-4">
+
+      <dt>Role</dt>
+      <dd>
+         <p class="control has-icon has-icon-right">
+            <select class="form-control" v-model="usuario.id_role" name="id_role"
+                    v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
+               <option :value="r.id_role" v-for="r in roles">
+                  @{{ `${r.nom_role} -> ${r.det_role}` }}
+               </option>
+            </select>
+
+            <transition name="bounce">
+               <i v-show="errors.has('id_role')" class="fa fa-exclamation-circle"></i>
+            </transition>
+
+            <transition name="bounce">
+               <span v-show="errors.has('id_role')" class="text-danger small">
+                  @{{ errors.first('id_role') }}
+               </span>
+            </transition>
+         </p>
+
+      </dd>
+
+   </div><!-- .col -->
+
+   <div class="col-sm-4 col-md-4">
+
+      <dt>Estado</dt>
+      <dd>
+         <p class="control has-icon has-icon-right">
+            <select class="form-control" v-model="usuario.id_estado" name="id_estado"
+                    v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
+               <option :value="e.id_estado" v-for="e in estados">
+                  @{{ `${e.nom_estado} -> ${e.det_estado}` }}
+               </option>
+            </select>
+
+            <transition name="bounce">
+               <i v-show="errors.has('id_estado')" class="fa fa-exclamation-circle"></i>
+            </transition>
+
+            <transition name="bounce">
+               <span v-show="errors.has('id_estado')" class="text-danger small">
+                  @{{ errors.first('id_estado') }}
+               </span>
+            </transition>
+         </p>
+
+      </dd>
+
+   </div><!-- .col -->
+
+   <div class="col-sm-4 col-md-4">
+
+      <dt>Cargo</dt>
+      <dd>
+         <p class="control has-icon has-icon-right">
+            <select class="form-control" v-model="usuario.id_cargo" name="id_cargo"
+                    v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
+               <option :value="c.id_cargo" v-for="c in cargos">
+                  @{{ `${c.nom_cargo} -> ${c.det_cargo}` }}
+               </option>
+            </select>
+
+            <transition name="bounce">
+               <i v-show="errors.has('id_cargo')" class="fa fa-exclamation-circle"></i>
+            </transition>
+
+            <transition name="bounce">
+               <span v-show="errors.has('id_cargo')" class="text-danger small">
+                  @{{ errors.first('id_cargo') }}
+               </span>
+            </transition>
+         </p>
+
+      </dd>
+
+   </div><!-- .col -->
+
+
+
+</div><!-- .row -->
 
 
