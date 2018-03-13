@@ -39,16 +39,16 @@
                </h5>
                <p class="card-text">
 
-               <dl class="row" v-if="role.permiso">
+               <dl class="row" v-if="role.role_permiso">
 
-                  <dt class="col-md-6">Nombre datacentro</dt>
-                  <dd class="col-md-6">@{{ 0 }}</dd>
+                  <dt class="col-md-6">Nombre permiso</dt>
+                  <dd class="col-md-6">@{{ role.role_permiso.permiso.nom_permiso }}</dd>
 
-                  <dt class="col-md-6">Detalle datacentro</dt>
-                  <dd class="col-md-6">@{{ 0 }}</dd>
+                  <dt class="col-md-6">Detalle permiso</dt>
+                  <dd class="col-md-6">@{{ role.role_permiso.permiso.det_permiso }}</dd>
 
-                  <dt class="col-md-6">Código datacentro</dt>
-                  <dd class="col-md-6">@{{ 0 }}</dd>
+                  <dt class="col-md-6">Código permiso</dt>
+                  <dd class="col-md-6">@{{ role.role_permiso.permiso.cod_permiso }}</dd>
 
                </dl>
                <dl v-else>
