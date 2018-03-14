@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 81);
+/******/ 	return __webpack_require__(__webpack_require__.s = 83);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3555,15 +3555,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 81:
+/***/ 83:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(82);
+module.exports = __webpack_require__(84);
 
 
 /***/ }),
 
-/***/ 82:
+/***/ 84:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3596,6 +3596,7 @@ var SistemaOperativoController = new Vue({
    el: '#SistemaOperativoController',
    data: function data() {
       return {
+
          'nombre_tabla': 'sistemas_operativos', //nombre tabla o de ruta
          'nombre_ruta': 'sistemas_operativos', //nombre tabla o de ruta
          'nombre_model': 'sistema_operativo',
@@ -3764,20 +3765,7 @@ var SistemaOperativoController = new Vue({
    methods: {
 
       limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
-         this.sistema_operativo = {
-            'id_sistema_operativo': null,
-            'arquitectura': null,
-            'nom_sistema_operativo': null,
-            'det_sistema_operativo': null,
-            'vers_sistema_operativo': null,
-            'lic_sistema_operativo': null,
-            'det_licencia_sistema_operativo': null,
-            'id_usuario_registra': null,
-            'id_usuario_modifica': null,
-            'created_at': null,
-            'updated_at': null,
-            'deleted_at': null
-         };
+         this.sistema_operativo = null;this.sistema_operativo = this.sistema_operativo_limpio;
       },
 
       inicializar: function inicializar() {

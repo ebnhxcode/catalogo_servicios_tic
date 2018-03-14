@@ -18,6 +18,7 @@ const RoleController = new Vue({
    el: '#RoleController',
    data(){
       return {
+         '$':window.jQuery,
          'nombre_tabla':'roles', //nombre tabla o de ruta
          'nombre_ruta':'roles', //nombre tabla o de ruta
          'nombre_model':'role',
@@ -173,16 +174,7 @@ const RoleController = new Vue({
    methods: {
 
       limpiar_objeto_clase_local: function () {
-         this.role = {
-            'nom_role':null,
-            'det_role':null,
-            'id_permiso':null,
-            'id_usuario_registra':null,
-            'id_usuario_modifica':null,
-            'created_at':null,
-            'updated_at':null,
-            'deleted_at':null,
-         };
+         this.role = null; this.role = this.role_limpio;
       },
 
       inicializar: function () {

@@ -3567,6 +3567,7 @@ var ActividadController = new Vue({
    el: '#ActividadController',
    data: function data() {
       return {
+         '$': window.jQuery,
          'nombre_tabla': 'actividades', //nombre tabla o de ruta
          'nombre_ruta': 'actividades', //nombre tabla o de ruta
          'nombre_model': 'actividad',
@@ -3718,15 +3719,7 @@ var ActividadController = new Vue({
    methods: {
 
       limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
-         this.actividad = {
-            'nom_actividad': null,
-            'det_actividad': null,
-            'id_usuario_registra': null,
-            'id_usuario_modifica': null,
-            'created_at': null,
-            'updated_at': null,
-            'deleted_at': null
-         };
+         this.actividad = null;this.actividad = this.actividad_limpio;
       },
 
       inicializar: function inicializar() {

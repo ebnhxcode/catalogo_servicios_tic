@@ -18,6 +18,7 @@ const UsuarioBitacoraServicioController = new Vue({
    el: '#UsuarioBitacoraServicioController',
    data(){
       return {
+         '$':window.jQuery,
          'nombre_tabla':'usuarios_bitacora_servicios', //nombre tabla o de ruta
          'nombre_ruta':'usuarios_bitacora_servicios', //nombre tabla o de ruta
          'nombre_model':'usuario_bitacora_servicio',
@@ -164,17 +165,7 @@ const UsuarioBitacoraServicioController = new Vue({
    methods: {
 
       limpiar_objeto_clase_local: function () {
-         this.usuario_bitacora_servicio = {
-            'asunto':null,
-            'det_bitacora':null,
-            'id_actividad':null,
-            'id_servicio':null,
-            'id_usuario_registra':null,
-            'id_usuario_modifica':null,
-            'created_at':null,
-            'updated_at':null,
-            'deleted_at':null,
-         };
+         this.usuario_bitacora_servicio = null; this.usuario_bitacora_servicio = this.usuario_bitacora_servicio_limpio;
       },
 
 

@@ -106,6 +106,7 @@ const SideMenuController = new Vue({
    el: '#SideMenuController',
    data(){
       return {
+         '$':window.jQuery,
          'filtro_menu':null,
 
          'menus':[
@@ -183,6 +184,10 @@ const SideMenuController = new Vue({
             {
                'title':'Servidores',
                'url':'/servidores',
+            },
+            {
+               'title':'Accesos Servidores',
+               'url':'/servidores_accesos',
             },
             {
                'title':'Tags',

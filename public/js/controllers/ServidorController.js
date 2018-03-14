@@ -3596,6 +3596,7 @@ var ServidorController = new Vue({
    el: '#ServidorController',
    data: function data() {
       return {
+         '$': window.jQuery,
          'nombre_tabla': 'servidores', //nombre tabla o de ruta
          'nombre_ruta': 'servidores', //nombre tabla o de ruta
          'nombre_model': 'servidor',
@@ -3847,28 +3848,7 @@ var ServidorController = new Vue({
       },
 
       limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
-         this.servidor = {
-            'nom_servidor': null,
-            'det_servidor': null,
-            'ip_servidor': null,
-            'ram': null,
-            'memoria_dd': null,
-            'swap': null,
-            'procesador': null,
-            'frec_procesador': null,
-            'nucleos': null,
-            'usuarios_pactados': null,
-            'mac': null,
-            'nodo': null,
-            'interface': null,
-            'id_datacentro': null,
-            'id_sistema_operativo': null,
-            'id_usuario_registra': null,
-            'id_usuario_modifica': null,
-            'created_at': null,
-            'updated_at': null,
-            'deleted_at': null
-         };
+         this.servidor = null;this.servidor = this.servidor_limpio;
       },
 
       inicializar: function inicializar() {

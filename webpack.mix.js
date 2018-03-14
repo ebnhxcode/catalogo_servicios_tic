@@ -47,7 +47,7 @@ mix.js('resources/assets/js/controllers/AplicacionController.js','public/js/cont
 mix.js('resources/assets/js/controllers/TipoAplicacionController.js','public/js/controllers/TipoAplicacionController.js');
 mix.js('resources/assets/js/controllers/DominioController.js','public/js/controllers/DominioController.js');
 mix.js('resources/assets/js/controllers/ServidorController.js','public/js/controllers/ServidorController.js');
-//mix.js('resources/assets/js/controllers/ServidorAccesoController.js','public/js/controllers/ServidorAccesoController.js');
+mix.js('resources/assets/js/controllers/ServidorAccesoController.js','public/js/controllers/ServidorAccesoController.js');
 mix.js('resources/assets/js/controllers/DatacentroController.js','public/js/controllers/DatacentroController.js');
 mix.js('resources/assets/js/controllers/SistemaOperativoController.js','public/js/controllers/SistemaOperativoController.js');
 mix.js('resources/assets/js/controllers/TagController.js','public/js/controllers/TagController.js');

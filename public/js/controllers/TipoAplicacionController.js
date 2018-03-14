@@ -3596,6 +3596,7 @@ var TipoAplicacionController = new Vue({
    el: '#TipoAplicacionController',
    data: function data() {
       return {
+         '$': window.jQuery,
          'nombre_tabla': 'tipos_aplicaciones', //nombre tabla o de ruta
          'nombre_ruta': 'tipos_aplicaciones', //nombre tabla o de ruta
          'nombre_model': 'tipo_aplicacion',
@@ -3744,16 +3745,7 @@ var TipoAplicacionController = new Vue({
    methods: {
 
       limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
-         this.tipo_aplicacion = {
-            'nom_tipo_aplicacion': null,
-            'det_tipo_aplicacion': null,
-            'cod_tipo_aplicacion': null,
-            'id_usuario_registra': null,
-            'id_usuario_modifica': null,
-            'created_at': null,
-            'updated_at': null,
-            'deleted_at': null
-         };
+         this.tipo_aplicacion = null;this.tipo_aplicacion = this.tipo_aplicacion_limpio;
       },
 
       inicializar: function inicializar() {

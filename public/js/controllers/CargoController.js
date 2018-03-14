@@ -3596,6 +3596,7 @@ var CargoController = new Vue({
    el: '#CargoController',
    data: function data() {
       return {
+         '$': window.jQuery,
          'nombre_tabla': 'cargos', //nombre tabla o de ruta
          'nombre_ruta': 'cargos', //nombre tabla o de ruta
          'nombre_model': 'cargo',
@@ -3744,16 +3745,7 @@ var CargoController = new Vue({
    methods: {
 
       limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
-         this.cargo = {
-            'nom_cargo': null,
-            'det_cargo': null,
-            'cod_cargo': null,
-            'id_usuario_registra': null,
-            'id_usuario_modifica': null,
-            'created_at': null,
-            'updated_at': null,
-            'deleted_at': null
-         };
+         this.cargo = null;this.cargo = this.cargo_limpio;
       },
 
       inicializar: function inicializar() {

@@ -18,6 +18,7 @@ const EstadoController = new Vue({
    el: '#EstadoController',
    data(){
       return {
+         '$':window.jQuery,
          'nombre_tabla':'estados', //nombre tabla o de ruta
          'nombre_ruta':'estados', //nombre tabla o de ruta
          'nombre_model':'estado',
@@ -166,16 +167,7 @@ const EstadoController = new Vue({
    methods: {
 
       limpiar_objeto_clase_local: function () {
-         this.estado = {
-            'nom_estado':null,
-            'det_estado':null,
-            'cod_estado':null,
-            'id_usuario_registra':null,
-            'id_usuario_modifica':null,
-            'created_at':null,
-            'updated_at':null,
-            'deleted_at':null,
-         };
+         this.estado = null; this.estado = this.estado_limpio;
       },
 
       inicializar: function () {

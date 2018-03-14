@@ -3596,6 +3596,7 @@ var DominioController = new Vue({
    el: '#DominioController',
    data: function data() {
       return {
+         '$': window.jQuery,
          'nombre_tabla': 'dominios', //nombre tabla o de ruta
          'nombre_ruta': 'dominios', //nombre tabla o de ruta
          'nombre_model': 'dominio',
@@ -3756,18 +3757,7 @@ var DominioController = new Vue({
    methods: {
 
       limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
-         this.dominio = {
-            'nom_dominio': null,
-            'det_dominio': null,
-            'ip_publica': null,
-            'ip_balanceador': null,
-            'dns_asoc_dominio': null,
-            'id_usuario_registra': null,
-            'id_usuario_modifica': null,
-            'created_at': null,
-            'updated_at': null,
-            'deleted_at': null
-         };
+         this.dominio = null;this.dominio = this.dominio_limpio;
       },
 
       inicializar: function inicializar() {

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 85);
+/******/ 	return __webpack_require__(__webpack_require__.s = 87);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3555,15 +3555,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 85:
+/***/ 87:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(86);
+module.exports = __webpack_require__(88);
 
 
 /***/ }),
 
-/***/ 86:
+/***/ 88:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3596,6 +3596,7 @@ var UsuarioBitacoraServicioController = new Vue({
    el: '#UsuarioBitacoraServicioController',
    data: function data() {
       return {
+         '$': window.jQuery,
          'nombre_tabla': 'usuarios_bitacora_servicios', //nombre tabla o de ruta
          'nombre_ruta': 'usuarios_bitacora_servicios', //nombre tabla o de ruta
          'nombre_model': 'usuario_bitacora_servicio',
@@ -3748,17 +3749,7 @@ var UsuarioBitacoraServicioController = new Vue({
    methods: {
 
       limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
-         this.usuario_bitacora_servicio = {
-            'asunto': null,
-            'det_bitacora': null,
-            'id_actividad': null,
-            'id_servicio': null,
-            'id_usuario_registra': null,
-            'id_usuario_modifica': null,
-            'created_at': null,
-            'updated_at': null,
-            'deleted_at': null
-         };
+         this.usuario_bitacora_servicio = null;this.usuario_bitacora_servicio = this.usuario_bitacora_servicio_limpio;
       },
 
       inicializar: function inicializar() {

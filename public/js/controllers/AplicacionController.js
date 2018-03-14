@@ -3596,6 +3596,7 @@ var AplicacionController = new Vue({
    el: '#AplicacionController',
    data: function data() {
       return {
+         '$': window.jQuery,
          'nombre_tabla': 'aplicaciones', //nombre tabla o de ruta
          'nombre_ruta': 'aplicaciones', //nombre tabla o de ruta
          'nombre_model': 'aplicacion',
@@ -3813,24 +3814,7 @@ var AplicacionController = new Vue({
    methods: {
 
       limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
-         this.aplicacion = {
-            'nom_aplicacion': null,
-            'det_aplicacion': null,
-            'alias': null,
-            'url_web': null,
-            'ip': null,
-            'subdominio': null,
-            'ssl_tls': false,
-            'id_dominio': null,
-            'id_tipo_aplicacion': null,
-            'id_servidor': null,
-            'id_servicio': null,
-            'id_usuario_registra': null,
-            'id_usuario_modifica': null,
-            'created_at': null,
-            'updated_at': null,
-            'deleted_at': null
-         };
+         this.aplicacion = null;this.aplicacion = this.aplicacion_limpio;
       },
 
       inicializar: function inicializar() {

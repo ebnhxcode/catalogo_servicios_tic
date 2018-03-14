@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 83);
+/******/ 	return __webpack_require__(__webpack_require__.s = 85);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3555,15 +3555,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 83:
+/***/ 85:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(84);
+module.exports = __webpack_require__(86);
 
 
 /***/ }),
 
-/***/ 84:
+/***/ 86:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3596,6 +3596,7 @@ var TagController = new Vue({
    el: '#TagController',
    data: function data() {
       return {
+         '$': window.jQuery,
          'nombre_tabla': 'tags', //nombre tabla o de ruta
          'nombre_ruta': 'tags', //nombre tabla o de ruta
          'nombre_model': 'tag',
@@ -3745,17 +3746,7 @@ var TagController = new Vue({
    methods: {
 
       limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
-         this.tag = {
-            'nom_tag': null,
-            'det_tag': null,
-            'meta_tag': null,
-            'id_permiso': null,
-            'id_usuario_registra': null,
-            'id_usuario_modifica': null,
-            'created_at': null,
-            'updated_at': null,
-            'deleted_at': null
-         };
+         this.tag = null;this.tag = this.tag_limpio;
       },
 
       inicializar: function inicializar() {

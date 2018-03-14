@@ -3567,6 +3567,7 @@ var UsuarioController = new Vue({
    el: '#UsuarioController',
    data: function data() {
       return {
+         '$': window.jQuery,
          'nombre_tabla': 'usuarios', //nombre tabla o de ruta
          'nombre_ruta': 'usuarios', //nombre tabla o de ruta
          'nombre_model': 'usuario',
@@ -3778,24 +3779,7 @@ var UsuarioController = new Vue({
    methods: {
 
       limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
-         this.usuario = {
-            'nom_usuario': null,
-            'nom_completo': null,
-            'ape_paterno': null,
-            'ape_materno': null,
-            'username': null,
-            'email': null,
-            'password': null,
-            'remember_token': null,
-            'id_usuario_registra': null,
-            'id_usuario_modifica': null,
-            'id_role': null,
-            'id_estado': null,
-            'id_cargo': null,
-            'created_at': null,
-            'updated_at': null,
-            'deleted_at': null
-         };
+         this.usuario = null;this.usuario = this.usuario_limpio;
       },
 
       inicializar: function inicializar() {

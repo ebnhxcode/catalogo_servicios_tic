@@ -18,6 +18,7 @@ const DatacentroController = new Vue({
    el: '#DatacentroController',
    data(){
       return {
+         '$':window.jQuery,
          'nombre_tabla':'datacentros', //nombre tabla o de ruta
          'nombre_ruta':'datacentros', //nombre tabla o de ruta
          'nombre_model':'datacentro',
@@ -166,16 +167,7 @@ const DatacentroController = new Vue({
    methods: {
 
       limpiar_objeto_clase_local: function () {
-         this.datacentro = {
-            'nom_datacentro':null,
-            'det_datacentro':null,
-            'cod_datacentro':null,
-            'id_usuario_registra':null,
-            'id_usuario_modifica':null,
-            'created_at':null,
-            'updated_at':null,
-            'deleted_at':null,
-         };
+         this.datacentro = null; this.datacentro = this.datacentro_limpio;
       },
 
       inicializar: function () {

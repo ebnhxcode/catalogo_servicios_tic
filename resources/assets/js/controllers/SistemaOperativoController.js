@@ -18,6 +18,7 @@ const SistemaOperativoController = new Vue({
    el: '#SistemaOperativoController',
    data(){
       return {
+
          'nombre_tabla':'sistemas_operativos', //nombre tabla o de ruta
          'nombre_ruta':'sistemas_operativos', //nombre tabla o de ruta
          'nombre_model':'sistema_operativo',
@@ -186,20 +187,7 @@ const SistemaOperativoController = new Vue({
    methods: {
 
       limpiar_objeto_clase_local: function () {
-         this.sistema_operativo = {
-            'id_sistema_operativo':null,
-            'arquitectura':null,
-            'nom_sistema_operativo':null,
-            'det_sistema_operativo':null,
-            'vers_sistema_operativo':null,
-            'lic_sistema_operativo':null,
-            'det_licencia_sistema_operativo':null,
-            'id_usuario_registra':null,
-            'id_usuario_modifica':null,
-            'created_at':null,
-            'updated_at':null,
-            'deleted_at':null,
-         };
+         this.sistema_operativo = null; this.sistema_operativo = this.sistema_operativo_limpio;
       },
 
       inicializar: function () {

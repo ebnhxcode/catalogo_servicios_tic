@@ -18,6 +18,7 @@ const ServicioController = new Vue({
    el: '#ServicioController',
    data(){
       return {
+         '$':window.jQuery,
          'nombre_tabla':'servicios', //nombre tabla o de ruta
          'nombre_ruta':'servicios', //nombre tabla o de ruta
          'nombre_model':'servicio',
@@ -179,17 +180,7 @@ const ServicioController = new Vue({
    methods: {
 
       limpiar_objeto_clase_local: function () {
-         this.servicio = {
-            'nom_servicio':null,
-            'det_servicio':null,
-            'id_actividad':null,
-            'id_usuario':null,
-            'id_usuario_registra':null,
-            'id_usuario_modifica':null,
-            'created_at':null,
-            'updated_at':null,
-            'deleted_at':null,
-         };
+         this.servicio = null; this.servicio = this.servicio_limpio;
       },
 
       inicializar: function () {

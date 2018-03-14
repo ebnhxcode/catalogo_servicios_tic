@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 79);
+/******/ 	return __webpack_require__(__webpack_require__.s = 81);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3555,15 +3555,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 79:
+/***/ 81:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(80);
+module.exports = __webpack_require__(82);
 
 
 /***/ }),
 
-/***/ 80:
+/***/ 82:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3596,6 +3596,7 @@ var DatacentroController = new Vue({
    el: '#DatacentroController',
    data: function data() {
       return {
+         '$': window.jQuery,
          'nombre_tabla': 'datacentros', //nombre tabla o de ruta
          'nombre_ruta': 'datacentros', //nombre tabla o de ruta
          'nombre_model': 'datacentro',
@@ -3744,16 +3745,7 @@ var DatacentroController = new Vue({
    methods: {
 
       limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
-         this.datacentro = {
-            'nom_datacentro': null,
-            'det_datacentro': null,
-            'cod_datacentro': null,
-            'id_usuario_registra': null,
-            'id_usuario_modifica': null,
-            'created_at': null,
-            'updated_at': null,
-            'deleted_at': null
-         };
+         this.datacentro = null;this.datacentro = this.datacentro_limpio;
       },
 
       inicializar: function inicializar() {
