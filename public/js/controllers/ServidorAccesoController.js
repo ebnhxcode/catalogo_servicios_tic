@@ -3607,6 +3607,7 @@ var ServidorAccesoController = new Vue({
          'servidor_acceso': {
             'usuario': null,
             'clave': null,
+            'decrypted_clave': null,
             'tipo_acceso': null,
             'puerto': null,
             'id_servidor': null,
@@ -3619,6 +3620,7 @@ var ServidorAccesoController = new Vue({
          'servidor_acceso_limpio': {
             'usuario': null,
             'clave': null,
+            'decrypted_clave': null,
             'tipo_acceso': null,
             'puerto': null,
             'id_servidor': null,
@@ -3650,7 +3652,7 @@ var ServidorAccesoController = new Vue({
 
          'tabla_campos': {
             'usuario': true,
-            'clave': false,
+            //'clave':false,
             'tipo_acceso': true,
             'puerto': true,
             'id_servidor': false,

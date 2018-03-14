@@ -126,7 +126,8 @@ class ServidorAccesoController extends Controller {
       #Se crea el nuevo registro
       $this->new_servidor_acceso = ServidorAcceso::create([
          'usuario' => $this->servidor_acceso['usuario'],
-         'clave' => bcrypt($this->servidor_acceso['clave']),
+         #'clave' => bcrypt($this->servidor_acceso['clave']),
+         'clave' => $this->servidor_acceso['clave'],
          'tipo_acceso' => $this->servidor_acceso['tipo_acceso'],
          'puerto' => $this->servidor_acceso['puerto'],
 
@@ -175,9 +176,11 @@ class ServidorAccesoController extends Controller {
       }
       $this->servidor_acceso = ServidorAcceso::find($request["id_$this->nombre_modelo"]);
       $request['id_usuario_modifica'] = Auth::user()->id_usuario;
+      /*
       if ( !$this->es_vacio($request['clave']) ) {
          $request['clave'] = bcrypt($request['clave']);
       }
+      */
       $this->servidor_acceso->update($request->all());
 
       #unset($this->new_servidor_permiso, $this->permiso);
