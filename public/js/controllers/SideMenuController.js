@@ -46936,7 +46936,7 @@ __WEBPACK_IMPORTED_MODULE_2_vee_validate__["a" /* Validator */].extend('verify_p
       return '\n   La contrase\xF1a debe contener al menos:\n   1 letra may\xFAscula,\n   1 letra min\xFAscula,\n   1 n\xFAmero\n   1 car\xE1cter especial (Ej: , . _ & ? etc)\n   y que sea m\xEDnimo de 8 caracteres\n   ';
    },
    validate: function validate(value) {
-      var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,20})");
+      var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!/@#\$%\^&\*])(?=.{8,100})");
       return strongRegex.test(value);
    }
 });

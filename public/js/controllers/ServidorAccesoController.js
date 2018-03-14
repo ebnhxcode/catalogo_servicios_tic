@@ -3665,7 +3665,7 @@ var ServidorAccesoController = new Vue({
             'usuario': 'Usuario',
             'clave': 'Clave',
             'tipo_acceso': 'Tipo Acceso',
-            'puerto': 'Memoria Disco',
+            'puerto': 'Puerto',
             'id_servidor': 'Id Servidor',
             'id_usuario_registra': 'Usuario registra',
             'id_usuario_modifica': 'Usuario modifica',
@@ -3777,18 +3777,7 @@ var ServidorAccesoController = new Vue({
       },
 
       limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
-         this.servidor_acceso = {
-            'usuario': null,
-            'clave': null,
-            'tipo_acceso': null,
-            'puerto': null,
-            'id_servidor': null,
-            'id_usuario_registra': null,
-            'id_usuario_modifica': null,
-            'created_at': null,
-            'updated_at': null,
-            'deleted_at': null
-         };
+         this.servidor_acceso = null;this.servidor_acceso = this.servidor_acceso_limpio;
       },
 
       inicializar: function inicializar() {
@@ -3797,9 +3786,8 @@ var ServidorAccesoController = new Vue({
          this.$http.get('/servidores_accesos').then(function (response) {
             // success callback
             _this4.servidores_accesos = response.body.servidores_accesos || null;
+            _this4.servidores = response.body.servidores || null;
             _this4.datos_excel = response.body.servidores_accesos || null;
-            _this4.datacentros = response.body.datacentros || null;
-            _this4.sistemas_operativos = response.body.sistemas_operativos || null;
 
             _this4.usuario_auth = response.body.usuario_auth || null;
             //this.limpiar_objeto_clase_local();
@@ -3923,11 +3911,11 @@ var ServidorAccesoController = new Vue({
          var formData = new FormData();
          //Conforma objeto paramétrico para solicitud http
 
-         formData.append('usuario', this.servidor_acceso.usuarios_pactados || null);
-         formData.append('clave', this.servidor_acceso.usuarios_pactados || null);
-         formData.append('tipo_acceso', this.servidor_acceso.usuarios_pactados || null);
-         formData.append('puerto', this.servidor_acceso.usuarios_pactados || null);
-         formData.append('id_servidor', this.servidor_acceso.id_sistema_operativo || null);
+         formData.append('usuario', this.servidor_acceso.usuario || null);
+         formData.append('clave', this.servidor_acceso.clave || null);
+         formData.append('tipo_acceso', this.servidor_acceso.tipo_acceso || null);
+         formData.append('puerto', this.servidor_acceso.puerto || null);
+         formData.append('id_servidor', this.servidor_acceso.id_servidor || null);
 
          this.$http.post('/' + this.nombre_ruta, formData).then(function (response) {
             // success callback

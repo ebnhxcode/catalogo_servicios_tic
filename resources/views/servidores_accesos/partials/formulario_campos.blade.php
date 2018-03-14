@@ -1,21 +1,22 @@
 
+<h5>Datos básicos obligatorios de las credenciales</h5>
 <div class="row">
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-3 col-md-3">
 
-      <dt>Nombre servidor</dt>
+      <dt>Usuario</dt>
       <dd>
          <p class="control has-icon has-icon-right">
-            <input type="text" v-model="servidor.nom_servidor" name="nom_servidor"
+            <input type="text" v-model="servidor_acceso.usuario" name="usuario"
                    v-validate="{required:true,regex:/^[a-zA-Z0-9_ ]+$/i}" data-vv-delay="500"
                    class="form-control" />
 
             <transition name="bounce">
-               <i v-show="errors.has('nom_servidor')" class="fa fa-exclamation-circle"></i>
+               <i v-show="errors.has('usuario')" class="fa fa-exclamation-circle"></i>
             </transition>
 
             <transition name="bounce">
-               <span v-show="errors.has('nom_servidor')" class="text-danger small">
-                  @{{ errors.first('nom_servidor') }}
+               <span v-show="errors.has('usuario')" class="text-danger small">
+                  @{{ errors.first('usuario') }}
                </span>
             </transition>
          </p>
@@ -23,69 +24,75 @@
 
 
    </div><!-- .col -->
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-3 col-md-3">
 
-      <dt>Detalle servidor</dt>
+      <dt>Clave</dt>
       <dd>
 
          <p class="control has-icon has-icon-right">
-            <textarea cols="15" rows="1" v-model="servidor.det_servidor" name="det_servidor"
-                      v-validate="{required:true,regex:/^[a-zA-Z0-9_ ,.!@#$%*&]+$/i}" data-vv-delay="500"
-                      class="form-control"></textarea>
+            <input type="password" v-model="servidor_acceso.clave" name="clave"
+                   aria-autocomplete="none"
+                   autocomplete="off"
+                   v-validate="{required:true,regex:/^[a-zA-Z0-9_ ,.!@/#$%*&]+$/i}" {{--verify_password--}} data-vv-delay="500"
+                   class="form-control" />
+            <button class="btn btn-sm btn-primary" v-if="en_array([lista_actualizar_activo,modal_actualizar_activo],true)">
+               copiar clave
+            </button>
+
 
             <transition name="bounce">
-               <i v-show="errors.has('det_servidor')" class="fa fa-exclamation-circle"></i>
+               <i v-show="errors.has('clave')" class="fa fa-exclamation-circle"></i>
             </transition>
 
             <transition name="bounce">
-               <span v-show="errors.has('det_servidor')" class="text-danger small">
-                  @{{ errors.first('det_servidor') }}
+               <span v-show="errors.has('clave')" class="text-danger small">
+                  @{{ errors.first('clave') }}
                </span>
             </transition>
          </p>
       </dd>
 
    </div><!-- .col -->
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-3 col-md-3">
 
-      <dt>Ip servidor</dt>
+      <dt>Tipo Acceso</dt>
       <dd>
 
          <p class="control has-icon has-icon-right">
-            <input type="text" v-model="servidor.ip_servidor" name="ip_servidor"
-                   v-validate="{ip:true}" data-vv-delay="500"
+            <input type="text" v-model="servidor_acceso.tipo_acceso" name="tipo_acceso"
+                   v-validate="{required:true,regex:/^[a-zA-Z0-9_ ]+$/i}" data-vv-delay="500"
                    class="form-control" />
 
             <transition name="bounce">
-               <i v-show="errors.has('ip_servidor')" class="fa fa-exclamation-circle"></i>
+               <i v-show="errors.has('tipo_acceso')" class="fa fa-exclamation-circle"></i>
             </transition>
 
             <transition name="bounce">
-               <span v-show="errors.has('ip_servidor')" class="text-danger small">
-                  @{{ errors.first('ip_servidor') }}
+               <span v-show="errors.has('tipo_acceso')" class="text-danger small">
+                  @{{ errors.first('tipo_acceso') }}
                </span>
             </transition>
          </p>
       </dd>
 
    </div><!-- .col -->
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-3 col-md-3">
 
-      <dt>Ip url</dt>
+      <dt>Puerto</dt>
       <dd>
 
          <p class="control has-icon has-icon-right">
-            <input type="text" v-model="servidor.url_servidor" name="url_servidor"
-                   v-validate="{url:true}" data-vv-delay="500"
+            <input type="text" v-model="servidor_acceso.puerto" name="puerto"
+                   v-validate="{regex:/^[0-9]+$/i}" data-vv-delay="500"
                    class="form-control" />
 
             <transition name="bounce">
-               <i v-show="errors.has('url_servidor')" class="fa fa-exclamation-circle"></i>
+               <i v-show="errors.has('puerto')" class="fa fa-exclamation-circle"></i>
             </transition>
 
             <transition name="bounce">
-               <span v-show="errors.has('url_servidor')" class="text-danger small">
-                  @{{ errors.first('url_servidor') }}
+               <span v-show="errors.has('puerto')" class="text-danger small">
+                  @{{ errors.first('puerto') }}
                </span>
             </transition>
          </p>
@@ -94,80 +101,37 @@
    </div><!-- .col -->
 
 
+</div><!-- .row -->
 
-   <div class="col-sm-6 col-md-6">
 
-      <dt>Datacentro</dt>
+<h5>Datos de asociación</h5>
+<div class="row">
+
+   <div class="col-sm-4 col-md-4">
+
+      <dt>Servidor</dt>
       <dd>
          <p class="control has-icon has-icon-right">
-            <select class="form-control" v-model="servidor.id_datacentro" name="id_datacentro"
-                    v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
-               <option :value="d.id_datacentro" v-for="d in datacentros">
-                  @{{ `${d.nom_datacentro} -> ${d.det_datacentro}` }}
+
+            <select class="form-control" v-model="servidor_acceso.id_servidor" name="id_servidor"
+                    v-validate="{required:true, regex:/^[0-9]+$/i}" data-vv-delay="500">
+               <option :value="s.id_servidor" v-for="s in servidores">
+                  @{{ `${s.nom_servidor} -> ${s.det_servidor}` }}
                </option>
             </select>
 
             <transition name="bounce">
-               <i v-show="errors.has('id_datacentro')" class="fa fa-exclamation-circle"></i>
+               <i v-show="errors.has('id_servidor')" class="fa fa-exclamation-circle"></i>
             </transition>
 
             <transition name="bounce">
-                  <span v-show="errors.has('id_datacentro')" class="text-danger small">
-                     @{{ errors.first('id_datacentro') }}
-                  </span>
+               <span v-show="errors.has('id_servidor')" class="text-danger small">
+                  @{{ errors.first('id_servidor') }}
+               </span>
             </transition>
          </p>
       </dd>
-   </div><!-- .col -->
 
-   <div class="col-sm-6 col-md-6">
-
-      <dt>Sistema Operativo</dt>
-      <dd>
-         <p class="control has-icon has-icon-right">
-            <select class="form-control" v-model="servidor.id_sistema_operativo" name="id_sistema_operativo"
-                    v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
-               <option :value="s.id_sistema_operativo" v-for="s in sistemas_operativos">
-                  @{{ `${s.nom_sistema_operativo} -> ${s.det_sistema_operativo}` }}
-               </option>
-            </select>
-
-            <transition name="bounce">
-               <i v-show="errors.has('id_sistema_operativo')" class="fa fa-exclamation-circle"></i>
-            </transition>
-
-            <transition name="bounce">
-                  <span v-show="errors.has('id_sistema_operativo')" class="text-danger small">
-                     @{{ errors.first('id_sistema_operativo') }}
-                  </span>
-            </transition>
-         </p>
-      </dd>
-   </div><!-- .col -->
-
-   <div class="col-sm-6 col-md-6">
-
-      <dt>Dominio</dt>
-      <dd>
-         <p class="control has-icon has-icon-right">
-            <select class="form-control" v-model="servidor.id_dominio" name="id_dominio"
-                    v-validate="{regex:/^[0-9]+$/i}" data-vv-delay="500">
-               <option :value="d.id_dominio" v-for="d in dominios">
-                  @{{ `${d.nom_dominio} -> ${d.det_dominio}` }}
-               </option>
-            </select>
-
-            <transition name="bounce">
-               <i v-show="errors.has('id_dominio')" class="fa fa-exclamation-circle"></i>
-            </transition>
-
-            <transition name="bounce">
-                  <span v-show="errors.has('id_dominio')" class="text-danger small">
-                     @{{ errors.first('id_dominio') }}
-                  </span>
-            </transition>
-         </p>
-      </dd>
    </div><!-- .col -->
 
 

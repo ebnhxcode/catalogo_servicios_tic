@@ -14,10 +14,10 @@ class ServidorAcceso extends Model {
    protected $primaryKey = "id_servidor_acceso";
    protected $fillable = [
       #columns
-      'username',
-      'password',
+      'usuario',
+      'clave',
       'tipo_acceso',
-      'puerto_acceso',
+      'puerto',
 
       #relaciones -> pks
       'id_aplicacion',
@@ -27,19 +27,19 @@ class ServidorAcceso extends Model {
       'id_usuario_modifica',
    ];
 
-   public function aplicacion() {
-      return $this->belongsTo('App\Aplicacion', 'id_aplicacion');
+   public function aplicacion () {
+      return $this->belongsTo(Aplicacion::class, 'id_aplicacion');
    }
 
-   public function servidor() {
-      return $this->belongsTo('App\Servidor', 'id_servidor');
+   public function servidor () {
+      return $this->belongsTo(Servidor::class, 'id_servidor');
    }
 
-   public function usuario_registra() {
-      return $this->belongsTo('App\User', 'id_usuario_registra');
+   public function usuario_registra () {
+      return $this->belongsTo(User::class, 'id_usuario_registra');
    }
 
-   public function usuario_modifica() {
-      return $this->belongsTo('App\User', 'id_usuario_modifica');
+   public function usuario_modifica () {
+      return $this->belongsTo(User::class, 'id_usuario_modifica');
    }
 }
