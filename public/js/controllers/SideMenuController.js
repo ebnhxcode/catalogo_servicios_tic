@@ -47039,9 +47039,6 @@ var SideMenuController = new Vue({
          }, {
             'title': 'Sistemas Operativos',
             'url': '/sistemas_operativos'
-         }, {
-            'title': 'Credenciales',
-            'url': '/credenciales'
          }]
       };
    },
