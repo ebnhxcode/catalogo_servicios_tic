@@ -36,7 +36,7 @@
                    v-validate="{required:true,regex:/^[a-zA-Z0-9_ ,.!@/#$%*&]+$/i}" {{--verify_password--}} data-vv-delay="500"
                    class="form-control" />
             <button class="btn btn-sm btn-primary" v-clipboard="aplicacion_acceso.clave"
-                    v-if="en_array([lista_actualizar_activo,modal_actualizar_activo],true)">
+                    v-show="en_array([lista_actualizar_activo,modal_actualizar_activo],true)">
                copiar clave
             </button>
 
