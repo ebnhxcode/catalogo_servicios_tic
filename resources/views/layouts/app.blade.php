@@ -141,14 +141,16 @@
 
             <nav class="col-md-3 d-none d-md-block bg-light sidebar" id="SideMenuController">
 
-               <div class="form-group input-group-sm">
+               <div class="form-group">
                   <!-- Input para escribir el termino a buscar -->
                   <input type="text" class="form-control" aria-describedby="filtro_menu_help"
-                         placeholder="" v-model="filtro_menu" id="filtro_menu">
+                         placeholder="Filtrar en el menú" v-model="filtro_menu" id="filtro_menu">
 
+                  {{--
                   <small id="filtro_menu_help" class="form-text text-muted">
                      Filtrar menú
                   </small>
+                  --}}
                </div>
 
                <div class="sidebar-sticky" style="overflow:auto; max-height: 650px;">

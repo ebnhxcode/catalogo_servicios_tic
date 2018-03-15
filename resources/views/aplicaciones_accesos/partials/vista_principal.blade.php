@@ -7,20 +7,20 @@
 
          <!-- este bloque será reemplazado dinamicamente -->
          <div class="card" style="{{--width: 18rem;--}}">
-            <img class="card-img-top" src="{{ url('/img/servidor_acceso.png') }}" alt="Card image cap">
+            <img class="card-img-top" src="{{ url('/img/aplicaciones_accesos.png') }}" alt="Card image cap">
             <div class="card-body">
                <h5 class="card-title">
-                  @{{ servidor_acceso.usuario || '' }}
+                  @{{ aplicacion_acceso.usuario || '' }}
                </h5>
                <p class="card-text">
 
-               <dl class="row" v-if="servidor_acceso">
+               <dl class="row" v-if="aplicaciones_accesos">
 
                   <dt class="col-md-6">Tipo acceso</dt>
-                  <dd class="col-md-6">@{{ servidor_acceso.tipo_acceso || '' }}</dd>
+                  <dd class="col-md-6">@{{ aplicacion_acceso.tipo_acceso || '' }}</dd>
 
                   <dt class="col-md-6">Puerto</dt>
-                  <dd class="col-md-6">@{{ servidor_acceso.puerto || '' }}</dd>
+                  <dd class="col-md-6">@{{ aplicacion_acceso.email || '' }}</dd>
 
                </dl>
 
@@ -43,6 +43,9 @@
 
 
    </div><!-- .row -->
+
+
+
 
 
 </div><!-- .tab-pane .active #vista_principal_tab -->

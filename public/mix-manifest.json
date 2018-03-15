@@ -17,6 +17,7 @@
     "/js/controllers/DatacentroController.js": "/js/controllers/DatacentroController.js",
     "/js/controllers/CargoController.js": "/js/controllers/CargoController.js",
     "/js/controllers/AplicacionController.js": "/js/controllers/AplicacionController.js",
+    "/js/controllers/AplicacionAccesoController.js": "/js/controllers/AplicacionAccesoController.js",
     "/js/controllers/ActividadController.js": "/js/controllers/ActividadController.js",
     "/js/controllers/HomeController.js": "/js/controllers/HomeController.js"
 }

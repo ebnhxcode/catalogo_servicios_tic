@@ -35,6 +35,7 @@ Route::resource('/cargos', 'CargoController');
 Route::resource('/estados', 'EstadoController');
 Route::resource('/aplicaciones', 'AplicacionController');
 Route::resource('/tipos_aplicaciones', 'TipoAplicacionController');
+Route::resource('/aplicaciones_accesos', 'AplicacionAccesoController');
 Route::resource('/dominios', 'DominioController');
 Route::resource('/servidores', 'ServidorController');
 Route::resource('/servidores_accesos', 'ServidorAccesoController');

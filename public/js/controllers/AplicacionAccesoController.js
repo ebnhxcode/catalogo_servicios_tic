@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 81);
+/******/ 	return __webpack_require__(__webpack_require__.s = 75);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3555,15 +3555,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 81:
+/***/ 75:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(82);
+module.exports = __webpack_require__(76);
 
 
 /***/ }),
 
-/***/ 82:
+/***/ 76:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3592,46 +3592,46 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
 //Vue.component('download-excel', DownloadExcel);
 Vue.component('download-excel', __webpack_require__(5));
 
-var ServidorAccesoController = new Vue({
-   el: '#ServidorAccesoController',
+var AplicacionAccesoController = new Vue({
+   el: '#AplicacionAccesoController',
    data: function data() {
       return {
          '$': window.jQuery,
-         'nombre_tabla': 'servidores_accesos', //nombre tabla o de ruta
-         'nombre_ruta': 'servidores_accesos', //nombre tabla o de ruta
-         'nombre_model': 'servidor_acceso',
-         'nombre_detalle': 'Servidores Accesos',
-         'nombre_controller': 'ServidorAccesoController',
+         'nombre_tabla': 'aplicaciones_accesos', //nombre tabla o de ruta
+         'nombre_ruta': 'aplicaciones_accesos', //nombre tabla o de ruta
+         'nombre_model': 'aplicacion_acceso',
+         'nombre_detalle': 'Aplicaciones Accesos',
+         'nombre_controller': 'AplicacionAccesoController',
 
          'filtro_head': null,
-         'servidor_acceso': {
+         'aplicacion_acceso': {
             'usuario': null,
             'clave': null,
             'decrypted_clave': null,
             'tipo_acceso': null,
-            'puerto': null,
-            'id_servidor': null,
+            'email': null,
+            'id_aplicacion': null,
             'id_usuario_registra': null,
             'id_usuario_modifica': null,
             'created_at': null,
             'updated_at': null,
             'deleted_at': null
          },
-         'servidor_acceso_limpio': {
+         'aplicacion_acceso_limpio': {
             'usuario': null,
             'clave': null,
             'decrypted_clave': null,
             'tipo_acceso': null,
-            'puerto': null,
-            'id_servidor': null,
+            'email': null,
+            'id_aplicacion': null,
             'id_usuario_registra': null,
             'id_usuario_modifica': null,
             'created_at': null,
             'updated_at': null,
             'deleted_at': null
          },
-         'servidores': [],
-         'servidores_accesos': [],
+         'aplicaciones': [],
+         'aplicaciones_accesos': [],
          'datos_excel': [],
          'usuario_auth': {},
 
@@ -3654,8 +3654,8 @@ var ServidorAccesoController = new Vue({
             'usuario': true,
             //'clave':false,
             'tipo_acceso': true,
-            'puerto': true,
-            'id_servidor': false,
+            'email': true,
+            'id_aplicacion': false,
             'id_usuario_registra': false,
             'id_usuario_modifica': false,
             'created_at': true,
@@ -3667,8 +3667,8 @@ var ServidorAccesoController = new Vue({
             'usuario': 'Usuario',
             'clave': 'Clave',
             'tipo_acceso': 'Tipo Acceso',
-            'puerto': 'Puerto',
-            'id_servidor': 'Id Servidor',
+            'email': 'email',
+            'id_aplicacion': 'Id Aplicacion',
             'id_usuario_registra': 'Usuario registra',
             'id_usuario_modifica': 'Usuario modifica',
             'created_at': 'Creado en',
@@ -3680,8 +3680,8 @@ var ServidorAccesoController = new Vue({
             'usuario': 'String',
             'clave': 'String',
             'tipo_acceso': 'String',
-            'puerto': 'String',
-            'id_servidor': 'String',
+            'email': 'String',
+            'id_aplicacion': 'String',
             'id_usuario_registra': 'String',
             'id_usuario_modifica': 'String',
             'created_at': 'String',
@@ -3699,7 +3699,7 @@ var ServidorAccesoController = new Vue({
 
    computed: {},
    watch: {
-      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el servidor_acceso
+      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el aplicacion_acceso
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function id_en_edicion(_id_en_edicion) {
          var _this = this;
@@ -3709,29 +3709,29 @@ var ServidorAccesoController = new Vue({
          } else {
             this.$http.get('/' + this.nombre_tabla + '/' + _id_en_edicion).then(function (response) {
                // success callback
-               _this.servidor_acceso = response.body['' + _this.nombre_model];
+               _this.aplicacion_acceso = response.body['' + _this.nombre_model];
             }, function (response) {
                // error callback
                _this.checkear_estado_respuesta_http(response.status);
             });
          }
       },
-      //servidores_accesos se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
-      servidores_accesos: function servidores_accesos(_servidores_accesos) {
+      //aplicaciones_accesos se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
+      aplicaciones_accesos: function aplicaciones_accesos(_aplicaciones_accesos) {
          var self = this;
          this.excel_json_datos = [];
-         return _servidores_accesos.map(function (servidor_acceso, index) {
+         return _aplicaciones_accesos.map(function (aplicacion_acceso, index) {
             return self.excel_json_datos.push({
-               'usuario': servidor_acceso.usuario || '-',
-               'clave': servidor_acceso.clave || '-',
-               'tipo_acceso': servidor_acceso.tipo_acceso || '-',
-               'puerto': servidor_acceso.puerto || '-',
-               'id_servidor': servidor_acceso.id_servidor || '-',
-               'id_usuario_registra': servidor_acceso.id_usuario_registra || '-',
-               'id_usuario_modifica': servidor_acceso.id_usuario_modifica || '-',
-               'created_at': servidor_acceso.created_at || '-',
-               'updated_at': servidor_acceso.updated_at || '-',
-               'deleted_at': servidor_acceso.deleted_at || '-'
+               'usuario': aplicacion_acceso.usuario || '-',
+               'clave': aplicacion_acceso.clave || '-',
+               'tipo_acceso': aplicacion_acceso.tipo_acceso || '-',
+               'email': aplicacion_acceso.email || '-',
+               'id_aplicacion': aplicacion_acceso.id_aplicacion || '-',
+               'id_usuario_registra': aplicacion_acceso.id_usuario_registra || '-',
+               'id_usuario_modifica': aplicacion_acceso.id_usuario_modifica || '-',
+               'created_at': aplicacion_acceso.created_at || '-',
+               'updated_at': aplicacion_acceso.updated_at || '-',
+               'deleted_at': aplicacion_acceso.deleted_at || '-'
             });
          });
       }
@@ -3779,17 +3779,17 @@ var ServidorAccesoController = new Vue({
       },
 
       limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
-         this.servidor_acceso = null;this.servidor_acceso = this.servidor_acceso_limpio;
+         this.aplicacion_acceso = null;this.aplicacion_acceso = this.aplicacion_acceso_limpio;
       },
 
       inicializar: function inicializar() {
          var _this4 = this;
 
-         this.$http.get('/servidores_accesos').then(function (response) {
+         this.$http.get('/aplicaciones_accesos').then(function (response) {
             // success callback
-            _this4.servidores_accesos = response.body.servidores_accesos || null;
-            _this4.servidores = response.body.servidores || null;
-            _this4.datos_excel = response.body.servidores_accesos || null;
+            _this4.aplicaciones_accesos = response.body.aplicaciones_accesos || null;
+            _this4.aplicaciones = response.body.aplicaciones || null;
+            _this4.datos_excel = response.body.aplicaciones_accesos || null;
 
             _this4.usuario_auth = response.body.usuario_auth || null;
             //this.limpiar_objeto_clase_local();
@@ -3799,13 +3799,13 @@ var ServidorAccesoController = new Vue({
          });
       },
 
-      editar: function editar(id_servidor_acceso) {
+      editar: function editar(id_aplicacion_acceso) {
          this.lista_actualizar_activo = true;
-         this.id_en_edicion = id_servidor_acceso;
+         this.id_en_edicion = id_aplicacion_acceso;
 
          //id_objeto + array de objetos + nombre del model en lower case
-         this.servidor_acceso = null;
-         this.servidor_acceso = this.buscar_en_array_por_modelo_e_id(id_servidor_acceso, this.servidores_accesos, this.nombre_model);
+         this.aplicacion_acceso = null;
+         this.aplicacion_acceso = this.buscar_en_array_por_modelo_e_id(id_aplicacion_acceso, this.aplicaciones_accesos, this.nombre_model);
       },
 
       guardar_editado: function guardar_editado() {
@@ -3813,12 +3813,12 @@ var ServidorAccesoController = new Vue({
 
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-         this.$http.put('/' + this.nombre_ruta + '/' + this.servidor_acceso.id_servidor_acceso, this.servidor_acceso).then(function (response) {
+         this.$http.put('/' + this.nombre_ruta + '/' + this.aplicacion_acceso.id_aplicacion_acceso, this.aplicacion_acceso).then(function (response) {
             // success callback
 
             if (response.status == 200) {
                /*
-               if ( !this.es_null(response.body.servidor_acceso) ) {
+               if ( !this.es_null(response.body.aplicacion_acceso) ) {
                   this.lista_actualizar_activo = false;
                   this.id_en_edicion = null;
                }
@@ -3851,7 +3851,7 @@ var ServidorAccesoController = new Vue({
          return;
       },
 
-      eliminar: function eliminar(id_servidor_acceso) {
+      eliminar: function eliminar(id_aplicacion_acceso) {
          var _swal,
              _this6 = this;
 
@@ -3870,7 +3870,7 @@ var ServidorAccesoController = new Vue({
                //Se adjunta el token
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-               _this6.$http.delete('/' + _this6.nombre_ruta + '/' + id_servidor_acceso).then(function (response) {
+               _this6.$http.delete('/' + _this6.nombre_ruta + '/' + id_aplicacion_acceso).then(function (response) {
                   if (response.status == 200) {
                      _this6.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
                   } else {
@@ -3913,17 +3913,17 @@ var ServidorAccesoController = new Vue({
          var formData = new FormData();
          //Conforma objeto paramétrico para solicitud http
 
-         formData.append('usuario', this.servidor_acceso.usuario || null);
-         formData.append('clave', this.servidor_acceso.clave || null);
-         formData.append('tipo_acceso', this.servidor_acceso.tipo_acceso || null);
-         formData.append('puerto', this.servidor_acceso.puerto || null);
-         formData.append('id_servidor', this.servidor_acceso.id_servidor || null);
+         formData.append('usuario', this.aplicacion_acceso.usuario || null);
+         formData.append('clave', this.aplicacion_acceso.clave || null);
+         formData.append('tipo_acceso', this.aplicacion_acceso.tipo_acceso || null);
+         formData.append('email', this.aplicacion_acceso.email || null);
+         formData.append('id_aplicacion', this.aplicacion_acceso.id_aplicacion || null);
 
          this.$http.post('/' + this.nombre_ruta, formData).then(function (response) {
             // success callback
 
             if (response.status == 200) {
-               if (!_this7.es_null(response.body.servidor_acceso)) {
+               if (!_this7.es_null(response.body.aplicacion_acceso)) {
                   _this7.id_en_edicion = null;
                }
                //this.inicializar();
@@ -3947,7 +3947,7 @@ var ServidorAccesoController = new Vue({
       },
 
       ordenar_lista: function ordenar_lista(columna) {
-         this.servidores_accesos = _.orderBy(this.servidores_accesos, columna, this.orden_lista);
+         this.aplicaciones_accesos = _.orderBy(this.aplicaciones_accesos, columna, this.orden_lista);
       }
 
    }
