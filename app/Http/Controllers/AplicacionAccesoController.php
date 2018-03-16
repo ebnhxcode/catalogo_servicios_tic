@@ -22,6 +22,7 @@ class AplicacionAccesoController extends Controller {
    private $aplicaciones_accesos;
    private $aplicaciones;
    private $aplicacion_acceso;
+   private $aplicacion;
    private $new_aplicacion_acceso;
    private $validacion;
 
@@ -122,6 +123,10 @@ class AplicacionAccesoController extends Controller {
       }
       #Como pasó todas las validaciones, se asigna al objeto
       $this->aplicacion_acceso = $request->all();
+
+      #Como aplicacion era obligatorio, se busca el registro y se guarda el servidor asociado.
+      $this->aplicacion = Aplicacion::where('id_aplicacion', $this->aplicacion_acceso['id_aplicacion'])
+         ->with(['servidor'])->first();
       #Se crea el nuevo registro
       $this->new_aplicacion_acceso = AplicacionAcceso::create([
          'usuario' => $this->aplicacion_acceso['usuario'],
@@ -131,6 +136,7 @@ class AplicacionAccesoController extends Controller {
          'email' => $this->aplicacion_acceso['email'],
 
          'id_aplicacion' => $this->aplicacion_acceso['id_aplicacion'],
+         'id_servidor' => $this->aplicacion->servidor->id_servidor,
 
          'id_usuario_registra' => Auth::user()->id_usuario,
          'id_usuario_modifica' => Auth::user()->id_usuario,
@@ -153,7 +159,7 @@ class AplicacionAccesoController extends Controller {
          'id_aplicacion_acceso' => 'required|regex:/(^([0-9]+)(\d+)?$)/u|max:255',
          'usuario' => "required|regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|max:255",
          'clave' => "required|regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|max:255",
-         'tipo_acceso' => "required|regex:/(^([a-zA-Z0-9_ ,.!@#$/%*&]+)(\d+)?$)/u|max:255",
+         'tipo_acceso' => "required|regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|max:255",
          'email' => "nullable|email|max:255",
          'id_aplicacion' => "required|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
       ]);
@@ -173,7 +179,18 @@ class AplicacionAccesoController extends Controller {
             'mensajes' => $this->validacion->messages(), //Para mostrar los mensajes que van desde el backend
          ]);
       }
+      unset($this->validacion);
       $this->aplicacion_acceso = AplicacionAcceso::find($request["id_$this->nombre_modelo"]);
+
+      #Si cambió la aplicacion, cambia el servidor, el dato aca se guarda sin que el usuario lo digite,
+      #si bien se sabe que la tabla aplicacion tiene el id del servidor, se mantiene en esta tabla
+      #para obtener el dato mas accesible
+      if ($this->aplicacion_acceso->id_aplicacion != $request['id_aplicacion']) {
+         $this->aplicacion = Aplicacion::where('id_aplicacion', $request['id_aplicacion'])
+            ->with(['servidor'])->first();
+         $request['id_servidor'] = $this->aplicacion->id_servidor;
+         unset($this->aplicacion);
+      }
       $request['id_usuario_modifica'] = Auth::user()->id_usuario;
       /*
       if ( !$this->es_vacio($request['clave']) ) {

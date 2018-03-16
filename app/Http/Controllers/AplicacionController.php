@@ -119,7 +119,7 @@ class AplicacionController extends Controller {
          #'ssl_tls' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
          'id_dominio' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
          'id_servicio' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
-         'id_servidor' => 'regex:/(^([0-9]+)(\d+)?$)/u|integer',
+         'id_servidor' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
          'id_tipo_aplicacion' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
 
       ]);
@@ -177,7 +177,7 @@ class AplicacionController extends Controller {
          #'ssl_tls' => "required|max:255",
          'id_dominio' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
          'id_servicio' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
-         'id_servidor' => 'regex:/(^([0-9]+)(\d+)?$)/u|integer',
+         'id_servidor' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
          'id_tipo_aplicacion' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|integer',
       ]);
       #Valida si la informacion que se envia para editar al aplicacion son iguales los ids
