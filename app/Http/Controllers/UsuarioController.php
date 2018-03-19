@@ -51,7 +51,7 @@ class UsuarioController extends Controller {
 
    public function index(Request $request) {
       if (!$request->wantsJson() && !$request->ajax()) {
-         return view("$this->nombre_tabla.main", [
+         return view("layouts.main", [
             'nombre_modelo' => $this->nombre_modelo,
             'nombre_tabla' => $this->nombre_tabla,
             'nombre_ruta' => $this->nombre_ruta,
