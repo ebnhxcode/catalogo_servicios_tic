@@ -3679,13 +3679,13 @@ var DominioController = new Vue({
          'tabla_campos': {
             'id_dominio': false,
             'nom_dominio': true,
-            'det_dominio': false,
-            'ip_publica': false,
+            'det_dominio': true,
+            'ip_publica': true,
             'ip_balanceador': false,
             'dns_asoc_dominio': false,
             'id_usuario_registra': false,
             'id_usuario_modifica': false,
-            'created_at': true,
+            'created_at': false,
             'updated_at': false,
             'deleted_at': false
          },

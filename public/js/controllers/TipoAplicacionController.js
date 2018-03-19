@@ -3675,11 +3675,11 @@ var TipoAplicacionController = new Vue({
          'tabla_campos': {
             'id_tipo_aplicacion': false,
             'nom_tipo_aplicacion': true,
-            'det_tipo_aplicacion': false,
+            'det_tipo_aplicacion': true,
             'cod_tipo_aplicacion': false,
             'id_usuario_registra': false,
             'id_usuario_modifica': false,
-            'created_at': true,
+            'created_at': false,
             'updated_at': false,
             'deleted_at': false
          },

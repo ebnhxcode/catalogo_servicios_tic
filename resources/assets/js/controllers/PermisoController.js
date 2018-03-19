@@ -68,12 +68,12 @@ const PermisoController = new Vue({
 
          'tabla_campos': {
             'id_permiso':false,
-            'nom_permiso':true,
-            'det_permiso':false,
-            'cod_permiso':false,
+            'nom_permiso':false,
+            'det_permiso':true,
+            'cod_permiso':true,
             'id_usuario_registra':false,
             'id_usuario_modifica':false,
-            'created_at':true,
+            'created_at':false,
             'updated_at':false,
             'deleted_at':false,
          },

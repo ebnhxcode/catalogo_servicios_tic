@@ -67,7 +67,7 @@ const ActividadController = new Vue({
          'tabla_campos': {
             'id_actividad':false,
             'nom_actividad':true,
-            'det_actividad':true,
+            'det_actividad':false,
             'id_usuario_registra':false,
             'id_usuario_modifica':false,
             'created_at':true,

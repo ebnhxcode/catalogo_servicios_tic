@@ -3543,11 +3543,11 @@ var RoleController = new Vue({
          'tabla_campos': {
             'id_role': false,
             'nom_role': true,
-            'det_role': false,
-            'id_permiso': false,
+            'det_role': true,
+            //'id_permiso':false,
             'id_usuario_registra': false,
             'id_usuario_modifica': false,
-            'created_at': true,
+            'created_at': false,
             'updated_at': false,
             'deleted_at': false
          },
@@ -3560,8 +3560,8 @@ var RoleController = new Vue({
             'id_usuario_modifica': 'Usuario modifica',
             'created_at': 'Creado en',
             'updated_at': 'Actualizado en',
-            'deleted_at': 'Eliminado en',
-            'id_permiso': 'Permiso role'
+            'deleted_at': 'Eliminado en'
+            //'id_permiso':'Permiso role',
          },
 
          'excel_json_campos': {

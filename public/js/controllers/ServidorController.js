@@ -3701,11 +3701,11 @@ var ServidorController = new Vue({
          'orden_lista': 'asc',
 
          'tabla_campos': {
-            'nom_servidor': false,
+            'nom_servidor': true,
             'det_servidor': true,
             'ip_servidor': true,
-            'ram': false,
-            'memoria_dd': false,
+            'ram': true,
+            'memoria_dd': true,
             'swap': false,
             'procesador': false,
             'frec_procesador': false,
@@ -3719,7 +3719,7 @@ var ServidorController = new Vue({
 
             'id_usuario_registra': false,
             'id_usuario_modifica': false,
-            'created_at': true,
+            'created_at': false,
             'updated_at': false,
             'deleted_at': false
          },

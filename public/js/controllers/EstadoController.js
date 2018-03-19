@@ -3646,11 +3646,11 @@ var EstadoController = new Vue({
          'tabla_campos': {
             'id_estado': false,
             'nom_estado': true,
-            'det_estado': false,
-            'cod_estado': false,
+            'det_estado': true,
+            'cod_estado': true,
             'id_usuario_registra': false,
             'id_usuario_modifica': false,
-            'created_at': true,
+            'created_at': false,
             'updated_at': false,
             'deleted_at': false
          },

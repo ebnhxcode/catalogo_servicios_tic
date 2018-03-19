@@ -3675,11 +3675,11 @@ var DatacentroController = new Vue({
          'tabla_campos': {
             'id_datacentro': false,
             'nom_datacentro': true,
-            'det_datacentro': false,
-            'cod_datacentro': false,
+            'det_datacentro': true,
+            'cod_datacentro': true,
             'id_usuario_registra': false,
             'id_usuario_modifica': false,
-            'created_at': true,
+            'created_at': false,
             'updated_at': false,
             'deleted_at': false
          },

@@ -3696,12 +3696,12 @@ var AplicacionController = new Vue({
          'tabla_campos': {
             'id_aplicacion': false,
             'nom_aplicacion': true,
-            'det_aplicacion': true,
-            'alias': false,
-            'url_web': false,
-            'ip': false,
+            'det_aplicacion': false,
+            'alias': true,
+            'url_web': true,
+            'ip': true,
             'subdominio': false,
-            'ssl_tls': false,
+            'ssl_tls': true,
             'id_dominio': false,
             'id_tipo_aplicacion': false,
             'id_servidor': false,
@@ -3709,7 +3709,7 @@ var AplicacionController = new Vue({
 
             'id_usuario_registra': false,
             'id_usuario_modifica': false,
-            'created_at': true,
+            'created_at': false,
             'updated_at': false,
             'deleted_at': false
          },

@@ -3676,11 +3676,11 @@ var TagController = new Vue({
          'tabla_campos': {
             'id_tag': false,
             'nom_tag': true,
-            'det_tag': false,
-            'meta_tag': false,
+            'det_tag': true,
+            'meta_tag': true,
             'id_usuario_registra': false,
             'id_usuario_modifica': false,
-            'created_at': true,
+            'created_at': false,
             'updated_at': false,
             'deleted_at': false
          },

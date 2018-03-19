@@ -3675,11 +3675,11 @@ var CargoController = new Vue({
          'tabla_campos': {
             'id_cargo': false,
             'nom_cargo': true,
-            'det_cargo': false,
-            'cod_cargo': false,
+            'det_cargo': true,
+            'cod_cargo': true,
             'id_usuario_registra': false,
             'id_usuario_modifica': false,
-            'created_at': true,
+            'created_at': false,
             'updated_at': false,
             'deleted_at': false
          },

@@ -78,7 +78,7 @@ const ServicioController = new Vue({
             'id_usuario':false,
             'id_usuario_registra':false,
             'id_usuario_modifica':false,
-            'created_at':true,
+            'created_at':false,
             'updated_at':false,
             'deleted_at':false,
          },
