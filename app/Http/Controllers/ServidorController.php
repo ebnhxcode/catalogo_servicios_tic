@@ -60,7 +60,7 @@ class ServidorController extends Controller {
       }
 
       $this->usuario_auth = Auth::user();
-      $this->servidores = Servidor::all();
+      $this->servidores = Servidor::with(['datacentro','sistema_operativo','aplicaciones','servidor_estado'])->get();
       $this->datacentros = Datacentro::all();
       $this->sistemas_operativos = SistemaOperativo::all();
       $this->estados = Estado::all();

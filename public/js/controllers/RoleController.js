@@ -2200,7 +2200,18 @@ var inyeccion_funciones_compartidas = {
                break;
          }
       },
-
+      configurar_relaciones: function configurar_relaciones(objetos_clase, relaciones) {
+         objetos_clase.map(function (o) {
+            o = relaciones.map(function (r) {
+               var key = Object.keys(r)[0];
+               var pk = r[key];
+               if (o[key]) {
+                  o[pk] = o[key][pk] || null;
+               }
+               return o;
+            });
+         });
+      },
       dejar_de_editar: function dejar_de_editar() {
          this.lista_actualizar_activo = false;
          this.id_en_edicion = null;
@@ -3804,9 +3815,9 @@ var RoleController = new Vue({
             }
 
             if (_this5.mostrar_notificaciones(response) == true) {
-               _this5.ocultar_modal('crear');
-               _this5.inicializar();
                _this5.limpiar_objeto_clase_local();
+               _this5.inicializar();
+               _this5.ocultar_modal('crear');
                return;
             }
          }, function (response) {

@@ -42,6 +42,7 @@ const ServidorController = new Vue({
             'interface':null,
             'id_datacentro':null,
             'id_sistema_operativo':null,
+            'id_estado':null,
             'id_usuario_registra':null,
             'id_usuario_modifica':null,
             'created_at':null,
@@ -64,6 +65,7 @@ const ServidorController = new Vue({
             'interface':null,
             'id_datacentro':null,
             'id_sistema_operativo':null,
+            'id_estado':null,
             'id_usuario_registra':null,
             'id_usuario_modifica':null,
             'created_at':null,
@@ -111,6 +113,7 @@ const ServidorController = new Vue({
             'interface':false,
             'id_datacentro':false,
             'id_sistema_operativo':false,
+            'id_estado':false,
 
             'id_usuario_registra':false,
             'id_usuario_modifica':false,
@@ -138,6 +141,7 @@ const ServidorController = new Vue({
 
             'id_datacentro':'Id Datacrentro',
             'id_sistema_operativo':'Id Sistema Operativo',
+            'id_estado':'Id Estado',
 
             'id_usuario_registra':'Usuario registra',
             'id_usuario_modifica':'Usuario modifica',
@@ -164,6 +168,7 @@ const ServidorController = new Vue({
             'interface':'String',
             'id_datacentro':'String',
             'id_sistema_operativo':'String',
+            'id_estado':'String',
 
             'id_usuario_registra':'String',
             'id_usuario_modifica':'String',
@@ -189,6 +194,13 @@ const ServidorController = new Vue({
          } else {
             this.$http.get(`/${this.nombre_tabla}/${id_en_edicion}`).then(response => { // success callback
                this.servidor = response.body[`${this.nombre_model}`];
+               this.configurar_relaciones([this.servidor], [
+                  {'datacentro':'id_datacentro'},
+                  {'sistema_operativo':'id_sistema_operativo'},
+                  {'aplicaciones':'id_aplicacion'},
+                  {'servidor_estado':'id_estado'},
+               ]);
+
             }, response => { // error callback
                this.checkear_estado_respuesta_http(response.status);
             });
@@ -215,6 +227,7 @@ const ServidorController = new Vue({
 
                'id_datacentro': servidor.id_datacentro || '-',
                'id_sistema_operativo': servidor.id_sistema_operativo || '-',
+               'id_estado': servidor.id_sistema_operativo || '-',
 
                'id_usuario_registra': servidor.id_usuario_registra || '-',
                'id_usuario_modifica': servidor.id_usuario_modifica || '-',
@@ -244,6 +257,7 @@ const ServidorController = new Vue({
 
 
 
+
       limpiar_objeto_clase_local: function () {
          this.servidor = null; this.servidor = this.servidor_limpio;
       },
@@ -252,6 +266,14 @@ const ServidorController = new Vue({
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
             this.lista_objs_model = response.body.servidores || null;
             this.servidores = response.body.servidores || null;
+
+            this.configurar_relaciones(this.servidores, [
+               {'datacentro':'id_datacentro'},
+               {'sistema_operativo':'id_sistema_operativo'},
+               {'aplicaciones':'id_aplicacion'},
+               {'servidor_estado':'id_estado'},
+            ]);
+
             this.datos_excel = response.body.servidores || null;
             this.datacentros = response.body.datacentros || null;
             this.sistemas_operativos = response.body.sistemas_operativos || null;
@@ -396,6 +418,7 @@ const ServidorController = new Vue({
 
          formData.append('id_datacentro', this.servidor.id_datacentro || null );
          formData.append('id_sistema_operativo', this.servidor.id_sistema_operativo || null );
+         formData.append('id_estado', this.servidor.id_estado || null );
 
          this.$http.post(`/${this.nombre_ruta}`, formData).then(response => { // success callback
 
@@ -410,9 +433,9 @@ const ServidorController = new Vue({
             }
 
             if ( this.mostrar_notificaciones(response) == true ) {
-               this.ocultar_modal('crear');
-               this.inicializar();
                this.limpiar_objeto_clase_local();
+               this.inicializar();
+               this.ocultar_modal('crear');
                return ;
             }
 

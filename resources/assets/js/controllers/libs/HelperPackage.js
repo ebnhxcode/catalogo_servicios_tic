@@ -95,7 +95,16 @@ export const inyeccion_funciones_compartidas = {
                break;
          }
       },
-
+      configurar_relaciones: function (objetos_clase, relaciones) {
+         objetos_clase.map((o) => {
+            o = relaciones.map((r) => {
+               let key = Object.keys(r)[0];
+               let pk = r[key];
+               if (o[key]) { o[pk] = o[key][pk] || null; }
+               return o;
+            });
+         });
+      },
       dejar_de_editar: function () {
          this.lista_actualizar_activo = false;
          this.id_en_edicion = null;

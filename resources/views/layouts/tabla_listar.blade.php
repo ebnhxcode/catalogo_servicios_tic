@@ -23,6 +23,7 @@
             {{-- si esto es requerido, entonces que sea configurado desde el backend --}}
             {{--@{{ (r['id_permiso'] = r['role_permiso']['id_permiso']) ? r[i] :'' }}--}}
             @{{ lom[i] }}
+
          </td>
       </template>
       <template v-else>

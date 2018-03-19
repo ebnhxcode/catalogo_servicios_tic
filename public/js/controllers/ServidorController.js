@@ -2200,7 +2200,18 @@ var inyeccion_funciones_compartidas = {
                break;
          }
       },
-
+      configurar_relaciones: function configurar_relaciones(objetos_clase, relaciones) {
+         objetos_clase.map(function (o) {
+            o = relaciones.map(function (r) {
+               var key = Object.keys(r)[0];
+               var pk = r[key];
+               if (o[key]) {
+                  o[pk] = o[key][pk] || null;
+               }
+               return o;
+            });
+         });
+      },
       dejar_de_editar: function dejar_de_editar() {
          this.lista_actualizar_activo = false;
          this.id_en_edicion = null;
@@ -3648,6 +3659,7 @@ var ServidorController = new Vue({
             'interface': null,
             'id_datacentro': null,
             'id_sistema_operativo': null,
+            'id_estado': null,
             'id_usuario_registra': null,
             'id_usuario_modifica': null,
             'created_at': null,
@@ -3670,6 +3682,7 @@ var ServidorController = new Vue({
             'interface': null,
             'id_datacentro': null,
             'id_sistema_operativo': null,
+            'id_estado': null,
             'id_usuario_registra': null,
             'id_usuario_modifica': null,
             'created_at': null,
@@ -3717,6 +3730,7 @@ var ServidorController = new Vue({
             'interface': false,
             'id_datacentro': false,
             'id_sistema_operativo': false,
+            'id_estado': false,
 
             'id_usuario_registra': false,
             'id_usuario_modifica': false,
@@ -3744,6 +3758,7 @@ var ServidorController = new Vue({
 
             'id_datacentro': 'Id Datacrentro',
             'id_sistema_operativo': 'Id Sistema Operativo',
+            'id_estado': 'Id Estado',
 
             'id_usuario_registra': 'Usuario registra',
             'id_usuario_modifica': 'Usuario modifica',
@@ -3770,6 +3785,7 @@ var ServidorController = new Vue({
             'interface': 'String',
             'id_datacentro': 'String',
             'id_sistema_operativo': 'String',
+            'id_estado': 'String',
 
             'id_usuario_registra': 'String',
             'id_usuario_modifica': 'String',
@@ -3799,6 +3815,7 @@ var ServidorController = new Vue({
             this.$http.get('/' + this.nombre_tabla + '/' + _id_en_edicion).then(function (response) {
                // success callback
                _this.servidor = response.body['' + _this.nombre_model];
+               _this.configurar_relaciones([_this.servidor], [{ 'datacentro': 'id_datacentro' }, { 'sistema_operativo': 'id_sistema_operativo' }, { 'aplicaciones': 'id_aplicacion' }, { 'servidor_estado': 'id_estado' }]);
             }, function (response) {
                // error callback
                _this.checkear_estado_respuesta_http(response.status);
@@ -3826,6 +3843,7 @@ var ServidorController = new Vue({
 
                'id_datacentro': servidor.id_datacentro || '-',
                'id_sistema_operativo': servidor.id_sistema_operativo || '-',
+               'id_estado': servidor.id_sistema_operativo || '-',
 
                'id_usuario_registra': servidor.id_usuario_registra || '-',
                'id_usuario_modifica': servidor.id_usuario_modifica || '-',
@@ -3863,6 +3881,9 @@ var ServidorController = new Vue({
             // success callback
             _this2.lista_objs_model = response.body.servidores || null;
             _this2.servidores = response.body.servidores || null;
+
+            _this2.configurar_relaciones(_this2.servidores, [{ 'datacentro': 'id_datacentro' }, { 'sistema_operativo': 'id_sistema_operativo' }, { 'aplicaciones': 'id_aplicacion' }, { 'servidor_estado': 'id_estado' }]);
+
             _this2.datos_excel = response.body.servidores || null;
             _this2.datacentros = response.body.datacentros || null;
             _this2.sistemas_operativos = response.body.sistemas_operativos || null;
@@ -4006,6 +4027,7 @@ var ServidorController = new Vue({
 
          formData.append('id_datacentro', this.servidor.id_datacentro || null);
          formData.append('id_sistema_operativo', this.servidor.id_sistema_operativo || null);
+         formData.append('id_estado', this.servidor.id_estado || null);
 
          this.$http.post('/' + this.nombre_ruta, formData).then(function (response) {
             // success callback
@@ -4021,9 +4043,9 @@ var ServidorController = new Vue({
             }
 
             if (_this5.mostrar_notificaciones(response) == true) {
-               _this5.ocultar_modal('crear');
-               _this5.inicializar();
                _this5.limpiar_objeto_clase_local();
+               _this5.inicializar();
+               _this5.ocultar_modal('crear');
                return;
             }
          }, function (response) {

@@ -11,6 +11,9 @@
       <button class="btn btn-success" @click.prevent="guardar">
          Guardar
       </button>
+      <button class="btn float-right" @click.prevent="limpiar_objeto_clase_local">
+         Limpiar
+      </button>
    </dd>
 
 <!-- BEGIN FOOTER -->

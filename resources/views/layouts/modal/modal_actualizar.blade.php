@@ -49,7 +49,10 @@
          <button class="btn btn-success" @click.prevent="guardar_editado">
             Guardar
          </button>
-         <button class="btn btn-danger float-right" @click.prevent="{{ "eliminar($nombre_modelo.id_$nombre_modelo)" }}">
+         <button class="btn float-right" @click.prevent="limpiar_objeto_clase_local">
+            Limpiar
+         </button>
+         <button class="btn btn-danger float-right mr-sm-2" @click.prevent="{{ "eliminar($nombre_modelo.id_$nombre_modelo)" }}">
             Eliminar
          </button>
 
