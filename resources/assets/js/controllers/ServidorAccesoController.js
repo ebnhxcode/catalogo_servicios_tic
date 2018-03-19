@@ -22,6 +22,7 @@ const ServidorAccesoController = new Vue({
          'nombre_tabla':'servidores_accesos', //nombre tabla o de ruta
          'nombre_ruta':'servidores_accesos', //nombre tabla o de ruta
          'nombre_model':'servidor_acceso',
+         'nombre_model_limpio': 'servidor_acceso_limpio',
          'nombre_detalle':'Servidores Accesos',
          'nombre_controller':'ServidorAccesoController',
 

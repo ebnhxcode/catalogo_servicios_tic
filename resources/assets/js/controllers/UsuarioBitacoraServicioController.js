@@ -22,6 +22,7 @@ const UsuarioBitacoraServicioController = new Vue({
          'nombre_tabla':'usuarios_bitacora_servicios', //nombre tabla o de ruta
          'nombre_ruta':'usuarios_bitacora_servicios', //nombre tabla o de ruta
          'nombre_model':'usuario_bitacora_servicio',
+         'nombre_model_limpio': 'usuario_bitacora_servicio_limpio',
          'nombre_detalle':'Usuarios Bitacora Servicios',
          'nombre_controller':'UsuarioBitacoraServicioController',
 

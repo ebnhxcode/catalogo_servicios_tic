@@ -22,6 +22,7 @@ const TagController = new Vue({
          'nombre_tabla':'tags', //nombre tabla o de ruta
          'nombre_ruta':'tags', //nombre tabla o de ruta
          'nombre_model':'tag',
+         'nombre_model_limpio': 'tag_limpio',
          'nombre_detalle':'Tags',
          'nombre_controller':'TagController',
 

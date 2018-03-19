@@ -21,6 +21,7 @@ const TipoAplicacionController = new Vue({
          'nombre_tabla': 'tipos_aplicaciones', //nombre tabla o de ruta
          'nombre_ruta': 'tipos_aplicaciones', //nombre tabla o de ruta
          'nombre_model': 'tipo_aplicacion',
+         'nombre_model_limpio': 'tipo_aplicacion_limpio',
          'nombre_detalle': 'Tipos Aplicaciones',
          'nombre_controller': 'TipoAplicacionController',
 
@@ -168,7 +169,10 @@ const TipoAplicacionController = new Vue({
    methods: {
 
       limpiar_objeto_clase_local: function () {
+         this.$data[`${this.nombre_model}`] = null;
+         this.$data[`${this.nombre_model}`] =
          this.tipo_aplicacion = null ; this.tipo_aplicacion = this.tipo_aplicacion_limpio;
+         console.log(this.$data[`${this.nombre_model}`]);
       },
 
       inicializar: function () {

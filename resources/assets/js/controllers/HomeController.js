@@ -20,6 +20,7 @@ const HomeController = new Vue({
          'nombre_tabla':'home', //nombre tabla o de ruta
          'nombre_ruta':'home', //nombre tabla o de ruta
          'nombre_model':'home',
+         'nombre_model_limpio': 'home_limpio',
          'nombre_detalle':'Home',
          'nombre_controller':'HomeController',
 

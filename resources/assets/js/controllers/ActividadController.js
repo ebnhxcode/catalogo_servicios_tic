@@ -22,6 +22,7 @@ const ActividadController = new Vue({
          'nombre_tabla':'actividades', //nombre tabla o de ruta
          'nombre_ruta':'actividades', //nombre tabla o de ruta
          'nombre_model':'actividad',
+         'nombre_model_limpio': 'actividad_limpio',
          'nombre_detalle':'Actividades',
          'nombre_controller':'ActividadController',
 

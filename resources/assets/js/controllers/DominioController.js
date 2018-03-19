@@ -22,6 +22,7 @@ const DominioController = new Vue({
          'nombre_tabla':'dominios', //nombre tabla o de ruta
          'nombre_ruta':'dominios', //nombre tabla o de ruta
          'nombre_model':'dominio',
+         'nombre_model_limpio': 'dominio_limpio',
          'nombre_detalle':'Dominios',
          'nombre_controller':'DominioController',
 

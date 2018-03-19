@@ -3787,6 +3787,7 @@ var TipoAplicacionController = new Vue({
 
       limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
          this.tipo_aplicacion = null;this.tipo_aplicacion = this.tipo_aplicacion_limpio;
+         console.log(this.$data['' + this.nombre_model]);
       },
 
       inicializar: function inicializar() {

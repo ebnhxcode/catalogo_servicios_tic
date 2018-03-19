@@ -22,6 +22,7 @@ const PermisoController = new Vue({
          'nombre_tabla':'permisos', //nombre tabla o de ruta
          'nombre_ruta':'permisos', //nombre tabla o de ruta
          'nombre_model':'permiso',
+         'nombre_model_limpio': 'permiso_limpio',
          'nombre_detalle':'Permisos',
          'nombre_controller':'PermisoController',
 

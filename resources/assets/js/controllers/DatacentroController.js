@@ -22,6 +22,7 @@ const DatacentroController = new Vue({
          'nombre_tabla':'datacentros', //nombre tabla o de ruta
          'nombre_ruta':'datacentros', //nombre tabla o de ruta
          'nombre_model':'datacentro',
+         'nombre_model_limpio': 'datacentro_limpio',
          'nombre_detalle':'Datacentros',
          'nombre_controller':'DatacentroController',
 

@@ -22,6 +22,7 @@ const CargoController = new Vue({
          'nombre_tabla':'cargos', //nombre tabla o de ruta
          'nombre_ruta':'cargos', //nombre tabla o de ruta
          'nombre_model':'cargo',
+         'nombre_model_limpio': 'cargo_limpio',
          'nombre_detalle':'Cargos',
          'nombre_controller':'CargoController',
 

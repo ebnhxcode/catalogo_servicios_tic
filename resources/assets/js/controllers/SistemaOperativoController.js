@@ -22,6 +22,7 @@ const SistemaOperativoController = new Vue({
          'nombre_tabla':'sistemas_operativos', //nombre tabla o de ruta
          'nombre_ruta':'sistemas_operativos', //nombre tabla o de ruta
          'nombre_model':'sistema_operativo',
+         'nombre_model_limpio': 'sistema_operativo_limpio',
          'nombre_detalle':'Sistemas Operativos',
          'nombre_controller':'SistemaOperativoController',
 

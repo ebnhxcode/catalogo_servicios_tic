@@ -22,6 +22,7 @@ const AplicacionAccesoController = new Vue({
          'nombre_tabla':'aplicaciones_accesos', //nombre tabla o de ruta
          'nombre_ruta':'aplicaciones_accesos', //nombre tabla o de ruta
          'nombre_model':'aplicacion_acceso',
+         'nombre_model_limpio': 'aplicacion_acceso_limpio',
          'nombre_detalle':'Aplicaciones Accesos',
          'nombre_controller':'AplicacionAccesoController',
 

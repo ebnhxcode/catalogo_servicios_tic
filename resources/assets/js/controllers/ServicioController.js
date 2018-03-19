@@ -22,6 +22,7 @@ const ServicioController = new Vue({
          'nombre_tabla':'servicios', //nombre tabla o de ruta
          'nombre_ruta':'servicios', //nombre tabla o de ruta
          'nombre_model':'servicio',
+         'nombre_model_limpio': 'servicio_limpio',
          'nombre_detalle':'Servicios',
          'nombre_controller':'ServicioController',
 

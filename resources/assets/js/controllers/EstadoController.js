@@ -22,6 +22,7 @@ const EstadoController = new Vue({
          'nombre_tabla':'estados', //nombre tabla o de ruta
          'nombre_ruta':'estados', //nombre tabla o de ruta
          'nombre_model':'estado',
+         'nombre_model_limpio': 'estado_limpio',
          'nombre_detalle':'Estados',
          'nombre_controller':'EstadoController',
 

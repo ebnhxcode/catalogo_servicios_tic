@@ -21,6 +21,7 @@ const UsuarioController = new Vue({
          'nombre_tabla': 'usuarios', //nombre tabla o de ruta
          'nombre_ruta': 'usuarios', //nombre tabla o de ruta
          'nombre_model': 'usuario',
+         'nombre_model_limpio': 'usuario_limpio',
          'nombre_detalle': 'Usuarios',
          'nombre_controller': 'UsuarioController',
 

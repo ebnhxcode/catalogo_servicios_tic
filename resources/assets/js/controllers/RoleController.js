@@ -22,6 +22,7 @@ const RoleController = new Vue({
          'nombre_tabla':'roles', //nombre tabla o de ruta
          'nombre_ruta':'roles', //nombre tabla o de ruta
          'nombre_model':'role',
+         'nombre_model_limpio': 'role_limpio',
          'nombre_detalle':'Roles',
          'nombre_controller':'RoleController',
 
