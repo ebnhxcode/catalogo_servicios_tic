@@ -2337,6 +2337,9 @@ var inyeccion_funciones_compartidas = {
          this.$modal.hide(nom_modal);
       },
       // function to order lists
+      ordenar_lista: function ordenar_lista(columna) {
+         this.lista_objs_model = _.orderBy(this.lista_objs_model, columna, this.orden_lista);
+      },
       separar_miles: function separar_miles(num) {
          return num.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
       }
@@ -3922,10 +3925,6 @@ var ServicioController = new Vue({
          });
 
          return;
-      },
-
-      ordenar_lista: function ordenar_lista(columna) {
-         this.servicios = _.orderBy(this.servicios, columna, this.orden_lista);
       }
 
    }

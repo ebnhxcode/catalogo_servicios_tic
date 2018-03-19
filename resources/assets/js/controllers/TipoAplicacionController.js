@@ -327,9 +327,5 @@ const TipoAplicacionController = new Vue({
          return;
       },
 
-      ordenar_lista: function (columna) {
-         this.tipos_aplicaciones = _.orderBy(this.tipos_aplicaciones, columna, this.orden_lista);
-      },
-
    }
 });

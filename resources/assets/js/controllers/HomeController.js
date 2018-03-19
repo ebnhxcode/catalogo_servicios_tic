@@ -140,8 +140,5 @@ const HomeController = new Vue({
          });
       },
 
-
-      ordenar_lista: function (columna) { this.home_items = _.orderBy(this.home_items, columna, this.orden_lista); },
-
    }
 });

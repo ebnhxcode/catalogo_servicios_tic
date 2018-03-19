@@ -328,7 +328,5 @@ const DatacentroController = new Vue({
          return;
       },
 
-      ordenar_lista: function (columna) { this.datacentros = _.orderBy(this.datacentros, columna, this.orden_lista); },
-
    }
 });

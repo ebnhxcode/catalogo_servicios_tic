@@ -339,7 +339,5 @@ const ServidorAccesoController = new Vue({
          return;
       },
 
-      ordenar_lista: function (columna) { this.servidores_accesos = _.orderBy(this.servidores_accesos, columna, this.orden_lista); },
-
    }
 });

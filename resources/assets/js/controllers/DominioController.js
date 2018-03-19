@@ -342,7 +342,5 @@ const DominioController = new Vue({
          return;
       },
 
-      ordenar_lista: function (columna) { this.dominios = _.orderBy(this.dominios, columna, this.orden_lista); },
-
    }
 });

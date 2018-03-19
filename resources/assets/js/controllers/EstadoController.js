@@ -328,7 +328,5 @@ const EstadoController = new Vue({
          return;
       },
 
-      ordenar_lista: function (columna) { this.estados = _.orderBy(this.estados, columna, this.orden_lista); },
-
    }
 });

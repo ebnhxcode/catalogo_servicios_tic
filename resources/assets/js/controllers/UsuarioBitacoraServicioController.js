@@ -331,7 +331,5 @@ const UsuarioBitacoraServicioController = new Vue({
          return;
       },
 
-      ordenar_lista: function (columna) { this.usuarios_bitacora_servicios = _.orderBy(this.usuarios_bitacora_servicios, columna, this.orden_lista); },
-
    }
 });

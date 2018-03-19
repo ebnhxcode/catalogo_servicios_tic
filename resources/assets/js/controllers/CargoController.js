@@ -328,7 +328,5 @@ const CargoController = new Vue({
          return;
       },
 
-      ordenar_lista: function (columna) { this.cargos = _.orderBy(this.cargos, columna, this.orden_lista); },
-
    }
 });

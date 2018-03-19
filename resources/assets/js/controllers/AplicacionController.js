@@ -412,7 +412,5 @@ const AplicacionController = new Vue({
          return;
       },
 
-      ordenar_lista: function (columna) { this.aplicaciones = _.orderBy(this.aplicaciones, columna, this.orden_lista); },
-
    }
 });

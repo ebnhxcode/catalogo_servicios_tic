@@ -330,7 +330,5 @@ const TagController = new Vue({
          return;
       },
 
-      ordenar_lista: function (columna) { this.tags = _.orderBy(this.tags, columna, this.orden_lista); },
-
    }
 });

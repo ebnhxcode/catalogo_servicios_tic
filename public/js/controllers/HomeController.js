@@ -2337,6 +2337,9 @@ var inyeccion_funciones_compartidas = {
          this.$modal.hide(nom_modal);
       },
       // function to order lists
+      ordenar_lista: function ordenar_lista(columna) {
+         this.lista_objs_model = _.orderBy(this.lista_objs_model, columna, this.orden_lista);
+      },
       separar_miles: function separar_miles(num) {
          return num.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
       }
@@ -2523,10 +2526,6 @@ var HomeController = new Vue({
             // error callback
             _this.checkear_estado_respuesta_http(response.status);
          });
-      },
-
-      ordenar_lista: function ordenar_lista(columna) {
-         this.home_items = _.orderBy(this.home_items, columna, this.orden_lista);
       }
 
    }

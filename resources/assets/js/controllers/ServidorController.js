@@ -421,7 +421,5 @@ const ServidorController = new Vue({
          return;
       },
 
-      ordenar_lista: function (columna) { this.servidores = _.orderBy(this.servidores, columna, this.orden_lista); },
-
    }
 });

@@ -337,7 +337,5 @@ const RoleController = new Vue({
          return;
       },
 
-      ordenar_lista: function (columna) { this.roles = _.orderBy(this.roles, columna, this.orden_lista); },
-
    }
 });

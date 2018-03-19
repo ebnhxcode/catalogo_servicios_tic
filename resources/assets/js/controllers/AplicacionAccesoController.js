@@ -330,7 +330,7 @@ const AplicacionAccesoController = new Vue({
                this.limpiar_objeto_clase_local();
                return ;
             }
-
+s
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);
          });

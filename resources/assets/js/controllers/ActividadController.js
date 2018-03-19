@@ -327,7 +327,5 @@ const ActividadController = new Vue({
          return;
       },
 
-      ordenar_lista: function (columna) { this.actividades = _.orderBy(this.actividades, columna, this.orden_lista); },
-
    }
 });

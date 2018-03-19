@@ -351,7 +351,5 @@ const SistemaOperativoController = new Vue({
          return;
       },
 
-      ordenar_lista: function (columna) { this.sistemas_operativos = _.orderBy(this.sistemas_operativos, columna, this.orden_lista); },
-
    }
 });

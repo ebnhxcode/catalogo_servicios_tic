@@ -343,7 +343,5 @@ const ServicioController = new Vue({
          return;
       },
 
-      ordenar_lista: function (columna) { this.servicios = _.orderBy(this.servicios, columna, this.orden_lista); },
-
    }
 });

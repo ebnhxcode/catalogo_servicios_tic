@@ -398,9 +398,5 @@ const UsuarioController = new Vue({
          return;
       },
 
-      ordenar_lista: function (columna) {
-         this.usuarios = _.orderBy(this.usuarios, columna, this.orden_lista);
-      },
-
    }
 });

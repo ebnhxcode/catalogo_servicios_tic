@@ -329,7 +329,5 @@ const PermisoController = new Vue({
          return;
       },
 
-      ordenar_lista: function (columna) { this.permisos = _.orderBy(this.permisos, columna, this.orden_lista); },
-
    }
 });
