@@ -5,7 +5,7 @@
 -- Dumped from database version 10.3 (Ubuntu 10.3-1.pgdg16.04+1)
 -- Dumped by pg_dump version 10.3 (Ubuntu 10.3-1.pgdg16.04+1)
 
--- Started on 2018-03-15 09:34:55 -03
+-- Started on 2018-03-19 12:40:37 -03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -185,17 +185,18 @@ ALTER TABLE public.aplicaciones OWNER TO postgres;
 --
 
 CREATE TABLE public.aplicaciones_accesos (
-    id_acceso_aplicacion integer DEFAULT nextval('public.accesos_aplicaciones_id_seq'::regclass) NOT NULL,
+    id_aplicacion_acceso integer DEFAULT nextval('public.accesos_aplicaciones_id_seq'::regclass) NOT NULL,
     id_aplicacion integer,
     id_servidor integer,
-    username text,
-    password text,
+    usuario text,
+    clave text,
     email text,
     id_usuario_registra integer,
     id_usuario_modifica integer,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    deleted_at timestamp without time zone
+    deleted_at timestamp without time zone,
+    tipo_acceso text
 );
 
 
@@ -1535,7 +1536,8 @@ COPY public.aplicaciones (id_aplicacion, id_tipo_aplicacion, id_servicio, id_dom
 -- Data for Name: aplicaciones_accesos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.aplicaciones_accesos (id_acceso_aplicacion, id_aplicacion, id_servidor, username, password, email, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+COPY public.aplicaciones_accesos (id_aplicacion_acceso, id_aplicacion, id_servidor, usuario, clave, email, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, tipo_acceso) FROM stdin;
+1	4	4	webminsal	Minsal2018	desarrollo@minsal.cl	4	4	2018-03-15 13:55:05	2018-03-16 15:34:31	\N	login
 \.
 
 
@@ -2372,11 +2374,14 @@ COPY public.roles (id_role, nom_role, det_role, id_usuario_registra, id_usuario_
 60	role	role	\N	\N	2018-02-26 16:19:11	2018-02-26 20:22:39	2018-02-26 20:22:39
 65	role new	role a.s,da	\N	\N	2018-02-27 19:29:06	2018-02-27 19:29:19	2018-02-27 19:29:19
 67	dfasfd	fasdf	\N	\N	2018-03-06 05:51:18	2018-03-06 05:51:22	2018-03-06 05:51:22
-63	role 2	role 2	\N	4	2018-02-26 20:22:57	2018-03-06 05:57:47	\N
-64	role 3	role 3	\N	4	2018-02-26 20:23:13	2018-03-06 05:57:52	\N
 68	sfdafsdf	sdfsdf	4	4	2018-03-06 07:05:15	2018-03-07 13:51:02	2018-03-07 13:51:02
-62	role 1	role 1	\N	4	2018-02-26 20:22:50	2018-03-12 01:48:29	\N
-66	Role 4	Role 4	\N	4	2018-02-28 23:44:07	2018-03-13 15:11:06	\N
+63	Jefe de Area	El Role Jefe de Area es igual al role administrador, tiene todos los permisos.	\N	4	2018-02-26 20:22:57	2018-03-19 15:05:22	\N
+62	Administrador	El Role administrador del sistema tiene permisos completos.	\N	4	2018-02-26 20:22:50	2018-03-19 15:05:30	\N
+64	Lider Equipo	El Role Lider Equipo es igual al role administrador, tiene todos los permisos,	\N	4	2018-02-26 20:23:13	2018-03-19 15:06:06	\N
+66	App Manager	El Role App Manager, tiene permisos de lectura, escritura y modificacion de datos.	\N	4	2018-02-28 23:44:07	2018-03-19 15:07:38	\N
+69	Jefe Proyecto	El Role Jefe Proyecto, tiene permisos de lectura y escritura.	4	4	2018-03-19 15:08:12	2018-03-19 15:08:12	\N
+70	Desarrollador Proyecto	El Role Desarrollador Proyecto, tiene permisos de lectura.	4	4	2018-03-19 15:10:26	2018-03-19 15:10:26	\N
+71	Visitante	El Role Visitante, tiene permisos de lectura.	4	4	2018-03-19 15:11:21	2018-03-19 15:11:21	\N
 \.
 
 
@@ -2438,13 +2443,16 @@ COPY public.roles_permisos (id_role_permiso, id_role, id_permiso, id_usuario_reg
 56	58	15	\N	\N	2018-02-26 15:49:22	2018-02-26 16:19:04	2018-02-26 16:19:04
 59	61	16	\N	\N	2018-02-26 19:30:21	2018-02-26 20:22:37	2018-02-26 20:22:37
 58	60	15	\N	\N	2018-02-26 16:19:11	2018-02-26 20:22:39	2018-02-26 20:22:39
-60	62	15	\N	\N	2018-02-26 20:22:50	2018-02-26 20:22:50	\N
-62	64	14	\N	\N	2018-02-26 20:23:13	2018-02-26 20:23:13	\N
 63	65	17	\N	\N	2018-02-27 19:29:06	2018-02-27 19:29:19	2018-02-27 19:29:19
 65	67	17	\N	\N	2018-03-06 05:51:18	2018-03-06 05:51:22	2018-03-06 05:51:22
 66	68	14	\N	\N	2018-03-06 07:05:15	2018-03-07 13:51:02	2018-03-07 13:51:02
-64	66	14	\N	\N	2018-02-28 23:44:07	2018-03-13 15:11:06	\N
-61	63	15	\N	\N	2018-02-26 20:22:57	2018-03-13 15:15:24	\N
+60	62	17	\N	4	2018-02-26 20:22:50	2018-03-19 14:57:16	\N
+61	63	17	\N	4	2018-02-26 20:22:57	2018-03-19 15:04:31	\N
+62	64	17	\N	4	2018-02-26 20:23:13	2018-03-19 15:06:06	\N
+64	66	16	\N	4	2018-02-28 23:44:07	2018-03-19 15:07:38	\N
+67	69	14	4	4	2018-03-19 15:08:12	2018-03-19 15:08:12	\N
+68	70	15	4	4	2018-03-19 15:10:26	2018-03-19 15:10:26	\N
+69	71	15	4	4	2018-03-19 15:11:21	2018-03-19 15:11:21	\N
 \.
 
 
@@ -2646,7 +2654,6 @@ COPY public.usuarios (id_usuario, nom_usuario, nom_completo, ape_paterno, ape_ma
 15	tetet	etetete	etet	null	tetet	ette@etet.tet	$2y$10$9NkrZW5uQ9peoq0Nvu9/S.RbAkecXktlmEXC6YLy/ate.eZPBOQ9G	\N	\N	\N	2018-03-13 20:33:24	2018-03-13 21:00:46	2018-03-13 21:00:46
 23	retyrty	retyrtyretyrety	rtyrty	rtyy	rtyrteyr	tyrtyr@ytery.cl	$2y$10$pHMqxMAEEJOLpQhNfwVkO.T0vZ7jYllgdrbjqxyLP67nXKlXqX/k6	\N	\N	\N	2018-03-13 20:56:27	2018-03-13 21:00:52	2018-03-13 21:00:52
 12	Hugo	Hugo Pino	Pino	null	hpino	hpino@minsal.cl	$2y$10$n2Y/Fu8eE/0s/9cv4iZcyOfjVorwgF4cIZ2FDkw4KcM.N2P2owTlq	\N	\N	\N	2018-03-13 20:01:32	2018-03-13 21:01:11	\N
-4	Esteban	\N	\N	\N	fsdsf	esteban.ramos.f@gmail.com	$2y$10$mbvjCHALAeQZFS4ltXcrLuU1eDxaIX0RuN1cJWGp8kKMmmfCOba1m	PbPf3H2ZAuBQvSYkmIUAuAj8XKmSaBzltsUWVAzqrzeHagbNsftLWKM1HeyO	\N	\N	2018-02-27 23:36:43	2018-03-13 21:03:43	\N
 8	Sergio	Sergio Roca Munoz	Roca	Munoz	sroca	sergio.roca@minsal.cl	$2y$10$bw/VJVt18b9dbHVDn223Hu2N0LAxD4cCrfVbyiBjPEycrdp.bLYDW	\N	\N	\N	2018-03-13 19:12:12	2018-03-13 21:04:27	\N
 24	Gustavo	Gustavo Osorio	Osorio	null	gosorio	gustavo.osorio@minsal.cl	$2y$10$c6.9NKlZpBU9XqR.QaDoG.DdyntHqdG5WdJ3mjYxrCGFiFYJds0Ka	\N	\N	\N	2018-03-13 21:05:02	2018-03-13 21:05:02	\N
 11	Karina	Karina Itter	Itter	null	null	kitter@minsal.cl	$2y$10$3BKq8s6eWsrCbp0AFMsMmOdCCAAPwEOsDRgPpPoZoAUlyVMWtmU/6	\N	\N	\N	2018-03-13 19:57:56	2018-03-13 21:06:16	\N
@@ -2656,6 +2663,7 @@ COPY public.usuarios (id_usuario, nom_usuario, nom_completo, ape_paterno, ape_ma
 6	wererwe	rwerwer	werwer	werwer	werwerwe	ewrwe@ewre.dfssdf	$2y$10$SmkQ3TBcV0Tpio.sBrR10uTD5hjueAoq0gXKCTR/6WmMhSRiNPlhS	\N	\N	\N	2018-03-13 18:57:50	2018-03-13 19:13:49	2018-03-13 19:13:49
 7	adsdad	sdasdsa	sdsadas	dasda	dasd	asdasd@sad.ad	$2y$10$ez0ZyUI7umQ6wyBiPSfRTOvaoEuGJnie1fbnAep0hRdrbaIKDgevC	\N	\N	\N	2018-03-13 19:01:00	2018-03-13 19:13:55	2018-03-13 19:13:55
 26	eqwe	qweqwe	qwe	eqwewqe	qweqweq	weq@qwe.cl	$2y$10$7MbMwBObPp4pO5qm1QrJve/FOMFblwDGHXoEM3WPf9r4fCbFWlHrG	\N	\N	\N	2018-03-14 16:01:58	2018-03-14 16:02:14	2018-03-14 16:02:14
+4	Esteban	\N	Ramos	Fernandez	fsdsf	esteban.ramos.f@gmail.com	$2y$10$xPImLZ5jIYi6ukGeXwRmD.vzfGNOwzHKvMfQ4DaeWrYP93Y9/ntWS	PbPf3H2ZAuBQvSYkmIUAuAj8XKmSaBzltsUWVAzqrzeHagbNsftLWKM1HeyO	\N	\N	2018-02-27 23:36:43	2018-03-19 15:28:37	\N
 \.
 
 
@@ -2773,7 +2781,7 @@ COPY public.usuarios_servicios (id_usuario_servicio, id_usuario, id_servicio, id
 -- Name: accesos_aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.accesos_aplicaciones_id_seq', 1, false);
+SELECT pg_catalog.setval('public.accesos_aplicaciones_id_seq', 1, true);
 
 
 --
@@ -2944,7 +2952,7 @@ SELECT pg_catalog.setval('public.permisos_id_seq', 20, true);
 -- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.roles_id_seq', 68, true);
+SELECT pg_catalog.setval('public.roles_id_seq', 71, true);
 
 
 --
@@ -2953,7 +2961,7 @@ SELECT pg_catalog.setval('public.roles_id_seq', 68, true);
 -- Name: roles_permisos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.roles_permisos_id_seq', 66, true);
+SELECT pg_catalog.setval('public.roles_permisos_id_seq', 69, true);
 
 
 --
@@ -3101,12 +3109,12 @@ SELECT pg_catalog.setval('public.usuarios_servicios_id_seq', 1, false);
 
 
 --
--- TOC entry 3054 (class 2606 OID 588058)
+-- TOC entry 3054 (class 2606 OID 596493)
 -- Name: aplicaciones_accesos accesos_aplicaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.aplicaciones_accesos
-    ADD CONSTRAINT accesos_aplicaciones_pkey PRIMARY KEY (id_acceso_aplicacion);
+    ADD CONSTRAINT accesos_aplicaciones_pkey PRIMARY KEY (id_aplicacion_acceso);
 
 
 --
@@ -3441,7 +3449,7 @@ ALTER TABLE ONLY public.usuarios_servicios
 CREATE INDEX password_resets_email_index ON public.password_resets USING btree (email);
 
 
--- Completed on 2018-03-15 09:34:58 -03
+-- Completed on 2018-03-19 12:40:41 -03
 
 --
 -- PostgreSQL database dump complete

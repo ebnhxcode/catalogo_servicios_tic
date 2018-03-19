@@ -5,40 +5,7 @@
     <bookmark url="file://$PROJECT_DIR$/app/Http/Controllers/CargoController.php" line="53" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c71587b-d991-482f-b19e-13dd138d49bc" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/ActividadController.js" afterPath="$PROJECT_DIR$/public/js/controllers/ActividadController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/AplicacionController.js" afterPath="$PROJECT_DIR$/public/js/controllers/AplicacionController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/CargoController.js" afterPath="$PROJECT_DIR$/public/js/controllers/CargoController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/DatacentroController.js" afterPath="$PROJECT_DIR$/public/js/controllers/DatacentroController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/DominioController.js" afterPath="$PROJECT_DIR$/public/js/controllers/DominioController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/EstadoController.js" afterPath="$PROJECT_DIR$/public/js/controllers/EstadoController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/PermisoController.js" afterPath="$PROJECT_DIR$/public/js/controllers/PermisoController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/RoleController.js" afterPath="$PROJECT_DIR$/public/js/controllers/RoleController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/ServicioController.js" afterPath="$PROJECT_DIR$/public/js/controllers/ServicioController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/ServidorAccesoController.js" afterPath="$PROJECT_DIR$/public/js/controllers/ServidorAccesoController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/ServidorController.js" afterPath="$PROJECT_DIR$/public/js/controllers/ServidorController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/SistemaOperativoController.js" afterPath="$PROJECT_DIR$/public/js/controllers/SistemaOperativoController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/TagController.js" afterPath="$PROJECT_DIR$/public/js/controllers/TagController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/TipoAplicacionController.js" afterPath="$PROJECT_DIR$/public/js/controllers/TipoAplicacionController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/UsuarioBitacoraServicioController.js" afterPath="$PROJECT_DIR$/public/js/controllers/UsuarioBitacoraServicioController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/UsuarioController.js" afterPath="$PROJECT_DIR$/public/js/controllers/UsuarioController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/ActividadController.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/ActividadController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/AplicacionController.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/AplicacionController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/CargoController.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/CargoController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/DatacentroController.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/DatacentroController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/DominioController.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/DominioController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/EstadoController.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/EstadoController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/PermisoController.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/PermisoController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/RoleController.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/RoleController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/ServicioController.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/ServicioController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/ServidorAccesoController.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/ServidorAccesoController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/ServidorController.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/ServidorController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/SistemaOperativoController.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/SistemaOperativoController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/TagController.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/TagController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/TipoAplicacionController.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/TipoAplicacionController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/UsuarioBitacoraServicioController.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/UsuarioBitacoraServicioController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/UsuarioController.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/UsuarioController.js" />
-    </list>
+    <list default="true" id="9c71587b-d991-482f-b19e-13dd138d49bc" name="Default" comment="" />
     <ignored path="catalogo_servicios_tic.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
