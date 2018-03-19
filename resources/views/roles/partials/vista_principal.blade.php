@@ -1,73 +1,60 @@
-<div class="tab-pane active" id="vista_principal_tab" role="tabpanel" aria-labelledby="vista_principal_tab">
+<div class="row">
+   <div class="col-sm-4 col-md-4">
 
-   <br>
+      <!-- este bloque será reemplazado dinamicamente -->
+      <div class="card" style="{{--width: 18rem;--}}">
+         <img class="card-img-top" src="{{ url('/img/role.jpg') }}" alt="Card image cap">
+         <div class="card-body">
+            <h5 class="card-title">
+               @{{ role.nom_role || '' }}
+            </h5>
+            <p class="card-text">
 
-   <div class="row">
-      <div class="col-sm-4 col-md-4">
+            <dl class="row" v-if="role">
 
-         <!-- este bloque será reemplazado dinamicamente -->
-         <div class="card" style="{{--width: 18rem;--}}">
-            <img class="card-img-top" src="{{ url('/img/role.jpg') }}" alt="Card image cap">
-            <div class="card-body">
-               <h5 class="card-title">
-                  @{{ role.nom_role || '' }}
-               </h5>
-               <p class="card-text">
+               <dd class="col-md-12">@{{ role.det_role || '' }}</dd>
 
-               <dl class="row" v-if="role">
+            </dl>
 
-                  <dd class="col-md-12">@{{ role.det_role || '' }}</dd>
+            <dl v-else>
+               No hay información del role.
+            </dl>
 
-               </dl>
+            </p>
+            {{--<a href="#" class="btn btn-primary">Go somewhere</a>--}}
+         </div><!-- .card-body -->
+      </div><!-- .card -->
 
-               <dl v-else>
-                  No hay información del role.
-               </dl>
+      <br>
 
-               </p>
-               {{--<a href="#" class="btn btn-primary">Go somewhere</a>--}}
-            </div><!-- .card-body -->
-         </div><!-- .card -->
+      <!-- este bloque será reemplazado dinamicamente -->
+      <div class="card" style="{{--width: 18rem;--}}">
+         <div class="card-body">
+            <h5 class="card-title">
+               Permiso
+            </h5>
+            <p class="card-text">
 
-         <br>
+            <dl class="row" v-if="role.role_permiso">
 
-         <!-- este bloque será reemplazado dinamicamente -->
-         <div class="card" style="{{--width: 18rem;--}}">
-            <div class="card-body">
-               <h5 class="card-title">
-                  Permiso
-               </h5>
-               <p class="card-text">
+               <dt class="col-md-6">Nombre permiso</dt>
+               <dd class="col-md-6">@{{ role.role_permiso.permiso.nom_permiso }}</dd>
 
-               <dl class="row" v-if="role.role_permiso">
+               <dt class="col-md-6">Detalle permiso</dt>
+               <dd class="col-md-6">@{{ role.role_permiso.permiso.det_permiso }}</dd>
 
-                  <dt class="col-md-6">Nombre permiso</dt>
-                  <dd class="col-md-6">@{{ role.role_permiso.permiso.nom_permiso }}</dd>
+               <dt class="col-md-6">Código permiso</dt>
+               <dd class="col-md-6">@{{ role.role_permiso.permiso.cod_permiso }}</dd>
 
-                  <dt class="col-md-6">Detalle permiso</dt>
-                  <dd class="col-md-6">@{{ role.role_permiso.permiso.det_permiso }}</dd>
+            </dl>
+            <dl v-else>
+               No hay información de permisos.
+            </dl>
 
-                  <dt class="col-md-6">Código permiso</dt>
-                  <dd class="col-md-6">@{{ role.role_permiso.permiso.cod_permiso }}</dd>
+            </p>
+            {{--<a href="#" class="btn btn-primary">Go somewhere</a>--}}
+         </div><!-- .card-body -->
+      </div><!-- .card -->
+   </div><!-- .col -->
 
-               </dl>
-               <dl v-else>
-                  No hay información de permisos.
-               </dl>
-
-               </p>
-               {{--<a href="#" class="btn btn-primary">Go somewhere</a>--}}
-            </div><!-- .card-body -->
-         </div><!-- .card -->
-      </div><!-- .col -->
-
-
-
-
-   </div><!-- .row -->
-
-
-
-
-
-</div><!-- .tab-pane .active #vista_principal_tab -->
+</div><!-- .row -->

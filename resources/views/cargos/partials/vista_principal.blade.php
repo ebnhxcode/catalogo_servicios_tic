@@ -1,46 +1,32 @@
-<div class="tab-pane active" id="vista_principal_tab" role="tabpanel" aria-labelledby="vista_principal_tab">
+<div class="row">
+   <div class="col-sm-4 col-md-4">
 
-   <br>
+      <!-- este bloque será reemplazado dinamicamente -->
+      <div class="card" style="{{--width: 18rem;--}}">
+         <img class="card-img-top" src="{{ url('/img/cargo.jpg') }}" alt="Card image cap">
+         <div class="card-body">
+            <h5 class="card-title">
+               @{{ cargo.nom_cargo || '' }}
+            </h5>
+            <p class="card-text">
 
-   <div class="row">
-      <div class="col-sm-4 col-md-4">
+            <dl class="row" v-if="cargo">
 
-         <!-- este bloque será reemplazado dinamicamente -->
-         <div class="card" style="{{--width: 18rem;--}}">
-            <img class="card-img-top" src="{{ url('/img/cargo.jpg') }}" alt="Card image cap">
-            <div class="card-body">
-               <h5 class="card-title">
-                  @{{ cargo.nom_cargo || '' }}
-               </h5>
-               <p class="card-text">
+               <dd class="col-md-12">@{{ cargo.det_cargo || '' }}</dd>
 
-               <dl class="row" v-if="cargo">
+            </dl>
 
-                  <dd class="col-md-12">@{{ cargo.det_cargo || '' }}</dd>
+            <dl v-else>
+               No hay información del cargo.
+            </dl>
 
-               </dl>
+            </p>
+            {{--<a href="#" class="btn btn-primary">Go somewhere</a>--}}
+         </div><!-- .card-body -->
+      </div><!-- .card -->
 
-               <dl v-else>
-                  No hay información del cargo.
-               </dl>
+      <br>
 
-               </p>
-               {{--<a href="#" class="btn btn-primary">Go somewhere</a>--}}
-            </div><!-- .card-body -->
-         </div><!-- .card -->
+   </div><!-- .col -->
 
-         <br>
-
-
-
-
-
-      </div><!-- .col -->
-
-
-   </div><!-- .row -->
-
-
-
-
-</div><!-- .tab-pane .active #vista_principal_tab -->
+</div><!-- .row -->

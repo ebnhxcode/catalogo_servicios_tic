@@ -338,7 +338,5 @@ const AplicacionAccesoController = new Vue({
          return;
       },
 
-      ordenar_lista: function (columna) { this.aplicaciones_accesos = _.orderBy(this.aplicaciones_accesos, columna, this.orden_lista); },
-
    }
 });

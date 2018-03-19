@@ -1,48 +1,36 @@
-<div class="tab-pane active" id="vista_principal_tab" role="tabpanel" aria-labelledby="vista_principal_tab">
+<div class="row">
+   <div class="col-sm-4 col-md-4">
 
-   <br>
+      <!-- este bloque será reemplazado dinamicamente -->
+      <div class="card" style="{{--width: 18rem;--}}">
+         <img class="card-img-top" src="{{ url('/img/bitacora.png') }}" alt="Card image cap">
+         <div class="card-body">
+            <h5 class="card-title">
+               @{{ usuario_bitacora_servicio.asunto || '' }}
+            </h5>
+            <p class="card-text">
 
-   <div class="row">
-      <div class="col-sm-4 col-md-4">
+            <dl class="row" v-if="usuario_bitacora_servicio">
 
-         <!-- este bloque será reemplazado dinamicamente -->
-         <div class="card" style="{{--width: 18rem;--}}">
-            <img class="card-img-top" src="{{ url('/img/bitacora.png') }}" alt="Card image cap">
-            <div class="card-body">
-               <h5 class="card-title">
-                  @{{ usuario_bitacora_servicio.asunto || '' }}
-               </h5>
-               <p class="card-text">
+               <dd class="col-md-12">@{{ usuario_bitacora_servicio.det_bitacora || '' }}</dd>
 
-               <dl class="row" v-if="usuario_bitacora_servicio">
+            </dl>
 
-                  <dd class="col-md-12">@{{ usuario_bitacora_servicio.det_bitacora || '' }}</dd>
+            <dl v-else>
+               No hay bitácoras ingresadas.
+            </dl>
 
-               </dl>
+            </p>
+            {{--<a href="#" class="btn btn-primary">Go somewhere</a>--}}
+         </div><!-- .card-body -->
+      </div><!-- .card -->
 
-               <dl v-else>
-                  No hay bitácoras ingresadas.
-               </dl>
+      <br>
 
-               </p>
-               {{--<a href="#" class="btn btn-primary">Go somewhere</a>--}}
-            </div><!-- .card-body -->
-         </div><!-- .card -->
+   </div><!-- .col -->
 
-         <br>
+   <div class="col-sm-8 col-md-8">
 
-      </div><!-- .col -->
+   </div><!-- .col -->
 
-      <div class="col-sm-8 col-md-8">
-
-
-
-
-      </div><!-- .col -->
-
-
-   </div><!-- .row -->
-
-
-
-</div><!-- .tab-pane .active #vista_principal_tab -->
+</div><!-- .row -->

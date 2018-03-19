@@ -1,47 +1,31 @@
-<div class="tab-pane active" id="vista_principal_tab" role="tabpanel" aria-labelledby="vista_principal_tab">
+<div class="row">
+   <div class="col-sm-4 col-md-4">
 
-   <br>
+      <!-- este bloque será reemplazado dinamicamente -->
+      <div class="card" style="{{--width: 18rem;--}}">
+         <img class="card-img-top" src="{{ url('/img/sistema_operativo.png') }}" alt="Card image cap">
+         <div class="card-body">
+            <h5 class="card-title">
+               @{{ sistema_operativo.nom_sistema_operativo || '' }}
+            </h5>
+            <p class="card-text">
 
-   <div class="row">
-      <div class="col-sm-4 col-md-4">
+            <dl class="row" v-if="sistema_operativo">
 
-         <!-- este bloque será reemplazado dinamicamente -->
-         <div class="card" style="{{--width: 18rem;--}}">
-            <img class="card-img-top" src="{{ url('/img/sistema_operativo.png') }}" alt="Card image cap">
-            <div class="card-body">
-               <h5 class="card-title">
-                  @{{ sistema_operativo.nom_sistema_operativo || '' }}
-               </h5>
-               <p class="card-text">
+               <dd class="col-md-12">@{{ sistema_operativo.det_sistema_operativo || '' }}</dd>
 
-               <dl class="row" v-if="sistema_operativo">
+            </dl>
 
-                  <dd class="col-md-12">@{{ sistema_operativo.det_sistema_operativo || '' }}</dd>
+            <dl v-else>
+               No hay información del sistema_operativo.
+            </dl>
 
-               </dl>
+            </p>
+            {{--<a href="#" class="btn btn-primary">Go somewhere</a>--}}
+         </div><!-- .card-body -->
+      </div><!-- .card -->
 
-               <dl v-else>
-                  No hay información del sistema_operativo.
-               </dl>
+      <br>
+   </div><!-- .col -->
 
-               </p>
-               {{--<a href="#" class="btn btn-primary">Go somewhere</a>--}}
-            </div><!-- .card-body -->
-         </div><!-- .card -->
-
-         <br>
-
-
-
-
-
-      </div><!-- .col -->
-
-
-   </div><!-- .row -->
-
-
-
-
-
-</div><!-- .tab-pane .active #vista_principal_tab -->
+</div><!-- .row -->

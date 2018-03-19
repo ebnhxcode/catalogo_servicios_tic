@@ -25,7 +25,10 @@
 
    <!-- La vista principal que se incluye en el modal de actualizar o gestionar el registro unico -->
    @if(view()->exists("$nombre_tabla.partials.vista_principal"))
-      @include("$nombre_tabla.partials.vista_principal")
+      <div class="tab-pane active" id="vista_principal_tab" role="tabpanel" aria-labelledby="vista_principal_tab">
+         <br>
+         @include("$nombre_tabla.partials.vista_principal")
+      </div><!-- .tab-pane .active #vista_principal_tab -->
    @endif
 
 

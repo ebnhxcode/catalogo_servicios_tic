@@ -220,6 +220,7 @@ export const inyeccion_funciones_compartidas = {
       },
       ocultar_modal: function (nom_modal) { this.$modal.hide(nom_modal); },
       // function to order lists
+      ordenar_lista: function (columna) { this.lista_objs_model = _.orderBy(this.lista_objs_model, columna, this.orden_lista); },
       separar_miles: function (num) {
          return num.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
       },

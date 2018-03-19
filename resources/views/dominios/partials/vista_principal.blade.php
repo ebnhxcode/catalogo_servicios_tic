@@ -1,45 +1,33 @@
-<div class="tab-pane active" id="vista_principal_tab" role="tabpanel" aria-labelledby="vista_principal_tab">
+<div class="row">
+   <div class="col-sm-4 col-md-4">
 
-   <br>
+      <!-- este bloque será reemplazado dinamicamente -->
+      <div class="card" style="{{--width: 18rem;--}}">
+         <img class="card-img-top" src="{{ url('/img/dominio.png') }}" alt="Card image cap">
+         <div class="card-body">
+            <h5 class="card-title">
+               @{{ dominio.nom_dominio || '' }}
+            </h5>
+            <p class="card-text">
 
-   <div class="row">
-      <div class="col-sm-4 col-md-4">
+            <dl class="row" v-if="dominio">
 
-         <!-- este bloque será reemplazado dinamicamente -->
-         <div class="card" style="{{--width: 18rem;--}}">
-            <img class="card-img-top" src="{{ url('/img/dominio.png') }}" alt="Card image cap">
-            <div class="card-body">
-               <h5 class="card-title">
-                  @{{ dominio.nom_dominio || '' }}
-               </h5>
-               <p class="card-text">
+               <dd class="col-md-12">@{{ dominio.det_dominio || '' }}</dd>
 
-               <dl class="row" v-if="dominio">
+            </dl>
 
-                  <dd class="col-md-12">@{{ dominio.det_dominio || '' }}</dd>
+            <dl v-else>
+               No hay información del dominio.
+            </dl>
 
-               </dl>
+            </p>
+            {{--<a href="#" class="btn btn-primary">Go somewhere</a>--}}
+         </div><!-- .card-body -->
+      </div><!-- .card -->
 
-               <dl v-else>
-                  No hay información del dominio.
-               </dl>
+      <br>
 
-               </p>
-               {{--<a href="#" class="btn btn-primary">Go somewhere</a>--}}
-            </div><!-- .card-body -->
-         </div><!-- .card -->
-
-         <br>
+   </div><!-- .col -->
 
 
-
-
-
-      </div><!-- .col -->
-
-
-   </div><!-- .row -->
-
-
-
-</div><!-- .tab-pane .active #vista_principal_tab -->
+</div><!-- .row -->
