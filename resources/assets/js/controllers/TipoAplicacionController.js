@@ -18,12 +18,14 @@ const TipoAplicacionController = new Vue({
    data(){
       return {
          '$':window.jQuery,
+         'pk_tabla': 'id_tipo_aplicacion',
          'nombre_tabla': 'tipos_aplicaciones', //nombre tabla o de ruta
          'nombre_ruta': 'tipos_aplicaciones', //nombre tabla o de ruta
          'nombre_model': 'tipo_aplicacion',
          'nombre_model_limpio': 'tipo_aplicacion_limpio',
          'nombre_detalle': 'Tipos Aplicaciones',
          'nombre_controller': 'TipoAplicacionController',
+
 
          'filtro_head': null,
          'tipo_aplicacion': {
@@ -36,16 +38,11 @@ const TipoAplicacionController = new Vue({
             'updated_at': null,
             'deleted_at': null,
          },
-         'tipo_aplicacion_limpio': {
-            'nom_tipo_aplicacion': null,
-            'det_tipo_aplicacion': null,
-            'cod_tipo_aplicacion': null,
-            'id_usuario_registra': null,
-            'id_usuario_modifica': null,
-            'created_at': null,
-            'updated_at': null,
-            'deleted_at': null,
-         },
+         'permitido_guardar':[
+            'nom_tipo_aplicacion',
+            'det_tipo_aplicacion',
+            'cod_tipo_aplicacion',
+         ],
          'lom':{},
          'lista_objs_model':[],
          'tipos_aplicaciones': [],
@@ -168,12 +165,6 @@ const TipoAplicacionController = new Vue({
    mixins: [inyeccion_funciones_compartidas],
    methods: {
 
-      limpiar_objeto_clase_local: function () {
-         this.$data[`${this.nombre_model}`] = null;
-         this.$data[`${this.nombre_model}`] =
-         this.tipo_aplicacion = null ; this.tipo_aplicacion = this.tipo_aplicacion_limpio;
-         console.log(this.$data[`${this.nombre_model}`]);
-      },
 
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
@@ -291,45 +282,6 @@ const TipoAplicacionController = new Vue({
 
       },
 
-      guardar: function () {
-         //Ejecuta validacion sobre los campos con validaciones
-         if (this.validar_campos() == false) {
-            return;
-         }
-         //Se adjunta el token
-         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-         //Instancia nuevo form data
-         var formData = new FormData();
-         //Conforma objeto paramétrico para solicitud http
-         formData.append('nom_tipo_aplicacion', this.tipo_aplicacion.nom_tipo_aplicacion || null);
-         formData.append('det_tipo_aplicacion', this.tipo_aplicacion.det_tipo_aplicacion || null);
-         formData.append('cod_tipo_aplicacion', this.tipo_aplicacion.cod_tipo_aplicacion || null);
-
-         this.$http.post(`/${this.nombre_ruta}`, formData).then(response => { // success callback
-
-            if (response.status == 200) {
-               if (!this.es_null(response.body.servicio)) {
-                  this.id_en_edicion = null;
-               }
-               //this.inicializar();
-            } else {
-               this.checkear_estado_respuesta_http(response.status);
-               return false;
-            }
-
-            if (this.mostrar_notificaciones(response) == true) {
-               this.limpiar_objeto_clase_local();
-               this.inicializar();
-               this.ocultar_modal('crear');
-               return;
-            }
-
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
-
-         return;
-      },
 
    }
 });

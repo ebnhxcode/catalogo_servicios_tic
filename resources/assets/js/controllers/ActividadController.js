@@ -19,6 +19,7 @@ const ActividadController = new Vue({
    data(){
       return {
          '$':window.jQuery,
+         'pk_tabla': 'id_actividad',
          'nombre_tabla':'actividades', //nombre tabla o de ruta
          'nombre_ruta':'actividades', //nombre tabla o de ruta
          'nombre_model':'actividad',
@@ -167,11 +168,6 @@ const ActividadController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-
-      limpiar_objeto_clase_local: function () {
-         this.actividad = null; this.actividad = this.actividad_limpio;
-      },
-
 
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback

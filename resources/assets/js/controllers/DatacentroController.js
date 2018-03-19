@@ -19,6 +19,7 @@ const DatacentroController = new Vue({
    data(){
       return {
          '$':window.jQuery,
+         'pk_tabla': 'id_datacentro',
          'nombre_tabla':'datacentros', //nombre tabla o de ruta
          'nombre_ruta':'datacentros', //nombre tabla o de ruta
          'nombre_model':'datacentro',
@@ -168,10 +169,6 @@ const DatacentroController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-
-      limpiar_objeto_clase_local: function () {
-         this.datacentro = null; this.datacentro = this.datacentro_limpio;
-      },
 
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback

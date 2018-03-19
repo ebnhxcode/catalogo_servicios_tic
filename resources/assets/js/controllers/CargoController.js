@@ -19,6 +19,7 @@ const CargoController = new Vue({
    data(){
       return {
          '$':window.jQuery,
+         'pk_tabla': 'id_cargo',
          'nombre_tabla':'cargos', //nombre tabla o de ruta
          'nombre_ruta':'cargos', //nombre tabla o de ruta
          'nombre_model':'cargo',
@@ -169,9 +170,6 @@ const CargoController = new Vue({
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
 
-      limpiar_objeto_clase_local: function () {
-         this.cargo = null; this.cargo = this.cargo_limpio;
-      },
 
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback

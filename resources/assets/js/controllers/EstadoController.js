@@ -19,6 +19,7 @@ const EstadoController = new Vue({
    data(){
       return {
          '$':window.jQuery,
+         'pk_tabla': 'id_estado',
          'nombre_tabla':'estados', //nombre tabla o de ruta
          'nombre_ruta':'estados', //nombre tabla o de ruta
          'nombre_model':'estado',
@@ -169,9 +170,6 @@ const EstadoController = new Vue({
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
 
-      limpiar_objeto_clase_local: function () {
-         this.estado = null; this.estado = this.estado_limpio;
-      },
 
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback

@@ -18,6 +18,7 @@ const UsuarioController = new Vue({
    data(){
       return {
          '$':window.jQuery,
+         'pk_tabla': 'id_usuario',
          'nombre_tabla': 'usuarios', //nombre tabla o de ruta
          'nombre_ruta': 'usuarios', //nombre tabla o de ruta
          'nombre_model': 'usuario',
@@ -226,11 +227,6 @@ const UsuarioController = new Vue({
    filters: {},
    mixins: [inyeccion_funciones_compartidas],
    methods: {
-
-       limpiar_objeto_clase_local: function () {
-          this.usuario = null; this.usuario = this.usuario_limpio;
-      },
-
 
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback

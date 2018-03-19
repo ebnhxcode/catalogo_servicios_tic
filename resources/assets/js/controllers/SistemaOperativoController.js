@@ -18,7 +18,8 @@ const SistemaOperativoController = new Vue({
    el: '#SistemaOperativoController',
    data(){
       return {
-
+         '$':window.jQuery,
+         'pk_tabla': 'id_sistema_operativo',
          'nombre_tabla':'sistemas_operativos', //nombre tabla o de ruta
          'nombre_ruta':'sistemas_operativos', //nombre tabla o de ruta
          'nombre_model':'sistema_operativo',
@@ -189,9 +190,6 @@ const SistemaOperativoController = new Vue({
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
 
-      limpiar_objeto_clase_local: function () {
-         this.sistema_operativo = null; this.sistema_operativo = this.sistema_operativo_limpio;
-      },
 
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback

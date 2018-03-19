@@ -19,6 +19,7 @@ const UsuarioBitacoraServicioController = new Vue({
    data(){
       return {
          '$':window.jQuery,
+         'pk_tabla': 'id_usuario_bitacora_servicio',
          'nombre_tabla':'usuarios_bitacora_servicios', //nombre tabla o de ruta
          'nombre_ruta':'usuarios_bitacora_servicios', //nombre tabla o de ruta
          'nombre_model':'usuario_bitacora_servicio',
@@ -166,11 +167,6 @@ const UsuarioBitacoraServicioController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-
-      limpiar_objeto_clase_local: function () {
-         this.usuario_bitacora_servicio = null; this.usuario_bitacora_servicio = this.usuario_bitacora_servicio_limpio;
-      },
-
 
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback

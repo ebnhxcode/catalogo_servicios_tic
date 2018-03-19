@@ -19,6 +19,7 @@ const DominioController = new Vue({
    data(){
       return {
          '$':window.jQuery,
+         'pk_tabla': 'id_dominio',
          'nombre_tabla':'dominios', //nombre tabla o de ruta
          'nombre_ruta':'dominios', //nombre tabla o de ruta
          'nombre_model':'dominio',
@@ -180,10 +181,6 @@ const DominioController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-
-      limpiar_objeto_clase_local: function () {
-         this.dominio = null; this.dominio = this.dominio_limpio;
-      },
 
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback

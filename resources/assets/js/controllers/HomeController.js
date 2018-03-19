@@ -17,6 +17,7 @@ const HomeController = new Vue({
    data(){
       return {
          '$':window.jQuery,
+         'pk_tabla': 'id_home',
          'nombre_tabla':'home', //nombre tabla o de ruta
          'nombre_ruta':'home', //nombre tabla o de ruta
          'nombre_model':'home',

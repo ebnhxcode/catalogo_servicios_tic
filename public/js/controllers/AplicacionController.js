@@ -2241,7 +2241,11 @@ var inyeccion_funciones_compartidas = {
             _this.checkear_estado_respuesta_http(response.status);
          });
       },
-
+      limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
+         for (var k in this.$data['' + this.nombre_model]) {
+            this.$data['' + this.nombre_model][k] = null;
+         }
+      },
       mostrar: function mostrar(id, tabla, modelo) {
          var _this2 = this;
 
@@ -2333,8 +2337,9 @@ var inyeccion_funciones_compartidas = {
       },
 
       validar_campos: function validar_campos() {
+         /*DEPRECATED*/
          this.$validator.validateAll().then(function (res) {
-            return res == true ? res : false;
+            return res;
          });
       },
 
@@ -3636,9 +3641,11 @@ var AplicacionController = new Vue({
    data: function data() {
       return {
          '$': window.jQuery,
+         'pk_tabla': 'id_aplicacion',
          'nombre_tabla': 'aplicaciones', //nombre tabla o de ruta
          'nombre_ruta': 'aplicaciones', //nombre tabla o de ruta
          'nombre_model': 'aplicacion',
+         'nombre_model_limpio': 'aplicacion_limpio',
          'nombre_detalle': 'Aplicaciones',
          'nombre_controller': 'AplicacionController',
 
@@ -3853,10 +3860,6 @@ var AplicacionController = new Vue({
    filters: {},
    mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
    methods: {
-
-      limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
-         this.aplicacion = null;this.aplicacion = this.aplicacion_limpio;
-      },
 
       inicializar: function inicializar() {
          var _this2 = this;

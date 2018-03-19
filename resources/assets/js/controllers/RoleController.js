@@ -19,6 +19,7 @@ const RoleController = new Vue({
    data(){
       return {
          '$':window.jQuery,
+         'pk_tabla': 'id_role',
          'nombre_tabla':'roles', //nombre tabla o de ruta
          'nombre_ruta':'roles', //nombre tabla o de ruta
          'nombre_model':'role',
@@ -176,10 +177,6 @@ const RoleController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-
-      limpiar_objeto_clase_local: function () {
-         this.role = null; this.role = this.role_limpio;
-      },
 
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback

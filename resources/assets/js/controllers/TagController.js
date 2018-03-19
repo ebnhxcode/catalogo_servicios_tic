@@ -19,6 +19,7 @@ const TagController = new Vue({
    data(){
       return {
          '$':window.jQuery,
+         'pk_tabla': 'id_tag',
          'nombre_tabla':'tags', //nombre tabla o de ruta
          'nombre_ruta':'tags', //nombre tabla o de ruta
          'nombre_model':'tag',
@@ -169,10 +170,6 @@ const TagController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-
-      limpiar_objeto_clase_local: function () {
-         this.tag = null; this.tag = this.tag_limpio;
-      },
 
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback

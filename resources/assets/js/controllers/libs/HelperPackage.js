@@ -122,7 +122,52 @@ export const inyeccion_funciones_compartidas = {
             this.checkear_estado_respuesta_http(response.status);
          });
       },
+      guardar: function () {
+         //Ejecuta validacion sobre los campos con validaciones
+         //console.log(this.validar_campos());
+         this.$validator.validateAll().then(res => {
+            if (res == true) {
+               //Se adjunta el token
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               //Instancia nuevo form data
+               var formData = new FormData();
+               //Conforma objeto paramétrico para solicitud http
 
+               for (let i in this.permitido_guardar) {
+                  formData.append(`${this.permitido_guardar[i]}`, this.$data[`${this.nombre_model}`][`${this.permitido_guardar[i]}`] || null);
+               }
+
+               this.$http.post(`/${this.nombre_ruta}`, formData).then(response => { // success callback
+
+                  if (response.status == 200) {
+                     if (!this.es_null(response.body[`${this.nombre_model}`])) {
+                        this.id_en_edicion = null;
+                     }
+                     //this.inicializar();
+                  } else {
+                     this.checkear_estado_respuesta_http(response.status);
+                     return false;
+                  }
+
+                  if (this.mostrar_notificaciones(response) == true) {
+                     this.limpiar_objeto_clase_local();
+                     this.inicializar();
+                     this.ocultar_modal('crear');
+                     return;
+                  }
+
+               }, response => { // error callback
+                  this.checkear_estado_respuesta_http(response.status);
+               });
+
+            }
+         });
+         return;
+      },
+
+      limpiar_objeto_clase_local: function () {
+         for (var k in this.$data[`${this.nombre_model}`]) { this.$data[`${this.nombre_model}`][k] = null; }
+      },
       mostrar: function (id, tabla, modelo) {
          this.$http.get(`/${tabla}/${id}`).then(response => { // success callback
             //console.log(response.body[modelo][0]);
@@ -221,7 +266,13 @@ export const inyeccion_funciones_compartidas = {
 
       },
 
-      validar_campos: function () { this.$validator.validateAll().then(res => { return res == true ? res : false; }); },
+      validar_campos: function () {
+         /*DEPRECATED*/
+         this.$validator.validateAll().then(res => {
+            return res;
+         });
+      },
+
 
       notificar: function (tipo, titulo, mensajes, grupo) {
          for (var m in mensajes) { this.$notify({ group: grupo, type: tipo, title: titulo, text: mensajes[m][0] }); }

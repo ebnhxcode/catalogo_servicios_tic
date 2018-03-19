@@ -19,6 +19,7 @@ const PermisoController = new Vue({
    data(){
       return {
          '$':window.jQuery,
+         'pk_tabla': 'id_permiso',
          'nombre_tabla':'permisos', //nombre tabla o de ruta
          'nombre_ruta':'permisos', //nombre tabla o de ruta
          'nombre_model':'permiso',
@@ -169,9 +170,6 @@ const PermisoController = new Vue({
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
 
-      limpiar_objeto_clase_local: function () {
-         this.permiso = null; this.permiso = this.permiso_limpio;
-      },
 
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback

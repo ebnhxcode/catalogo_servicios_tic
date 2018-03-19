@@ -2241,7 +2241,11 @@ var inyeccion_funciones_compartidas = {
             _this.checkear_estado_respuesta_http(response.status);
          });
       },
-
+      limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
+         for (var k in this.$data['' + this.nombre_model]) {
+            this.$data['' + this.nombre_model][k] = null;
+         }
+      },
       mostrar: function mostrar(id, tabla, modelo) {
          var _this2 = this;
 
@@ -2333,8 +2337,9 @@ var inyeccion_funciones_compartidas = {
       },
 
       validar_campos: function validar_campos() {
+         /*DEPRECATED*/
          this.$validator.validateAll().then(function (res) {
-            return res == true ? res : false;
+            return res;
          });
       },
 
@@ -2424,9 +2429,11 @@ var HomeController = new Vue({
    data: function data() {
       return {
          '$': window.jQuery,
+         'pk_tabla': 'id_home',
          'nombre_tabla': 'home', //nombre tabla o de ruta
          'nombre_ruta': 'home', //nombre tabla o de ruta
          'nombre_model': 'home',
+         'nombre_model_limpio': 'home_limpio',
          'nombre_detalle': 'Home',
          'nombre_controller': 'HomeController',
 

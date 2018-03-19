@@ -19,6 +19,7 @@ const AplicacionController = new Vue({
    data(){
       return {
          '$':window.jQuery,
+         'pk_tabla': 'id_aplicacion',
          'nombre_tabla':'aplicaciones', //nombre tabla o de ruta
          'nombre_ruta':'aplicaciones', //nombre tabla o de ruta
          'nombre_model':'aplicacion',
@@ -234,9 +235,6 @@ const AplicacionController = new Vue({
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
 
-      limpiar_objeto_clase_local: function () {
-         this.aplicacion = null; this.aplicacion = this.aplicacion_limpio;
-      },
 
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback

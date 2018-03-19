@@ -19,6 +19,7 @@ const ServidorController = new Vue({
    data(){
       return {
          '$':window.jQuery,
+         'pk_tabla': 'id_servidor',
          'nombre_tabla':'servidores', //nombre tabla o de ruta
          'nombre_ruta':'servidores', //nombre tabla o de ruta
          'nombre_model':'servidor',
@@ -256,12 +257,6 @@ const ServidorController = new Vue({
    methods: {
 
 
-
-
-
-      limpiar_objeto_clase_local: function () {
-         this.servidor = null; this.servidor = this.servidor_limpio;
-      },
 
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback

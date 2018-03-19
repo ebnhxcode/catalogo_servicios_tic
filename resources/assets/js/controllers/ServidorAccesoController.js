@@ -19,6 +19,7 @@ const ServidorAccesoController = new Vue({
    data(){
       return {
          '$':window.jQuery,
+         'pk_tabla': 'id_servidor_acceso',
          'nombre_tabla':'servidores_accesos', //nombre tabla o de ruta
          'nombre_ruta':'servidores_accesos', //nombre tabla o de ruta
          'nombre_model':'servidor_acceso',
@@ -172,11 +173,6 @@ const ServidorAccesoController = new Vue({
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
 
-
-
-      limpiar_objeto_clase_local: function () {
-         this.servidor_acceso = null; this.servidor_acceso = this.servidor_acceso_limpio;
-      },
 
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback

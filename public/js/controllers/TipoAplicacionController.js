@@ -2241,7 +2241,11 @@ var inyeccion_funciones_compartidas = {
             _this.checkear_estado_respuesta_http(response.status);
          });
       },
-
+      limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
+         for (var k in this.$data['' + this.nombre_model]) {
+            this.$data['' + this.nombre_model][k] = null;
+         }
+      },
       mostrar: function mostrar(id, tabla, modelo) {
          var _this2 = this;
 
@@ -2333,8 +2337,9 @@ var inyeccion_funciones_compartidas = {
       },
 
       validar_campos: function validar_campos() {
+         /*DEPRECATED*/
          this.$validator.validateAll().then(function (res) {
-            return res == true ? res : false;
+            return res;
          });
       },
 
@@ -3636,9 +3641,11 @@ var TipoAplicacionController = new Vue({
    data: function data() {
       return {
          '$': window.jQuery,
+         'pk_tabla': 'id_tipo_aplicacion',
          'nombre_tabla': 'tipos_aplicaciones', //nombre tabla o de ruta
          'nombre_ruta': 'tipos_aplicaciones', //nombre tabla o de ruta
          'nombre_model': 'tipo_aplicacion',
+         'nombre_model_limpio': 'tipo_aplicacion_limpio',
          'nombre_detalle': 'Tipos Aplicaciones',
          'nombre_controller': 'TipoAplicacionController',
 
@@ -3653,16 +3660,7 @@ var TipoAplicacionController = new Vue({
             'updated_at': null,
             'deleted_at': null
          },
-         'tipo_aplicacion_limpio': {
-            'nom_tipo_aplicacion': null,
-            'det_tipo_aplicacion': null,
-            'cod_tipo_aplicacion': null,
-            'id_usuario_registra': null,
-            'id_usuario_modifica': null,
-            'created_at': null,
-            'updated_at': null,
-            'deleted_at': null
-         },
+         'permitido_guardar': ['nom_tipo_aplicacion', 'det_tipo_aplicacion', 'cod_tipo_aplicacion'],
          'lom': {},
          'lista_objs_model': [],
          'tipos_aplicaciones': [],
@@ -3785,11 +3783,6 @@ var TipoAplicacionController = new Vue({
    mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
    methods: {
 
-      limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
-         this.tipo_aplicacion = null;this.tipo_aplicacion = this.tipo_aplicacion_limpio;
-         console.log(this.$data['' + this.nombre_model]);
-      },
-
       inicializar: function inicializar() {
          var _this = this;
 
@@ -3910,40 +3903,43 @@ var TipoAplicacionController = new Vue({
          var _this4 = this;
 
          //Ejecuta validacion sobre los campos con validaciones
-         if (this.validar_campos() == false) {
-            return;
-         }
-         //Se adjunta el token
-         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-         //Instancia nuevo form data
-         var formData = new FormData();
-         //Conforma objeto paramétrico para solicitud http
-         formData.append('nom_tipo_aplicacion', this.tipo_aplicacion.nom_tipo_aplicacion || null);
-         formData.append('det_tipo_aplicacion', this.tipo_aplicacion.det_tipo_aplicacion || null);
-         formData.append('cod_tipo_aplicacion', this.tipo_aplicacion.cod_tipo_aplicacion || null);
+         //console.log(this.validar_campos());
+         this.$validator.validateAll().then(function (res) {
+            if (res == true) {
+               //Se adjunta el token
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               //Instancia nuevo form data
+               var formData = new FormData();
+               //Conforma objeto paramétrico para solicitud http
 
-         this.$http.post('/' + this.nombre_ruta, formData).then(function (response) {
-            // success callback
-
-            if (response.status == 200) {
-               if (!_this4.es_null(response.body.servicio)) {
-                  _this4.id_en_edicion = null;
+               for (var i in _this4.permitido_guardar) {
+                  formData.append('' + _this4.permitido_guardar[i], _this4.$data['' + _this4.nombre_model]['' + _this4.permitido_guardar[i]] || null);
                }
-               //this.inicializar();
-            } else {
-               _this4.checkear_estado_respuesta_http(response.status);
-               return false;
-            }
 
-            if (_this4.mostrar_notificaciones(response) == true) {
-               _this4.limpiar_objeto_clase_local();
-               _this4.inicializar();
-               _this4.ocultar_modal('crear');
-               return;
+               _this4.$http.post('/' + _this4.nombre_ruta, formData).then(function (response) {
+                  // success callback
+
+                  if (response.status == 200) {
+                     if (!_this4.es_null(response.body['' + _this4.nombre_model])) {
+                        _this4.id_en_edicion = null;
+                     }
+                     //this.inicializar();
+                  } else {
+                     _this4.checkear_estado_respuesta_http(response.status);
+                     return false;
+                  }
+
+                  if (_this4.mostrar_notificaciones(response) == true) {
+                     _this4.limpiar_objeto_clase_local();
+                     _this4.inicializar();
+                     _this4.ocultar_modal('crear');
+                     return;
+                  }
+               }, function (response) {
+                  // error callback
+                  _this4.checkear_estado_respuesta_http(response.status);
+               });
             }
-         }, function (response) {
-            // error callback
-            _this4.checkear_estado_respuesta_http(response.status);
          });
 
          return;

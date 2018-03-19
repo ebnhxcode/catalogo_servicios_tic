@@ -19,6 +19,7 @@ const ServicioController = new Vue({
    data(){
       return {
          '$':window.jQuery,
+         'pk_tabla': 'id_servicio',
          'nombre_tabla':'servicios', //nombre tabla o de ruta
          'nombre_ruta':'servicios', //nombre tabla o de ruta
          'nombre_model':'servicio',
@@ -181,10 +182,6 @@ const ServicioController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-
-      limpiar_objeto_clase_local: function () {
-         this.servicio = null; this.servicio = this.servicio_limpio;
-      },
 
       inicializar: function () {
 

@@ -2241,7 +2241,11 @@ var inyeccion_funciones_compartidas = {
             _this.checkear_estado_respuesta_http(response.status);
          });
       },
-
+      limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
+         for (var k in this.$data['' + this.nombre_model]) {
+            this.$data['' + this.nombre_model][k] = null;
+         }
+      },
       mostrar: function mostrar(id, tabla, modelo) {
          var _this2 = this;
 
@@ -2333,8 +2337,9 @@ var inyeccion_funciones_compartidas = {
       },
 
       validar_campos: function validar_campos() {
+         /*DEPRECATED*/
          this.$validator.validateAll().then(function (res) {
-            return res == true ? res : false;
+            return res;
          });
       },
 
@@ -3636,9 +3641,11 @@ var UsuarioBitacoraServicioController = new Vue({
    data: function data() {
       return {
          '$': window.jQuery,
+         'pk_tabla': 'id_usuario_bitacora_servicio',
          'nombre_tabla': 'usuarios_bitacora_servicios', //nombre tabla o de ruta
          'nombre_ruta': 'usuarios_bitacora_servicios', //nombre tabla o de ruta
          'nombre_model': 'usuario_bitacora_servicio',
+         'nombre_model_limpio': 'usuario_bitacora_servicio_limpio',
          'nombre_detalle': 'Usuarios Bitacora Servicios',
          'nombre_controller': 'UsuarioBitacoraServicioController',
 
@@ -3788,10 +3795,6 @@ var UsuarioBitacoraServicioController = new Vue({
    filters: {},
    mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
    methods: {
-
-      limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
-         this.usuario_bitacora_servicio = null;this.usuario_bitacora_servicio = this.usuario_bitacora_servicio_limpio;
-      },
 
       inicializar: function inicializar() {
          var _this2 = this;

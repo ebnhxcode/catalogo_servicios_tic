@@ -19,6 +19,7 @@ const AplicacionAccesoController = new Vue({
    data(){
       return {
          '$':window.jQuery,
+         'pk_tabla': 'id_aplicacion_acceso',
          'nombre_tabla':'aplicaciones_accesos', //nombre tabla o de ruta
          'nombre_ruta':'aplicaciones_accesos', //nombre tabla o de ruta
          'nombre_model':'aplicacion_acceso',
@@ -171,11 +172,6 @@ const AplicacionAccesoController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-
-
-      limpiar_objeto_clase_local: function () {
-         this.aplicacion_acceso = null; this.aplicacion_acceso = this.aplicacion_acceso_limpio;
-      },
 
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
