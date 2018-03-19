@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Servidor;
+use App\ServidorEstado;
 use App\Datacentro;
 use App\SistemaOperativo;
+use App\Estado;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -22,8 +24,11 @@ class ServidorController extends Controller {
    private $servidores;
    private $datacentros;
    private $sistemas_operativos;
+   private $estados;
+   private $estado;
    private $servidor;
    private $new_servidor;
+   private $new_servidor_estado;
    private $validacion;
 
    public function __construct () {
@@ -58,11 +63,13 @@ class ServidorController extends Controller {
       $this->servidores = Servidor::all();
       $this->datacentros = Datacentro::all();
       $this->sistemas_operativos = SistemaOperativo::all();
+      $this->estados = Estado::all();
       return response()->json([
          'status' => 200,
          'servidores' => $this->servidores,
          'datacentros' => $this->datacentros,
          'sistemas_operativos' => $this->sistemas_operativos,
+         'estados' => $this->estados,
          'usuario_auth' => $this->usuario_auth,
       ]);
    }
@@ -77,7 +84,7 @@ class ServidorController extends Controller {
          ]);
       }
 
-      $this->servidor = Servidor::where("id_$this->nombre_modelo",'=',$id)->with(['datacentro','sistema_operativo','aplicaciones'])->first();
+      $this->servidor = Servidor::where("id_$this->nombre_modelo",'=',$id)->with(['datacentro','sistema_operativo','aplicaciones','servidor_estado'])->first();
 
       #dd($this->servidor);
 
@@ -121,6 +128,7 @@ class ServidorController extends Controller {
 
          'id_datacentro' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
          'id_sistema_operativo' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
+         'id_estado' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
       ]);
       #Se valida la respuesta con la salida de la validacion
       if ($this->validacion->fails() == true) {
@@ -157,7 +165,15 @@ class ServidorController extends Controller {
          'id_usuario_modifica' => Auth::user()->id_usuario,
       ]);
 
-      unset($this->servidor, $this->validacion);
+      #Guardar relacion del estado, en caso que exista valor
+      $this->new_servidor_estado = ServidorEstado::create([
+         'id_servidor' => $this->servidor['id_servidor'],
+         'id_estado' => $this->servidor['id_estado'],
+         'id_usuario_registra' => Auth::user()->id_usuario,
+         'id_usuario_modifica' => Auth::user()->id_usuario,
+      ]);
+
+      unset($this->servidor, $this->new_servidor_estado, $this->validacion);
 
       return response()->json([
          'status' => 200, //Para los popups con alertas de sweet alert
@@ -189,6 +205,7 @@ class ServidorController extends Controller {
 
          'id_datacentro' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
          'id_sistema_operativo' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
+         'id_estado' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
       ]);
       #Valida si la informacion que se envia para editar al servidor son iguales los ids
       if ($id != $request["id_$this->nombre_modelo"]) {
@@ -208,7 +225,30 @@ class ServidorController extends Controller {
       }
       $this->servidor = Servidor::find($request["id_$this->nombre_modelo"]);
       $request['id_usuario_modifica'] = Auth::user()->id_usuario;
+
+      if (isset($this->servidor)) {
+
+         #Actualizar o asoc. nuevo role usuario
+         if ($this->servidor->servidor_estado != null) {
+            $this->estado = $this->servidor->servidor_estado->estado;
+            if (!in_array($this->estado->id_estado, [$request["id_estado"], null, 'null', ''])) {
+               $this->servidor->servidor_estado->id_estado = $request["id_estado"];
+               $this->servidor->servidor_estado->id_usuario_modifica = Auth::user()->id_usuario;
+               $this->servidor->servidor_estado->save();
+            }
+         } else {
+            #Guardar relacion del estado, en caso que exista valor
+            $this->new_servidor_estado = ServidorEstado::create([
+               'id_servidor' => $request['id_servidor'],
+               'id_estado' => $request['id_estado'],
+               'id_usuario_registra' => Auth::user()->id_usuario,
+               'id_usuario_modifica' => Auth::user()->id_usuario,
+            ]);
+         }
+      }
+      unset($request['id_estado']);
       $this->servidor->update($request->all());
+
 
       #unset($this->new_servidor_permiso, $this->permiso);
       return response()->json([

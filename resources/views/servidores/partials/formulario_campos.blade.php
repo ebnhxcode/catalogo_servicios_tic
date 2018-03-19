@@ -306,6 +306,45 @@
       </dd>
 
    </div><!-- .col -->
+
+
+
+</div><!-- .row -->
+
+
+<h5>Prestaciones de la máquina</h5>
+<div class="row">
+
+
+   <div class="col-sm-6 col-md-6">
+
+      <dt>Estado Servidor</dt>
+      <dd>
+         <p class="control has-icon has-icon-right">
+
+            <select class="form-control" v-model="servidor.id_estado" name="id_estado"
+                    v-validate="{required:true,integer:true}" data-vv-delay="500">
+               <option :value="e.id_estado" v-for="e in estados">
+                  @{{ `${e.nom_estado} -> ${e.det_estado}` }}
+               </option>
+            </select>
+
+            <transition name="bounce">
+               <i v-show="errors.has('id_estado')" class="fa fa-exclamation-circle"></i>
+            </transition>
+
+            <transition name="bounce">
+               <span v-show="errors.has('id_estado')" class="text-danger small">
+                  @{{ errors.first('id_estado') }}
+               </span>
+            </transition>
+         </p>
+      </dd>
+
+   </div><!-- .col -->
+
+
+
 </div><!-- .row -->
 
 

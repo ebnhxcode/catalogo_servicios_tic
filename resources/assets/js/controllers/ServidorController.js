@@ -74,6 +74,7 @@ const ServidorController = new Vue({
          'lista_objs_model':[],
          'datacentros':[],
          'sistemas_operativos':[],
+         'estados':[],
          'dominios':[],
          'servidores':[],
          'datos_excel':[],
@@ -254,6 +255,7 @@ const ServidorController = new Vue({
             this.datos_excel = response.body.servidores || null;
             this.datacentros = response.body.datacentros || null;
             this.sistemas_operativos = response.body.sistemas_operativos || null;
+            this.estados = response.body.estados || null;
 
             this.usuario_auth = response.body.usuario_auth || null;
             //this.limpiar_objeto_clase_local();

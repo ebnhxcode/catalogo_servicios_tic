@@ -33,17 +33,18 @@ class Servidor extends Model {
       #relaciones -> pks
       'id_datacentro',
       'id_sistema_operativo',
+      'id_estado',
 
       'id_usuario_registra',
       'id_usuario_modifica',
    ];
 
 
-   public function usuario_registra() {
+   public function usuario_registra () {
       return $this->belongsTo(User::class, 'id_usuario_registra');
    }
 
-   public function usuario_modifica() {
+   public function usuario_modifica () {
       return $this->belongsTo(User::class, 'id_usuario_modifica');
    }
 
@@ -53,6 +54,10 @@ class Servidor extends Model {
 
    public function sistema_operativo () {
       return $this->belongsTo(SistemaOperativo::class, 'id_sistema_operativo');
+   }
+
+   public function servidor_estado () {
+      return $this->hasOne(ServidorEstado::class, 'id_estado');
    }
 
    public function aplicaciones () {
