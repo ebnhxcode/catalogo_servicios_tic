@@ -1,11 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-   @include("layouts.main.header_main")
-
-   @include("layouts.main.body_main")
-
-   @include("layouts.main.footer_main")
+   @include("layouts.main")
 
 @endsection
 
