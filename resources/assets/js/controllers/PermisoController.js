@@ -46,6 +46,8 @@ const PermisoController = new Vue({
             'updated_at':null,
             'deleted_at':null,
          },
+         'lom':{},
+         'lista_objs_model':[],
          'permisos':[],
          'datos_excel':[],
          'usuario_auth':{},
@@ -171,7 +173,8 @@ const PermisoController = new Vue({
       },
 
       inicializar: function () {
-         this.$http.get('/permisos').then(response => { // success callback
+         this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+            this.lista_objs_model = response.body.permisos || null;
             this.permisos = response.body.permisos || null;
             this.datos_excel = response.body.permisos || null;
             this.usuario_auth = response.body.usuario_auth || null;

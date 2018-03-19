@@ -62,6 +62,8 @@ const AplicacionController = new Vue({
             'updated_at':null,
             'deleted_at':null,
          },
+         'lom':{},
+         'lista_objs_model':[],
          'actividades':[],
          'tipos_aplicaciones':[],
          'servidores':[],
@@ -236,12 +238,13 @@ const AplicacionController = new Vue({
       },
 
       inicializar: function () {
-         this.$http.get('/aplicaciones').then(response => { // success callback
+         this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
             this.actividades = response.body.actividades || null;
             this.tipos_aplicaciones = response.body.tipos_aplicaciones || null;
             this.servidores = response.body.servidores || null;
             this.servicios = response.body.servicios || null;
             this.dominios = response.body.dominios || null;
+            this.lista_objs_model = response.body.aplicaciones || null;
             this.aplicaciones = response.body.aplicaciones || null;
             this.datos_excel = response.body.aplicaciones || null;
             this.usuario_auth = response.body.usuario_auth || null;

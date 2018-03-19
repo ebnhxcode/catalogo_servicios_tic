@@ -2219,7 +2219,32 @@ var inyeccion_funciones_compartidas = {
       en_array: function en_array(array, v) {
          return array.indexOf(v) > -1 ? true : false;
       },
+      encontrar: function encontrar(id) {
+         var _this = this;
 
+         this.$http.get('/' + this.nombre_tabla + '/' + id).then(function (response) {
+            // success callback
+            return response.body['' + _this.nombre_model];
+         }, function (response) {
+            // error callback
+            _this.checkear_estado_respuesta_http(response.status);
+         });
+      },
+
+      mostrar: function mostrar(id, tabla, modelo) {
+         var _this2 = this;
+
+         this.$http.get('/' + tabla + '/' + id).then(function (response) {
+            // success callback
+            //console.log(response.body[modelo][0]);
+            //var obj = console.log(response.body[modelo]);
+            var obj = response.body[modelo];
+            return obj;
+         }, function (response) {
+            // error callback
+            _this2.checkear_estado_respuesta_http(response.status);
+         });
+      },
       mostrar_modal_actualizar: function mostrar_modal_actualizar(id) {
          this.lista_actualizar_activo = false;
          this.modal_actualizar_activo = true;
@@ -3627,6 +3652,8 @@ var UsuarioBitacoraServicioController = new Vue({
             'deleted_at': null
          },
 
+         'lom': {},
+         'lista_objs_model': [],
          'usuarios_bitacora_servicios': [],
          'actividades': [],
          'servicios': [],
@@ -3757,6 +3784,7 @@ var UsuarioBitacoraServicioController = new Vue({
 
          this.$http.get('/' + this.nombre_ruta).then(function (response) {
             // success callback
+            _this2.lista_objs_model = response.body.usuarios_bitacora_servicios || null;
             _this2.usuarios_bitacora_servicios = response.body.usuarios_bitacora_servicios || null;
             _this2.actividades = response.body.actividades || null;
             _this2.servicios = response.body.servicios || null;

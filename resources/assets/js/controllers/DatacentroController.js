@@ -46,6 +46,8 @@ const DatacentroController = new Vue({
             'updated_at':null,
             'deleted_at':null,
          },
+         'lom':{},
+         'lista_objs_model':[],
          'datacentros':[],
          'datos_excel':[],
          'usuario_auth':{},
@@ -171,7 +173,8 @@ const DatacentroController = new Vue({
       },
 
       inicializar: function () {
-         this.$http.get('/datacentros').then(response => { // success callback
+         this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+            this.lista_objs_model = response.body.datacentros || null;
             this.datacentros = response.body.datacentros || null;
             this.datos_excel = response.body.datacentros || null;
             this.usuario_auth = response.body.usuario_auth || null;

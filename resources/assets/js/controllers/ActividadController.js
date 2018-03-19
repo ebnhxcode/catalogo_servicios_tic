@@ -44,6 +44,8 @@ const ActividadController = new Vue({
             'updated_at':null,
             'deleted_at':null,
          },
+         'lom':{},
+         'lista_objs_model':[],
          'tipos_actividades':[],
          'actividades':[],
          'datos_excel':[],
@@ -171,7 +173,8 @@ const ActividadController = new Vue({
 
 
       inicializar: function () {
-         this.$http.get('/actividades').then(response => { // success callback
+         this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+            this.lista_objs_model = response.body.actividades || null;
             this.actividades = response.body.actividades || null;
             this.tipos_actividades = response.body.tipos_actividades || null;
             this.datos_excel = response.body.actividades || null;

@@ -52,6 +52,8 @@ const AplicacionAccesoController = new Vue({
             'updated_at':null,
             'deleted_at':null,
          },
+         'lom':{},
+         'lista_objs_model':[],
          'aplicaciones':[],
          'aplicaciones_accesos':[],
          'datos_excel':[],
@@ -170,31 +172,13 @@ const AplicacionAccesoController = new Vue({
    methods: {
 
 
-      encontrar: function (id) {
-         this.$http.get(`/${this.nombre_tabla}/${id}`).then(response => { // success callback
-            return response.body[`${this.nombre_model}`];
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
-      },
-
-      mostrar: function (id, tabla, modelo) {
-         this.$http.get(`/${tabla}/${id}`).then(response => { // success callback
-            //console.log(response.body[modelo][0]);
-            var obj = console.log(response.body[modelo]);
-            return obj;
-
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
-      },
-
       limpiar_objeto_clase_local: function () {
          this.aplicacion_acceso = null; this.aplicacion_acceso = this.aplicacion_acceso_limpio;
       },
 
       inicializar: function () {
-         this.$http.get('/aplicaciones_accesos').then(response => { // success callback
+         this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+            this.lista_objs_model = response.body.aplicaciones_accesos || null;
             this.aplicaciones_accesos = response.body.aplicaciones_accesos || null;
             this.aplicaciones = response.body.aplicaciones || null;
             this.datos_excel = response.body.aplicaciones_accesos || null;

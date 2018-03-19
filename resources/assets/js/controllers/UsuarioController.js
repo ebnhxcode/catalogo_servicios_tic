@@ -61,6 +61,8 @@ const UsuarioController = new Vue({
             'updated_at': null,
             'deleted_at': null,
          },
+         'lom':{},
+         'lista_objs_model':[],
          'usuarios': [],
          'roles': [],
          'estados': [],
@@ -230,7 +232,8 @@ const UsuarioController = new Vue({
 
 
       inicializar: function () {
-         this.$http.get('/usuarios').then(response => { // success callback
+         this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+            this.lista_objs_model = response.body.usuarios || null;
             this.usuarios = response.body.usuarios || null;
             this.roles = response.body.roles || null;
             this.estados = response.body.estados || null;

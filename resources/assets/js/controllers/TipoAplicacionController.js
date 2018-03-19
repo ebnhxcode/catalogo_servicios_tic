@@ -45,6 +45,8 @@ const TipoAplicacionController = new Vue({
             'updated_at': null,
             'deleted_at': null,
          },
+         'lom':{},
+         'lista_objs_model':[],
          'tipos_aplicaciones': [],
          'datos_excel': [],
          'usuario_auth': {},
@@ -170,7 +172,8 @@ const TipoAplicacionController = new Vue({
       },
 
       inicializar: function () {
-         this.$http.get('/tipos_aplicaciones').then(response => { // success callback
+         this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+            this.lista_objs_model = response.body.tipos_aplicaciones || null;
             this.tipos_aplicaciones = response.body.tipos_aplicaciones || null;
             this.datos_excel = response.body.tipos_aplicaciones || null;
             this.usuario_auth = response.body.usuario_auth || null;

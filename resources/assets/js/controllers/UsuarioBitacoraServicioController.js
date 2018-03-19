@@ -49,6 +49,8 @@ const UsuarioBitacoraServicioController = new Vue({
             'deleted_at':null,
          },
 
+         'lom':{},
+         'lista_objs_model':[],
          'usuarios_bitacora_servicios':[],
          'actividades':[],
          'servicios':[],
@@ -171,6 +173,7 @@ const UsuarioBitacoraServicioController = new Vue({
 
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+            this.lista_objs_model = response.body.usuarios_bitacora_servicios || null;
             this.usuarios_bitacora_servicios = response.body.usuarios_bitacora_servicios || null;
             this.actividades = response.body.actividades || null;
             this.servicios = response.body.servicios || null;

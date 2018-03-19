@@ -54,6 +54,8 @@ const SistemaOperativoController = new Vue({
             'updated_at':null,
             'deleted_at':null,
          },
+         'lom':{},
+         'lista_objs_model':[],
          'sistemas_operativos':[],
          'datos_excel':[],
          'usuario_auth':{},
@@ -191,7 +193,8 @@ const SistemaOperativoController = new Vue({
       },
 
       inicializar: function () {
-         this.$http.get('/sistemas_operativos').then(response => { // success callback
+         this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+            this.lista_objs_model = response.body.sistemas_operativos || null;
             this.sistemas_operativos = response.body.sistemas_operativos || null;
             this.datos_excel = response.body.sistemas_operativos || null;
             this.usuario_auth = response.body.usuario_auth || null;

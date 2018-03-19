@@ -46,6 +46,8 @@ const CargoController = new Vue({
             'updated_at':null,
             'deleted_at':null,
          },
+         'lom':{},
+         'lista_objs_model':[],
          'cargos':[],
          'datos_excel':[],
          'usuario_auth':{},
@@ -171,7 +173,8 @@ const CargoController = new Vue({
       },
 
       inicializar: function () {
-         this.$http.get('/cargos').then(response => { // success callback
+         this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+            this.lista_objs_model = response.body.cargos || null;
             this.cargos = response.body.cargos || null;
             this.datos_excel = response.body.cargos || null;
             this.usuario_auth = response.body.usuario_auth || null;

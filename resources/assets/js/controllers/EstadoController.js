@@ -46,6 +46,8 @@ const EstadoController = new Vue({
             'updated_at':null,
             'deleted_at':null,
          },
+         'lom':{},
+         'lista_objs_model':[],
          'estados':[],
          'datos_excel':[],
          'usuario_auth':{},
@@ -171,7 +173,8 @@ const EstadoController = new Vue({
       },
 
       inicializar: function () {
-         this.$http.get('/estados').then(response => { // success callback
+         this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+            this.lista_objs_model = response.body.estados || null;
             this.estados = response.body.estados || null;
             this.datos_excel = response.body.estados || null;
             this.usuario_auth = response.body.usuario_auth || null;

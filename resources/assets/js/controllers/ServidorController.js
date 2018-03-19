@@ -70,6 +70,8 @@ const ServidorController = new Vue({
             'updated_at':null,
             'deleted_at':null,
          },
+         'lom':{},
+         'lista_objs_model':[],
          'datacentros':[],
          'sistemas_operativos':[],
          'dominios':[],
@@ -239,31 +241,15 @@ const ServidorController = new Vue({
    methods: {
 
 
-      encontrar: function (id) {
-         this.$http.get(`/${this.nombre_tabla}/${id}`).then(response => { // success callback
-            return response.body[`${this.nombre_model}`];
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
-      },
 
-      mostrar: function (id, tabla, modelo) {
-         this.$http.get(`/${tabla}/${id}`).then(response => { // success callback
-            //console.log(response.body[modelo][0]);
-            var obj = console.log(response.body[modelo]);
-            return obj;
-
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
-      },
 
       limpiar_objeto_clase_local: function () {
          this.servidor = null; this.servidor = this.servidor_limpio;
       },
 
       inicializar: function () {
-         this.$http.get('/servidores').then(response => { // success callback
+         this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+            this.lista_objs_model = response.body.servidores || null;
             this.servidores = response.body.servidores || null;
             this.datos_excel = response.body.servidores || null;
             this.datacentros = response.body.datacentros || null;

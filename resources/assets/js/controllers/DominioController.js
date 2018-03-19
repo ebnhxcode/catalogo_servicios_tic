@@ -50,6 +50,8 @@ const DominioController = new Vue({
             'updated_at':null,
             'deleted_at':null,
          },
+         'lom':{},
+         'lista_objs_model':[],
          'dominios':[],
          'datos_excel':[],
          'usuario_auth':{},
@@ -183,7 +185,8 @@ const DominioController = new Vue({
       },
 
       inicializar: function () {
-         this.$http.get('/dominios').then(response => { // success callback
+         this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+            this.lista_objs_model = response.body.dominios || null;
             this.dominios = response.body.dominios || null;
             this.datos_excel = response.body.dominios || null;
             this.usuario_auth = response.body.usuario_auth || null;

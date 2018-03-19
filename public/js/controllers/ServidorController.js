@@ -2219,7 +2219,32 @@ var inyeccion_funciones_compartidas = {
       en_array: function en_array(array, v) {
          return array.indexOf(v) > -1 ? true : false;
       },
+      encontrar: function encontrar(id) {
+         var _this = this;
 
+         this.$http.get('/' + this.nombre_tabla + '/' + id).then(function (response) {
+            // success callback
+            return response.body['' + _this.nombre_model];
+         }, function (response) {
+            // error callback
+            _this.checkear_estado_respuesta_http(response.status);
+         });
+      },
+
+      mostrar: function mostrar(id, tabla, modelo) {
+         var _this2 = this;
+
+         this.$http.get('/' + tabla + '/' + id).then(function (response) {
+            // success callback
+            //console.log(response.body[modelo][0]);
+            //var obj = console.log(response.body[modelo]);
+            var obj = response.body[modelo];
+            return obj;
+         }, function (response) {
+            // error callback
+            _this2.checkear_estado_respuesta_http(response.status);
+         });
+      },
       mostrar_modal_actualizar: function mostrar_modal_actualizar(id) {
          this.lista_actualizar_activo = false;
          this.modal_actualizar_activo = true;
@@ -3648,6 +3673,8 @@ var ServidorController = new Vue({
             'updated_at': null,
             'deleted_at': null
          },
+         'lom': {},
+         'lista_objs_model': [],
          'datacentros': [],
          'sistemas_operativos': [],
          'dominios': [],
@@ -3821,51 +3848,26 @@ var ServidorController = new Vue({
    mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
    methods: {
 
-      encontrar: function encontrar(id) {
-         var _this2 = this;
-
-         this.$http.get('/' + this.nombre_tabla + '/' + id).then(function (response) {
-            // success callback
-            return response.body['' + _this2.nombre_model];
-         }, function (response) {
-            // error callback
-            _this2.checkear_estado_respuesta_http(response.status);
-         });
-      },
-
-      mostrar: function mostrar(id, tabla, modelo) {
-         var _this3 = this;
-
-         this.$http.get('/' + tabla + '/' + id).then(function (response) {
-            // success callback
-            //console.log(response.body[modelo][0]);
-            var obj = console.log(response.body[modelo]);
-            return obj;
-         }, function (response) {
-            // error callback
-            _this3.checkear_estado_respuesta_http(response.status);
-         });
-      },
-
       limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
          this.servidor = null;this.servidor = this.servidor_limpio;
       },
 
       inicializar: function inicializar() {
-         var _this4 = this;
+         var _this2 = this;
 
-         this.$http.get('/servidores').then(function (response) {
+         this.$http.get('/' + this.nombre_ruta).then(function (response) {
             // success callback
-            _this4.servidores = response.body.servidores || null;
-            _this4.datos_excel = response.body.servidores || null;
-            _this4.datacentros = response.body.datacentros || null;
-            _this4.sistemas_operativos = response.body.sistemas_operativos || null;
+            _this2.lista_objs_model = response.body.servidores || null;
+            _this2.servidores = response.body.servidores || null;
+            _this2.datos_excel = response.body.servidores || null;
+            _this2.datacentros = response.body.datacentros || null;
+            _this2.sistemas_operativos = response.body.sistemas_operativos || null;
 
-            _this4.usuario_auth = response.body.usuario_auth || null;
+            _this2.usuario_auth = response.body.usuario_auth || null;
             //this.limpiar_objeto_clase_local();
          }, function (response) {
             // error callback
-            _this4.checkear_estado_respuesta_http(response.status);
+            _this2.checkear_estado_respuesta_http(response.status);
          });
       },
 
@@ -3879,7 +3881,7 @@ var ServidorController = new Vue({
       },
 
       guardar_editado: function guardar_editado() {
-         var _this5 = this;
+         var _this3 = this;
 
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
@@ -3894,11 +3896,11 @@ var ServidorController = new Vue({
                }
                */
             } else {
-               _this5.checkear_estado_respuesta_http(response.status);
+               _this3.checkear_estado_respuesta_http(response.status);
                return false;
             }
 
-            if (_this5.mostrar_notificaciones(response) == true) {
+            if (_this3.mostrar_notificaciones(response) == true) {
 
                /*
                 //Aqui que pregunte si el modal está activo para que lo cierre
@@ -3911,11 +3913,11 @@ var ServidorController = new Vue({
                */
 
                //Recargar la lista
-               _this5.inicializar();
+               _this3.inicializar();
             }
          }, function (response) {
             // error callback
-            _this5.checkear_estado_respuesta_http(response.status);
+            _this3.checkear_estado_respuesta_http(response.status);
          });
 
          return;
@@ -3923,7 +3925,7 @@ var ServidorController = new Vue({
 
       eliminar: function eliminar(id_servidor) {
          var _swal,
-             _this6 = this;
+             _this4 = this;
 
          __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()((_swal = {
             title: "¿Estás seguro/a?",
@@ -3940,38 +3942,38 @@ var ServidorController = new Vue({
                //Se adjunta el token
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-               _this6.$http.delete('/' + _this6.nombre_ruta + '/' + id_servidor).then(function (response) {
+               _this4.$http.delete('/' + _this4.nombre_ruta + '/' + id_servidor).then(function (response) {
                   if (response.status == 200) {
-                     _this6.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
+                     _this4.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
                   } else {
-                     _this6.checkear_estado_respuesta_http(response.status);
+                     _this4.checkear_estado_respuesta_http(response.status);
                      return false;
                   }
 
-                  if (_this6.mostrar_notificaciones(response) == true) {
+                  if (_this4.mostrar_notificaciones(response) == true) {
                      //Aqui que pregunte si el modal está activo para que lo cierre
-                     if (_this6.modal_actualizar_activo == true) {
-                        _this6.ocultar_modal('actualizar');
-                        _this6.modal_actualizar_activo = false;
+                     if (_this4.modal_actualizar_activo == true) {
+                        _this4.ocultar_modal('actualizar');
+                        _this4.modal_actualizar_activo = false;
                      }
-                     _this6.lista_actualizar_activo = false;
-                     _this6.id_en_edicion = null;
+                     _this4.lista_actualizar_activo = false;
+                     _this4.id_en_edicion = null;
 
                      //Recargar la lista
-                     _this6.inicializar();
+                     _this4.inicializar();
                   }
                }, function (response) {
                   // error callback
-                  _this6.checkear_estado_respuesta_http(response.status);
+                  _this4.checkear_estado_respuesta_http(response.status);
                });
             } else if (result.dismiss === __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default.a.DismissReason.cancel) {
-               _this6.auto_alerta_corta("Cancelado", "Se ha cancelado la eliminación", "success");
+               _this4.auto_alerta_corta("Cancelado", "Se ha cancelado la eliminación", "success");
             }
          });
       },
 
       guardar: function guardar() {
-         var _this7 = this;
+         var _this5 = this;
 
          //Ejecuta validacion sobre los campos con validaciones
          if (this.validar_campos() == false) {
@@ -4004,24 +4006,24 @@ var ServidorController = new Vue({
             // success callback
 
             if (response.status == 200) {
-               if (!_this7.es_null(response.body.servidor)) {
-                  _this7.id_en_edicion = null;
+               if (!_this5.es_null(response.body.servidor)) {
+                  _this5.id_en_edicion = null;
                }
                //this.inicializar();
             } else {
-               _this7.checkear_estado_respuesta_http(response.status);
+               _this5.checkear_estado_respuesta_http(response.status);
                return false;
             }
 
-            if (_this7.mostrar_notificaciones(response) == true) {
-               _this7.ocultar_modal('crear');
-               _this7.inicializar();
-               _this7.limpiar_objeto_clase_local();
+            if (_this5.mostrar_notificaciones(response) == true) {
+               _this5.ocultar_modal('crear');
+               _this5.inicializar();
+               _this5.limpiar_objeto_clase_local();
                return;
             }
          }, function (response) {
             // error callback
-            _this7.checkear_estado_respuesta_http(response.status);
+            _this5.checkear_estado_respuesta_http(response.status);
          });
 
          return;

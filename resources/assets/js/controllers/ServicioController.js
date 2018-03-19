@@ -48,6 +48,8 @@ const ServicioController = new Vue({
             'updated_at':null,
             'deleted_at':null,
          },
+         'lom':{},
+         'lista_objs_model':[],
          'actividades':[],
          'servicios':[],
          'usuarios_bitacora_servicios':[],
@@ -184,9 +186,10 @@ const ServicioController = new Vue({
       },
 
       inicializar: function () {
-         this.$http.get('/servicios').then(response => { // success callback
+
+         this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+            this.lista_objs_model = response.body.servicios || null;
             this.actividades = response.body.actividades || null;
-            this.servicios = response.body.servicios || null;
             this.usuarios_bitacora_servicios = response.body.usuarios_bitacora_servicios || null;
             this.datos_excel = response.body.servicios || null;
             this.usuario_auth = response.body.usuario_auth || null;

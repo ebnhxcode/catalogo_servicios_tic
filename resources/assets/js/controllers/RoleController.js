@@ -36,6 +36,7 @@ const RoleController = new Vue({
             'updated_at':null,
             'deleted_at':null,
          },
+
          'role_limpio':{
             'nom_role':null,
             'det_role':null,
@@ -46,6 +47,8 @@ const RoleController = new Vue({
             'updated_at':null,
             'deleted_at':null,
          },
+         'lom':{},
+         'lista_objs_model':[],
          'roles':[],
          'datos_excel':[],
          'usuario_auth':{},
@@ -178,7 +181,8 @@ const RoleController = new Vue({
       },
 
       inicializar: function () {
-         this.$http.get('/roles').then(response => { // success callback
+         this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+            this.lista_objs_model = response.body.roles || null;
             this.roles = response.body.roles || null;
             this.permisos = response.body.permisos || null;
             this.datos_excel = response.body.roles || null;

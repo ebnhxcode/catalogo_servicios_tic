@@ -46,6 +46,8 @@ const TagController = new Vue({
             'updated_at':null,
             'deleted_at':null,
          },
+         'lom':{},
+         'lista_objs_model':[],
          'tags':[],
          'datos_excel':[],
          'usuario_auth':{},
@@ -172,7 +174,8 @@ const TagController = new Vue({
       },
 
       inicializar: function () {
-         this.$http.get('/tags').then(response => { // success callback
+         this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+            this.lista_objs_model = response.body.tags || null;
             this.tags = response.body.tags || null;
             this.permisos = response.body.permisos || null;
             this.datos_excel = response.body.tags || null;
