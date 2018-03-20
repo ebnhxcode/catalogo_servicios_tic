@@ -43,6 +43,7 @@ const TipoAplicacionController = new Vue({
             'det_tipo_aplicacion',
             'cod_tipo_aplicacion',
          ],
+         'relaciones':[],
          'lom':{},
          'lista_objs_model':[],
          'tipos_aplicaciones': [],
@@ -111,15 +112,8 @@ const TipoAplicacionController = new Vue({
       //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el tipo_aplicacion
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function (id_en_edicion) {
-         if (id_en_edicion == null) {
-            this.limpiar_objeto_clase_local();
-         } else {
-            this.$http.get(`/${this.nombre_tabla}/${id_en_edicion}`).then(response => { // success callback
-               this.$data[`${this.nombre_model}`] = response.body[`${this.nombre_model}`];
-            }, response => { // error callback
-               this.checkear_estado_respuesta_http(response.status);
-            });
-         }
+         if (id_en_edicion == null) { this.limpiar_objeto_clase_local(); }
+         else { this.buscar_objeto_clase(id_en_edicion); }
       },
       //tipos_aplicaciones se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
       tipos_aplicaciones: function (tipos_aplicaciones) {

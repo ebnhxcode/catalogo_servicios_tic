@@ -2143,6 +2143,29 @@ var inyeccion_funciones_compartidas = {
             }
          }return null;
       },
+      buscar_objeto_clase: function buscar_objeto_clase(id) {
+         var _this = this;
+
+         this.$http.get('/' + this.nombre_tabla + '/' + id).then(function (response) {
+            // success callback
+            _this.$data['' + _this.nombre_model] = response.body['' + _this.nombre_model];
+         }, function (response) {
+            // error callback
+            _this.checkear_estado_respuesta_http(response.status);
+         });
+      },
+      buscar_objeto_clase_config_relaciones: function buscar_objeto_clase_config_relaciones(id, relaciones) {
+         var _this2 = this;
+
+         this.$http.get('/' + this.nombre_tabla + '/' + id).then(function (response) {
+            // success callback
+            _this2.$data['' + _this2.nombre_model] = response.body['' + _this2.nombre_model];
+            _this2.configurar_relaciones([_this2.$data['' + _this2.nombre_model]], relaciones);
+         }, function (response) {
+            // error callback
+            _this2.checkear_estado_respuesta_http(response.status);
+         });
+      },
       // change order variable direction
       cambiar_orden_lista: function cambiar_orden_lista(columna) {
          this.orden_lista == 'asc' ? this.orden_lista = 'desc' : this.orden_lista = 'asc';
@@ -2230,18 +2253,18 @@ var inyeccion_funciones_compartidas = {
          return array.indexOf(v) > -1 ? true : false;
       },
       encontrar: function encontrar(id) {
-         var _this = this;
+         var _this3 = this;
 
          this.$http.get('/' + this.nombre_tabla + '/' + id).then(function (response) {
             // success callback
-            return response.body['' + _this.nombre_model];
+            return response.body['' + _this3.nombre_model];
          }, function (response) {
             // error callback
-            _this.checkear_estado_respuesta_http(response.status);
+            _this3.checkear_estado_respuesta_http(response.status);
          });
       },
       guardar: function guardar() {
-         var _this2 = this;
+         var _this4 = this;
 
          //Ejecuta validacion sobre los campos con validaciones
          //console.log(this.validar_campos());
@@ -2252,29 +2275,29 @@ var inyeccion_funciones_compartidas = {
                //Instancia nuevo form data
                var formData = new FormData();
                //Conforma objeto paramétrico para solicitud http
-               for (var i in _this2.permitido_guardar) {
-                  formData.append('' + _this2.permitido_guardar[i], _this2.$data['' + _this2.nombre_model]['' + _this2.permitido_guardar[i]] || null);
+               for (var i in _this4.permitido_guardar) {
+                  formData.append('' + _this4.permitido_guardar[i], _this4.$data['' + _this4.nombre_model]['' + _this4.permitido_guardar[i]] || 0);
                }
-               _this2.$http.post('/' + _this2.nombre_ruta, formData).then(function (response) {
+               _this4.$http.post('/' + _this4.nombre_ruta, formData).then(function (response) {
                   // success callback
                   if (response.status == 200) {
-                     if (!_this2.es_null(response.body['' + _this2.nombre_model])) {
+                     if (!_this4.es_null(response.body['' + _this4.nombre_model])) {
                         // del backend viene el objeto con el nombre
-                        _this2.id_en_edicion = null; // se resetea el objeto reactivo de la clase
+                        _this4.id_en_edicion = null; // se resetea el objeto reactivo de la clase
                      } //this.inicializar();
                   } else {
-                     _this2.checkear_estado_respuesta_http(response.status);
+                     _this4.checkear_estado_respuesta_http(response.status);
                      return false;
                   }
-                  if (_this2.mostrar_notificaciones(response) == true) {
-                     _this2.limpiar_objeto_clase_local();
-                     _this2.inicializar();
-                     _this2.ocultar_modal('crear');
+                  if (_this4.mostrar_notificaciones(response) == true) {
+                     _this4.limpiar_objeto_clase_local();
+                     _this4.inicializar();
+                     _this4.ocultar_modal('crear');
                      return;
                   }
                }, function (response) {
                   // error callback
-                  _this2.checkear_estado_respuesta_http(response.status);
+                  _this4.checkear_estado_respuesta_http(response.status);
                });
             }
          });
@@ -2287,7 +2310,7 @@ var inyeccion_funciones_compartidas = {
          }
       },
       mostrar: function mostrar(id, tabla, modelo) {
-         var _this3 = this;
+         var _this5 = this;
 
          this.$http.get('/' + tabla + '/' + id).then(function (response) {
             // success callback
@@ -2297,7 +2320,7 @@ var inyeccion_funciones_compartidas = {
             return obj;
          }, function (response) {
             // error callback
-            _this3.checkear_estado_respuesta_http(response.status);
+            _this5.checkear_estado_respuesta_http(response.status);
          });
       },
       mostrar_modal_actualizar: function mostrar_modal_actualizar(id) {
@@ -3786,19 +3809,10 @@ var UsuarioBitacoraServicioController = new Vue({
       //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el usuario_bitacora_servicio
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function id_en_edicion(_id_en_edicion) {
-         var _this = this;
-
          if (_id_en_edicion == null) {
             this.limpiar_objeto_clase_local();
          } else {
-            //this.usuario_bitacora_servicio = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.usuarios_bitacora_servicios,this.nombre_model);
-            this.$http.get('/' + this.nombre_tabla + '/' + _id_en_edicion).then(function (response) {
-               // success callback
-               _this.usuario_bitacora_servicio = response.body['' + _this.nombre_model];
-            }, function (response) {
-               // error callback
-               _this.checkear_estado_respuesta_http(response.status);
-            });
+            this.buscar_objeto_clase(_id_en_edicion);
          }
       },
       //usuarios_bitacora_servicios se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
@@ -3837,19 +3851,19 @@ var UsuarioBitacoraServicioController = new Vue({
    methods: {
 
       inicializar: function inicializar() {
-         var _this2 = this;
+         var _this = this;
 
          this.$http.get('/' + this.nombre_ruta).then(function (response) {
             // success callback
-            _this2.lista_objs_model = response.body.usuarios_bitacora_servicios || null;
-            _this2.usuarios_bitacora_servicios = response.body.usuarios_bitacora_servicios || null;
-            _this2.actividades = response.body.actividades || null;
-            _this2.servicios = response.body.servicios || null;
-            _this2.datos_excel = response.body.usuarios_bitacora_servicios || null;
+            _this.lista_objs_model = response.body.usuarios_bitacora_servicios || null;
+            _this.usuarios_bitacora_servicios = response.body.usuarios_bitacora_servicios || null;
+            _this.actividades = response.body.actividades || null;
+            _this.servicios = response.body.servicios || null;
+            _this.datos_excel = response.body.usuarios_bitacora_servicios || null;
             //this.limpiar_objeto_clase_local();
          }, function (response) {
             // error callback
-            _this2.checkear_estado_respuesta_http(response.status);
+            _this.checkear_estado_respuesta_http(response.status);
          });
       },
 
@@ -3863,7 +3877,7 @@ var UsuarioBitacoraServicioController = new Vue({
       },
 
       guardar_editado: function guardar_editado() {
-         var _this3 = this;
+         var _this2 = this;
 
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
@@ -3878,11 +3892,11 @@ var UsuarioBitacoraServicioController = new Vue({
                }
                */
             } else {
-               _this3.checkear_estado_respuesta_http(response.status);
+               _this2.checkear_estado_respuesta_http(response.status);
                return false;
             }
 
-            if (_this3.mostrar_notificaciones(response) == true) {
+            if (_this2.mostrar_notificaciones(response) == true) {
 
                /*
                 //Aqui que pregunte si el modal está activo para que lo cierre
@@ -3895,11 +3909,11 @@ var UsuarioBitacoraServicioController = new Vue({
                */
 
                //Recargar la lista
-               _this3.inicializar();
+               _this2.inicializar();
             }
          }, function (response) {
             // error callback
-            _this3.checkear_estado_respuesta_http(response.status);
+            _this2.checkear_estado_respuesta_http(response.status);
          });
 
          return;
@@ -3907,7 +3921,7 @@ var UsuarioBitacoraServicioController = new Vue({
 
       eliminar: function eliminar(id_usuario_bitacora_servicio) {
          var _swal,
-             _this4 = this;
+             _this3 = this;
 
          __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()((_swal = {
             title: "¿Estás seguro/a?",
@@ -3924,38 +3938,38 @@ var UsuarioBitacoraServicioController = new Vue({
                //Se adjunta el token
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-               _this4.$http.delete('/' + _this4.nombre_ruta + '/' + id_usuario_bitacora_servicio).then(function (response) {
+               _this3.$http.delete('/' + _this3.nombre_ruta + '/' + id_usuario_bitacora_servicio).then(function (response) {
                   if (response.status == 200) {
-                     _this4.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
+                     _this3.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
                   } else {
-                     _this4.checkear_estado_respuesta_http(response.status);
+                     _this3.checkear_estado_respuesta_http(response.status);
                      return false;
                   }
 
-                  if (_this4.mostrar_notificaciones(response) == true) {
+                  if (_this3.mostrar_notificaciones(response) == true) {
                      //Aqui que pregunte si el modal está activo para que lo cierre
-                     if (_this4.modal_actualizar_activo == true) {
-                        _this4.ocultar_modal('actualizar');
-                        _this4.modal_actualizar_activo = false;
+                     if (_this3.modal_actualizar_activo == true) {
+                        _this3.ocultar_modal('actualizar');
+                        _this3.modal_actualizar_activo = false;
                      }
-                     _this4.lista_actualizar_activo = false;
-                     _this4.id_en_edicion = null;
+                     _this3.lista_actualizar_activo = false;
+                     _this3.id_en_edicion = null;
 
                      //Recargar la lista
-                     _this4.inicializar();
+                     _this3.inicializar();
                   }
                }, function (response) {
                   // error callback
-                  _this4.checkear_estado_respuesta_http(response.status);
+                  _this3.checkear_estado_respuesta_http(response.status);
                });
             } else if (result.dismiss === __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default.a.DismissReason.cancel) {
-               _this4.auto_alerta_corta("Cancelado", "Se ha cancelado la eliminación", "success");
+               _this3.auto_alerta_corta("Cancelado", "Se ha cancelado la eliminación", "success");
             }
          });
       },
 
       guardar: function guardar() {
-         var _this5 = this;
+         var _this4 = this;
 
          //Ejecuta validacion sobre los campos con validaciones
          if (this.validar_campos() == false) {
@@ -3975,24 +3989,24 @@ var UsuarioBitacoraServicioController = new Vue({
             // success callback
 
             if (response.status == 200) {
-               if (!_this5.es_null(response.body[_this5.nombre_model])) {
-                  _this5.id_en_edicion = null;
+               if (!_this4.es_null(response.body[_this4.nombre_model])) {
+                  _this4.id_en_edicion = null;
                }
                //this.inicializar();
             } else {
-               _this5.checkear_estado_respuesta_http(response.status);
+               _this4.checkear_estado_respuesta_http(response.status);
                return false;
             }
 
-            if (_this5.mostrar_notificaciones(response) == true) {
-               _this5.limpiar_objeto_clase_local();
-               _this5.inicializar();
-               _this5.ocultar_modal('crear');
+            if (_this4.mostrar_notificaciones(response) == true) {
+               _this4.limpiar_objeto_clase_local();
+               _this4.inicializar();
+               _this4.ocultar_modal('crear');
                return;
             }
          }, function (response) {
             // error callback
-            _this5.checkear_estado_respuesta_http(response.status);
+            _this4.checkear_estado_respuesta_http(response.status);
          });
 
          return;

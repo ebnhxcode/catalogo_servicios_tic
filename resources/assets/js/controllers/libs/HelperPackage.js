@@ -44,6 +44,21 @@ export const inyeccion_funciones_compartidas = {
             }
          } return null;
       },
+      buscar_objeto_clase: function (id) {
+         this.$http.get(`/${this.nombre_tabla}/${id}`).then(response => { // success callback
+            this.$data[`${this.nombre_model}`] = response.body[`${this.nombre_model}`];
+         }, response => { // error callback
+            this.checkear_estado_respuesta_http(response.status);
+         });
+      },
+      buscar_objeto_clase_config_relaciones: function (id, relaciones) {
+         this.$http.get(`/${this.nombre_tabla}/${id}`).then(response => { // success callback
+            this.$data[`${this.nombre_model}`] = response.body[`${this.nombre_model}`];
+            this.configurar_relaciones([this.$data[`${this.nombre_model}`]], relaciones);
+         }, response => { // error callback
+            this.checkear_estado_respuesta_http(response.status);
+         });
+      },
       // change order variable direction
       cambiar_orden_lista: function (columna) {
          this.orden_lista == 'asc' ? this.orden_lista = 'desc' : this.orden_lista = 'asc';
@@ -136,7 +151,7 @@ export const inyeccion_funciones_compartidas = {
                var formData = new FormData();
                //Conforma objeto paramétrico para solicitud http
                for (let i in this.permitido_guardar) {
-                  formData.append(`${this.permitido_guardar[i]}`, this.$data[`${this.nombre_model}`][`${this.permitido_guardar[i]}`] || null);
+                  formData.append(`${this.permitido_guardar[i]}`, this.$data[`${this.nombre_model}`][`${this.permitido_guardar[i]}`] || 0);
                }
                this.$http.post(`/${this.nombre_ruta}`, formData).then(response => { // success callback
                   if (response.status == 200) {

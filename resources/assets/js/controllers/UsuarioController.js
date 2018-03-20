@@ -158,19 +158,8 @@ const UsuarioController = new Vue({
       //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el usuario
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function (id_en_edicion) {
-         if (id_en_edicion == null) {
-            this.limpiar_objeto_clase_local();
-         } else {
-            //this.usuario = this.buscar_en_array_por_modelo_e_id(id_en_edicion, this.usuarios, this.nombre_model);
-            this.$http.get(`/${this.nombre_tabla}/${id_en_edicion}`).then(response => { // success callback
-               this.usuario = response.body[`${this.nombre_model}`];
-               this.usuario.id_role = this.usuario.usuario_role.id_role || null;
-               this.usuario.id_estado = this.usuario.usuario_estado.id_estado || null;
-               this.usuario.id_cargo = this.usuario.usuario_cargo.id_cargo || null;
-            }, response => { // error callback
-               this.checkear_estado_respuesta_http(response.status);
-            });
-         }
+         if (id_en_edicion == null) { this.limpiar_objeto_clase_local(); }
+         else { this.buscar_objeto_clase(id_en_edicion); }
       },
       //usuarios se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
       usuarios: function (usuarios) {

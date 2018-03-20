@@ -117,11 +117,8 @@ const TagController = new Vue({
       //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el tag
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function (id_en_edicion) {
-         if (id_en_edicion == null) {
-            this.limpiar_objeto_clase_local();
-         } else {
-            this.tag = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.tags,this.nombre_model);
-         }
+         if (id_en_edicion == null) { this.limpiar_objeto_clase_local(); }
+         else { this.buscar_objeto_clase(id_en_edicion); }
       },
       //tags se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
       tags: function (tags) {

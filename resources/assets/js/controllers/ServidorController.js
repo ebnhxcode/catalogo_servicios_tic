@@ -51,29 +51,30 @@ const ServidorController = new Vue({
             'updated_at':null,
             'deleted_at':null,
          },
-         'servidor_limpio':{
-            'nom_servidor':null,
-            'det_servidor':null,
-            'ip_servidor':null,
-            'ram':null,
-            'memoria_dd':null,
-            'swap':null,
-            'procesador':null,
-            'frec_procesador':null,
-            'nucleos':null,
-            'usuarios_pactados':null,
-            'mac':null,
-            'nodo':null,
-            'interface':null,
-            'id_datacentro':null,
-            'id_sistema_operativo':null,
-            'id_estado':null,
-            'id_usuario_registra':null,
-            'id_usuario_modifica':null,
-            'created_at':null,
-            'updated_at':null,
-            'deleted_at':null,
-         },
+         'permitido_guardar':[
+            'nom_servidor',
+            'det_servidor',
+            'ip_servidor',
+            'ram',
+            'memoria_dd',
+            'swap',
+            'procesador',
+            'frec_procesador',
+            'nucleos',
+            'usuarios_pactados',
+            'mac',
+            'nodo',
+            'interface',
+            'id_datacentro',
+            'id_sistema_operativo',
+            'id_estado',
+         ],
+         'relaciones_clase':[
+            {'datacentro':'id_datacentro'},
+            {'sistema_operativo':'id_sistema_operativo'},
+            {'aplicaciones':'id_aplicacion'},
+            {'servidor_estado':'id_estado'},
+         ],
          'lom':{},
          'lista_objs_model':[],
          'datacentros':[],
@@ -191,22 +192,9 @@ const ServidorController = new Vue({
       //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el servidor
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function (id_en_edicion) {
-         if (id_en_edicion == null) {
-            this.limpiar_objeto_clase_local();
-         } else {
-            this.$http.get(`/${this.nombre_tabla}/${id_en_edicion}`).then(response => { // success callback
-               this.servidor = response.body[`${this.nombre_model}`];
-               this.configurar_relaciones([this.servidor], [
-                  {'datacentro':'id_datacentro'},
-                  {'sistema_operativo':'id_sistema_operativo'},
-                  {'aplicaciones':'id_aplicacion'},
-                  {'servidor_estado':'id_estado'},
-               ]);
+         if (id_en_edicion == null) { this.limpiar_objeto_clase_local(); }
+         else { this.buscar_objeto_clase_config_relaciones(id_en_edicion, this.relaciones_clase); }
 
-            }, response => { // error callback
-               this.checkear_estado_respuesta_http(response.status);
-            });
-         }
       },
       //servidores se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
       servidores: function (servidores) {
@@ -260,17 +248,12 @@ const ServidorController = new Vue({
 
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+            this.configurar_relaciones(response.body.servidores, this.relaciones_clase);
+
             this.lista_objs_model = response.body.servidores || null;
             this.servidores = response.body.servidores || null;
-
-            this.configurar_relaciones(this.servidores, [
-               {'datacentro':'id_datacentro'},
-               {'sistema_operativo':'id_sistema_operativo'},
-               {'aplicaciones':'id_aplicacion'},
-               {'servidor_estado':'id_estado'},
-            ]);
-
             this.datos_excel = response.body.servidores || null;
+
             this.datacentros = response.body.datacentros || null;
             this.sistemas_operativos = response.body.sistemas_operativos || null;
             this.estados = response.body.estados || null;
@@ -385,61 +368,6 @@ const ServidorController = new Vue({
             }
          });
 
-      },
-
-      guardar: function () {
-         //Ejecuta validacion sobre los campos con validaciones
-         if (this.validar_campos() == false) {
-            return;
-         }
-         //Se adjunta el token
-         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-         //Instancia nuevo form data
-         var formData = new  FormData();
-         //Conforma objeto paramétrico para solicitud http
-
-         formData.append('nom_servidor', this.servidor.nom_servidor || null );
-         formData.append('det_servidor', this.servidor.det_servidor || null );
-         formData.append('ip_servidor', this.servidor.ip_servidor || null );
-         formData.append('ram', this.servidor.ram || null );
-         formData.append('memoria_dd', this.servidor.memoria_dd || null );
-         formData.append('swap', this.servidor.swap || null );
-         formData.append('procesador', this.servidor.procesador || null );
-         formData.append('frec_procesador', this.servidor.frec_procesador || null );
-         formData.append('nucleos', this.servidor.nucleos || null );
-         formData.append('usuarios_pactados', this.servidor.usuarios_pactados || null );
-         formData.append('mac', this.servidor.mac|| null );
-         formData.append('nodo', this.servidor.nodo|| null );
-         formData.append('interface', this.servidor.interface|| null );
-
-         formData.append('id_datacentro', this.servidor.id_datacentro || null );
-         formData.append('id_sistema_operativo', this.servidor.id_sistema_operativo || null );
-         formData.append('id_estado', this.servidor.id_estado || null );
-
-         this.$http.post(`/${this.nombre_ruta}`, formData).then(response => { // success callback
-
-            if ( response.status == 200) {
-               if ( !this.es_null(response.body.servidor) ) {
-                  this.id_en_edicion = null;
-               }
-               //this.inicializar();
-            } else {
-               this.checkear_estado_respuesta_http(response.status);
-               return false;
-            }
-
-            if ( this.mostrar_notificaciones(response) == true ) {
-               this.limpiar_objeto_clase_local();
-               this.inicializar();
-               this.ocultar_modal('crear');
-               return ;
-            }
-
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
-
-         return;
       },
 
    }

@@ -167,7 +167,7 @@ class ServidorController extends Controller {
 
       #Guardar relacion del estado, en caso que exista valor
       $this->new_servidor_estado = ServidorEstado::create([
-         'id_servidor' => $this->servidor['id_servidor'],
+         'id_servidor' => $this->new_servidor->id_servidor,
          'id_estado' => $this->servidor['id_estado'],
          'id_usuario_registra' => Auth::user()->id_usuario,
          'id_usuario_modifica' => Auth::user()->id_usuario,

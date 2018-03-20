@@ -123,16 +123,8 @@ const UsuarioBitacoraServicioController = new Vue({
       //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el usuario_bitacora_servicio
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function (id_en_edicion) {
-         if (id_en_edicion == null) {
-            this.limpiar_objeto_clase_local();
-         } else {
-            //this.usuario_bitacora_servicio = this.buscar_en_array_por_modelo_e_id(id_en_edicion,this.usuarios_bitacora_servicios,this.nombre_model);
-            this.$http.get(`/${this.nombre_tabla}/${id_en_edicion}`).then(response => { // success callback
-               this.usuario_bitacora_servicio = response.body[`${this.nombre_model}`];
-            }, response => { // error callback
-               this.checkear_estado_respuesta_http(response.status);
-            });
-         }
+         if (id_en_edicion == null) { this.limpiar_objeto_clase_local(); }
+         else { this.buscar_objeto_clase(id_en_edicion); }
       },
       //usuarios_bitacora_servicios se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
       usuarios_bitacora_servicios: function (usuarios_bitacora_servicios) {

@@ -2143,6 +2143,29 @@ var inyeccion_funciones_compartidas = {
             }
          }return null;
       },
+      buscar_objeto_clase: function buscar_objeto_clase(id) {
+         var _this = this;
+
+         this.$http.get('/' + this.nombre_tabla + '/' + id).then(function (response) {
+            // success callback
+            _this.$data['' + _this.nombre_model] = response.body['' + _this.nombre_model];
+         }, function (response) {
+            // error callback
+            _this.checkear_estado_respuesta_http(response.status);
+         });
+      },
+      buscar_objeto_clase_config_relaciones: function buscar_objeto_clase_config_relaciones(id, relaciones) {
+         var _this2 = this;
+
+         this.$http.get('/' + this.nombre_tabla + '/' + id).then(function (response) {
+            // success callback
+            _this2.$data['' + _this2.nombre_model] = response.body['' + _this2.nombre_model];
+            _this2.configurar_relaciones([_this2.$data['' + _this2.nombre_model]], relaciones);
+         }, function (response) {
+            // error callback
+            _this2.checkear_estado_respuesta_http(response.status);
+         });
+      },
       // change order variable direction
       cambiar_orden_lista: function cambiar_orden_lista(columna) {
          this.orden_lista == 'asc' ? this.orden_lista = 'desc' : this.orden_lista = 'asc';
@@ -2230,18 +2253,18 @@ var inyeccion_funciones_compartidas = {
          return array.indexOf(v) > -1 ? true : false;
       },
       encontrar: function encontrar(id) {
-         var _this = this;
+         var _this3 = this;
 
          this.$http.get('/' + this.nombre_tabla + '/' + id).then(function (response) {
             // success callback
-            return response.body['' + _this.nombre_model];
+            return response.body['' + _this3.nombre_model];
          }, function (response) {
             // error callback
-            _this.checkear_estado_respuesta_http(response.status);
+            _this3.checkear_estado_respuesta_http(response.status);
          });
       },
       guardar: function guardar() {
-         var _this2 = this;
+         var _this4 = this;
 
          //Ejecuta validacion sobre los campos con validaciones
          //console.log(this.validar_campos());
@@ -2252,29 +2275,29 @@ var inyeccion_funciones_compartidas = {
                //Instancia nuevo form data
                var formData = new FormData();
                //Conforma objeto paramétrico para solicitud http
-               for (var i in _this2.permitido_guardar) {
-                  formData.append('' + _this2.permitido_guardar[i], _this2.$data['' + _this2.nombre_model]['' + _this2.permitido_guardar[i]] || null);
+               for (var i in _this4.permitido_guardar) {
+                  formData.append('' + _this4.permitido_guardar[i], _this4.$data['' + _this4.nombre_model]['' + _this4.permitido_guardar[i]] || 0);
                }
-               _this2.$http.post('/' + _this2.nombre_ruta, formData).then(function (response) {
+               _this4.$http.post('/' + _this4.nombre_ruta, formData).then(function (response) {
                   // success callback
                   if (response.status == 200) {
-                     if (!_this2.es_null(response.body['' + _this2.nombre_model])) {
+                     if (!_this4.es_null(response.body['' + _this4.nombre_model])) {
                         // del backend viene el objeto con el nombre
-                        _this2.id_en_edicion = null; // se resetea el objeto reactivo de la clase
+                        _this4.id_en_edicion = null; // se resetea el objeto reactivo de la clase
                      } //this.inicializar();
                   } else {
-                     _this2.checkear_estado_respuesta_http(response.status);
+                     _this4.checkear_estado_respuesta_http(response.status);
                      return false;
                   }
-                  if (_this2.mostrar_notificaciones(response) == true) {
-                     _this2.limpiar_objeto_clase_local();
-                     _this2.inicializar();
-                     _this2.ocultar_modal('crear');
+                  if (_this4.mostrar_notificaciones(response) == true) {
+                     _this4.limpiar_objeto_clase_local();
+                     _this4.inicializar();
+                     _this4.ocultar_modal('crear');
                      return;
                   }
                }, function (response) {
                   // error callback
-                  _this2.checkear_estado_respuesta_http(response.status);
+                  _this4.checkear_estado_respuesta_http(response.status);
                });
             }
          });
@@ -2287,7 +2310,7 @@ var inyeccion_funciones_compartidas = {
          }
       },
       mostrar: function mostrar(id, tabla, modelo) {
-         var _this3 = this;
+         var _this5 = this;
 
          this.$http.get('/' + tabla + '/' + id).then(function (response) {
             // success callback
@@ -2297,7 +2320,7 @@ var inyeccion_funciones_compartidas = {
             return obj;
          }, function (response) {
             // error callback
-            _this3.checkear_estado_respuesta_http(response.status);
+            _this5.checkear_estado_respuesta_http(response.status);
          });
       },
       mostrar_modal_actualizar: function mostrar_modal_actualizar(id) {
@@ -3783,7 +3806,7 @@ var TagController = new Vue({
          if (_id_en_edicion == null) {
             this.limpiar_objeto_clase_local();
          } else {
-            this.tag = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.tags, this.nombre_model);
+            this.buscar_objeto_clase(_id_en_edicion);
          }
       },
       //tags se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid

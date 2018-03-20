@@ -20,8 +20,7 @@
        @dblclick.prevent="editar(lom[`id_${nombre_model}`])">
       <template v-if="id_en_edicion != lom[`id_${nombre_model}`] || modal_actualizar_activo == true">
          <td v-for="c,i in tabla_campos" v-show="c">
-            {{-- si esto es requerido, entonces que sea configurado desde el backend --}}
-            {{--@{{ (r['id_permiso'] = r['role_permiso']['id_permiso']) ? r[i] :'' }}--}}
+            {{-- se corre por detras la completitud de relaciones. --}}
             @{{ lom[i] }}
          </td>
       </template>
@@ -33,9 +32,7 @@
             </span>
          </td>
          <td :colspan="filterBy(tabla_campos, true).length-1">
-            <dl class="dl-vertical" style="overflow-y: auto;max-height: 450px;padding-bottom: 50px;">
-               @include("$nombre_tabla.partials.formulario_campos")
-            </dl>
+            @include("$nombre_tabla.partials.formulario_campos")
          </td>
       </template>
 
