@@ -86,8 +86,6 @@ class AplicacionController extends Controller {
       $this->aplicacion = Aplicacion::where("id_$this->nombre_modelo",'=',$id)->with([
          'dominio','servidor','servicio','tipo_aplicacion'])->first();
 
-      #dd($this->aplicacion);
-
       #Valida si aplicacion existe
       if ($this->aplicacion) {
          return response()->json([

@@ -90,13 +90,6 @@ class UsuarioController extends Controller {
          'usuario_estado.estado','usuario_role.role','usuario_cargo.cargo','usuario_bitacora_servicios'
       ])->first();
 
-      /*
-      $this->usuario = User::where("id_$this->nombre_modelo",'=',$id)->with([
-         'usuario_estado.estado','usuario_role.role','usuario_cargo.cargo','usuario_bitacora_servicios'
-      ])->first();
-      */
-      #dd($this->usuario);
-
       #Valida si usuario existe y busca si tiene servidor_permiso
       if ($this->usuario) {
          return response()->json([

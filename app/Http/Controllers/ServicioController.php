@@ -79,8 +79,6 @@ class ServicioController extends Controller {
         $this->servicio = Servicio::where("id_$this->nombre_modelo",'=',$id)->with([
            'actividad','usuario','aplicaciones.servidor','usuarios_bitacora_servicios.usuario'])->first();
 
-        #dd($this->servicio);
-
         #Valida si servicio existe
         if ($this->servicio) {
             return response()->json([

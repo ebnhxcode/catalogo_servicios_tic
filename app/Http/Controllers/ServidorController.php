@@ -86,8 +86,6 @@ class ServidorController extends Controller {
 
       $this->servidor = Servidor::where("id_$this->nombre_modelo",'=',$id)->with(['datacentro','sistema_operativo','aplicaciones','servidor_estado'])->first();
 
-      #dd($this->servidor);
-
       #Valida si servidor existe y busca si tiene servidor_permiso
       if ($this->servidor) {
          return response()->json([

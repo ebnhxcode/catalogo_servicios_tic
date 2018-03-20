@@ -71,8 +71,6 @@ class ActividadController extends Controller {
       $this->actividad = Actividad::where("id_$this->nombre_modelo",'=',$id)->with([
          'servicios.aplicaciones'])->first();
 
-      #dd($this->actividad);
-
       #Valida si actividad existe
       if ($this->actividad) {
          return response()->json([

@@ -82,7 +82,6 @@ class UsuarioBitacoraServicioController extends Controller {
       $this->usuario_bitacora_servicio = UsuarioBitacoraServicio::where("id_$this->nombre_modelo",'=',$id)->with([
          'usuario','servicio','actividad'])->first();
 
-      #dd($this->usuario_bitacora_servicio);
 
       #Valida si usuario_bitacora_servicio existe
       if ($this->usuario_bitacora_servicio) {

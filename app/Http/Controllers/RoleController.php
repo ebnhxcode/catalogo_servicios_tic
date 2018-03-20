@@ -77,8 +77,6 @@ class RoleController extends Controller {
 
       $this->role = Role::where("id_$this->nombre_modelo",'=',$id)->with(['role_permiso.permiso'])->first();
 
-      #dd($this->role);
-
       #Valida si role existe y busca si tiene servidor_permiso
       if ($this->role) {
          return response()->json([

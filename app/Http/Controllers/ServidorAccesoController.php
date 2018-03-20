@@ -78,11 +78,7 @@ class ServidorAccesoController extends Controller {
          ]);
       }
 
-      #$this->servidor_acceso =
-         #ServidorAcceso::where("id_$this->nombre_modelo",'=',$id)->with(['datacentro','sistema_operativo','aplicaciones'])->first();
       $this->servidor_acceso = ServidorAcceso::where("id_$this->nombre_modelo",'=',$id)->first();
-
-      #dd($this->servidor);
 
       #Valida si servidor existe y busca si tiene servidor_permiso
       if ($this->servidor_acceso) {

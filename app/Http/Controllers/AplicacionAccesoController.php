@@ -78,11 +78,7 @@ class AplicacionAccesoController extends Controller {
          ]);
       }
 
-      #$this->aplicacion_acceso =
-      #AplicacionAcceso::where("id_$this->nombre_modelo",'=',$id)->with(['datacentro','sistema_operativo','aplicaciones'])->first();
       $this->aplicacion_acceso = AplicacionAcceso::where("id_$this->nombre_modelo",'=',$id)->first();
-
-      #dd($this->aplicacion);
 
       #Valida si aplicacion existe y busca si tiene aplicacion_permiso
       if ($this->aplicacion_acceso) {
