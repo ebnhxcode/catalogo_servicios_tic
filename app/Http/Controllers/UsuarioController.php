@@ -61,7 +61,7 @@ class UsuarioController extends Controller {
       }
 
       $this->usuario_auth = Auth::user();
-      $this->usuarios = User::all();
+      $this->usuarios = User::with(['usuario_estado.estado','usuario_role.role','usuario_cargo.cargo','usuario_bitacora_servicios'])->get();
       $this->roles = Role::all();
       $this->estados = Estado::all();
       $this->cargos = Cargo::all();

@@ -11,7 +11,7 @@
 
 
             <select class="form-control" v-model="sistema_operativo.arquitectura" name="id_dominio"
-                    v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
+                    v-validate="{required:true,regex:/^[0-9x]+$/i}" data-vv-delay="500">
                <option value="x86">x86</option>
                <option value="x64">x64</option>
                <option value="x32">x32</option>

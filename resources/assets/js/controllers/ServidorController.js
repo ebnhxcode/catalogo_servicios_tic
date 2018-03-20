@@ -243,9 +243,6 @@ const ServidorController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-
-
-
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
             this.configurar_relaciones(response.body.servidores, this.relaciones_clase);
@@ -259,116 +256,9 @@ const ServidorController = new Vue({
             this.estados = response.body.estados || null;
 
             this.usuario_auth = response.body.usuario_auth || null;
-            //this.limpiar_objeto_clase_local();
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);
          });
       },
-
-
-      editar: function (id_servidor) {
-         this.lista_actualizar_activo = true;
-         this.id_en_edicion = id_servidor;
-
-         //id_objeto + array de objetos + nombre del model en lower case
-         this.servidor = null;
-         this.servidor = this.buscar_en_array_por_modelo_e_id(id_servidor,this.servidores,this.nombre_model);
-
-      },
-
-      guardar_editado: function () {
-
-         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-
-         this.$http.put(`/${this.nombre_ruta}/${this.servidor.id_servidor}`, this.servidor).then(response => { // success callback
-
-            if (response.status == 200) {
-               /*
-               if ( !this.es_null(response.body.servidor) ) {
-                  this.lista_actualizar_activo = false;
-                  this.id_en_edicion = null;
-               }
-               */
-            } else {
-               this.checkear_estado_respuesta_http(response.status);
-               return false;
-            }
-
-            if ( this.mostrar_notificaciones(response) == true ) {
-
-
-               /*
-                //Aqui que pregunte si el modal está activo para que lo cierre
-                if (this.modal_actualizar_activo == true) {
-                this.ocultar_modal('actualizar');
-                this.modal_actualizar_activo = false;
-                }
-
-                this.lista_actualizar_activo = false;
-                this.id_en_edicion = null;
-               */
-
-               //Recargar la lista
-               this.inicializar();
-
-            }
-
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
-
-         return;
-      },
-
-
-
-      eliminar: function (id_servidor) {
-         swal({
-            title: "¿Estás seguro/a?",
-            text: "¿Deseas confirmar la eliminación de este registro?",
-            type: "warning",
-            showCancelButton: true,
-            closeOnConfirm: false,
-            closeOnCancel: false,
-            confirmButtonColor: '#DD6B55',
-            confirmButtonClass: "btn-danger",
-            confirmButtonText: 'Si, eliminar!',
-            confirmButtonClass: "btn-warning",
-            cancelButtonText: 'No, mantener.'
-         }).then((result) => {
-            if (result.value) {
-               //Se adjunta el token
-               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-
-               this.$http.delete(`/${this.nombre_ruta}/${id_servidor}`).then(response => {
-                  if ( response.status == 200) {
-                     this.auto_alerta_corta("Eliminado!","Registro eliminado correctamente","success");
-                  }else {
-                     this.checkear_estado_respuesta_http(response.status);
-                     return false;
-                  }
-
-                  if ( this.mostrar_notificaciones(response) == true ) {
-                     //Aqui que pregunte si el modal está activo para que lo cierre
-                     if (this.modal_actualizar_activo == true) {
-                        this.ocultar_modal('actualizar');
-                        this.modal_actualizar_activo = false;
-                     }
-                     this.lista_actualizar_activo = false;
-                     this.id_en_edicion = null;
-
-                     //Recargar la lista
-                     this.inicializar();
-                  }
-               }, response => { // error callback
-                  this.checkear_estado_respuesta_http(response.status);
-               });
-            } else if (result.dismiss === swal.DismissReason.cancel) {
-               this.auto_alerta_corta("Cancelado","Se ha cancelado la eliminación","success");
-            }
-         });
-
-      },
-
    }
 });

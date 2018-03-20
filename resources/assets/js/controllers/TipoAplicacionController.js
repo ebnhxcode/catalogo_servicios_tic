@@ -43,7 +43,7 @@ const TipoAplicacionController = new Vue({
             'det_tipo_aplicacion',
             'cod_tipo_aplicacion',
          ],
-         'relaciones':[],
+         'relaciones_clase':[],
          'lom':{},
          'lista_objs_model':[],
          'tipos_aplicaciones': [],
@@ -139,11 +139,9 @@ const TipoAplicacionController = new Vue({
    },
    created(){
       this.inicializar();
-
       $(document).ready(function () {
          $('[data-toggle="tooltip"]').tooltip();
       });
-
       /*
        $(document).ready(function () {
        //Handle al recargar pagina
@@ -156,131 +154,22 @@ const TipoAplicacionController = new Vue({
 
        });
        */
-
    },
    ready: {},
    filters: {},
    mixins: [inyeccion_funciones_compartidas],
    methods: {
-
-
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+            //Se setean las variables con los datos de la clase
             this.lista_objs_model = response.body.tipos_aplicaciones || null;
             this.tipos_aplicaciones = response.body.tipos_aplicaciones || null;
             this.datos_excel = response.body.tipos_aplicaciones || null;
+            //Se setea el usuario autenticado
             this.usuario_auth = response.body.usuario_auth || null;
-            //this.limpiar_objeto_clase_local();
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);
          });
       },
-
-
-      editar: function (id_tipo_aplicacion) {
-
-         this.id_en_edicion = id_tipo_aplicacion;
-
-         this.lista_actualizar_activo = true;
-
-         //id_objeto + array de objetos + nombre del model en lower case
-         this.$data[`${this.nombre_model}`] = null;
-         this.$data[`${this.nombre_model}`] = this.buscar_en_array_por_modelo_e_id(this.$data[`${this.nombre_model}`][`${this.pk_tabla}`], this.$data[`${this.nombre_ruta}`], this.nombre_model);
-      },
-
-      guardar_editado: function () {
-
-         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-
-         this.$http.put(`/${this.nombre_ruta}/${this.tipo_aplicacion.id_tipo_aplicacion}`, this.tipo_aplicacion).then(response => { // success callback
-
-            if (response.status == 200) {
-               /*
-               if (!this.es_null(response.body.tipo_aplicacion)) {
-                  this.lista_actualizar_activo = false;
-                  this.id_en_edicion = null;
-               }
-               */
-            } else {
-               this.checkear_estado_respuesta_http(response.status);
-               return false;
-            }
-
-            if (this.mostrar_notificaciones(response) == true) {
-
-
-               /*
-                //Aqui que pregunte si el modal está activo para que lo cierre
-                if (this.modal_actualizar_activo == true) {
-                this.ocultar_modal('actualizar');
-                this.modal_actualizar_activo = false;
-                }
-
-                this.lista_actualizar_activo = false;
-                this.id_en_edicion = null;
-
-               */
-               //Recargar la lista
-               this.inicializar();
-
-            }
-
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
-
-         return;
-      },
-
-
-      eliminar: function (id_tipo_aplicacion) {
-         swal({
-            title: "¿Estás seguro/a?",
-            text: "¿Deseas confirmar la eliminación de este registro?",
-            type: "warning",
-            showCancelButton: true,
-            closeOnConfirm: false,
-            closeOnCancel: false,
-            confirmButtonColor: '#DD6B55',
-            confirmButtonClass: "btn-danger",
-            confirmButtonText: 'Si, eliminar!',
-            confirmButtonClass: "btn-warning",
-            cancelButtonText: 'No, mantener.'
-         }).then((result) => {
-            if (result.value) {
-               //Se adjunta el token
-               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-
-               this.$http.delete(`/${this.nombre_ruta}/${id_tipo_aplicacion}`).then(response => {
-                  if (response.status == 200) {
-                     this.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
-                  } else {
-                     this.checkear_estado_respuesta_http(response.status);
-                     return false;
-                  }
-
-                  if (this.mostrar_notificaciones(response) == true) {
-                     //Aqui que pregunte si el modal está activo para que lo cierre
-                     if (this.modal_actualizar_activo == true) {
-                        this.ocultar_modal('actualizar');
-                        this.modal_actualizar_activo = false;
-                     }
-                     this.lista_actualizar_activo = false;
-                     this.id_en_edicion = null;
-
-                     //Recargar la lista
-                     this.inicializar();
-                  }
-               }, response => { // error callback
-                  this.checkear_estado_respuesta_http(response.status);
-               });
-            } else if (result.dismiss === swal.DismissReason.cancel) {
-               this.auto_alerta_corta("Cancelado", "Se ha cancelado la eliminación", "success");
-            }
-         });
-
-      },
-
-
    }
 });

@@ -128,7 +128,60 @@ export const inyeccion_funciones_compartidas = {
          this.lista_actualizar_activo = false;
          this.id_en_edicion = null;
       },
+      editar: function (id) {
+         this.id_en_edicion = id;
+         this.lista_actualizar_activo = true;
+         //id_objeto + array de objetos + nombre del model en lower case
+         this.$data[`${this.nombre_model}`] =
+            this.buscar_en_array_por_modelo_e_id(this.$data[`${this.nombre_model}`][`${this.pk_tabla}`], this.$data[`${this.nombre_ruta}`], this.nombre_model);
+      },
+      eliminar: function (id) {
+         swal({
+            title: "¿Estás seguro/a?",
+            text: "¿Deseas confirmar la eliminación de este registro?",
+            type: "warning",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            confirmButtonColor: '#DD6B55',
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: 'Si, eliminar!',
+            confirmButtonClass: "btn-warning",
+            cancelButtonText: 'No, mantener.'
+         }).then((result) => {
+            if (result.value) {
+               //Se adjunta el token
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
+               this.$http.delete(`/${this.nombre_ruta}/${id}`).then(response => {
+                  if (response.status == 200) {
+                     this.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
+                  } else {
+                     this.checkear_estado_respuesta_http(response.status);
+                     return false;
+                  }
+
+                  if (this.mostrar_notificaciones(response) == true) {
+                     //Aqui que pregunte si el modal está activo para que lo cierre
+                     if (this.modal_actualizar_activo == true) {
+                        this.ocultar_modal('actualizar');
+                        this.modal_actualizar_activo = false;
+                     }
+                     this.lista_actualizar_activo = false;
+                     this.id_en_edicion = null;
+
+                     //Recargar la lista
+                     this.inicializar();
+                  }
+               }, response => { // error callback
+                  this.checkear_estado_respuesta_http(response.status);
+               });
+            } else if (result.dismiss === swal.DismissReason.cancel) {
+               this.auto_alerta_corta("Cancelado", "Se ha cancelado la eliminación", "success");
+            }
+         });
+
+      },
       es_undefined:(v) => { return (typeof v == undefined)?true:false; },
       es_null: (v) => { return (v==null)?true:false; },
       es_empty: (v) => { return (!v || v==null || v=='' || typeof v == undefined) ? true : false; },
@@ -175,7 +228,41 @@ export const inyeccion_funciones_compartidas = {
          });
          return;
       },
+      guardar_editado: function () {
+         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+         this.$http.put(`/${this.nombre_ruta}/${this.$data[this.nombre_model][this.pk_tabla]}`, this.$data[this.nombre_model]).then(response => { // success callback
+            if (response.status == 200) {
+               /*
+                if (!this.es_null(response.body.usuario)) {
+                this.lista_actualizar_activo = false;
+                this.id_en_edicion = null;
+                }
+                */
+            } else {
+               this.checkear_estado_respuesta_http(response.status);
+               return false;
+            }
 
+            if (this.mostrar_notificaciones(response) == true) {
+
+               /*
+                //Aqui que pregunte si el modal está activo para que lo cierre
+                if (this.modal_actualizar_activo == true) {
+                this.ocultar_modal('actualizar');
+                this.modal_actualizar_activo = false;
+                }
+
+                this.lista_actualizar_activo = false;
+                this.id_en_edicion = null;
+                */
+               //Recargar la lista
+               this.inicializar();
+            }
+         }, response => { // error callback
+            this.checkear_estado_respuesta_http(response.status);
+         });
+         return;
+      },
       limpiar_objeto_clase_local: function () {
          for (var k in this.$data[`${this.nombre_model}`]) { this.$data[`${this.nombre_model}`][k] = null; }
       },

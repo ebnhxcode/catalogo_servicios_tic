@@ -39,18 +39,17 @@ const UsuarioBitacoraServicioController = new Vue({
             'updated_at':null,
             'deleted_at':null,
          },
-         'usuario_bitacora_servicio_limpio':{
-            'asunto':null,
-            'det_bitacora':null,
-            'id_actividad':null,
-            'id_servicio':null,
-            'id_usuario_registra':null,
-            'id_usuario_modifica':null,
-            'created_at':null,
-            'updated_at':null,
-            'deleted_at':null,
-         },
-
+         'permitido_guardar':[
+            'asunto',
+            'det_bitacora',
+            'id_actividad',
+            'id_servicio',
+         ],
+         'relaciones_clase':[
+            {'usuario':'id_usuario'},
+            {'servicio':'id_servicio'},
+            {'actividad':'id_actividad'},
+         ],
          'lom':{},
          'lista_objs_model':[],
          'usuarios_bitacora_servicios':[],
@@ -124,7 +123,7 @@ const UsuarioBitacoraServicioController = new Vue({
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function (id_en_edicion) {
          if (id_en_edicion == null) { this.limpiar_objeto_clase_local(); }
-         else { this.buscar_objeto_clase(id_en_edicion); }
+         else { this.buscar_objeto_clase_config_relaciones(id_en_edicion, this.relaciones_clase); }
       },
       //usuarios_bitacora_servicios se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
       usuarios_bitacora_servicios: function (usuarios_bitacora_servicios) {
@@ -159,166 +158,22 @@ const UsuarioBitacoraServicioController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+            //Al tener relaciones se procesan desde aqui
+            this.configurar_relaciones(response.body.usuarios_bitacora_servicios, this.relaciones_clase);
+            //Se setean las variables con los datos de la clase
             this.lista_objs_model = response.body.usuarios_bitacora_servicios || null;
             this.usuarios_bitacora_servicios = response.body.usuarios_bitacora_servicios || null;
+            this.datos_excel = response.body.usuarios_bitacora_servicios || null;
+            //Se setean las variables paramétricas (combos, listas, etc)
             this.actividades = response.body.actividades || null;
             this.servicios = response.body.servicios || null;
-            this.datos_excel = response.body.usuarios_bitacora_servicios || null;
-            //this.limpiar_objeto_clase_local();
+            //Se setea el usuario autenticado
+            this.usuario_auth = response.body.usuario_auth || null;
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);
          });
       },
-
-
-      editar: function (id_usuario_bitacora_servicio) {
-         this.lista_actualizar_activo = true;
-         this.id_en_edicion = id_usuario_bitacora_servicio;
-
-         //id_objeto + array de objetos + nombre del model en lower case
-         this.usuario_bitacora_servicio = null;
-         this.usuario_bitacora_servicio =
-            this.buscar_en_array_por_modelo_e_id(id_usuario_bitacora_servicio,this.usuarios_bitacora_servicios,this.nombre_model);
-
-      },
-
-      guardar_editado: function () {
-
-         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-
-         this.$http.put(`/${this.nombre_ruta}/${this.usuario_bitacora_servicio.id_usuario_bitacora_servicio}`,
-            this.usuario_bitacora_servicio).then(response => { // success callback
-
-            if (response.status == 200) {
-               /*
-               if ( !this.es_null(response.body.usuario_bitacora_servicio) ) {
-                  this.lista_actualizar_activo = false;
-                  this.id_en_edicion = null;
-               }
-               */
-            } else {
-               this.checkear_estado_respuesta_http(response.status);
-               return false;
-            }
-
-            if ( this.mostrar_notificaciones(response) == true ) {
-
-               /*
-                //Aqui que pregunte si el modal está activo para que lo cierre
-                if (this.modal_actualizar_activo == true) {
-                this.ocultar_modal('actualizar');
-                this.modal_actualizar_activo = false;
-                }
-
-                this.lista_actualizar_activo = false;
-                this.id_en_edicion = null;
-               */
-
-               //Recargar la lista
-               this.inicializar();
-
-            }
-
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
-
-         return;
-      },
-
-
-
-      eliminar: function (id_usuario_bitacora_servicio) {
-         swal({
-            title: "¿Estás seguro/a?",
-            text: "¿Deseas confirmar la eliminación de este registro?",
-            type: "warning",
-            showCancelButton: true,
-            closeOnConfirm: false,
-            closeOnCancel: false,
-            confirmButtonColor: '#DD6B55',
-            confirmButtonClass: "btn-danger",
-            confirmButtonText: 'Si, eliminar!',
-            confirmButtonClass: "btn-warning",
-            cancelButtonText: 'No, mantener.'
-         }).then((result) => {
-            if (result.value) {
-               //Se adjunta el token
-               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-
-               this.$http.delete(`/${this.nombre_ruta}/${id_usuario_bitacora_servicio}`).then(response => {
-                  if ( response.status == 200) {
-                     this.auto_alerta_corta("Eliminado!","Registro eliminado correctamente","success");
-                  }else {
-                     this.checkear_estado_respuesta_http(response.status);
-                     return false;
-                  }
-
-                  if ( this.mostrar_notificaciones(response) == true ) {
-                     //Aqui que pregunte si el modal está activo para que lo cierre
-                     if (this.modal_actualizar_activo == true) {
-                        this.ocultar_modal('actualizar');
-                        this.modal_actualizar_activo = false;
-                     }
-                     this.lista_actualizar_activo = false;
-                     this.id_en_edicion = null;
-
-                     //Recargar la lista
-                     this.inicializar();
-                  }
-               }, response => { // error callback
-                  this.checkear_estado_respuesta_http(response.status);
-               });
-            } else if (result.dismiss === swal.DismissReason.cancel) {
-               this.auto_alerta_corta("Cancelado","Se ha cancelado la eliminación","success");
-            }
-         });
-
-      },
-
-      guardar: function () {
-         //Ejecuta validacion sobre los campos con validaciones
-         if (this.validar_campos() == false) {
-            return;
-         }
-         //Se adjunta el token
-         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-         //Instancia nuevo form data
-         var formData = new  FormData();
-         //Conforma objeto paramétrico para solicitud http
-         formData.append('asunto', this.usuario_bitacora_servicio.asunto || null );
-         formData.append('det_bitacora', this.usuario_bitacora_servicio.det_bitacora || null );
-         formData.append('id_actividad', this.usuario_bitacora_servicio.id_actividad || null );
-         formData.append('id_servicio', this.usuario_bitacora_servicio.id_servicio || null );
-
-         this.$http.post(`/${this.nombre_ruta}`, formData).then(response => { // success callback
-
-            if ( response.status == 200) {
-               if ( !this.es_null(response.body[this.nombre_model]) ) {
-                  this.id_en_edicion = null;
-               }
-               //this.inicializar();
-            } else {
-               this.checkear_estado_respuesta_http(response.status);
-               return false;
-            }
-
-            if ( this.mostrar_notificaciones(response) == true ) {
-               this.limpiar_objeto_clase_local();
-               this.inicializar();
-               this.ocultar_modal('crear');
-               return ;
-            }
-
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
-
-         return;
-      },
-
    }
 });

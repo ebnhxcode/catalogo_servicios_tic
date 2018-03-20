@@ -38,16 +38,12 @@ const TagController = new Vue({
             'updated_at':null,
             'deleted_at':null,
          },
-         'tag_limpio':{
-            'nom_tag':null,
-            'det_tag':null,
-            'meta_tag':null,
-            'id_usuario_registra':null,
-            'id_usuario_modifica':null,
-            'created_at':null,
-            'updated_at':null,
-            'deleted_at':null,
-         },
+         'permitido_guardar':[
+            'nom_tag',
+            'det_tag',
+            'meta_tag',
+         ],
+         'relaciones_clase':[],
          'lom':{},
          'lista_objs_model':[],
          'tags':[],
@@ -167,163 +163,18 @@ const TagController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
             this.lista_objs_model = response.body.tags || null;
             this.tags = response.body.tags || null;
-            this.permisos = response.body.permisos || null;
             this.datos_excel = response.body.tags || null;
+
+            this.permisos = response.body.permisos || null;
             this.usuario_auth = response.body.usuario_auth || null;
-            //this.limpiar_objeto_clase_local();
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
-      },
-
-
-      editar: function (id_tag) {
-         this.lista_actualizar_activo = true;
-         this.id_en_edicion = id_tag;
-
-         //id_objeto + array de objetos + nombre del model en lower case
-         this.tag = null;
-         this.tag = this.buscar_en_array_por_modelo_e_id(id_tag,this.tags,this.nombre_model);
-
-      },
-
-      guardar_editado: function () {
-
-         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-
-         this.$http.put(`/${this.nombre_ruta}/${this.tag.id_tag}`, this.tag).then(response => { // success callback
-
-            if (response.status == 200) {
-               /*
-               if ( !this.es_null(response.body.tag) ) {
-                  this.lista_actualizar_activo = false;
-                  this.id_en_edicion = null;
-               }
-               */
-            } else {
-               this.checkear_estado_respuesta_http(response.status);
-               return false;
-            }
-
-            if ( this.mostrar_notificaciones(response) == true ) {
-
-               /*
-                //Aqui que pregunte si el modal está activo para que lo cierre
-                if (this.modal_actualizar_activo == true) {
-                this.ocultar_modal('actualizar');
-                this.modal_actualizar_activo = false;
-                }
-
-                this.lista_actualizar_activo = false;
-                this.id_en_edicion = null;
-               */
-
-               //Recargar la lista
-               this.inicializar();
-
-            }
 
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);
          });
-
-         return;
       },
-
-
-
-      eliminar: function (id_tag) {
-         swal({
-            title: "¿Estás seguro/a?",
-            text: "¿Deseas confirmar la eliminación de este registro?",
-            type: "warning",
-            showCancelButton: true,
-            closeOnConfirm: false,
-            closeOnCancel: false,
-            confirmButtonColor: '#DD6B55',
-            confirmButtonClass: "btn-danger",
-            confirmButtonText: 'Si, eliminar!',
-            confirmButtonClass: "btn-warning",
-            cancelButtonText: 'No, mantener.'
-         }).then((result) => {
-            if (result.value) {
-               //Se adjunta el token
-               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-
-               this.$http.delete(`/${this.nombre_ruta}/${id_tag}`).then(response => {
-                  if ( response.status == 200) {
-                     this.auto_alerta_corta("Eliminado!","Registro eliminado correctamente","success");
-                  }else {
-                     this.checkear_estado_respuesta_http(response.status);
-                     return false;
-                  }
-
-                  if ( this.mostrar_notificaciones(response) == true ) {
-                     //Aqui que pregunte si el modal está activo para que lo cierre
-                     if (this.modal_actualizar_activo == true) {
-                        this.ocultar_modal('actualizar');
-                        this.modal_actualizar_activo = false;
-                     }
-                     this.lista_actualizar_activo = false;
-                     this.id_en_edicion = null;
-
-                     //Recargar la lista
-                     this.inicializar();
-                  }
-               }, response => { // error callback
-                  this.checkear_estado_respuesta_http(response.status);
-               });
-            } else if (result.dismiss === swal.DismissReason.cancel) {
-               this.auto_alerta_corta("Cancelado","Se ha cancelado la eliminación","success");
-            }
-         });
-
-      },
-
-      guardar: function () {
-         //Ejecuta validacion sobre los campos con validaciones
-         if (this.validar_campos() == false) {
-            return;
-         }
-         //Se adjunta el token
-         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-         //Instancia nuevo form data
-         var formData = new  FormData();
-         //Conforma objeto paramétrico para solicitud http
-         formData.append('nom_tag', this.tag.nom_tag || null );
-         formData.append('det_tag', this.tag.det_tag || null );
-         formData.append('meta_tag', this.tag.meta_tag || null );
-
-         this.$http.post(`/${this.nombre_ruta}`, formData).then(response => { // success callback
-
-            if ( response.status == 200) {
-               if ( !this.es_null(response.body.servicio) ) {
-                  this.id_en_edicion = null;
-               }
-               //this.inicializar();
-            } else {
-               this.checkear_estado_respuesta_http(response.status);
-               return false;
-            }
-
-            if ( this.mostrar_notificaciones(response) == true ) {
-               this.limpiar_objeto_clase_local();
-               this.inicializar();
-               this.ocultar_modal('crear');
-               return ;
-            }
-
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
-
-         return;
-      },
-
    }
 });
