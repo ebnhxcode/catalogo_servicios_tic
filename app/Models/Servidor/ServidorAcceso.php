@@ -20,16 +20,18 @@ class ServidorAcceso extends Model {
       'puerto',
 
       #relaciones -> pks
-      'id_aplicacion',
+      //'id_aplicacion',
       'id_servidor',
 
       'id_usuario_registra',
       'id_usuario_modifica',
    ];
 
+   /*
    public function aplicacion () {
       return $this->belongsTo(Aplicacion::class, 'id_aplicacion');
    }
+   */
 
    public function servidor () {
       return $this->belongsTo(Servidor::class, 'id_servidor');

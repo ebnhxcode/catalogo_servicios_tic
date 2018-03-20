@@ -57,7 +57,7 @@ class ServidorAccesoController extends Controller {
       }
 
       $this->usuario_auth = Auth::user();
-      $this->servidores_accesos = ServidorAcceso::all();
+      $this->servidores_accesos = ServidorAcceso::with(['servidor'])->get();
       $this->servidores = Servidor::all();
 
       return response()->json([
@@ -78,7 +78,7 @@ class ServidorAccesoController extends Controller {
          ]);
       }
 
-      $this->servidor_acceso = ServidorAcceso::where("id_$this->nombre_modelo",'=',$id)->first();
+      $this->servidor_acceso = ServidorAcceso::where("id_$this->nombre_modelo",'=',$id)->with(['servidor'])->first();
 
       #Valida si servidor existe y busca si tiene servidor_permiso
       if ($this->servidor_acceso) {
@@ -119,6 +119,7 @@ class ServidorAccesoController extends Controller {
       }
       #Como pasó todas las validaciones, se asigna al objeto
       $this->servidor_acceso = $request->all();
+
       #Se crea el nuevo registro
       $this->new_servidor_acceso = ServidorAcceso::create([
          'usuario' => $this->servidor_acceso['usuario'],
@@ -150,7 +151,7 @@ class ServidorAccesoController extends Controller {
          'id_servidor_acceso' => 'required|regex:/(^([0-9]+)(\d+)?$)/u|max:255',
          'usuario' => "required|regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|max:255",
          'clave' => "required|regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|max:255",
-         'tipo_acceso' => "required|regex:/(^([a-zA-Z0-9_ ,.!@#$/%*&]+)(\d+)?$)/u|max:255",
+         'tipo_acceso' => "required|regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|max:255",
          'puerto' => "nullable|regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|max:255",
          'id_servidor' => "required|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
       ]);
