@@ -12,7 +12,7 @@
          Guardar
       </button>
       <button class="btn float-right" @click.prevent="limpiar_objeto_clase_local">
-         Limpiar
+         Limpiar Formulario
       </button>
    </dd>
 

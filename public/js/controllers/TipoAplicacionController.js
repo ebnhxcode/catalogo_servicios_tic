@@ -2215,7 +2215,6 @@ var inyeccion_funciones_compartidas = {
       dejar_de_editar: function dejar_de_editar() {
          this.lista_actualizar_activo = false;
          this.id_en_edicion = null;
-         this.dejar_de_editar_contador = 0;
       },
 
       es_undefined: function es_undefined(v) {
@@ -2241,13 +2240,54 @@ var inyeccion_funciones_compartidas = {
             _this.checkear_estado_respuesta_http(response.status);
          });
       },
+      guardar: function guardar() {
+         var _this2 = this;
+
+         //Ejecuta validacion sobre los campos con validaciones
+         //console.log(this.validar_campos());
+         this.$validator.validateAll().then(function (res) {
+            if (res == true) {
+               //Se adjunta el token
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               //Instancia nuevo form data
+               var formData = new FormData();
+               //Conforma objeto paramétrico para solicitud http
+               for (var i in _this2.permitido_guardar) {
+                  formData.append('' + _this2.permitido_guardar[i], _this2.$data['' + _this2.nombre_model]['' + _this2.permitido_guardar[i]] || null);
+               }
+               _this2.$http.post('/' + _this2.nombre_ruta, formData).then(function (response) {
+                  // success callback
+                  if (response.status == 200) {
+                     if (!_this2.es_null(response.body['' + _this2.nombre_model])) {
+                        // del backend viene el objeto con el nombre
+                        _this2.id_en_edicion = null; // se resetea el objeto reactivo de la clase
+                     } //this.inicializar();
+                  } else {
+                     _this2.checkear_estado_respuesta_http(response.status);
+                     return false;
+                  }
+                  if (_this2.mostrar_notificaciones(response) == true) {
+                     _this2.limpiar_objeto_clase_local();
+                     _this2.inicializar();
+                     _this2.ocultar_modal('crear');
+                     return;
+                  }
+               }, function (response) {
+                  // error callback
+                  _this2.checkear_estado_respuesta_http(response.status);
+               });
+            }
+         });
+         return;
+      },
+
       limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
          for (var k in this.$data['' + this.nombre_model]) {
             this.$data['' + this.nombre_model][k] = null;
          }
       },
       mostrar: function mostrar(id, tabla, modelo) {
-         var _this2 = this;
+         var _this3 = this;
 
          this.$http.get('/' + tabla + '/' + id).then(function (response) {
             // success callback
@@ -2257,7 +2297,7 @@ var inyeccion_funciones_compartidas = {
             return obj;
          }, function (response) {
             // error callback
-            _this2.checkear_estado_respuesta_http(response.status);
+            _this3.checkear_estado_respuesta_http(response.status);
          });
       },
       mostrar_modal_actualizar: function mostrar_modal_actualizar(id) {
@@ -3730,10 +3770,18 @@ var TipoAplicacionController = new Vue({
       //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el tipo_aplicacion
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function id_en_edicion(_id_en_edicion) {
+         var _this = this;
+
          if (_id_en_edicion == null) {
             this.limpiar_objeto_clase_local();
          } else {
-            this.tipo_aplicacion = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.tipos_aplicaciones, this.nombre_model);
+            this.$http.get('/' + this.nombre_tabla + '/' + _id_en_edicion).then(function (response) {
+               // success callback
+               _this.$data['' + _this.nombre_model] = response.body['' + _this.nombre_model];
+            }, function (response) {
+               // error callback
+               _this.checkear_estado_respuesta_http(response.status);
+            });
          }
       },
       //tipos_aplicaciones se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
@@ -3784,32 +3832,34 @@ var TipoAplicacionController = new Vue({
    methods: {
 
       inicializar: function inicializar() {
-         var _this = this;
+         var _this2 = this;
 
          this.$http.get('/' + this.nombre_ruta).then(function (response) {
             // success callback
-            _this.lista_objs_model = response.body.tipos_aplicaciones || null;
-            _this.tipos_aplicaciones = response.body.tipos_aplicaciones || null;
-            _this.datos_excel = response.body.tipos_aplicaciones || null;
-            _this.usuario_auth = response.body.usuario_auth || null;
+            _this2.lista_objs_model = response.body.tipos_aplicaciones || null;
+            _this2.tipos_aplicaciones = response.body.tipos_aplicaciones || null;
+            _this2.datos_excel = response.body.tipos_aplicaciones || null;
+            _this2.usuario_auth = response.body.usuario_auth || null;
             //this.limpiar_objeto_clase_local();
          }, function (response) {
             // error callback
-            _this.checkear_estado_respuesta_http(response.status);
+            _this2.checkear_estado_respuesta_http(response.status);
          });
       },
 
       editar: function editar(id_tipo_aplicacion) {
-         this.lista_actualizar_activo = true;
+
          this.id_en_edicion = id_tipo_aplicacion;
 
+         this.lista_actualizar_activo = true;
+
          //id_objeto + array de objetos + nombre del model en lower case
-         this.tipo_aplicacion = null;
-         this.tipo_aplicacion = this.buscar_en_array_por_modelo_e_id(id_tipo_aplicacion, this.tipos_aplicaciones, this.nombre_model);
+         this.$data['' + this.nombre_model] = null;
+         this.$data['' + this.nombre_model] = this.buscar_en_array_por_modelo_e_id(this.$data['' + this.nombre_model]['' + this.pk_tabla], this.$data['' + this.nombre_ruta], this.nombre_model);
       },
 
       guardar_editado: function guardar_editado() {
-         var _this2 = this;
+         var _this3 = this;
 
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
@@ -3824,11 +3874,11 @@ var TipoAplicacionController = new Vue({
                }
                */
             } else {
-               _this2.checkear_estado_respuesta_http(response.status);
+               _this3.checkear_estado_respuesta_http(response.status);
                return false;
             }
 
-            if (_this2.mostrar_notificaciones(response) == true) {
+            if (_this3.mostrar_notificaciones(response) == true) {
 
                /*
                 //Aqui que pregunte si el modal está activo para que lo cierre
@@ -3840,11 +3890,11 @@ var TipoAplicacionController = new Vue({
                 this.id_en_edicion = null;
                 */
                //Recargar la lista
-               _this2.inicializar();
+               _this3.inicializar();
             }
          }, function (response) {
             // error callback
-            _this2.checkear_estado_respuesta_http(response.status);
+            _this3.checkear_estado_respuesta_http(response.status);
          });
 
          return;
@@ -3852,7 +3902,7 @@ var TipoAplicacionController = new Vue({
 
       eliminar: function eliminar(id_tipo_aplicacion) {
          var _swal,
-             _this3 = this;
+             _this4 = this;
 
          __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()((_swal = {
             title: "¿Estás seguro/a?",
@@ -3869,80 +3919,34 @@ var TipoAplicacionController = new Vue({
                //Se adjunta el token
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-               _this3.$http.delete('/' + _this3.nombre_ruta + '/' + id_tipo_aplicacion).then(function (response) {
+               _this4.$http.delete('/' + _this4.nombre_ruta + '/' + id_tipo_aplicacion).then(function (response) {
                   if (response.status == 200) {
-                     _this3.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
-                  } else {
-                     _this3.checkear_estado_respuesta_http(response.status);
-                     return false;
-                  }
-
-                  if (_this3.mostrar_notificaciones(response) == true) {
-                     //Aqui que pregunte si el modal está activo para que lo cierre
-                     if (_this3.modal_actualizar_activo == true) {
-                        _this3.ocultar_modal('actualizar');
-                        _this3.modal_actualizar_activo = false;
-                     }
-                     _this3.lista_actualizar_activo = false;
-                     _this3.id_en_edicion = null;
-
-                     //Recargar la lista
-                     _this3.inicializar();
-                  }
-               }, function (response) {
-                  // error callback
-                  _this3.checkear_estado_respuesta_http(response.status);
-               });
-            } else if (result.dismiss === __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default.a.DismissReason.cancel) {
-               _this3.auto_alerta_corta("Cancelado", "Se ha cancelado la eliminación", "success");
-            }
-         });
-      },
-
-      guardar: function guardar() {
-         var _this4 = this;
-
-         //Ejecuta validacion sobre los campos con validaciones
-         //console.log(this.validar_campos());
-         this.$validator.validateAll().then(function (res) {
-            if (res == true) {
-               //Se adjunta el token
-               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-               //Instancia nuevo form data
-               var formData = new FormData();
-               //Conforma objeto paramétrico para solicitud http
-
-               for (var i in _this4.permitido_guardar) {
-                  formData.append('' + _this4.permitido_guardar[i], _this4.$data['' + _this4.nombre_model]['' + _this4.permitido_guardar[i]] || null);
-               }
-
-               _this4.$http.post('/' + _this4.nombre_ruta, formData).then(function (response) {
-                  // success callback
-
-                  if (response.status == 200) {
-                     if (!_this4.es_null(response.body['' + _this4.nombre_model])) {
-                        _this4.id_en_edicion = null;
-                     }
-                     //this.inicializar();
+                     _this4.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
                   } else {
                      _this4.checkear_estado_respuesta_http(response.status);
                      return false;
                   }
 
                   if (_this4.mostrar_notificaciones(response) == true) {
-                     _this4.limpiar_objeto_clase_local();
+                     //Aqui que pregunte si el modal está activo para que lo cierre
+                     if (_this4.modal_actualizar_activo == true) {
+                        _this4.ocultar_modal('actualizar');
+                        _this4.modal_actualizar_activo = false;
+                     }
+                     _this4.lista_actualizar_activo = false;
+                     _this4.id_en_edicion = null;
+
+                     //Recargar la lista
                      _this4.inicializar();
-                     _this4.ocultar_modal('crear');
-                     return;
                   }
                }, function (response) {
                   // error callback
                   _this4.checkear_estado_respuesta_http(response.status);
                });
+            } else if (result.dismiss === __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default.a.DismissReason.cancel) {
+               _this4.auto_alerta_corta("Cancelado", "Se ha cancelado la eliminación", "success");
             }
          });
-
-         return;
       }
 
    }

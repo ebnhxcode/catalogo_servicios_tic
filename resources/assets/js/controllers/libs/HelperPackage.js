@@ -38,7 +38,11 @@ export const inyeccion_funciones_compartidas = {
          return;
       },
       buscar_en_array_por_modelo_e_id: function (id, array, model) {
-         for (let a in array) { if (array[a][`id_${model}`] == id) { return array[a]; } } return null;
+         for (let a in array) {
+            if (array[a][`id_${model}`] == id) {
+               return array[a];
+            }
+         } return null;
       },
       // change order variable direction
       cambiar_orden_lista: function (columna) {
@@ -108,7 +112,6 @@ export const inyeccion_funciones_compartidas = {
       dejar_de_editar: function () {
          this.lista_actualizar_activo = false;
          this.id_en_edicion = null;
-         this.dejar_de_editar_contador = 0;
       },
 
       es_undefined:(v) => { return (typeof v == undefined)?true:false; },
@@ -125,41 +128,34 @@ export const inyeccion_funciones_compartidas = {
       guardar: function () {
          //Ejecuta validacion sobre los campos con validaciones
          //console.log(this.validar_campos());
-         this.$validator.validateAll().then(res => {
+         this.$validator.validateAll().then( res => {
             if (res == true) {
                //Se adjunta el token
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
                //Instancia nuevo form data
                var formData = new FormData();
                //Conforma objeto paramétrico para solicitud http
-
                for (let i in this.permitido_guardar) {
                   formData.append(`${this.permitido_guardar[i]}`, this.$data[`${this.nombre_model}`][`${this.permitido_guardar[i]}`] || null);
                }
-
                this.$http.post(`/${this.nombre_ruta}`, formData).then(response => { // success callback
-
                   if (response.status == 200) {
-                     if (!this.es_null(response.body[`${this.nombre_model}`])) {
-                        this.id_en_edicion = null;
-                     }
-                     //this.inicializar();
+                     if (!this.es_null(response.body[`${this.nombre_model}`])) { // del backend viene el objeto con el nombre
+                        this.id_en_edicion = null; // se resetea el objeto reactivo de la clase
+                     }//this.inicializar();
                   } else {
                      this.checkear_estado_respuesta_http(response.status);
                      return false;
                   }
-
                   if (this.mostrar_notificaciones(response) == true) {
                      this.limpiar_objeto_clase_local();
                      this.inicializar();
                      this.ocultar_modal('crear');
                      return;
                   }
-
                }, response => { // error callback
                   this.checkear_estado_respuesta_http(response.status);
                });
-
             }
          });
          return;

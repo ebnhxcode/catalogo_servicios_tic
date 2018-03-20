@@ -114,7 +114,11 @@ const TipoAplicacionController = new Vue({
          if (id_en_edicion == null) {
             this.limpiar_objeto_clase_local();
          } else {
-            this.tipo_aplicacion = this.buscar_en_array_por_modelo_e_id(id_en_edicion, this.tipos_aplicaciones, this.nombre_model);
+            this.$http.get(`/${this.nombre_tabla}/${id_en_edicion}`).then(response => { // success callback
+               this.$data[`${this.nombre_model}`] = response.body[`${this.nombre_model}`];
+            }, response => { // error callback
+               this.checkear_estado_respuesta_http(response.status);
+            });
          }
       },
       //tipos_aplicaciones se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
@@ -180,13 +184,14 @@ const TipoAplicacionController = new Vue({
 
 
       editar: function (id_tipo_aplicacion) {
-         this.lista_actualizar_activo = true;
+
          this.id_en_edicion = id_tipo_aplicacion;
 
-         //id_objeto + array de objetos + nombre del model en lower case
-         this.tipo_aplicacion = null;
-         this.tipo_aplicacion = this.buscar_en_array_por_modelo_e_id(id_tipo_aplicacion, this.tipos_aplicaciones, this.nombre_model);
+         this.lista_actualizar_activo = true;
 
+         //id_objeto + array de objetos + nombre del model en lower case
+         this.$data[`${this.nombre_model}`] = null;
+         this.$data[`${this.nombre_model}`] = this.buscar_en_array_por_modelo_e_id(this.$data[`${this.nombre_model}`][`${this.pk_tabla}`], this.$data[`${this.nombre_ruta}`], this.nombre_model);
       },
 
       guardar_editado: function () {

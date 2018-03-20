@@ -2215,7 +2215,6 @@ var inyeccion_funciones_compartidas = {
       dejar_de_editar: function dejar_de_editar() {
          this.lista_actualizar_activo = false;
          this.id_en_edicion = null;
-         this.dejar_de_editar_contador = 0;
       },
 
       es_undefined: function es_undefined(v) {
@@ -2241,13 +2240,54 @@ var inyeccion_funciones_compartidas = {
             _this.checkear_estado_respuesta_http(response.status);
          });
       },
+      guardar: function guardar() {
+         var _this2 = this;
+
+         //Ejecuta validacion sobre los campos con validaciones
+         //console.log(this.validar_campos());
+         this.$validator.validateAll().then(function (res) {
+            if (res == true) {
+               //Se adjunta el token
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               //Instancia nuevo form data
+               var formData = new FormData();
+               //Conforma objeto paramétrico para solicitud http
+               for (var i in _this2.permitido_guardar) {
+                  formData.append('' + _this2.permitido_guardar[i], _this2.$data['' + _this2.nombre_model]['' + _this2.permitido_guardar[i]] || null);
+               }
+               _this2.$http.post('/' + _this2.nombre_ruta, formData).then(function (response) {
+                  // success callback
+                  if (response.status == 200) {
+                     if (!_this2.es_null(response.body['' + _this2.nombre_model])) {
+                        // del backend viene el objeto con el nombre
+                        _this2.id_en_edicion = null; // se resetea el objeto reactivo de la clase
+                     } //this.inicializar();
+                  } else {
+                     _this2.checkear_estado_respuesta_http(response.status);
+                     return false;
+                  }
+                  if (_this2.mostrar_notificaciones(response) == true) {
+                     _this2.limpiar_objeto_clase_local();
+                     _this2.inicializar();
+                     _this2.ocultar_modal('crear');
+                     return;
+                  }
+               }, function (response) {
+                  // error callback
+                  _this2.checkear_estado_respuesta_http(response.status);
+               });
+            }
+         });
+         return;
+      },
+
       limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
          for (var k in this.$data['' + this.nombre_model]) {
             this.$data['' + this.nombre_model][k] = null;
          }
       },
       mostrar: function mostrar(id, tabla, modelo) {
-         var _this2 = this;
+         var _this3 = this;
 
          this.$http.get('/' + tabla + '/' + id).then(function (response) {
             // success callback
@@ -2257,7 +2297,7 @@ var inyeccion_funciones_compartidas = {
             return obj;
          }, function (response) {
             // error callback
-            _this2.checkear_estado_respuesta_http(response.status);
+            _this3.checkear_estado_respuesta_http(response.status);
          });
       },
       mostrar_modal_actualizar: function mostrar_modal_actualizar(id) {

@@ -23,7 +23,6 @@
             {{-- si esto es requerido, entonces que sea configurado desde el backend --}}
             {{--@{{ (r['id_permiso'] = r['role_permiso']['id_permiso']) ? r[i] :'' }}--}}
             @{{ lom[i] }}
-
          </td>
       </template>
       <template v-else>
@@ -39,6 +38,11 @@
             </dl>
          </td>
       </template>
+
+
+
+
+      <!-- Botonera de acciones -->
       <td>
          <button class="btn btn-sm btn-primary"
                  v-show="id_en_edicion != lom[`id_${nombre_model}`] && id_en_edicion == null && modal_actualizar_activo == false"
@@ -57,6 +61,12 @@
                  v-show="id_en_edicion == null">
             <i class="fa fa-cogs" ></i>
          </button>
+         <button class="btn btn-sm btn-secondary"
+                 data-placement="top" data-toggle="tooltip" title="Dejar de editar"
+                 @click.prevent="dejar_de_editar()"
+                 v-if="id_en_edicion === lom[`id_${nombre_model}`]">
+            <i class="fa fa-close"></i>
+         </button>
          {{--
          <button class="btn btn-sm btn-danger" v-show="id_en_edicion == null"
                  @click.prevent="eliminar(r.id_role)"
@@ -64,13 +74,8 @@
             <i class="fa fa-close"></i>
          </button>
          --}}
-         <button class="btn btn-sm btn-secondary"
-                 data-placement="top" data-toggle="tooltip" title="Dejar de editar"
-                 @click.prevent="dejar_de_editar()"
-                 v-show="id_en_edicion == lom[`id_${nombre_model}`]">
-            <i class="fa fa-close"></i>
-         </button>
       </td>
+
    </tr>
    <tr v-if="lista_objs_model && lista_objs_model.length == 0 || filterBy(lista_objs_model, filtro_head).length == 0">
       <td colspan="5">No hay más registros</td>
