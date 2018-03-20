@@ -57,7 +57,7 @@ class Servidor extends Model {
    }
 
    public function servidor_estado () {
-      return $this->hasOne(ServidorEstado::class, 'id_estado');
+      return $this->hasOne(ServidorEstado::class, 'id_servidor');
    }
 
    public function aplicaciones () {
