@@ -129,9 +129,6 @@ const HomeController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-
-
-
       inicializar: function () {
          this.$http.get('/').then(response => { // success callback
 
