@@ -10,7 +10,7 @@
          <p class="control has-icon has-icon-right">
 
 
-            <select class="form-control" v-model="sistema_operativo.arquitectura" name="id_dominio"
+            <select class="form-control" v-model="sistema_operativo.arquitectura" name="arquitectura"
                     v-validate="{required:true,regex:/^[0-9x]+$/i}" data-vv-delay="500">
                <option value="x86">x86</option>
                <option value="x64">x64</option>
