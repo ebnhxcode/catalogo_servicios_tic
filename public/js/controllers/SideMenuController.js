@@ -46967,6 +46967,42 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue2_filters___default.a);
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_js_toggle_button___default.a);
 
+/*
+import tinymce from 'tinymce/tinymce'
+import 'tinymce/themes/modern/theme'
+Vue.directive('tinymce', {
+   bind(el) {
+      tinymce.init({
+         target: el,
+         theme: 'modern'
+      })
+   }
+});
+*/
+/*
+import tinymce from 'tinymce/tinymce'
+import 'tinymce/themes/modern/theme'
+
+Vue.directive('tinymce', {
+   bind(el) {
+      tinymce.init({
+         target: el, // The element the directive is bound to. See here https://vuejs.org/v2/guide/custom-directive.html#Directive-Hook-Arguments
+         theme: 'modern',//../tinymce/skins/lightgray
+         //skin_url: '' // point your tinymce skin directory here
+         //skin_url: '/css/tinymce/skins/lightgray' // point your tinymce skin directory here
+      })
+   }
+})
+*/
+
+/*
+import VueTinymce from 'vue-tinymce'
+Vue.use(VueTinymce)
+*/
+
+//import tinymce from 'vue-tinymce-editor'
+//Vue.component('tinymce', tinymce)
+
 //Instancia controller de side menu en main app template
 var SideMenuController = new Vue({
    el: '#SideMenuController',
@@ -47053,7 +47089,9 @@ var SideMenuController = new Vue({
 
    computed: {},
    watch: {},
-   components: {},
+   components: {
+      'tinymce': tinymce
+   },
    created: function created() {},
 
    ready: {},
