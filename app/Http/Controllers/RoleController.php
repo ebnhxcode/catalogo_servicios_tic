@@ -55,7 +55,7 @@ class RoleController extends Controller {
       }
 
       $this->usuario_auth = Auth::user();
-      $this->roles = Role::with('role_permiso.permiso')->get();
+      $this->roles = Role::with(['role_permiso.permiso'])->get();
       $this->permisos = Permiso::all();
       return response()->json([
          'status' => 200,
