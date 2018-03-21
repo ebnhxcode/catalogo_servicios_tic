@@ -17,7 +17,6 @@ class FuenteAplicacion extends Model {
       'url_descarga',
       'nom_fuente',
       'det_fuente',
-      '',
 
       #relaciones -> pks
       'id_aplicacion',
@@ -28,18 +27,18 @@ class FuenteAplicacion extends Model {
    ];
 
    public function aplicacion() {
-      return $this->belongsTo('App\Aplicacion', 'id_aplicacion');
+      return $this->belongsTo(Aplicacion::class, 'id_aplicacion');
    }
 
    public function servicio() {
-      return $this->belongsTo('App\Servicio', 'id_servicio');
+      return $this->belongsTo(Servicio::class, 'id_servicio');
    }
 
    public function usuario_registra() {
-      return $this->belongsTo('App\User', 'id_usuario_registra');
+      return $this->belongsTo(User::class, 'id_usuario_registra');
    }
 
    public function usuario_modifica() {
-      return $this->belongsTo('App\User', 'id_usuario_modifica');
+      return $this->belongsTo(User::class, 'id_usuario_modifica');
    }
 }

@@ -27,19 +27,19 @@ class RolePermiso extends Model {
    #TODAS LAS RELACIONES BELONGS TO
 
    public function role() {
-      return $this->belongsTo('App\Role', 'id_role');
+      return $this->belongsTo(Role::class, 'id_role');
    }
 
    public function permiso() {
-      return $this->belongsTo('App\Permiso', 'id_permiso');
+      return $this->belongsTo(Permiso::class, 'id_permiso');
    }
 
    public function usuario_registra() {
-      return $this->belongsTo('App\User', 'id_usuario_registra');
+      return $this->belongsTo(User::class, 'id_usuario_registra');
    }
 
    public function usuario_modifica() {
-      return $this->belongsTo('App\User', 'id_usuario_modifica');
+      return $this->belongsTo(User::class, 'id_usuario_modifica');
    }
 
 

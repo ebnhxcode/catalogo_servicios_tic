@@ -23,18 +23,18 @@ class UsuarioServicio extends Model {
    ];
 
    public function usuario () {
-      return $this->belongsTo('App\User', 'id_usuario');
+      return $this->belongsTo(User::class, 'id_usuario');
    }
 
    public function servicio () {
-      return $this->belongsTo('App\Servicio', 'id_servicio');
+      return $this->belongsTo(Servicio::class, 'id_servicio');
    }
 
    public function usuario_registra() {
-      return $this->belongsTo('App\User', 'id_usuario_registra');
+      return $this->belongsTo(User::class, 'id_usuario_registra');
    }
 
    public function usuario_modifica() {
-      return $this->belongsTo('App\User', 'id_usuario_modifica');
+      return $this->belongsTo(User::class, 'id_usuario_modifica');
    }
 }

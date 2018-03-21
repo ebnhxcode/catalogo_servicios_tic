@@ -28,11 +28,11 @@ class Permiso extends Model {
 
 
    public function usuario_registra() {
-      return $this->belongsTo('App\User', 'id_usuario_registra');
+      return $this->belongsTo(User::class, 'id_usuario_registra');
    }
 
    public function usuario_modifica() {
-      return $this->belongsTo('App\User', 'id_usuario_modifica');
+      return $this->belongsTo(User::class, 'id_usuario_modifica');
    }
 
    #TODAS LAS RELACIONES HAS MANY
@@ -40,11 +40,11 @@ class Permiso extends Model {
    #TODAS LAS RELACIONES HAS ONE
 
    public function permiso_role () {
-      return $this->hasOne('App\RolePermiso' ,'id_permiso')->get();
+      return $this->hasOne(RolePermiso::class ,'id_permiso')->get();
    }
 
    public function permisos_roles () {
-      return $this->hasMany('App\RolePermiso' ,'id_permiso')->get();
+      return $this->hasMany(RolePermiso::class ,'id_permiso')->get();
    }
 
 

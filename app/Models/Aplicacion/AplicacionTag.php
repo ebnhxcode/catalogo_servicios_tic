@@ -24,18 +24,18 @@ class AplicacionTag extends Model {
    ];
 
    public function aplicacion () {
-      return $this->belongsTo('App\Aplicacion', 'id_aplicacion');
+      return $this->belongsTo(Aplicacion::class, 'id_aplicacion');
    }
 
    public function tag () {
-      return $this->belongsTo('App\Tag', 'id_tag');
+      return $this->belongsTo(Tag::class, 'id_tag');
    }
 
    public function usuario_registra() {
-      return $this->belongsTo('App\User', 'id_usuario_registra');
+      return $this->belongsTo(User::class, 'id_usuario_registra');
    }
 
    public function usuario_modifica() {
-      return $this->belongsTo('App\User', 'id_usuario_modifica');
+      return $this->belongsTo(User::class, 'id_usuario_modifica');
    }
 }

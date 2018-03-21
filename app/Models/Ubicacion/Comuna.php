@@ -19,7 +19,7 @@ class Comuna extends Model {
    ];
 
    public function region () {
-      return $this->belongsTo('App\Region', 'id_region');
+      return $this->belongsTo(Region::class, 'id_region');
    }
 
 }

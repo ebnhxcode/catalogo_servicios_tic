@@ -24,18 +24,18 @@ class ServicioEstado extends Model {
    ];
 
    public function servicio () {
-      return $this->belongsTo('App\Servicio', 'id_servicio');
+      return $this->belongsTo(Servicio::class, 'id_servicio');
    }
 
    public function estado () {
-      return $this->belongsTo('App\Estado', 'id_estado');
+      return $this->belongsTo(Estado::class, 'id_estado');
    }
 
    public function usuario_registra() {
-      return $this->belongsTo('App\User', 'id_usuario_registra');
+      return $this->belongsTo(User::class, 'id_usuario_registra');
    }
 
    public function usuario_modifica() {
-      return $this->belongsTo('App\User', 'id_usuario_modifica');
+      return $this->belongsTo(User::class, 'id_usuario_modifica');
    }
 }

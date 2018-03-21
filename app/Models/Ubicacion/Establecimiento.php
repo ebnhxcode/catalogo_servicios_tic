@@ -28,19 +28,19 @@ class Establecimiento extends Model {
    ];
 
    public function establecimiento_antiguo() {
-      return $this->belongsTo('App\Establecimiento', 'id_establecimiento_antiguo');
+      return $this->belongsTo(Establecimiento::class, 'id_establecimiento_antiguo');
    }
 
    public function servicio_salud() {
-      return $this->belongsTo('App\ServicioSalud', 'id_servicio_salud');
+      return $this->belongsTo(ServicioSalud::class, 'id_servicio_salud');
    }
 
    public function region() {
-      return $this->belongsTo('App\Region', 'id_region');
+      return $this->belongsTo(Region::class, 'id_region');
    }
 
    public function comuna() {
-      return $this->belongsTo('App\Comuna', 'id_comuna');
+      return $this->belongsTo(Comuna::class, 'id_comuna');
    }
 
 }

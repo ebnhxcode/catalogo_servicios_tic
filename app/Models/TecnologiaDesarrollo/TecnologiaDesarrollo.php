@@ -26,14 +26,14 @@ class TecnologiaDesarrollo extends Model {
    ];
 
    public function tipo_tecnologia () {
-      return $this->belongsTo('App\TipoTecnologiaDesarrollo', 'id_tipo_tecnologia');
+      return $this->belongsTo(TipoTecnologiaDesarrollo::class, 'id_tipo_tecnologia');
    }
 
    public function usuario_registra() {
-      return $this->belongsTo('App\User', 'id_usuario_registra');
+      return $this->belongsTo(User::class, 'id_usuario_registra');
    }
 
    public function usuario_modifica() {
-      return $this->belongsTo('App\User', 'id_usuario_modifica');
+      return $this->belongsTo(User::class, 'id_usuario_modifica');
    }
 }

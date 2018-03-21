@@ -24,18 +24,18 @@ class CatalogoServicioTag extends Model{
    ];
 
    public function catalogo_servicio() {
-      return $this->belongsTo('App\CatalogoServicio', 'id_catalogo_servicio');
+      return $this->belongsTo(CatalogoServicio::class, 'id_catalogo_servicio');
    }
 
    public function tag() {
-      return $this->belongsTo('App\Tag', 'id_tag');
+      return $this->belongsTo(Tag::class, 'id_tag');
    }
 
    public function usuario_registra() {
-      return $this->belongsTo('App\User', 'id_usuario_registra');
+      return $this->belongsTo(User::class, 'id_usuario_registra');
    }
 
    public function usuario_modifica() {
-      return $this->belongsTo('App\User', 'id_usuario_modifica');
+      return $this->belongsTo(User::class, 'id_usuario_modifica');
    }
 }

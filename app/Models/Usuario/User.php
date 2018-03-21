@@ -55,7 +55,13 @@ class User extends Authenticatable
       return $this->hasMany(Servicio::class, 'id_usuario');
    }
 
+   public function usuario_registra() {
+      return $this->belongsTo(User::class, 'id_usuario_registra');
+   }
 
+   public function usuario_modifica() {
+      return $this->belongsTo(User::class, 'id_usuario_modifica');
+   }
 
 
 

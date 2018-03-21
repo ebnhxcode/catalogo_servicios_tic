@@ -24,18 +24,18 @@ class ActividadTag extends Model {
    ];
 
    public function actividad () {
-      return $this->belongsTo('App\Actividad', 'id_actividad');
+      return $this->belongsTo(Actividad::class, 'id_actividad');
    }
 
    public function tag () {
-      return $this->belongsTo('App\Tag', 'id_tag');
+      return $this->belongsTo(Tag::class, 'id_tag');
    }
 
    public function usuario_registra() {
-      return $this->belongsTo('App\User', 'id_usuario_registra');
+      return $this->belongsTo(User::class, 'id_usuario_registra');
    }
 
    public function usuario_modifica() {
-      return $this->belongsTo('App\User', 'id_usuario_modifica');
+      return $this->belongsTo(User::class, 'id_usuario_modifica');
    }
 }
