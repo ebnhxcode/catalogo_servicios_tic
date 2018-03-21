@@ -41,14 +41,14 @@ const AplicacionAccesoController = new Vue({
             'updated_at':null,
             'deleted_at':null,
          },
-         'permitido_guardar':{
-            'usuario':null,
-            'clave':null,
-            'decrypted_clave':null,
-            'tipo_acceso':null,
-            'email':null,
-            'id_aplicacion':null,
-         },
+         'permitido_guardar':[
+            'usuario',
+            'clave',
+            //'decrypted_clave',
+            'tipo_acceso',
+            'email',
+            'id_aplicacion',
+         ],
          'relaciones_clase':[
             {'aplicacion':'id_aplicacion'}
          ],
@@ -125,15 +125,8 @@ const AplicacionAccesoController = new Vue({
       //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el aplicacion_acceso
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function (id_en_edicion) {
-         if (id_en_edicion == null) {
-            this.limpiar_objeto_clase_local();
-         } else {
-            this.$http.get(`/${this.nombre_tabla}/${id_en_edicion}`).then(response => { // success callback
-               this.aplicacion_acceso = response.body[`${this.nombre_model}`];
-            }, response => { // error callback
-               this.checkear_estado_respuesta_http(response.status);
-            });
-         }
+         if (id_en_edicion == null) { this.limpiar_objeto_clase_local(); }
+         else { this.buscar_objeto_clase_config_relaciones(id_en_edicion, this.relaciones_clase); }
       },
       //aplicaciones_accesos se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
       aplicaciones_accesos: function (aplicaciones_accesos) {
@@ -170,168 +163,19 @@ const AplicacionAccesoController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+            this.configurar_relaciones(response.body.aplicaciones_accesos, this.relaciones_clase);
             this.lista_objs_model = response.body.aplicaciones_accesos || null;
             this.aplicaciones_accesos = response.body.aplicaciones_accesos || null;
-            this.aplicaciones = response.body.aplicaciones || null;
             this.datos_excel = response.body.aplicaciones_accesos || null;
 
+            this.aplicaciones = response.body.aplicaciones || null;
+
             this.usuario_auth = response.body.usuario_auth || null;
-            //this.limpiar_objeto_clase_local();
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);
          });
       },
-
-
-      editar: function (id_aplicacion_acceso) {
-         this.lista_actualizar_activo = true;
-         this.id_en_edicion = id_aplicacion_acceso;
-
-         //id_objeto + array de objetos + nombre del model en lower case
-         this.aplicacion_acceso = null;
-         this.aplicacion_acceso = this.buscar_en_array_por_modelo_e_id(id_aplicacion_acceso,this.aplicaciones_accesos,this.nombre_model);
-
-      },
-
-      guardar_editado: function () {
-
-         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-
-         this.$http.put(`/${this.nombre_ruta}/${this.aplicacion_acceso.id_aplicacion_acceso}`, this.aplicacion_acceso).then(response => { // success callback
-
-            if (response.status == 200) {
-               /*
-               if ( !this.es_null(response.body.aplicacion_acceso) ) {
-                  this.lista_actualizar_activo = false;
-                  this.id_en_edicion = null;
-               }
-               */
-            } else {
-               this.checkear_estado_respuesta_http(response.status);
-               return false;
-            }
-
-            if ( this.mostrar_notificaciones(response) == true ) {
-
-
-               /*
-                //Aqui que pregunte si el modal está activo para que lo cierre
-                if (this.modal_actualizar_activo == true) {
-                this.ocultar_modal('actualizar');
-                this.modal_actualizar_activo = false;
-                }
-
-                this.lista_actualizar_activo = false;
-                this.id_en_edicion = null;
-               */
-
-               //Recargar la lista
-               this.inicializar();
-
-            }
-
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
-
-         return;
-      },
-
-
-
-      eliminar: function (id_aplicacion_acceso) {
-         swal({
-            title: "¿Estás seguro/a?",
-            text: "¿Deseas confirmar la eliminación de este registro?",
-            type: "warning",
-            showCancelButton: true,
-            closeOnConfirm: false,
-            closeOnCancel: false,
-            confirmButtonColor: '#DD6B55',
-            confirmButtonClass: "btn-danger",
-            confirmButtonText: 'Si, eliminar!',
-            confirmButtonClass: "btn-warning",
-            cancelButtonText: 'No, mantener.'
-         }).then((result) => {
-            if (result.value) {
-               //Se adjunta el token
-               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-
-               this.$http.delete(`/${this.nombre_ruta}/${id_aplicacion_acceso}`).then(response => {
-                  if ( response.status == 200) {
-                     this.auto_alerta_corta("Eliminado!","Registro eliminado correctamente","success");
-                  }else {
-                     this.checkear_estado_respuesta_http(response.status);
-                     return false;
-                  }
-
-                  if ( this.mostrar_notificaciones(response) == true ) {
-                     //Aqui que pregunte si el modal está activo para que lo cierre
-                     if (this.modal_actualizar_activo == true) {
-                        this.ocultar_modal('actualizar');
-                        this.modal_actualizar_activo = false;
-                     }
-                     this.lista_actualizar_activo = false;
-                     this.id_en_edicion = null;
-
-                     //Recargar la lista
-                     this.inicializar();
-                  }
-               }, response => { // error callback
-                  this.checkear_estado_respuesta_http(response.status);
-               });
-            } else if (result.dismiss === swal.DismissReason.cancel) {
-               this.auto_alerta_corta("Cancelado","Se ha cancelado la eliminación","success");
-            }
-         });
-
-      },
-
-      guardar: function () {
-         //Ejecuta validacion sobre los campos con validaciones
-         if (this.validar_campos() == false) {
-            return;
-         }
-         //Se adjunta el token
-         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-         //Instancia nuevo form data
-         var formData = new  FormData();
-         //Conforma objeto paramétrico para solicitud http
-
-         formData.append('usuario', this.aplicacion_acceso.usuario || null );
-         formData.append('clave', this.aplicacion_acceso.clave || null );
-         formData.append('tipo_acceso', this.aplicacion_acceso.tipo_acceso || null );
-         formData.append('email', this.aplicacion_acceso.email || null );
-         formData.append('id_aplicacion', this.aplicacion_acceso.id_aplicacion || null );
-
-         this.$http.post(`/${this.nombre_ruta}`, formData).then(response => { // success callback
-
-            if ( response.status == 200) {
-               if ( !this.es_null(response.body.aplicacion_acceso) ) {
-                  this.id_en_edicion = null;
-               }
-               //this.inicializar();
-            } else {
-               this.checkear_estado_respuesta_http(response.status);
-               return false;
-            }
-
-            if ( this.mostrar_notificaciones(response) == true ) {
-               this.limpiar_objeto_clase_local();
-               this.inicializar();
-               this.ocultar_modal('crear');
-               return ;
-            }
-s
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
-
-         return;
-      },
-
    }
 });

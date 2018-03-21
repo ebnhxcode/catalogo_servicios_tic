@@ -47089,9 +47089,7 @@ var SideMenuController = new Vue({
 
    computed: {},
    watch: {},
-   components: {
-      'tinymce': tinymce
-   },
+   components: {},
    created: function created() {},
 
    ready: {},
