@@ -5,31 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c71587b-d991-482f-b19e-13dd138d49bc" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/public/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/ActividadController.js" afterPath="$PROJECT_DIR$/public/js/controllers/ActividadController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/AplicacionAccesoController.js" afterPath="$PROJECT_DIR$/public/js/controllers/AplicacionAccesoController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/AplicacionController.js" afterPath="$PROJECT_DIR$/public/js/controllers/AplicacionController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/CargoController.js" afterPath="$PROJECT_DIR$/public/js/controllers/CargoController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/DatacentroController.js" afterPath="$PROJECT_DIR$/public/js/controllers/DatacentroController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/DominioController.js" afterPath="$PROJECT_DIR$/public/js/controllers/DominioController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/EstadoController.js" afterPath="$PROJECT_DIR$/public/js/controllers/EstadoController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/HomeController.js" afterPath="$PROJECT_DIR$/public/js/controllers/HomeController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/PermisoController.js" afterPath="$PROJECT_DIR$/public/js/controllers/PermisoController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/RoleController.js" afterPath="$PROJECT_DIR$/public/js/controllers/RoleController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/ServicioController.js" afterPath="$PROJECT_DIR$/public/js/controllers/ServicioController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/ServidorAccesoController.js" afterPath="$PROJECT_DIR$/public/js/controllers/ServidorAccesoController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/ServidorController.js" afterPath="$PROJECT_DIR$/public/js/controllers/ServidorController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/SideMenuController.js" afterPath="$PROJECT_DIR$/public/js/controllers/SideMenuController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/SistemaOperativoController.js" afterPath="$PROJECT_DIR$/public/js/controllers/SistemaOperativoController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/TagController.js" afterPath="$PROJECT_DIR$/public/js/controllers/TagController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/TipoAplicacionController.js" afterPath="$PROJECT_DIR$/public/js/controllers/TipoAplicacionController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/UsuarioBitacoraServicioController.js" afterPath="$PROJECT_DIR$/public/js/controllers/UsuarioBitacoraServicioController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/UsuarioController.js" afterPath="$PROJECT_DIR$/public/js/controllers/UsuarioController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/AplicacionAccesoController.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/AplicacionAccesoController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/SideMenuController.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/SideMenuController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js" />
     </list>
     <ignored path="catalogo_servicios_tic.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -81,21 +58,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SideMenuController.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SideMenuController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/SideMenuController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="135" column="2" selection-start-line="135" selection-start-column="2" selection-end-line="135" selection-end-column="2" />
+            <state vertical-scroll-proportion="0.75">
+              <caret line="254" column="16" selection-start-line="254" selection-start-column="16" selection-end-line="254" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="formulario_campos.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/aplicaciones/partials/formulario_campos.blade.php">
+      <file leaf-file-name="AplicacionAccesoController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/AplicacionAccesoController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5689655">
-              <caret line="54" column="98" selection-start-line="54" selection-start-column="98" selection-end-line="54" selection-end-column="98" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="52" column="40" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -119,7 +96,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/assets/js/controllers/ActividadController.js" />
         <option value="$PROJECT_DIR$/public/js/controllers/PermisoController.js" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TipoAplicacionController.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/tabla_listar.blade.php" />
@@ -168,8 +144,9 @@
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/AplicacionController.js" />
         <option value="$PROJECT_DIR$/node_modules/laravel-mix/src/config.js" />
-        <option value="$PROJECT_DIR$/resources/assets/js/controllers/SideMenuController.js" />
         <option value="$PROJECT_DIR$/resources/views/aplicaciones/partials/formulario_campos.blade.php" />
+        <option value="$PROJECT_DIR$/resources/assets/js/controllers/AplicacionAccesoController.js" />
+        <option value="$PROJECT_DIR$/resources/assets/js/controllers/SideMenuController.js" />
       </list>
     </option>
   </component>
@@ -1628,13 +1605,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Models/Servidor/Servidor.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5371353">
-          <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/Servidor/ServidorAcceso.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36206895">
@@ -1941,14 +1911,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/AplicacionAccesoController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2010,14 +1972,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/SideMenuController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="135" column="2" selection-start-line="135" selection-start-column="2" selection-end-line="135" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/Aplicacion/Aplicacion.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.13793103">
@@ -2038,6 +1992,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5689655">
           <caret line="54" column="98" selection-start-line="54" selection-start-column="98" selection-end-line="54" selection-end-column="98" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Aplicacion/AplicacionAcceso.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/AplicacionAccesoController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="52" column="40" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/SideMenuController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.75">
+          <caret line="254" column="16" selection-start-line="254" selection-start-column="16" selection-end-line="254" selection-end-column="16" />
           <folding />
         </state>
       </provider>

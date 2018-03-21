@@ -41,19 +41,17 @@ const AplicacionAccesoController = new Vue({
             'updated_at':null,
             'deleted_at':null,
          },
-         'aplicacion_acceso_limpio':{
+         'permitido_guardar':{
             'usuario':null,
             'clave':null,
             'decrypted_clave':null,
             'tipo_acceso':null,
             'email':null,
             'id_aplicacion':null,
-            'id_usuario_registra':null,
-            'id_usuario_modifica':null,
-            'created_at':null,
-            'updated_at':null,
-            'deleted_at':null,
          },
+         'relaciones_clase':[
+            {'aplicacion':'id_aplicacion'}
+         ],
          'lom':{},
          'lista_objs_model':[],
          'aplicaciones':[],

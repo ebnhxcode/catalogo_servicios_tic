@@ -252,9 +252,7 @@ const SideMenuController = new Vue({
 
    computed: {},
    watch: {},
-   components: {
-      'tinymce': tinymce,
-   },
+   components: {},
    created(){
 
    },
