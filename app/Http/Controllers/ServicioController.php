@@ -54,7 +54,7 @@ class ServicioController extends Controller {
 
         $this->usuario_auth = Auth::user();
         $this->actividades = Actividad::all();
-        $this->servicios = Servicio::all();
+        $this->servicios = Servicio::with(['actividad','usuario','aplicaciones.servidor','usuarios_bitacora_servicios.usuario'])->get();
         $this->usuarios_bitacora_servicios =
            UsuarioBitacoraServicio::where('id_usuario', '=', $this->usuario_auth->id_usuario)->get();
         return response()->json([
