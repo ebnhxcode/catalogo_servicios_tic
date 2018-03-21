@@ -167,10 +167,14 @@ const RoleController = new Vue({
    methods: {
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+            this.configurar_relaciones(response.body.roles, this.relaciones_clase);
+
             this.lista_objs_model = response.body.roles || null;
             this.roles = response.body.roles || null;
-            this.permisos = response.body.permisos || null;
             this.datos_excel = response.body.roles || null;
+
+            this.permisos = response.body.permisos || null;
+
             this.usuario_auth = response.body.usuario_auth || null;
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);

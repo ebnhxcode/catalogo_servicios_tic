@@ -3809,10 +3809,14 @@ var RoleController = new Vue({
 
          this.$http.get('/' + this.nombre_ruta).then(function (response) {
             // success callback
+            _this.configurar_relaciones(response.body.roles, _this.relaciones_clase);
+
             _this.lista_objs_model = response.body.roles || null;
             _this.roles = response.body.roles || null;
-            _this.permisos = response.body.permisos || null;
             _this.datos_excel = response.body.roles || null;
+
+            _this.permisos = response.body.permisos || null;
+
             _this.usuario_auth = response.body.usuario_auth || null;
          }, function (response) {
             // error callback
