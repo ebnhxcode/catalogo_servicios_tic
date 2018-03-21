@@ -2686,7 +2686,6 @@ var HomeController = new Vue({
    filters: {},
    mixins: [__WEBPACK_IMPORTED_MODULE_0__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
    methods: {
-
       inicializar: function inicializar() {
          var _this = this;
 

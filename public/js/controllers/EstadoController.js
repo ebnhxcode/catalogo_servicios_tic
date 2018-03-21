@@ -3745,7 +3745,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_v_clipboard__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -3786,16 +3785,8 @@ var EstadoController = new Vue({
             'updated_at': null,
             'deleted_at': null
          },
-         'estado_limpio': {
-            'nom_estado': null,
-            'det_estado': null,
-            'cod_estado': null,
-            'id_usuario_registra': null,
-            'id_usuario_modifica': null,
-            'created_at': null,
-            'updated_at': null,
-            'deleted_at': null
-         },
+         'permitido_guardar': ['nom_estado', 'det_estado', 'cod_estado'],
+         'relaciones_clase': [],
          'lom': {},
          'lista_objs_model': [],
          'estados': [],
@@ -3868,7 +3859,7 @@ var EstadoController = new Vue({
          if (_id_en_edicion == null) {
             this.limpiar_objeto_clase_local();
          } else {
-            this.estado = this.buscar_en_array_por_modelo_e_id(_id_en_edicion, this.estados, this.nombre_model);
+            this.buscar_objeto_clase(_id_en_edicion);
          }
       },
       //estados se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
@@ -3917,7 +3908,6 @@ var EstadoController = new Vue({
    filters: {},
    mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
    methods: {
-
       inicializar: function inicializar() {
          var _this = this;
 
@@ -3932,152 +3922,7 @@ var EstadoController = new Vue({
             // error callback
             _this.checkear_estado_respuesta_http(response.status);
          });
-      },
-
-      editar: function editar(id_estado) {
-         this.lista_actualizar_activo = true;
-         this.id_en_edicion = id_estado;
-
-         //id_objeto + array de objetos + nombre del model en lower case
-         this.estado = null;
-         this.estado = this.buscar_en_array_por_modelo_e_id(id_estado, this.estados, this.nombre_model);
-      },
-
-      guardar_editado: function guardar_editado() {
-         var _this2 = this;
-
-         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-
-         this.$http.put('/' + this.nombre_ruta + '/' + this.estado.id_estado, this.estado).then(function (response) {
-            // success callback
-
-            if (response.status == 200) {
-               /*
-               if ( !this.es_null(response.body.estado) ) {
-                  this.lista_actualizar_activo = false;
-                  this.id_en_edicion = null;
-               }
-               */
-            } else {
-               _this2.checkear_estado_respuesta_http(response.status);
-               return false;
-            }
-
-            if (_this2.mostrar_notificaciones(response) == true) {
-
-               /*
-                //Aqui que pregunte si el modal está activo para que lo cierre
-                if (this.modal_actualizar_activo == true) {
-                this.ocultar_modal('actualizar');
-                this.modal_actualizar_activo = false;
-                }
-                 this.lista_actualizar_activo = false;
-                this.id_en_edicion = null;
-               */
-
-               //Recargar la lista
-               _this2.inicializar();
-            }
-         }, function (response) {
-            // error callback
-            _this2.checkear_estado_respuesta_http(response.status);
-         });
-
-         return;
-      },
-
-      eliminar: function eliminar(id_estado) {
-         var _swal,
-             _this3 = this;
-
-         __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()((_swal = {
-            title: "¿Estás seguro/a?",
-            text: "¿Deseas confirmar la eliminación de este registro?",
-            type: "warning",
-            showCancelButton: true,
-            closeOnConfirm: false,
-            closeOnCancel: false,
-            confirmButtonColor: '#DD6B55',
-            confirmButtonClass: "btn-danger",
-            confirmButtonText: 'Si, eliminar!'
-         }, _defineProperty(_swal, 'confirmButtonClass', "btn-warning"), _defineProperty(_swal, 'cancelButtonText', 'No, mantener.'), _swal)).then(function (result) {
-            if (result.value) {
-               //Se adjunta el token
-               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-
-               _this3.$http.delete('/' + _this3.nombre_ruta + '/' + id_estado).then(function (response) {
-                  if (response.status == 200) {
-                     _this3.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
-                  } else {
-                     _this3.checkear_estado_respuesta_http(response.status);
-                     return false;
-                  }
-
-                  if (_this3.mostrar_notificaciones(response) == true) {
-                     //Aqui que pregunte si el modal está activo para que lo cierre
-                     if (_this3.modal_actualizar_activo == true) {
-                        _this3.ocultar_modal('actualizar');
-                        _this3.modal_actualizar_activo = false;
-                     }
-                     _this3.lista_actualizar_activo = false;
-                     _this3.id_en_edicion = null;
-
-                     //Recargar la lista
-                     _this3.inicializar();
-                  }
-               }, function (response) {
-                  // error callback
-                  _this3.checkear_estado_respuesta_http(response.status);
-               });
-            } else if (result.dismiss === __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default.a.DismissReason.cancel) {
-               _this3.auto_alerta_corta("Cancelado", "Se ha cancelado la eliminación", "success");
-            }
-         });
-      },
-
-      guardar: function guardar() {
-         var _this4 = this;
-
-         //Ejecuta validacion sobre los campos con validaciones
-         if (this.validar_campos() == false) {
-            return;
-         }
-         //Se adjunta el token
-         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-         //Instancia nuevo form data
-         var formData = new FormData();
-         //Conforma objeto paramétrico para solicitud http
-         formData.append('nom_estado', this.estado.nom_estado || null);
-         formData.append('det_estado', this.estado.det_estado || null);
-         formData.append('cod_estado', this.estado.cod_estado || null);
-
-         this.$http.post('/' + this.nombre_ruta, formData).then(function (response) {
-            // success callback
-
-            if (response.status == 200) {
-               if (!_this4.es_null(response.body.servicio)) {
-                  _this4.id_en_edicion = null;
-               }
-               //this.inicializar();
-            } else {
-               _this4.checkear_estado_respuesta_http(response.status);
-               return false;
-            }
-
-            if (_this4.mostrar_notificaciones(response) == true) {
-               _this4.limpiar_objeto_clase_local();
-               _this4.inicializar();
-               _this4.ocultar_modal('crear');
-               return;
-            }
-         }, function (response) {
-            // error callback
-            _this4.checkear_estado_respuesta_http(response.status);
-         });
-
-         return;
       }
-
    }
 });
 
