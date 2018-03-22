@@ -245,7 +245,7 @@ export const inyeccion_funciones_compartidas = {
             }
 
             if (this.mostrar_notificaciones(response) == true) {
-
+               this.buscar_objeto_clase_config_relaciones(this.$data[this.nombre_model][this.pk_tabla], this.relaciones_clase);
                /*
                 //Aqui que pregunte si el modal está activo para que lo cierre
                 if (this.modal_actualizar_activo == true) {

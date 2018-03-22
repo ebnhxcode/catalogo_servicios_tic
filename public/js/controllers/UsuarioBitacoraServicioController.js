@@ -2377,7 +2377,7 @@ var inyeccion_funciones_compartidas = {
             }
 
             if (_this6.mostrar_notificaciones(response) == true) {
-
+               _this6.buscar_objeto_clase_config_relaciones(_this6.$data[_this6.nombre_model][_this6.pk_tabla], _this6.relaciones_clase);
                /*
                 //Aqui que pregunte si el modal está activo para que lo cierre
                 if (this.modal_actualizar_activo == true) {

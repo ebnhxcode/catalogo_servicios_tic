@@ -6,7 +6,10 @@
          <img class="card-img-top" src="{{ url('/img/source.gif') }}" alt="Card image cap">
          <div class="card-body">
             <h5 class="card-title">
-               @{{ servidor.nom_servidor || '' }} <span class="badge badge-success float-right">estado:up</span>
+               @{{ servidor.nom_servidor || '' }}
+               <span class="badge badge-success float-right" v-if="servidor.servidor_estado">
+                  @{{ `Estado : ${servidor.servidor_estado.estado.nom_estado}` || '' }}
+               </span>
             </h5>
             <p class="card-text">
 

@@ -71,7 +71,7 @@ class Servidor extends Model {
    }
 
    public function servidor_historico_cambios () {
-      return $this->hasMany(Servidor::class, 'id_servidor');
+      return $this->hasMany(ServidorHistoricoCambio::class, 'id_servidor');
    }
 
 }

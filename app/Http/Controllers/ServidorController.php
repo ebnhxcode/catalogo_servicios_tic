@@ -65,7 +65,7 @@ class ServidorController extends Controller {
 
       $this->usuario_auth = Auth::user();
       $this->servidores = Servidor::with([
-         'datacentro','sistema_operativo','aplicaciones','servidor_estado','ambiente','servidor_historico_cambios'
+         'datacentro','sistema_operativo','aplicaciones','servidor_estado.estado','ambiente','servidor_historico_cambios'
       ])->get();
       $this->datacentros = Datacentro::all();
       $this->sistemas_operativos = SistemaOperativo::all();
@@ -93,7 +93,7 @@ class ServidorController extends Controller {
       }
 
       $this->servidor = Servidor::where("id_$this->nombre_modelo",'=',$id)->with([
-         'datacentro','sistema_operativo','aplicaciones','servidor_estado','ambiente','servidor_historico_cambios'
+         'datacentro','sistema_operativo','aplicaciones','servidor_estado.estado','ambiente','servidor_historico_cambios'
       ])->first();
 
       #Valida si servidor existe y busca si tiene servidor_permiso
@@ -176,6 +176,9 @@ class ServidorController extends Controller {
          'id_usuario_registra' => Auth::user()->id_usuario,
          'id_usuario_modifica' => Auth::user()->id_usuario,
       ]);
+
+      $request['id_servidor'] = $this->new_servidor->id_servidor;
+      $this->new_servidor_historico = ServidorHistoricoCambio::create($request->all());
 
       #Guardar relacion del estado, en caso que exista valor
       $this->new_servidor_estado = ServidorEstado::create([
