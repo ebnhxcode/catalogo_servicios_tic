@@ -34,6 +34,7 @@ class Servidor extends Model {
       'id_datacentro',
       'id_sistema_operativo',
       'id_estado',
+      'id_ambiente',
 
       'id_usuario_registra',
       'id_usuario_modifica',
@@ -56,6 +57,10 @@ class Servidor extends Model {
       return $this->belongsTo(SistemaOperativo::class, 'id_sistema_operativo');
    }
 
+   public function ambiente () {
+      return $this->belongsTo(Ambiente::class, 'id_ambiente');
+   }
+
    public function servidor_estado () {
       return $this->hasOne(ServidorEstado::class, 'id_servidor');
    }
@@ -63,5 +68,7 @@ class Servidor extends Model {
    public function aplicaciones () {
       return $this->hasMany(Aplicacion::class, 'id_servidor');
    }
+
+
 
 }

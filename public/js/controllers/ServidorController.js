@@ -3821,14 +3821,15 @@ var ServidorController = new Vue({
             'id_datacentro': null,
             'id_sistema_operativo': null,
             'id_estado': null,
+            'id_ambiente': null,
             'id_usuario_registra': null,
             'id_usuario_modifica': null,
             'created_at': null,
             'updated_at': null,
             'deleted_at': null
          },
-         'permitido_guardar': ['nom_servidor', 'det_servidor', 'ip_servidor', 'ram', 'memoria_dd', 'swap', 'procesador', 'frec_procesador', 'nucleos', 'usuarios_pactados', 'mac', 'nodo', 'interface', 'id_datacentro', 'id_sistema_operativo', 'id_estado'],
-         'relaciones_clase': [{ 'datacentro': 'id_datacentro' }, { 'sistema_operativo': 'id_sistema_operativo' }, { 'aplicaciones': 'id_aplicacion' }, { 'servidor_estado': 'id_estado' }],
+         'permitido_guardar': ['nom_servidor', 'det_servidor', 'ip_servidor', 'ram', 'memoria_dd', 'swap', 'procesador', 'frec_procesador', 'nucleos', 'usuarios_pactados', 'mac', 'nodo', 'interface', 'id_datacentro', 'id_sistema_operativo', 'id_estado', 'id_ambiente'],
+         'relaciones_clase': [{ 'datacentro': 'id_datacentro' }, { 'sistema_operativo': 'id_sistema_operativo' }, { 'aplicaciones': 'id_aplicacion' }, { 'servidor_estado': 'id_estado' }, { 'ambiente': 'id_ambiente' }],
          'lom': {},
          'lista_objs_model': [],
          'datacentros': [],
@@ -3871,6 +3872,7 @@ var ServidorController = new Vue({
             'id_datacentro': false,
             'id_sistema_operativo': false,
             'id_estado': false,
+            'id_ambiente': false,
 
             'id_usuario_registra': false,
             'id_usuario_modifica': false,
@@ -3899,6 +3901,7 @@ var ServidorController = new Vue({
             'id_datacentro': 'Id Datacrentro',
             'id_sistema_operativo': 'Id Sistema Operativo',
             'id_estado': 'Id Estado',
+            'id_ambiente': 'Id Ambiente',
 
             'id_usuario_registra': 'Usuario registra',
             'id_usuario_modifica': 'Usuario modifica',
@@ -3926,6 +3929,7 @@ var ServidorController = new Vue({
             'id_datacentro': 'String',
             'id_sistema_operativo': 'String',
             'id_estado': 'String',
+            'id_ambiente': 'String',
 
             'id_usuario_registra': 'String',
             'id_usuario_modifica': 'String',
@@ -3975,6 +3979,7 @@ var ServidorController = new Vue({
                'id_datacentro': servidor.id_datacentro || '-',
                'id_sistema_operativo': servidor.id_sistema_operativo || '-',
                'id_estado': servidor.id_sistema_operativo || '-',
+               'id_ambiente': servidor.id_ambiente || '-',
 
                'id_usuario_registra': servidor.id_usuario_registra || '-',
                'id_usuario_modifica': servidor.id_usuario_modifica || '-',
@@ -4014,6 +4019,7 @@ var ServidorController = new Vue({
             _this.datacentros = response.body.datacentros || null;
             _this.sistemas_operativos = response.body.sistemas_operativos || null;
             _this.estados = response.body.estados || null;
+            _this.ambientes = response.body.ambientes || null;
 
             _this.usuario_auth = response.body.usuario_auth || null;
          }, function (response) {

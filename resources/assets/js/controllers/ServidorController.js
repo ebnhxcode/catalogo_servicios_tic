@@ -45,6 +45,7 @@ const ServidorController = new Vue({
             'id_datacentro':null,
             'id_sistema_operativo':null,
             'id_estado':null,
+            'id_ambiente':null,
             'id_usuario_registra':null,
             'id_usuario_modifica':null,
             'created_at':null,
@@ -68,12 +69,14 @@ const ServidorController = new Vue({
             'id_datacentro',
             'id_sistema_operativo',
             'id_estado',
+            'id_ambiente',
          ],
          'relaciones_clase':[
             {'datacentro':'id_datacentro'},
             {'sistema_operativo':'id_sistema_operativo'},
             {'aplicaciones':'id_aplicacion'},
             {'servidor_estado':'id_estado'},
+            {'ambiente':'id_ambiente'},
          ],
          'lom':{},
          'lista_objs_model':[],
@@ -117,6 +120,7 @@ const ServidorController = new Vue({
             'id_datacentro':false,
             'id_sistema_operativo':false,
             'id_estado':false,
+            'id_ambiente':false,
 
             'id_usuario_registra':false,
             'id_usuario_modifica':false,
@@ -145,6 +149,7 @@ const ServidorController = new Vue({
             'id_datacentro':'Id Datacrentro',
             'id_sistema_operativo':'Id Sistema Operativo',
             'id_estado':'Id Estado',
+            'id_ambiente':'Id Ambiente',
 
             'id_usuario_registra':'Usuario registra',
             'id_usuario_modifica':'Usuario modifica',
@@ -172,6 +177,7 @@ const ServidorController = new Vue({
             'id_datacentro':'String',
             'id_sistema_operativo':'String',
             'id_estado':'String',
+            'id_ambiente':'String',
 
             'id_usuario_registra':'String',
             'id_usuario_modifica':'String',
@@ -218,6 +224,7 @@ const ServidorController = new Vue({
                'id_datacentro': servidor.id_datacentro || '-',
                'id_sistema_operativo': servidor.id_sistema_operativo || '-',
                'id_estado': servidor.id_sistema_operativo || '-',
+               'id_ambiente': servidor.id_ambiente || '-',
 
                'id_usuario_registra': servidor.id_usuario_registra || '-',
                'id_usuario_modifica': servidor.id_usuario_modifica || '-',
@@ -254,6 +261,7 @@ const ServidorController = new Vue({
             this.datacentros = response.body.datacentros || null;
             this.sistemas_operativos = response.body.sistemas_operativos || null;
             this.estados = response.body.estados || null;
+            this.ambientes = response.body.ambientes || null;
 
             this.usuario_auth = response.body.usuario_auth || null;
          }, response => { // error callback

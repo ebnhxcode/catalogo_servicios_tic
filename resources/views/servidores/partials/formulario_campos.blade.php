@@ -312,7 +312,7 @@
 </div><!-- .row -->
 
 
-<h5>Prestaciones de la máquina</h5>
+<h5>Estado y ambiente</h5>
 <div class="row">
 
 
@@ -336,6 +336,34 @@
             <transition name="bounce">
                <span v-show="errors.has('id_estado')" class="text-danger small">
                   @{{ errors.first('id_estado') }}
+               </span>
+            </transition>
+         </p>
+      </dd>
+
+   </div><!-- .col -->
+
+
+   <div class="col-sm-6 col-md-6">
+
+      <dt>Ambiente Servidor</dt>
+      <dd>
+         <p class="control has-icon has-icon-right">
+
+            <select class="form-control" v-model="servidor.id_ambiente" name="id_ambiente"
+                    v-validate="{required:true,integer:true}" data-vv-delay="500">
+               <option :value="a.id_ambiente" v-for="a in ambientes">
+                  @{{ `${a.nom_ambiente} -> ${a.det_ambiente}` }}
+               </option>
+            </select>
+
+            <transition name="bounce">
+               <i v-show="errors.has('id_ambiente')" class="fa fa-exclamation-circle"></i>
+            </transition>
+
+            <transition name="bounce">
+               <span v-show="errors.has('id_ambiente')" class="text-danger small">
+                  @{{ errors.first('id_ambiente') }}
                </span>
             </transition>
          </p>

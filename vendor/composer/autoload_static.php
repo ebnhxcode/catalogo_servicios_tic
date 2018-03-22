@@ -321,6 +321,7 @@ class ComposerStaticInitda4e5015eda97562cfcbbde2cfd3b7e4
     public static $classMap = array (
         'App\\Actividad' => __DIR__ . '/../..' . '/app/Models/Actividad/Actividad.php',
         'App\\ActividadTag' => __DIR__ . '/../..' . '/app/Models/Actividad/ActividadTag.php',
+        'App\\Ambiente' => __DIR__ . '/../..' . '/app/Models/Ambiente/Ambiente.php',
         'App\\Aplicacion' => __DIR__ . '/../..' . '/app/Models/Aplicacion/Aplicacion.php',
         'App\\AplicacionAcceso' => __DIR__ . '/../..' . '/app/Models/Aplicacion/AplicacionAcceso.php',
         'App\\AplicacionEstado' => __DIR__ . '/../..' . '/app/Models/Aplicacion/AplicacionEstado.php',

@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Actividad' => $baseDir . '/app/Models/Actividad/Actividad.php',
     'App\\ActividadTag' => $baseDir . '/app/Models/Actividad/ActividadTag.php',
+    'App\\Ambiente' => $baseDir . '/app/Models/Ambiente/Ambiente.php',
     'App\\Aplicacion' => $baseDir . '/app/Models/Aplicacion/Aplicacion.php',
     'App\\AplicacionAcceso' => $baseDir . '/app/Models/Aplicacion/AplicacionAcceso.php',
     'App\\AplicacionEstado' => $baseDir . '/app/Models/Aplicacion/AplicacionEstado.php',
