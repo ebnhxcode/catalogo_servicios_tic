@@ -260,6 +260,28 @@
 
    </div><!-- .col -->
 
+   <div class="col-sm-4 col-md-4">
+
+      <dt>Modelo Procesador</dt>
+      <dd>
+         <p class="control has-icon has-icon-right">
+            <input type="text" v-model="servidor.modelo_procesador" name="modelo_procesador"
+                   v-validate="{required:true,regex:/^[a-zA-Z0-9_ ,.!@#$%*&]+$/i}" data-vv-delay="500"
+                   class="form-control" />
+
+            <transition name="bounce">
+               <i v-show="errors.has('modelo_procesador')" class="fa fa-exclamation-circle"></i>
+            </transition>
+
+            <transition name="bounce">
+               <span v-show="errors.has('modelo_procesador')" class="text-danger small">
+                  @{{ errors.first('modelo_procesador') }}
+               </span>
+            </transition>
+         </p>
+      </dd>
+
+   </div><!-- .col -->
 
    <div class="col-sm-4 col-md-4">
 

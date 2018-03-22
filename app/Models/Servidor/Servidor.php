@@ -22,6 +22,7 @@ class Servidor extends Model {
       'memoria_dd',
       'swap',
       'procesador',
+      'modelo_procesador',
       'frec_procesador',
       'nucleos',
       'usuarios_pactados',
