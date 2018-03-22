@@ -50,15 +50,6 @@ class UsuarioController extends Controller {
    }
 
    public function index(Request $request) {
-      if (!$request->wantsJson() && !$request->ajax()) {
-         return view("layouts.main", [
-            'nombre_modelo' => $this->nombre_modelo,
-            'nombre_tabla' => $this->nombre_tabla,
-            'nombre_ruta' => $this->nombre_ruta,
-            'nombre_detalle' => $this->nombre_detalle,
-            'nombre_controller' => $this->nombre_controller,
-         ]);
-      }
 
       $this->usuario_auth = Auth::user();
       $this->usuarios = User::with(['usuario_estado.estado','usuario_role.role','usuario_cargo.cargo','usuario_bitacora_servicios'])->get();
@@ -66,13 +57,24 @@ class UsuarioController extends Controller {
       $this->estados = Estado::all();
       $this->cargos = Cargo::all();
 
-      return response()->json([
-         'status' => 200,
-         'usuarios' => $this->usuarios,
-         'roles' => $this->roles,
-         'estados' => $this->estados,
-         'cargos' => $this->cargos,
-         'usuario_auth' => $this->usuario_auth,
+      if ($request->ajax() && $request->wantsJson()) {
+         return response()->json([
+            'status' => 200,
+            'usuarios' => $this->usuarios,
+            'roles' => $this->roles,
+            'estados' => $this->estados,
+            'cargos' => $this->cargos,
+            'usuario_auth' => $this->usuario_auth,
+         ]);
+
+      }
+
+      return view("layouts.main", [
+         'nombre_modelo' => $this->nombre_modelo,
+         'nombre_tabla' => $this->nombre_tabla,
+         'nombre_ruta' => $this->nombre_ruta,
+         'nombre_detalle' => $this->nombre_detalle,
+         'nombre_controller' => $this->nombre_controller,
       ]);
    }
 

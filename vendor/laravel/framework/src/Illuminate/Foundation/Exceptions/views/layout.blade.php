@@ -49,7 +49,12 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title">
-                    @yield('message')
+                    {{--@yield('message')--}}
+                    <div class="text-center">
+                        <a href="#!">
+                            <img class="img-thumbnail rounded" src="{{url('img/construccion.jpg')}}" alt="">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -79,6 +79,7 @@ const HomeController = new Vue({
                'url':'/catalogos',
                'route':'catalogos',
                'class_obj':'catalogo',
+               'font_icon':'fa fa-indent',
             },
             {
                'title':'Bitácoras',

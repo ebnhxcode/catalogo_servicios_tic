@@ -12,6 +12,8 @@
 
    <!-- Styles -->
    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+   {{--
    <style>
       body{
          /* The background image */
@@ -28,8 +30,24 @@
          background-size: cover;
       }
    </style>
+   --}}
+
+   <style>
+      video {
+         position: fixed;
+         min-width: 100%;
+         min-height: 100%;
+         /*top:50px;*/
+         z-index: -1;
+      }
+   </style>
 </head>
 <body>
+
+<video src="{{url('video/video_back.mp4')}}" autoplay loop>
+
+</video>
+
 <div id="app">
    <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
       <div class="container">

@@ -2639,7 +2639,8 @@ var HomeController = new Vue({
             'detail': 'Módulo de catálogos, permite conocer a nivel macro de origen a fin el desarrollo de un proyecto y sus contenidos.',
             'url': '/catalogos',
             'route': 'catalogos',
-            'class_obj': 'catalogo'
+            'class_obj': 'catalogo',
+            'font_icon': 'fa fa-indent'
          }, {
             'title': 'Bitácoras',
             'detail': 'Módulo de bitácoras, permite al usuario generar bitacoras sobre los servicios trabajados.',
