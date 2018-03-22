@@ -3812,17 +3812,19 @@ var SistemaOperativoController = new Vue({
             'vers_sistema_operativo': null,
             'lic_sistema_operativo': null,
             'det_licencia_sistema_operativo': null,
+            'id_idioma': null,
             'id_usuario_registra': null,
             'id_usuario_modifica': null,
             'created_at': null,
             'updated_at': null,
             'deleted_at': null
          },
-         'permitido_guardar': ['arquitectura', 'nom_sistema_operativo', 'det_sistema_operativo', 'vers_sistema_operativo', 'lic_sistema_operativo', 'det_licencia_sistema_operativo'],
-         'relaciones_clase': [],
+         'permitido_guardar': ['arquitectura', 'nom_sistema_operativo', 'det_sistema_operativo', 'vers_sistema_operativo', 'lic_sistema_operativo', 'det_licencia_sistema_operativo', 'id_idioma'],
+         'relaciones_clase': [{ 'idioma': 'id_idioma' }],
          'lom': {},
          'lista_objs_model': [],
          'sistemas_operativos': [],
+         'idiomas': [],
          'datos_excel': [],
          'usuario_auth': {},
 
@@ -3848,6 +3850,7 @@ var SistemaOperativoController = new Vue({
             'vers_sistema_operativo': true,
             'lic_sistema_operativo': false,
             'det_licencia_sistema_operativo': false,
+            'id_idioma': false,
             'id_usuario_registra': false,
             'id_usuario_modifica': false,
             'created_at': false,
@@ -3863,6 +3866,7 @@ var SistemaOperativoController = new Vue({
             'vers_sistema_operativo': 'Version SO',
             'lic_sistema_operativo': 'Licencia SO',
             'det_licencia_sistema_operativo': 'Detalle licencia SO',
+            'id_idioma': 'Id Idioma',
             'id_usuario_registra': 'Usuario registra',
             'id_usuario_modifica': 'Usuario modifica',
             'created_at': 'Creado en',
@@ -3878,6 +3882,7 @@ var SistemaOperativoController = new Vue({
             'vers_sistema_operativo': 'String',
             'lic_sistema_operativo': 'String',
             'det_licencia_sistema_operativo': 'String',
+            'id_idioma': 'String',
             'id_usuario_registra': 'String',
             'id_usuario_modifica': 'String',
             'created_at': 'String',
@@ -3901,7 +3906,7 @@ var SistemaOperativoController = new Vue({
          if (_id_en_edicion == null) {
             this.limpiar_objeto_clase_local();
          } else {
-            this.buscar_objeto_clase(_id_en_edicion);
+            this.buscar_objeto_clase_config_relaciones(_id_en_edicion, this.relaciones_clase);
          }
       },
       //sistemas_operativos se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
@@ -3958,8 +3963,12 @@ var SistemaOperativoController = new Vue({
 
          this.$http.get('/' + this.nombre_ruta).then(function (response) {
             // success callback
+            _this.configurar_relaciones(response.body.sistemas_operativos, _this.relaciones_clase);
+
             _this.lista_objs_model = response.body.sistemas_operativos || null;
             _this.sistemas_operativos = response.body.sistemas_operativos || null;
+            _this.idiomas = response.body.idiomas || null;
+
             _this.datos_excel = response.body.sistemas_operativos || null;
 
             _this.usuario_auth = response.body.usuario_auth || null;

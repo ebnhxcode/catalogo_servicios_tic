@@ -62,6 +62,7 @@ return array(
     'App\\Http\\Middleware\\TrimStrings' => $baseDir . '/app/Http/Middleware/TrimStrings.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Idioma' => $baseDir . '/app/Models/Idioma/Idioma.php',
     'App\\LogNavegacion' => $baseDir . '/app/Models/Log/LogNavegacion.php',
     'App\\Pais' => $baseDir . '/app/Models/Ubicacion/Pais.php',
     'App\\Permiso' => $baseDir . '/app/Models/Permiso/Permiso.php',

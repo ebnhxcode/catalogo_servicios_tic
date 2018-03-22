@@ -5,32 +5,24 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class SistemaOperativo extends Model {
+class Idioma extends Model {
+
 
    use SoftDeletes;
    protected $dates = ['deleted_at'];
 
-   protected $table = "sistemas_operativos";
-   protected $primaryKey = "id_sistema_operativo";
+   protected $table = "idiomas";
+   protected $primaryKey = "id_idioma";
    protected $fillable = [
       #columns
-      'arquitectura',
-      'nom_sistema_operativo',
-      'det_sistema_operativo',
-      'vers_sistema_operativo',
-      'lic_sistema_operativo',
-      'det_licencia_sistema_operativo',
+      'nom_idioma',
+      'det_idioma',
 
       #relaciones -> pks
-      'id_idioma',
-
       'id_usuario_registra',
       'id_usuario_modifica',
    ];
 
-   public function idioma () {
-      return $this->belongsTo(Idioma::class, 'id_idioma');
-   }
 
    public function usuario_registra () {
       return $this->belongsTo(User::class, 'id_usuario_registra');

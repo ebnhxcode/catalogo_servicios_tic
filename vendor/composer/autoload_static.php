@@ -375,6 +375,7 @@ class ComposerStaticInitda4e5015eda97562cfcbbde2cfd3b7e4
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Idioma' => __DIR__ . '/../..' . '/app/Models/Idioma/Idioma.php',
         'App\\LogNavegacion' => __DIR__ . '/../..' . '/app/Models/Log/LogNavegacion.php',
         'App\\Pais' => __DIR__ . '/../..' . '/app/Models/Ubicacion/Pais.php',
         'App\\Permiso' => __DIR__ . '/../..' . '/app/Models/Permiso/Permiso.php',

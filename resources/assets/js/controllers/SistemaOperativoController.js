@@ -36,6 +36,7 @@ const SistemaOperativoController = new Vue({
             'vers_sistema_operativo':null,
             'lic_sistema_operativo':null,
             'det_licencia_sistema_operativo':null,
+            'id_idioma':null,
             'id_usuario_registra':null,
             'id_usuario_modifica':null,
             'created_at':null,
@@ -49,11 +50,15 @@ const SistemaOperativoController = new Vue({
             'vers_sistema_operativo',
             'lic_sistema_operativo',
             'det_licencia_sistema_operativo',
+            'id_idioma',
          ],
-         'relaciones_clase':[],
+         'relaciones_clase':[
+            {'idioma':'id_idioma'}
+         ],
          'lom':{},
          'lista_objs_model':[],
          'sistemas_operativos':[],
+         'idiomas':[],
          'datos_excel':[],
          'usuario_auth':{},
 
@@ -79,6 +84,7 @@ const SistemaOperativoController = new Vue({
             'vers_sistema_operativo':true,
             'lic_sistema_operativo':false,
             'det_licencia_sistema_operativo':false,
+            'id_idioma':false,
             'id_usuario_registra':false,
             'id_usuario_modifica':false,
             'created_at':false,
@@ -94,6 +100,7 @@ const SistemaOperativoController = new Vue({
             'vers_sistema_operativo':'Version SO',
             'lic_sistema_operativo':'Licencia SO',
             'det_licencia_sistema_operativo':'Detalle licencia SO',
+            'id_idioma':'Id Idioma',
             'id_usuario_registra':'Usuario registra',
             'id_usuario_modifica':'Usuario modifica',
             'created_at':'Creado en',
@@ -109,6 +116,7 @@ const SistemaOperativoController = new Vue({
             'vers_sistema_operativo': 'String',
             'lic_sistema_operativo': 'String',
             'det_licencia_sistema_operativo': 'String',
+            'id_idioma': 'String',
             'id_usuario_registra': 'String',
             'id_usuario_modifica': 'String',
             'created_at': 'String',
@@ -129,7 +137,7 @@ const SistemaOperativoController = new Vue({
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function (id_en_edicion) {
          if (id_en_edicion == null) { this.limpiar_objeto_clase_local(); }
-         else { this.buscar_objeto_clase(id_en_edicion); }
+         else { this.buscar_objeto_clase_config_relaciones(id_en_edicion, this.relaciones_clase); }
       },
       //sistemas_operativos se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
       sistemas_operativos: function (sistemas_operativos) {
@@ -183,8 +191,12 @@ const SistemaOperativoController = new Vue({
    methods: {
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+            this.configurar_relaciones(response.body.sistemas_operativos, this.relaciones_clase);
+
             this.lista_objs_model = response.body.sistemas_operativos || null;
             this.sistemas_operativos = response.body.sistemas_operativos || null;
+            this.idiomas = response.body.idiomas || null;
+
             this.datos_excel = response.body.sistemas_operativos || null;
 
             this.usuario_auth = response.body.usuario_auth || null;

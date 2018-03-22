@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\SistemaOperativo;
+use App\Idioma;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -17,6 +18,7 @@ class SistemaOperativoController extends Controller {
    private $nombre_detalle;
    private $nombre_controller;
 
+   private $idiomas;
    private $sistemas_operativos;
    private $sistema_operativo;
    private $new_sistema_operativo;
@@ -53,10 +55,12 @@ class SistemaOperativoController extends Controller {
       }
 
       $this->usuario_auth = Auth::user();
-      $this->sistemas_operativos = SistemaOperativo::all();
+      $this->sistemas_operativos = SistemaOperativo::with(['idioma'])->get();
+      $this->idiomas = Idioma::all();
       return response()->json([
          'status' => 200,
          'sistemas_operativos' => $this->sistemas_operativos,
+         'idiomas' => $this->idiomas,
          'usuario_auth' => $this->usuario_auth,
       ]);
    }
@@ -71,7 +75,7 @@ class SistemaOperativoController extends Controller {
          ]);
       }
 
-      $this->sistema_operativo = SistemaOperativo::where("id_$this->nombre_modelo",'=',$id)->first();
+      $this->sistema_operativo = SistemaOperativo::where("id_$this->nombre_modelo",'=',$id)->with(['idioma'])->first();
 
       #Valida si usuario existe y busca si tiene servidor_permiso
       if ($this->sistema_operativo) {
@@ -101,6 +105,7 @@ class SistemaOperativoController extends Controller {
          'vers_sistema_operativo' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|max:255",
          'lic_sistema_operativo' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|max:255",
          'det_licencia_sistema_operativo' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|max:255",
+         'id_idioma' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
       ]);
       #Se valida la respuesta con la salida de la validacion
       if ($this->validacion->fails() == true) {
@@ -120,6 +125,7 @@ class SistemaOperativoController extends Controller {
          'vers_sistema_operativo' => $this->sistema_operativo['vers_sistema_operativo'],
          'lic_sistema_operativo' => $this->sistema_operativo['lic_sistema_operativo'],
          'det_licencia_sistema_operativo' => $this->sistema_operativo['det_licencia_sistema_operativo'],
+         'id_idioma' => $this->sistema_operativo['id_idioma'],
          'id_usuario_registra' => Auth::user()->id_usuario,
          'id_usuario_modifica' => Auth::user()->id_usuario,
       ]);
@@ -145,6 +151,7 @@ class SistemaOperativoController extends Controller {
          'vers_sistema_operativo' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|max:255",
          'lic_sistema_operativo' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|max:255",
          'det_licencia_sistema_operativo' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|max:255",
+         'id_idioma' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
       ]);
       #Valida si la informacion que se envia para editar al sistema_operativo son iguales los ids
       if ($id != $request["id_$this->nombre_modelo"]) {
