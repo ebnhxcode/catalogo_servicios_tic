@@ -2600,35 +2600,40 @@ var HomeController = new Vue({
             'url': '/dashboard',
             'route': 'home',
             'class_obj': 'home',
-            'image': '/img/logo.png'
+            'image': '/img/logo.png',
+            'font_icon': 'fa fa-dashcube'
          }, {
             'title': 'Servicios',
             'detail': 'Módulo de servicios, permite conocer servidores y aplicaciones.',
             'url': '/servicios',
             'route': 'servicios',
             'class_obj': 'servicio',
-            'image': '/img/servicio.jpg'
+            'image': '/img/servicio.jpg',
+            'font_icon': 'fa fa-rocket'
          }, {
             'title': 'Servidores',
             'detail': 'Módulo de servidores, permite conocer información respecto al servidor y aplicaciones desplegadas.',
             'url': '/servidores',
             'route': 'servidores',
             'class_obj': 'servidor',
-            'image': '/img/source.gif'
+            'image': '/img/source.gif',
+            'font_icon': 'fa fa-server'
          }, {
             'title': 'Aplicaciones',
             'detail': 'Módulo de aplicaciones, permite conocer detalles de la aplicación y su ubicación.',
             'url': '/aplicaciones',
             'route': 'aplicaciones',
             'class_obj': 'aplicacion',
-            'image': '/img/aplicación-web-y-de-escritorio-01.jpg'
+            'image': '/img/aplicación-web-y-de-escritorio-01.jpg',
+            'font_icon': 'fa fa-tablet'
          }, {
             'title': 'Actividades',
             'detail': 'Módulo de actividades, permite conocer la amplia variedad de servicios y trabajos otorgados por tic.',
             'url': '/actividades',
             'route': 'actividades',
             'class_obj': 'actividad',
-            'image': '/img/shutterstock.jpg'
+            'image': '/img/shutterstock.jpg',
+            'font_icon': 'fa fa-star'
          }, {
             'title': 'Catálogos',
             'detail': 'Módulo de catálogos, permite conocer a nivel macro de origen a fin el desarrollo de un proyecto y sus contenidos.',
@@ -2641,7 +2646,8 @@ var HomeController = new Vue({
             'url': '/usuarios_bitacora_servicios',
             'route': 'usuarios_bitacora_servicios',
             'class_obj': 'usuario_bitacora_servicio',
-            'image': '/img/bitacora.png'
+            'image': '/img/bitacora.png',
+            'font_icon': 'fa fa-map-o'
          }],
 
          'usuario_auth': {},

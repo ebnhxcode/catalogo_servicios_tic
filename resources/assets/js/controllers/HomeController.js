@@ -35,6 +35,7 @@ const HomeController = new Vue({
                'route':'home',
                'class_obj':'home',
                'image':'/img/logo.png',
+               'font_icon':'fa fa-dashcube',
             },
             {
                'title':'Servicios',
@@ -43,6 +44,7 @@ const HomeController = new Vue({
                'route':'servicios',
                'class_obj':'servicio',
                'image':'/img/servicio.jpg',
+               'font_icon':'fa fa-rocket',
             },
             {
                'title':'Servidores',
@@ -51,6 +53,7 @@ const HomeController = new Vue({
                'route':'servidores',
                'class_obj':'servidor',
                'image':'/img/source.gif',
+               'font_icon':'fa fa-server',
             },
             {
                'title':'Aplicaciones',
@@ -59,6 +62,7 @@ const HomeController = new Vue({
                'route':'aplicaciones',
                'class_obj':'aplicacion',
                'image':'/img/aplicación-web-y-de-escritorio-01.jpg',
+               'font_icon':'fa fa-tablet',
             },
             {
                'title':'Actividades',
@@ -67,6 +71,7 @@ const HomeController = new Vue({
                'route':'actividades',
                'class_obj':'actividad',
                'image':'/img/shutterstock.jpg',
+               'font_icon':'fa fa-star',
             },
             {
                'title':'Catálogos',
@@ -82,6 +87,7 @@ const HomeController = new Vue({
                'route':'usuarios_bitacora_servicios',
                'class_obj':'usuario_bitacora_servicio',
                'image':'/img/bitacora.png',
+               'font_icon':'fa fa-map-o',
             },
          ],
 

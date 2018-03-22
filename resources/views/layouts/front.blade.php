@@ -12,6 +12,22 @@
 
    <!-- Styles -->
    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+   <style>
+      body{
+         /* The background image */
+         background-image: url("img/wallpaper_login.png");
+         /* Set a specified height, or the minimum height for the background image */
+         min-height: 500px;
+         /* Set background image to fixed (don't scroll along with the page) */
+         background-attachment: fixed;
+         /* Center the background image */
+         background-position: center;
+         /* Set the background image to no repeat */
+         background-repeat: no-repeat;
+         /* Scale the background image to be as large as possible */
+         background-size: cover;
+      }
+   </style>
 </head>
 <body>
 <div id="app">

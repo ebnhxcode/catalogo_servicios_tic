@@ -73,7 +73,7 @@
                <input type="checkbox" autocomplete="off">
          <span style="font-size: 85%;">
             <i class="fa fa-check" v-if="v==true"></i>
-            <i class="fa fa-eye" v-if="v==true"></i>
+            {{--<i class="fa fa-eye" v-if="v==true"></i>--}}
             @{{ tabla_labels[c] }}
          </span>
             </label>
