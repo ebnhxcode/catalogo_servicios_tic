@@ -139,7 +139,7 @@
             <select class="form-control" v-model="servidor.id_sistema_operativo" name="id_sistema_operativo"
                     v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
                <option :value="s.id_sistema_operativo" v-for="s in sistemas_operativos">
-                  @{{ `${s.nom_sistema_operativo} -> ${s.det_sistema_operativo}` }}
+                  @{{ `${s.nom_sistema_operativo} -> ${s.vers_sistema_operativo}` }}
                </option>
             </select>
 
