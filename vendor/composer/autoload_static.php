@@ -394,6 +394,7 @@ class ComposerStaticInitda4e5015eda97562cfcbbde2cfd3b7e4
         'App\\ServidorAcceso' => __DIR__ . '/../..' . '/app/Models/Servidor/ServidorAcceso.php',
         'App\\ServidorAplicacion' => __DIR__ . '/../..' . '/app/Models/Servidor/ServidorAplicacion.php',
         'App\\ServidorEstado' => __DIR__ . '/../..' . '/app/Models/Servidor/ServidorEstado.php',
+        'App\\ServidorHistoricoCambio' => __DIR__ . '/../..' . '/app/Models/Servidor/ServidorHistoricoCambio.php',
         'App\\SistemaOperativo' => __DIR__ . '/../..' . '/app/Models/SistemaOperativo/SistemaOperativo.php',
         'App\\Tag' => __DIR__ . '/../..' . '/app/Models/Tag/Tag.php',
         'App\\TecnologiaDesarrollo' => __DIR__ . '/../..' . '/app/Models/TecnologiaDesarrollo/TecnologiaDesarrollo.php',

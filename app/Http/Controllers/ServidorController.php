@@ -6,6 +6,7 @@ use App\Ambiente;
 use App\Servidor;
 use App\ServidorEstado;
 use App\Datacentro;
+use App\ServidorHistoricoCambio;
 use App\SistemaOperativo;
 use App\Estado;
 use Illuminate\Http\Request;
@@ -31,6 +32,7 @@ class ServidorController extends Controller {
    private $servidor;
    private $new_servidor;
    private $new_servidor_estado;
+   private $new_servidor_historico;
    private $validacion;
 
    public function __construct () {
@@ -62,7 +64,9 @@ class ServidorController extends Controller {
       }
 
       $this->usuario_auth = Auth::user();
-      $this->servidores = Servidor::with(['datacentro','sistema_operativo','aplicaciones','servidor_estado','ambiente'])->get();
+      $this->servidores = Servidor::with([
+         'datacentro','sistema_operativo','aplicaciones','servidor_estado','ambiente','servidor_historico_cambios'
+      ])->get();
       $this->datacentros = Datacentro::all();
       $this->sistemas_operativos = SistemaOperativo::all();
       $this->estados = Estado::all();
@@ -88,13 +92,15 @@ class ServidorController extends Controller {
          ]);
       }
 
-      $this->servidor = Servidor::where("id_$this->nombre_modelo",'=',$id)->with(['datacentro','sistema_operativo','aplicaciones','servidor_estado','ambiente'])->first();
+      $this->servidor = Servidor::where("id_$this->nombre_modelo",'=',$id)->with([
+         'datacentro','sistema_operativo','aplicaciones','servidor_estado','ambiente','servidor_historico_cambios'
+      ])->first();
 
       #Valida si servidor existe y busca si tiene servidor_permiso
       if ($this->servidor) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
-            'tipo' => 'eliminacion_exitosa', //Para las notificaciones
+            'tipo' => 'busqueda_exitosa', //Para las notificaciones
             'mensajes' => ["new_$this->nombre_modelo" => [0=>"Registro encontrado exitosamente."]],
             'servidor' => $this->servidor,
             //Para mostrar los mensajes que van desde el backend
@@ -256,6 +262,7 @@ class ServidorController extends Controller {
       }
       unset($request['id_estado']);
       $this->servidor->update($request->all());
+      $this->new_servidor_historico = ServidorHistoricoCambio::create($request->all());
 
 
       #unset($this->new_servidor_permiso, $this->permiso);

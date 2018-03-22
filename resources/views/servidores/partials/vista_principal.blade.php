@@ -32,6 +32,9 @@
                <dt class="col-md-6">@{{ `${tabla_labels['procesador']}`}}</dt>
                <dd class="col-md-6">@{{`${servidor.procesador || 0}`}}</dd>
 
+               <dt class="col-md-6">@{{ `${tabla_labels['modelo_procesador']}`}}</dt>
+               <dd class="col-md-6">@{{separar_miles(`${servidor.modelo_procesador || 0}`)}}</dd>
+
                <dt class="col-md-6">@{{ `${tabla_labels['frec_procesador']}`}}</dt>
                <dd class="col-md-6">@{{separar_miles(`${servidor.frec_procesador || 0}`)}} mhz</dd>
 
@@ -136,6 +139,36 @@
       </table><!-- .table -->
       <div class="card card-body bg-light" v-else>
          Hasta el momento no existen aplicaciones cargadas en este servidor.
+      </div><!-- .card -->
+
+      <br>
+      <h4>Histórico de cambios del servidor</h4>
+
+      <table class="table table-striped table-hover table-sm" v-if="servidor.servidor_historico_cambios && servidor.servidor_historico_cambios.length > 0">
+         <thead>
+         <tr>
+            <th>Ram</th>
+            <th>Memoria Disco</th>
+            <th>Swap</th>
+            <th>Cores</th>
+            <th>Frec. Hz</th>
+            <th>Fecha cambio</th>
+         </tr>
+         </thead>
+         <tbody>
+         <tr v-for="h in servidor.servidor_historico_cambios">
+            <td>@{{ h.ram }}</td>
+            <td>@{{ h.memoria_dd }}</td>
+            <td>@{{ h.swap }}</td>
+            <td>@{{ h.nucleos }}</td>
+            <td>@{{ h.frec_procesador }}</td>
+            <td>@{{ h.created_at }}</td>
+         </tr>
+         </tbody>
+
+      </table><!-- .table -->
+      <div class="card card-body bg-light" v-else>
+         Hasta el momento no existe historial de cambios para este servidor.
       </div><!-- .card -->
 
 

@@ -81,6 +81,7 @@ return array(
     'App\\ServidorAcceso' => $baseDir . '/app/Models/Servidor/ServidorAcceso.php',
     'App\\ServidorAplicacion' => $baseDir . '/app/Models/Servidor/ServidorAplicacion.php',
     'App\\ServidorEstado' => $baseDir . '/app/Models/Servidor/ServidorEstado.php',
+    'App\\ServidorHistoricoCambio' => $baseDir . '/app/Models/Servidor/ServidorHistoricoCambio.php',
     'App\\SistemaOperativo' => $baseDir . '/app/Models/SistemaOperativo/SistemaOperativo.php',
     'App\\Tag' => $baseDir . '/app/Models/Tag/Tag.php',
     'App\\TecnologiaDesarrollo' => $baseDir . '/app/Models/TecnologiaDesarrollo/TecnologiaDesarrollo.php',

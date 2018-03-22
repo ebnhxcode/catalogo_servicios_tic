@@ -5,13 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Servidor extends Model {
-
+class ServidorHistoricoCambio extends Model {
    use SoftDeletes;
    protected $dates = ['deleted_at'];
 
-   protected $table = "servidores";
-   protected $primaryKey = "id_servidor";
+   protected $table = "servidores_historico_cambios";
+   protected $primaryKey = "id_servidor_historico";
    protected $fillable = [
       #columns
       'nom_servidor',
@@ -32,6 +31,7 @@ class Servidor extends Model {
       'interface',
 
       #relaciones -> pks
+      'id_servidor',
       'id_datacentro',
       'id_sistema_operativo',
       'id_estado',
@@ -40,7 +40,6 @@ class Servidor extends Model {
       'id_usuario_registra',
       'id_usuario_modifica',
    ];
-
 
    public function usuario_registra () {
       return $this->belongsTo(User::class, 'id_usuario_registra');
@@ -70,8 +69,7 @@ class Servidor extends Model {
       return $this->hasMany(Aplicacion::class, 'id_servidor');
    }
 
-   public function servidor_historico_cambios () {
-      return $this->hasMany(Servidor::class, 'id_servidor');
+   public function servidor () {
+      return $this->belongsTo(Servidor::class, 'id_servidor');
    }
-
 }
