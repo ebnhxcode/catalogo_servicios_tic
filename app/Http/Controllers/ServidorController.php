@@ -178,7 +178,7 @@ class ServidorController extends Controller {
       ]);
 
       $request['id_servidor'] = $this->new_servidor->id_servidor;
-      $this->new_servidor_historico = ServidorHistoricoCambio::create($request->all());
+      $this->new_servidor_historico = ServidorHistoricoCambio::c<reate($request->all());
 
       #Guardar relacion del estado, en caso que exista valor
       $this->new_servidor_estado = ServidorEstado::create([
