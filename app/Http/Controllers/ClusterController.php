@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cluster;
 use Illuminate\Http\Request;
+use Auth;
 
 class ClusterController extends Controller {   private $usuario_auth;
 

@@ -15,6 +15,7 @@
     "/js/controllers/EstadoController.js": "/js/controllers/EstadoController.js",
     "/js/controllers/DominioController.js": "/js/controllers/DominioController.js",
     "/js/controllers/DatacentroController.js": "/js/controllers/DatacentroController.js",
+    "/js/controllers/ClusterController.js": "/js/controllers/ClusterController.js",
     "/js/controllers/CargoController.js": "/js/controllers/CargoController.js",
     "/js/controllers/AplicacionController.js": "/js/controllers/AplicacionController.js",
     "/js/controllers/AplicacionAccesoController.js": "/js/controllers/AplicacionAccesoController.js",

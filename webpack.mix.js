@@ -53,6 +53,7 @@ mix.js('resources/assets/js/controllers/DatacentroController.js','public/js/cont
 mix.js('resources/assets/js/controllers/SistemaOperativoController.js','public/js/controllers/SistemaOperativoController.js');
 mix.js('resources/assets/js/controllers/TagController.js','public/js/controllers/TagController.js');
 mix.js('resources/assets/js/controllers/UsuarioBitacoraServicioController.js','public/js/controllers/UsuarioBitacoraServicioController.js');
+mix.js('resources/assets/js/controllers/ClusterController.js','public/js/controllers/ClusterController.js');
 
 mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');
