@@ -8,6 +8,7 @@ use App\Servidor;
 use App\ServidorEstado;
 use App\Datacentro;
 use App\ServidorHistoricoCambio;
+use App\ServidorLvm;
 use App\SistemaOperativo;
 use App\TipoSistemaOperativo;
 use App\Estado;
@@ -34,9 +35,11 @@ class ServidorController extends Controller {
    private $estados;
    private $estado;
    private $servidor;
+   private $servidor_sistema_operativo;
    private $new_servidor;
    private $new_servidor_estado;
    private $new_servidor_historico;
+   private $new_servidor_lvm;
    private $validacion;
 
    public function __construct () {
@@ -72,7 +75,7 @@ class ServidorController extends Controller {
          'datacentro','sistema_operativo','aplicaciones','servidor_estado.estado','ambiente','servidor_historico_cambios','cluster'
       ])->get();
       $this->datacentros = Datacentro::all();
-      $this->sistemas_operativos = SistemaOperativo::all();
+      $this->sistemas_operativos = SistemaOperativo::with('tipo_sistema_operativo')->get();
       $this->tipos_sistemas_operativos = TipoSistemaOperativo::all();
       $this->estados = Estado::all();
       $this->ambientes = Ambiente::all();
@@ -157,6 +160,7 @@ class ServidorController extends Controller {
             'mensajes' => $this->validacion->messages(), //Para mostrar los mensajes que van desde el backend
          ]);
       }
+
       #Como pasó todas las validaciones, se asigna al objeto
       $this->servidor = $request->all();
       #Se crea el nuevo registro
@@ -188,7 +192,7 @@ class ServidorController extends Controller {
       ]);
 
       $request['id_servidor'] = $this->new_servidor->id_servidor;
-      $this->new_servidor_historico = ServidorHistoricoCambio::c<reate($request->all());
+      $this->new_servidor_historico = ServidorHistoricoCambio::create($request->all());
 
       #Guardar relacion del estado, en caso que exista valor
       $this->new_servidor_estado = ServidorEstado::create([
@@ -197,6 +201,33 @@ class ServidorController extends Controller {
          'id_usuario_registra' => Auth::user()->id_usuario,
          'id_usuario_modifica' => Auth::user()->id_usuario,
       ]);
+
+      if ($this->new_servidor->sistema_operativo->tipo_sistema_operativo->codigo_tipo_sistema_operativo == "linux") {
+         $this->new_servidor_lvm = ServidorLvm::create([
+            'id_servidor'=>$this->new_servidor->id_servidor,
+            'lvm_raiz'=>$request['lvm_raiz'],
+            'lvm_usr'=>$request['lvm_usr'],
+            'lvm_tmp'=>$request['lvm_tmp'],
+            'lvm_var'=>$request['lvm_var'],
+            'lvm_home'=>$request['lvm_home'],
+            'id_usuario_registra' => Auth::user()->id_usuario,
+            'id_usuario_modifica' => Auth::user()->id_usuario,
+         ]);
+      }
+
+
+      /*
+      #Esta es la forma antigua
+      $this->servidor_sistema_operativo = SistemaOperativo::find($request['id_sistema_operativo'])->with('tipo_sistema_operativo')->first();
+      if ($this->servidor_sistema_operativo && $this->servidor_sistema_operativo->tipo_sistema_operativo) {
+         if ($this->servidor_sistema_operativo->tipo_sistema_operativo->cod_tipo_sistema_operativo=="linux") {
+            $this->new_servidor_lvm = ServidorLvm::create([
+               'id_servidor'=>'',
+            ]);
+         }
+      }
+      */
+
 
       unset($this->servidor, $this->new_servidor_estado, $this->validacion);
 

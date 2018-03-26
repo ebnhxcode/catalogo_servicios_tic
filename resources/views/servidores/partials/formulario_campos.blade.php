@@ -144,12 +144,12 @@
             </select>
 
             <transition name="bounce">
-               <i v-show="errors.has('id_datacentro')" class="fa fa-exclamation-circle"></i>
+               <i v-show="errors.has('id_cluster')" class="fa fa-exclamation-circle"></i>
             </transition>
 
             <transition name="bounce">
-                  <span v-show="errors.has('id_datacentro')" class="text-danger small">
-                     @{{ errors.first('id_datacentro') }}
+                  <span v-show="errors.has('id_cluster')" class="text-danger small">
+                     @{{ errors.first('id_cluster') }}
                   </span>
             </transition>
          </p>
@@ -374,6 +374,135 @@
 
 
 </div><!-- .row -->
+
+
+<h5 v-if="es_linux() == true">Distribución LVM Linux</h5>
+<div class="row" v-if="es_linux() == true">
+
+   <div class="col-sm-2 col-md-2">
+
+      <dt>/ ~ Raiz</dt>
+      <dd>
+         <p class="control has-icon has-icon-right">
+
+            <input type="text" v-model="servidor.lvm_raiz" name="lvm_raiz"
+                   v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500"
+                   class="form-control" />
+
+            <transition name="bounce">
+               <i v-show="errors.has('lvm_raiz')" class="fa fa-exclamation-circle"></i>
+            </transition>
+
+            <transition name="bounce">
+               <span v-show="errors.has('lvm_raiz')" class="text-danger small">
+                  @{{ errors.first('lvm_raiz') }}
+               </span>
+            </transition>
+         </p>
+      </dd>
+
+   </div><!-- .col -->
+
+
+   <div class="col-sm-2 col-md-2">
+
+      <dt>/usr</dt>
+      <dd>
+         <p class="control has-icon has-icon-right">
+
+            <input type="text" v-model="servidor.lvm_usr" name="lvm_usr"
+                   v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500"
+                   class="form-control" />
+
+            <transition name="bounce">
+               <i v-show="errors.has('lvm_usr')" class="fa fa-exclamation-circle"></i>
+            </transition>
+
+            <transition name="bounce">
+               <span v-show="errors.has('lvm_usr')" class="text-danger small">
+                  @{{ errors.first('lvm_usr') }}
+               </span>
+            </transition>
+         </p>
+      </dd>
+
+   </div><!-- .col -->
+
+   <div class="col-sm-2 col-md-2">
+
+      <dt>/tmp</dt>
+      <dd>
+         <p class="control has-icon has-icon-right">
+
+            <input type="text" v-model="servidor.lvm_tmp" name="lvm_tmp"
+                   v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500"
+                   class="form-control" />
+
+            <transition name="bounce">
+               <i v-show="errors.has('lvm_tmp')" class="fa fa-exclamation-circle"></i>
+            </transition>
+
+            <transition name="bounce">
+               <span v-show="errors.has('lvm_tmp')" class="text-danger small">
+                  @{{ errors.first('lvm_tmp') }}
+               </span>
+            </transition>
+         </p>
+      </dd>
+
+   </div><!-- .col -->
+
+
+   <div class="col-sm-2 col-md-2">
+
+      <dt>/var</dt>
+      <dd>
+         <p class="control has-icon has-icon-right">
+
+            <input type="text" v-model="servidor.lvm_var" name="lvm_var"
+                   v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500"
+                   class="form-control" />
+
+            <transition name="bounce">
+               <i v-show="errors.has('lvm_var')" class="fa fa-exclamation-circle"></i>
+            </transition>
+
+            <transition name="bounce">
+               <span v-show="errors.has('lvm_var')" class="text-danger small">
+                  @{{ errors.first('lvm_var') }}
+               </span>
+            </transition>
+         </p>
+      </dd>
+
+   </div><!-- .col -->
+
+   <div class="col-sm-2 col-md-2">
+
+      <dt>/home</dt>
+      <dd>
+         <p class="control has-icon has-icon-right">
+
+            <input type="text" v-model="servidor.lvm_home" name="lvm_home"
+                   v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500"
+                   class="form-control" />
+
+            <transition name="bounce">
+               <i v-show="errors.has('lvm_home')" class="fa fa-exclamation-circle"></i>
+            </transition>
+
+            <transition name="bounce">
+               <span v-show="errors.has('lvm_home')" class="text-danger small">
+                  @{{ errors.first('lvm_home') }}
+               </span>
+            </transition>
+         </p>
+      </dd>
+
+   </div><!-- .col -->
+
+</div><!-- .row -->
+
 
 
 <h5>Estado y ambiente</h5>

@@ -287,5 +287,15 @@ const ServidorController = new Vue({
             this.checkear_estado_respuesta_http(response.status);
          });
       },
+      es_linux: function () {
+         if (this.$data[`${this.nombre_model}`][`id_sistema_operativo`] != null) {
+            var so = this.buscar_en_array_por_modelo_e_id(this.$data[`${this.nombre_model}`][`id_sistema_operativo`], this.$data[`sistemas_operativos`], `sistema_operativo`);
+            if (so.tipo_sistema_operativo.cod_tipo_sistema_operativo=='linux') {
+               return true;
+            }
+            return false;
+         }
+         return false;
+      },
    }
 });
