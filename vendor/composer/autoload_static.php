@@ -402,6 +402,8 @@ class ComposerStaticInitda4e5015eda97562cfcbbde2cfd3b7e4
         'App\\Tag' => __DIR__ . '/../..' . '/app/Models/Tag/Tag.php',
         'App\\TecnologiaDesarrollo' => __DIR__ . '/../..' . '/app/Models/TecnologiaDesarrollo/TecnologiaDesarrollo.php',
         'App\\TipoAplicacion' => __DIR__ . '/../..' . '/app/Models/Aplicacion/TipoAplicacion.php',
+        'App\\TipoCluster' => __DIR__ . '/../..' . '/app/Models/Cluster/TipoCluster.php',
+        'App\\TipoSistemaOperativo' => __DIR__ . '/../..' . '/app/Models/SistemaOperativo/TipoSistemaOperativo.php',
         'App\\TipoTecnologiaDesarrollo' => __DIR__ . '/../..' . '/app/Models/TecnologiaDesarrollo/TipoTecnologiaDesarrollo.php',
         'App\\User' => __DIR__ . '/../..' . '/app/Models/Usuario/User.php',
         'App\\UsuarioBitacoraServicio' => __DIR__ . '/../..' . '/app/Models/Usuario/UsuarioBitacoraServicio.php',

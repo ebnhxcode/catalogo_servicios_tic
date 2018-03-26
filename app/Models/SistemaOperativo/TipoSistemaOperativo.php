@@ -5,28 +5,25 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-
-class Cluster extends Model {
+class TipoSistemaOperativo extends Model {
    use SoftDeletes;
    protected $dates = ['deleted_at'];
 
-   protected $table = "clusters";
-   protected $primaryKey = "id_cluster";
+   protected $table = "tipos_sistemas_operativos";
+   protected $primaryKey = "id_tipo_sistema_operativo";
    protected $fillable = [
       #columns
-      'nom_cluster',
-      'det_cluster',
-      'cod_cluster',
-
+      'nom_tipo_sistema_operativo',
+      'det_tipo_sistema_operativo',
+      'cod_tipo_sistema_operativo',
       #relaciones -> pks
-      'id_tipo_cluster',
 
       'id_usuario_registra',
       'id_usuario_modifica',
    ];
 
-   public function tipo_cluster () {
-      return $this->belongsTo(TipoCluster::class, 'id_tipo_cluster');
+   public function sistemas_operativos () {
+      return $this->hasMany(SistemaOperativo::class, 'id_tipo_sistema_operativo');
    }
 
    public function usuario_registra() {

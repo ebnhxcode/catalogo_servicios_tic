@@ -32,6 +32,7 @@ const ClusterController = new Vue({
             'nom_cluster':null,
             'det_cluster':null,
             'cod_cluster':null,
+            'id_tipo_cluster':null,
             'id_usuario_registra':null,
             'id_usuario_modifica':null,
             'created_at':null,
@@ -42,8 +43,11 @@ const ClusterController = new Vue({
             'nom_cluster',
             'det_cluster',
             'cod_cluster',
+            'id_tipo_cluster',
          ],
-         'relaciones_clase':[],
+         'relaciones_clase':[
+            {'tipo_cluster':'id_tipo_cluster'}
+         ],
          'lom':{},
          'lista_objs_model':[],
          'clusters':[],
@@ -69,6 +73,7 @@ const ClusterController = new Vue({
             'nom_cluster':true,
             'det_cluster':true,
             'cod_cluster':true,
+            'id_tipo_cluster':false,
             'id_usuario_registra':false,
             'id_usuario_modifica':false,
             'created_at':false,
@@ -81,6 +86,7 @@ const ClusterController = new Vue({
             'nom_cluster':'Nombre cluster',
             'det_cluster':'Detalle cluster',
             'cod_cluster':'Codigo cluster',
+            'id_tipo_cluster':'Tipo cluster',
             'id_usuario_registra':'Usuario registra',
             'id_usuario_modifica':'Usuario modifica',
             'created_at':'Creado en',
@@ -93,6 +99,7 @@ const ClusterController = new Vue({
             'nom_cluster': 'String',
             'det_cluster': 'String',
             'cod_cluster': 'String',
+            'id_tipo_cluster': 'String',
             'id_usuario_registra': 'String',
             'id_usuario_modifica': 'String',
             'created_at': 'String',
@@ -113,7 +120,7 @@ const ClusterController = new Vue({
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function (id_en_edicion) {
          if (id_en_edicion == null) { this.limpiar_objeto_clase_local(); }
-         else { this.buscar_objeto_clase(id_en_edicion); }
+         else { this.buscar_objeto_clase_config_relaciones(id_en_edicion, this.relaciones_clase); }
       },
       //clusters se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
       clusters: function (clusters) {
@@ -125,6 +132,7 @@ const ClusterController = new Vue({
                'nom_cluster': cluster.nom_cluster || '-',
                'det_cluster': cluster.det_cluster || '-',
                'cod_cluster': cluster.cod_cluster || '-',
+               'id_tipo_cluster': cluster.id_tipo_cluster || '-',
                'id_usuario_registra': cluster.id_usuario_registra || '-',
                'id_usuario_modifica': cluster.id_usuario_modifica || '-',
                'created_at': cluster.created_at || '-',
@@ -164,9 +172,13 @@ const ClusterController = new Vue({
    methods: {
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+            this.configurar_relaciones(response.body.clusters, this.relaciones_clase);
+
             this.lista_objs_model = response.body.clusters || null;
             this.clusters = response.body.clusters || null;
             this.datos_excel = response.body.clusters || null;
+
+            this.tipos_clusters = response.body.tipos_clusters || null;
             this.usuario_auth = response.body.usuario_auth || null;
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);

@@ -23,6 +23,7 @@ class SistemaOperativo extends Model {
 
       #relaciones -> pks
       'id_idioma',
+      'id_tipo_sistema_operativo',
 
       'id_usuario_registra',
       'id_usuario_modifica',
@@ -30,6 +31,10 @@ class SistemaOperativo extends Model {
 
    public function idioma () {
       return $this->belongsTo(Idioma::class, 'id_idioma');
+   }
+
+   public function tipo_sistema_operativo () {
+      return $this->belongsTo(TipoSistemaOperativo::class, 'id_tipo_sistema_operativo');
    }
 
    public function usuario_registra () {

@@ -3,7 +3,7 @@
 
       <!-- este bloque será reemplazado dinamicamente -->
       <div class="card" style="{{--width: 18rem;--}}">
-         <img class="card-img-top" src="{{ url('/img/cluster.jpg') }}" alt="Card image cap">
+         <img class="card-img-top" src="{{ url('/img/cluster.png') }}" alt="Card image cap">
          <div class="card-body">
             <h5 class="card-title">
                @{{ cluster.nom_cluster || '' }}

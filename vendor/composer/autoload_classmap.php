@@ -89,6 +89,8 @@ return array(
     'App\\Tag' => $baseDir . '/app/Models/Tag/Tag.php',
     'App\\TecnologiaDesarrollo' => $baseDir . '/app/Models/TecnologiaDesarrollo/TecnologiaDesarrollo.php',
     'App\\TipoAplicacion' => $baseDir . '/app/Models/Aplicacion/TipoAplicacion.php',
+    'App\\TipoCluster' => $baseDir . '/app/Models/Cluster/TipoCluster.php',
+    'App\\TipoSistemaOperativo' => $baseDir . '/app/Models/SistemaOperativo/TipoSistemaOperativo.php',
     'App\\TipoTecnologiaDesarrollo' => $baseDir . '/app/Models/TecnologiaDesarrollo/TipoTecnologiaDesarrollo.php',
     'App\\User' => $baseDir . '/app/Models/Usuario/User.php',
     'App\\UsuarioBitacoraServicio' => $baseDir . '/app/Models/Usuario/UsuarioBitacoraServicio.php',

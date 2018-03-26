@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Cluster;
+use App\TipoCluster;
 use Illuminate\Http\Request;
 use Auth;
+
+use Illuminate\Support\Facades\Validator;
 
 class ClusterController extends Controller {   private $usuario_auth;
 
@@ -15,6 +18,7 @@ class ClusterController extends Controller {   private $usuario_auth;
    private $nombre_controller;
 
    private $clusters;
+   private $tipos_clusters;
    private $cluster;
    private $new_cluster;
    private $validacion;
@@ -48,10 +52,12 @@ class ClusterController extends Controller {   private $usuario_auth;
       }
 
       $this->usuario_auth = Auth::user();
-      $this->clusters = Cluster::all();
+      $this->clusters = Cluster::with(['tipo_cluster'])->get();
+      $this->tipos_clusters = TipoCluster::all();
       return response()->json([
          'status' => 200,
          'clusters' => $this->clusters,
+         'tipos_clusters' => $this->tipos_clusters,
          'usuario_auth' => $this->usuario_auth,
       ]);
    }
@@ -66,7 +72,7 @@ class ClusterController extends Controller {   private $usuario_auth;
          ]);
       }
 
-      $this->cluster = Cluster::where("id_$this->nombre_modelo",'=',$id)->first();
+      $this->cluster = Cluster::with(['tipo_cluster'])->where("id_$this->nombre_modelo",'=',$id)->first();
 
       #Valida si role existe y busca si tiene servidor_permiso
       if ($this->cluster) {
@@ -90,8 +96,10 @@ class ClusterController extends Controller {   private $usuario_auth;
    public function store(Request $request) {
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario
       $this->validacion = Validator::make($request->all(), [
-         'nom_cluster' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
-         'det_cluster' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
+         'nom_cluster' => "regex:/(^([a-zA-Z0-9_ -]+)(\d+)?$)/u|required|max:255",
+         'det_cluster' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&-]+)(\d+)?$)/u|required|max:255",
+         'cod_cluster' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
+         'id_tipo_cluster' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
       ]);
       #Se valida la respuesta con la salida de la validacion
       if ($this->validacion->fails() == true) {
@@ -107,6 +115,8 @@ class ClusterController extends Controller {   private $usuario_auth;
       $this->new_cluster = Cluster::create([
          'nom_cluster' => $this->cluster['nom_cluster'],
          'det_cluster' => $this->cluster['det_cluster'],
+         'cod_cluster' => $this->cluster['cod_cluster'],
+         'id_tipo_cluster' => $this->cluster['id_tipo_cluster'],
          'id_usuario_registra' => Auth::user()->id_usuario,
          'id_usuario_modifica' => Auth::user()->id_usuario,
       ]);
@@ -126,8 +136,10 @@ class ClusterController extends Controller {   private $usuario_auth;
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario
       $this->validacion = Validator::make($request->all(), [
          'id_cluster' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|max:255',
-         'nom_cluster' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
-         'det_cluster' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
+         'nom_cluster' => "regex:/(^([a-zA-Z0-9_ -]+)(\d+)?$)/u|required|max:255",
+         'det_cluster' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&-]+)(\d+)?$)/u|required|max:255",
+         'cod_cluster' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
+         'id_tipo_cluster' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
       ]);
       #Valida si la informacion que se envia para editar al cluster son iguales los ids
       if ($id != $request["id_$this->nombre_modelo"]) {
