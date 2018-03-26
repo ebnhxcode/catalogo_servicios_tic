@@ -29,6 +29,10 @@ class Cluster extends Model {
       return $this->belongsTo(TipoCluster::class, 'id_tipo_cluster');
    }
 
+   public function servidores () {
+      return $this->hasMany(Servidor::class, 'id_cluster');
+   }
+
    public function usuario_registra() {
       return $this->belongsTo(User::class, 'id_usuario_registra');
    }

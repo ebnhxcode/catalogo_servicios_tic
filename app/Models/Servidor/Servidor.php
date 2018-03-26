@@ -36,6 +36,7 @@ class Servidor extends Model {
       'id_sistema_operativo',
       'id_estado',
       'id_ambiente',
+      'id_cluster',
 
       'id_usuario_registra',
       'id_usuario_modifica',
@@ -60,6 +61,10 @@ class Servidor extends Model {
 
    public function ambiente () {
       return $this->belongsTo(Ambiente::class, 'id_ambiente');
+   }
+
+   public function cluster () {
+      return $this->belongsTo(Cluster::class, 'id_cluster');
    }
 
    public function servidor_estado () {

@@ -133,12 +133,54 @@
 
    <div class="col-sm-6 col-md-6">
 
+      <dt>Cluster</dt>
+      <dd>
+         <p class="control has-icon has-icon-right">
+            <select class="form-control" v-model="servidor.id_cluster" name="id_cluster"
+                    v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
+               <option :value="c.id_cluster" v-for="c in clusters">
+                  @{{ `${c.nom_cluster} -> ${c.det_cluster}` }}
+               </option>
+            </select>
+
+            <transition name="bounce">
+               <i v-show="errors.has('id_datacentro')" class="fa fa-exclamation-circle"></i>
+            </transition>
+
+            <transition name="bounce">
+                  <span v-show="errors.has('id_datacentro')" class="text-danger small">
+                     @{{ errors.first('id_datacentro') }}
+                  </span>
+            </transition>
+         </p>
+      </dd>
+   </div><!-- .col -->
+
+   <div class="col-sm-6 col-md-6">
+
+      <dt>Tipo Sistema Operativo</dt>
+      <dd>
+         <p class="control has-icon has-icon-right">
+            <select class="form-control" v-model="servidor.id_tipo_sistema_operativo" name="id_tipo_sistema_operativo"
+                    v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
+               <option :value="tso.id_tipo_sistema_operativo" v-for="tso in tipos_sistemas_operativos">
+                  @{{ `${tso.nom_tipo_sistema_operativo} -> ${tso.det_tipo_sistema_operativo}` }}
+               </option>
+            </select>
+
+         </p>
+      </dd>
+   </div><!-- .col -->
+
+   <div class="col-sm-6 col-md-6">
+
       <dt>Sistema Operativo</dt>
       <dd>
          <p class="control has-icon has-icon-right">
             <select class="form-control" v-model="servidor.id_sistema_operativo" name="id_sistema_operativo"
                     v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
-               <option :value="s.id_sistema_operativo" v-for="s in sistemas_operativos">
+               <option :value="s.id_sistema_operativo" v-for="s in sistemas_operativos"
+                       v-if="s.id_tipo_sistema_operativo==servidor.id_tipo_sistema_operativo||servidor.id_tipo_sistema_operativo==null">
                   @{{ `${s.nom_sistema_operativo} -> ${s.vers_sistema_operativo}` }}
                </option>
             </select>

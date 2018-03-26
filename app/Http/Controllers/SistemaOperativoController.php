@@ -17,10 +17,12 @@ class SistemaOperativoController extends Controller {
    private $nombre_tabla;
    private $nombre_ruta;
    private $nombre_detalle;
+   private $nombre_detalle_singular;
    private $nombre_controller;
 
    private $idiomas;
    private $sistemas_operativos;
+   private $tipos_sistemas_operativos;
    private $sistema_operativo;
    private $new_sistema_operativo;
    private $validacion;

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Ambiente;
+use App\Cluster;
 use App\Servidor;
 use App\ServidorEstado;
 use App\Datacentro;
 use App\ServidorHistoricoCambio;
 use App\SistemaOperativo;
+use App\TipoSistemaOperativo;
 use App\Estado;
 use Illuminate\Http\Request;
 use Auth;
@@ -26,7 +28,9 @@ class ServidorController extends Controller {
    private $servidores;
    private $datacentros;
    private $sistemas_operativos;
+   private $tipos_sistemas_operativos;
    private $ambientes;
+   private $clusters;
    private $estados;
    private $estado;
    private $servidor;
@@ -65,18 +69,22 @@ class ServidorController extends Controller {
 
       $this->usuario_auth = Auth::user();
       $this->servidores = Servidor::with([
-         'datacentro','sistema_operativo','aplicaciones','servidor_estado.estado','ambiente','servidor_historico_cambios'
+         'datacentro','sistema_operativo','aplicaciones','servidor_estado.estado','ambiente','servidor_historico_cambios','cluster'
       ])->get();
       $this->datacentros = Datacentro::all();
       $this->sistemas_operativos = SistemaOperativo::all();
+      $this->tipos_sistemas_operativos = TipoSistemaOperativo::all();
       $this->estados = Estado::all();
       $this->ambientes = Ambiente::all();
+      $this->clusters = Cluster::all();
       return response()->json([
          'status' => 200,
          'servidores' => $this->servidores,
          'datacentros' => $this->datacentros,
          'sistemas_operativos' => $this->sistemas_operativos,
+         'tipos_sistemas_operativos' => $this->tipos_sistemas_operativos,
          'ambientes' => $this->ambientes,
+         'clusters' => $this->clusters,
          'estados' => $this->estados,
          'usuario_auth' => $this->usuario_auth,
       ]);
@@ -93,7 +101,7 @@ class ServidorController extends Controller {
       }
 
       $this->servidor = Servidor::where("id_$this->nombre_modelo",'=',$id)->with([
-         'datacentro','sistema_operativo','aplicaciones','servidor_estado.estado','ambiente','servidor_historico_cambios'
+         'datacentro','sistema_operativo','aplicaciones','servidor_estado.estado','ambiente','servidor_historico_cambios','cluster'
       ])->first();
 
       #Valida si servidor existe y busca si tiene servidor_permiso
@@ -139,6 +147,7 @@ class ServidorController extends Controller {
          'id_sistema_operativo' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
          'id_estado' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
          'id_ambiente' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
+         'id_cluster' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
       ]);
       #Se valida la respuesta con la salida de la validacion
       if ($this->validacion->fails() == true) {
@@ -172,6 +181,7 @@ class ServidorController extends Controller {
          'id_datacentro' => $this->servidor['id_datacentro'],
          'id_sistema_operativo' => $this->servidor['id_sistema_operativo'],
          'id_ambiente' => $this->servidor['id_ambiente'],
+         'id_cluster' => $this->servidor['id_cluster'],
 
          'id_usuario_registra' => Auth::user()->id_usuario,
          'id_usuario_modifica' => Auth::user()->id_usuario,
@@ -223,6 +233,7 @@ class ServidorController extends Controller {
          'id_sistema_operativo' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
          'id_estado' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
          'id_ambiente' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
+         'id_cluster' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
       ]);
       #Valida si la informacion que se envia para editar al servidor son iguales los ids
       if ($id != $request["id_$this->nombre_modelo"]) {
