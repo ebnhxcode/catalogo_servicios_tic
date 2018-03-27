@@ -63,7 +63,7 @@
 
          <p class="control has-icon has-icon-right">
             <input type="text" v-model="servidor.ip_servidor" name="ip_servidor"
-                   v-validate="{ip:true}" data-vv-delay="500"
+                   v-validate="{required:true,ip:true}" data-vv-delay="500"
                    class="form-control" />
 
             <transition name="bounce">
@@ -565,6 +565,38 @@
    </div><!-- .col -->
 
 
+
+</div><!-- .row -->
+
+
+<h5>Agente Instana</h5>
+<div class="row">
+   <div class="col-sm-6 col-md-6">
+
+      <dt>¿Se instaló instana?</dt>
+      <dd>
+         <p class="control has-icon has-icon-right">
+
+            <toggle-button
+               :sync="true"
+               :value="servidor.agente_instana_instalado=(en_array([true, 'true', 1], servidor.agente_instana_instalado)?true:false)"
+               :width="90"
+               :labels="{checked: 'Instalado <i class=`fa fa-check`></i>', unchecked: 'No Instalado'}"
+               v-model="servidor.agente_instana_instalado"/>
+
+            <transition name="bounce">
+               <i v-show="errors.has('agente_instana_instalado')" class="fa fa-exclamation-circle"></i>
+            </transition>
+
+            <transition name="bounce">
+               <span v-show="errors.has('agente_instana_instalado')" class="text-danger small">
+                  @{{ errors.first('agente_instana_instalado') }}
+               </span>
+            </transition>
+         </p>
+      </dd>
+
+   </div><!-- .col -->
 
 </div><!-- .row -->
 

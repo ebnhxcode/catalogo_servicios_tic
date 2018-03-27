@@ -43,6 +43,12 @@ const ServidorController = new Vue({
             'mac':null,
             'nodo':null,
             'interface':null,
+            'lvm_raiz':null,
+            'lvm_usr':null,
+            'lvm_tmp':null,
+            'lvm_var':null,
+            'lvm_home':null,
+            'agente_instana_instalado':null,
             'id_datacentro':null,
             'id_sistema_operativo':null,
             'id_tipo_sistema_operativo':null, // no lleva relacion, solo se usa para filtrar un combobox
@@ -70,6 +76,14 @@ const ServidorController = new Vue({
             'mac',
             'nodo',
             'interface',
+
+            'lvm_raiz',
+            'lvm_usr',
+            'lvm_tmp',
+            'lvm_var',
+            'lvm_home',
+            'agente_instana_instalado',
+
             'id_datacentro',
             'id_sistema_operativo',
             'id_estado',
@@ -83,6 +97,12 @@ const ServidorController = new Vue({
             {'servidor_estado':'id_estado'},
             {'ambiente':'id_ambiente'},
             {'cluster':'id_cluster'},
+            {'servidor_lvms':'id_servidor_lvm'},
+            {'servidor_lvms':'lvm_raiz'},
+            {'servidor_lvms':'lvm_usr'},
+            {'servidor_lvms':'lvm_tmp'},
+            {'servidor_lvms':'lvm_var'},
+            {'servidor_lvms':'lvm_home'},
          ],
          'lom':{},
          'lista_objs_model':[],
@@ -127,6 +147,12 @@ const ServidorController = new Vue({
             'mac':false,
             'nodo':false,
             'interface':false,
+            'lvm_raiz':false,
+            'lvm_usr':false,
+            'lvm_tmp':false,
+            'lvm_var':false,
+            'lvm_home':false,
+            'agente_instana_instalado':false,
             'id_datacentro':false,
             'id_sistema_operativo':false,
             'id_estado':false,
@@ -157,6 +183,12 @@ const ServidorController = new Vue({
             'mac':'Mac',
             'nodo':'Nodo',
             'interface':'Interface',
+            'lvm_raiz':'/~Raiz',
+            'lvm_usr':'usr',
+            'lvm_tmp':'tmp',
+            'lvm_var':'var',
+            'lvm_home':'home',
+            'agente_instana_instalado':'Agente Instana',
 
             'id_datacentro':'Id Datacrentro',
             'id_sistema_operativo':'Id Sistema Operativo',
@@ -188,6 +220,12 @@ const ServidorController = new Vue({
             'mac':'String',
             'nodo':'String',
             'interface':'String',
+            'lvm_raiz':'String',
+            'lvm_usr':'String',
+            'lvm_tmp':'String',
+            'lvm_var':'String',
+            'lvm_home':'String',
+            'agente_instana_instalado':'String',
             'id_datacentro':'String',
             'id_sistema_operativo':'String',
             'id_estado':'String',
@@ -236,6 +274,16 @@ const ServidorController = new Vue({
                'frec_procesador': servidor.frec_procesador || '-',
                'nucleos': servidor.nucleos || '-',
                'usuarios_pactados': servidor.usuarios_pactados || '-',
+
+               'mac': servidor.mac || '-',
+               'nodo': servidor.nodo || '-',
+               'interface': servidor.interface || '-',
+               'lvm_raiz': servidor.lvm_raiz || '-',
+               'lvm_usr': servidor.lvm_usr || '-',
+               'lvm_tmp': servidor.lvm_tmp || '-',
+               'lvm_var': servidor.lvm_var || '-',
+               'lvm_home': servidor.lvm_home || '-',
+               'agente_instana_instalado': servidor.agente_instana_instalado || '-',
 
                'id_datacentro': servidor.id_datacentro || '-',
                'id_sistema_operativo': servidor.id_sistema_operativo || '-',
@@ -287,15 +335,6 @@ const ServidorController = new Vue({
             this.checkear_estado_respuesta_http(response.status);
          });
       },
-      es_linux: function () {
-         if (this.$data[`${this.nombre_model}`][`id_sistema_operativo`] != null) {
-            var so = this.buscar_en_array_por_modelo_e_id(this.$data[`${this.nombre_model}`][`id_sistema_operativo`], this.$data[`sistemas_operativos`], `sistema_operativo`);
-            if (so.tipo_sistema_operativo.cod_tipo_sistema_operativo=='linux') {
-               return true;
-            }
-            return false;
-         }
-         return false;
-      },
+
    }
 });

@@ -2307,6 +2307,16 @@ var inyeccion_funciones_compartidas = {
       en_array: function en_array(array, v) {
          return array.indexOf(v) > -1 ? true : false;
       },
+      es_linux: function es_linux() {
+         if (this.$data['' + this.nombre_model]['id_sistema_operativo'] != null) {
+            var so = this.buscar_en_array_por_modelo_e_id(this.$data['' + this.nombre_model]['id_sistema_operativo'], this.$data['sistemas_operativos'], 'sistema_operativo');
+            if (so.tipo_sistema_operativo.cod_tipo_sistema_operativo == 'linux') {
+               return true;
+            }
+            return false;
+         }
+         return false;
+      },
       encontrar: function encontrar(id) {
          var _this4 = this;
 

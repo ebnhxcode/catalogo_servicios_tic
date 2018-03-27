@@ -187,6 +187,16 @@ export const inyeccion_funciones_compartidas = {
       es_null: (v) => { return (v==null)?true:false; },
       es_empty: (v) => { return (!v || v==null || v=='' || typeof v == undefined) ? true : false; },
       en_array: (array, v) => { return (array.indexOf(v) > -1) ? true : false; },
+      es_linux: function () {
+         if (this.$data[`${this.nombre_model}`][`id_sistema_operativo`] != null) {
+            var so = this.buscar_en_array_por_modelo_e_id(this.$data[`${this.nombre_model}`][`id_sistema_operativo`], this.$data[`sistemas_operativos`], `sistema_operativo`);
+            if (so.tipo_sistema_operativo.cod_tipo_sistema_operativo=='linux') {
+               return true;
+            }
+            return false;
+         }
+         return false;
+      },
       encontrar: function (id) {
          this.$http.get(`/${this.nombre_tabla}/${id}`).then(response => { // success callback
             return response.body[`${this.nombre_model}`];

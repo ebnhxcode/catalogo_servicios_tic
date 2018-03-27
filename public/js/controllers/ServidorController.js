@@ -2307,6 +2307,16 @@ var inyeccion_funciones_compartidas = {
       en_array: function en_array(array, v) {
          return array.indexOf(v) > -1 ? true : false;
       },
+      es_linux: function es_linux() {
+         if (this.$data['' + this.nombre_model]['id_sistema_operativo'] != null) {
+            var so = this.buscar_en_array_por_modelo_e_id(this.$data['' + this.nombre_model]['id_sistema_operativo'], this.$data['sistemas_operativos'], 'sistema_operativo');
+            if (so.tipo_sistema_operativo.cod_tipo_sistema_operativo == 'linux') {
+               return true;
+            }
+            return false;
+         }
+         return false;
+      },
       encontrar: function encontrar(id) {
          var _this4 = this;
 
@@ -3819,6 +3829,12 @@ var ServidorController = new Vue({
             'mac': null,
             'nodo': null,
             'interface': null,
+            'lvm_raiz': null,
+            'lvm_usr': null,
+            'lvm_tmp': null,
+            'lvm_var': null,
+            'lvm_home': null,
+            'agente_instana_instalado': null,
             'id_datacentro': null,
             'id_sistema_operativo': null,
             'id_tipo_sistema_operativo': null, // no lleva relacion, solo se usa para filtrar un combobox
@@ -3831,8 +3847,8 @@ var ServidorController = new Vue({
             'updated_at': null,
             'deleted_at': null
          },
-         'permitido_guardar': ['nom_servidor', 'det_servidor', 'ip_servidor', 'ram', 'memoria_dd', 'swap', 'procesador', 'modelo_procesador', 'frec_procesador', 'nucleos', 'usuarios_pactados', 'mac', 'nodo', 'interface', 'id_datacentro', 'id_sistema_operativo', 'id_estado', 'id_ambiente', 'id_cluster'],
-         'relaciones_clase': [{ 'datacentro': 'id_datacentro' }, { 'sistema_operativo': 'id_sistema_operativo' }, { 'aplicaciones': 'id_aplicacion' }, { 'servidor_estado': 'id_estado' }, { 'ambiente': 'id_ambiente' }, { 'cluster': 'id_cluster' }],
+         'permitido_guardar': ['nom_servidor', 'det_servidor', 'ip_servidor', 'ram', 'memoria_dd', 'swap', 'procesador', 'modelo_procesador', 'frec_procesador', 'nucleos', 'usuarios_pactados', 'mac', 'nodo', 'interface', 'lvm_raiz', 'lvm_usr', 'lvm_tmp', 'lvm_var', 'lvm_home', 'agente_instana_instalado', 'id_datacentro', 'id_sistema_operativo', 'id_estado', 'id_ambiente', 'id_cluster'],
+         'relaciones_clase': [{ 'datacentro': 'id_datacentro' }, { 'sistema_operativo': 'id_sistema_operativo' }, { 'aplicaciones': 'id_aplicacion' }, { 'servidor_estado': 'id_estado' }, { 'ambiente': 'id_ambiente' }, { 'cluster': 'id_cluster' }, { 'servidor_lvms': 'id_servidor_lvm' }, { 'servidor_lvms': 'lvm_raiz' }, { 'servidor_lvms': 'lvm_usr' }, { 'servidor_lvms': 'lvm_tmp' }, { 'servidor_lvms': 'lvm_var' }, { 'servidor_lvms': 'lvm_home' }],
          'lom': {},
          'lista_objs_model': [],
          'clusters': [],
@@ -3876,6 +3892,12 @@ var ServidorController = new Vue({
             'mac': false,
             'nodo': false,
             'interface': false,
+            'lvm_raiz': false,
+            'lvm_usr': false,
+            'lvm_tmp': false,
+            'lvm_var': false,
+            'lvm_home': false,
+            'agente_instana_instalado': false,
             'id_datacentro': false,
             'id_sistema_operativo': false,
             'id_estado': false,
@@ -3906,6 +3928,12 @@ var ServidorController = new Vue({
             'mac': 'Mac',
             'nodo': 'Nodo',
             'interface': 'Interface',
+            'lvm_raiz': '/~Raiz',
+            'lvm_usr': 'usr',
+            'lvm_tmp': 'tmp',
+            'lvm_var': 'var',
+            'lvm_home': 'home',
+            'agente_instana_instalado': 'Agente Instana',
 
             'id_datacentro': 'Id Datacrentro',
             'id_sistema_operativo': 'Id Sistema Operativo',
@@ -3937,6 +3965,12 @@ var ServidorController = new Vue({
             'mac': 'String',
             'nodo': 'String',
             'interface': 'String',
+            'lvm_raiz': 'String',
+            'lvm_usr': 'String',
+            'lvm_tmp': 'String',
+            'lvm_var': 'String',
+            'lvm_home': 'String',
+            'agente_instana_instalado': 'String',
             'id_datacentro': 'String',
             'id_sistema_operativo': 'String',
             'id_estado': 'String',
@@ -3988,6 +4022,16 @@ var ServidorController = new Vue({
                'frec_procesador': servidor.frec_procesador || '-',
                'nucleos': servidor.nucleos || '-',
                'usuarios_pactados': servidor.usuarios_pactados || '-',
+
+               'mac': servidor.mac || '-',
+               'nodo': servidor.nodo || '-',
+               'interface': servidor.interface || '-',
+               'lvm_raiz': servidor.lvm_raiz || '-',
+               'lvm_usr': servidor.lvm_usr || '-',
+               'lvm_tmp': servidor.lvm_tmp || '-',
+               'lvm_var': servidor.lvm_var || '-',
+               'lvm_home': servidor.lvm_home || '-',
+               'agente_instana_instalado': servidor.agente_instana_instalado || '-',
 
                'id_datacentro': servidor.id_datacentro || '-',
                'id_sistema_operativo': servidor.id_sistema_operativo || '-',
@@ -4042,17 +4086,8 @@ var ServidorController = new Vue({
             // error callback
             _this.checkear_estado_respuesta_http(response.status);
          });
-      },
-      es_linux: function es_linux() {
-         if (this.$data['' + this.nombre_model]['id_sistema_operativo'] != null) {
-            var so = this.buscar_en_array_por_modelo_e_id(this.$data['' + this.nombre_model]['id_sistema_operativo'], this.$data['sistemas_operativos'], 'sistema_operativo');
-            if (so.tipo_sistema_operativo.cod_tipo_sistema_operativo == 'linux') {
-               return true;
-            }
-            return false;
-         }
-         return false;
       }
+
    }
 });
 

@@ -30,6 +30,7 @@ class Servidor extends Model {
       'mac',
       'nodo',
       'interface',
+      'agente_instana_instalado',
 
       #relaciones -> pks
       'id_datacentro',
@@ -68,7 +69,7 @@ class Servidor extends Model {
    }
 
    public function servidor_lvms () {
-      return $this->hasMany(ServidorLvm::class, 'id_servidor');
+      return $this->hasOne(ServidorLvm::class, 'id_servidor');
    }
 
    public function servidor_estado () {

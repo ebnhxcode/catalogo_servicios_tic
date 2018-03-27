@@ -72,7 +72,7 @@ class ServidorController extends Controller {
 
       $this->usuario_auth = Auth::user();
       $this->servidores = Servidor::with([
-         'datacentro','sistema_operativo','aplicaciones','servidor_estado.estado','ambiente','servidor_historico_cambios','cluster'
+         'datacentro','sistema_operativo','aplicaciones','servidor_estado.estado','ambiente','servidor_historico_cambios','cluster','servidor_lvms'
       ])->get();
       $this->datacentros = Datacentro::all();
       $this->sistemas_operativos = SistemaOperativo::with('tipo_sistema_operativo')->get();
@@ -104,7 +104,7 @@ class ServidorController extends Controller {
       }
 
       $this->servidor = Servidor::where("id_$this->nombre_modelo",'=',$id)->with([
-         'datacentro','sistema_operativo','aplicaciones','servidor_estado.estado','ambiente','servidor_historico_cambios','cluster'
+         'datacentro','sistema_operativo','aplicaciones','servidor_estado.estado','ambiente','servidor_historico_cambios','cluster','servidor_lvms'
       ])->first();
 
       #Valida si servidor existe y busca si tiene servidor_permiso
@@ -145,6 +145,13 @@ class ServidorController extends Controller {
          'mac' => "nullable|regex:/(^([a-zA-Z0-9_ :]+)(\d+)?$)/u|max:255",
          'nodo' => "nullable|regex:/(^([a-zA-Z0-9_ :]+)(\d+)?$)/u|max:255",
          'interface' => "nullable|regex:/(^([a-zA-Z0-9_ :]+)(\d+)?$)/u|max:255",
+         'agente_instana_instalado' => "nullable|regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|max:255",
+
+         'lvm_raiz' => "nullable|regex:/(^([0-9_ ]+)(\d+)?$)/u|max:255",
+         'lvm_usr' => "nullable|regex:/(^([0-9_ ]+)(\d+)?$)/u|max:255",
+         'lvm_tmp' => "nullable|regex:/(^([0-9_ ]+)(\d+)?$)/u|max:255",
+         'lvm_var' => "nullable|regex:/(^([0-9_ ]+)(\d+)?$)/u|max:255",
+         'lvm_home' => "nullable|regex:/(^([0-9_ ]+)(\d+)?$)/u|max:255",
 
          'id_datacentro' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
          'id_sistema_operativo' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
@@ -181,6 +188,7 @@ class ServidorController extends Controller {
          'mac' => $this->servidor['mac'],
          'nodo' => $this->servidor['nodo'],
          'interface' => $this->servidor['interface'],
+         'agente_instana_instalado' => $this->servidor['agente_instana_instalado'],
 
          'id_datacentro' => $this->servidor['id_datacentro'],
          'id_sistema_operativo' => $this->servidor['id_sistema_operativo'],
@@ -191,8 +199,6 @@ class ServidorController extends Controller {
          'id_usuario_modifica' => Auth::user()->id_usuario,
       ]);
 
-      $request['id_servidor'] = $this->new_servidor->id_servidor;
-      $this->new_servidor_historico = ServidorHistoricoCambio::create($request->all());
 
       #Guardar relacion del estado, en caso que exista valor
       $this->new_servidor_estado = ServidorEstado::create([
@@ -202,7 +208,13 @@ class ServidorController extends Controller {
          'id_usuario_modifica' => Auth::user()->id_usuario,
       ]);
 
-      if ($this->new_servidor->sistema_operativo->tipo_sistema_operativo->codigo_tipo_sistema_operativo == "linux") {
+      unset($request['id_estado']);
+
+      $request['id_servidor'] = $this->new_servidor->id_servidor;
+      $this->new_servidor_historico = ServidorHistoricoCambio::create($request->all());
+
+
+      if ($this->new_servidor->sistema_operativo->tipo_sistema_operativo->cod_tipo_sistema_operativo == "linux") {
          $this->new_servidor_lvm = ServidorLvm::create([
             'id_servidor'=>$this->new_servidor->id_servidor,
             'lvm_raiz'=>$request['lvm_raiz'],
@@ -259,6 +271,13 @@ class ServidorController extends Controller {
          'mac' => "nullable|regex:/(^([a-zA-Z0-9_ :]+)(\d+)?$)/u|max:255",
          'nodo' => "nullable|regex:/(^([a-zA-Z0-9_ :]+)(\d+)?$)/u|max:255",
          'interface' => "nullable|regex:/(^([a-zA-Z0-9_ :]+)(\d+)?$)/u|max:255",
+         'agente_instana_instalado' => "nullable|regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|max:255",
+
+         'lvm_raiz' => "nullable|regex:/(^([0-9_ ]+)(\d+)?$)/u|max:255",
+         'lvm_usr' => "nullable|regex:/(^([0-9_ ]+)(\d+)?$)/u|max:255",
+         'lvm_tmp' => "nullable|regex:/(^([0-9_ ]+)(\d+)?$)/u|max:255",
+         'lvm_var' => "nullable|regex:/(^([0-9_ ]+)(\d+)?$)/u|max:255",
+         'lvm_home' => "nullable|regex:/(^([0-9_ ]+)(\d+)?$)/u|max:255",
 
          'id_datacentro' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
          'id_sistema_operativo' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
