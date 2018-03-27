@@ -576,7 +576,7 @@
       <dt>¿Se instaló instana?</dt>
       <dd>
          <p class="control has-icon has-icon-right">
-
+ 
             <toggle-button
                :sync="true"
                :value="servidor.agente_instana_instalado=(en_array([true, 'true', 1], servidor.agente_instana_instalado)?true:false)"

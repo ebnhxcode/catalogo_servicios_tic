@@ -3848,7 +3848,7 @@ var ServidorController = new Vue({
             'deleted_at': null
          },
          'permitido_guardar': ['nom_servidor', 'det_servidor', 'ip_servidor', 'ram', 'memoria_dd', 'swap', 'procesador', 'modelo_procesador', 'frec_procesador', 'nucleos', 'usuarios_pactados', 'mac', 'nodo', 'interface', 'lvm_raiz', 'lvm_usr', 'lvm_tmp', 'lvm_var', 'lvm_home', 'agente_instana_instalado', 'id_datacentro', 'id_sistema_operativo', 'id_estado', 'id_ambiente', 'id_cluster'],
-         'relaciones_clase': [{ 'datacentro': 'id_datacentro' }, { 'sistema_operativo': 'id_sistema_operativo' }, { 'aplicaciones': 'id_aplicacion' }, { 'servidor_estado': 'id_estado' }, { 'ambiente': 'id_ambiente' }, { 'cluster': 'id_cluster' }, { 'servidor_lvms': 'id_servidor_lvm' }, { 'servidor_lvms': 'lvm_raiz' }, { 'servidor_lvms': 'lvm_usr' }, { 'servidor_lvms': 'lvm_tmp' }, { 'servidor_lvms': 'lvm_var' }, { 'servidor_lvms': 'lvm_home' }],
+         'relaciones_clase': [{ 'datacentro': 'id_datacentro' }, { 'sistema_operativo': 'id_sistema_operativo' }, { 'aplicaciones': 'id_aplicacion' }, { 'servidor_estado': 'id_estado' }, { 'ambiente': 'id_ambiente' }, { 'cluster': 'id_cluster' }, { 'servidor_lvm': 'id_servidor_lvm' }, { 'servidor_lvm': 'lvm_raiz' }, { 'servidor_lvm': 'lvm_usr' }, { 'servidor_lvm': 'lvm_tmp' }, { 'servidor_lvm': 'lvm_var' }, { 'servidor_lvm': 'lvm_home' }],
          'lom': {},
          'lista_objs_model': [],
          'clusters': [],
@@ -3892,11 +3892,13 @@ var ServidorController = new Vue({
             'mac': false,
             'nodo': false,
             'interface': false,
-            'lvm_raiz': false,
-            'lvm_usr': false,
-            'lvm_tmp': false,
-            'lvm_var': false,
-            'lvm_home': false,
+            /*
+            'lvm_raiz':false,
+            'lvm_usr':false,
+            'lvm_tmp':false,
+            'lvm_var':false,
+            'lvm_home':false,
+            */
             'agente_instana_instalado': false,
             'id_datacentro': false,
             'id_sistema_operativo': false,

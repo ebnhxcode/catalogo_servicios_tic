@@ -68,7 +68,7 @@ class Servidor extends Model {
       return $this->belongsTo(Cluster::class, 'id_cluster');
    }
 
-   public function servidor_lvms () {
+   public function servidor_lvm () {
       return $this->hasOne(ServidorLvm::class, 'id_servidor');
    }
 
