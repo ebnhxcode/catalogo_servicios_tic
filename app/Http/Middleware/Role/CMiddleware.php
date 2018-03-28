@@ -5,7 +5,7 @@ namespace App\Http\Middleware\Role;
 use Closure;
 use Auth;
 
-class CRMiddleware {
+class CMiddleware {
     private $usuario_logueado;
     private $usuario_role;
     private $role;
@@ -20,8 +20,8 @@ class CRMiddleware {
                     case 'Lider Equipo':
                     case 'App Manager':
                     case 'Jefe Proyecto':
-                    #case 'Desarrollador Proyecto':
-                    #case 'Visitante':
+                        #case 'Desarrollador Proyecto':
+                        #case 'Visitante':
                         return $next($request);
                         break;
                 }

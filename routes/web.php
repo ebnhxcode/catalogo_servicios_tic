@@ -25,7 +25,7 @@ Route::get('/', function () {
 });
 #Route::get('/estandares', 'RoleController@estandares');
 
-$groups = ['r','cr','cru','crud'];
+$groups = ['r','c','u','d'];
 
 $modules = [
     ['route'=>'roles','controller'=>'RoleController'],
@@ -51,9 +51,9 @@ $modules = [
 
 $http_requests = [
    'r' => ['index' => 'get','show' => 'get'],
-   'cr' => ['store' => 'post',],
-   'cru' => ['update' => 'put',],
-   'crud' => ['destroy' => 'delete',],
+   'c' => ['store' => 'post',],
+   'u' => ['update' => 'put',],
+   'd' => ['destroy' => 'delete',],
 ];
 
 
