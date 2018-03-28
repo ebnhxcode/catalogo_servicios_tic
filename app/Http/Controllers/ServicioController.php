@@ -10,6 +10,7 @@ use Auth;
 use Illuminate\Support\Facades\Validator;
 
 class ServicioController extends Controller {
+
     private $usuario_auth;
 
     private $nombre_modelo;
@@ -27,6 +28,12 @@ class ServicioController extends Controller {
 
     public function __construct () {
         $this->middleware('auth');
+        #$this->middleware('crud');
+        dd(Auth::user());
+
+
+        dd(0);
+
         $this->nombre_modelo = "servicio"; //nombre tabla o de ruta
         $this->nombre_tabla = $this->nombre_ruta = "servicios";
         $this->nombre_detalle = "Servicios";
@@ -67,6 +74,7 @@ class ServicioController extends Controller {
     }
 
     public function show (Request $request, $id) {
+
         $result = preg_match('/(^([0-9]+)(\d+)?$)/u', $id);
         if ($this->es_vacio($id) == true || $result == 0) {
             return response()->json([
