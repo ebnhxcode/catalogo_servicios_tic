@@ -165,6 +165,12 @@
                      <li class="nav-item">
                         <i class="fa fa-refresh btn btn-light btn-sm" @click.prevent="inicializar" aria-hidden="true"
                            data-placement="top" data-toggle="tooltip" title="Clic para actualizar menu"></i>
+
+                        <i class="fa fa-sort-alpha-asc btn btn-light btn-sm" @click.prevent="cambiar_orden_lista('nom_menu','menus')" aria-hidden="true"
+                           data-placement="top" data-toggle="tooltip" title="Clic para ordenar menu principal"></i>
+
+                        <i class="fa fa-sort-alpha-asc btn btn-light btn-sm" @click.prevent="cambiar_orden_lista('nom_mantenedor','mantenedores')" aria-hidden="true"
+                           data-placement="top" data-toggle="tooltip" title="Clic para ordenar menu de mantenedores"></i>
                      </li>
                   </ul>
 

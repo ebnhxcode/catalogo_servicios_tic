@@ -46864,12 +46864,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vee_validate_dist_locale_es___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vee_validate_dist_locale_es__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vee_validate__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_resource__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue2_filters__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue2_filters___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vue2_filters__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_js_toggle_button__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_js_toggle_button___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_vue_js_toggle_button__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue2_filters__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue2_filters___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue2_filters__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_js_toggle_button__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_js_toggle_button___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vue_js_toggle_button__);
 __webpack_require__(21);
 window.Vue = __webpack_require__(19);
 
@@ -46957,15 +46955,16 @@ __WEBPACK_IMPORTED_MODULE_2_vee_validate__["a" /* Validator */].extend('mac', {
 Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_resource__["a" /* default */]);
 
 //Se importa plugin de filtros _ lodash
-
+//import { _ , range } from 'lodash';
+window._ = __webpack_require__(20);
 
 //Se importa plugin de filtros
 
-Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue2_filters___default.a);
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue2_filters___default.a);
 
 //Se importa plugin de toggle-button
 
-Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue_js_toggle_button___default.a);
+Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_js_toggle_button___default.a);
 
 /*
 import tinymce from 'tinymce/tinymce'
@@ -47018,7 +47017,10 @@ var SideMenuController = new Vue({
          'nombre_controller': 'MenuController',
          'filtro_menu': null,
          'menus': [],
-         'mantenedores': []
+         'mantenedores': [],
+
+         'orden_lista_menus': 'asc',
+         'orden_lista_mantenedores': 'asc'
 
          /*'menus':[
             {
@@ -47160,6 +47162,12 @@ var SideMenuController = new Vue({
             // error callback
             _this.checkear_estado_respuesta_http(response.status);
          });
+      },
+
+      cambiar_orden_lista: function cambiar_orden_lista(columna, nom_lista_objetos) {
+         this.$data['orden_lista_' + nom_lista_objetos] == 'asc' ? this.$data['orden_lista_' + nom_lista_objetos] = 'desc' : this.$data['orden_lista_' + nom_lista_objetos] = 'asc';
+
+         this.$data['' + nom_lista_objetos] = _.orderBy(this.$data['' + nom_lista_objetos], columna, this.$data['orden_lista_' + nom_lista_objetos]);
       }
    }
 });

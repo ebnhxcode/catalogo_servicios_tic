@@ -90,7 +90,8 @@ import VueResource from 'vue-resource';
 Vue.use(VueResource);
 
 //Se importa plugin de filtros _ lodash
-import { _ , range } from 'lodash';
+//import { _ , range } from 'lodash';
+window._ = require('lodash');
 
 //Se importa plugin de filtros
 import Vue2Filters from 'vue2-filters';
@@ -152,6 +153,9 @@ const SideMenuController = new Vue({
          'filtro_menu':null,
          'menus':[],
          'mantenedores':[],
+
+         'orden_lista_menus':'asc',
+         'orden_lista_mantenedores':'asc',
 
          /*'menus':[
             {
@@ -289,6 +293,14 @@ const SideMenuController = new Vue({
             this.checkear_estado_respuesta_http(response.status);
          });
 
+      },
+
+      cambiar_orden_lista: function (columna, nom_lista_objetos) {
+         this.$data[`orden_lista_${nom_lista_objetos}`] == 'asc' ?
+            this.$data[`orden_lista_${nom_lista_objetos}`] = 'desc' :
+            this.$data[`orden_lista_${nom_lista_objetos}`] = 'asc';
+
+         this.$data[`${nom_lista_objetos}`] = _.orderBy(this.$data[`${nom_lista_objetos}`], columna, this.$data[`orden_lista_${nom_lista_objetos}`]);
       },
    }
 });
