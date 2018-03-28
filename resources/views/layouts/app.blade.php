@@ -156,16 +156,28 @@
 
                <div class="sidebar-sticky" style="overflow:auto; max-height: 650px;">
 
+                  <h5
+                     class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                     <span class="h6 small">Opciones</span>
+                  </h5>
+
+                  <ul class="nav flex-column">
+                     <li class="nav-item">
+                        <i class="fa fa-refresh btn btn-light btn-sm" @click.prevent="inicializar" aria-hidden="true"
+                           data-placement="top" data-toggle="tooltip" title="Clic para actualizar menu"></i>
+                     </li>
+                  </ul>
 
                   <h5
                      class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                     <span>Home Menú</span>
+                     <span class="h6">Principales</span>
                   </h5>
 
                   <ul class="nav flex-column">
                      <li class="nav-item" v-for="menu in filterBy(menus, filtro_menu)">
-                        <a class="nav-link active" :href="menu.url">
-                           @{{ menu.title }}<span class="sr-only">(current)</span>
+                        <a class="nav-link active" style="font-size: .8rem;" :href="menu.url_menu"
+                           data-placement="left" data-toggle="tooltip" :title="menu.det_menu">
+                           @{{ menu.nom_menu }}<span class="sr-only">(current)</span>
                         </a>
                      </li>
 
@@ -176,14 +188,15 @@
 
                   <h5
                      class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                     <span>Mantenedores</span>
+                     <span class="h6">Mantenedores</span>
                   </h5>
 
                   <ul class="nav flex-column mb-2">
 
                      <li class="nav-item" v-for="mant in filterBy(mantenedores, filtro_menu)">
-                        <a class="nav-link" :href="mant.url">
-                           @{{ mant.title }}
+                        <a class="nav-link" style="font-size: .8rem;" :href="mant.url_mantenedor"
+                           data-placement="left" data-toggle="tooltip" :title="mant.det_mantenedor">
+                           @{{ mant.nom_mantenedor }}
                         </a>
                      </li>
 

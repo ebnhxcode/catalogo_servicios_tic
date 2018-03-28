@@ -47017,86 +47017,122 @@ var SideMenuController = new Vue({
          'nombre_detalle': 'Menu',
          'nombre_controller': 'MenuController',
          'filtro_menu': null,
-         'menus': [{
-            'title': 'Dashboard',
-            'url': '/dashboard'
-         }, {
-            'title': 'Servicios',
-            'url': '/servicios'
-         }, {
-            'title': 'Servidores',
-            'url': '/servidores'
-         }, {
-            'title': 'Aplicaciones',
-            'url': '/aplicaciones'
-         }, {
-            'title': 'Actividades',
-            'url': '/actividades'
-         }, {
-            'title': 'Catálogos',
-            'url': '/catalogos'
-         }, {
-            'title': 'Bitácoras',
-            'url': '/usuarios_bitacora_servicios'
-         }],
-         'mantenedores': [{
-            'title': 'Roles',
-            'url': '/roles'
-         }, {
-            'title': 'Permisos',
-            'url': '/permisos'
-         }, {
-            'title': 'Usuarios',
-            'url': '/usuarios'
-         }, {
-            'title': 'Cargos',
-            'url': '/cargos'
-         }, {
-            'title': 'Clusters',
-            'url': '/clusters'
-         }, {
-            'title': 'Estados',
-            'url': '/estados'
-         }, {
-            'title': 'Actividades',
-            'url': '/actividades'
-         }, {
-            'title': 'Servicios',
-            'url': '/servicios'
-         }, {
-            'title': 'Menus',
-            'url': '/menus'
-         }, {
-            'title': 'Mantenedores',
-            'url': '/mantenedores'
-         }, {
-            'title': 'Tipos Aplicaciones',
-            'url': '/tipos_aplicaciones'
-         }, {
-            'title': 'Aplicaciones',
-            'url': '/aplicaciones'
-         }, {
-            'title': 'Accesos Aplicaciones',
-            'url': '/aplicaciones_accesos'
-         }, {
-            'title': 'Dominios',
-            'url': '/dominios'
-         }, {
-            'title': 'Servidores',
-            'url': '/servidores'
-         }, {
-            'title': 'Accesos Servidores',
-            'url': '/servidores_accesos'
-         }, {
-            'title': 'Tags',
-            'url': '/tags'
-         }, {
-            'title': 'Datacentros',
-            'url': '/datacentros'
-         }, {
-            'title': 'Sistemas Operativos',
-            'url': '/sistemas_operativos'
-         }]
+         'menus': [],
+         'mantenedores': []
+
+         /*'menus':[
+            {
+               'title':'Dashboard',
+               'url':'/dashboard',
+            },
+            {
+               'title':'Servicios',
+               'url':'/servicios',
+            },
+            {
+               'title':'Servidores',
+               'url':'/servidores',
+            },
+            {
+               'title':'Aplicaciones',
+               'url':'/aplicaciones',
+            },
+            {
+               'title':'Actividades',
+               'url':'/actividades',
+            },
+            {
+               'title':'Catálogos',
+               'url':'/catalogos',
+            },
+            {
+               'title':'Bitácoras',
+               'url':'/usuarios_bitacora_servicios',
+            },
+         ],*/
+         /*'mantenedores':[
+            {
+               'title':'Roles',
+               'url':'/roles',
+            },
+            {
+               'title':'Permisos',
+               'url':'/permisos',
+            },
+            {
+               'title':'Usuarios',
+               'url':'/usuarios',
+            },
+            {
+               'title':'Cargos',
+               'url':'/cargos',
+            },
+            {
+               'title':'Clusters',
+               'url':'/clusters',
+            },
+            {
+               'title':'Estados',
+               'url':'/estados',
+            },
+            {
+               'title':'Actividades',
+               'url':'/actividades',
+            },
+            {
+               'title':'Servicios',
+               'url':'/servicios',
+            },
+            {
+               'title':'Menus',
+               'url':'/menus',
+            },
+            {
+               'title':'Mantenedores',
+               'url':'/mantenedores',
+            },
+            {
+               'title':'Tipos Aplicaciones',
+               'url':'/tipos_aplicaciones',
+            },
+            {
+               'title':'Aplicaciones',
+               'url':'/aplicaciones',
+            },
+            {
+               'title':'Accesos Aplicaciones',
+               'url':'/aplicaciones_accesos',
+            },
+            {
+               'title':'Dominios',
+               'url':'/dominios',
+            },
+            {
+               'title':'Servidores',
+               'url':'/servidores',
+            },
+            {
+               'title':'Accesos Servidores',
+               'url':'/servidores_accesos',
+            },
+            {
+               'title':'Tags',
+               'url':'/tags',
+            },
+            {
+               'title':'Datacentros',
+               'url':'/datacentros',
+            },
+            {
+               'title':'Sistemas Operativos',
+               'url':'/sistemas_operativos',
+            },
+            {
+               'title':'Credenciales',
+               'url':'/credenciales',
+            },
+         ],*/
+
       };
    },
 
@@ -47105,22 +47141,26 @@ var SideMenuController = new Vue({
    watch: {},
    components: {},
    created: function created() {
-      //this.inicializar();
+      this.inicializar();
    },
 
    ready: {},
    filters: {},
    methods: {
-      /*
-      inicializar: function () {
-          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
-            this.configurar_relaciones(response.body.sistemas_operativos, this.relaciones_clase);
-             this.usuario_auth = response.body.usuario_auth || null;
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
+
+      inicializar: function inicializar() {
+         var _this = this;
+
+         this.$http.get('/' + this.nombre_ruta).then(function (response) {
+            // success callback
+            _this.menus = response.body.menus;
+            _this.mantenedores = response.body.mantenedores;
+            _this.usuario_auth = response.body.usuario_auth || null;
+         }, function (response) {
+            // error callback
+            _this.checkear_estado_respuesta_http(response.status);
          });
-       },
-      */
+      }
    }
 });
 

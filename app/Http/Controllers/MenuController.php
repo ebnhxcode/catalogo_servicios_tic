@@ -50,8 +50,8 @@ class MenuController extends Controller {
       }
 
       $this->usuario_auth = Auth::user();
-      $this->menus = Menu::all();
-      $this->mantenedores = Mantenedor::all();
+      $this->menus = Menu::orderBy('nom_menu', 'asc')->get();
+      $this->mantenedores = Mantenedor::orderBy('nom_mantenedor', 'asc')->get();
       return response()->json([
          'status' => 200,
          'menus' => $this->menus,
