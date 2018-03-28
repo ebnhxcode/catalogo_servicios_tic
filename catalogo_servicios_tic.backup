@@ -5,7 +5,7 @@
 -- Dumped from database version 10.3 (Debian 10.3-2)
 -- Dumped by pg_dump version 10.3 (Debian 10.3-2)
 
--- Started on 2018-03-28 12:34:06 -03
+-- Started on 2018-03-28 15:57:02 -03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -26,7 +26,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 3410 (class 0 OID 0)
+-- TOC entry 3434 (class 0 OID 0)
 -- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
@@ -772,6 +772,78 @@ CREATE TABLE public.log_navegacion (
 ALTER TABLE public.log_navegacion OWNER TO postgres;
 
 --
+-- TOC entry 293 (class 1259 OID 604752)
+-- Name: mantenedores_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.mantenedores_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.mantenedores_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 295 (class 1259 OID 604763)
+-- Name: mantenedores; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.mantenedores (
+    id_mantenedor integer DEFAULT nextval('public.mantenedores_id_seq'::regclass) NOT NULL,
+    url_mantenedor text,
+    nom_mantenedor text,
+    det_mantenedor text,
+    cod_mantenedor text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
+);
+
+
+ALTER TABLE public.mantenedores OWNER TO postgres;
+
+--
+-- TOC entry 292 (class 1259 OID 604750)
+-- Name: menus_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.menus_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.menus_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 294 (class 1259 OID 604754)
+-- Name: menus; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.menus (
+    id_menu integer DEFAULT nextval('public.menus_id_seq'::regclass) NOT NULL,
+    url_menu text,
+    nom_menu text,
+    det_menu text,
+    cod_menu text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
+);
+
+
+ALTER TABLE public.menus OWNER TO postgres;
+
+--
 -- TOC entry 274 (class 1259 OID 588263)
 -- Name: migrations; Type: TABLE; Schema: public; Owner: postgres
 --
@@ -802,7 +874,7 @@ CREATE SEQUENCE public.migrations_id_seq
 ALTER TABLE public.migrations_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3411 (class 0 OID 0)
+-- TOC entry 3435 (class 0 OID 0)
 -- Dependencies: 273
 -- Name: migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -1780,7 +1852,7 @@ CREATE TABLE public.usuarios_servicios (
 ALTER TABLE public.usuarios_servicios OWNER TO postgres;
 
 --
--- TOC entry 3086 (class 2604 OID 588266)
+-- TOC entry 3100 (class 2604 OID 588266)
 -- Name: migrations id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -1788,13 +1860,12 @@ ALTER TABLE ONLY public.migrations ALTER COLUMN id SET DEFAULT nextval('public.m
 
 
 --
--- TOC entry 3366 (class 0 OID 588007)
+-- TOC entry 3386 (class 0 OID 588007)
 -- Dependencies: 255
 -- Data for Name: actividades; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.actividades (id_actividad, nom_actividad, det_actividad, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
-9	Tareas Programadas	Tareas Programadas	1	1	2018-02-27 18:33:17	2018-02-27 18:33:17	\N
 1	Mantencion	Mantencion	1	4	2018-02-27 18:26:10	2018-02-28 04:07:20	\N
 7	Cargas Masivas	Cargas Masivas	1	4	2018-02-27 18:32:52	2018-02-28 04:11:37	\N
 11	Cubicacion Maquina	Cubicacion Maquina	1	4	2018-02-27 18:33:57	2018-02-28 05:58:27	\N
@@ -1806,11 +1877,12 @@ COPY public.actividades (id_actividad, nom_actividad, det_actividad, id_usuario_
 8	Descargas Masivas	Descargas Masivas	1	4	2018-02-27 18:33:04	2018-03-06 06:42:00	\N
 10	Homologacion de Proyectos	Homologacion de proyectos	1	4	2018-02-27 18:33:38	2018-03-12 01:37:17	\N
 12	test	test	4	4	2018-03-21 20:49:01	2018-03-21 20:49:12	2018-03-21 20:49:12
+9	Tareas Programadas	Tareas Programadas	1	4	2018-02-27 18:33:17	2018-03-28 18:11:13	\N
 \.
 
 
 --
--- TOC entry 3367 (class 0 OID 588014)
+-- TOC entry 3387 (class 0 OID 588014)
 -- Dependencies: 256
 -- Data for Name: actividades_tags; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1820,7 +1892,7 @@ COPY public.actividades_tags (id_actividad_tag, id_actividad, id_tag, id_usuario
 
 
 --
--- TOC entry 3390 (class 0 OID 596504)
+-- TOC entry 3410 (class 0 OID 596504)
 -- Dependencies: 279
 -- Data for Name: ambientes; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1834,7 +1906,7 @@ COPY public.ambientes (id_ambiente, nom_ambiente, det_ambiente, id_usuario_regis
 
 
 --
--- TOC entry 3352 (class 0 OID 587915)
+-- TOC entry 3372 (class 0 OID 587915)
 -- Dependencies: 241
 -- Data for Name: aplicaciones; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1851,7 +1923,7 @@ COPY public.aplicaciones (id_aplicacion, id_tipo_aplicacion, id_servicio, id_dom
 
 
 --
--- TOC entry 3353 (class 0 OID 587922)
+-- TOC entry 3373 (class 0 OID 587922)
 -- Dependencies: 242
 -- Data for Name: aplicaciones_accesos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1863,7 +1935,7 @@ COPY public.aplicaciones_accesos (id_aplicacion_acceso, id_aplicacion, id_servid
 
 
 --
--- TOC entry 3351 (class 0 OID 587911)
+-- TOC entry 3371 (class 0 OID 587911)
 -- Dependencies: 240
 -- Data for Name: aplicaciones_estados; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1873,7 +1945,7 @@ COPY public.aplicaciones_estados (id_aplicacion_estado, id_aplicacion, id_estado
 
 
 --
--- TOC entry 3364 (class 0 OID 587996)
+-- TOC entry 3384 (class 0 OID 587996)
 -- Dependencies: 253
 -- Data for Name: aplicaciones_tags; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1883,7 +1955,7 @@ COPY public.aplicaciones_tags (id_aplicacion_tag, id_aplicacion, id_tag, id_usua
 
 
 --
--- TOC entry 3362 (class 0 OID 587985)
+-- TOC entry 3382 (class 0 OID 587985)
 -- Dependencies: 251
 -- Data for Name: aplicaciones_tecnologias; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1893,7 +1965,7 @@ COPY public.aplicaciones_tecnologias (id_aplicacion_tecnologia, id_aplicacion, i
 
 
 --
--- TOC entry 3374 (class 0 OID 588048)
+-- TOC entry 3394 (class 0 OID 588048)
 -- Dependencies: 263
 -- Data for Name: cargos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1909,7 +1981,7 @@ COPY public.cargos (id_cargo, nom_cargo, det_cargo, id_usuario_registra, id_usua
 
 
 --
--- TOC entry 3372 (class 0 OID 588037)
+-- TOC entry 3392 (class 0 OID 588037)
 -- Dependencies: 261
 -- Data for Name: catalogos_servicios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1919,7 +1991,7 @@ COPY public.catalogos_servicios (id_catalogo_servicio, id_servicio, asunto, det_
 
 
 --
--- TOC entry 3376 (class 0 OID 588166)
+-- TOC entry 3396 (class 0 OID 588166)
 -- Dependencies: 265
 -- Data for Name: catalogos_servicios_tags; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1929,7 +2001,7 @@ COPY public.catalogos_servicios_tags (id_catalogo_servicio_tag, id_catalogo_serv
 
 
 --
--- TOC entry 3396 (class 0 OID 596541)
+-- TOC entry 3416 (class 0 OID 596541)
 -- Dependencies: 285
 -- Data for Name: clusters; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1941,7 +2013,7 @@ COPY public.clusters (id_cluster, nom_cluster, det_cluster, id_usuario_registra,
 
 
 --
--- TOC entry 3309 (class 0 OID 579605)
+-- TOC entry 3329 (class 0 OID 579605)
 -- Dependencies: 198
 -- Data for Name: comuna; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2297,7 +2369,7 @@ COPY public.comuna (id_comuna, id_region, nombre_comuna, created_at, updated_at,
 
 
 --
--- TOC entry 3358 (class 0 OID 587957)
+-- TOC entry 3378 (class 0 OID 587957)
 -- Dependencies: 247
 -- Data for Name: datacentros; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2313,7 +2385,7 @@ COPY public.datacentros (id_datacentro, nom_datacentro, id_usuario_registra, id_
 
 
 --
--- TOC entry 3356 (class 0 OID 587943)
+-- TOC entry 3376 (class 0 OID 587943)
 -- Dependencies: 245
 -- Data for Name: dominios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2328,7 +2400,7 @@ COPY public.dominios (id_dominio, nom_dominio, det_dominio, ip_publica, ip_balan
 
 
 --
--- TOC entry 3378 (class 0 OID 588174)
+-- TOC entry 3398 (class 0 OID 588174)
 -- Dependencies: 267
 -- Data for Name: entregas_credenciales_usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2338,7 +2410,7 @@ COPY public.entregas_credenciales_usuarios (id_entrega_credencial_usuario, usern
 
 
 --
--- TOC entry 3379 (class 0 OID 588183)
+-- TOC entry 3399 (class 0 OID 588183)
 -- Dependencies: 268
 -- Data for Name: establecimientos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2348,7 +2420,7 @@ COPY public.establecimientos (id_establecimiento, id_establecimiento_antiguo, id
 
 
 --
--- TOC entry 3348 (class 0 OID 587893)
+-- TOC entry 3368 (class 0 OID 587893)
 -- Dependencies: 237
 -- Data for Name: estados; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2369,7 +2441,7 @@ COPY public.estados (id_estado, nom_estado, cod_estado, id_usuario_registra, id_
 
 
 --
--- TOC entry 3357 (class 0 OID 587950)
+-- TOC entry 3377 (class 0 OID 587950)
 -- Dependencies: 246
 -- Data for Name: fuentes_aplicaciones; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2379,7 +2451,7 @@ COPY public.fuentes_aplicaciones (id_fuente_aplicacion, id_aplicacion, id_servic
 
 
 --
--- TOC entry 3394 (class 0 OID 596530)
+-- TOC entry 3414 (class 0 OID 596530)
 -- Dependencies: 283
 -- Data for Name: idiomas; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2394,7 +2466,7 @@ COPY public.idiomas (id_idioma, nom_idioma, det_idioma, id_usuario_registra, id_
 
 
 --
--- TOC entry 3381 (class 0 OID 588194)
+-- TOC entry 3401 (class 0 OID 588194)
 -- Dependencies: 270
 -- Data for Name: log_navegacion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2404,7 +2476,30 @@ COPY public.log_navegacion (id_log_navegacion, id_usuario, cod_establecimiento, 
 
 
 --
--- TOC entry 3385 (class 0 OID 588263)
+-- TOC entry 3426 (class 0 OID 604763)
+-- Dependencies: 295
+-- Data for Name: mantenedores; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.mantenedores (id_mantenedor, url_mantenedor, nom_mantenedor, det_mantenedor, cod_mantenedor, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+1	servicios	Servicio	servicio	servicio	4	4	2018-03-28 18:56:19	2018-03-28 18:56:26	2018-03-28 18:56:26
+\.
+
+
+--
+-- TOC entry 3425 (class 0 OID 604754)
+-- Dependencies: 294
+-- Data for Name: menus; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.menus (id_menu, url_menu, nom_menu, det_menu, cod_menu, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+2	sdfdf	sdf	dsfds	fsdfds	4	4	2018-03-28 18:54:18	2018-03-28 18:54:35	2018-03-28 18:54:35
+1	fdsa	dsf	sdf	sadf	4	4	2018-03-28 18:52:28	2018-03-28 18:54:40	2018-03-28 18:54:40
+\.
+
+
+--
+-- TOC entry 3405 (class 0 OID 588263)
 -- Dependencies: 274
 -- Data for Name: migrations; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2416,7 +2511,7 @@ COPY public.migrations (id, migration, batch) FROM stdin;
 
 
 --
--- TOC entry 3308 (class 0 OID 579599)
+-- TOC entry 3328 (class 0 OID 579599)
 -- Dependencies: 197
 -- Data for Name: pais; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2666,7 +2761,7 @@ COPY public.pais (id_pais, nombre_pais, created_at, updated_at, deleted_at) FROM
 
 
 --
--- TOC entry 3386 (class 0 OID 588269)
+-- TOC entry 3406 (class 0 OID 588269)
 -- Dependencies: 275
 -- Data for Name: password_resets; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2676,7 +2771,7 @@ COPY public.password_resets (email, token, created_at) FROM stdin;
 
 
 --
--- TOC entry 3345 (class 0 OID 587878)
+-- TOC entry 3365 (class 0 OID 587878)
 -- Dependencies: 234
 -- Data for Name: permisos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2695,7 +2790,7 @@ COPY public.permisos (id_permiso, nom_permiso, det_permiso, cod_permiso, id_usua
 
 
 --
--- TOC entry 3310 (class 0 OID 579611)
+-- TOC entry 3330 (class 0 OID 579611)
 -- Dependencies: 199
 -- Data for Name: region; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2720,7 +2815,7 @@ COPY public.region (id_region, nombre_region, alias, orden, created_at, updated_
 
 
 --
--- TOC entry 3343 (class 0 OID 587867)
+-- TOC entry 3363 (class 0 OID 587867)
 -- Dependencies: 232
 -- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2748,7 +2843,7 @@ COPY public.roles (id_role, nom_role, det_role, id_usuario_registra, id_usuario_
 
 
 --
--- TOC entry 3344 (class 0 OID 587874)
+-- TOC entry 3364 (class 0 OID 587874)
 -- Dependencies: 233
 -- Data for Name: roles_permisos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2820,7 +2915,7 @@ COPY public.roles_permisos (id_role_permiso, id_role, id_permiso, id_usuario_reg
 
 
 --
--- TOC entry 3307 (class 0 OID 579586)
+-- TOC entry 3327 (class 0 OID 579586)
 -- Dependencies: 196
 -- Data for Name: servicio_salud; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2859,7 +2954,7 @@ COPY public.servicio_salud (id_servicio_salud, id_region, nombre_servicio_salud,
 
 
 --
--- TOC entry 3365 (class 0 OID 588000)
+-- TOC entry 3385 (class 0 OID 588000)
 -- Dependencies: 254
 -- Data for Name: servicios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2875,12 +2970,12 @@ COPY public.servicios (id_servicio, id_actividad, id_usuario, nom_servicio, det_
 8	7	4	SDFS	DFSD	4	4	2018-03-28 12:38:02	2018-03-28 12:38:07	2018-03-28 12:38:07
 9	9	1	sadf	sadf	1	1	2018-03-28 12:50:17	2018-03-28 12:50:28	2018-03-28 12:50:28
 10	11	4	sadf	sadf	4	4	2018-03-28 13:04:56	2018-03-28 15:21:41	2018-03-28 15:21:41
-11	7	4	asdf	sdf	4	4	2018-03-28 15:23:21	2018-03-28 15:23:21	\N
+11	7	4	asdf	sdf	4	4	2018-03-28 15:23:21	2018-03-28 16:10:47	2018-03-28 16:10:47
 \.
 
 
 --
--- TOC entry 3350 (class 0 OID 587907)
+-- TOC entry 3370 (class 0 OID 587907)
 -- Dependencies: 239
 -- Data for Name: servicios_estados; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2890,7 +2985,7 @@ COPY public.servicios_estados (id_servicio_estado, id_servicio, id_estado, id_us
 
 
 --
--- TOC entry 3370 (class 0 OID 588029)
+-- TOC entry 3390 (class 0 OID 588029)
 -- Dependencies: 259
 -- Data for Name: servicios_permisos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2900,7 +2995,7 @@ COPY public.servicios_permisos (id_servicio_permiso, id_servicio, id_permiso, id
 
 
 --
--- TOC entry 3368 (class 0 OID 588018)
+-- TOC entry 3388 (class 0 OID 588018)
 -- Dependencies: 257
 -- Data for Name: servicios_tags; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2910,7 +3005,7 @@ COPY public.servicios_tags (id_servicio_tag, id_servicio, id_tag, id_usuario_reg
 
 
 --
--- TOC entry 3355 (class 0 OID 587936)
+-- TOC entry 3375 (class 0 OID 587936)
 -- Dependencies: 244
 -- Data for Name: servidores; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2940,7 +3035,7 @@ COPY public.servidores (id_servidor, id_datacentro, id_sistema_operativo, nom_se
 
 
 --
--- TOC entry 3354 (class 0 OID 587929)
+-- TOC entry 3374 (class 0 OID 587929)
 -- Dependencies: 243
 -- Data for Name: servidores_accesos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2955,7 +3050,7 @@ COPY public.servidores_accesos (id_servidor_acceso, id_aplicacion, id_servidor, 
 
 
 --
--- TOC entry 3388 (class 0 OID 596496)
+-- TOC entry 3408 (class 0 OID 596496)
 -- Dependencies: 277
 -- Data for Name: servidores_estados; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2983,7 +3078,7 @@ COPY public.servidores_estados (id_servidor_estado, id_servidor, id_estado, id_u
 
 
 --
--- TOC entry 3392 (class 0 OID 596515)
+-- TOC entry 3412 (class 0 OID 596515)
 -- Dependencies: 281
 -- Data for Name: servidores_historico_cambios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3014,7 +3109,7 @@ COPY public.servidores_historico_cambios (id_servidor_historico, id_servidor, id
 
 
 --
--- TOC entry 3402 (class 0 OID 604744)
+-- TOC entry 3422 (class 0 OID 604744)
 -- Dependencies: 291
 -- Data for Name: servidores_lvms; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3027,7 +3122,7 @@ COPY public.servidores_lvms (id_servidor_lvm, lvm_raiz, lvm_usr, lvm_tmp, lvm_va
 
 
 --
--- TOC entry 3359 (class 0 OID 587964)
+-- TOC entry 3379 (class 0 OID 587964)
 -- Dependencies: 248
 -- Data for Name: sistemas_operativos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3081,7 +3176,7 @@ COPY public.sistemas_operativos (id_sistema_operativo, arquitectura, nom_sistema
 
 
 --
--- TOC entry 3369 (class 0 OID 588022)
+-- TOC entry 3389 (class 0 OID 588022)
 -- Dependencies: 258
 -- Data for Name: tags; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3094,7 +3189,7 @@ COPY public.tags (id_tag, nom_tag, det_tag, meta_tag, id_usuario_registra, id_us
 
 
 --
--- TOC entry 3363 (class 0 OID 587989)
+-- TOC entry 3383 (class 0 OID 587989)
 -- Dependencies: 252
 -- Data for Name: tecnologia_desarrollo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3104,7 +3199,7 @@ COPY public.tecnologia_desarrollo (id_tecnologia_desarrollo, id_tipo_tecnologia,
 
 
 --
--- TOC entry 3360 (class 0 OID 587971)
+-- TOC entry 3380 (class 0 OID 587971)
 -- Dependencies: 249
 -- Data for Name: tipos_aplicaciones; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3160,7 +3255,7 @@ COPY public.tipos_aplicaciones (id_tipo_aplicacion, nom_tipo_aplicacion, det_tip
 
 
 --
--- TOC entry 3398 (class 0 OID 604722)
+-- TOC entry 3418 (class 0 OID 604722)
 -- Dependencies: 287
 -- Data for Name: tipos_clusters; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3172,7 +3267,7 @@ COPY public.tipos_clusters (id_tipo_cluster, nom_tipo_cluster, det_tipo_cluster,
 
 
 --
--- TOC entry 3400 (class 0 OID 604733)
+-- TOC entry 3420 (class 0 OID 604733)
 -- Dependencies: 289
 -- Data for Name: tipos_sistemas_operativos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3185,7 +3280,7 @@ COPY public.tipos_sistemas_operativos (id_tipo_sistema_operativo, nom_tipo_siste
 
 
 --
--- TOC entry 3361 (class 0 OID 587978)
+-- TOC entry 3381 (class 0 OID 587978)
 -- Dependencies: 250
 -- Data for Name: tipos_tecnologias_desarrollo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3195,7 +3290,7 @@ COPY public.tipos_tecnologias_desarrollo (id_tipo_tecnologia_desarrollo, nom_tip
 
 
 --
--- TOC entry 3383 (class 0 OID 588203)
+-- TOC entry 3403 (class 0 OID 588203)
 -- Dependencies: 272
 -- Data for Name: usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3227,7 +3322,7 @@ COPY public.usuarios (id_usuario, nom_usuario, nom_completo, ape_paterno, ape_ma
 
 
 --
--- TOC entry 3349 (class 0 OID 587900)
+-- TOC entry 3369 (class 0 OID 587900)
 -- Dependencies: 238
 -- Data for Name: usuarios_bitacora_servicios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3240,7 +3335,7 @@ COPY public.usuarios_bitacora_servicios (id_usuario_bitacora_servicio, id_usuari
 
 
 --
--- TOC entry 3373 (class 0 OID 588044)
+-- TOC entry 3393 (class 0 OID 588044)
 -- Dependencies: 262
 -- Data for Name: usuarios_cargos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3276,7 +3371,7 @@ COPY public.usuarios_cargos (id_usuario_cargo, id_usuario, id_cargo, id_usuario_
 
 
 --
--- TOC entry 3347 (class 0 OID 587889)
+-- TOC entry 3367 (class 0 OID 587889)
 -- Dependencies: 236
 -- Data for Name: usuarios_estados; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3312,7 +3407,7 @@ COPY public.usuarios_estados (id_usuario_estado, id_estado, id_usuario, id_usuar
 
 
 --
--- TOC entry 3346 (class 0 OID 587885)
+-- TOC entry 3366 (class 0 OID 587885)
 -- Dependencies: 235
 -- Data for Name: usuarios_roles; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3335,7 +3430,7 @@ COPY public.usuarios_roles (id_usuario_role, id_role, id_usuario, id_usuario_reg
 
 
 --
--- TOC entry 3371 (class 0 OID 588033)
+-- TOC entry 3391 (class 0 OID 588033)
 -- Dependencies: 260
 -- Data for Name: usuarios_servicios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3345,7 +3440,7 @@ COPY public.usuarios_servicios (id_usuario_servicio, id_usuario, id_servicio, id
 
 
 --
--- TOC entry 3412 (class 0 OID 0)
+-- TOC entry 3436 (class 0 OID 0)
 -- Dependencies: 210
 -- Name: accesos_aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3354,7 +3449,7 @@ SELECT pg_catalog.setval('public.accesos_aplicaciones_id_seq', 2, true);
 
 
 --
--- TOC entry 3413 (class 0 OID 0)
+-- TOC entry 3437 (class 0 OID 0)
 -- Dependencies: 211
 -- Name: accesos_servidores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3363,7 +3458,7 @@ SELECT pg_catalog.setval('public.accesos_servidores_id_seq', 5, true);
 
 
 --
--- TOC entry 3414 (class 0 OID 0)
+-- TOC entry 3438 (class 0 OID 0)
 -- Dependencies: 223
 -- Name: actividades_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3372,7 +3467,7 @@ SELECT pg_catalog.setval('public.actividades_id_seq', 12, true);
 
 
 --
--- TOC entry 3415 (class 0 OID 0)
+-- TOC entry 3439 (class 0 OID 0)
 -- Dependencies: 224
 -- Name: actividades_tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3381,7 +3476,7 @@ SELECT pg_catalog.setval('public.actividades_tags_id_seq', 1, false);
 
 
 --
--- TOC entry 3416 (class 0 OID 0)
+-- TOC entry 3440 (class 0 OID 0)
 -- Dependencies: 278
 -- Name: ambientes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3390,7 +3485,7 @@ SELECT pg_catalog.setval('public.ambientes_id_seq', 4, true);
 
 
 --
--- TOC entry 3417 (class 0 OID 0)
+-- TOC entry 3441 (class 0 OID 0)
 -- Dependencies: 208
 -- Name: aplicaciones_estados_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3399,7 +3494,7 @@ SELECT pg_catalog.setval('public.aplicaciones_estados_id_seq', 1, false);
 
 
 --
--- TOC entry 3418 (class 0 OID 0)
+-- TOC entry 3442 (class 0 OID 0)
 -- Dependencies: 209
 -- Name: aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3408,7 +3503,7 @@ SELECT pg_catalog.setval('public.aplicaciones_id_seq', 7, true);
 
 
 --
--- TOC entry 3419 (class 0 OID 0)
+-- TOC entry 3443 (class 0 OID 0)
 -- Dependencies: 221
 -- Name: aplicaciones_tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3417,7 +3512,7 @@ SELECT pg_catalog.setval('public.aplicaciones_tags_id_seq', 1, false);
 
 
 --
--- TOC entry 3420 (class 0 OID 0)
+-- TOC entry 3444 (class 0 OID 0)
 -- Dependencies: 219
 -- Name: aplicaciones_tecnologias_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3426,7 +3521,7 @@ SELECT pg_catalog.setval('public.aplicaciones_tecnologias_id_seq', 1, false);
 
 
 --
--- TOC entry 3421 (class 0 OID 0)
+-- TOC entry 3445 (class 0 OID 0)
 -- Dependencies: 231
 -- Name: cargos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3435,7 +3530,7 @@ SELECT pg_catalog.setval('public.cargos_id_seq', 6, true);
 
 
 --
--- TOC entry 3422 (class 0 OID 0)
+-- TOC entry 3446 (class 0 OID 0)
 -- Dependencies: 229
 -- Name: catalogos_servicios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3444,7 +3539,7 @@ SELECT pg_catalog.setval('public.catalogos_servicios_id_seq', 1, false);
 
 
 --
--- TOC entry 3423 (class 0 OID 0)
+-- TOC entry 3447 (class 0 OID 0)
 -- Dependencies: 264
 -- Name: catalogos_servicios_tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3453,7 +3548,7 @@ SELECT pg_catalog.setval('public.catalogos_servicios_tags_id_seq', 1, false);
 
 
 --
--- TOC entry 3424 (class 0 OID 0)
+-- TOC entry 3448 (class 0 OID 0)
 -- Dependencies: 284
 -- Name: clusters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3462,7 +3557,7 @@ SELECT pg_catalog.setval('public.clusters_id_seq', 2, true);
 
 
 --
--- TOC entry 3425 (class 0 OID 0)
+-- TOC entry 3449 (class 0 OID 0)
 -- Dependencies: 215
 -- Name: datacentros_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3471,7 +3566,7 @@ SELECT pg_catalog.setval('public.datacentros_id_seq', 6, true);
 
 
 --
--- TOC entry 3426 (class 0 OID 0)
+-- TOC entry 3450 (class 0 OID 0)
 -- Dependencies: 213
 -- Name: dominios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3480,7 +3575,7 @@ SELECT pg_catalog.setval('public.dominios_id_seq', 5, true);
 
 
 --
--- TOC entry 3427 (class 0 OID 0)
+-- TOC entry 3451 (class 0 OID 0)
 -- Dependencies: 266
 -- Name: entregas_credenciales_usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3489,7 +3584,7 @@ SELECT pg_catalog.setval('public.entregas_credenciales_usuarios_id_seq', 1, fals
 
 
 --
--- TOC entry 3428 (class 0 OID 0)
+-- TOC entry 3452 (class 0 OID 0)
 -- Dependencies: 205
 -- Name: estados_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3498,7 +3593,7 @@ SELECT pg_catalog.setval('public.estados_id_seq', 11, true);
 
 
 --
--- TOC entry 3429 (class 0 OID 0)
+-- TOC entry 3453 (class 0 OID 0)
 -- Dependencies: 214
 -- Name: fuentes_aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3507,7 +3602,7 @@ SELECT pg_catalog.setval('public.fuentes_aplicaciones_id_seq', 1, false);
 
 
 --
--- TOC entry 3430 (class 0 OID 0)
+-- TOC entry 3454 (class 0 OID 0)
 -- Dependencies: 282
 -- Name: idiomas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3516,7 +3611,7 @@ SELECT pg_catalog.setval('public.idiomas_id_seq', 5, true);
 
 
 --
--- TOC entry 3431 (class 0 OID 0)
+-- TOC entry 3455 (class 0 OID 0)
 -- Dependencies: 269
 -- Name: log_navegacion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3525,7 +3620,25 @@ SELECT pg_catalog.setval('public.log_navegacion_id_seq', 1, false);
 
 
 --
--- TOC entry 3432 (class 0 OID 0)
+-- TOC entry 3456 (class 0 OID 0)
+-- Dependencies: 293
+-- Name: mantenedores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.mantenedores_id_seq', 1, true);
+
+
+--
+-- TOC entry 3457 (class 0 OID 0)
+-- Dependencies: 292
+-- Name: menus_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.menus_id_seq', 2, true);
+
+
+--
+-- TOC entry 3458 (class 0 OID 0)
 -- Dependencies: 273
 -- Name: migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3534,7 +3647,7 @@ SELECT pg_catalog.setval('public.migrations_id_seq', 2, true);
 
 
 --
--- TOC entry 3433 (class 0 OID 0)
+-- TOC entry 3459 (class 0 OID 0)
 -- Dependencies: 202
 -- Name: permisos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3543,7 +3656,7 @@ SELECT pg_catalog.setval('public.permisos_id_seq', 22, true);
 
 
 --
--- TOC entry 3434 (class 0 OID 0)
+-- TOC entry 3460 (class 0 OID 0)
 -- Dependencies: 200
 -- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3552,7 +3665,7 @@ SELECT pg_catalog.setval('public.roles_id_seq', 72, true);
 
 
 --
--- TOC entry 3435 (class 0 OID 0)
+-- TOC entry 3461 (class 0 OID 0)
 -- Dependencies: 201
 -- Name: roles_permisos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3561,7 +3674,7 @@ SELECT pg_catalog.setval('public.roles_permisos_id_seq', 70, true);
 
 
 --
--- TOC entry 3436 (class 0 OID 0)
+-- TOC entry 3462 (class 0 OID 0)
 -- Dependencies: 207
 -- Name: servicios_estados_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3570,7 +3683,7 @@ SELECT pg_catalog.setval('public.servicios_estados_id_seq', 1, false);
 
 
 --
--- TOC entry 3437 (class 0 OID 0)
+-- TOC entry 3463 (class 0 OID 0)
 -- Dependencies: 222
 -- Name: servicios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3579,7 +3692,7 @@ SELECT pg_catalog.setval('public.servicios_id_seq', 11, true);
 
 
 --
--- TOC entry 3438 (class 0 OID 0)
+-- TOC entry 3464 (class 0 OID 0)
 -- Dependencies: 227
 -- Name: servicios_permisos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3588,7 +3701,7 @@ SELECT pg_catalog.setval('public.servicios_permisos_id_seq', 1, false);
 
 
 --
--- TOC entry 3439 (class 0 OID 0)
+-- TOC entry 3465 (class 0 OID 0)
 -- Dependencies: 225
 -- Name: servicios_tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3597,7 +3710,7 @@ SELECT pg_catalog.setval('public.servicios_tags_id_seq', 1, false);
 
 
 --
--- TOC entry 3440 (class 0 OID 0)
+-- TOC entry 3466 (class 0 OID 0)
 -- Dependencies: 212
 -- Name: servidor_aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3606,7 +3719,7 @@ SELECT pg_catalog.setval('public.servidor_aplicaciones_id_seq', 20, true);
 
 
 --
--- TOC entry 3441 (class 0 OID 0)
+-- TOC entry 3467 (class 0 OID 0)
 -- Dependencies: 276
 -- Name: servidor_estado_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3615,7 +3728,7 @@ SELECT pg_catalog.setval('public.servidor_estado_id_seq', 18, true);
 
 
 --
--- TOC entry 3442 (class 0 OID 0)
+-- TOC entry 3468 (class 0 OID 0)
 -- Dependencies: 280
 -- Name: servidor_historico_cambios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3624,7 +3737,7 @@ SELECT pg_catalog.setval('public.servidor_historico_cambios_id_seq', 30, true);
 
 
 --
--- TOC entry 3443 (class 0 OID 0)
+-- TOC entry 3469 (class 0 OID 0)
 -- Dependencies: 290
 -- Name: servidores_lvm_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3633,7 +3746,7 @@ SELECT pg_catalog.setval('public.servidores_lvm_id_seq', 3, true);
 
 
 --
--- TOC entry 3444 (class 0 OID 0)
+-- TOC entry 3470 (class 0 OID 0)
 -- Dependencies: 216
 -- Name: sistemas_operativos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3642,7 +3755,7 @@ SELECT pg_catalog.setval('public.sistemas_operativos_id_seq', 44, true);
 
 
 --
--- TOC entry 3445 (class 0 OID 0)
+-- TOC entry 3471 (class 0 OID 0)
 -- Dependencies: 226
 -- Name: tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3651,7 +3764,7 @@ SELECT pg_catalog.setval('public.tags_id_seq', 3, true);
 
 
 --
--- TOC entry 3446 (class 0 OID 0)
+-- TOC entry 3472 (class 0 OID 0)
 -- Dependencies: 220
 -- Name: tecnologia_desarrollo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3660,7 +3773,7 @@ SELECT pg_catalog.setval('public.tecnologia_desarrollo_id_seq', 1, false);
 
 
 --
--- TOC entry 3447 (class 0 OID 0)
+-- TOC entry 3473 (class 0 OID 0)
 -- Dependencies: 217
 -- Name: tipos_aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3669,7 +3782,7 @@ SELECT pg_catalog.setval('public.tipos_aplicaciones_id_seq', 46, true);
 
 
 --
--- TOC entry 3448 (class 0 OID 0)
+-- TOC entry 3474 (class 0 OID 0)
 -- Dependencies: 286
 -- Name: tipos_clusters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3678,7 +3791,7 @@ SELECT pg_catalog.setval('public.tipos_clusters_id_seq', 2, true);
 
 
 --
--- TOC entry 3449 (class 0 OID 0)
+-- TOC entry 3475 (class 0 OID 0)
 -- Dependencies: 288
 -- Name: tipos_sistemas_operativos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3687,7 +3800,7 @@ SELECT pg_catalog.setval('public.tipos_sistemas_operativos_id_seq', 3, true);
 
 
 --
--- TOC entry 3450 (class 0 OID 0)
+-- TOC entry 3476 (class 0 OID 0)
 -- Dependencies: 218
 -- Name: tipos_tecnologias_desarrollo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3696,7 +3809,7 @@ SELECT pg_catalog.setval('public.tipos_tecnologias_desarrollo_id_seq', 1, false)
 
 
 --
--- TOC entry 3451 (class 0 OID 0)
+-- TOC entry 3477 (class 0 OID 0)
 -- Dependencies: 206
 -- Name: usuarios_bitacora_servicios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3705,7 +3818,7 @@ SELECT pg_catalog.setval('public.usuarios_bitacora_servicios_id_seq', 3, true);
 
 
 --
--- TOC entry 3452 (class 0 OID 0)
+-- TOC entry 3478 (class 0 OID 0)
 -- Dependencies: 230
 -- Name: usuarios_cargos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3714,7 +3827,7 @@ SELECT pg_catalog.setval('public.usuarios_cargos_id_seq', 29, true);
 
 
 --
--- TOC entry 3453 (class 0 OID 0)
+-- TOC entry 3479 (class 0 OID 0)
 -- Dependencies: 204
 -- Name: usuarios_estados_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3723,7 +3836,7 @@ SELECT pg_catalog.setval('public.usuarios_estados_id_seq', 29, true);
 
 
 --
--- TOC entry 3454 (class 0 OID 0)
+-- TOC entry 3480 (class 0 OID 0)
 -- Dependencies: 271
 -- Name: usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3732,7 +3845,7 @@ SELECT pg_catalog.setval('public.usuarios_id_seq', 28, true);
 
 
 --
--- TOC entry 3455 (class 0 OID 0)
+-- TOC entry 3481 (class 0 OID 0)
 -- Dependencies: 203
 -- Name: usuarios_roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3741,7 +3854,7 @@ SELECT pg_catalog.setval('public.usuarios_roles_id_seq', 30, true);
 
 
 --
--- TOC entry 3456 (class 0 OID 0)
+-- TOC entry 3482 (class 0 OID 0)
 -- Dependencies: 228
 -- Name: usuarios_servicios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -3750,7 +3863,7 @@ SELECT pg_catalog.setval('public.usuarios_servicios_id_seq', 1, false);
 
 
 --
--- TOC entry 3116 (class 2606 OID 596493)
+-- TOC entry 3132 (class 2606 OID 596493)
 -- Name: aplicaciones_accesos accesos_aplicaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3759,7 +3872,7 @@ ALTER TABLE ONLY public.aplicaciones_accesos
 
 
 --
--- TOC entry 3118 (class 2606 OID 588191)
+-- TOC entry 3134 (class 2606 OID 588191)
 -- Name: servidores_accesos accesos_servidores_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3768,7 +3881,7 @@ ALTER TABLE ONLY public.servidores_accesos
 
 
 --
--- TOC entry 3142 (class 2606 OID 588064)
+-- TOC entry 3158 (class 2606 OID 588064)
 -- Name: actividades actividades_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3777,7 +3890,7 @@ ALTER TABLE ONLY public.actividades
 
 
 --
--- TOC entry 3144 (class 2606 OID 588067)
+-- TOC entry 3160 (class 2606 OID 588067)
 -- Name: actividades_tags actividades_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3786,7 +3899,7 @@ ALTER TABLE ONLY public.actividades_tags
 
 
 --
--- TOC entry 3173 (class 2606 OID 596512)
+-- TOC entry 3189 (class 2606 OID 596512)
 -- Name: ambientes ambientes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3795,7 +3908,7 @@ ALTER TABLE ONLY public.ambientes
 
 
 --
--- TOC entry 3112 (class 2606 OID 588073)
+-- TOC entry 3128 (class 2606 OID 588073)
 -- Name: aplicaciones_estados aplicaciones_estados_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3804,7 +3917,7 @@ ALTER TABLE ONLY public.aplicaciones_estados
 
 
 --
--- TOC entry 3114 (class 2606 OID 588070)
+-- TOC entry 3130 (class 2606 OID 588070)
 -- Name: aplicaciones aplicaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3813,7 +3926,7 @@ ALTER TABLE ONLY public.aplicaciones
 
 
 --
--- TOC entry 3138 (class 2606 OID 588076)
+-- TOC entry 3154 (class 2606 OID 588076)
 -- Name: aplicaciones_tags aplicaciones_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3822,7 +3935,7 @@ ALTER TABLE ONLY public.aplicaciones_tags
 
 
 --
--- TOC entry 3134 (class 2606 OID 588079)
+-- TOC entry 3150 (class 2606 OID 588079)
 -- Name: aplicaciones_tecnologias aplicaciones_tecnologias_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3831,7 +3944,7 @@ ALTER TABLE ONLY public.aplicaciones_tecnologias
 
 
 --
--- TOC entry 3158 (class 2606 OID 588082)
+-- TOC entry 3174 (class 2606 OID 588082)
 -- Name: cargos cargos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3840,7 +3953,7 @@ ALTER TABLE ONLY public.cargos
 
 
 --
--- TOC entry 3154 (class 2606 OID 588085)
+-- TOC entry 3170 (class 2606 OID 588085)
 -- Name: catalogos_servicios catalogos_servicios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3849,7 +3962,7 @@ ALTER TABLE ONLY public.catalogos_servicios
 
 
 --
--- TOC entry 3160 (class 2606 OID 588218)
+-- TOC entry 3176 (class 2606 OID 588218)
 -- Name: catalogos_servicios_tags catalogos_servicios_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3858,7 +3971,7 @@ ALTER TABLE ONLY public.catalogos_servicios_tags
 
 
 --
--- TOC entry 3179 (class 2606 OID 596549)
+-- TOC entry 3195 (class 2606 OID 596549)
 -- Name: clusters clusters_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3867,7 +3980,7 @@ ALTER TABLE ONLY public.clusters
 
 
 --
--- TOC entry 3126 (class 2606 OID 588088)
+-- TOC entry 3142 (class 2606 OID 588088)
 -- Name: datacentros datacentros_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3876,7 +3989,7 @@ ALTER TABLE ONLY public.datacentros
 
 
 --
--- TOC entry 3122 (class 2606 OID 588091)
+-- TOC entry 3138 (class 2606 OID 588091)
 -- Name: dominios dominios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3885,7 +3998,7 @@ ALTER TABLE ONLY public.dominios
 
 
 --
--- TOC entry 3162 (class 2606 OID 588182)
+-- TOC entry 3178 (class 2606 OID 588182)
 -- Name: entregas_credenciales_usuarios entregas_credenciales_usuarios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3894,7 +4007,7 @@ ALTER TABLE ONLY public.entregas_credenciales_usuarios
 
 
 --
--- TOC entry 3106 (class 2606 OID 588094)
+-- TOC entry 3122 (class 2606 OID 588094)
 -- Name: estados estados_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3903,7 +4016,7 @@ ALTER TABLE ONLY public.estados
 
 
 --
--- TOC entry 3171 (class 2606 OID 596501)
+-- TOC entry 3187 (class 2606 OID 596501)
 -- Name: servidores_estados estados_servidores_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3912,7 +4025,7 @@ ALTER TABLE ONLY public.servidores_estados
 
 
 --
--- TOC entry 3124 (class 2606 OID 588097)
+-- TOC entry 3140 (class 2606 OID 588097)
 -- Name: fuentes_aplicaciones fuentes_aplicaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3921,7 +4034,7 @@ ALTER TABLE ONLY public.fuentes_aplicaciones
 
 
 --
--- TOC entry 3177 (class 2606 OID 596538)
+-- TOC entry 3193 (class 2606 OID 596538)
 -- Name: idiomas idiomas_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3930,7 +4043,7 @@ ALTER TABLE ONLY public.idiomas
 
 
 --
--- TOC entry 3164 (class 2606 OID 588214)
+-- TOC entry 3180 (class 2606 OID 588214)
 -- Name: log_navegacion log_navegacion_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3939,7 +4052,25 @@ ALTER TABLE ONLY public.log_navegacion
 
 
 --
--- TOC entry 3168 (class 2606 OID 588268)
+-- TOC entry 3205 (class 2606 OID 604771)
+-- Name: mantenedores mantenedores_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.mantenedores
+    ADD CONSTRAINT mantenedores_pkey PRIMARY KEY (id_mantenedor);
+
+
+--
+-- TOC entry 3203 (class 2606 OID 604762)
+-- Name: menus menus_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.menus
+    ADD CONSTRAINT menus_pkey PRIMARY KEY (id_menu);
+
+
+--
+-- TOC entry 3184 (class 2606 OID 588268)
 -- Name: migrations migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3948,7 +4079,7 @@ ALTER TABLE ONLY public.migrations
 
 
 --
--- TOC entry 3100 (class 2606 OID 588100)
+-- TOC entry 3116 (class 2606 OID 588100)
 -- Name: permisos permisos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3957,7 +4088,7 @@ ALTER TABLE ONLY public.permisos
 
 
 --
--- TOC entry 3098 (class 2606 OID 588106)
+-- TOC entry 3114 (class 2606 OID 588106)
 -- Name: roles_permisos roles_permisos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3966,7 +4097,7 @@ ALTER TABLE ONLY public.roles_permisos
 
 
 --
--- TOC entry 3096 (class 2606 OID 588103)
+-- TOC entry 3112 (class 2606 OID 588103)
 -- Name: roles roles_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3975,7 +4106,7 @@ ALTER TABLE ONLY public.roles
 
 
 --
--- TOC entry 3110 (class 2606 OID 588112)
+-- TOC entry 3126 (class 2606 OID 588112)
 -- Name: servicios_estados servicios_estados_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3984,7 +4115,7 @@ ALTER TABLE ONLY public.servicios_estados
 
 
 --
--- TOC entry 3150 (class 2606 OID 588115)
+-- TOC entry 3166 (class 2606 OID 588115)
 -- Name: servicios_permisos servicios_permisos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -3993,7 +4124,7 @@ ALTER TABLE ONLY public.servicios_permisos
 
 
 --
--- TOC entry 3140 (class 2606 OID 588109)
+-- TOC entry 3156 (class 2606 OID 588109)
 -- Name: servicios servicios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4002,7 +4133,7 @@ ALTER TABLE ONLY public.servicios
 
 
 --
--- TOC entry 3146 (class 2606 OID 588159)
+-- TOC entry 3162 (class 2606 OID 588159)
 -- Name: servicios_tags servicios_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4011,7 +4142,7 @@ ALTER TABLE ONLY public.servicios_tags
 
 
 --
--- TOC entry 3120 (class 2606 OID 588121)
+-- TOC entry 3136 (class 2606 OID 588121)
 -- Name: servidores servidor_aplicaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4020,7 +4151,7 @@ ALTER TABLE ONLY public.servidores
 
 
 --
--- TOC entry 3175 (class 2606 OID 596523)
+-- TOC entry 3191 (class 2606 OID 596523)
 -- Name: servidores_historico_cambios servidor_historico_cambios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4029,7 +4160,7 @@ ALTER TABLE ONLY public.servidores_historico_cambios
 
 
 --
--- TOC entry 3185 (class 2606 OID 604749)
+-- TOC entry 3201 (class 2606 OID 604749)
 -- Name: servidores_lvms servidores_lvms_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4038,7 +4169,7 @@ ALTER TABLE ONLY public.servidores_lvms
 
 
 --
--- TOC entry 3128 (class 2606 OID 588124)
+-- TOC entry 3144 (class 2606 OID 588124)
 -- Name: sistemas_operativos sistemas_operativos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4047,7 +4178,7 @@ ALTER TABLE ONLY public.sistemas_operativos
 
 
 --
--- TOC entry 3148 (class 2606 OID 588127)
+-- TOC entry 3164 (class 2606 OID 588127)
 -- Name: tags tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4056,7 +4187,7 @@ ALTER TABLE ONLY public.tags
 
 
 --
--- TOC entry 3136 (class 2606 OID 588130)
+-- TOC entry 3152 (class 2606 OID 588130)
 -- Name: tecnologia_desarrollo tecnologia_desarrollo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4065,7 +4196,7 @@ ALTER TABLE ONLY public.tecnologia_desarrollo
 
 
 --
--- TOC entry 3130 (class 2606 OID 588133)
+-- TOC entry 3146 (class 2606 OID 588133)
 -- Name: tipos_aplicaciones tipos_aplicaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4074,7 +4205,7 @@ ALTER TABLE ONLY public.tipos_aplicaciones
 
 
 --
--- TOC entry 3181 (class 2606 OID 604730)
+-- TOC entry 3197 (class 2606 OID 604730)
 -- Name: tipos_clusters tipos_clusters_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4083,7 +4214,7 @@ ALTER TABLE ONLY public.tipos_clusters
 
 
 --
--- TOC entry 3183 (class 2606 OID 604741)
+-- TOC entry 3199 (class 2606 OID 604741)
 -- Name: tipos_sistemas_operativos tipos_sistemas_operativos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4092,7 +4223,7 @@ ALTER TABLE ONLY public.tipos_sistemas_operativos
 
 
 --
--- TOC entry 3132 (class 2606 OID 588136)
+-- TOC entry 3148 (class 2606 OID 588136)
 -- Name: tipos_tecnologias_desarrollo tipos_tecnologias_desarrollo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4101,7 +4232,7 @@ ALTER TABLE ONLY public.tipos_tecnologias_desarrollo
 
 
 --
--- TOC entry 3108 (class 2606 OID 588139)
+-- TOC entry 3124 (class 2606 OID 588139)
 -- Name: usuarios_bitacora_servicios usuarios_bitacora_servicios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4110,7 +4241,7 @@ ALTER TABLE ONLY public.usuarios_bitacora_servicios
 
 
 --
--- TOC entry 3156 (class 2606 OID 588142)
+-- TOC entry 3172 (class 2606 OID 588142)
 -- Name: usuarios_cargos usuarios_cargos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4119,7 +4250,7 @@ ALTER TABLE ONLY public.usuarios_cargos
 
 
 --
--- TOC entry 3104 (class 2606 OID 588145)
+-- TOC entry 3120 (class 2606 OID 588145)
 -- Name: usuarios_estados usuarios_estados_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4128,7 +4259,7 @@ ALTER TABLE ONLY public.usuarios_estados
 
 
 --
--- TOC entry 3166 (class 2606 OID 588211)
+-- TOC entry 3182 (class 2606 OID 588211)
 -- Name: usuarios usuarios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4137,7 +4268,7 @@ ALTER TABLE ONLY public.usuarios
 
 
 --
--- TOC entry 3102 (class 2606 OID 588148)
+-- TOC entry 3118 (class 2606 OID 588148)
 -- Name: usuarios_roles usuarios_roles_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4146,7 +4277,7 @@ ALTER TABLE ONLY public.usuarios_roles
 
 
 --
--- TOC entry 3152 (class 2606 OID 588151)
+-- TOC entry 3168 (class 2606 OID 588151)
 -- Name: usuarios_servicios usuarios_servicios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4155,14 +4286,14 @@ ALTER TABLE ONLY public.usuarios_servicios
 
 
 --
--- TOC entry 3169 (class 1259 OID 588275)
+-- TOC entry 3185 (class 1259 OID 588275)
 -- Name: password_resets_email_index; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX password_resets_email_index ON public.password_resets USING btree (email);
 
 
--- Completed on 2018-03-28 12:34:09 -03
+-- Completed on 2018-03-28 15:57:04 -03
 
 --
 -- PostgreSQL database dump complete
