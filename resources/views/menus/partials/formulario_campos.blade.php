@@ -5,7 +5,7 @@
 
    <div class="col-sm-6 col-md-6">
 
-      <dt>Ruta menu</dt>
+      <dt>Ruta menu /</dt>
       <dd>
 
          <p class="control has-icon has-icon-right">

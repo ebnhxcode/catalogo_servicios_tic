@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Menu;
+use App\Mantenedor;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -15,6 +16,7 @@ class MenuController extends Controller {
    private $nombre_ruta; //Se usa como prefijo en llamados en duro o definiciones similares o de ruta
    private $nombre_detalle; //Se usa como prefijo en nombres o cabeceras
    private $nombre_controller; //
+   private $mantenedores;
    private $menus;
    private $menu;
    private $new_menu;
@@ -49,9 +51,11 @@ class MenuController extends Controller {
 
       $this->usuario_auth = Auth::user();
       $this->menus = Menu::all();
+      $this->mantenedores = Mantenedor::all();
       return response()->json([
          'status' => 200,
          'menus' => $this->menus,
+         'mantenedores' => $this->mantenedores,
          'usuario_auth' => $this->usuario_auth,
       ]);
    }

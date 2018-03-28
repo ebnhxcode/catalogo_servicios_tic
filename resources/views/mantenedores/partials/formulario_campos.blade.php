@@ -4,7 +4,7 @@
 
    <div class="col-sm-6 col-md-6">
 
-      <dt>Ruta mantenedor</dt>
+      <dt>Ruta mantenedor /</dt>
       <dd>
 
          <p class="control has-icon has-icon-right">
