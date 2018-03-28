@@ -46,7 +46,8 @@ $modules = [
     ['route'=>'tags','controller'=>'TagController'],
     ['route'=>'usuarios_bitacora_servicios','controller'=>'UsuarioBitacoraServicioController'],
     ['route'=>'clusters','controller'=>'ClusterController'],
-
+    ['route'=>'menus','controller'=>'MenuController'],
+    ['route'=>'mantenedores','controller'=>'MantenedorController'],
 ];
 
 $http_requests = [

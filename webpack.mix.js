@@ -54,6 +54,8 @@ mix.js('resources/assets/js/controllers/SistemaOperativoController.js','public/j
 mix.js('resources/assets/js/controllers/TagController.js','public/js/controllers/TagController.js');
 mix.js('resources/assets/js/controllers/UsuarioBitacoraServicioController.js','public/js/controllers/UsuarioBitacoraServicioController.js');
 mix.js('resources/assets/js/controllers/ClusterController.js','public/js/controllers/ClusterController.js');
+mix.js('resources/assets/js/controllers/MenuController.js','public/js/controllers/MenuController.js');
+mix.js('resources/assets/js/controllers/MantenedorController.js','public/js/controllers/MantenedorController.js');
 
 mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');

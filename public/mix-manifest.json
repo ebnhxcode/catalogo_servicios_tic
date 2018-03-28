@@ -12,6 +12,8 @@
     "/js/controllers/ServicioController.js": "/js/controllers/ServicioController.js",
     "/js/controllers/RoleController.js": "/js/controllers/RoleController.js",
     "/js/controllers/PermisoController.js": "/js/controllers/PermisoController.js",
+    "/js/controllers/MenuController.js": "/js/controllers/MenuController.js",
+    "/js/controllers/MantenedorController.js": "/js/controllers/MantenedorController.js",
     "/js/controllers/EstadoController.js": "/js/controllers/EstadoController.js",
     "/js/controllers/DominioController.js": "/js/controllers/DominioController.js",
     "/js/controllers/DatacentroController.js": "/js/controllers/DatacentroController.js",

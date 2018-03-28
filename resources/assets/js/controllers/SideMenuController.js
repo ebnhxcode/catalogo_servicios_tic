@@ -142,8 +142,14 @@ const SideMenuController = new Vue({
    data(){
       return {
          '$':window.jQuery,
+         'pk_tabla': 'id_menu',
+         'nombre_tabla':'menus', //nombre tabla o de ruta
+         'nombre_ruta':'menus', //nombre tabla o de ruta
+         'nombre_model':'menu',
+         'nombre_model_limpio': 'menu_limpio',
+         'nombre_detalle':'Menu',
+         'nombre_controller':'MenuController',
          'filtro_menu':null,
-
          'menus':[
             {
                'title':'Dashboard',
@@ -174,7 +180,6 @@ const SideMenuController = new Vue({
                'url':'/usuarios_bitacora_servicios',
             },
          ],
-
          'mantenedores':[
             {
                'title':'Roles',
@@ -207,6 +212,14 @@ const SideMenuController = new Vue({
             {
                'title':'Servicios',
                'url':'/servicios',
+            },
+            {
+               'title':'Menus',
+               'url':'/menus',
+            },
+            {
+               'title':'Mantenedores',
+               'url':'/mantenedores',
             },
             {
                'title':'Tipos Aplicaciones',
@@ -258,11 +271,25 @@ const SideMenuController = new Vue({
    watch: {},
    components: {},
    created(){
-
+      //this.inicializar();
    },
    ready: {},
    filters: {},
-   methods: {}
+   methods: {
+      /*
+      inicializar: function () {
+
+         this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+            this.configurar_relaciones(response.body.sistemas_operativos, this.relaciones_clase);
+
+            this.usuario_auth = response.body.usuario_auth || null;
+         }, response => { // error callback
+            this.checkear_estado_respuesta_http(response.status);
+         });
+
+      },
+      */
+   }
 });
 
 //Vue.component('front-component', require('../components/FrontComponent.vue'));
