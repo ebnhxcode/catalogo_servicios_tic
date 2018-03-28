@@ -28,12 +28,6 @@ class ServicioController extends Controller {
 
     public function __construct () {
         $this->middleware('auth');
-        #$this->middleware('crud');
-        dd(Auth::user());
-
-
-        dd(0);
-
         $this->nombre_modelo = "servicio"; //nombre tabla o de ruta
         $this->nombre_tabla = $this->nombre_ruta = "servicios";
         $this->nombre_detalle = "Servicios";
