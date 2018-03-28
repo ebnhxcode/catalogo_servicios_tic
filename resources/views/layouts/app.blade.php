@@ -140,7 +140,7 @@
       <div class="container-fluid">
          <div class="row">
 
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar" id="SideMenuController">
+            <nav class="col-md-3 d-none d-md-block bg-light sidebar" id="SideMenuController">
 
                <div class="form-group">
                   <!-- Input para escribir el termino a buscar -->
@@ -166,23 +166,23 @@
                         <i class="fa fa-refresh btn btn-light btn-sm" @click.prevent="inicializar" aria-hidden="true"
                            data-placement="top" data-toggle="tooltip" title="Clic para actualizar menu"></i>
 
-                        <i class="fa fa-sort-alpha-asc btn btn-light btn-sm" @click.prevent="cambiar_orden_lista('nom_menu','menus')" aria-hidden="true"
-                           data-placement="top" data-toggle="tooltip" title="Clic para ordenar menu principal"></i>
 
-                        <i class="fa fa-sort-alpha-asc btn btn-light btn-sm" @click.prevent="cambiar_orden_lista('nom_mantenedor','mantenedores')" aria-hidden="true"
-                           data-placement="top" data-toggle="tooltip" title="Clic para ordenar menu de mantenedores"></i>
+
+
                      </li>
                   </ul>
 
                   <h5
                      class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                      <span class="h6">Principales</span>
+                     <i class="fa fa-sort-alpha-asc btn btn-light btn-sm" @click.prevent="cambiar_orden_lista('nom_menu','menus')" aria-hidden="true"
+                        data-placement="top" data-toggle="tooltip" title="Clic para ordenar menu principal"></i>
                   </h5>
 
                   <ul class="nav flex-column">
                      <li class="nav-item" v-for="menu in filterBy(menus, filtro_menu)">
                         <a class="nav-link active" style="font-size: .8rem;" :href="menu.url_menu"
-                           data-placement="left" data-toggle="tooltip" :title="menu.det_menu">
+                           data-placement="top" data-toggle="tooltip" :title="menu.det_menu">
                            @{{ menu.nom_menu }}<span class="sr-only">(current)</span>
                         </a>
                      </li>
@@ -195,13 +195,15 @@
                   <h5
                      class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                      <span class="h6">Mantenedores</span>
+                     <i class="fa fa-sort-alpha-asc btn btn-light btn-sm" @click.prevent="cambiar_orden_lista('nom_mantenedor','mantenedores')" aria-hidden="true"
+                        data-placement="top" data-toggle="tooltip" title="Clic para ordenar menu de mantenedores"></i>
                   </h5>
 
                   <ul class="nav flex-column mb-2">
 
                      <li class="nav-item" v-for="mant in filterBy(mantenedores, filtro_menu)">
                         <a class="nav-link" style="font-size: .8rem;" :href="mant.url_mantenedor"
-                           data-placement="left" data-toggle="tooltip" :title="mant.det_mantenedor">
+                           data-placement="top" data-toggle="tooltip" :title="mant.det_mantenedor">
                            @{{ mant.nom_mantenedor }}
                         </a>
                      </li>
