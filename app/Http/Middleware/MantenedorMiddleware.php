@@ -23,6 +23,7 @@ class MantenedorMiddleware
 
          }
       }
+      return redirect()->to('/');
 
    }
 }

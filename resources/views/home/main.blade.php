@@ -29,8 +29,8 @@
 
       <div class="card-columns {{--card-deck--}}">
 
-         <div class="card bg-info text-white border-light mb-3" v-for="i in filterBy(home_items, filtro_head)">
-            <div class="card-header">@{{ i.title }}</div>
+         <div class="card bg-secondary text-white border-light mb-3" v-for="i in filterBy(home_items, filtro_head)">
+            <div class="card-header">@{{ i.nom_menu }}</div>
             <div class="card-body">
                <h5 class="card-title">
                   <div class="media">
@@ -41,9 +41,9 @@
                      <i :class="i.font_icon" aria-hidden="true"></i>
                      &nbsp;&nbsp;&nbsp;
                      <div class="media-body">
-                        <h5 class="mt-0">@{{ i.title }}</h5>
+                        <h5 class="mt-0">@{{ i.nom_menu }}</h5>
                         <p style="font-size: 12px;">
-                           @{{ i.detail }}
+                           @{{ i.det_menu }}
                         </p>
                      </div>
                   </div>
@@ -53,7 +53,7 @@
                </p>
             </div><!-- -card-body -->
             <div href="#!" class="card-footer">
-               <a :href="i.url" class="btn btn-sm btn-light">
+               <a :href="i.url_menu" class="btn btn-sm btn-light">
                   <i class="fa fa-sign-in" aria-hidden="true"></i>
                   Ingresar
                </a>

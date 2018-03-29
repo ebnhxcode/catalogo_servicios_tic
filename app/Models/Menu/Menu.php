@@ -17,6 +17,8 @@ class Menu extends Model {
       'nom_menu',
       'det_menu',
       'cod_menu',
+      'imagen_menu',
+      'font_icon_menu',
 
       #relaciones -> pks
 

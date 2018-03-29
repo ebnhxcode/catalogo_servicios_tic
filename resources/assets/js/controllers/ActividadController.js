@@ -47,6 +47,7 @@ const ActividadController = new Vue({
          'tipos_actividades':[],
          'actividades':[],
          'datos_excel':[],
+         'usuario_auth':{},
 
          'campos_formularios':[],
          'errores_campos':[],
@@ -163,7 +164,7 @@ const ActividadController = new Vue({
             this.tipos_actividades = response.body.tipos_actividades || null;
             this.datos_excel = response.body.actividades || null;
 
-
+            this.usuario_auth = response.body.usuario_auth;
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);
          });

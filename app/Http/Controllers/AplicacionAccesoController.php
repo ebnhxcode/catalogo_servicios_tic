@@ -29,6 +29,7 @@ class AplicacionAccesoController extends Controller {
 
    public function __construct () {
       $this->middleware('auth');
+      $this->middleware('mantenedor');#resrtinge a solo usuarios con permiso elevado -> D
       $this->nombre_modelo = "aplicacion_acceso"; //nombre tabla o de ruta
       $this->nombre_tabla = $this->nombre_ruta = "aplicaciones_accesos";
       $this->nombre_detalle = "Aplicaciones Accesos";

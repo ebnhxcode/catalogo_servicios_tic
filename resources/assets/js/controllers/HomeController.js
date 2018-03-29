@@ -27,70 +27,7 @@ const HomeController = new Vue({
 
          'filtro_head':null,
 
-         'home_items':[
-            {
-               'title':'Dashboard',
-               'detail':'Menú para acceder a los servicios del catálogo',
-               'url':'/dashboard',
-               'route':'home',
-               'class_obj':'home',
-               'image':'/img/logo.png',
-               'font_icon':'fa fa-dashcube',
-            },
-            {
-               'title':'Servicios',
-               'detail':'Módulo de servicios, permite conocer servidores y aplicaciones.',
-               'url':'/servicios',
-               'route':'servicios',
-               'class_obj':'servicio',
-               'image':'/img/servicio.jpg',
-               'font_icon':'fa fa-rocket',
-            },
-            {
-               'title':'Servidores',
-               'detail':'Módulo de servidores, permite conocer información respecto al servidor y aplicaciones desplegadas.',
-               'url':'/servidores',
-               'route':'servidores',
-               'class_obj':'servidor',
-               'image':'/img/source.gif',
-               'font_icon':'fa fa-server',
-            },
-            {
-               'title':'Aplicaciones',
-               'detail':'Módulo de aplicaciones, permite conocer detalles de la aplicación y su ubicación.',
-               'url':'/aplicaciones',
-               'route':'aplicaciones',
-               'class_obj':'aplicacion',
-               'image':'/img/aplicación-web-y-de-escritorio-01.jpg',
-               'font_icon':'fa fa-tablet',
-            },
-            {
-               'title':'Actividades',
-               'detail':'Módulo de actividades, permite conocer la amplia variedad de servicios y trabajos otorgados por tic.',
-               'url':'/actividades',
-               'route':'actividades',
-               'class_obj':'actividad',
-               'image':'/img/shutterstock.jpg',
-               'font_icon':'fa fa-star',
-            },
-            {
-               'title':'Catálogos',
-               'detail':'Módulo de catálogos, permite conocer a nivel macro de origen a fin el desarrollo de un proyecto y sus contenidos.',
-               'url':'/catalogos',
-               'route':'catalogos',
-               'class_obj':'catalogo',
-               'font_icon':'fa fa-indent',
-            },
-            {
-               'title':'Bitácoras',
-               'detail':'Módulo de bitácoras, permite al usuario generar bitacoras sobre los servicios trabajados.',
-               'url':'/usuarios_bitacora_servicios',
-               'route':'usuarios_bitacora_servicios',
-               'class_obj':'usuario_bitacora_servicio',
-               'image':'/img/bitacora.png',
-               'font_icon':'fa fa-map-o',
-            },
-         ],
+         'home_items':[],
 
          'usuario_auth':{},
 
@@ -125,7 +62,7 @@ const HomeController = new Vue({
       //'download-excel': DownloadExcel,
    },
    created(){
-      //this.inicializar();
+      this.inicializar();
 
       $(document).ready(function(){
          $('[data-toggle="tooltip"]').tooltip();
@@ -137,7 +74,10 @@ const HomeController = new Vue({
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
       inicializar: function () {
-         this.$http.get('/').then(response => { // success callback
+         this.$http.get('/menus').then(response => { // success callback
+
+            this.lista_objs_model = response.body.menus || null;
+            this.home_items = response.body.menus || null;
 
             this.usuario_auth = response.body.usuario_auth || null;
             //this.limpiar_objeto_clase_local();

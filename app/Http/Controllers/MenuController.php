@@ -27,6 +27,7 @@ class MenuController extends Controller {
 
    public function __construct () {
       $this->middleware('auth');
+      $this->middleware('mantenedor', ['except' => ['index','show']]);#resrtinge a solo usuarios con permiso elevado -> D
       $this->nombre_modelo = "menu"; //nombre tabla o de ruta
       $this->nombre_tabla = $this->nombre_ruta = "menus";
       $this->nombre_detalle = "Menus Generales";
@@ -67,6 +68,7 @@ class MenuController extends Controller {
          }
       }
 
+      #$this->mantenedores = Mantenedor::orderBy('nom_mantenedor', 'asc')->get();
       return response()->json([
          'status' => 200,
          'menus' => $this->menus,
@@ -113,6 +115,8 @@ class MenuController extends Controller {
          'nom_menu' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|unique:$this->nombre_tabla|max:255",
          'det_menu' => 'regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:1000',
          'cod_menu' => 'regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:1000',
+         'imagen_menu' => 'nullable|regex:/(^([a-zA-Z0-9_ ,.-!@#$%*&]+)(\d+)?$)/u|max:1000',
+         'font_icon_menu' => 'nullable|regex:/(^([a-zA-Z0-9_ ,.-!@#$%*&]+)(\d+)?$)/u|max:1000',
       ]);
       #Se valida la respuesta con la salida de la validacion
       if ($this->validacion->fails() == true) {
@@ -130,6 +134,8 @@ class MenuController extends Controller {
          'nom_menu' => $this->menu['nom_menu'],
          'det_menu' => $this->menu['det_menu'],
          'cod_menu' => $this->menu['cod_menu'],
+         'imagen_menu' => $this->menu['imagen_menu'],
+         'font_icon_menu' => $this->menu['font_icon_menu'],
          'id_usuario_registra' => Auth::user()->id_usuario,
          'id_usuario_modifica' => Auth::user()->id_usuario,
       ]);
@@ -151,6 +157,8 @@ class MenuController extends Controller {
          'nom_menu' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
          'det_menu' => 'regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:1000',
          'cod_menu' => 'regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:1000',
+         'imagen_menu' => 'nullable|regex:/(^([a-zA-Z0-9_ ,.-!@#$%*&]+)(\d+)?$)/u|max:1000',
+         'font_icon_menu' => 'nullable|regex:/(^([a-zA-Z0-9_ ,.-!@#$%*&]+)(\d+)?$)/u|max:1000',
       ]);
       #Valida si la informacion que se envia para editar al usuario son iguales los ids
       if ($id != $request["id_$this->nombre_modelo"]) {

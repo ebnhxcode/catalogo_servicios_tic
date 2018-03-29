@@ -17,6 +17,8 @@ class Mantenedor extends Model {
       'nom_mantenedor',
       'det_mantenedor',
       'cod_mantenedor',
+      'imagen_mantenedor',
+      'font_icon_mantenedor',
 
       #relaciones -> pks
 

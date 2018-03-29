@@ -25,6 +25,7 @@ class ClusterController extends Controller {   private $usuario_auth;
 
    public function __construct () {
       $this->middleware('auth');
+      $this->middleware('mantenedor');
       $this->nombre_modelo = "cluster"; //nombre tabla o de ruta
       $this->nombre_tabla = $this->nombre_ruta = "clusters";
       $this->nombre_detalle = "Clusters";

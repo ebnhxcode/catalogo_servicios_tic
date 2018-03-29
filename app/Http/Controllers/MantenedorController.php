@@ -22,6 +22,7 @@ class MantenedorController extends Controller {
 
    public function __construct () {
       $this->middleware('auth');
+      $this->middleware('mantenedor', ['except' => ['index','show']]);
       $this->nombre_modelo = "mantenedor"; //nombre tabla o de ruta
       $this->nombre_tabla = $this->nombre_ruta = "mantenedores";
       $this->nombre_detalle = "Menus de Mantenedores";
@@ -94,6 +95,8 @@ class MantenedorController extends Controller {
          'nom_mantenedor' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|unique:$this->nombre_tabla|max:255",
          'det_mantenedor' => 'regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:1000',
          'cod_mantenedor' => 'regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:1000',
+         'imagen_mantenedor' => 'nullable|regex:/(^([a-zA-Z0-9_ ,.-!@#$%*&]+)(\d+)?$)/u|max:1000',
+         'font_icon_mantenedor' => 'nullable|regex:/(^([a-zA-Z0-9_ ,.-!@#$%*&]+)(\d+)?$)/u|max:1000',
       ]);
       #Se valida la respuesta con la salida de la validacion
       if ($this->validacion->fails() == true) {
@@ -111,6 +114,8 @@ class MantenedorController extends Controller {
          'nom_mantenedor' => $this->mantenedor['nom_mantenedor'],
          'det_mantenedor' => $this->mantenedor['det_mantenedor'],
          'cod_mantenedor' => $this->mantenedor['cod_mantenedor'],
+         'imagen_mantenedor' => $this->mantenedor['imagen_mantenedor'],
+         'font_icon_mantenedor' => $this->mantenedor['font_icon_mantenedor'],
          'id_usuario_registra' => Auth::user()->id_usuario,
          'id_usuario_modifica' => Auth::user()->id_usuario,
       ]);
@@ -132,6 +137,8 @@ class MantenedorController extends Controller {
          'nom_mantenedor' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
          'det_mantenedor' => 'regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:1000',
          'cod_mantenedor' => 'regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:1000',
+         'imagen_mantenedor' => 'nullable|regex:/(^([a-zA-Z0-9_ ,.-!@#$%*&]+)(\d+)?$)/u|max:1000',
+         'font_icon_mantenedor' => 'nullable|regex:/(^([a-zA-Z0-9_ ,.-!@#$%*&]+)(\d+)?$)/u|max:1000',
       ]);
       #Valida si la informacion que se envia para editar al usuario son iguales los ids
       if ($id != $request["id_$this->nombre_modelo"]) {

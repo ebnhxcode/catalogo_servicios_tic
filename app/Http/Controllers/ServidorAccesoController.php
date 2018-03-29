@@ -29,6 +29,7 @@ class ServidorAccesoController extends Controller {
 
    public function __construct () {
       $this->middleware('auth');
+      $this->middleware('mantenedor');#resrtinge a solo usuarios con permiso elevado -> D
       $this->nombre_modelo = "servidor_acceso"; //nombre tabla o de ruta
       $this->nombre_tabla = $this->nombre_ruta = "servidores_accesos";
       $this->nombre_detalle = "Servidores Accesos";

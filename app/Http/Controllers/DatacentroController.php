@@ -24,6 +24,7 @@ class DatacentroController extends Controller {
 
    public function __construct () {
       $this->middleware('auth');
+      $this->middleware('mantenedor', ['except'=>['index','show']]);#resrtinge a solo usuarios con permiso elevado -> D
       $this->nombre_modelo = "datacentro"; //nombre tabla o de ruta
       $this->nombre_tabla = $this->nombre_ruta = "datacentros";
       $this->nombre_detalle = "Datacentros";

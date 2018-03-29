@@ -24,6 +24,7 @@ class CargoController extends Controller {
 
    public function __construct () {
       $this->middleware('auth');
+      $this->middleware('mantenedor');#resrtinge a solo usuarios con permiso elevado -> D
       $this->nombre_modelo = "cargo"; //nombre tabla o de ruta
       $this->nombre_tabla = $this->nombre_ruta = "cargos";
       $this->nombre_detalle = "Cargos";
