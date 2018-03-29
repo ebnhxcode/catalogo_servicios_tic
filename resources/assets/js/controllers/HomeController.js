@@ -28,6 +28,7 @@ const HomeController = new Vue({
          'filtro_head':null,
 
          'home_items':[],
+         'mantenedores':[],
 
          'usuario_auth':{},
 
@@ -78,6 +79,7 @@ const HomeController = new Vue({
 
             this.lista_objs_model = response.body.menus || null;
             this.home_items = response.body.menus || null;
+            this.mantenedores = response.body.mantenedores || null;
 
             this.usuario_auth = response.body.usuario_auth || null;
             //this.limpiar_objeto_clase_local();

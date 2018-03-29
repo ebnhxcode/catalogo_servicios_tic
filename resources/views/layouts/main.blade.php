@@ -21,7 +21,7 @@
 
                <div class="btn-group mr-0">
                   <button class="btn btn-sm btn-outline-success"
-                          v-if="en_array(['Administrador','Jefe de Area','Lider Equipo'],usuario_auth.usuario_role.role.nom_role)"
+                          v-if="en_array(['Administrador','Jefe de Area','Lider Equipo','Jefe Proyecto','App Manager'],usuario_auth.usuario_role.role.nom_role)"
                           data-placement="top" data-toggle="tooltip" title="Crear nuevo/a {{$nombre_modelo}}"
                           @click.prevent="mostrar_modal_crear">
                      Crear {{str_replace('_',' ',$nombre_modelo)}}
