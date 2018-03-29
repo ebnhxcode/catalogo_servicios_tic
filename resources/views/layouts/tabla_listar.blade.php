@@ -42,7 +42,10 @@
       <!-- Botonera de acciones -->
       <td>
          <button class="btn btn-sm btn-primary"
-                 v-show="id_en_edicion != lom[`id_${nombre_model}`] && id_en_edicion == null && modal_actualizar_activo == false"
+                 v-show="id_en_edicion != lom[`id_${nombre_model}`] &&
+                     id_en_edicion == null &&
+                     modal_actualizar_activo == false &&
+                     en_array(['Administrador','Jefe de Area','Lider Equipo','App Manager'],usuario_auth.usuario_role.role.nom_role)"
                  data-placement="top" data-toggle="tooltip" title="Editar desde aquí"
                  @click.prevent="editar(lom[`id_${nombre_model}`])">
             <i class="fa fa-edit"></i>

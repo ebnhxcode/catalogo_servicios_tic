@@ -62,5 +62,6 @@ class Kernel extends HttpKernel
         'u'=>\App\Http\Middleware\Role\UMiddleware::class,
         'c'=>\App\Http\Middleware\Role\CMiddleware::class,
         'r'=>\App\Http\Middleware\Role\RMiddleware::class,
+        'mantenedor'=>\App\Http\Middleware\MantenedorMiddleware::class,
     ];
 }

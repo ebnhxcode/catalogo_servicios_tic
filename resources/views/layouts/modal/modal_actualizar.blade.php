@@ -14,7 +14,8 @@
       <a class="nav-link" data-toggle="tab" href="#vista_principal_tab" role="tab"
          aria-controls="vista_principal" aria-selected="true">Vista General</a>
    </li>
-   <li class="nav-item">
+   <li class="nav-item"
+       v-if="en_array(['Administrador','Jefe de Area','Lider Equipo','App Manager'],usuario_auth.usuario_role.role.nom_role)">
       <a class="nav-link" data-toggle="tab" href="#vista_actualizar_tab" role="tab"
          aria-controls="vista_actualizar" aria-selected="false">Opciones</a>
    </li>
@@ -32,7 +33,8 @@
    @endif
 
    <!-- La subvista que se encarga de importar los campos del formulario -->
-   <div class="tab-pane fade" id="vista_actualizar_tab" role="tabpanel" aria-labelledby="vista_actualizar_tab">
+   <div class="tab-pane fade" id="vista_actualizar_tab" role="tabpanel" aria-labelledby="vista_actualizar_tab"
+      v-if="en_array(['Administrador','Jefe de Area','Lider Equipo','App Manager'],usuario_auth.usuario_role.role.nom_role)">
 
       <br>
 

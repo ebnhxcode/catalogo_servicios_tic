@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Menu;
 use App\Mantenedor;
+use App\User;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -19,6 +20,8 @@ class MenuController extends Controller {
    private $mantenedores;
    private $menus;
    private $menu;
+   private $role;
+   private $usuario_role;
    private $new_menu;
    private $validacion; //Uso en valicaciones de reques
 
@@ -38,6 +41,7 @@ class MenuController extends Controller {
       }
    }
 
+
    public function index(Request $request) {
       if (!$request->wantsJson() && !$request->ajax()) {
          return view("layouts.main", [
@@ -51,7 +55,18 @@ class MenuController extends Controller {
 
       $this->usuario_auth = Auth::user();
       $this->menus = Menu::orderBy('nom_menu', 'asc')->get();
-      $this->mantenedores = Mantenedor::orderBy('nom_mantenedor', 'asc')->get();
+
+      if($this->usuario_role = $this->usuario_auth->usuario_role){
+         $this->role = $this->usuario_role->role;
+         switch($this->role->nom_role){
+            case 'Administrador':
+            case 'Jefe de Area':
+            case 'Lider Equipo':
+               $this->mantenedores = Mantenedor::orderBy('nom_mantenedor', 'asc')->get();
+               break;
+         }
+      }
+
       return response()->json([
          'status' => 200,
          'menus' => $this->menus,

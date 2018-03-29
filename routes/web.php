@@ -25,6 +25,11 @@ Route::get('/', function () {
 });
 #Route::get('/estandares', 'RoleController@estandares');
 
+
+
+
+
+#Esto aplica solo para las rutas que eran resource , es una forma de mapear las url/rutas
 $groups = ['r','c','u','d'];
 
 $modules = [

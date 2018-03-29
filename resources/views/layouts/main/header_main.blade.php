@@ -16,6 +16,7 @@
                </div><!-- .btn-group mr-2 #mr->margin -->
 
                <div class="btn-group mr-0">
+
                   <button class="btn btn-sm btn-outline-success"
                           data-placement="top" data-toggle="tooltip" title="Crear nuevo/a {{$nombre_modelo}}"
                           @click.prevent="mostrar_modal_crear">

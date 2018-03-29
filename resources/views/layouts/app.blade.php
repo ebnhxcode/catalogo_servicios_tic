@@ -192,26 +192,29 @@
                      </li>
                   </ul>
 
-                  <h5
-                     class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                     <span class="h6">Mantenedores</span>
-                     <i class="fa fa-sort-alpha-asc btn btn-light btn-sm" @click.prevent="cambiar_orden_lista('nom_mantenedor','mantenedores')" aria-hidden="true"
-                        data-placement="top" data-toggle="tooltip" title="Clic para ordenar menu de mantenedores"></i>
-                  </h5>
+                  <div v-if="mantenedores && mantenedores.length > 0">
+                     <h5
+                        class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span class="h6">Mantenedores</span>
+                        <i class="fa fa-sort-alpha-asc btn btn-light btn-sm" @click.prevent="cambiar_orden_lista('nom_mantenedor','mantenedores')" aria-hidden="true"
+                           data-placement="top" data-toggle="tooltip" title="Clic para ordenar menu de mantenedores"></i>
+                     </h5>
 
-                  <ul class="nav flex-column mb-2">
+                     <ul class="nav flex-column mb-2">
 
-                     <li class="nav-item" v-for="mant in filterBy(mantenedores, filtro_menu)">
-                        <a class="nav-link" style="font-size: .8rem;" :href="mant.url_mantenedor"
-                           data-placement="top" data-toggle="tooltip" :title="mant.det_mantenedor">
-                           @{{ mant.nom_mantenedor }}
-                        </a>
-                     </li>
+                        <li class="nav-item" v-for="mant in filterBy(mantenedores, filtro_menu)">
+                           <a class="nav-link" style="font-size: .8rem;" :href="mant.url_mantenedor"
+                              data-placement="top" data-toggle="tooltip" :title="mant.det_mantenedor">
+                              @{{ mant.nom_mantenedor }}
+                           </a>
+                        </li>
 
-                     <li class="nav-item" v-if="filterBy(mantenedores, filtro_menu).length == 0">
-                        <small class="text-muted text-center">Sin resultados.</small>
-                     </li>
-                  </ul>
+                        <li class="nav-item" v-if="filterBy(mantenedores, filtro_menu).length == 0">
+                           <small class="text-muted text-center">Sin resultados.</small>
+                        </li>
+                     </ul>
+                  </div>
+
                </div>
             </nav><!-- #SideMenuController -->
 
