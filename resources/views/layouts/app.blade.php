@@ -188,7 +188,7 @@
                      </li>
 
                      <li class="nav-item" v-if="filterBy(menus, filtro_menu).length == 0">
-                        <small class="text-muted text-center">Sin resultados.</small>
+                        <small class="text-muted text-center">Sin resultados ${`@{{ filtro_menu }}`}.</small>
                      </li>
                   </ul>
 
@@ -210,7 +210,7 @@
                         </li>
 
                         <li class="nav-item" v-if="filterBy(mantenedores, filtro_menu).length == 0">
-                           <small class="text-muted text-center">Sin resultados.</small>
+                           <small class="text-muted text-center">Sin resultados ${`@{{ filtro_menu }}`}.</small>
                         </li>
                      </ul>
                   </div>

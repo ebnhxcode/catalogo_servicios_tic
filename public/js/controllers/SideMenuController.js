@@ -47155,6 +47155,7 @@ var SideMenuController = new Vue({
 
          this.$http.get('/' + this.nombre_ruta).then(function (response) {
             // success callback
+            _this.filtro_menu = null;
             _this.menus = response.body.menus;
             _this.mantenedores = response.body.mantenedores;
             _this.usuario_auth = response.body.usuario_auth || null;

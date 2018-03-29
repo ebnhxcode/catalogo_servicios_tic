@@ -2,7 +2,7 @@
 <modal name="{{$nom_modal}}"
        @before-close="before_close"
        :reset="true"
-       width="90%"
+       width="95%"
        :min-width="320"
        :height="'auto'"
        :min-height="600"
@@ -25,6 +25,8 @@
         <h2>@{{ (modal_crear_activo === true) ? 'Crear' : ''/*Visualizar o Actualizar*/}}
            {{str_replace('_',' ',strtoupper(substr($nombre_modelo,0,1)).substr($nombre_modelo,1))}}
            {{--str_replace('_',' ',$nombre_modelo)--}}
+           ➜
+           <span class="text-info">@{{ $data[`${nombre_model}`][`nom_${nombre_model}`] }}</span>
         </h2>
         <!--hr-->
         <br>
