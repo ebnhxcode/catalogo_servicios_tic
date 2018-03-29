@@ -5,7 +5,7 @@
 -- Dumped from database version 10.3 (Debian 10.3-2)
 -- Dumped by pg_dump version 10.3 (Debian 10.3-2)
 
--- Started on 2018-03-28 15:57:02 -03
+-- Started on 2018-03-29 16:56:44 -03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -801,7 +801,9 @@ CREATE TABLE public.mantenedores (
     id_usuario_modifica integer,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    deleted_at timestamp without time zone
+    deleted_at timestamp without time zone,
+    imagen_mantenedor text,
+    font_icon_mantenedor text
 );
 
 
@@ -837,7 +839,9 @@ CREATE TABLE public.menus (
     id_usuario_modifica integer,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    deleted_at timestamp without time zone
+    deleted_at timestamp without time zone,
+    imagen_menu text,
+    font_icon_menu text
 );
 
 
@@ -1866,8 +1870,6 @@ ALTER TABLE ONLY public.migrations ALTER COLUMN id SET DEFAULT nextval('public.m
 --
 
 COPY public.actividades (id_actividad, nom_actividad, det_actividad, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
-1	Mantencion	Mantencion	1	4	2018-02-27 18:26:10	2018-02-28 04:07:20	\N
-7	Cargas Masivas	Cargas Masivas	1	4	2018-02-27 18:32:52	2018-02-28 04:11:37	\N
 11	Cubicacion Maquina	Cubicacion Maquina	1	4	2018-02-27 18:33:57	2018-02-28 05:58:27	\N
 2	Soporte	Soporte	1	4	2018-02-27 18:31:56	2018-02-28 05:58:33	\N
 3	Seguimiento	Seguimiento	1	4	2018-02-27 18:32:09	2018-03-04 12:28:10	\N
@@ -1878,6 +1880,9 @@ COPY public.actividades (id_actividad, nom_actividad, det_actividad, id_usuario_
 10	Homologacion de Proyectos	Homologacion de proyectos	1	4	2018-02-27 18:33:38	2018-03-12 01:37:17	\N
 12	test	test	4	4	2018-03-21 20:49:01	2018-03-21 20:49:12	2018-03-21 20:49:12
 9	Tareas Programadas	Tareas Programadas	1	4	2018-02-27 18:33:17	2018-03-28 18:11:13	\N
+13	fasdfdf	asdfsadf	1	1	2018-03-29 06:10:12	2018-03-29 06:10:35	2018-03-29 06:10:35
+1	Mantencion	Mantencion	1	1	2018-02-27 18:26:10	2018-03-29 06:14:23	\N
+7	Cargas Masivas	Cargas Masivas	1	1	2018-02-27 18:32:52	2018-03-29 06:14:31	\N
 \.
 
 
@@ -2481,8 +2486,27 @@ COPY public.log_navegacion (id_log_navegacion, id_usuario, cod_establecimiento, 
 -- Data for Name: mantenedores; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.mantenedores (id_mantenedor, url_mantenedor, nom_mantenedor, det_mantenedor, cod_mantenedor, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
-1	servicios	Servicio	servicio	servicio	4	4	2018-03-28 18:56:19	2018-03-28 18:56:26	2018-03-28 18:56:26
+COPY public.mantenedores (id_mantenedor, url_mantenedor, nom_mantenedor, det_mantenedor, cod_mantenedor, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, imagen_mantenedor, font_icon_mantenedor) FROM stdin;
+1	servicios	Servicio	servicio	servicio	4	4	2018-03-28 18:56:19	2018-03-28 18:56:26	2018-03-28 18:56:26	\N	\N
+11	aplicaciones_accesos	Accesos aplicaciones	Mantenedor para administrar accesos de usuario al aplicativo.	aplicaciones_accesos01	4	4	2018-03-28 20:13:29	2018-03-28 20:13:29	\N	\N	\N
+10	aplicaciones	Aplicaciones	Mantenedor para administrar aplicaciones	aplicaciones01	4	4	2018-03-28 20:12:23	2018-03-28 20:13:56	\N	\N	\N
+7	servidores	Servidores	Mantenedor para administrar servidores	servidores01	4	4	2018-03-28 19:24:26	2018-03-28 20:17:38	\N	\N	\N
+9	actividades	Actividades	Mantenedor para administrar actividades	actividades01	4	4	2018-03-28 20:11:42	2018-03-28 20:20:29	\N	\N	\N
+8	servicios	Servicios	Mantenedor para administrar servicios	servicios01	4	4	2018-03-28 19:24:44	2018-03-28 20:21:19	\N	\N	\N
+6	permisos	Permisos	Mantenedor para administrar permisos asociado a roles	permisos01	4	4	2018-03-28 19:17:35	2018-03-28 20:21:33	\N	\N	\N
+5	roles	Roles	Mantenedor para administrar roles	roles01	4	4	2018-03-28 19:17:17	2018-03-28 20:21:40	\N	\N	\N
+4	usuarios	Usuarios	Mantenedor para administrar usuarios	usuarios01	4	4	2018-03-28 19:11:47	2018-03-28 20:21:46	\N	\N	\N
+2	menus	Menus	Mantenedor para administrar menus	menus01	4	4	2018-03-28 19:09:01	2018-03-28 20:21:52	\N	\N	\N
+3	mantenedores	Mantenedores	Mantenedor para administrar mantenedores	mantenedores01	4	4	2018-03-28 19:09:13	2018-03-28 20:22:00	\N	\N	\N
+12	cargos	Cargos	Mantenedor para administrar cargos	cargos01	4	4	2018-03-28 20:22:40	2018-03-28 20:22:40	\N	\N	\N
+13	clusters	Clusters	Mantenedor para administrar clusters	clusters01	4	4	2018-03-28 20:23:12	2018-03-28 20:23:12	\N	\N	\N
+14	datacentros	Datacentros	Mantenedor para administrar datacentros	datacentro01	4	4	2018-03-28 20:23:48	2018-03-28 20:23:48	\N	\N	\N
+15	dominios	Dominios	Mantenedor para administrar dominios asociados a aplicativos locales	dominios01	4	4	2018-03-28 20:24:12	2018-03-28 20:24:12	\N	\N	\N
+16	estados	Estados	Mantenedor para administrar estados de las entidades que los utilizan.	estados01	4	4	2018-03-28 20:25:54	2018-03-28 20:25:54	\N	\N	\N
+17	servidores_accesos	Accesos Servidores	Mantenedor para administrar accesos a los servidores	servidores_accessos01	4	4	2018-03-28 20:27:11	2018-03-28 20:27:11	\N	\N	\N
+18	sistemas_operativos	Sistemas Operativos	Mantenedor para administrar sistemas operativos	sistemas_operativos01	4	4	2018-03-28 20:27:44	2018-03-28 20:27:44	\N	\N	\N
+20	tipos_aplicaciones	Tipos de Aplicaciones	Mantenedor para administrar los tipos de aplicaciones que se desarrollan	tipos_aplicaciones01	4	4	2018-03-28 20:28:53	2018-03-28 20:28:53	\N	\N	\N
+19	tags	Tags	Mantenedor para administrar tags	tag01	4	4	2018-03-28 20:28:12	2018-03-29 05:20:28	2018-03-29 05:20:28	\N	\N
 \.
 
 
@@ -2492,9 +2516,16 @@ COPY public.mantenedores (id_mantenedor, url_mantenedor, nom_mantenedor, det_man
 -- Data for Name: menus; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.menus (id_menu, url_menu, nom_menu, det_menu, cod_menu, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
-2	sdfdf	sdf	dsfds	fsdfds	4	4	2018-03-28 18:54:18	2018-03-28 18:54:35	2018-03-28 18:54:35
-1	fdsa	dsf	sdf	sadf	4	4	2018-03-28 18:52:28	2018-03-28 18:54:40	2018-03-28 18:54:40
+COPY public.menus (id_menu, url_menu, nom_menu, det_menu, cod_menu, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, imagen_menu, font_icon_menu) FROM stdin;
+2	sdfdf	sdf	dsfds	fsdfds	4	4	2018-03-28 18:54:18	2018-03-28 18:54:35	2018-03-28 18:54:35	\N	\N
+1	fdsa	dsf	sdf	sadf	4	4	2018-03-28 18:52:28	2018-03-28 18:54:40	2018-03-28 18:54:40	\N	\N
+3	dashboard	Dashboard	dashboard es el enlace directo al menu principal	dashboard01	4	4	2018-03-28 19:04:04	2018-03-28 19:04:04	\N	\N	\N
+4	servicios	Servicios	servicios	servicios01	4	4	2018-03-28 19:05:04	2018-03-28 19:05:48	\N	\N	\N
+5	servidores	Servidores	servidores	servidores01	4	4	2018-03-28 19:07:03	2018-03-28 19:07:03	\N	\N	\N
+6	aplicaciones	Aplicaciones	aplicacion	aplicacion01	4	4	2018-03-28 19:07:22	2018-03-28 19:07:34	\N	\N	\N
+7	actividades	Actividades	actividades	actividades01	4	4	2018-03-28 19:08:03	2018-03-28 19:08:03	\N	\N	\N
+8	catalogos	Catalogos	catalogos	catalogos01	4	4	2018-03-28 19:08:21	2018-03-28 19:08:21	\N	\N	\N
+9	usuarios_bitacora_servicios	Bitacoras	bitacoras	bitacoras01	4	4	2018-03-28 19:08:33	2018-03-29 05:27:11	2018-03-29 05:27:11	\N	\N
 \.
 
 
@@ -3025,12 +3056,12 @@ COPY public.servidores (id_servidor, id_datacentro, id_sistema_operativo, nom_se
 8	1	3	test	2.2.2.2	4	4	2018-03-20 20:29:00	2018-03-20 20:35:30	2018-03-20 20:35:30	test	22	22	22	amd	22	22	0	ab:ab:ab:ab:ab:ab	0	0	\N	\N	\N	\N
 7	2	4	teset	1.1.1.1	4	4	2018-03-20 20:27:26	2018-03-20 20:35:44	2018-03-20 20:35:44	test	1	1	1	intel	1	1	0	ab:ab:ab:ab:ab:ab	0	0	\N	\N	\N	\N
 3	1	6	DEL	8.8.8.8	4	4	2018-03-05 21:28:32	2018-03-20 20:35:51	2018-03-20 20:35:51	DEL	1	1	1	intel	1	1	\N	ab:ab:ab:ab:ab:ab	\N	\N	\N	\N	\N	\N
-20	1	34	server2	1.1.1.1	4	4	2018-03-27 14:10:27	2018-03-27 14:17:08	\N	server2	123	123	123	intel	123	8	0	0	0	0	1	123abcd	1	1
-19	1	31	server1	1.1.1.1	4	4	2018-03-27 13:44:03	2018-03-27 17:08:52	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	1	1
 9	1	6	MNSOAPSIGTE	1.1.1.1	4	4	2018-03-22 12:56:14	2018-03-22 12:56:46	2018-03-22 12:56:46	Servidor sigte	1024	30000	8000	amd	2400	2	1	ab:13:1b:f5:2d:4a	\N	\N	1	\N	\N	\N
+19	1	31	server1	1.1.1.1	4	4	2018-03-27 13:44:03	2018-03-29 19:20:35	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	1	0
 2	1	6	IP	8.8.8.8	4	4	2018-03-05 21:28:03	2018-03-22 14:15:48	2018-03-22 14:15:48	IP	4234	2342	34	amd	234	234	342	1b:23:2a:e3:11:ab	\N	\N	1	\N	\N	\N
 4	1	6	MNSOAPSIGTE	1.1.1.1	4	4	2018-03-07 13:57:52	2018-03-22 14:15:53	2018-03-22 14:15:53	Servidor sigte	2048	30000	8000	amd	2400	2	1	ab:13:1b:f5:2d:4a	\N	\N	1	\N	\N	\N
 1	2	4	APP01QAMINSAL	8.8.8.8	4	4	2018-03-05 21:26:30	2018-03-22 14:16:00	2018-03-22 14:16:00	Servidor de webminsal	1024	30000	8000	intel	2400	2	3	\N	\N	\N	3	fsfafsffds	\N	\N
+20	1	34	APPSQD99QAPROD	1.1.1.1	4	4	2018-03-27 14:10:27	2018-03-29 19:54:22	\N	server2	123	123	123	intel	123	8	0	0	0	0	1	123abcd	1	0
 \.
 
 
@@ -3043,9 +3074,9 @@ COPY public.servidores (id_servidor, id_datacentro, id_sistema_operativo, nom_se
 COPY public.servidores_accesos (id_servidor_acceso, id_aplicacion, id_servidor, usuario, clave, tipo_acceso, puerto, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 1	\N	4	uvec	Minsal2018	usuario sistema	null	4	4	2018-03-14 19:20:46	2018-03-14 19:24:33	2018-03-14 19:24:33
 2	\N	4	uvec	$2y$10$5YqwhZJiyWmrlJpR2se5ze6aX4ABkkBXx4i/fpELwtWuo.P3HLRq6	sistema	null	4	4	2018-03-14 19:25:20	2018-03-14 20:11:24	2018-03-14 20:11:24
-3	\N	4	uvec	Minsal2018	usuario de sistema	null	4	4	2018-03-14 20:13:03	2018-03-14 20:13:03	\N
 4	\N	2	dfasff	asdfdsafsdf	login	0	4	4	2018-03-20 20:54:53	2018-03-20 20:55:09	2018-03-20 20:55:09
 5	\N	4	sadf	sadf	sadf	12	4	4	2018-03-21 18:47:18	2018-03-21 18:47:25	2018-03-21 18:47:25
+3	\N	19	uvec	Minsal2018	usuario de sistema	0	4	4	2018-03-14 20:13:03	2018-03-28 20:55:52	\N
 \.
 
 
@@ -3105,6 +3136,28 @@ COPY public.servidores_historico_cambios (id_servidor_historico, id_servidor, id
 28	20	1	34	server2	1.1.1.1	4	4	2018-03-27 14:14:21	2018-03-27 14:14:21	\N	server2	123	123	123	intel	123	8	0	0	0	0	1	123abcd	\N	\N
 29	20	1	34	server2	1.1.1.1	4	4	2018-03-27 14:17:08	2018-03-27 14:17:08	\N	server2	123	123	123	intel	123	8	0	0	0	0	1	123abcd	\N	\N
 30	19	1	31	server1	1.1.1.1	4	4	2018-03-27 17:08:52	2018-03-27 17:08:52	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	\N	\N
+31	20	1	34	server2	1.1.1.1	4	4	2018-03-29 18:53:58	2018-03-29 18:53:58	\N	server2	123	123	123	intel	123	8	0	0	0	0	1	123abcd	\N	\N
+32	19	1	31	server1	1.1.1.1	4	4	2018-03-29 19:20:24	2018-03-29 19:20:24	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	\N	\N
+33	19	1	31	server1	1.1.1.1	4	4	2018-03-29 19:20:24	2018-03-29 19:20:24	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	\N	\N
+34	19	1	31	server1	1.1.1.1	4	4	2018-03-29 19:20:24	2018-03-29 19:20:24	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	\N	\N
+35	19	1	31	server1	1.1.1.1	4	4	2018-03-29 19:20:25	2018-03-29 19:20:25	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	\N	\N
+36	19	1	31	server1	1.1.1.1	4	4	2018-03-29 19:20:25	2018-03-29 19:20:25	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	\N	\N
+37	19	1	31	server1	1.1.1.1	4	4	2018-03-29 19:20:25	2018-03-29 19:20:25	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	\N	\N
+38	19	1	31	server1	1.1.1.1	4	4	2018-03-29 19:20:26	2018-03-29 19:20:26	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	\N	\N
+39	19	1	31	server1	1.1.1.1	4	4	2018-03-29 19:20:26	2018-03-29 19:20:26	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	\N	\N
+40	19	1	31	server1	1.1.1.1	4	4	2018-03-29 19:20:32	2018-03-29 19:20:32	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	\N	\N
+41	19	1	31	server1	1.1.1.1	4	4	2018-03-29 19:20:33	2018-03-29 19:20:33	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	\N	\N
+42	19	1	31	server1	1.1.1.1	4	4	2018-03-29 19:20:33	2018-03-29 19:20:33	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	\N	\N
+43	19	1	31	server1	1.1.1.1	4	4	2018-03-29 19:20:33	2018-03-29 19:20:33	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	\N	\N
+44	19	1	31	server1	1.1.1.1	4	4	2018-03-29 19:20:34	2018-03-29 19:20:34	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	\N	\N
+45	19	1	31	server1	1.1.1.1	4	4	2018-03-29 19:20:34	2018-03-29 19:20:34	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	\N	\N
+46	19	1	31	server1	1.1.1.1	4	4	2018-03-29 19:20:34	2018-03-29 19:20:34	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	\N	\N
+47	19	1	31	server1	1.1.1.1	4	4	2018-03-29 19:20:34	2018-03-29 19:20:34	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	\N	\N
+48	19	1	31	server1	1.1.1.1	4	4	2018-03-29 19:20:35	2018-03-29 19:20:35	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	\N	\N
+49	19	1	31	server1	1.1.1.1	4	4	2018-03-29 19:20:35	2018-03-29 19:20:35	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	\N	\N
+50	19	1	31	server1	1.1.1.1	4	4	2018-03-29 19:20:35	2018-03-29 19:20:35	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	\N	\N
+51	20	1	34	Servidor de convergente	1.1.1.1	4	4	2018-03-29 19:53:55	2018-03-29 19:53:55	\N	server2	123	123	123	intel	123	8	0	0	0	0	1	123abcd	\N	\N
+52	20	1	34	APPSQD99QAPROD	1.1.1.1	4	4	2018-03-29 19:54:22	2018-03-29 19:54:22	\N	server2	123	123	123	intel	123	8	0	0	0	0	1	123abcd	\N	\N
 \.
 
 
@@ -3172,6 +3225,9 @@ COPY public.sistemas_operativos (id_sistema_operativo, arquitectura, nom_sistema
 42	x64	Windows Server	Windows Server	2012	si	0	4	4	2018-03-22 19:26:25	2018-03-26 19:24:51	\N	2	3
 43	x64	Windows Server	Windows Server	2016	si	0	4	4	2018-03-22 19:26:39	2018-03-26 19:24:59	\N	2	3
 44	x64	Prueba	Prueba macos	10.1	si	Personal	4	4	2018-03-26 19:28:55	2018-03-26 19:29:09	2018-03-26 19:29:09	2	1
+45	x64	Windows Server	Windows Server	2012 R2	si	privada	4	4	2018-03-29 06:53:48	2018-03-29 06:53:48	\N	2	3
+46	x64	Windows Server	Windows Server	2016 R2	si	privada	4	4	2018-03-29 06:54:35	2018-03-29 06:54:57	\N	2	3
+47	x64	Centos	Centos	5.11	si	opensource	4	4	2018-03-29 07:05:50	2018-03-29 07:05:50	\N	2	2
 \.
 
 
@@ -3314,10 +3370,10 @@ COPY public.usuarios (id_usuario, nom_usuario, nom_completo, ape_paterno, ape_ma
 6	wererwe	rwerwer	werwer	werwer	werwerwe	ewrwe@ewre.dfssdf	$2y$10$SmkQ3TBcV0Tpio.sBrR10uTD5hjueAoq0gXKCTR/6WmMhSRiNPlhS	\N	\N	\N	2018-03-13 18:57:50	2018-03-13 19:13:49	2018-03-13 19:13:49
 7	adsdad	sdasdsa	sdsadas	dasda	dasd	asdasd@sad.ad	$2y$10$ez0ZyUI7umQ6wyBiPSfRTOvaoEuGJnie1fbnAep0hRdrbaIKDgevC	\N	\N	\N	2018-03-13 19:01:00	2018-03-13 19:13:55	2018-03-13 19:13:55
 26	eqwe	qweqwe	qwe	eqwewqe	qweqweq	weq@qwe.cl	$2y$10$7MbMwBObPp4pO5qm1QrJve/FOMFblwDGHXoEM3WPf9r4fCbFWlHrG	\N	\N	\N	2018-03-14 16:01:58	2018-03-14 16:02:14	2018-03-14 16:02:14
+1	Esteban	\N	Ramos	\N	eramosf	esteban.ramos@minsal.cl	$2y$10$kgh3UjsyfGaSfwFP5fNFZuDCipgTZlAfyIQ9woaR3mWYoguT.7FAG	cWZEQ6u1BYX8KsORXSzzykWPxdZAJL7DHMc7AsmalUNGLWdoQLcXGDK4Nyxm	\N	\N	2018-02-19 18:08:14	2018-03-29 06:17:39	\N
 27	test	test	test	test	testest	test@teset.test	$2y$10$AGVefv00CMW.dn.IbMe1mettsnxJGNAUzgXTjPoVLuGdbNJ5XA3aG	\N	\N	\N	2018-03-20 19:17:31	2018-03-20 19:17:46	2018-03-20 19:17:46
-4	Esteban	\N	Ramos	Fernandez	fsdsf	esteban.ramos.f@gmail.com	$2y$10$LqVvP2ZOOp42RP.ifSWY4O.m.LAPo0D0bhqcWpWY2msVWk0Y0evxe	EMQUQYVs3mHOLw0RU8q7h1MowlHIOAurj3xIxy1ikS3A3Sk3pIpaBVnXZd74	\N	\N	2018-02-27 23:36:43	2018-03-22 05:04:34	\N
+4	Esteban	\N	Ramos	Fernandez	fsdsf	esteban.ramos.f@gmail.com	$2y$10$LqVvP2ZOOp42RP.ifSWY4O.m.LAPo0D0bhqcWpWY2msVWk0Y0evxe	pKVsgctdqclvfFYaO6AC3NIVKboAAHZYSYyXSOqULcK1e22Vgar06tQBf4y8	\N	\N	2018-02-27 23:36:43	2018-03-22 05:04:34	\N
 28	test2	test2	test2	test2	test2	test@minsal.cl2	$2y$10$3R21jKze4ADH41u7YR4hAeZ4KOkgwgFhbFD4LHV92rOBKN4dI/tGC	\N	\N	\N	2018-03-20 19:31:56	2018-03-20 19:32:25	2018-03-20 19:32:25
-1	Esteban	\N	Ramos	\N	eramosf	esteban.ramos@minsal.cl	$2y$10$Kk6svw5/FWWFsMiVonuR0unGSEyOqXzJrntT7vnXgkloIuW0lbJk.	Qya1IjuaQ6Wjz3Q4OwKsoYqFHSEFqwu6wFNh1hdyj7UdVI4oUqVOX5rKDiy6	\N	\N	2018-02-19 18:08:14	2018-03-28 13:36:33	\N
 \.
 
 
@@ -3425,7 +3481,7 @@ COPY public.usuarios_roles (id_usuario_role, id_role, id_usuario, id_usuario_reg
 27	64	26	4	4	2018-03-14 16:01:58	2018-03-14 16:01:58	\N
 28	71	27	4	4	2018-03-20 19:17:31	2018-03-20 19:17:31	\N
 29	71	28	4	4	2018-03-20 19:31:56	2018-03-20 19:31:56	\N
-30	70	1	4	4	2018-03-27 19:38:24	2018-03-28 13:36:33	\N
+30	70	1	4	4	2018-03-27 19:38:24	2018-03-29 06:17:39	\N
 \.
 
 
@@ -3463,7 +3519,7 @@ SELECT pg_catalog.setval('public.accesos_servidores_id_seq', 5, true);
 -- Name: actividades_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.actividades_id_seq', 12, true);
+SELECT pg_catalog.setval('public.actividades_id_seq', 13, true);
 
 
 --
@@ -3625,7 +3681,7 @@ SELECT pg_catalog.setval('public.log_navegacion_id_seq', 1, false);
 -- Name: mantenedores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.mantenedores_id_seq', 1, true);
+SELECT pg_catalog.setval('public.mantenedores_id_seq', 20, true);
 
 
 --
@@ -3634,7 +3690,7 @@ SELECT pg_catalog.setval('public.mantenedores_id_seq', 1, true);
 -- Name: menus_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.menus_id_seq', 2, true);
+SELECT pg_catalog.setval('public.menus_id_seq', 9, true);
 
 
 --
@@ -3733,7 +3789,7 @@ SELECT pg_catalog.setval('public.servidor_estado_id_seq', 18, true);
 -- Name: servidor_historico_cambios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.servidor_historico_cambios_id_seq', 30, true);
+SELECT pg_catalog.setval('public.servidor_historico_cambios_id_seq', 52, true);
 
 
 --
@@ -3751,7 +3807,7 @@ SELECT pg_catalog.setval('public.servidores_lvm_id_seq', 3, true);
 -- Name: sistemas_operativos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.sistemas_operativos_id_seq', 44, true);
+SELECT pg_catalog.setval('public.sistemas_operativos_id_seq', 47, true);
 
 
 --
@@ -4293,7 +4349,7 @@ ALTER TABLE ONLY public.usuarios_servicios
 CREATE INDEX password_resets_email_index ON public.password_resets USING btree (email);
 
 
--- Completed on 2018-03-28 15:57:04 -03
+-- Completed on 2018-03-29 16:56:47 -03
 
 --
 -- PostgreSQL database dump complete
