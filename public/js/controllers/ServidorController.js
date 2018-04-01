@@ -2085,6 +2085,116 @@ if (typeof window !== 'undefined' && window.Sweetalert2) window.sweetAlert = win
 /***/ }),
 
 /***/ 1:
+/***/ (function(module, exports) {
+
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file.
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier /* server only */
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = injectStyles
+  }
+
+  if (hook) {
+    var functional = options.functional
+    var existing = functional
+      ? options.render
+      : options.beforeCreate
+
+    if (!functional) {
+      // inject component registration as beforeCreate hook
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    } else {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return existing(h, context)
+      }
+    }
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+
+/***/ 2:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2558,116 +2668,6 @@ var inyeccion_funciones_compartidas = {
    */
 
 };
-
-/***/ }),
-
-/***/ 2:
-/***/ (function(module, exports) {
-
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file.
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-module.exports = function normalizeComponent (
-  rawScriptExports,
-  compiledTemplate,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier /* server only */
-) {
-  var esModule
-  var scriptExports = rawScriptExports = rawScriptExports || {}
-
-  // ES6 modules interop
-  var type = typeof rawScriptExports.default
-  if (type === 'object' || type === 'function') {
-    esModule = rawScriptExports
-    scriptExports = rawScriptExports.default
-  }
-
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (compiledTemplate) {
-    options.render = compiledTemplate.render
-    options.staticRenderFns = compiledTemplate.staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = injectStyles
-  }
-
-  if (hook) {
-    var functional = options.functional
-    var existing = functional
-      ? options.render
-      : options.beforeCreate
-
-    if (!functional) {
-      // inject component registration as beforeCreate hook
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    } else {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functioal component in vue file
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return existing(h, context)
-      }
-    }
-  }
-
-  return {
-    esModule: esModule,
-    exports: scriptExports,
-    options: options
-  }
-}
-
 
 /***/ }),
 
@@ -3586,7 +3586,7 @@ module.exports = function normalizeComponent (
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(6)
 /* template */
@@ -3779,7 +3779,7 @@ module.exports = __webpack_require__(80);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert2__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard__ = __webpack_require__(4);
@@ -3799,6 +3799,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
 //import { DownloadExcel } from '../components/DownloadExcel.vue';
 //Vue.component('download-excel', DownloadExcel);
 Vue.component('download-excel', __webpack_require__(5));
+Vue.component('vista-principal-servidor', __webpack_require__(81));
+//Vue.component('tabla-listar', require('../components/TablaListar.vue'));
 
 var ServidorController = new Vue({
    el: '#ServidorController',
@@ -4092,6 +4094,616 @@ var ServidorController = new Vue({
 
    }
 });
+
+/***/ }),
+
+/***/ 81:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(82)
+/* template */
+var __vue_template__ = __webpack_require__(83)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/views/VistaPrincipalServidor.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-24d3360d", Component.options)
+  } else {
+    hotAPI.reload("data-v-24d3360d", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 82:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+   name: 'vista-principal-servidor',
+   props: ['servidor', 'tabla_labels'],
+   //template: ``,
+   data: function data() {
+      return {};
+   },
+   created: function created() {},
+   computed: {},
+   methods: {
+      separar_miles: function separar_miles(num) {
+         return num.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+      }
+   }
+});
+
+/***/ }),
+
+/***/ 83:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-sm-4 col-md-4" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("img", {
+          staticClass: "card-img-top",
+          attrs: { src: "/img/source.gif", alt: "Card image cap" }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("h5", { staticClass: "card-title" }, [
+            _vm._v(
+              "\n               " +
+                _vm._s(_vm.servidor.nom_servidor || "") +
+                "\n            "
+            ),
+            _vm.servidor.servidor_estado
+              ? _c("span", { staticClass: "badge badge-success float-right" }, [
+                  _vm._v(
+                    "\n               " +
+                      _vm._s(
+                        "Estado : " +
+                          _vm.servidor.servidor_estado.estado.nom_estado || ""
+                      ) +
+                      "\n            "
+                  )
+                ])
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "card-text" }),
+          _vm.servidor
+            ? _c("dl", { staticClass: "row" }, [
+                _c("dd", { staticClass: "col-md-12" }, [
+                  _vm._v(_vm._s(_vm.servidor.det_servidor || ""))
+                ]),
+                _vm._v(" "),
+                _c("dt", { staticClass: "col-md-6" }, [
+                  _vm._v(_vm._s("" + _vm.tabla_labels["ip_servidor"]))
+                ]),
+                _vm._v(" "),
+                _c("dd", { staticClass: "col-md-6" }, [
+                  _vm._v(_vm._s("" + (_vm.servidor.ip_servidor || 0)))
+                ]),
+                _vm._v(" "),
+                _c("dt", { staticClass: "col-md-6" }, [
+                  _vm._v(_vm._s("" + _vm.tabla_labels["mac"]))
+                ]),
+                _vm._v(" "),
+                _c("dd", { staticClass: "col-md-6" }, [
+                  _vm._v(_vm._s("" + (_vm.servidor.mac || 0)))
+                ]),
+                _vm._v(" "),
+                _c("dt", { staticClass: "col-md-6" }, [
+                  _vm._v(_vm._s("" + _vm.tabla_labels["ram"]))
+                ]),
+                _vm._v(" "),
+                _c("dd", { staticClass: "col-md-6" }, [
+                  _vm._v(
+                    _vm._s(_vm.separar_miles("" + (_vm.servidor.ram || 0))) +
+                      " mb"
+                  )
+                ]),
+                _vm._v(" "),
+                _c("dt", { staticClass: "col-md-6" }, [
+                  _vm._v(_vm._s("" + _vm.tabla_labels["memoria_dd"]))
+                ]),
+                _vm._v(" "),
+                _c("dd", { staticClass: "col-md-6" }, [
+                  _vm._v(
+                    _vm._s(
+                      _vm.separar_miles("" + (_vm.servidor.memoria_dd || 0))
+                    ) + " mb"
+                  )
+                ]),
+                _vm._v(" "),
+                _c("dt", { staticClass: "col-md-6" }, [
+                  _vm._v(_vm._s("" + _vm.tabla_labels["swap"]))
+                ]),
+                _vm._v(" "),
+                _c("dd", { staticClass: "col-md-6" }, [
+                  _vm._v(
+                    _vm._s(_vm.separar_miles("" + (_vm.servidor.swap || 0))) +
+                      " mb"
+                  )
+                ]),
+                _vm._v(" "),
+                _c("dt", { staticClass: "col-md-6" }, [
+                  _vm._v(_vm._s("" + _vm.tabla_labels["procesador"]))
+                ]),
+                _vm._v(" "),
+                _c("dd", { staticClass: "col-md-6" }, [
+                  _vm._v(_vm._s("" + (_vm.servidor.procesador || 0)))
+                ]),
+                _vm._v(" "),
+                _c("dt", { staticClass: "col-md-6" }, [
+                  _vm._v(_vm._s("" + _vm.tabla_labels["modelo_procesador"]))
+                ]),
+                _vm._v(" "),
+                _c("dd", { staticClass: "col-md-6" }, [
+                  _vm._v(
+                    _vm._s(
+                      _vm.separar_miles(
+                        "" + (_vm.servidor.modelo_procesador || 0)
+                      )
+                    )
+                  )
+                ]),
+                _vm._v(" "),
+                _c("dt", { staticClass: "col-md-6" }, [
+                  _vm._v(_vm._s("" + _vm.tabla_labels["frec_procesador"]))
+                ]),
+                _vm._v(" "),
+                _c("dd", { staticClass: "col-md-6" }, [
+                  _vm._v(
+                    _vm._s(
+                      _vm.separar_miles(
+                        "" + (_vm.servidor.frec_procesador || 0)
+                      )
+                    ) + " mhz"
+                  )
+                ]),
+                _vm._v(" "),
+                _c("dt", { staticClass: "col-md-6" }, [
+                  _vm._v(_vm._s("" + _vm.tabla_labels["nucleos"]))
+                ]),
+                _vm._v(" "),
+                _c("dd", { staticClass: "col-md-6" }, [
+                  _vm._v(_vm._s("" + (_vm.servidor.nucleos || 0)))
+                ])
+              ])
+            : _c("dl", [
+                _vm._v(
+                  "\n               No hay información del servidor.\n            "
+                )
+              ]),
+          _vm._v(" "),
+          _c("p")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-body" }, [
+          _c("h5", { staticClass: "card-title" }, [
+            _vm._v("\n               Datacentro\n            ")
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "card-text" }),
+          _vm.servidor.datacentro
+            ? _c("dl", { staticClass: "row" }, [
+                _c("dt", { staticClass: "col-md-6" }, [
+                  _vm._v("Nombre datacentro")
+                ]),
+                _vm._v(" "),
+                _c("dd", { staticClass: "col-md-6" }, [
+                  _vm._v(_vm._s(_vm.servidor.datacentro.nom_datacentro || 0))
+                ]),
+                _vm._v(" "),
+                _c("dt", { staticClass: "col-md-6" }, [
+                  _vm._v("Detalle datacentro")
+                ]),
+                _vm._v(" "),
+                _c("dd", { staticClass: "col-md-6" }, [
+                  _vm._v(_vm._s(_vm.servidor.datacentro.det_datacentro || 0))
+                ]),
+                _vm._v(" "),
+                _c("dt", { staticClass: "col-md-6" }, [
+                  _vm._v("Código datacentro")
+                ]),
+                _vm._v(" "),
+                _c("dd", { staticClass: "col-md-6" }, [
+                  _vm._v(_vm._s(_vm.servidor.datacentro.cod_datacentro || 0))
+                ])
+              ])
+            : _c("dl", [
+                _vm._v(
+                  "\n               No hay información de ubicación.\n            "
+                )
+              ]),
+          _vm._v(" "),
+          _c("p")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-body" }, [
+          _c("h5", { staticClass: "card-title" }, [
+            _vm._v("\n               Sistema Operativo\n            ")
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "card-text" }),
+          _vm.servidor.sistema_operativo
+            ? _c("dl", { staticClass: "row" }, [
+                _c("dt", { staticClass: "col-md-6" }, [_vm._v("Nombre SO")]),
+                _vm._v(" "),
+                _c("dd", { staticClass: "col-md-6" }, [
+                  _vm._v(
+                    _vm._s(
+                      _vm.servidor.sistema_operativo.nom_sistema_operativo || 0
+                    )
+                  )
+                ]),
+                _vm._v(" "),
+                _c("dt", { staticClass: "col-md-6" }, [_vm._v("Arquitectura")]),
+                _vm._v(" "),
+                _c("dd", { staticClass: "col-md-6" }, [
+                  _vm._v(
+                    _vm._s(_vm.servidor.sistema_operativo.arquitectura || 0)
+                  )
+                ]),
+                _vm._v(" "),
+                _c("dt", { staticClass: "col-md-6" }, [_vm._v("Detalle SO")]),
+                _vm._v(" "),
+                _c("dd", { staticClass: "col-md-6" }, [
+                  _vm._v(
+                    _vm._s(
+                      _vm.servidor.sistema_operativo.det_sistema_operativo || 0
+                    )
+                  )
+                ])
+              ])
+            : _c("dl", [
+                _vm._v(
+                  "\n               No hay información de sistema operativo.\n            "
+                )
+              ]),
+          _vm._v(" "),
+          _c("p")
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-sm-8 col-md-8" }, [
+      _c("h4", [_vm._v("Aplicaciones cargadas")]),
+      _vm._v(" "),
+      _vm.servidor.aplicaciones && _vm.servidor.aplicaciones.length > 0
+        ? _c(
+            "table",
+            { staticClass: "table table-striped table-hover table-sm" },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.servidor.aplicaciones, function(app) {
+                  return _c("tr", [
+                    _c("td", [_vm._v(_vm._s(app.nom_aplicacion))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(app.det_aplicacion))])
+                  ])
+                })
+              )
+            ]
+          )
+        : _c("div", { staticClass: "card card-body bg-light" }, [
+            _vm._v(
+              "\n         Hasta el momento no existen aplicaciones cargadas en este servidor.\n      "
+            )
+          ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("h4", [_vm._v("Histórico de cambios del servidor")]),
+      _vm._v(" "),
+      _vm.servidor.servidor_historico_cambios &&
+      _vm.servidor.servidor_historico_cambios.length > 0
+        ? _c(
+            "table",
+            { staticClass: "table table-striped table-hover table-sm" },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.servidor.servidor_historico_cambios, function(h) {
+                  return _c("tr", [
+                    _c("td", [_vm._v(_vm._s(h.ram))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(h.memoria_dd))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(h.swap))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(h.nucleos))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(h.frec_procesador))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(h.created_at))])
+                  ])
+                })
+              )
+            ]
+          )
+        : _c("div", { staticClass: "card card-body bg-light" }, [
+            _vm._v(
+              "\n         Hasta el momento no existe historial de cambios para este servidor.\n      "
+            )
+          ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Nombre")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Descripción")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Ram")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Memoria Disco")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Swap")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Cores")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Frec. Hz")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Fecha cambio")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-24d3360d", module.exports)
+  }
+}
 
 /***/ })
 

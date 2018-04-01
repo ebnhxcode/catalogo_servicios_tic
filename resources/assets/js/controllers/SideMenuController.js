@@ -156,7 +156,7 @@ const SideMenuController = new Vue({
 
          'orden_lista_menus':'asc',
          'orden_lista_mantenedores':'asc',
-         
+
       }
    },
 

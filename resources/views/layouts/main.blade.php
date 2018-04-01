@@ -81,9 +81,9 @@
             </label>
          </div>
       </template>
-      <br />
-      <br />
 
+      <br />
+      <br />
 
       <h4 class="h4">Lista de {{$nombre_detalle}}</h4>
       <!-- Sección de la tabla que lista los elementos del módulo -->

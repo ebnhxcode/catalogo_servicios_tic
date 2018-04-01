@@ -13,6 +13,8 @@ Vue.use(Clipboard);
 //import { DownloadExcel } from '../components/DownloadExcel.vue';
 //Vue.component('download-excel', DownloadExcel);
 Vue.component('download-excel', require('../components/DownloadExcel.vue'));
+Vue.component('vista-principal-servidor', require('../components/views/VistaPrincipalServidor.vue'));
+//Vue.component('tabla-listar', require('../components/TablaListar.vue'));
 
 const ServidorController = new Vue({
    el: '#ServidorController',

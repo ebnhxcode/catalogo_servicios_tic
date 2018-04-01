@@ -25,8 +25,11 @@ class UsuarioController extends Controller {
    private $usuarios;
    private $usuario;
    private $role;
+   private $roles;
    private $estado;
+   private $estados;
    private $cargo;
+   private $cargos;
    private $new_usuario;
    private $new_usuario_role;
    private $new_usuario_estado;

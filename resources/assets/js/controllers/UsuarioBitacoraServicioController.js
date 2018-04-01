@@ -56,6 +56,7 @@ const UsuarioBitacoraServicioController = new Vue({
          'actividades':[],
          'servicios':[],
          'datos_excel':[],
+         'usuario_auth':[],
 
          'campos_formularios':[],
          'errores_campos':[],
