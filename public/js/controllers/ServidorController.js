@@ -3784,6 +3784,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_v_clipboard__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_models_Servidor_vue__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_models_Servidor_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_models_Servidor_vue__);
 
 
 
@@ -3796,11 +3798,11 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default.a, { dialog: true });
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
 
-//import { DownloadExcel } from '../components/DownloadExcel.vue';
-//Vue.component('download-excel', DownloadExcel);
 Vue.component('download-excel', __webpack_require__(5));
 Vue.component('vista-principal-servidor', __webpack_require__(81));
 //Vue.component('tabla-listar', require('../components/TablaListar.vue'));
+
+
 
 var ServidorController = new Vue({
    el: '#ServidorController',
@@ -3816,39 +3818,7 @@ var ServidorController = new Vue({
          'nombre_controller': 'ServidorController',
 
          'filtro_head': null,
-         'servidor': {
-            'nom_servidor': null,
-            'det_servidor': null,
-            'ip_servidor': null,
-            'ram': null,
-            'memoria_dd': null,
-            'swap': null,
-            'procesador': null,
-            'modelo_procesador': null,
-            'frec_procesador': null,
-            'nucleos': null,
-            'usuarios_pactados': null,
-            'mac': null,
-            'nodo': null,
-            'interface': null,
-            'lvm_raiz': null,
-            'lvm_usr': null,
-            'lvm_tmp': null,
-            'lvm_var': null,
-            'lvm_home': null,
-            'agente_instana_instalado': null,
-            'id_datacentro': null,
-            'id_sistema_operativo': null,
-            'id_tipo_sistema_operativo': null, // no lleva relacion, solo se usa para filtrar un combobox
-            'id_estado': null,
-            'id_ambiente': null,
-            'id_cluster': null,
-            'id_usuario_registra': null,
-            'id_usuario_modifica': null,
-            'created_at': null,
-            'updated_at': null,
-            'deleted_at': null
-         },
+         'servidor': __WEBPACK_IMPORTED_MODULE_4__components_models_Servidor_vue__["Servidor"],
          'permitido_guardar': ['nom_servidor', 'det_servidor', 'ip_servidor', 'ram', 'memoria_dd', 'swap', 'procesador', 'modelo_procesador', 'frec_procesador', 'nucleos', 'usuarios_pactados', 'mac', 'nodo', 'interface', 'lvm_raiz', 'lvm_usr', 'lvm_tmp', 'lvm_var', 'lvm_home', 'agente_instana_instalado', 'id_datacentro', 'id_sistema_operativo', 'id_estado', 'id_ambiente', 'id_cluster'],
          'relaciones_clase': [{ 'datacentro': 'id_datacentro' }, { 'sistema_operativo': 'id_sistema_operativo' }, { 'aplicaciones': 'id_aplicacion' }, { 'servidor_estado': 'id_estado' }, { 'ambiente': 'id_ambiente' }, { 'cluster': 'id_cluster' }, { 'servidor_lvm': 'id_servidor_lvm' }, { 'servidor_lvm': 'lvm_raiz' }, { 'servidor_lvm': 'lvm_usr' }, { 'servidor_lvm': 'lvm_tmp' }, { 'servidor_lvm': 'lvm_var' }, { 'servidor_lvm': 'lvm_home' }],
          'lom': {},
@@ -3952,6 +3922,7 @@ var ServidorController = new Vue({
             'deleted_at': 'Eliminado en'
          },
 
+         //Este campo se debe generar cuando se va a descargar el excel, recorriendo el objeto de la clase
          'excel_json_campos': {
             'id_servidor': 'String',
 
@@ -4704,6 +4675,119 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-24d3360d", module.exports)
   }
 }
+
+/***/ }),
+
+/***/ 84:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(85)
+/* template */
+var __vue_template__ = null
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/models/Servidor.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-54bf6632", Component.options)
+  } else {
+    hotAPI.reload("data-v-54bf6632", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 85:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Servidor", function() { return Servidor; });
+
+/*
+ * Declaracion del objeto
+ *
+ *
+ * */
+var Servidor = {
+   /*
+   * Decl. variables del objeto
+   *
+   *
+   *
+   * */
+   'nom_servidor': null,
+   'det_servidor': null,
+   'ip_servidor': null,
+   'ram': null,
+   'memoria_dd': null,
+   'swap': null,
+   'procesador': null,
+   'modelo_procesador': null,
+   'frec_procesador': null,
+   'nucleos': null,
+   'usuarios_pactados': null,
+   'mac': null,
+   'nodo': null,
+   'interface': null,
+   'lvm_raiz': null,
+   'lvm_usr': null,
+   'lvm_tmp': null,
+   'lvm_var': null,
+   'lvm_home': null,
+   'agente_instana_instalado': null,
+   'id_datacentro': null,
+   'id_sistema_operativo': null,
+   'id_tipo_sistema_operativo': null, // no lleva relacion, solo se usa para filtrar un combobox
+   'id_estado': null,
+   'id_ambiente': null,
+   'id_cluster': null,
+   'id_usuario_registra': null,
+   'id_usuario_modifica': null,
+   'created_at': null,
+   'updated_at': null,
+   'deleted_at': null,
+
+   /*
+    * Decl. objetos los cuales tiene relacion con este objeto
+    *
+    *
+    *
+    * */
+   'relaciones': [{ 'datacentro': 'id_datacentro' }, { 'sistema_operativo': 'id_sistema_operativo' }, { 'aplicaciones': 'id_aplicacion' }, { 'servidor_estado': 'id_estado' }, { 'ambiente': 'id_ambiente' }, { 'cluster': 'id_cluster' }, { 'servidor_lvm': 'id_servidor_lvm' }, { 'servidor_lvm': 'lvm_raiz' }, { 'servidor_lvm': 'lvm_usr' }, { 'servidor_lvm': 'lvm_tmp' }, { 'servidor_lvm': 'lvm_var' }, { 'servidor_lvm': 'lvm_home' }]
+
+};
+
+
 
 /***/ })
 

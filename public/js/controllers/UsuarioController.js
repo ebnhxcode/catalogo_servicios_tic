@@ -3766,8 +3766,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default.a, { dialog: true });
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
 
-//import { DownloadExcel } from '../components/DownloadExcel.vue';
-//Vue.component('download-excel', DownloadExcel);
 Vue.component('download-excel', __webpack_require__(5));
 
 var UsuarioController = new Vue({

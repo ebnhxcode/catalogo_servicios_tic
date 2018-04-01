@@ -46871,6 +46871,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __webpack_require__(21);
 window.Vue = __webpack_require__(19);
 
+//import { DownloadExcel } from '../components/DownloadExcel.vue';
+//Vue.component('download-excel', DownloadExcel);
+
 // Se configura la localizacion de la traduccion de los errores
 //Validator.localize('es', es);
 // Se instala el plugin importado

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 88);
+/******/ 	return __webpack_require__(__webpack_require__.s = 90);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3764,15 +3764,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 88:
+/***/ 90:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(89);
+module.exports = __webpack_require__(91);
 
 
 /***/ }),
 
-/***/ 89:
+/***/ 91:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3796,8 +3796,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default.a, { dialog: true });
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
 
-//import { DownloadExcel } from '../components/DownloadExcel.vue';
-//Vue.component('download-excel', DownloadExcel);
 Vue.component('download-excel', __webpack_require__(5));
 
 var SistemaOperativoController = new Vue({

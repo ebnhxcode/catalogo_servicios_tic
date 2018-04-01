@@ -14,6 +14,8 @@ Vue.component('download-excel', require('../components/DownloadExcel.vue'));
 Vue.component('vista-principal-servidor', require('../components/views/VistaPrincipalServidor.vue'));
 //Vue.component('tabla-listar', require('../components/TablaListar.vue'));
 
+import { Servidor } from '../components/models/Servidor.vue'
+
 const ServidorController = new Vue({
    el: '#ServidorController',
    data(){
@@ -28,39 +30,7 @@ const ServidorController = new Vue({
          'nombre_controller':'ServidorController',
 
          'filtro_head':null,
-         'servidor':{
-            'nom_servidor':null,
-            'det_servidor':null,
-            'ip_servidor':null,
-            'ram':null,
-            'memoria_dd':null,
-            'swap':null,
-            'procesador':null,
-            'modelo_procesador':null,
-            'frec_procesador':null,
-            'nucleos':null,
-            'usuarios_pactados':null,
-            'mac':null,
-            'nodo':null,
-            'interface':null,
-            'lvm_raiz':null,
-            'lvm_usr':null,
-            'lvm_tmp':null,
-            'lvm_var':null,
-            'lvm_home':null,
-            'agente_instana_instalado':null,
-            'id_datacentro':null,
-            'id_sistema_operativo':null,
-            'id_tipo_sistema_operativo':null, // no lleva relacion, solo se usa para filtrar un combobox
-            'id_estado':null,
-            'id_ambiente':null,
-            'id_cluster':null,
-            'id_usuario_registra':null,
-            'id_usuario_modifica':null,
-            'created_at':null,
-            'updated_at':null,
-            'deleted_at':null,
-         },
+         'servidor': Servidor,
          'permitido_guardar':[
             'nom_servidor',
             'det_servidor',
@@ -104,6 +74,7 @@ const ServidorController = new Vue({
             {'servidor_lvm':'lvm_var'},
             {'servidor_lvm':'lvm_home'},
          ],
+
          'lom':{},
          'lista_objs_model':[],
          'clusters':[],
@@ -205,6 +176,7 @@ const ServidorController = new Vue({
             'deleted_at':'Eliminado en',
          },
 
+         //Este campo se debe generar cuando se va a descargar el excel, recorriendo el objeto de la clase
          'excel_json_campos': {
             'id_servidor':'String',
 
