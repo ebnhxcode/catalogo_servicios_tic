@@ -5,7 +5,7 @@
 -- Dumped from database version 10.3 (Debian 10.3-2)
 -- Dumped by pg_dump version 10.3 (Debian 10.3-2)
 
--- Started on 2018-03-30 20:03:27 -03
+-- Started on 2018-04-01 14:12:43 -03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -4354,7 +4354,7 @@ ALTER TABLE ONLY public.usuarios_servicios
 CREATE INDEX password_resets_email_index ON public.password_resets USING btree (email);
 
 
--- Completed on 2018-03-30 20:03:30 -03
+-- Completed on 2018-04-01 14:12:46 -03
 
 --
 -- PostgreSQL database dump complete
