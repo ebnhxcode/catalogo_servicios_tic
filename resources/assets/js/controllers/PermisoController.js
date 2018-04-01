@@ -10,8 +10,6 @@ Vue.use(VModal, {dialog: true});
 import Clipboard from 'v-clipboard';
 Vue.use(Clipboard);
 
-//import { DownloadExcel } from '../components/DownloadExcel.vue';
-//Vue.component('download-excel', DownloadExcel);
 Vue.component('download-excel', require('../components/DownloadExcel.vue'));
 
 const PermisoController = new Vue({
