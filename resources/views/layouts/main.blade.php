@@ -13,13 +13,13 @@
          <div class="btn-toolbar mb-2 mb-md-0">
             <div class="input-group input-group-sm">
 
-               <div class="btn-group mr-2">
+               <div class="btn-group mr-2 pro">
                   <input type="text" class="form-control input-sm"
                          data-placement="top" data-toggle="tooltip" title="Filtrar en la lista"
                          placeholder="filtrar en la lista" v-model="filtro_head" id="filtro_head">
                </div><!-- .btn-group mr-2 #mr->margin -->
 
-               <div class="btn-group mr-0">
+               <div class="btn-group mr-0 pro">
                   <button class="btn btn-sm btn-outline-success"
                           v-if="en_array(['Administrador','Jefe de Area','Lider Equipo','Jefe Proyecto','App Manager'],usuario_auth.usuario_role.role.nom_role)"
                           data-placement="top" data-toggle="tooltip" title="Crear nuevo/a {{$nombre_modelo}}"
@@ -68,7 +68,7 @@
          <h5 style="position: relative;">Mostrar\Ocultar opciones de la tabla
             (<small>Clic en un botón para mostrar en grilla</small>)</h5>
          {{--<mini-spinner v-if="mini_spinner_table_inputs == true"></mini-spinner> v-else --}}
-         <div class="btn-group btn-group-sm btn-group-toggle" v-for="v,c,i in tabla_campos">
+         <div class="pro btn-group btn-group-sm btn-group-toggle" v-for="v,c,i in tabla_campos">
             <label :class="v==true?'btn btn-success active':'btn btn-light'" @click.prevent="cambiar_visibilidad(c)"
                    {{--data-placement="top" data-toggle="tooltip" :title="`Clic para ${(v==true)?'ocultar':'mostrar'}`">--}}
                    data-placement="top" data-toggle="tooltip" title="Clic para mostrar u ocultar">
@@ -87,7 +87,7 @@
 
       <h4 class="h4">Lista de {{$nombre_detalle}}</h4>
       <!-- Sección de la tabla que lista los elementos del módulo -->
-      <div class="table-responsive">
+      <div class="table-responsive pro">
          <!-- dir ./partials -->
          @include("layouts.tabla_listar")
       </div>

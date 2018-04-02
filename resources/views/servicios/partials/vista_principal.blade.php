@@ -2,7 +2,7 @@
    <div class="col-sm-4 col-md-4">
 
       <!-- este bloque será reemplazado dinamicamente -->
-      <div class="card" style="{{--width: 18rem;--}}">
+      <div class="card pro" style="{{--width: 18rem;--}}">
          <img class="card-img-top" src="{{ url('/img/servicio.jpg') }}" alt="Card image cap">
          <div class="card-body">
             <h5 class="card-title">
@@ -29,7 +29,7 @@
 
 
       <!-- este bloque será reemplazado dinamicamente -->
-      <div class="card" style="{{--width: 18rem;--}}">
+      <div class="card pro" style="{{--width: 18rem;--}}">
          <div class="card-body">
             <h5 class="card-title">
                Actividad a la que pertenece

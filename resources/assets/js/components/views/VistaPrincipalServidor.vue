@@ -4,7 +4,7 @@
 
 
          <!-- este bloque será reemplazado dinamicamente -->
-         <div class="card">
+         <div class="card pro">
             <img class="card-img-top" :src="'/img/source.gif'" alt="Card image cap">
             <div class="card-body">
                <h5 class="card-title">
@@ -59,7 +59,7 @@
          <br>
 
          <!-- este bloque será reemplazado dinamicamente -->
-         <div class="card">
+         <div class="card pro">
             <div class="card-body">
                <h5 class="card-title">
                   Datacentro
@@ -91,7 +91,7 @@
          <br>
 
          <!-- este bloque será reemplazado dinamicamente -->
-         <div class="card">
+         <div class="card pro">
             <div class="card-body">
                <h5 class="card-title">
                   Sistema Operativo

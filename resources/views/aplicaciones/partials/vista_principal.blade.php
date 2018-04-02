@@ -2,7 +2,7 @@
    <div class="col-sm-4 col-md-4">
 
       <!-- este bloque será reemplazado dinamicamente -->
-      <div class="card" style="{{--width: 18rem;--}}">
+      <div class="card pro" style="{{--width: 18rem;--}}">
          <img class="card-img-top" src="{{ url('/img/aplicación-web-y-de-escritorio-01.jpg') }}" alt="Card image cap">
          <div class="card-body">
             <h5 class="card-title">
@@ -48,7 +48,7 @@
 
 
       <!-- este bloque será reemplazado dinamicamente -->
-      <div class="card" style="{{--width: 18rem;--}}">
+      <div class="card pro" style="{{--width: 18rem;--}}">
          <div class="card-body">
             <h5 class="card-title">
                Tipo Aplicación
@@ -81,7 +81,7 @@
 
 
       <!-- este bloque será reemplazado dinamicamente -->
-      <div class="card" style="{{--width: 18rem;--}}">
+      <div class="card pro" style="{{--width: 18rem;--}}">
          <div class="card-body">
             <h5 class="card-title">
                Servicio al que pertenece
@@ -111,7 +111,7 @@
 
 
       <!-- este bloque será reemplazado dinamicamente -->
-      <div class="card" style="{{--width: 18rem;--}}">
+      <div class="card pro" style="{{--width: 18rem;--}}">
          <div class="card-body">
             <h5 class="card-title">
                Servidor donde se encuentra alojado
@@ -140,7 +140,7 @@
       <br>
 
       <!-- este bloque será reemplazado dinamicamente -->
-      <div class="card" style="{{--width: 18rem;--}}">
+      <div class="card pro" style="{{--width: 18rem;--}}">
          <div class="card-body">
             <h5 class="card-title">
                Dominio

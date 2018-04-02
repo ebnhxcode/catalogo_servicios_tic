@@ -16,6 +16,11 @@
 
    <style>
 
+      .pro {
+         box-shadow: 2px 5px 5px 2px #e8e8e8;
+         border-radius: 6px;
+      }
+
 
       /* Estilo para las animaciones de los campos requeridos */
       .bounce-enter-active {
@@ -135,25 +140,28 @@
       </div>
    </nav>
 
-   <main class="py-4">
+   <main class="py-4" style="padding-left: 10px;">
 
       <div class="container-fluid">
          <div class="row">
 
-            <nav class="col-md-3 d-none d-md-block bg-light sidebar" id="SideMenuController">
+            <nav class="col-md-3 d-none d-md-block bg-light sidebar pro" id="SideMenuController"
+                 style="border-radius: 5px;padding-top: 20px;">
 
-               <div class="form-group">
+               <template class="form-group">
                   <!-- Input para escribir el termino a buscar -->
-                  <input type="text" class="form-control" aria-describedby="filtro_menu_help"
+                  <input type="text" class="form-control pro" aria-describedby="filtro_menu_help"
                          placeholder="Filtrar en el menú" v-model="filtro_menu" id="filtro_menu">
 
                   {{--
                   <small id="filtro_menu_help" class="form-text text-muted">
-                     Filtrar menú
+                     Filtrar ú
+nú
                   </small>
                   --}}
-               </div>
+               </template>
 
+               <br>
                <div class="sidebar-sticky" style="overflow:auto; max-height: 650px;">
 
                   <h5
@@ -165,9 +173,6 @@
                      <li class="nav-item">
                         <i class="fa fa-refresh btn btn-light btn-sm" @click.prevent="inicializar" aria-hidden="true"
                            data-placement="top" data-toggle="tooltip" title="Clic para actualizar menu"></i>
-
-
-
 
                      </li>
                   </ul>
@@ -216,6 +221,7 @@
                   </div>
 
                </div>
+               <br>
             </nav><!-- #SideMenuController -->
 
             @yield('content')
