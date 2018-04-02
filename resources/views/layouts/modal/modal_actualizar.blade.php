@@ -10,9 +10,9 @@
 
 <!-- Nav tabs -->
 <ul class="nav nav-tabs justify-content-center" id="tab_panel" role="tablist">
-   <li class="nav-item">
+   <li class="nav-item" @click.prevent="buscar_objeto_clase_config_relaciones(id_en_edicion, relaciones_clase)">
       <a class="nav-link" data-toggle="tab" href="#vista_principal_tab" role="tab"
-         aria-controls="vista_principal" aria-selected="true">Vista General</a>
+         aria-controls="vista_principal" aria-selected="true">Vista Principal</a>
    </li>
    <li class="nav-item" v-show="true">
       <a class="nav-link" data-toggle="tab" href="#relacionados_a_tab" role="tab"

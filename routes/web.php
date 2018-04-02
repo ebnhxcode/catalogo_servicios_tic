@@ -26,7 +26,12 @@ Route::get('/', function () {
 #Route::get('/estandares', 'RoleController@estandares');
 
 
-
+Route::get('/embed/aplicaciones', 'AplicacionController@index_componente');
+Route::get('/embed/datacentros', 'DatacentroController@index_componente');
+Route::get('/embed/dominios', 'DominioController@index_componente');
+Route::get('/embed/servidores', 'ServidorController@index_componente');
+Route::get('/embed/servicios', 'ServicioController@index_componente');
+Route::get('/embed/sistemas_operativos', 'SistemaOperativoController@index_componente');
 
 
 #Esto aplica solo para las rutas que eran resource , es una forma de mapear las url/rutas

@@ -2428,6 +2428,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 */
 var inyeccion_funciones_compartidas = {
    methods: {
+      /*
+      *
+      *
+      * */
       auto_alerta_corta: function auto_alerta_corta(titulo, texto, tipo) {
          var tiempo = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1500;
 
@@ -2438,6 +2442,11 @@ var inyeccion_funciones_compartidas = {
             timer: tiempo || 1500
          });
       },
+
+      /*
+       *
+       *
+       * */
       auto_alerta_media: function auto_alerta_media(titulo, texto, tipo) {
          var tiempo = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 3000;
 
@@ -2448,7 +2457,11 @@ var inyeccion_funciones_compartidas = {
             timer: tiempo || 3000
          });
       },
-      //Esta funcion en ingles es propia de los modal para hacer algo antes que se cierre
+
+      /*
+       * Esta funcion en ingles es propia de los modal para hacer algo antes que se cierre
+       *
+       * */
       before_close: function before_close(event) {
          //console.log(event.name);
          switch (event.name) {
@@ -2462,6 +2475,11 @@ var inyeccion_funciones_compartidas = {
          }
          return;
       },
+
+      /*
+       *
+       *
+       * */
       buscar_en_array_por_modelo_e_id: function buscar_en_array_por_modelo_e_id(id, array, model) {
          for (var a in array) {
             if (array[a]['id_' + model] == id) {
@@ -2469,6 +2487,11 @@ var inyeccion_funciones_compartidas = {
             }
          }return null;
       },
+
+      /*
+       *
+       *
+       * */
       buscar_objeto_clase: function buscar_objeto_clase(id) {
          var _this = this;
 
@@ -2480,26 +2503,61 @@ var inyeccion_funciones_compartidas = {
             _this.checkear_estado_respuesta_http(response.status);
          });
       },
-      buscar_objeto_clase_config_relaciones: function buscar_objeto_clase_config_relaciones(id, relaciones) {
+
+      /*
+       *
+       *
+       * */
+      buscar_objeto_otra_clase: function buscar_objeto_otra_clase(id, nombre_tabla, nombre_model) {
          var _this2 = this;
 
-         this.$http.get('/' + this.nombre_tabla + '/' + id).then(function (response) {
+         this.$http.get('/' + nombre_tabla + '/' + id).then(function (response) {
             // success callback
-            _this2.$data['' + _this2.nombre_model] = response.body['' + _this2.nombre_model];
-            _this2.configurar_relaciones([_this2.$data['' + _this2.nombre_model]], relaciones);
+            return response.body['' + nombre_model];
          }, function (response) {
             // error callback
             _this2.checkear_estado_respuesta_http(response.status);
          });
       },
-      // change order variable direction
+
+      /*
+       *
+       *
+       * */
+      buscar_objeto_clase_config_relaciones: function buscar_objeto_clase_config_relaciones(id, relaciones) {
+         var _this3 = this;
+
+         this.$http.get('/' + this.nombre_tabla + '/' + id).then(function (response) {
+            // success callback
+            _this3.$data['' + _this3.nombre_model] = response.body['' + _this3.nombre_model];
+            _this3.configurar_relaciones([_this3.$data['' + _this3.nombre_model]], relaciones);
+         }, function (response) {
+            // error callback
+            _this3.checkear_estado_respuesta_http(response.status);
+         });
+      },
+
+      /*
+       * change order variable direction
+       *
+       * */
       cambiar_orden_lista: function cambiar_orden_lista(columna) {
          this.orden_lista == 'asc' ? this.orden_lista = 'desc' : this.orden_lista = 'asc';
          this.ordenar_lista(columna);
       },
+
+      /*
+       *
+       *
+       * */
       cambiar_visibilidad: function cambiar_visibilidad(campo) {
          return this.tabla_campos[campo] = !this.tabla_campos[campo];
       },
+
+      /*
+       *
+       *
+       * */
       checkear_estado_respuesta_http: function checkear_estado_respuesta_http(status_code) {
          switch (status_code) {
             case 401:
@@ -2549,6 +2607,11 @@ var inyeccion_funciones_compartidas = {
                break;
          }
       },
+
+      /*
+       *
+       *
+       * */
       configurar_relaciones: function configurar_relaciones(objetos_clase, relaciones) {
          objetos_clase.map(function (o) {
             o = relaciones.map(function (r) {
@@ -2561,19 +2624,34 @@ var inyeccion_funciones_compartidas = {
             });
          });
       },
+
+      /*
+       *
+       *
+       * */
       dejar_de_editar: function dejar_de_editar() {
          this.lista_actualizar_activo = false;
          this.id_en_edicion = null;
       },
+
+      /*
+       *
+       *
+       * */
       editar: function editar(id) {
          this.id_en_edicion = id;
          this.lista_actualizar_activo = true;
          //id_objeto + array de objetos + nombre del model en lower case
          this.$data['' + this.nombre_model] = this.buscar_en_array_por_modelo_e_id(this.$data['' + this.nombre_model]['' + this.pk_tabla], this.$data['' + this.nombre_ruta], this.nombre_model);
       },
+
+      /*
+       *
+       *
+       * */
       eliminar: function eliminar(id) {
          var _swal,
-             _this3 = this;
+             _this4 = this;
 
          __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()((_swal = {
             title: "¿Estás seguro/a?",
@@ -2590,47 +2668,72 @@ var inyeccion_funciones_compartidas = {
                //Se adjunta el token
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-               _this3.$http.delete('/' + _this3.nombre_ruta + '/' + id).then(function (response) {
+               _this4.$http.delete('/' + _this4.nombre_ruta + '/' + id).then(function (response) {
                   if (response.status == 200) {
-                     _this3.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
+                     _this4.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
                   } else {
-                     _this3.checkear_estado_respuesta_http(response.status);
+                     _this4.checkear_estado_respuesta_http(response.status);
                      return false;
                   }
 
-                  if (_this3.mostrar_notificaciones(response) == true) {
+                  if (_this4.mostrar_notificaciones(response) == true) {
                      //Aqui que pregunte si el modal está activo para que lo cierre
-                     if (_this3.modal_actualizar_activo == true) {
-                        _this3.ocultar_modal('actualizar');
-                        _this3.modal_actualizar_activo = false;
+                     if (_this4.modal_actualizar_activo == true) {
+                        _this4.ocultar_modal('actualizar');
+                        _this4.modal_actualizar_activo = false;
                      }
-                     _this3.lista_actualizar_activo = false;
-                     _this3.id_en_edicion = null;
+                     _this4.lista_actualizar_activo = false;
+                     _this4.id_en_edicion = null;
 
                      //Recargar la lista
-                     _this3.inicializar();
+                     _this4.inicializar();
                   }
                }, function (response) {
                   // error callback
-                  _this3.checkear_estado_respuesta_http(response.status);
+                  _this4.checkear_estado_respuesta_http(response.status);
                });
             } else if (result.dismiss === __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default.a.DismissReason.cancel) {
-               _this3.auto_alerta_corta("Cancelado", "Se ha cancelado la eliminación", "success");
+               _this4.auto_alerta_corta("Cancelado", "Se ha cancelado la eliminación", "success");
             }
          });
       },
+
+      /*
+       *
+       *
+       * */
       es_undefined: function es_undefined(v) {
          return (typeof v === 'undefined' ? 'undefined' : _typeof(v)) == undefined ? true : false;
       },
+
+      /*
+       *
+       *
+       * */
       es_null: function es_null(v) {
          return v == null ? true : false;
       },
+
+      /*
+       *
+       *
+       * */
       es_empty: function es_empty(v) {
          return !v || v == null || v == '' || (typeof v === 'undefined' ? 'undefined' : _typeof(v)) == undefined ? true : false;
       },
+
+      /*
+       *
+       *
+       * */
       en_array: function en_array(array, v) {
          return array.indexOf(v) > -1 ? true : false;
       },
+
+      /*
+       *
+       *
+       * */
       es_linux: function es_linux() {
          if (this.$data['' + this.nombre_model]['id_sistema_operativo'] != null) {
             var so = this.buscar_en_array_por_modelo_e_id(this.$data['' + this.nombre_model]['id_sistema_operativo'], this.$data['sistemas_operativos'], 'sistema_operativo');
@@ -2641,19 +2744,29 @@ var inyeccion_funciones_compartidas = {
          }
          return false;
       },
+
+      /*
+       *
+       *
+       * */
       encontrar: function encontrar(id) {
-         var _this4 = this;
+         var _this5 = this;
 
          this.$http.get('/' + this.nombre_tabla + '/' + id).then(function (response) {
             // success callback
-            return response.body['' + _this4.nombre_model];
+            return response.body['' + _this5.nombre_model];
          }, function (response) {
             // error callback
-            _this4.checkear_estado_respuesta_http(response.status);
+            _this5.checkear_estado_respuesta_http(response.status);
          });
       },
+
+      /*
+       *
+       *
+       * */
       guardar: function guardar() {
-         var _this5 = this;
+         var _this6 = this;
 
          //Ejecuta validacion sobre los campos con validaciones
          //console.log(this.validar_campos());
@@ -2664,36 +2777,41 @@ var inyeccion_funciones_compartidas = {
                //Instancia nuevo form data
                var formData = new FormData();
                //Conforma objeto paramétrico para solicitud http
-               for (var i in _this5.permitido_guardar) {
-                  formData.append('' + _this5.permitido_guardar[i], _this5.$data['' + _this5.nombre_model]['' + _this5.permitido_guardar[i]] || 0);
+               for (var i in _this6.permitido_guardar) {
+                  formData.append('' + _this6.permitido_guardar[i], _this6.$data['' + _this6.nombre_model]['' + _this6.permitido_guardar[i]] || 0);
                }
-               _this5.$http.post('/' + _this5.nombre_ruta, formData).then(function (response) {
+               _this6.$http.post('/' + _this6.nombre_ruta, formData).then(function (response) {
                   // success callback
                   if (response.status == 200) {
-                     if (!_this5.es_null(response.body['' + _this5.nombre_model])) {
+                     if (!_this6.es_null(response.body['' + _this6.nombre_model])) {
                         // del backend viene el objeto con el nombre
-                        _this5.id_en_edicion = null; // se resetea el objeto reactivo de la clase
+                        _this6.id_en_edicion = null; // se resetea el objeto reactivo de la clase
                      } //this.inicializar();
                   } else {
-                     _this5.checkear_estado_respuesta_http(response.status);
+                     _this6.checkear_estado_respuesta_http(response.status);
                      return false;
                   }
-                  if (_this5.mostrar_notificaciones(response) == true) {
-                     _this5.limpiar_objeto_clase_local();
-                     _this5.inicializar();
-                     _this5.ocultar_modal('crear');
+                  if (_this6.mostrar_notificaciones(response) == true) {
+                     _this6.limpiar_objeto_clase_local();
+                     _this6.inicializar();
+                     _this6.ocultar_modal('crear');
                      return;
                   }
                }, function (response) {
                   // error callback
-                  _this5.checkear_estado_respuesta_http(response.status);
+                  _this6.checkear_estado_respuesta_http(response.status);
                });
             }
          });
          return;
       },
+
+      /*
+       *
+       *
+       * */
       guardar_editado: function guardar_editado() {
-         var _this6 = this;
+         var _this7 = this;
 
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
          this.$http.put('/' + this.nombre_ruta + '/' + this.$data[this.nombre_model][this.pk_tabla], this.$data[this.nombre_model]).then(function (response) {
@@ -2706,12 +2824,12 @@ var inyeccion_funciones_compartidas = {
                 }
                 */
             } else {
-               _this6.checkear_estado_respuesta_http(response.status);
+               _this7.checkear_estado_respuesta_http(response.status);
                return false;
             }
 
-            if (_this6.mostrar_notificaciones(response) == true) {
-               _this6.buscar_objeto_clase_config_relaciones(_this6.$data[_this6.nombre_model][_this6.pk_tabla], _this6.relaciones_clase);
+            if (_this7.mostrar_notificaciones(response) == true) {
+               _this7.buscar_objeto_clase_config_relaciones(_this7.$data[_this7.nombre_model][_this7.pk_tabla], _this7.relaciones_clase);
                /*
                 //Aqui que pregunte si el modal está activo para que lo cierre
                 if (this.modal_actualizar_activo == true) {
@@ -2722,21 +2840,75 @@ var inyeccion_funciones_compartidas = {
                 this.id_en_edicion = null;
                 */
                //Recargar la lista
-               _this6.inicializar();
+               _this7.inicializar();
             }
          }, function (response) {
             // error callback
-            _this6.checkear_estado_respuesta_http(response.status);
+            _this7.checkear_estado_respuesta_http(response.status);
          });
          return;
       },
+
+      /*
+       *
+       *
+       * */
+      guardar_editado_de_otra_clase: function guardar_editado_de_otra_clase(id, nombre_tabla, objeto_clase) {
+         var _this8 = this;
+
+         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+         this.$http.put('/' + nombre_tabla + '/' + id, objeto_clase).then(function (response) {
+            // success callback
+            if (response.status == 200) {
+               /*
+                if (!this.es_null(response.body.usuario)) {
+                this.lista_actualizar_activo = false;
+                this.id_en_edicion = null;
+                }
+                */
+            } else {
+               _this8.checkear_estado_respuesta_http(response.status);
+               return false;
+            }
+
+            if (_this8.mostrar_notificaciones(response) == true) {
+               //this.buscar_objeto_clase_config_relaciones(id, this.relaciones_clase);
+
+               /*
+                //Aqui que pregunte si el modal está activo para que lo cierre
+                if (this.modal_actualizar_activo == true) {
+                this.ocultar_modal('actualizar');
+                this.modal_actualizar_activo = false;
+                }
+                 this.lista_actualizar_activo = false;
+                this.id_en_edicion = null;
+                */
+               //Recargar la lista
+               //this.inicializar();
+            }
+         }, function (response) {
+            // error callback
+            _this8.checkear_estado_respuesta_http(response.status);
+         });
+         return;
+      },
+
+      /*
+       *
+       *
+       * */
       limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
          for (var k in this.$data['' + this.nombre_model]) {
             this.$data['' + this.nombre_model][k] = null;
          }
       },
+
+      /*
+       *
+       *
+       * */
       mostrar: function mostrar(id, tabla, modelo) {
-         var _this7 = this;
+         var _this9 = this;
 
          this.$http.get('/' + tabla + '/' + id).then(function (response) {
             // success callback
@@ -2746,9 +2918,14 @@ var inyeccion_funciones_compartidas = {
             return obj;
          }, function (response) {
             // error callback
-            _this7.checkear_estado_respuesta_http(response.status);
+            _this9.checkear_estado_respuesta_http(response.status);
          });
       },
+
+      /*
+       *
+       *
+       * */
       mostrar_modal_actualizar: function mostrar_modal_actualizar(id) {
          this.lista_actualizar_activo = false;
          this.modal_actualizar_activo = true;
@@ -2771,6 +2948,11 @@ var inyeccion_funciones_compartidas = {
             }]
          });
       },
+
+      /*
+       *
+       *
+       * */
       mostrar_modal_crear: function mostrar_modal_crear() {
          this.lista_actualizar_activo = false;
          this.modal_crear_activo = true;
@@ -2793,6 +2975,11 @@ var inyeccion_funciones_compartidas = {
             }]
          });
       },
+
+      /*
+       *
+       *
+       * */
       mostrar_notificaciones: function mostrar_notificaciones(respuesta_http) {
 
          var status = respuesta_http.status;
@@ -2825,6 +3012,10 @@ var inyeccion_funciones_compartidas = {
          return true;
       },
 
+      /*
+       *
+       *
+       * */
       validar_campos: function validar_campos() {
          /*DEPRECATED*/
          this.$validator.validateAll().then(function (res) {
@@ -2832,19 +3023,37 @@ var inyeccion_funciones_compartidas = {
          });
       },
 
+      /*
+       *
+       *
+       * */
       notificar: function notificar(tipo, titulo, mensajes, grupo) {
          for (var m in mensajes) {
             this.$notify({ group: grupo, type: tipo, title: titulo, text: mensajes[m][0] });
          }
          return true;
       },
+
+      /*
+       *
+       *
+       * */
       ocultar_modal: function ocultar_modal(nom_modal) {
          this.$modal.hide(nom_modal);
       },
+      /*
+       *
+       *
+       * */
       // function to order lists
       ordenar_lista: function ordenar_lista(columna) {
          this.lista_objs_model = _.orderBy(this.lista_objs_model, columna, this.orden_lista);
       },
+
+      /*
+       *
+       *
+       * */
       separar_miles: function separar_miles(num) {
          return num.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
       }

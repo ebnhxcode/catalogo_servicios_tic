@@ -149,6 +149,7 @@
                  style="border-radius: 5px;padding-top: 20px;">
 
                <template class="form-group">
+
                   <!-- Input para escribir el termino a buscar -->
                   <input type="text" class="form-control pro" aria-describedby="filtro_menu_help"
                          placeholder="Filtrar en el menú" v-model="filtro_menu" id="filtro_menu">
@@ -222,9 +223,13 @@ nú
 
                </div>
                <br>
+
+
             </nav><!-- #SideMenuController -->
 
-            @yield('content')
+            <div class="col-md-9 col-lg-9">
+               @yield('content')
+            </div>
 
          </div>
       </div>

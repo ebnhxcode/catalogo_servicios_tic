@@ -45,6 +45,16 @@ class AplicacionController extends Controller {
       }
    }
 
+   public function index_componente () {
+      return view("layouts.main_para_componentes", [
+         'nombre_modelo' => $this->nombre_modelo,
+         'nombre_tabla' => $this->nombre_tabla,
+         'nombre_ruta' => $this->nombre_ruta,
+         'nombre_detalle' => $this->nombre_detalle,
+         'nombre_controller' => $this->nombre_controller,
+      ]);
+   }
+
    public function index(Request $request) {
       if (!$request->wantsJson() && !$request->ajax()) {
          return view("layouts.main", [

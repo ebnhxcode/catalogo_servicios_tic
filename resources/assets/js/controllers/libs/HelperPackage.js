@@ -393,6 +393,47 @@ export const inyeccion_funciones_compartidas = {
        *
        *
        * */
+      guardar_editado_de_otra_clase: function (id,nombre_tabla,objeto_clase) {
+         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+         this.$http.put(`/${nombre_tabla}/${id}`, objeto_clase).then(response => { // success callback
+            if (response.status == 200) {
+               /*
+                if (!this.es_null(response.body.usuario)) {
+                this.lista_actualizar_activo = false;
+                this.id_en_edicion = null;
+                }
+                */
+            } else {
+               this.checkear_estado_respuesta_http(response.status);
+               return false;
+            }
+
+            if (this.mostrar_notificaciones(response) == true) {
+               //this.buscar_objeto_clase_config_relaciones(id, this.relaciones_clase);
+
+               /*
+                //Aqui que pregunte si el modal está activo para que lo cierre
+                if (this.modal_actualizar_activo == true) {
+                this.ocultar_modal('actualizar');
+                this.modal_actualizar_activo = false;
+                }
+
+                this.lista_actualizar_activo = false;
+                this.id_en_edicion = null;
+                */
+               //Recargar la lista
+               //this.inicializar();
+            }
+         }, response => { // error callback
+            this.checkear_estado_respuesta_http(response.status);
+         });
+         return;
+      },
+
+      /*
+       *
+       *
+       * */
       limpiar_objeto_clase_local: function () {
          for (var k in this.$data[`${this.nombre_model}`]) { this.$data[`${this.nombre_model}`][k] = null; }
       },

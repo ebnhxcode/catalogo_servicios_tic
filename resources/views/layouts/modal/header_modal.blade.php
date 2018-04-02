@@ -1,5 +1,5 @@
 <!-- BEGIN HEADER -->
-<modal name="{{$nom_modal}}"
+<modal style="padding-top: 20px;" name="{{$nom_modal}}"
        @before-close="before_close"
        :reset="true"
        width="95%"

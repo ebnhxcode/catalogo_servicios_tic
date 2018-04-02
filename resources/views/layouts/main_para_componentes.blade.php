@@ -1,5 +1,4 @@
-
-@extends('layouts.app')
+@extends('layouts.app_para_componentes')
 @section('content')
 
 
@@ -51,9 +50,6 @@
                         Limpiar filtro
                      </a>
                      <div class="dropdown-divider"></div>
-                     <a class="dropdown-item" href="{{ url('/home') }}">
-                        Volver al menú principal
-                     </a>
                   </div>
                </div><!-- .btn-group mr-0 #mr->margin -->
 
