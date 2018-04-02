@@ -14,6 +14,12 @@
       <a class="nav-link" data-toggle="tab" href="#vista_principal_tab" role="tab"
          aria-controls="vista_principal" aria-selected="true">Vista General</a>
    </li>
+   <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#relacionados_a_tab" role="tab"
+         aria-controls="relacionados_a" aria-selected="true">Relacionados a ➜
+         <span class="text-info">@{{ $data[`${nombre_model}`][`nom_${nombre_model}`] }}</span>
+      </a>
+   </li>
    <li class="nav-item"
        v-if="en_array(['Administrador','Jefe de Area','Lider Equipo','App Manager'],usuario_auth.usuario_role.role.nom_role)">
       <a class="nav-link" data-toggle="tab" href="#vista_actualizar_tab" role="tab"
@@ -59,6 +65,18 @@
       </dd>
 
    </div>
+
+   <!-- La subvista que se encarga de mostrar las relaciones con este modulo y posibles mantenedores -->
+   <br>
+   @if(view()->exists("$nombre_tabla.partials.relacionados_$nombre_modelo"))
+   <div class="tab-pane fade" id="relacionados_a_tab" role="tabpanel" aria-labelledby="relacionados_a_tab">
+      @include("$nombre_tabla.partials.relacionados_$nombre_modelo")
+   </div>
+   @else
+      Contenido en construcción
+   @endif
+
+
 
 </div>
 
