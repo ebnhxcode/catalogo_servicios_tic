@@ -3784,6 +3784,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_v_clipboard__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_models_Aplicacion_vue__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_models_Aplicacion_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_models_Aplicacion_vue__);
 
 
 
@@ -3798,7 +3800,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
 
 Vue.component('download-excel', __webpack_require__(5));
 Vue.component('vista-principal-servidor', __webpack_require__(81));
-//Vue.component('tabla-listar', require('../components/TablaListar.vue'));
+Vue.component('tabla-listar-aplicacion', __webpack_require__(84));
+Vue.component('formulario-campos-aplicacion', __webpack_require__(87));
+
 
 var ServidorController = new Vue({
    el: '#ServidorController',
@@ -3814,6 +3818,7 @@ var ServidorController = new Vue({
          'nombre_controller': 'ServidorController',
 
          'filtro_head': null,
+
          'servidor': {
             'nom_servidor': null,
             'det_servidor': null,
@@ -3847,6 +3852,8 @@ var ServidorController = new Vue({
             'updated_at': null,
             'deleted_at': null
          },
+         'aplicacion': __WEBPACK_IMPORTED_MODULE_4__components_models_Aplicacion_vue__["Aplicacion"], //objeto importado para ser usado por sus propiedades
+
          'permitido_guardar': ['nom_servidor', 'det_servidor', 'ip_servidor', 'ram', 'memoria_dd', 'swap', 'procesador', 'modelo_procesador', 'frec_procesador', 'nucleos', 'usuarios_pactados', 'mac', 'nodo', 'interface', 'lvm_raiz', 'lvm_usr', 'lvm_tmp', 'lvm_var', 'lvm_home', 'agente_instana_instalado', 'id_datacentro', 'id_sistema_operativo', 'id_estado', 'id_ambiente', 'id_cluster'],
          'relaciones_clase': [{ 'datacentro': 'id_datacentro' }, { 'sistema_operativo': 'id_sistema_operativo' }, { 'aplicaciones': 'id_aplicacion' }, { 'servidor_estado': 'id_estado' }, { 'ambiente': 'id_ambiente' }, { 'cluster': 'id_cluster' }, { 'servidor_lvm': 'id_servidor_lvm' }, { 'servidor_lvm': 'lvm_raiz' }, { 'servidor_lvm': 'lvm_usr' }, { 'servidor_lvm': 'lvm_tmp' }, { 'servidor_lvm': 'lvm_var' }, { 'servidor_lvm': 'lvm_home' }],
 
@@ -4006,6 +4013,7 @@ var ServidorController = new Vue({
          } else {
             this.buscar_objeto_clase_config_relaciones(_id_en_edicion, this.relaciones_clase);
          }
+         lista_objs_model;
       },
       //servidores se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
       servidores: function servidores(_servidores) {
@@ -4713,6 +4721,1959 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-e082de8c", module.exports)
   }
 }
+
+/***/ }),
+
+/***/ 84:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(85)
+/* template */
+var __vue_template__ = __webpack_require__(86)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/views/aplicaciones/TablaListarAplicacion.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-446b9c64", Component.options)
+  } else {
+    hotAPI.reload("data-v-446b9c64", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 85:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+   name: 'tabla-listar-aplicacion',
+   props: ['usuario_auth', 'nombre_model', 'tabla_labels', 'tabla_campos', 'lista_objs_model'],
+   //template: ``,
+   data: function data() {
+      return {
+         'id_en_edicion': null
+      };
+   },
+   created: function created() {},
+   computed: {},
+   methods: {
+      crear: function crear(id) {},
+      editar: function editar(id) {
+         this.id_en_edicion = id || null;
+      },
+      dejar_de_editar: function dejar_de_editar() {
+         this.id_en_edicion = null;
+      },
+      guardar_editado: function guardar_editado() {},
+      guardar_nuevo: function guardar_nuevo() {}
+   }
+});
+
+/***/ }),
+
+/***/ 86:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "table-responsive pro" }, [
+    _c("table", { staticClass: "table table-striped table-hover table-sm" }, [
+      _c("thead", [
+        _c(
+          "tr",
+          [
+            _vm._l(_vm.tabla_campos, function(c, i) {
+              return c
+                ? _c("th", [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-light",
+                        attrs: { href: "#!" },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            _vm.$parent.cambiar_orden_lista(i)
+                          }
+                        }
+                      },
+                      [
+                        _c("i", {
+                          staticClass: "fa fa-sort",
+                          attrs: { "aria-hidden": "true" }
+                        }),
+                        _vm._v(
+                          " \n               " +
+                            _vm._s(_vm.tabla_labels[i]) +
+                            "\n            "
+                        )
+                      ]
+                    )
+                  ])
+                : _vm._e()
+            }),
+            _vm._v(" "),
+            _c("th", [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-light",
+                  attrs: { href: "#!" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.$parent.cambiar_orden_lista("id_" + _vm.nombre_model)
+                    }
+                  }
+                },
+                [
+                  _c("i", {
+                    staticClass: "fa fa-sort",
+                    attrs: { "aria-hidden": "true" }
+                  }),
+                  _vm._v(" \n               Acción\n            ")
+                ]
+              )
+            ])
+          ],
+          2
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "tbody",
+        [
+          _vm._l(_vm.lista_objs_model, function(lom) {
+            return _c(
+              "tr",
+              {
+                on: {
+                  dblclick: function($event) {
+                    $event.preventDefault()
+                    _vm.editar(lom["id_" + _vm.nombre_model])
+                  }
+                }
+              },
+              [
+                lom["id_" + _vm.nombre_model]
+                  ? _vm._l(_vm.tabla_campos, function(c, i) {
+                      return _c(
+                        "td",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: c,
+                              expression: "c"
+                            }
+                          ]
+                        },
+                        [
+                          _vm._v(
+                            "\n               " +
+                              _vm._s(lom[i]) +
+                              "\n            "
+                          )
+                        ]
+                      )
+                    })
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "button",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value:
+                            _vm.id_en_edicion !=
+                              lom["id_" + _vm.nombre_model] &&
+                            _vm.id_en_edicion == null &&
+                            _vm.modal_actualizar_activo == false &&
+                            _vm.$parent.en_array(
+                              [
+                                "Administrador",
+                                "Jefe de Area",
+                                "Lider Equipo",
+                                "App Manager"
+                              ],
+                              _vm.usuario_auth.usuario_role.role.nom_role
+                            ),
+                          expression:
+                            "id_en_edicion != lom[`id_${nombre_model}`] &&\n                  id_en_edicion == null &&\n                  modal_actualizar_activo == false &&\n                  $parent.en_array(['Administrador','Jefe de Area','Lider Equipo','App Manager'],usuario_auth.usuario_role.role.nom_role)"
+                        }
+                      ],
+                      staticClass: "btn btn-sm btn-primary",
+                      attrs: {
+                        "data-placement": "top",
+                        "data-toggle": "tooltip",
+                        title: "Editar desde aquí"
+                      },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          _vm.editar(lom["id_" + _vm.nombre_model])
+                        }
+                      }
+                    },
+                    [_c("i", { staticClass: "fa fa-edit" })]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value:
+                            _vm.id_en_edicion == lom["id_" + _vm.nombre_model],
+                          expression:
+                            "id_en_edicion == lom[`id_${nombre_model}`]"
+                        }
+                      ],
+                      staticClass: "btn btn-sm btn-success",
+                      attrs: {
+                        "data-placement": "top",
+                        "data-toggle": "tooltip",
+                        title: "Guardar"
+                      },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          _vm.guardar_editado($event)
+                        }
+                      }
+                    },
+                    [_c("i", { staticClass: "fa fa-save" })]
+                  ),
+                  _vm._v(" "),
+                  _vm.id_en_edicion === lom["id_" + _vm.nombre_model]
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-sm btn-secondary",
+                          attrs: {
+                            "data-placement": "top",
+                            "data-toggle": "tooltip",
+                            title: "Dejar de editar"
+                          },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              _vm.dejar_de_editar()
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-close" })]
+                      )
+                    : _vm._e()
+                ])
+              ],
+              2
+            )
+          }),
+          _vm._v(" "),
+          _vm.lista_objs_model && _vm.lista_objs_model.length == 0
+            ? _c("tr", [
+                _c(
+                  "td",
+                  { attrs: { colspan: _vm.lista_objs_model.length - 1 } },
+                  [_vm._v("No hay más registros")]
+                )
+              ])
+            : _vm._e()
+        ],
+        2
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-446b9c64", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 87:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(88)
+/* template */
+var __vue_template__ = __webpack_require__(89)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/views/aplicaciones/FormularioCamposAplicacion.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e6b6b420", Component.options)
+  } else {
+    hotAPI.reload("data-v-e6b6b420", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 88:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+   name: 'formulario-campos-aplicacion',
+   props: ['aplicacion', 'dominios', 'servicios', 'tipos_aplicaciones', 'servidores'],
+   //template: ``,
+   data: function data() {
+      return {
+         'id_en_edicion': null
+      };
+   },
+   created: function created() {},
+   computed: {},
+   methods: {}
+});
+
+/***/ }),
+
+/***/ 89:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("h5", [_vm._v("Datos básicos")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-3 col-md-3" }, [
+        _c("dt", [_vm._v("Nombre aplicacion")]),
+        _vm._v(" "),
+        _c("dd", [
+          _c(
+            "p",
+            { staticClass: "control has-icon has-icon-right" },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.aplicacion.nom_aplicacion,
+                    expression: "aplicacion.nom_aplicacion"
+                  },
+                  {
+                    name: "validate",
+                    rawName: "v-validate",
+                    value: { required: true, regex: /^[a-zA-Z0-9_ ]+$/i },
+                    expression: "{required:true,regex:/^[a-zA-Z0-9_ ]+$/i}"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  name: "nom_aplicacion",
+                  "data-vv-delay": "500"
+                },
+                domProps: { value: _vm.aplicacion.nom_aplicacion },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.aplicacion,
+                      "nom_aplicacion",
+                      $event.target.value
+                    )
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("transition", { attrs: { name: "bounce" } }, [
+                _c("i", {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.errors.has("nom_aplicacion"),
+                      expression: "errors.has('nom_aplicacion')"
+                    }
+                  ],
+                  staticClass: "fa fa-exclamation-circle"
+                })
+              ]),
+              _vm._v(" "),
+              _c("transition", { attrs: { name: "bounce" } }, [
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("nom_aplicacion"),
+                        expression: "errors.has('nom_aplicacion')"
+                      }
+                    ],
+                    staticClass: "text-danger small"
+                  },
+                  [
+                    _vm._v(
+                      "\n               " +
+                        _vm._s(_vm.errors.first("nom_aplicacion")) +
+                        "\n            "
+                    )
+                  ]
+                )
+              ])
+            ],
+            1
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-3 col-md-3" }, [
+        _c("dt", [_vm._v("Alias")]),
+        _vm._v(" "),
+        _c("dd", [
+          _c(
+            "p",
+            { staticClass: "control has-icon has-icon-right" },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.aplicacion.alias,
+                    expression: "aplicacion.alias"
+                  },
+                  {
+                    name: "validate",
+                    rawName: "v-validate",
+                    value: { required: true, regex: /^[a-zA-Z0-9_ ]+$/i },
+                    expression: "{required:true,regex:/^[a-zA-Z0-9_ ]+$/i}"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", name: "alias", "data-vv-delay": "500" },
+                domProps: { value: _vm.aplicacion.alias },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.aplicacion, "alias", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("transition", { attrs: { name: "bounce" } }, [
+                _c("i", {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.errors.has("alias"),
+                      expression: "errors.has('alias')"
+                    }
+                  ],
+                  staticClass: "fa fa-exclamation-circle"
+                })
+              ]),
+              _vm._v(" "),
+              _c("transition", { attrs: { name: "bounce" } }, [
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("alias"),
+                        expression: "errors.has('alias')"
+                      }
+                    ],
+                    staticClass: "text-danger small"
+                  },
+                  [
+                    _vm._v(
+                      "\n               " +
+                        _vm._s(_vm.errors.first("alias")) +
+                        "\n            "
+                    )
+                  ]
+                )
+              ])
+            ],
+            1
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-6 col-md-6" }, [
+        _c("dt", [_vm._v("Detalle aplicacion")]),
+        _vm._v(" "),
+        _c("dd", [
+          _c(
+            "p",
+            { staticClass: "control has-icon has-icon-right" },
+            [
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.aplicacion.det_aplicacion,
+                    expression: "aplicacion.det_aplicacion"
+                  },
+                  {
+                    name: "validate",
+                    rawName: "v-validate",
+                    value: {
+                      required: true,
+                      regex: /^[a-zA-Z0-9_ ,.!@#$%*&]+$/i
+                    },
+                    expression:
+                      "{required:true,regex:/^[a-zA-Z0-9_ ,.!@#$%*&]+$/i}"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  cols: "15",
+                  rows: "1",
+                  name: "det_aplicacion",
+                  "data-vv-delay": "500"
+                },
+                domProps: { value: _vm.aplicacion.det_aplicacion },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.aplicacion,
+                      "det_aplicacion",
+                      $event.target.value
+                    )
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("transition", { attrs: { name: "bounce" } }, [
+                _c("i", {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.errors.has("det_aplicacion"),
+                      expression: "errors.has('det_aplicacion')"
+                    }
+                  ],
+                  staticClass: "fa fa-exclamation-circle"
+                })
+              ]),
+              _vm._v(" "),
+              _c("transition", { attrs: { name: "bounce" } }, [
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("det_aplicacion"),
+                        expression: "errors.has('det_aplicacion')"
+                      }
+                    ],
+                    staticClass: "text-danger small"
+                  },
+                  [
+                    _vm._v(
+                      "\n               " +
+                        _vm._s(_vm.errors.first("det_aplicacion")) +
+                        "\n            "
+                    )
+                  ]
+                )
+              ])
+            ],
+            1
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("h5", [_vm._v("Datos de red")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-3 col-md-3" }, [
+        _c("dt", [_vm._v("Url de la aplicacion")]),
+        _vm._v(" "),
+        _c("dd", [
+          _c(
+            "p",
+            { staticClass: "control has-icon has-icon-right" },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.aplicacion.url_web,
+                    expression: "aplicacion.url_web"
+                  },
+                  {
+                    name: "validate",
+                    rawName: "v-validate",
+                    value: { required: true, url: true },
+                    expression: "{required:true,url:true}"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  name: "url_web",
+                  "data-vv-delay": "500"
+                },
+                domProps: { value: _vm.aplicacion.url_web },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.aplicacion, "url_web", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("transition", { attrs: { name: "bounce" } }, [
+                _c("i", {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.errors.has("url_web"),
+                      expression: "errors.has('url_web')"
+                    }
+                  ],
+                  staticClass: "fa fa-exclamation-circle"
+                })
+              ]),
+              _vm._v(" "),
+              _c("transition", { attrs: { name: "bounce" } }, [
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("url_web"),
+                        expression: "errors.has('url_web')"
+                      }
+                    ],
+                    staticClass: "text-danger small"
+                  },
+                  [
+                    _vm._v(
+                      "\n               " +
+                        _vm._s(_vm.errors.first("url_web")) +
+                        "\n            "
+                    )
+                  ]
+                )
+              ])
+            ],
+            1
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-3 col-md-3" }, [
+        _c("dt", [_vm._v("Dominio")]),
+        _vm._v(" "),
+        _c("dd", [
+          _c(
+            "p",
+            { staticClass: "control has-icon has-icon-right" },
+            [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.aplicacion.id_dominio,
+                      expression: "aplicacion.id_dominio"
+                    },
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: { required: true, regex: /^[0-9]+$/i },
+                      expression: "{required:true,regex:/^[0-9]+$/i}"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "id_dominio", "data-vv-delay": "500" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.aplicacion,
+                        "id_dominio",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                _vm._l(_vm.dominios, function(d) {
+                  return _c("option", { domProps: { value: d.id_dominio } }, [
+                    _vm._v(
+                      "\n                     " +
+                        _vm._s(d.nom_dominio + " -> " + d.det_dominio) +
+                        "\n                  "
+                    )
+                  ])
+                })
+              ),
+              _vm._v(" "),
+              _c("transition", { attrs: { name: "bounce" } }, [
+                _c("i", {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.errors.has("id_dominio"),
+                      expression: "errors.has('id_dominio')"
+                    }
+                  ],
+                  staticClass: "fa fa-exclamation-circle"
+                })
+              ]),
+              _vm._v(" "),
+              _c("transition", { attrs: { name: "bounce" } }, [
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("id_dominio"),
+                        expression: "errors.has('id_dominio')"
+                      }
+                    ],
+                    staticClass: "text-danger small"
+                  },
+                  [
+                    _vm._v(
+                      "\n               " +
+                        _vm._s(_vm.errors.first("id_dominio")) +
+                        "\n            "
+                    )
+                  ]
+                )
+              ])
+            ],
+            1
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-3 col-md-3" }, [
+        _c("dt", [_vm._v("Subdominio")]),
+        _vm._v(" "),
+        _c("dd", [
+          _c(
+            "p",
+            { staticClass: "control has-icon has-icon-right" },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.aplicacion.subdominio,
+                    expression: "aplicacion.subdominio"
+                  },
+                  {
+                    name: "validate",
+                    rawName: "v-validate",
+                    value: {
+                      required: true,
+                      regex: /^[a-zA-Z0-9_ .,:/#$%&@!?+=()]+$/i
+                    },
+                    expression:
+                      "{required:true,regex:/^[a-zA-Z0-9_ .,:/#$%&@!?+=()]+$/i}"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  name: "subdominio",
+                  "data-vv-delay": "500"
+                },
+                domProps: { value: _vm.aplicacion.subdominio },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.aplicacion, "subdominio", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("transition", { attrs: { name: "bounce" } }, [
+                _c("i", {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.errors.has("subdominio"),
+                      expression: "errors.has('subdominio')"
+                    }
+                  ],
+                  staticClass: "fa fa-exclamation-circle"
+                })
+              ]),
+              _vm._v(" "),
+              _c("transition", { attrs: { name: "bounce" } }, [
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("subdominio"),
+                        expression: "errors.has('subdominio')"
+                      }
+                    ],
+                    staticClass: "text-danger small"
+                  },
+                  [
+                    _vm._v(
+                      "\n               " +
+                        _vm._s(_vm.errors.first("subdominio")) +
+                        "\n            "
+                    )
+                  ]
+                )
+              ])
+            ],
+            1
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-3 col-md-3" }, [
+        _c("dt", [_vm._v("Ip de la aplicacion")]),
+        _vm._v(" "),
+        _c("dd", [
+          _c(
+            "p",
+            { staticClass: "control has-icon has-icon-right" },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.aplicacion.ip,
+                    expression: "aplicacion.ip"
+                  },
+                  {
+                    name: "validate",
+                    rawName: "v-validate",
+                    value: { required: true, ip: true },
+                    expression: "{required:true,ip:true}"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", name: "ip", "data-vv-delay": "500" },
+                domProps: { value: _vm.aplicacion.ip },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.aplicacion, "ip", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("transition", { attrs: { name: "bounce" } }, [
+                _c("i", {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.errors.has("ip"),
+                      expression: "errors.has('ip')"
+                    }
+                  ],
+                  staticClass: "fa fa-exclamation-circle"
+                })
+              ]),
+              _vm._v(" "),
+              _c("transition", { attrs: { name: "bounce" } }, [
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("ip"),
+                        expression: "errors.has('ip')"
+                      }
+                    ],
+                    staticClass: "text-danger small"
+                  },
+                  [
+                    _vm._v(
+                      "\n               " +
+                        _vm._s(_vm.errors.first("ip")) +
+                        "\n            "
+                    )
+                  ]
+                )
+              ])
+            ],
+            1
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-3 col-md-3" }, [
+        _c("dt", [_vm._v("SSL/TLS")]),
+        _vm._v(" "),
+        _c("dd", [
+          _c(
+            "p",
+            { staticClass: "control has-icon has-icon-right" },
+            [
+              _c("toggle-button", {
+                attrs: {
+                  sync: true,
+                  value: (_vm.aplicacion.ssl_tls = _vm.$parent.en_array(
+                    [true, "true", 1],
+                    _vm.aplicacion.ssl_tls
+                  )
+                    ? true
+                    : false),
+                  width: 90,
+                  labels: {
+                    checked: "SSL Activo <i class=`fa fa-check`></i>",
+                    unchecked: "Sin SSL"
+                  }
+                },
+                model: {
+                  value: _vm.aplicacion.ssl_tls,
+                  callback: function($$v) {
+                    _vm.$set(_vm.aplicacion, "ssl_tls", $$v)
+                  },
+                  expression: "aplicacion.ssl_tls"
+                }
+              }),
+              _vm._v(" "),
+              _c("transition", { attrs: { name: "bounce" } }, [
+                _c("i", {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.errors.has("ssl_tls"),
+                      expression: "errors.has('ssl_tls')"
+                    }
+                  ],
+                  staticClass: "fa fa-exclamation-circle"
+                })
+              ]),
+              _vm._v(" "),
+              _c("transition", { attrs: { name: "bounce" } }, [
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("ssl_tls"),
+                        expression: "errors.has('ssl_tls')"
+                      }
+                    ],
+                    staticClass: "text-danger small"
+                  },
+                  [
+                    _vm._v(
+                      "\n               " +
+                        _vm._s(_vm.errors.first("ssl_tls")) +
+                        "\n            "
+                    )
+                  ]
+                )
+              ])
+            ],
+            1
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("h5", [_vm._v("Datos de asociación")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-4 col-md-4" }, [
+        _c("dt", [_vm._v("Servicio")]),
+        _vm._v(" "),
+        _c("dd", [
+          _c(
+            "p",
+            { staticClass: "control has-icon has-icon-right" },
+            [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.aplicacion.id_servicio,
+                      expression: "aplicacion.id_servicio"
+                    },
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: { required: true, regex: /^[0-9]+$/i },
+                      expression: "{required:true,regex:/^[0-9]+$/i}"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "id_servicio", "data-vv-delay": "500" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.aplicacion,
+                        "id_servicio",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                _vm._l(_vm.servicios, function(s) {
+                  return _c("option", { domProps: { value: s.id_servicio } }, [
+                    _vm._v(
+                      "\n                     " +
+                        _vm._s(s.nom_servicio + " -> " + s.det_servicio) +
+                        "\n                  "
+                    )
+                  ])
+                })
+              ),
+              _vm._v(" "),
+              _c("transition", { attrs: { name: "bounce" } }, [
+                _c("i", {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.errors.has("id_servicio"),
+                      expression: "errors.has('id_servicio')"
+                    }
+                  ],
+                  staticClass: "fa fa-exclamation-circle"
+                })
+              ]),
+              _vm._v(" "),
+              _c("transition", { attrs: { name: "bounce" } }, [
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("id_servicio"),
+                        expression: "errors.has('id_servicio')"
+                      }
+                    ],
+                    staticClass: "text-danger small"
+                  },
+                  [
+                    _vm._v(
+                      "\n               " +
+                        _vm._s(_vm.errors.first("id_servicio")) +
+                        "\n            "
+                    )
+                  ]
+                )
+              ])
+            ],
+            1
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-4 col-md-4" }, [
+        _c("dt", [_vm._v("Tipo aplicación")]),
+        _vm._v(" "),
+        _c("dd", [
+          _c(
+            "p",
+            { staticClass: "control has-icon has-icon-right" },
+            [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.aplicacion.id_tipo_aplicacion,
+                      expression: "aplicacion.id_tipo_aplicacion"
+                    },
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: { required: true, regex: /^[0-9]+$/i },
+                      expression: "{required:true,regex:/^[0-9]+$/i}"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "id_tipo_aplicacion", "data-vv-delay": "500" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.aplicacion,
+                        "id_tipo_aplicacion",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                _vm._l(_vm.tipos_aplicaciones, function(t) {
+                  return _c(
+                    "option",
+                    { domProps: { value: t.id_tipo_aplicacion } },
+                    [
+                      _vm._v(
+                        "\n                     " +
+                          _vm._s(
+                            t.nom_tipo_aplicacion +
+                              " -> " +
+                              t.det_tipo_aplicacion
+                          ) +
+                          "\n                  "
+                      )
+                    ]
+                  )
+                })
+              ),
+              _vm._v(" "),
+              _c("transition", { attrs: { name: "bounce" } }, [
+                _c("i", {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.errors.has("id_tipo_aplicacion"),
+                      expression: "errors.has('id_tipo_aplicacion')"
+                    }
+                  ],
+                  staticClass: "fa fa-exclamation-circle"
+                })
+              ]),
+              _vm._v(" "),
+              _c("transition", { attrs: { name: "bounce" } }, [
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("id_tipo_aplicacion"),
+                        expression: "errors.has('id_tipo_aplicacion')"
+                      }
+                    ],
+                    staticClass: "text-danger small"
+                  },
+                  [
+                    _vm._v(
+                      "\n               " +
+                        _vm._s(_vm.errors.first("id_tipo_aplicacion")) +
+                        "\n            "
+                    )
+                  ]
+                )
+              ])
+            ],
+            1
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-4 col-md-4" }, [
+        _c("dt", [_vm._v("Servidor")]),
+        _vm._v(" "),
+        _c("dd", [
+          _c(
+            "p",
+            { staticClass: "control has-icon has-icon-right" },
+            [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.aplicacion.id_servidor,
+                      expression: "aplicacion.id_servidor"
+                    },
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: { regex: /^[0-9]+$/i },
+                      expression: "{regex:/^[0-9]+$/i}"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "id_servidor", "data-vv-delay": "500" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.aplicacion,
+                        "id_servidor",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                _vm._l(_vm.servidores, function(s) {
+                  return _c("option", { domProps: { value: s.id_servidor } }, [
+                    _vm._v(
+                      "\n                     " +
+                        _vm._s(s.nom_servidor + " -> " + s.det_servidor) +
+                        "\n                  "
+                    )
+                  ])
+                })
+              ),
+              _vm._v(" "),
+              _c("transition", { attrs: { name: "bounce" } }, [
+                _c("i", {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.errors.has("id_servidor"),
+                      expression: "errors.has('id_servidor')"
+                    }
+                  ],
+                  staticClass: "fa fa-exclamation-circle"
+                })
+              ]),
+              _vm._v(" "),
+              _c("transition", { attrs: { name: "bounce" } }, [
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("id_servidor"),
+                        expression: "errors.has('id_servidor')"
+                      }
+                    ],
+                    staticClass: "text-danger small"
+                  },
+                  [
+                    _vm._v(
+                      "\n               " +
+                        _vm._s(_vm.errors.first("id_servidor")) +
+                        "\n            "
+                    )
+                  ]
+                )
+              ])
+            ],
+            1
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e6b6b420", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 90:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(91)
+/* template */
+var __vue_template__ = null
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/models/Aplicacion.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-00221e26", Component.options)
+  } else {
+    hotAPI.reload("data-v-00221e26", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 91:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Aplicacion", function() { return Aplicacion; });
+
+
+/*
+ * Declaracion del objeto
+ *
+ *
+ * */
+var Aplicacion = {
+   /*
+    * Decl. atributos descriptivos
+    *
+    *
+    *
+    * */
+   'pk_tabla': 'id_aplicacion',
+   'nombre_tabla': 'aplicaciones', //nombre tabla o de ruta
+   'nombre_ruta': 'aplicaciones', //nombre tabla o de ruta
+   'nombre_model': 'aplicacion',
+   'nombre_model_limpio': 'aplicacion_limpio',
+   'nombre_detalle': 'Aplicaciones',
+   'nombre_controller': 'AplicacionController',
+
+   /*
+    * Decl. atributos del objeto
+    *
+    *
+    *
+    * */
+   'atributos': {
+      'nom_aplicacion': null,
+      'det_aplicacion': null,
+      'alias': null,
+      'url_web': null,
+      'ip': null,
+      'subdominio': null,
+      'ssl_tls': false,
+      'id_dominio': null,
+      'id_tipo_aplicacion': null,
+      'id_servidor': null,
+      'id_servicio': null,
+      'id_usuario_registra': null,
+      'id_usuario_modifica': null,
+      'created_at': null,
+      'updated_at': null,
+      'deleted_at': null
+   },
+
+   /*
+    * Decl. objetos los cuales tiene relacion con este objeto
+    *
+    *
+    *
+    * */
+   'relaciones': [{ 'dominio': 'id_dominio' }, { 'tipo_aplicacion': 'id_tipo_aplicacion' }, { 'servicio': 'id_servicio' }, { 'servidor': 'id_servidor' }],
+
+   /*
+    * Decl. atributos que serán visibles en la tabla de entrada
+    *
+    *
+    *
+    * */
+   'tabla_campos': {
+      'id_aplicacion': false,
+      'nom_aplicacion': true,
+      'det_aplicacion': false,
+      'alias': true,
+      'url_web': true,
+      'ip': true,
+      'subdominio': false,
+      'ssl_tls': true,
+      'id_dominio': false,
+      'id_tipo_aplicacion': false,
+      'id_servidor': false,
+      'id_servicio': false,
+
+      'id_usuario_registra': false,
+      'id_usuario_modifica': false,
+      'created_at': false,
+      'updated_at': false,
+      'deleted_at': false
+   },
+
+   /*
+    * Decl. de labels para cada atributo
+    *
+    *
+    *
+    * */
+   'tabla_labels': {
+      'id_aplicacion': 'Id aplicacion',
+
+      'nom_aplicacion': 'Nombre aplicacion',
+      'det_aplicacion': 'Detalle aplicacion',
+      'alias': 'Alias',
+      'url_web': 'Url',
+      'ip': 'Ip',
+      'subdominio': 'Subdominio',
+      'ssl_tls': 'SSL/TLS',
+      'id_dominio': 'Id Dominio',
+      'id_tipo_aplicacion': 'Id Tipo App',
+      'id_servidor': 'Id Servidor',
+      'id_servicio': 'Id Servicio',
+
+      'id_usuario_registra': 'Usuario registra',
+      'id_usuario_modifica': 'Usuario modifica',
+      'created_at': 'Creado en',
+      'updated_at': 'Actualizado en',
+      'deleted_at': 'Eliminado en'
+   }
+
+};
+
+
 
 /***/ })
 

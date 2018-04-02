@@ -7,6 +7,20 @@
     * */
    const Aplicacion = {
       /*
+       * Decl. atributos descriptivos
+       *
+       *
+       *
+       * */
+      'pk_tabla': 'id_aplicacion',
+      'nombre_tabla':'aplicaciones', //nombre tabla o de ruta
+      'nombre_ruta':'aplicaciones', //nombre tabla o de ruta
+      'nombre_model':'aplicacion',
+      'nombre_model_limpio': 'aplicacion_limpio',
+      'nombre_detalle':'Aplicaciones',
+      'nombre_controller':'AplicacionController',
+
+      /*
        * Decl. atributos del objeto
        *
        *

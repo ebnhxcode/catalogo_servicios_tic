@@ -7,6 +7,20 @@
     * */
    const Servidor = {
       /*
+       * Decl. atributos descriptivos
+       *
+       *
+       *
+       * */
+      'pk_tabla': 'id_servidor',
+      'nombre_tabla':'servidores', //nombre tabla o de ruta
+      'nombre_ruta':'servidores', //nombre tabla o de ruta
+      'nombre_model':'servidor',
+      'nombre_model_limpio': 'servidor_limpio',
+      'nombre_detalle':'Servidores',
+      'nombre_controller':'ServidorController',
+
+      /*
       * Decl. atributos del objeto
       *
       *

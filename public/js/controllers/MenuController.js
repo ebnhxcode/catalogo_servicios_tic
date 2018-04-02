@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 96);
+/******/ 	return __webpack_require__(__webpack_require__.s = 104);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2194,6 +2194,220 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
+/***/ 104:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(105);
+
+
+/***/ }),
+
+/***/ 105:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert2__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_v_clipboard__);
+
+
+//Se importan todas las librerias compartidas y se cargan en el objeto instanciado como alias -> hp
+
+
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default.a, { dialog: true });
+
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
+
+Vue.component('download-excel', __webpack_require__(5));
+
+var MenuController = new Vue({
+   el: '#MenuController',
+   data: function data() {
+      return {
+         '$': window.jQuery,
+         'pk_tabla': 'id_menu',
+         'nombre_tabla': 'menus', //nombre tabla o de ruta
+         'nombre_ruta': 'menus', //nombre tabla o de ruta
+         'nombre_model': 'menu',
+         'nombre_model_limpio': 'menu_limpio',
+         'nombre_detalle': 'Menus',
+         'nombre_controller': 'MenuController',
+
+         'filtro_head': null,
+         'menu': {
+            'url_menu': null,
+            'nom_menu': null,
+            'det_menu': null,
+            'cod_menu': null,
+            'imagen_menu': null,
+            'font_icon_menu': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
+         },
+         'permitido_guardar': ['url_menu', 'nom_menu', 'det_menu', 'cod_menu', 'imagen_menu', 'font_icon_menu'],
+         'relaciones_clase': [],
+         'lom': {},
+         'lista_objs_model': [],
+         'menus': [],
+         'datos_excel': [],
+         'usuario_auth': {},
+
+         'campos_formularios': [],
+         'errores_campos': [],
+
+         //Variables para validar si se está creando o editando
+         'modal_crear_activo': false,
+         'modal_actualizar_activo': false,
+
+         //Estas var se deben conservar para todos los controllers por que se ejecutan para el modal crear (blanquea)
+         'lista_actualizar_activo': false,
+
+         'id_en_edicion': null,
+
+         'orden_lista': 'asc',
+
+         'tabla_campos': {
+            'id_menu': false,
+            'url_menu': true,
+            'nom_menu': true,
+            'det_menu': true,
+            'cod_menu': true,
+            'imagen_menu': false,
+            'font_icon_menu': false,
+            'id_usuario_registra': false,
+            'id_usuario_modifica': false,
+            'created_at': false,
+            'updated_at': false,
+            'deleted_at': false
+         },
+
+         'tabla_labels': {
+            'id_menu': 'Id menu',
+            'url_menu': 'Ruta menu',
+            'nom_menu': 'Nombre menu',
+            'det_menu': 'Detalle menu',
+            'cod_menu': 'Codigo menu',
+            'imagen_menu': 'Imagen menu',
+            'font_icon_menu': 'Font icon menu',
+            'id_usuario_registra': 'Usuario registra',
+            'id_usuario_modifica': 'Usuario modifica',
+            'created_at': 'Creado en',
+            'updated_at': 'Actualizado en',
+            'deleted_at': 'Eliminado en'
+         },
+
+         'excel_json_campos': {
+            'id_menu': 'String',
+            'url_menu': 'String',
+            'nom_menu': 'String',
+            'det_menu': 'String',
+            'cod_menu': 'String',
+            'imagen_menu': 'String',
+            'font_icon_menu': 'String',
+            'id_usuario_registra': 'String',
+            'id_usuario_modifica': 'String',
+            'created_at': 'String',
+            'updated_at': 'String',
+            'deleted_at': 'String'
+         },
+
+         'excel_json_datos': [],
+         'excel_data_contador': 0,
+
+         'append_to_json_excel': {}
+
+      };
+   },
+
+   computed: {},
+   watch: {
+      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el menu
+      // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
+      id_en_edicion: function id_en_edicion(_id_en_edicion) {
+         if (_id_en_edicion == null) {
+            this.limpiar_objeto_clase_local();
+         } else {
+            this.buscar_objeto_clase(_id_en_edicion);
+         }
+      },
+      //menus se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
+      menus: function menus(_menus) {
+         var self = this;
+         this.excel_json_datos = [];
+         return _menus.map(function (menu, index) {
+            return self.excel_json_datos.push({
+               'id_menu': menu.id_menu || '-',
+               'url_menu': menu.nom_menu || '-',
+               'nom_menu': menu.nom_menu || '-',
+               'det_menu': menu.det_menu || '-',
+               'cod_menu': menu.cod_menu || '-',
+               'imagen_menu': menu.imagen_menu || '-',
+               'font_icon_menu': menu.font_icon_menu || '-',
+               'id_usuario_registra': menu.id_usuario_registra || '-',
+               'id_usuario_modifica': menu.id_usuario_modifica || '-',
+               'created_at': menu.created_at || '-',
+               'updated_at': menu.updated_at || '-',
+               'deleted_at': menu.deleted_at || '-'
+            });
+         });
+      }
+   },
+   components: {
+      //'download-excel': DownloadExcel,
+   },
+   created: function created() {
+      this.inicializar();
+
+      $(document).ready(function () {
+         $('[data-toggle="tooltip"]').tooltip();
+      });
+
+      /*
+       $(document).ready(function () {
+       //Handle al recargar pagina
+       window.onbeforeunload = function(e){
+       return "Estás seguro que deseas cerrar la ventana?";
+       };
+       window.onunload = function(e){
+       return "Cierre de la ventana";
+       };
+        });
+       */
+   },
+
+   ready: {},
+   filters: {},
+   mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
+   methods: {
+      inicializar: function inicializar() {
+         var _this = this;
+
+         this.$http.get('/' + this.nombre_ruta).then(function (response) {
+            // success callback
+            _this.lista_objs_model = response.body.menus || null;
+            _this.menus = response.body.menus || null;
+            _this.datos_excel = response.body.menus || null;
+            _this.usuario_auth = response.body.usuario_auth || null;
+         }, function (response) {
+            // error callback
+            _this.checkear_estado_respuesta_http(response.status);
+         });
+      }
+   }
+});
+
+/***/ }),
+
 /***/ 2:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3761,220 +3975,6 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-795cc6e8", module.exports)
   }
 }
-
-/***/ }),
-
-/***/ 96:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(97);
-
-
-/***/ }),
-
-/***/ 97:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert2__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_v_clipboard__);
-
-
-//Se importan todas las librerias compartidas y se cargan en el objeto instanciado como alias -> hp
-
-
-
-Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default.a, { dialog: true });
-
-
-Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
-
-Vue.component('download-excel', __webpack_require__(5));
-
-var MenuController = new Vue({
-   el: '#MenuController',
-   data: function data() {
-      return {
-         '$': window.jQuery,
-         'pk_tabla': 'id_menu',
-         'nombre_tabla': 'menus', //nombre tabla o de ruta
-         'nombre_ruta': 'menus', //nombre tabla o de ruta
-         'nombre_model': 'menu',
-         'nombre_model_limpio': 'menu_limpio',
-         'nombre_detalle': 'Menus',
-         'nombre_controller': 'MenuController',
-
-         'filtro_head': null,
-         'menu': {
-            'url_menu': null,
-            'nom_menu': null,
-            'det_menu': null,
-            'cod_menu': null,
-            'imagen_menu': null,
-            'font_icon_menu': null,
-            'id_usuario_registra': null,
-            'id_usuario_modifica': null,
-            'created_at': null,
-            'updated_at': null,
-            'deleted_at': null
-         },
-         'permitido_guardar': ['url_menu', 'nom_menu', 'det_menu', 'cod_menu', 'imagen_menu', 'font_icon_menu'],
-         'relaciones_clase': [],
-         'lom': {},
-         'lista_objs_model': [],
-         'menus': [],
-         'datos_excel': [],
-         'usuario_auth': {},
-
-         'campos_formularios': [],
-         'errores_campos': [],
-
-         //Variables para validar si se está creando o editando
-         'modal_crear_activo': false,
-         'modal_actualizar_activo': false,
-
-         //Estas var se deben conservar para todos los controllers por que se ejecutan para el modal crear (blanquea)
-         'lista_actualizar_activo': false,
-
-         'id_en_edicion': null,
-
-         'orden_lista': 'asc',
-
-         'tabla_campos': {
-            'id_menu': false,
-            'url_menu': true,
-            'nom_menu': true,
-            'det_menu': true,
-            'cod_menu': true,
-            'imagen_menu': false,
-            'font_icon_menu': false,
-            'id_usuario_registra': false,
-            'id_usuario_modifica': false,
-            'created_at': false,
-            'updated_at': false,
-            'deleted_at': false
-         },
-
-         'tabla_labels': {
-            'id_menu': 'Id menu',
-            'url_menu': 'Ruta menu',
-            'nom_menu': 'Nombre menu',
-            'det_menu': 'Detalle menu',
-            'cod_menu': 'Codigo menu',
-            'imagen_menu': 'Imagen menu',
-            'font_icon_menu': 'Font icon menu',
-            'id_usuario_registra': 'Usuario registra',
-            'id_usuario_modifica': 'Usuario modifica',
-            'created_at': 'Creado en',
-            'updated_at': 'Actualizado en',
-            'deleted_at': 'Eliminado en'
-         },
-
-         'excel_json_campos': {
-            'id_menu': 'String',
-            'url_menu': 'String',
-            'nom_menu': 'String',
-            'det_menu': 'String',
-            'cod_menu': 'String',
-            'imagen_menu': 'String',
-            'font_icon_menu': 'String',
-            'id_usuario_registra': 'String',
-            'id_usuario_modifica': 'String',
-            'created_at': 'String',
-            'updated_at': 'String',
-            'deleted_at': 'String'
-         },
-
-         'excel_json_datos': [],
-         'excel_data_contador': 0,
-
-         'append_to_json_excel': {}
-
-      };
-   },
-
-   computed: {},
-   watch: {
-      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el menu
-      // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
-      id_en_edicion: function id_en_edicion(_id_en_edicion) {
-         if (_id_en_edicion == null) {
-            this.limpiar_objeto_clase_local();
-         } else {
-            this.buscar_objeto_clase(_id_en_edicion);
-         }
-      },
-      //menus se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
-      menus: function menus(_menus) {
-         var self = this;
-         this.excel_json_datos = [];
-         return _menus.map(function (menu, index) {
-            return self.excel_json_datos.push({
-               'id_menu': menu.id_menu || '-',
-               'url_menu': menu.nom_menu || '-',
-               'nom_menu': menu.nom_menu || '-',
-               'det_menu': menu.det_menu || '-',
-               'cod_menu': menu.cod_menu || '-',
-               'imagen_menu': menu.imagen_menu || '-',
-               'font_icon_menu': menu.font_icon_menu || '-',
-               'id_usuario_registra': menu.id_usuario_registra || '-',
-               'id_usuario_modifica': menu.id_usuario_modifica || '-',
-               'created_at': menu.created_at || '-',
-               'updated_at': menu.updated_at || '-',
-               'deleted_at': menu.deleted_at || '-'
-            });
-         });
-      }
-   },
-   components: {
-      //'download-excel': DownloadExcel,
-   },
-   created: function created() {
-      this.inicializar();
-
-      $(document).ready(function () {
-         $('[data-toggle="tooltip"]').tooltip();
-      });
-
-      /*
-       $(document).ready(function () {
-       //Handle al recargar pagina
-       window.onbeforeunload = function(e){
-       return "Estás seguro que deseas cerrar la ventana?";
-       };
-       window.onunload = function(e){
-       return "Cierre de la ventana";
-       };
-        });
-       */
-   },
-
-   ready: {},
-   filters: {},
-   mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
-   methods: {
-      inicializar: function inicializar() {
-         var _this = this;
-
-         this.$http.get('/' + this.nombre_ruta).then(function (response) {
-            // success callback
-            _this.lista_objs_model = response.body.menus || null;
-            _this.menus = response.body.menus || null;
-            _this.datos_excel = response.body.menus || null;
-            _this.usuario_auth = response.body.usuario_auth || null;
-         }, function (response) {
-            // error callback
-            _this.checkear_estado_respuesta_http(response.status);
-         });
-      }
-   }
-});
 
 /***/ })
 

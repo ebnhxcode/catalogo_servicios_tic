@@ -19,11 +19,13 @@
    </div>
    <div class="tab-content col-sm-10" id="v-pills-tabContent">
       <div class="tab-pane fade show active" id="v-pills-aplicaciones" role="tabpanel" aria-labelledby="v-pills-aplicaciones-tab">
-
-         <pre>
-            @{{ servidor.aplicaciones }}
-         </pre>
-
+         <tabla-listar-aplicacion
+            :usuario_auth="usuario_auth"
+            :nombre_model="aplicacion.nombre_model"
+            :tabla_labels="aplicacion.tabla_labels"
+            :tabla_campos="aplicacion.tabla_campos"
+            :lista_objs_model="$data[nombre_model].aplicaciones">
+         </tabla-listar-aplicacion>
       </div>
       <div class="tab-pane fade" id="v-pills-historial" role="tabpanel" aria-labelledby="v-pills-historial-tab">
 

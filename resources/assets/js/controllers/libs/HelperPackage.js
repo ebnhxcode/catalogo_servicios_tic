@@ -8,6 +8,10 @@ import swal from 'sweetalert2'
 */
 export const inyeccion_funciones_compartidas = {
    methods: {
+      /*
+      *
+      *
+      * */
       auto_alerta_corta: function (titulo,texto,tipo,tiempo=1500) {
          swal({
             title: titulo,
@@ -16,6 +20,11 @@ export const inyeccion_funciones_compartidas = {
             timer: tiempo || 1500
          });
       },
+
+      /*
+       *
+       *
+       * */
       auto_alerta_media: function (titulo,texto,tipo,tiempo=3000) {
          swal({
             title: titulo,
@@ -24,7 +33,11 @@ export const inyeccion_funciones_compartidas = {
             timer: tiempo || 3000
          });
       },
-      //Esta funcion en ingles es propia de los modal para hacer algo antes que se cierre
+
+      /*
+       * Esta funcion en ingles es propia de los modal para hacer algo antes que se cierre
+       *
+       * */
       before_close: function (event) {
          //console.log(event.name);
          switch (event.name) {
@@ -38,6 +51,11 @@ export const inyeccion_funciones_compartidas = {
          }
          return;
       },
+
+      /*
+       *
+       *
+       * */
       buscar_en_array_por_modelo_e_id: function (id, array, model) {
          for (let a in array) {
             if (array[a][`id_${model}`] == id) {
@@ -45,6 +63,11 @@ export const inyeccion_funciones_compartidas = {
             }
          } return null;
       },
+
+      /*
+       *
+       *
+       * */
       buscar_objeto_clase: function (id) {
          this.$http.get(`/${this.nombre_tabla}/${id}`).then(response => { // success callback
             this.$data[`${this.nombre_model}`] = response.body[`${this.nombre_model}`];
@@ -52,6 +75,23 @@ export const inyeccion_funciones_compartidas = {
             this.checkear_estado_respuesta_http(response.status);
          });
       },
+
+      /*
+       *
+       *
+       * */
+      buscar_objeto_otra_clase: function (id,nombre_tabla,nombre_model) {
+         this.$http.get(`/${nombre_tabla}/${id}`).then(response => { // success callback
+            return response.body[`${nombre_model}`];
+         }, response => { // error callback
+            this.checkear_estado_respuesta_http(response.status);
+         });
+      },
+
+      /*
+       *
+       *
+       * */
       buscar_objeto_clase_config_relaciones: function (id, relaciones) {
          this.$http.get(`/${this.nombre_tabla}/${id}`).then(response => { // success callback
             this.$data[`${this.nombre_model}`] = response.body[`${this.nombre_model}`];
@@ -60,12 +100,26 @@ export const inyeccion_funciones_compartidas = {
             this.checkear_estado_respuesta_http(response.status);
          });
       },
-      // change order variable direction
+
+      /*
+       * change order variable direction
+       *
+       * */
       cambiar_orden_lista: function (columna) {
          this.orden_lista == 'asc' ? this.orden_lista = 'desc' : this.orden_lista = 'asc';
          this.ordenar_lista(columna);
       },
+
+      /*
+       *
+       *
+       * */
       cambiar_visibilidad: function (campo) { return this.tabla_campos[campo] = !this.tabla_campos[campo]; },
+
+      /*
+       *
+       *
+       * */
       checkear_estado_respuesta_http: function (status_code) {
          switch (status_code) {
             case 401:
@@ -115,6 +169,11 @@ export const inyeccion_funciones_compartidas = {
                break;
          }
       },
+
+      /*
+       *
+       *
+       * */
       configurar_relaciones: function (objetos_clase, relaciones) {
          objetos_clase.map((o) => {
             o = relaciones.map((r) => {
@@ -125,10 +184,20 @@ export const inyeccion_funciones_compartidas = {
             });
          });
       },
+
+      /*
+       *
+       *
+       * */
       dejar_de_editar: function () {
          this.lista_actualizar_activo = false;
          this.id_en_edicion = null;
       },
+
+      /*
+       *
+       *
+       * */
       editar: function (id) {
          this.id_en_edicion = id;
          this.lista_actualizar_activo = true;
@@ -136,6 +205,11 @@ export const inyeccion_funciones_compartidas = {
          this.$data[`${this.nombre_model}`] =
             this.buscar_en_array_por_modelo_e_id(this.$data[`${this.nombre_model}`][`${this.pk_tabla}`], this.$data[`${this.nombre_ruta}`], this.nombre_model);
       },
+
+      /*
+       *
+       *
+       * */
       eliminar: function (id) {
          swal({
             title: "¿Estás seguro/a?",
@@ -183,10 +257,35 @@ export const inyeccion_funciones_compartidas = {
          });
 
       },
+
+      /*
+       *
+       *
+       * */
       es_undefined:(v) => { return (typeof v == undefined)?true:false; },
+
+      /*
+       *
+       *
+       * */
       es_null: (v) => { return (v==null)?true:false; },
+
+      /*
+       *
+       *
+       * */
       es_empty: (v) => { return (!v || v==null || v=='' || typeof v == undefined) ? true : false; },
+
+      /*
+       *
+       *
+       * */
       en_array: (array, v) => { return (array.indexOf(v) > -1) ? true : false; },
+
+      /*
+       *
+       *
+       * */
       es_linux: function () {
          if (this.$data[`${this.nombre_model}`][`id_sistema_operativo`] != null) {
             var so = this.buscar_en_array_por_modelo_e_id(this.$data[`${this.nombre_model}`][`id_sistema_operativo`], this.$data[`sistemas_operativos`], `sistema_operativo`);
@@ -197,6 +296,11 @@ export const inyeccion_funciones_compartidas = {
          }
          return false;
       },
+
+      /*
+       *
+       *
+       * */
       encontrar: function (id) {
          this.$http.get(`/${this.nombre_tabla}/${id}`).then(response => { // success callback
             return response.body[`${this.nombre_model}`];
@@ -204,6 +308,11 @@ export const inyeccion_funciones_compartidas = {
             this.checkear_estado_respuesta_http(response.status);
          });
       },
+
+      /*
+       *
+       *
+       * */
       guardar: function () {
          //Ejecuta validacion sobre los campos con validaciones
          //console.log(this.validar_campos());
@@ -239,6 +348,11 @@ export const inyeccion_funciones_compartidas = {
          });
          return;
       },
+
+      /*
+       *
+       *
+       * */
       guardar_editado: function () {
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
          this.$http.put(`/${this.nombre_ruta}/${this.$data[this.nombre_model][this.pk_tabla]}`, this.$data[this.nombre_model]).then(response => { // success callback
@@ -274,9 +388,19 @@ export const inyeccion_funciones_compartidas = {
          });
          return;
       },
+
+      /*
+       *
+       *
+       * */
       limpiar_objeto_clase_local: function () {
          for (var k in this.$data[`${this.nombre_model}`]) { this.$data[`${this.nombre_model}`][k] = null; }
       },
+
+      /*
+       *
+       *
+       * */
       mostrar: function (id, tabla, modelo) {
          this.$http.get(`/${tabla}/${id}`).then(response => { // success callback
             //console.log(response.body[modelo][0]);
@@ -288,6 +412,11 @@ export const inyeccion_funciones_compartidas = {
             this.checkear_estado_respuesta_http(response.status);
          });
       },
+
+      /*
+       *
+       *
+       * */
       mostrar_modal_actualizar: function (id) {
          this.lista_actualizar_activo = false;
          this.modal_actualizar_activo = true;
@@ -315,6 +444,11 @@ export const inyeccion_funciones_compartidas = {
             ]
          });
       },
+
+      /*
+       *
+       *
+       * */
       mostrar_modal_crear: function () {
          this.lista_actualizar_activo = false;
          this.modal_crear_activo = true;
@@ -342,6 +476,11 @@ export const inyeccion_funciones_compartidas = {
             ]
          });
       },
+
+      /*
+       *
+       *
+       * */
       mostrar_notificaciones: function (respuesta_http) {
 
          var status = respuesta_http.status;
@@ -375,6 +514,10 @@ export const inyeccion_funciones_compartidas = {
 
       },
 
+      /*
+       *
+       *
+       * */
       validar_campos: function () {
          /*DEPRECATED*/
          this.$validator.validateAll().then(res => {
@@ -382,22 +525,34 @@ export const inyeccion_funciones_compartidas = {
          });
       },
 
-
+      /*
+       *
+       *
+       * */
       notificar: function (tipo, titulo, mensajes, grupo) {
          for (var m in mensajes) { this.$notify({ group: grupo, type: tipo, title: titulo, text: mensajes[m][0] }); }
          return true;
       },
+
+      /*
+       *
+       *
+       * */
       ocultar_modal: function (nom_modal) { this.$modal.hide(nom_modal); },
+      /*
+       *
+       *
+       * */
       // function to order lists
       ordenar_lista: function (columna) { this.lista_objs_model = _.orderBy(this.lista_objs_model, columna, this.orden_lista); },
+
+      /*
+       *
+       *
+       * */
       separar_miles: function (num) {
          return num.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
       },
-
-
-
-
-
 
    }
 }

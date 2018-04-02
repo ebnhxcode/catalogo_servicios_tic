@@ -12,7 +12,9 @@ Vue.use(Clipboard);
 
 Vue.component('download-excel', require('../components/DownloadExcel.vue'));
 Vue.component('vista-principal-servidor', require('../components/views/servidores/VistaPrincipalServidor.vue'));
-//Vue.component('tabla-listar', require('../components/TablaListar.vue'));
+Vue.component('tabla-listar-aplicacion', require('../components/views/aplicaciones/TablaListarAplicacion.vue'));
+Vue.component('formulario-campos-aplicacion', require('../components/views/aplicaciones/FormularioCamposAplicacion.vue'));
+import { Aplicacion } from '../components/models/Aplicacion.vue';
 
 const ServidorController = new Vue({
    el: '#ServidorController',
@@ -28,6 +30,7 @@ const ServidorController = new Vue({
          'nombre_controller':'ServidorController',
 
          'filtro_head':null,
+
          'servidor': {
             'nom_servidor':null,
             'det_servidor':null,
@@ -61,6 +64,8 @@ const ServidorController = new Vue({
             'updated_at':null,
             'deleted_at':null,
          },
+         'aplicacion':Aplicacion, //objeto importado para ser usado por sus propiedades
+
          'permitido_guardar':[
             'nom_servidor',
             'det_servidor',
@@ -257,7 +262,7 @@ const ServidorController = new Vue({
       id_en_edicion: function (id_en_edicion) {
          if (id_en_edicion == null) { this.limpiar_objeto_clase_local(); }
          else { this.buscar_objeto_clase_config_relaciones(id_en_edicion, this.relaciones_clase); }
-
+lista_objs_model
       },
       //servidores se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
       servidores: function (servidores) {
