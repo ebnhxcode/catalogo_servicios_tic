@@ -127,21 +127,24 @@
 
          <h4>Aplicaciones cargadas</h4>
 
-         <table class="table table-striped table-hover table-sm" v-if="servidor.aplicaciones && servidor.aplicaciones.length > 0">
-            <thead>
-            <tr>
-               <th>Nombre</th>
-               <th>Descripción</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="app in servidor.aplicaciones">
-               <td>{{ app.nom_aplicacion }}</td>
-               <td>{{ app.det_aplicacion }}</td>
-            </tr>
-            </tbody>
+         <div class="table-responsive pro" v-if="servidor.aplicaciones && servidor.aplicaciones.length > 0">
+            <table class="table table-striped table-hover table-sm">
+               <thead>
+               <tr>
+                  <th>Nombre</th>
+                  <th>Descripción</th>
+               </tr>
+               </thead>
+               <tbody>
+               <tr v-for="app in servidor.aplicaciones">
+                  <td>{{ app.nom_aplicacion }}</td>
+                  <td>{{ app.det_aplicacion }}</td>
+               </tr>
+               </tbody>
 
-         </table><!-- .table -->
+            </table><!-- .table -->
+         </div>
+
          <div class="card card-body bg-light" v-else>
             Hasta el momento no existen aplicaciones cargadas en este servidor.
          </div><!-- .card -->
@@ -149,29 +152,31 @@
          <br>
          <h4>Histórico de cambios del servidor</h4>
 
-         <table class="table table-striped table-hover table-sm" v-if="servidor.servidor_historico_cambios && servidor.servidor_historico_cambios.length > 0">
-            <thead>
-            <tr>
-               <th>Ram</th>
-               <th>Memoria Disco</th>
-               <th>Swap</th>
-               <th>Cores</th>
-               <th>Frec. Hz</th>
-               <th>Fecha cambio</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="h in servidor.servidor_historico_cambios">
-               <td>{{ h.ram }}</td>
-               <td>{{ h.memoria_dd }}</td>
-               <td>{{ h.swap }}</td>
-               <td>{{ h.nucleos }}</td>
-               <td>{{ h.frec_procesador }}</td>
-               <td>{{ h.created_at }}</td>
-            </tr>
-            </tbody>
+         <div class="table-responsive pro" v-if="servidor.servidor_historico_cambios && servidor.servidor_historico_cambios.length > 0">
+            <table class="table table-striped table-hover table-sm">
+               <thead>
+               <tr>
+                  <th>Ram</th>
+                  <th>Memoria Disco</th>
+                  <th>Swap</th>
+                  <th>Cores</th>
+                  <th>Frec. Hz</th>
+                  <th>Fecha cambio</th>
+               </tr>
+               </thead>
+               <tbody>
+               <tr v-for="h in servidor.servidor_historico_cambios">
+                  <td>{{ h.ram }}</td>
+                  <td>{{ h.memoria_dd }}</td>
+                  <td>{{ h.swap }}</td>
+                  <td>{{ h.nucleos }}</td>
+                  <td>{{ h.frec_procesador }}</td>
+                  <td>{{ h.created_at }}</td>
+               </tr>
+               </tbody>
 
-         </table><!-- .table -->
+            </table><!-- .table -->
+         </div>
          <div class="card card-body bg-light" v-else>
             Hasta el momento no existe historial de cambios para este servidor.
          </div><!-- .card -->

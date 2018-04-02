@@ -14,7 +14,7 @@
       <a class="nav-link" data-toggle="tab" href="#vista_principal_tab" role="tab"
          aria-controls="vista_principal" aria-selected="true">Vista General</a>
    </li>
-   <li class="nav-item">
+   <li class="nav-item" v-show="true">
       <a class="nav-link" data-toggle="tab" href="#relacionados_a_tab" role="tab"
          aria-controls="relacionados_a" aria-selected="true">Relacionados a ➜
          <span class="text-info">@{{ $data[`${nombre_model}`][`nom_${nombre_model}`] }}</span>
@@ -32,14 +32,14 @@
 
    <!-- La vista principal que se incluye en el modal de actualizar o gestionar el registro unico -->
    @if(view()->exists("$nombre_tabla.partials.vista_principal"))
-      <div class="tab-pane active" id="vista_principal_tab" role="tabpanel" aria-labelledby="vista_principal_tab">
+      <div class="tab-pane fade show active" id="vista_principal_tab" role="tabpanel" aria-labelledby="vista_principal_tab">
          <br>
          @include("$nombre_tabla.partials.vista_principal")
       </div><!-- .tab-pane .active #vista_principal_tab -->
    @endif
 
    <!-- La subvista que se encarga de importar los campos del formulario -->
-   <div class="tab-pane fade" id="vista_actualizar_tab" role="tabpanel" aria-labelledby="vista_actualizar_tab"
+   <div class="tab-pane fade show" id="vista_actualizar_tab" role="tabpanel" aria-labelledby="vista_actualizar_tab"
       v-if="en_array(['Administrador','Jefe de Area','Lider Equipo','App Manager'],usuario_auth.usuario_role.role.nom_role)">
 
       <br>
@@ -69,11 +69,9 @@
    <!-- La subvista que se encarga de mostrar las relaciones con este modulo y posibles mantenedores -->
    <br>
    @if(view()->exists("$nombre_tabla.partials.relacionados_$nombre_modelo"))
-   <div class="tab-pane fade" id="relacionados_a_tab" role="tabpanel" aria-labelledby="relacionados_a_tab">
-      @include("$nombre_tabla.partials.relacionados_$nombre_modelo")
-   </div>
-   @else
-      Contenido en construcción
+      <div class="tab-pane fade show" id="relacionados_a_tab" role="tabpanel" aria-labelledby="relacionados_a_tab">
+         @include("$nombre_tabla.partials.relacionados_$nombre_modelo")
+      </div>
    @endif
 
 

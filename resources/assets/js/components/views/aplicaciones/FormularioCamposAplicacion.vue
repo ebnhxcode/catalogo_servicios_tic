@@ -18,7 +18,7 @@
 
             <transition name="bounce">
                <span v-show="errors.has('nom_servidor')" class="text-danger small">
-                  @{{ errors.first('nom_servidor') }}
+                  {{ errors.first('nom_servidor') }}
                </span>
             </transition>
          </p>
@@ -42,7 +42,7 @@
 
             <transition name="bounce">
                <span v-show="errors.has('det_servidor')" class="text-danger small">
-                  @{{ errors.first('det_servidor') }}
+                  {{ errors.first('det_servidor') }}
                </span>
             </transition>
          </p>
@@ -71,7 +71,7 @@
 
             <transition name="bounce">
                <span v-show="errors.has('ip_servidor')" class="text-danger small">
-                  @{{ errors.first('ip_servidor') }}
+                  {{ errors.first('ip_servidor') }}
                </span>
             </transition>
          </p>
@@ -96,7 +96,7 @@
 
             <transition name="bounce">
                <span v-show="errors.has('mac')" class="text-danger small">
-                  @{{ errors.first('mac') }}
+                  {{ errors.first('mac') }}
                </span>
             </transition>
          </p>
@@ -113,7 +113,7 @@
             <select class="form-control" v-model="servidor.id_datacentro" name="id_datacentro"
                     v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
                <option :value="d.id_datacentro" v-for="d in datacentros">
-                  @{{ `${d.nom_datacentro} -> ${d.det_datacentro}` }}
+                  {{ `${d.nom_datacentro} -> ${d.det_datacentro}` }}
                </option>
             </select>
 
@@ -123,7 +123,7 @@
 
             <transition name="bounce">
                   <span v-show="errors.has('id_datacentro')" class="text-danger small">
-                     @{{ errors.first('id_datacentro') }}
+                     {{ errors.first('id_datacentro') }}
                   </span>
             </transition>
          </p>
@@ -138,7 +138,7 @@
             <select class="form-control" v-model="servidor.id_cluster" name="id_cluster"
                     v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
                <option :value="c.id_cluster" v-for="c in clusters">
-                  @{{ `${c.nom_cluster} -> ${c.det_cluster}` }}
+                  {{ `${c.nom_cluster} -> ${c.det_cluster}` }}
                </option>
             </select>
 
@@ -148,7 +148,7 @@
 
             <transition name="bounce">
                   <span v-show="errors.has('id_cluster')" class="text-danger small">
-                     @{{ errors.first('id_cluster') }}
+                     {{ errors.first('id_cluster') }}
                   </span>
             </transition>
          </p>
@@ -163,7 +163,7 @@
             <select class="form-control" v-model="servidor.id_tipo_sistema_operativo" name="id_tipo_sistema_operativo"
                     v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
                <option :value="tso.id_tipo_sistema_operativo" v-for="tso in tipos_sistemas_operativos">
-                  @{{ `${tso.nom_tipo_sistema_operativo} -> ${tso.det_tipo_sistema_operativo}` }}
+                  {{ `${tso.nom_tipo_sistema_operativo} -> ${tso.det_tipo_sistema_operativo}` }}
                </option>
             </select>
 
@@ -180,7 +180,7 @@
                     v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
                <option :value="s.id_sistema_operativo" v-for="s in sistemas_operativos"
                        v-if="s.id_tipo_sistema_operativo==servidor.id_tipo_sistema_operativo||servidor.id_tipo_sistema_operativo==null">
-                  @{{ `${s.nom_sistema_operativo} -> ${s.vers_sistema_operativo}` }}
+                  {{ `${s.nom_sistema_operativo} -> ${s.vers_sistema_operativo}` }}
                </option>
             </select>
 
@@ -190,7 +190,7 @@
 
             <transition name="bounce">
                   <span v-show="errors.has('id_sistema_operativo')" class="text-danger small">
-                     @{{ errors.first('id_sistema_operativo') }}
+                     {{ errors.first('id_sistema_operativo') }}
                   </span>
             </transition>
          </p>
@@ -219,7 +219,7 @@
 
             <transition name="bounce">
                <span v-show="errors.has('ram')" class="text-danger small">
-                  @{{ errors.first('ram') }}
+                  {{ errors.first('ram') }}
                </span>
             </transition>
          </p>
@@ -242,7 +242,7 @@
 
             <transition name="bounce">
                <span v-show="errors.has('memoria_dd')" class="text-danger small">
-                  @{{ errors.first('memoria_dd') }}
+                  {{ errors.first('memoria_dd') }}
                </span>
             </transition>
          </p>
@@ -266,7 +266,7 @@
 
             <transition name="bounce">
                <span v-show="errors.has('swap')" class="text-danger small">
-                  @{{ errors.first('swap') }}
+                  {{ errors.first('swap') }}
                </span>
             </transition>
          </p>
@@ -293,7 +293,7 @@
 
             <transition name="bounce">
                <span v-show="errors.has('procesador')" class="text-danger small">
-                  @{{ errors.first('procesador') }}
+                  {{ errors.first('procesador') }}
                </span>
             </transition>
          </p>
@@ -316,7 +316,7 @@
 
             <transition name="bounce">
                <span v-show="errors.has('modelo_procesador')" class="text-danger small">
-                  @{{ errors.first('modelo_procesador') }}
+                  {{ errors.first('modelo_procesador') }}
                </span>
             </transition>
          </p>
@@ -339,7 +339,7 @@
 
             <transition name="bounce">
                <span v-show="errors.has('frec_procesador')" class="text-danger small">
-                  @{{ errors.first('frec_procesador') }}
+                  {{ errors.first('frec_procesador') }}
                </span>
             </transition>
          </p>
@@ -362,7 +362,7 @@
 
             <transition name="bounce">
                <span v-show="errors.has('nucleos')" class="text-danger small">
-                  @{{ errors.first('nucleos') }}
+                  {{ errors.first('nucleos') }}
                </span>
             </transition>
          </p>
@@ -394,7 +394,7 @@
 
             <transition name="bounce">
                <span v-show="errors.has('lvm_raiz')" class="text-danger small">
-                  @{{ errors.first('lvm_raiz') }}
+                  {{ errors.first('lvm_raiz') }}
                </span>
             </transition>
          </p>
@@ -419,7 +419,7 @@
 
             <transition name="bounce">
                <span v-show="errors.has('lvm_usr')" class="text-danger small">
-                  @{{ errors.first('lvm_usr') }}
+                  {{ errors.first('lvm_usr') }}
                </span>
             </transition>
          </p>
@@ -443,7 +443,7 @@
 
             <transition name="bounce">
                <span v-show="errors.has('lvm_tmp')" class="text-danger small">
-                  @{{ errors.first('lvm_tmp') }}
+                  {{ errors.first('lvm_tmp') }}
                </span>
             </transition>
          </p>
@@ -468,7 +468,7 @@
 
             <transition name="bounce">
                <span v-show="errors.has('lvm_var')" class="text-danger small">
-                  @{{ errors.first('lvm_var') }}
+                  {{ errors.first('lvm_var') }}
                </span>
             </transition>
          </p>
@@ -492,7 +492,7 @@
 
             <transition name="bounce">
                <span v-show="errors.has('lvm_home')" class="text-danger small">
-                  @{{ errors.first('lvm_home') }}
+                  {{ errors.first('lvm_home') }}
                </span>
             </transition>
          </p>
@@ -517,7 +517,7 @@
             <select class="form-control" v-model="servidor.id_estado" name="id_estado"
                     v-validate="{required:true,integer:true}" data-vv-delay="500">
                <option :value="e.id_estado" v-for="e in estados">
-                  @{{ `${e.nom_estado} -> ${e.det_estado}` }}
+                  {{ `${e.nom_estado} -> ${e.det_estado}` }}
                </option>
             </select>
 
@@ -527,7 +527,7 @@
 
             <transition name="bounce">
                <span v-show="errors.has('id_estado')" class="text-danger small">
-                  @{{ errors.first('id_estado') }}
+                  {{ errors.first('id_estado') }}
                </span>
             </transition>
          </p>
@@ -545,7 +545,7 @@
             <select class="form-control" v-model="servidor.id_ambiente" name="id_ambiente"
                     v-validate="{required:true,integer:true}" data-vv-delay="500">
                <option :value="a.id_ambiente" v-for="a in ambientes">
-                  @{{ `${a.nom_ambiente} -> ${a.det_ambiente}` }}
+                  {{ `${a.nom_ambiente} -> ${a.det_ambiente}` }}
                </option>
             </select>
 
@@ -555,7 +555,7 @@
 
             <transition name="bounce">
                <span v-show="errors.has('id_ambiente')" class="text-danger small">
-                  @{{ errors.first('id_ambiente') }}
+                  {{ errors.first('id_ambiente') }}
                </span>
             </transition>
          </p>
@@ -575,7 +575,7 @@
       <dt>¿Se instaló instana?</dt>
       <dd>
          <p class="control has-icon has-icon-right">
- 
+
             <toggle-button
                :sync="true"
                :value="servidor.agente_instana_instalado=(en_array([true, 'true', 1], servidor.agente_instana_instalado)?true:false)"
@@ -589,7 +589,7 @@
 
             <transition name="bounce">
                <span v-show="errors.has('agente_instana_instalado')" class="text-danger small">
-                  @{{ errors.first('agente_instana_instalado') }}
+                  {{ errors.first('agente_instana_instalado') }}
                </span>
             </transition>
          </p>
@@ -600,7 +600,7 @@
 </div><!-- .row -->
 
 
-{{--
+<!--
 <h5>Acuerdo de usuarios por sistema</h5>
 <div class="row">
    <div class="col-sm-6 col-md-6">
@@ -618,13 +618,12 @@
 
             <transition name="bounce">
                <span v-show="errors.has('usuarios_pactados')" class="text-danger small">
-                  @{{ errors.first('usuarios_pactados') }}
+                  {{ errors.first('usuarios_pactados') }}
                </span>
             </transition>
          </p>
       </dd>
 
    </div><!-- .col -->
-
+<!--
 </div><!-- .row -->
---}}

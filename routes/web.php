@@ -62,7 +62,6 @@ $http_requests = [
    'd' => ['destroy' => 'delete',],
 ];
 
-
 foreach ($groups as $group) {
     Route::group(['middleware' => "${group}"], function() use ($modules,$http_requests,$group){
         foreach ($http_requests["${group}"] as $method => $http)
@@ -122,7 +121,7 @@ Route::group(['middleware' => 'r'], function(){
 
 });
 
-Route::group(['middleware' => ['cr']], function(){
+Route::group(['middleware' => ['c']], function(){
     //Route::resource('/catalogo_servicios', 'CatalogoServicioController');
     Route::post('/roles', 'RoleController@store');
     Route::post('/permisos', 'PermisoController@store');
@@ -144,7 +143,7 @@ Route::group(['middleware' => ['cr']], function(){
     Route::post('/clusters', 'ClusterController@store');
 });
 
-Route::group(['middleware' => ['cru']], function(){
+Route::group(['middleware' => ['u']], function(){
     //Route::resource('/catalogo_servicios', 'CatalogoServicioController');
     Route::put('/roles/{id}', 'RoleController@update');
     Route::put('/permisos/{id}', 'PermisoController@update');
@@ -167,7 +166,7 @@ Route::group(['middleware' => ['cru']], function(){
 });
 
 
-Route::group(['middleware' => 'crud'], function(){
+Route::group(['middleware' => 'd'], function(){
     //Route::resource('/catalogo_servicios', 'CatalogoServicioController');
     Route::delete('/roles/{id}', 'RoleController@destroy');
     Route::delete('/permisos/{id}', 'PermisoController@destroy');

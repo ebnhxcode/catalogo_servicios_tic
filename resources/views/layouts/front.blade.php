@@ -39,6 +39,15 @@
          min-height: 100%;
          /*top:50px;*/
          z-index: -1;
+
+         /*
+         -webkit-filter: grayscale(100%);
+         filter: grayscale(100%);
+         *//* Safari 6.0 - 9.0 */
+         /**/
+         -webkit-filter: blur(5px);
+         filter: blur(5px);
+         /**//* Safari 6.0 - 9.0 */
       }
    </style>
 </head>

@@ -4122,7 +4122,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/views/VistaPrincipalServidor.vue"
+Component.options.__file = "resources/assets/js/components/views/servidores/VistaPrincipalServidor.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -4131,9 +4131,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-24d3360d", Component.options)
+    hotAPI.createRecord("data-v-e082de8c", Component.options)
   } else {
-    hotAPI.reload("data-v-24d3360d", Component.options)
+    hotAPI.reload("data-v-e082de8c", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -4150,6 +4150,11 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4598,24 +4603,26 @@ var render = function() {
       _c("h4", [_vm._v("Aplicaciones cargadas")]),
       _vm._v(" "),
       _vm.servidor.aplicaciones && _vm.servidor.aplicaciones.length > 0
-        ? _c(
-            "table",
-            { staticClass: "table table-striped table-hover table-sm" },
-            [
-              _vm._m(0),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.servidor.aplicaciones, function(app) {
-                  return _c("tr", [
-                    _c("td", [_vm._v(_vm._s(app.nom_aplicacion))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(app.det_aplicacion))])
-                  ])
-                })
-              )
-            ]
-          )
+        ? _c("div", { staticClass: "table-responsive pro" }, [
+            _c(
+              "table",
+              { staticClass: "table table-striped table-hover table-sm" },
+              [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.servidor.aplicaciones, function(app) {
+                    return _c("tr", [
+                      _c("td", [_vm._v(_vm._s(app.nom_aplicacion))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(app.det_aplicacion))])
+                    ])
+                  })
+                )
+              ]
+            )
+          ])
         : _c("div", { staticClass: "card card-body bg-light" }, [
             _vm._v(
               "\n         Hasta el momento no existen aplicaciones cargadas en este servidor.\n      "
@@ -4628,32 +4635,34 @@ var render = function() {
       _vm._v(" "),
       _vm.servidor.servidor_historico_cambios &&
       _vm.servidor.servidor_historico_cambios.length > 0
-        ? _c(
-            "table",
-            { staticClass: "table table-striped table-hover table-sm" },
-            [
-              _vm._m(1),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.servidor.servidor_historico_cambios, function(h) {
-                  return _c("tr", [
-                    _c("td", [_vm._v(_vm._s(h.ram))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(h.memoria_dd))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(h.swap))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(h.nucleos))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(h.frec_procesador))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(h.created_at))])
-                  ])
-                })
-              )
-            ]
-          )
+        ? _c("div", { staticClass: "table-responsive pro" }, [
+            _c(
+              "table",
+              { staticClass: "table table-striped table-hover table-sm" },
+              [
+                _vm._m(1),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.servidor.servidor_historico_cambios, function(h) {
+                    return _c("tr", [
+                      _c("td", [_vm._v(_vm._s(h.ram))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(h.memoria_dd))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(h.swap))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(h.nucleos))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(h.frec_procesador))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(h.created_at))])
+                    ])
+                  })
+                )
+              ]
+            )
+          ])
         : _c("div", { staticClass: "card card-body bg-light" }, [
             _vm._v(
               "\n         Hasta el momento no existe historial de cambios para este servidor.\n      "
@@ -4701,7 +4710,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-24d3360d", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-e082de8c", module.exports)
   }
 }
 
