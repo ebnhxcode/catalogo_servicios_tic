@@ -5,7 +5,7 @@
 -- Dumped from database version 10.3 (Debian 10.3-2)
 -- Dumped by pg_dump version 10.3 (Debian 10.3-2)
 
--- Started on 2018-04-01 14:12:43 -03
+-- Started on 2018-04-03 15:59:20 -03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -1268,7 +1268,8 @@ CREATE TABLE public.servidores (
     id_ambiente integer,
     modelo_procesador text,
     id_cluster integer,
-    agente_instana_instalado text
+    agente_instana_instalado text,
+    id_servicio integer
 );
 
 
@@ -1921,10 +1922,11 @@ COPY public.aplicaciones (id_aplicacion, id_tipo_aplicacion, id_servicio, id_dom
 4	3	2	1	Aplicacion 1	la aplicacion prueba 1	app001	http://rqr.fadfa.cl	3.3.3.3	app001	true	4	4	2018-03-03 17:12:09	2018-03-22 05:58:32	2018-03-22 05:58:32	4
 6	3	2	1	Aplicacion 2	aplicacion 2 test	app001minsal	http://test2.minsal.cl	10.8.12.1	test2	true	4	4	2018-03-12 02:06:27	2018-03-22 05:58:37	2018-03-22 05:58:37	1
 5	1	2	1	Soap	Servicio soap sigte	soap_sigte	http://soapsigte.minsal.cl	1.1.1.1	soapsigte.minsal.cl	true	4	4	2018-03-07 13:54:13	2018-03-22 05:58:42	2018-03-22 05:58:42	4
-8	43	3	1	app001	allsad	sladsd	http://ww.ww.ww	1.1.1.1	app001	0	4	4	2018-03-29 20:00:56	2018-03-29 20:00:56	\N	20
-9	43	2	1	app002	sdfsdfsf	afsfsdf	http://ww.ww.ww	1.1.1.12	app002	0	4	4	2018-03-29 20:11:55	2018-03-29 20:11:55	\N	20
-10	43	1	1	app003	app003	app003	http://ww.ww.ww	1.1.1.1	app003	0	4	4	2018-03-29 20:12:26	2018-03-29 20:12:26	\N	20
 1	4	2	1	aplicacion wander	djfakdfdkgsfjf ahsg hjadsf j dfh sdjh fjhds gfjhsdk sd jhgfsdhjkh sdgfh sdj	gsdfhsdk h dh s	http://www.asdfs.cl	2.2.2.2	dsf	true	4	4	2018-03-02 04:10:17	2018-03-02 19:32:08	2018-03-02 19:32:08	\N
+9	43	7	1	app002	sdfsdfsf	afsfsdf	http://ww.ww.ww	1.1.1.12	app002	false	4	4	2018-03-29 20:11:55	2018-04-02 20:49:20	\N	20
+11	43	7	1	app004	app004	app004	http://ww.ww.ww	1.1.1.1	app004	false	4	4	2018-04-02 19:57:49	2018-04-02 20:49:38	\N	19
+10	43	7	1	app003	app003	app003	http://ww.ww.ww	1.1.1.1	app003	false	4	4	2018-03-29 20:12:26	2018-04-02 20:49:46	\N	19
+8	43	7	1	app001	allsad	sladsd	http://ww.ww.ww	1.1.1.1	app001	false	4	4	2018-03-29 20:00:56	2018-04-02 20:49:57	\N	20
 3	4	2	1	sdfsadfsa	fsdfsadf	safasdfsadf	http://ww.ww.ww	3.3.3.3	eweq	1	4	4	2018-03-02 20:37:15	2018-03-02 20:37:34	2018-03-02 20:37:34	\N
 2	1	1	1	fsfsadfsadf	sdfsadfsad	fsdafsd	http://weq.qweqw.qwe	1.1.1.1	fsdf	true	4	4	2018-03-02 15:12:17	2018-03-02 20:37:37	2018-03-02 20:37:37	\N
 \.
@@ -3045,27 +3047,27 @@ COPY public.servicios_tags (id_servicio_tag, id_servicio, id_tag, id_usuario_reg
 -- Data for Name: servidores; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.servidores (id_servidor, id_datacentro, id_sistema_operativo, nom_servidor, ip_servidor, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, det_servidor, ram, memoria_dd, swap, procesador, frec_procesador, nucleos, usuarios_pactados, mac, nodo, interface, id_ambiente, modelo_procesador, id_cluster, agente_instana_instalado) FROM stdin;
-10	1	23	dsadasd	1.1.1.1	4	4	2018-03-27 12:57:21	2018-03-27 13:05:03	2018-03-27 13:05:03	sadasdas	2048	231	31241	intel	2500	8	0	0	0	0	3	RxX412fv	2	\N
-12	1	23	dsadasd	1.1.1.1	4	4	2018-03-27 13:04:10	2018-03-27 13:05:16	2018-03-27 13:05:16	sadasdas	2048	231	31241	intel	2500	8	0	0	0	0	3	RxX412fv	2	\N
-11	1	23	dsadasd	1.1.1.1	4	4	2018-03-27 13:01:36	2018-03-27 13:05:23	2018-03-27 13:05:23	sadasdas	2048	231	31241	intel	2500	8	0	0	0	0	3	RxX412fv	2	\N
-13	2	30	dsadsfsdf	1.1.1.1	4	4	2018-03-27 13:17:21	2018-03-27 13:35:05	2018-03-27 13:35:05	dfdsf	123	31231	12312	amd	3123	23	0	0	0	0	4	123123	1	\N
-14	1	28	rwqer	1.1.1.1	4	4	2018-03-27 13:24:12	2018-03-27 13:35:12	2018-03-27 13:35:12	rqwe	4234	431	3242	intel	24352	325423	0	0	0	0	4	2452	1	\N
-15	2	30	dasda	1.1.1.1	4	4	2018-03-27 13:32:33	2018-03-27 13:35:19	2018-03-27 13:35:19	sdfs	4324	23324	32423	amd	234	324	0	0	0	0	2	32424	2	true
-16	2	33	rerwer	1.1.1.1	4	4	2018-03-27 13:36:23	2018-03-27 13:42:35	2018-03-27 13:42:35	ewewr	234	234	423	amd	234	3	0	0	0	0	4	234	2	true
-18	2	33	rerwer	1.1.1.1	4	4	2018-03-27 13:37:50	2018-03-27 13:42:44	2018-03-27 13:42:44	ewewr	234	234	423	amd	234	3	0	0	0	0	4	234	2	true
-17	2	33	rerwer	1.1.1.1	4	4	2018-03-27 13:37:15	2018-03-27 13:42:52	2018-03-27 13:42:52	ewewr	234	234	423	amd	234	3	0	0	0	0	4	234	2	true
-6	1	1	313123	1.1.1.1	4	4	2018-03-20 18:37:38	2018-03-20 18:37:59	2018-03-20 18:37:59	eqwqwe	1000	1000	1000	intel	1000	8	0	ab:ab:ab:ab:ab:ab	0	0	\N	\N	\N	\N
-5	1	1	313123	1.1.1.1	4	4	2018-03-20 18:34:15	2018-03-20 18:38:05	2018-03-20 18:38:05	eqwqwe	1000	1000	1000	intel	1000	8	0	ab:ab:ab:ab:ab:ab	0	0	\N	\N	\N	\N
-8	1	3	test	2.2.2.2	4	4	2018-03-20 20:29:00	2018-03-20 20:35:30	2018-03-20 20:35:30	test	22	22	22	amd	22	22	0	ab:ab:ab:ab:ab:ab	0	0	\N	\N	\N	\N
-7	2	4	teset	1.1.1.1	4	4	2018-03-20 20:27:26	2018-03-20 20:35:44	2018-03-20 20:35:44	test	1	1	1	intel	1	1	0	ab:ab:ab:ab:ab:ab	0	0	\N	\N	\N	\N
-3	1	6	DEL	8.8.8.8	4	4	2018-03-05 21:28:32	2018-03-20 20:35:51	2018-03-20 20:35:51	DEL	1	1	1	intel	1	1	\N	ab:ab:ab:ab:ab:ab	\N	\N	\N	\N	\N	\N
-9	1	6	MNSOAPSIGTE	1.1.1.1	4	4	2018-03-22 12:56:14	2018-03-22 12:56:46	2018-03-22 12:56:46	Servidor sigte	1024	30000	8000	amd	2400	2	1	ab:13:1b:f5:2d:4a	\N	\N	1	\N	\N	\N
-2	1	6	IP	8.8.8.8	4	4	2018-03-05 21:28:03	2018-03-22 14:15:48	2018-03-22 14:15:48	IP	4234	2342	34	amd	234	234	342	1b:23:2a:e3:11:ab	\N	\N	1	\N	\N	\N
-4	1	6	MNSOAPSIGTE	1.1.1.1	4	4	2018-03-07 13:57:52	2018-03-22 14:15:53	2018-03-22 14:15:53	Servidor sigte	2048	30000	8000	amd	2400	2	1	ab:13:1b:f5:2d:4a	\N	\N	1	\N	\N	\N
-1	2	4	APP01QAMINSAL	8.8.8.8	4	4	2018-03-05 21:26:30	2018-03-22 14:16:00	2018-03-22 14:16:00	Servidor de webminsal	1024	30000	8000	intel	2400	2	3	\N	\N	\N	3	fsfafsffds	\N	\N
-20	1	34	APPSQD99QAPROD	1.1.1.1	4	4	2018-03-27 14:10:27	2018-03-29 19:54:22	\N	server2	123	123	123	intel	123	8	0	0	0	0	1	123abcd	1	0
-19	1	31	server1	1.1.1.1	4	4	2018-03-27 13:44:03	2018-03-30 02:12:51	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	1	0
+COPY public.servidores (id_servidor, id_datacentro, id_sistema_operativo, nom_servidor, ip_servidor, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, det_servidor, ram, memoria_dd, swap, procesador, frec_procesador, nucleos, usuarios_pactados, mac, nodo, interface, id_ambiente, modelo_procesador, id_cluster, agente_instana_instalado, id_servicio) FROM stdin;
+10	1	23	dsadasd	1.1.1.1	4	4	2018-03-27 12:57:21	2018-03-27 13:05:03	2018-03-27 13:05:03	sadasdas	2048	231	31241	intel	2500	8	0	0	0	0	3	RxX412fv	2	\N	\N
+12	1	23	dsadasd	1.1.1.1	4	4	2018-03-27 13:04:10	2018-03-27 13:05:16	2018-03-27 13:05:16	sadasdas	2048	231	31241	intel	2500	8	0	0	0	0	3	RxX412fv	2	\N	\N
+11	1	23	dsadasd	1.1.1.1	4	4	2018-03-27 13:01:36	2018-03-27 13:05:23	2018-03-27 13:05:23	sadasdas	2048	231	31241	intel	2500	8	0	0	0	0	3	RxX412fv	2	\N	\N
+13	2	30	dsadsfsdf	1.1.1.1	4	4	2018-03-27 13:17:21	2018-03-27 13:35:05	2018-03-27 13:35:05	dfdsf	123	31231	12312	amd	3123	23	0	0	0	0	4	123123	1	\N	\N
+14	1	28	rwqer	1.1.1.1	4	4	2018-03-27 13:24:12	2018-03-27 13:35:12	2018-03-27 13:35:12	rqwe	4234	431	3242	intel	24352	325423	0	0	0	0	4	2452	1	\N	\N
+15	2	30	dasda	1.1.1.1	4	4	2018-03-27 13:32:33	2018-03-27 13:35:19	2018-03-27 13:35:19	sdfs	4324	23324	32423	amd	234	324	0	0	0	0	2	32424	2	true	\N
+16	2	33	rerwer	1.1.1.1	4	4	2018-03-27 13:36:23	2018-03-27 13:42:35	2018-03-27 13:42:35	ewewr	234	234	423	amd	234	3	0	0	0	0	4	234	2	true	\N
+18	2	33	rerwer	1.1.1.1	4	4	2018-03-27 13:37:50	2018-03-27 13:42:44	2018-03-27 13:42:44	ewewr	234	234	423	amd	234	3	0	0	0	0	4	234	2	true	\N
+17	2	33	rerwer	1.1.1.1	4	4	2018-03-27 13:37:15	2018-03-27 13:42:52	2018-03-27 13:42:52	ewewr	234	234	423	amd	234	3	0	0	0	0	4	234	2	true	\N
+6	1	1	313123	1.1.1.1	4	4	2018-03-20 18:37:38	2018-03-20 18:37:59	2018-03-20 18:37:59	eqwqwe	1000	1000	1000	intel	1000	8	0	ab:ab:ab:ab:ab:ab	0	0	\N	\N	\N	\N	\N
+5	1	1	313123	1.1.1.1	4	4	2018-03-20 18:34:15	2018-03-20 18:38:05	2018-03-20 18:38:05	eqwqwe	1000	1000	1000	intel	1000	8	0	ab:ab:ab:ab:ab:ab	0	0	\N	\N	\N	\N	\N
+8	1	3	test	2.2.2.2	4	4	2018-03-20 20:29:00	2018-03-20 20:35:30	2018-03-20 20:35:30	test	22	22	22	amd	22	22	0	ab:ab:ab:ab:ab:ab	0	0	\N	\N	\N	\N	\N
+7	2	4	teset	1.1.1.1	4	4	2018-03-20 20:27:26	2018-03-20 20:35:44	2018-03-20 20:35:44	test	1	1	1	intel	1	1	0	ab:ab:ab:ab:ab:ab	0	0	\N	\N	\N	\N	\N
+3	1	6	DEL	8.8.8.8	4	4	2018-03-05 21:28:32	2018-03-20 20:35:51	2018-03-20 20:35:51	DEL	1	1	1	intel	1	1	\N	ab:ab:ab:ab:ab:ab	\N	\N	\N	\N	\N	\N	\N
+9	1	6	MNSOAPSIGTE	1.1.1.1	4	4	2018-03-22 12:56:14	2018-03-22 12:56:46	2018-03-22 12:56:46	Servidor sigte	1024	30000	8000	amd	2400	2	1	ab:13:1b:f5:2d:4a	\N	\N	1	\N	\N	\N	\N
+2	1	6	IP	8.8.8.8	4	4	2018-03-05 21:28:03	2018-03-22 14:15:48	2018-03-22 14:15:48	IP	4234	2342	34	amd	234	234	342	1b:23:2a:e3:11:ab	\N	\N	1	\N	\N	\N	\N
+4	1	6	MNSOAPSIGTE	1.1.1.1	4	4	2018-03-07 13:57:52	2018-03-22 14:15:53	2018-03-22 14:15:53	Servidor sigte	2048	30000	8000	amd	2400	2	1	ab:13:1b:f5:2d:4a	\N	\N	1	\N	\N	\N	\N
+1	2	4	APP01QAMINSAL	8.8.8.8	4	4	2018-03-05 21:26:30	2018-03-22 14:16:00	2018-03-22 14:16:00	Servidor de webminsal	1024	30000	8000	intel	2400	2	3	\N	\N	\N	3	fsfafsffds	\N	\N	\N
+20	1	34	APPSQD99QAPROD	1.1.1.1	4	4	2018-03-27 14:10:27	2018-04-03 18:49:48	\N	server2	123	123	123	intel	123	8	0	0	0	0	1	123abcd	1	0	7
+19	1	31	server1	1.1.1.1	4	4	2018-03-27 13:44:03	2018-04-03 18:50:07	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	1	0	7
 \.
 
 
@@ -3081,6 +3083,7 @@ COPY public.servidores_accesos (id_servidor_acceso, id_aplicacion, id_servidor, 
 4	\N	2	dfasff	asdfdsafsdf	login	0	4	4	2018-03-20 20:54:53	2018-03-20 20:55:09	2018-03-20 20:55:09
 5	\N	4	sadf	sadf	sadf	12	4	4	2018-03-21 18:47:18	2018-03-21 18:47:25	2018-03-21 18:47:25
 3	\N	19	uvec	Minsal2018	usuario de sistema	0	4	4	2018-03-14 20:13:03	2018-03-28 20:55:52	\N
+6	\N	20	test	test	test	0	4	4	2018-04-02 20:51:54	2018-04-02 20:51:54	\N
 \.
 
 
@@ -3163,6 +3166,11 @@ COPY public.servidores_historico_cambios (id_servidor_historico, id_servidor, id
 51	20	1	34	Servidor de convergente	1.1.1.1	4	4	2018-03-29 19:53:55	2018-03-29 19:53:55	\N	server2	123	123	123	intel	123	8	0	0	0	0	1	123abcd	\N	\N
 52	20	1	34	APPSQD99QAPROD	1.1.1.1	4	4	2018-03-29 19:54:22	2018-03-29 19:54:22	\N	server2	123	123	123	intel	123	8	0	0	0	0	1	123abcd	\N	\N
 53	19	1	31	server1	1.1.1.1	4	4	2018-03-30 02:12:51	2018-03-30 02:12:51	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	\N	\N
+54	20	1	34	APPSQD99QAPROD	1.1.1.1	4	4	2018-04-01 18:59:25	2018-04-01 18:59:25	\N	server2	123	123	123	intel	123	8	0	0	0	0	1	123abcd	\N	\N
+55	19	1	31	server1	1.1.1.1	4	4	2018-04-01 19:17:14	2018-04-01 19:17:14	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	\N	\N
+56	20	1	34	APPSQD99QAPROD	1.1.1.1	4	4	2018-04-02 19:53:58	2018-04-02 19:53:58	\N	server2	123	123	123	intel	123	8	0	0	0	0	1	123abcd	\N	\N
+57	20	1	34	APPSQD99QAPROD	1.1.1.1	4	4	2018-04-03 18:49:48	2018-04-03 18:49:48	\N	server2	123	123	123	intel	123	8	0	0	0	0	1	123abcd	\N	\N
+58	19	1	31	server1	1.1.1.1	4	4	2018-04-03 18:50:07	2018-04-03 18:50:07	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	\N	\N
 \.
 
 
@@ -3389,9 +3397,9 @@ COPY public.usuarios (id_usuario, nom_usuario, nom_completo, ape_paterno, ape_ma
 --
 
 COPY public.usuarios_bitacora_servicios (id_usuario_bitacora_servicio, id_usuario, id_servicio, id_actividad, asunto, det_bitacora, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
-1	4	2	1	Cambio en tv minsal	Se realiza cambio menor en formulario de tv minsal.	4	4	2018-03-12 14:49:51	2018-03-12 16:09:17	\N
-2	4	2	1	Nuevo cambio tv minsal	Cambio menor tv minsal	4	4	2018-03-12 14:55:59	2018-03-12 16:09:23	\N
 3	4	1	4	test	test	4	4	2018-03-20 19:43:26	2018-03-20 19:43:38	2018-03-20 19:43:38
+1	4	7	1	Cambio en tv minsal	Se realiza cambio menor en formulario de tv minsal.	4	4	2018-03-12 14:49:51	2018-04-02 20:53:22	\N
+2	4	7	1	Nuevo cambio tv minsal	Cambio menor tv minsal	4	4	2018-03-12 14:55:59	2018-04-02 20:53:30	\N
 \.
 
 
@@ -3515,7 +3523,7 @@ SELECT pg_catalog.setval('public.accesos_aplicaciones_id_seq', 2, true);
 -- Name: accesos_servidores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.accesos_servidores_id_seq', 5, true);
+SELECT pg_catalog.setval('public.accesos_servidores_id_seq', 6, true);
 
 
 --
@@ -3560,7 +3568,7 @@ SELECT pg_catalog.setval('public.aplicaciones_estados_id_seq', 1, false);
 -- Name: aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.aplicaciones_id_seq', 10, true);
+SELECT pg_catalog.setval('public.aplicaciones_id_seq', 11, true);
 
 
 --
@@ -3794,7 +3802,7 @@ SELECT pg_catalog.setval('public.servidor_estado_id_seq', 18, true);
 -- Name: servidor_historico_cambios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.servidor_historico_cambios_id_seq', 53, true);
+SELECT pg_catalog.setval('public.servidor_historico_cambios_id_seq', 58, true);
 
 
 --
@@ -4354,7 +4362,7 @@ ALTER TABLE ONLY public.usuarios_servicios
 CREATE INDEX password_resets_email_index ON public.password_resets USING btree (email);
 
 
--- Completed on 2018-04-01 14:12:46 -03
+-- Completed on 2018-04-03 15:59:24 -03
 
 --
 -- PostgreSQL database dump complete
