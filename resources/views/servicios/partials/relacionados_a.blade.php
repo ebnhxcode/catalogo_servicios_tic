@@ -8,22 +8,28 @@
          aria-controls="v-pills-servidores" aria-selected="true">
          Servidores
       </a>
-      <a class="nav-link" id="v-pills-datacentro-tab" data-toggle="pill" href="#v-pills-datacentro" role="tab"
-         aria-controls="v-pills-datacentro" aria-selected="false">
-         Datacentro
-      </a>
-      <a class="nav-link" id="v-pills-servidores-accesos-tab" data-toggle="pill" href="#v-pills-servidores-accesos" role="tab"
-         aria-controls="v-pills-servidores-accesos" aria-selected="false">
-         Accesos servidores
-      </a>
-      <a class="nav-link" id="v-pills-aplicaciones-accesos-tab" data-toggle="pill" href="#v-pills-aplicaciones-accesos" role="tab"
-         aria-controls="v-pills-aplicaciones-accesos" aria-selected="false">
-         Accesos aplicaciones
-      </a>
       <a class="nav-link" id="v-pills-bitacoras-tab" data-toggle="pill" href="#v-pills-bitacoras" role="tab"
          aria-controls="v-pills-bitacoras" aria-selected="false">
          Bitacoras del servicio
       </a>
+
+      <template v-if="en_array(['Administrador','Jefe de Area','Lider Equipo','App Manager'],usuario_auth.usuario_role.role.nom_role)">
+
+         <a class="nav-link" id="v-pills-datacentro-tab" data-toggle="pill" href="#v-pills-datacentro" role="tab"
+            aria-controls="v-pills-datacentro" aria-selected="false">
+            Datacentro
+         </a>
+         <a class="nav-link" id="v-pills-servidores-accesos-tab" data-toggle="pill" href="#v-pills-servidores-accesos" role="tab"
+            aria-controls="v-pills-servidores-accesos" aria-selected="false">
+            Accesos servidores
+         </a>
+         <a class="nav-link" id="v-pills-aplicaciones-accesos-tab" data-toggle="pill" href="#v-pills-aplicaciones-accesos" role="tab"
+            aria-controls="v-pills-aplicaciones-accesos" aria-selected="false">
+            Accesos aplicaciones
+         </a>
+
+      </template>
+
       {{--
       <a class="nav-link" id="v-pills-opciones-tab" data-toggle="pill" href="#v-pills-opciones" role="tab"
          aria-controls="v-pills-opciones" aria-selected="false">
@@ -31,7 +37,9 @@
       </a>
       --}}
    </div>
+
    <div class="tab-content col-sm-10" id="v-pills-tabContent">
+
       <div class="tab-pane fade show active" id="v-pills-aplicaciones" role="tabpanel" aria-labelledby="v-pills-aplicaciones-tab">
          <div class="embed-responsive embed-responsive-16by9 pro">
             <iframe style="min-height: 600px;" src="{{url('/embed/aplicaciones')}}" frameborder="0" width="100%" height="100%"></iframe>
@@ -41,24 +49,6 @@
       <div class="tab-pane fade show" id="v-pills-servidores" role="tabpanel" aria-labelledby="v-pills-servidores-tab">
          <div class="embed-responsive embed-responsive-16by9 pro">
             <iframe style="min-height: 600px;" src="{{url('/embed/servidores')}}" frameborder="0" width="100%" height="100%"></iframe>
-         </div>
-      </div>
-
-      <div class="tab-pane fade" id="v-pills-datacentro" role="tabpanel" aria-labelledby="v-pills-datacentro-tab">
-         <div class="embed-responsive embed-responsive-16by9 pro">
-            <iframe style="min-height: 600px;" src="{{url('/embed/datacentros')}}" frameborder="0" width="100%" height="100%"></iframe>
-         </div>
-      </div>
-
-      <div class="tab-pane fade" id="v-pills-servidores-accesos" role="tabpanel" aria-labelledby="v-pills-servidores-accesos-tab">
-         <div class="embed-responsive embed-responsive-16by9 pro">
-            <iframe style="min-height: 600px;" src="{{url('/embed/servidores_accesos')}}" frameborder="0" width="100%" height="100%"></iframe>
-         </div>
-      </div>
-
-      <div class="tab-pane fade" id="v-pills-aplicaciones-accesos" role="tabpanel" aria-labelledby="v-pills-aplicaciones-accesos-tab">
-         <div class="embed-responsive embed-responsive-16by9 pro">
-            <iframe style="min-height: 600px;" src="{{url('/embed/aplicaciones_accesos')}}" frameborder="0" width="100%" height="100%"></iframe>
          </div>
       </div>
 
@@ -88,6 +78,30 @@
          </div><!-- .card -->
 
       </div>
+
+      <template v-if="en_array(['Administrador','Jefe de Area','Lider Equipo','App Manager'],usuario_auth.usuario_role.role.nom_role)">
+
+         <div class="tab-pane fade" id="v-pills-datacentro" role="tabpanel" aria-labelledby="v-pills-datacentro-tab">
+            <div class="embed-responsive embed-responsive-16by9 pro">
+               <iframe style="min-height: 600px;" src="{{url('/embed/datacentros')}}" frameborder="0" width="100%" height="100%"></iframe>
+            </div>
+         </div>
+
+         <div class="tab-pane fade" id="v-pills-servidores-accesos" role="tabpanel" aria-labelledby="v-pills-servidores-accesos-tab">
+            <div class="embed-responsive embed-responsive-16by9 pro">
+               <iframe style="min-height: 600px;" src="{{url('/embed/servidores_accesos')}}" frameborder="0" width="100%" height="100%"></iframe>
+            </div>
+         </div>
+
+         <div class="tab-pane fade" id="v-pills-aplicaciones-accesos" role="tabpanel" aria-labelledby="v-pills-aplicaciones-accesos-tab">
+            <div class="embed-responsive embed-responsive-16by9 pro">
+               <iframe style="min-height: 600px;" src="{{url('/embed/aplicaciones_accesos')}}" frameborder="0" width="100%" height="100%"></iframe>
+            </div>
+         </div>
+
+      </template>
+
+
 
       {{--<div class="tab-pane fade" id="v-pills-opciones" role="tabpanel" aria-labelledby="v-pills-opciones-tab"></div>--}}
    </div>
