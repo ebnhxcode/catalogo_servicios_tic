@@ -64,8 +64,8 @@
 
       <div id="accordion">
 
-         <div class="card" v-for="s in servidores">
-            <div class="card-header" id="headingOne">
+         <div class="card" v-for="s in servicio.servidores">
+            <div class="card-header" :id="`${s.id_servidor}`">
                <h5 class="mb-0">
                   <span class="btn btn-link" data-toggle="collapse" :data-target="`#${s.id_servidor}`" aria-expanded="true"
                           :aria-controls="`${s.id_servidor}`">

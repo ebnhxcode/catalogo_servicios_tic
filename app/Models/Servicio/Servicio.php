@@ -27,7 +27,7 @@ class Servicio extends Model
    ];
 
    public function servidores () {
-      return $this->hasMany(Servidor::class, 'id_servidor');
+      return $this->hasMany(Servidor::class, 'id_servicio');
       /*
       return \App\Servidor::with(['aplicaciones'])
          ->join('aplicaciones','aplicaciones.id_servidor','=','servidores.id_servidor')

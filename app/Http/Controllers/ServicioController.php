@@ -93,7 +93,7 @@ class ServicioController extends Controller {
         }
 
         $this->servicio = Servicio::where("id_$this->nombre_modelo",'=',7)
-           ->with(['actividad','usuario',"servidores",'aplicaciones.servidor','usuarios_bitacora_servicios.usuario'])
+           ->with(['actividad','usuario',"servidores.aplicaciones",'aplicaciones.servidor','usuarios_bitacora_servicios.usuario'])
            ->first();
 
 

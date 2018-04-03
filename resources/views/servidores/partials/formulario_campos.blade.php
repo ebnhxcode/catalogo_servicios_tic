@@ -504,11 +504,11 @@
 
 
 
-<h5>Estado y ambiente</h5>
+<h5>Estado, ambiente y servicio</h5>
 <div class="row">
 
 
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-4 col-md-4">
 
       <dt>Estado Servidor</dt>
       <dd>
@@ -536,7 +536,7 @@
    </div><!-- .col -->
 
 
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-4 col-md-4">
 
       <dt>Ambiente Servidor</dt>
       <dd>
@@ -563,7 +563,32 @@
 
    </div><!-- .col -->
 
+   <div class="col-sm-4 col-md-4">
 
+      <dt>Servicio</dt>
+      <dd>
+         <p class="control has-icon has-icon-right">
+
+            <select class="form-control" v-model="servidor.id_servicio" name="id_servicio"
+                    v-validate="{required:true,integer:true}" data-vv-delay="500">
+               <option :value="srvc.id_servicio" v-for="srvc in servicios">
+                  @{{ `${srvc.nom_servicio} -> ${srvc.det_servicio}` }}
+               </option>
+            </select>
+
+            <transition name="bounce">
+               <i v-show="errors.has('id_servicio')" class="fa fa-exclamation-circle"></i>
+            </transition>
+
+            <transition name="bounce">
+               <span v-show="errors.has('id_servicio')" class="text-danger small">
+                  @{{ errors.first('id_servicio') }}
+               </span>
+            </transition>
+         </p>
+      </dd>
+
+   </div><!-- .col -->
 
 </div><!-- .row -->
 
