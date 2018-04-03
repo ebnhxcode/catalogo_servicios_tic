@@ -26,6 +26,7 @@ const ServicioController = new Vue({
          'nombre_controller':'ServicioController',
 
          'filtro_head':null,
+         'filtro_componente':null,
          'servicio':{
             'nom_servicio':null,
             'det_servicio':null,

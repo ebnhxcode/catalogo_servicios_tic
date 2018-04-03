@@ -47,6 +47,7 @@
          'lvm_var':null,
          'lvm_home':null,
          'agente_instana_instalado':null,
+         'id_servicio':null,
          'id_datacentro':null,
          'id_sistema_operativo':null,
          'id_tipo_sistema_operativo':null, // no lleva relacion, solo se usa para filtrar un combobox
@@ -67,6 +68,7 @@
        *
        * */
       'relaciones':[
+         {'servicio':'id_servicio'},
          {'datacentro':'id_datacentro'},
          {'sistema_operativo':'id_sistema_operativo'},
          {'aplicaciones':'id_aplicacion'},
@@ -110,6 +112,7 @@
          'lvm_home':false,
           */
          'agente_instana_instalado':false,
+         'id_servicio':false,
          'id_datacentro':false,
          'id_sistema_operativo':false,
          'id_estado':false,
@@ -153,6 +156,7 @@
          'lvm_home':'home',
          'agente_instana_instalado':'Agente Instana',
 
+         'id_servicio':'Id Servicio',
          'id_datacentro':'Id Datacrentro',
          'id_sistema_operativo':'Id Sistema Operativo',
          'id_estado':'Id Estado',
