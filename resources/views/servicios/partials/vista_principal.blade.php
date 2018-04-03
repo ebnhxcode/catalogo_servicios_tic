@@ -60,12 +60,19 @@
 
    <div class="col-sm-8 col-md-8">
 
+      <div class="btn-group mr-2 pro">
+         <input type="text" class="form-control input-sm"
+                data-placement="top" data-toggle="tooltip" title="Filtrar en la lista"
+                placeholder="filtrar en la lista" v-model="filtro_componente" id="filtro_componente">
+      </div><!-- .btn-group mr-2 #mr->margin -->
+
       <h4>Servidores y Aplicaciones</h4>
 
       <div id="accordion">
 
-         <div class="card" v-for="s in servicio.servidores">
-            <div class="card-header" :id="`${s.id_servidor}`">
+         <div class="card" v-for="s in filterBy(filtro_componente, servicio.servidores)">
+
+            <div class="card-header" id="`heading${s.id_servidor}`">
                <h5 class="mb-0">
                   <span class="btn btn-link" data-toggle="collapse" :data-target="`#${s.id_servidor}`" aria-expanded="true"
                           :aria-controls="`${s.id_servidor}`">
@@ -74,7 +81,7 @@
                </h5>
             </div>
 
-            <div :id="`${s.id_servidor}`" class="collapse show" :aria-labelledby="`${s.id_servidor}`" data-parent="#accordion">
+            <div :id="`${s.id_servidor}`" class="collapse" :aria-labelledby="`${s.id_servidor}`" data-parent="#accordion">
                <div class="card-body">
 
                   <span class="text-info float-right">
