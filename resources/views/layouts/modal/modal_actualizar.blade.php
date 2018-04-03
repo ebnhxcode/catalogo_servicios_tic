@@ -4,9 +4,9 @@
 @endif
 <!-- END HEADER -->
 
-
-
-
+<!--
+Relacionados a ➜ <span class="text-info">@{{ $data[`${nombre_model}`][`nom_${nombre_model}`] }}</span>
+-->
 
 <!-- Nav tabs -->
 <ul class="nav nav-tabs justify-content-center" id="tab_panel" role="tablist">
@@ -14,12 +14,14 @@
       <a class="nav-link" data-toggle="tab" href="#vista_principal_tab" role="tab"
          aria-controls="vista_principal" aria-selected="true">Vista Principal</a>
    </li>
-   <li class="nav-item" v-show="true">
-      <a class="nav-link" data-toggle="tab" href="#relacionados_a_tab" role="tab"
-         aria-controls="relacionados_a" aria-selected="true">Relacionados a ➜
-         <span class="text-info">@{{ $data[`${nombre_model}`][`nom_${nombre_model}`] }}</span>
-      </a>
-   </li>
+   @if(view()->exists("$nombre_tabla.partials.relacionados_a"))
+      <li class="nav-item" v-show="true">
+         <a class="nav-link" data-toggle="tab" href="#relacionados_a_tab" role="tab"
+            aria-controls="relacionados_a" aria-selected="true">Relacionados a ➜
+            <span class="text-info">@{{ $data[`${nombre_model}`][`nom_${nombre_model}`] }}</span>
+         </a>
+      </li>
+   @endif
    <li class="nav-item"
        v-if="en_array(['Administrador','Jefe de Area','Lider Equipo','App Manager'],usuario_auth.usuario_role.role.nom_role)">
       <a class="nav-link" data-toggle="tab" href="#vista_actualizar_tab" role="tab"
