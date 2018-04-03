@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Ambiente;
 use App\Cluster;
+use App\Servicio;
 use App\Servidor;
 use App\ServidorEstado;
 use App\Datacentro;
@@ -26,6 +27,7 @@ class ServidorController extends Controller {
    private $nombre_detalle;
    private $nombre_controller;
 
+   private $servicios;
    private $servidores;
    private $datacentros;
    private $sistemas_operativos;
@@ -86,6 +88,7 @@ class ServidorController extends Controller {
       $this->servidores = Servidor::with([
          'datacentro','sistema_operativo','aplicaciones','servidor_estado.estado','ambiente','servidor_historico_cambios','cluster','servidor_lvm'
       ])->get();
+      $this->servicios = Servicio::all();
       $this->datacentros = Datacentro::all();
       $this->sistemas_operativos = SistemaOperativo::with('tipo_sistema_operativo')->get();
       $this->tipos_sistemas_operativos = TipoSistemaOperativo::all();
@@ -95,6 +98,7 @@ class ServidorController extends Controller {
       return response()->json([
          'status' => 200,
          'servidores' => $this->servidores,
+         'servicios' => $this->servicios,
          'datacentros' => $this->datacentros,
          'sistemas_operativos' => $this->sistemas_operativos,
          'tipos_sistemas_operativos' => $this->tipos_sistemas_operativos,
@@ -166,6 +170,7 @@ class ServidorController extends Controller {
          'lvm_var' => "nullable|regex:/(^([0-9_ ]+)(\d+)?$)/u|max:255",
          'lvm_home' => "nullable|regex:/(^([0-9_ ]+)(\d+)?$)/u|max:255",
 
+         'id_servicio' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
          'id_datacentro' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
          'id_sistema_operativo' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
          'id_estado' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
@@ -292,6 +297,7 @@ class ServidorController extends Controller {
          'lvm_var' => "nullable|regex:/(^([0-9_ ]+)(\d+)?$)/u|max:255",
          'lvm_home' => "nullable|regex:/(^([0-9_ ]+)(\d+)?$)/u|max:255",
 
+         'id_servicio' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
          'id_datacentro' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
          'id_sistema_operativo' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
          'id_estado' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",

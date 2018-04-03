@@ -4007,6 +4007,7 @@ var ServicioController = new Vue({
          'relaciones_clase': [{ 'actividad': 'id_actividad' }, { 'usuario': 'id_usuario' }],
          'lom': {},
          'lista_objs_model': [],
+         'servidores': [],
          'actividades': [],
          'servicios': [],
          'usuarios_bitacora_servicios': [],
@@ -4141,6 +4142,8 @@ var ServicioController = new Vue({
             _this.actividades = response.body.actividades || null;
             _this.usuarios_bitacora_servicios = response.body.usuarios_bitacora_servicios || null;
             _this.datos_excel = response.body.servicios || null;
+            _this.servicios = response.body.servicios || null;
+            _this.servidores = response.body.servidores || null;
             _this.usuario_auth = response.body.usuario_auth || null;
          }, function (response) {
             // error callback

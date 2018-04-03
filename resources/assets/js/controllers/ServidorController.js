@@ -52,6 +52,7 @@ const ServidorController = new Vue({
             'lvm_var':null,
             'lvm_home':null,
             'agente_instana_instalado':null,
+            'id_servicio':null,
             'id_datacentro':null,
             'id_sistema_operativo':null,
             'id_tipo_sistema_operativo':null, // no lleva relacion, solo se usa para filtrar un combobox
@@ -90,6 +91,7 @@ const ServidorController = new Vue({
             'agente_instana_instalado',
 
             'id_datacentro',
+            'id_servicio',
             'id_sistema_operativo',
             'id_estado',
             'id_ambiente',
@@ -97,6 +99,7 @@ const ServidorController = new Vue({
          ],
          'relaciones_clase':[
             {'datacentro':'id_datacentro'},
+            {'servicio':'id_servicio'},
             {'sistema_operativo':'id_sistema_operativo'},
             {'aplicaciones':'id_aplicacion'},
             {'servidor_estado':'id_estado'},
@@ -162,6 +165,7 @@ const ServidorController = new Vue({
             */
             'agente_instana_instalado':false,
             'id_datacentro':false,
+            'id_servicio':false,
             'id_sistema_operativo':false,
             'id_estado':false,
             'id_ambiente':false,
@@ -198,6 +202,7 @@ const ServidorController = new Vue({
             'lvm_home':'home',
             'agente_instana_instalado':'Agente Instana',
 
+            'id_servicio':'Id Servicio',
             'id_datacentro':'Id Datacrentro',
             'id_sistema_operativo':'Id Sistema Operativo',
             'id_estado':'Id Estado',
@@ -235,6 +240,7 @@ const ServidorController = new Vue({
             'lvm_var':'String',
             'lvm_home':'String',
             'agente_instana_instalado':'String',
+            'id_servicio':'String',
             'id_datacentro':'String',
             'id_sistema_operativo':'String',
             'id_estado':'String',
@@ -294,6 +300,7 @@ lista_objs_model
                'lvm_home': servidor.lvm_home || '-',
                'agente_instana_instalado': servidor.agente_instana_instalado || '-',
 
+               'id_servicio': servidor.id_servicio || '-',
                'id_datacentro': servidor.id_datacentro || '-',
                'id_sistema_operativo': servidor.id_sistema_operativo || '-',
                'id_estado': servidor.id_sistema_operativo || '-',
@@ -333,6 +340,7 @@ lista_objs_model
             this.datos_excel = response.body.servidores || null;
 
             this.datacentros = response.body.datacentros || null;
+            this.servicios = response.body.servicios || null;
             this.sistemas_operativos = response.body.sistemas_operativos || null;
             this.tipos_sistemas_operativos = response.body.tipos_sistemas_operativos || null;
             this.estados = response.body.estados || null;

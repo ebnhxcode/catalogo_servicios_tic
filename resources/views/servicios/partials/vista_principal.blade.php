@@ -60,50 +60,52 @@
 
    <div class="col-sm-8 col-md-8">
 
-      <h4>Servidores</h4>
+      <h4>Servidores y Aplicaciones</h4>
 
-      <table class="table table-striped table-hover table-sm" v-if="servicio.aplicaciones && servicio.aplicaciones.length > 0">
-         <thead>
-         <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
-         </tr>
-         </thead>
-         <tbody>
-         <tr v-for="a in servicio.aplicaciones" v-if="a.servidor">
-            <td>@{{ a.servidor.nom_servidor }}</td>
-            <td>@{{ a.servidor.det_servidor }}</td>
-         </tr>
-         </tbody>
+      <div id="accordion">
 
-      </table><!-- .table -->
-      <div class="card card-body bg-light" v-else>
-         Hasta el momento no existen servidores registrados en este servicio.
-      </div><!-- .card -->
+         <div class="card" v-for="s in servidores">
+            <div class="card-header" id="headingOne">
+               <h5 class="mb-0">
+                  <span class="btn btn-link" data-toggle="collapse" :data-target="`#${s.id_servidor}`" aria-expanded="true"
+                          :aria-controls="`${s.id_servidor}`">
+                     <h5>@{{ s.nom_servidor }}</h5>
+                  </span>
+               </h5>
+            </div>
 
-      <br>
-      <h4>Aplicaciones</h4>
+            <div :id="`${s.id_servidor}`" class="collapse show" :aria-labelledby="`${s.id_servidor}`" data-parent="#accordion">
+               <div class="card-body">
 
-      <table class="table table-striped table-hover table-sm" v-if="servicio.aplicaciones && servicio.aplicaciones.length > 0">
-         <thead>
-         <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Servidor</th>
-         </tr>
-         </thead>
-         <tbody>
-         <tr v-for="a in servicio.aplicaciones">
-            <td>@{{ a.nom_aplicacion }}</td>
-            <td>@{{ a.det_aplicacion }}</td>
-            <td>@{{ (a.servidor) ? a.servidor.nom_servidor :'Sin definir' }}</td>
-         </tr>
-         </tbody>
+                  <span class="text-info float-right">
+                     N° Apps cargadas : @{{ s.aplicaciones.length || 0 }}
+                  </span>
+                  <h4>Aplicaciones</h4>
 
-      </table><!-- .table -->
-      <div class="card card-body bg-light" v-else>
-         Hasta el momento no existen aplicaciones cargadas en este servicio.
-      </div><!-- .card -->
+                  <table class="table table-striped table-hover table-sm" v-if="s.aplicaciones && s.aplicaciones.length > 0">
+                     <thead>
+                     <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                     </tr>
+                     </thead>
+                     <tbody>
+                     <tr v-for="a in s.aplicaciones">
+                        <td>@{{ a.nom_aplicacion }}</td>
+                        <td>@{{ a.det_aplicacion }}</td>
+                     </tr>
+                     </tbody>
+
+                  </table><!-- .table -->
+                  <div class="card card-body bg-light" v-else>
+                     Hasta el momento no existen aplicaciones cargadas en este servicio.
+                  </div><!-- .card -->
+
+               </div>
+            </div>
+         </div>
+
+      </div>
 
    </div><!-- .col -->
 

@@ -5,7 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Servicio extends Model {
+class Servicio extends Model
+{
 
    use SoftDeletes;
    protected $dates = ['deleted_at'];
@@ -24,6 +25,17 @@ class Servicio extends Model {
       'id_usuario_registra',
       'id_usuario_modifica',
    ];
+
+   public function servidores () {
+      return $this->hasMany(Servidor::class, 'id_servidor');
+      /*
+      return \App\Servidor::with(['aplicaciones'])
+         ->join('aplicaciones','aplicaciones.id_servidor','=','servidores.id_servidor')
+         ->join('servicios','servicios.id_servicio','=','aplicaciones.id_servicio')
+         ->where('aplicaciones.id_servicio','=',$id)
+         ->get();
+      */
+   }
 
    public function actividad () {
       return $this->belongsTo(Actividad::class, 'id_actividad');

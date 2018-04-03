@@ -33,6 +33,7 @@ class Servidor extends Model {
       'agente_instana_instalado',
 
       #relaciones -> pks
+      'id_servicio',
       'id_datacentro',
       'id_sistema_operativo',
       'id_estado',
@@ -66,6 +67,10 @@ class Servidor extends Model {
 
    public function cluster () {
       return $this->belongsTo(Cluster::class, 'id_cluster');
+   }
+
+   public function servicio () {
+      return $this->belongsTo(Servicio::class, 'id_servicio');
    }
 
    public function servidor_lvm () {

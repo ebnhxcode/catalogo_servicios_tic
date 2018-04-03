@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Servicio;
+use App\Servidor;
 use App\Actividad;
 use App\UsuarioBitacoraServicio;
 use Illuminate\Http\Request;
 use Auth;
+#use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class ServicioController extends Controller {
@@ -21,6 +23,7 @@ class ServicioController extends Controller {
 
     private $actividades;
     private $usuarios_bitacora_servicios;
+    private $servidores;
     private $servicios;
     private $servicio;
     private $new_servicio;
@@ -53,6 +56,7 @@ class ServicioController extends Controller {
     }
 
     public function index(Request $request) {
+
         if (!$request->wantsJson() && !$request->ajax()) {
             return view("layouts.main", [
                'nombre_modelo' => $this->nombre_modelo,
@@ -65,7 +69,7 @@ class ServicioController extends Controller {
 
         $this->usuario_auth = Auth::user();
         $this->actividades = Actividad::all();
-        $this->servicios = Servicio::with(['actividad','usuario','aplicaciones.servidor','usuarios_bitacora_servicios.usuario'])->get();
+        $this->servicios = Servicio::with(['actividad','usuario','servidores','aplicaciones.servidor','usuarios_bitacora_servicios.usuario'])->get();
         $this->usuarios_bitacora_servicios =
            UsuarioBitacoraServicio::where('id_usuario', '=', $this->usuario_auth->id_usuario)->get();
         return response()->json([
@@ -88,9 +92,10 @@ class ServicioController extends Controller {
             ]);
         }
 
-        $this->servicio = Servicio::where("id_$this->nombre_modelo",'=',$id)->with([
-           'actividad','usuario','aplicaciones.servidor','usuarios_bitacora_servicios.usuario'
-        ])->first();
+        $this->servicio = Servicio::where("id_$this->nombre_modelo",'=',7)
+           ->with(['actividad','usuario',"servidores",'aplicaciones.servidor','usuarios_bitacora_servicios.usuario'])
+           ->first();
+
 
         #Valida si servicio existe
         if ($this->servicio) {

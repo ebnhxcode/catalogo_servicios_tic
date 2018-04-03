@@ -177,6 +177,7 @@ const ServicioController = new Vue({
             this.actividades = response.body.actividades || null;
             this.usuarios_bitacora_servicios = response.body.usuarios_bitacora_servicios || null;
             this.datos_excel = response.body.servicios || null;
+            this.servicios = response.body.servicios || null;
             this.usuario_auth = response.body.usuario_auth || null;
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);
