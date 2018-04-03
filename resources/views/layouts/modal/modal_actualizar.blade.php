@@ -68,9 +68,9 @@
 
    <!-- La subvista que se encarga de mostrar las relaciones con este modulo y posibles mantenedores -->
    <br>
-   @if(view()->exists("$nombre_tabla.partials.relacionados_$nombre_modelo"))
+   @if(view()->exists("$nombre_tabla.partials.relacionados_a"))
       <div class="tab-pane fade show" id="relacionados_a_tab" role="tabpanel" aria-labelledby="relacionados_a_tab">
-         @include("$nombre_tabla.partials.relacionados_$nombre_modelo")
+         @include("$nombre_tabla.partials.relacionados_a")
       </div>
    @endif
 

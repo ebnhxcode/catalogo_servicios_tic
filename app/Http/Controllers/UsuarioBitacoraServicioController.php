@@ -29,7 +29,7 @@ class UsuarioBitacoraServicioController extends Controller {
 
    public function __construct () {
       $this->middleware('auth');
-      $this->middleware('mantenedor');#resrtinge a solo usuarios con permiso elevado -> D
+      $this->middleware('mantenedor');#resrtinge a solo usuarios con permiso bajo -> D
       $this->nombre_modelo = "usuario_bitacora_servicio"; //nombre tabla o de ruta
       $this->nombre_tabla = $this->nombre_ruta = "usuarios_bitacora_servicios";
       $this->nombre_detalle = "Usuarios Bitacora Servicios";

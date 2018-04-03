@@ -32,6 +32,8 @@ Route::get('/embed/dominios', 'DominioController@index_componente');
 Route::get('/embed/servidores', 'ServidorController@index_componente');
 Route::get('/embed/servicios', 'ServicioController@index_componente');
 Route::get('/embed/sistemas_operativos', 'SistemaOperativoController@index_componente');
+Route::get('/embed/servidores_accesos', 'ServidorAccesoController@index_componente');
+Route::get('/embed/aplicaciones_accesos', 'AplicacionAccesoController@index_componente');
 
 
 #Esto aplica solo para las rutas que eran resource , es una forma de mapear las url/rutas

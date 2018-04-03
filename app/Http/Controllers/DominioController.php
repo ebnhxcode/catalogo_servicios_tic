@@ -25,7 +25,7 @@ class DominioController extends Controller {
 
    public function __construct () {
       $this->middleware('auth');
-      $this->middleware('mantenedor', ['excep'=>['index','show']]);#resrtinge a solo usuarios con permiso elevado -> D
+      $this->middleware('mantenedor', ['excep'=>['index','show']]);#resrtinge a solo usuarios con permiso bajo -> D
       $this->nombre_modelo = "dominio"; //nombre tabla o de ruta
       $this->nombre_tabla = $this->nombre_ruta = "dominios";
       $this->nombre_detalle = "Dominios";

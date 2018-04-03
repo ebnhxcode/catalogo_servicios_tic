@@ -8,13 +8,17 @@
          aria-controls="v-pills-datacentro" aria-selected="false">
          Datacentro
       </a>
-      <a class="nav-link" id="v-pills-credenciales-tab" data-toggle="pill" href="#v-pills-credenciales" role="tab"
-         aria-controls="v-pills-credenciales" aria-selected="false">
-         Credenciales
+      <a class="nav-link" id="v-pills-servidores-accesos-tab" data-toggle="pill" href="#v-pills-servidores-accesos" role="tab"
+         aria-controls="v-pills-servidores-accesos" aria-selected="false">
+         Accesos servidores
+      </a>
+      <a class="nav-link" id="v-pills-aplicaciones-accesos-tab" data-toggle="pill" href="#v-pills-aplicaciones-accesos" role="tab"
+         aria-controls="v-pills-aplicaciones-accesos" aria-selected="false">
+         Accesos aplicaciones
       </a>
       <a class="nav-link" id="v-pills-historial-tab" data-toggle="pill" href="#v-pills-historial" role="tab"
          aria-controls="v-pills-historial" aria-selected="false">
-         Historial de cambios
+         Historial de cambios en este servidor
       </a>
       {{--
       <a class="nav-link" id="v-pills-opciones-tab" data-toggle="pill" href="#v-pills-opciones" role="tab"
@@ -25,16 +29,26 @@
    </div>
    <div class="tab-content col-sm-10" id="v-pills-tabContent">
       <div class="tab-pane fade show active" id="v-pills-aplicaciones" role="tabpanel" aria-labelledby="v-pills-aplicaciones-tab">
-
          <div class="embed-responsive embed-responsive-16by9 pro">
-            <iframe style="min-height: 800px;" src="{{url('/embed/aplicaciones')}}" frameborder="0" width="100%" height="100%"></iframe>
+            <iframe style="min-height: 600px;" src="{{url('/embed/aplicaciones')}}" frameborder="0" width="100%" height="100%"></iframe>
          </div>
-
       </div>
 
       <div class="tab-pane fade" id="v-pills-datacentro" role="tabpanel" aria-labelledby="v-pills-datacentro-tab">
          <div class="embed-responsive embed-responsive-16by9 pro">
-            <iframe style="min-height: 800px;" src="{{url('/embed/datacentros')}}" frameborder="0" width="100%" height="100%"></iframe>
+            <iframe style="min-height: 600px;" src="{{url('/embed/datacentros')}}" frameborder="0" width="100%" height="100%"></iframe>
+         </div>
+      </div>
+
+      <div class="tab-pane fade" id="v-pills-servidores-accesos" role="tabpanel" aria-labelledby="v-pills-servidores-accesos-tab">
+         <div class="embed-responsive embed-responsive-16by9 pro">
+            <iframe style="min-height: 600px;" src="{{url('/embed/servidores_accesos')}}" frameborder="0" width="100%" height="100%"></iframe>
+         </div>
+      </div>
+
+      <div class="tab-pane fade" id="v-pills-aplicaciones-accesos" role="tabpanel" aria-labelledby="v-pills-aplicaciones-accesos-tab">
+         <div class="embed-responsive embed-responsive-16by9 pro">
+            <iframe style="min-height: 600px;" src="{{url('/embed/aplicaciones_accesos')}}" frameborder="0" width="100%" height="100%"></iframe>
          </div>
       </div>
 

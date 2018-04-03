@@ -29,7 +29,7 @@ class ServidorAccesoController extends Controller {
 
    public function __construct () {
       $this->middleware('auth');
-      $this->middleware('mantenedor');#resrtinge a solo usuarios con permiso elevado -> D
+      $this->middleware('mantenedor');#resrtinge a solo usuarios con permiso bajo -> D
       $this->nombre_modelo = "servidor_acceso"; //nombre tabla o de ruta
       $this->nombre_tabla = $this->nombre_ruta = "servidores_accesos";
       $this->nombre_detalle = "Servidores Accesos";
@@ -43,6 +43,16 @@ class ServidorAccesoController extends Controller {
       } else {
          return true;
       }
+   }
+
+   public function index_componente () {
+      return view("layouts.main_para_componentes", [
+         'nombre_modelo' => $this->nombre_modelo,
+         'nombre_tabla' => $this->nombre_tabla,
+         'nombre_ruta' => $this->nombre_ruta,
+         'nombre_detalle' => $this->nombre_detalle,
+         'nombre_controller' => $this->nombre_controller,
+      ]);
    }
 
 

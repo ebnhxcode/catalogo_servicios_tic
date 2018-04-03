@@ -4,7 +4,7 @@
 
    <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
 
-   <main role="main" class="col-md-9 ml-sm-auto col-lg-9 {{--pt-3 px-4--}}" id="{{$nombre_controller}}">
+   <main role="main" class="col-md-12 ml-sm-auto col-lg-12 {{--pt-3 px-4--}}" id="{{$nombre_controller}}">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 border-bottom">
          <h2 class="h2">{{$nombre_detalle}}</h2>
 
