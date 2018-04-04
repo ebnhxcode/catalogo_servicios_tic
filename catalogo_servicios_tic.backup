@@ -5,7 +5,7 @@
 -- Dumped from database version 10.3 (Debian 10.3-2)
 -- Dumped by pg_dump version 10.3 (Debian 10.3-2)
 
--- Started on 2018-04-03 15:59:20 -03
+-- Started on 2018-04-04 11:09:01 -03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -1386,7 +1386,12 @@ CREATE TABLE public.servidores_lvms (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     deleted_at timestamp without time zone,
-    id_servidor integer
+    id_servidor integer,
+    lvm_opt integer,
+    lvm_instaladores integer,
+    lvm_boot integer,
+    lvm_swap integer,
+    lvm_u01 integer
 );
 
 
@@ -1871,10 +1876,8 @@ ALTER TABLE ONLY public.migrations ALTER COLUMN id SET DEFAULT nextval('public.m
 --
 
 COPY public.actividades (id_actividad, nom_actividad, det_actividad, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
-11	Cubicacion Maquina	Cubicacion Maquina	1	4	2018-02-27 18:33:57	2018-02-28 05:58:27	\N
 2	Soporte	Soporte	1	4	2018-02-27 18:31:56	2018-02-28 05:58:33	\N
 3	Seguimiento	Seguimiento	1	4	2018-02-27 18:32:09	2018-03-04 12:28:10	\N
-4	Desarrollo	Desarrollo	1	4	2018-02-27 18:32:18	2018-03-05 20:56:13	\N
 5	Requerimientos	Requerimientos	1	4	2018-02-27 18:32:32	2018-03-06 06:34:43	\N
 6	Migraciones	Migraciones	1	4	2018-02-27 18:32:39	2018-03-06 06:34:46	\N
 8	Descargas Masivas	Descargas Masivas	1	4	2018-02-27 18:33:04	2018-03-06 06:42:00	\N
@@ -1882,8 +1885,10 @@ COPY public.actividades (id_actividad, nom_actividad, det_actividad, id_usuario_
 12	test	test	4	4	2018-03-21 20:49:01	2018-03-21 20:49:12	2018-03-21 20:49:12
 9	Tareas Programadas	Tareas Programadas	1	4	2018-02-27 18:33:17	2018-03-28 18:11:13	\N
 13	fasdfdf	asdfsadf	1	1	2018-03-29 06:10:12	2018-03-29 06:10:35	2018-03-29 06:10:35
-1	Mantencion	Mantencion	1	1	2018-02-27 18:26:10	2018-03-29 06:14:23	\N
-7	Cargas Masivas	Cargas Masivas	1	1	2018-02-27 18:32:52	2018-03-29 06:14:31	\N
+11	Cubicacion Maquina	Actividad de gestion para la disponibilizacion de servidor o maquina para alojar un aplicativo.	1	4	2018-02-27 18:33:57	2018-04-04 03:40:14	\N
+7	Cargas Masivas	Actividad de proceso para trabajar sobre grandes tuplas de datos como entrada o salida, u otras actividades relacionadas a procesamiento masivo.	1	4	2018-02-27 18:32:52	2018-04-04 03:41:31	\N
+1	Mantencion	Actividad de proceso y ejecucion para mantener las soluciones ya desarrolladas o heredadas de algun proveedor externo, etc a clientes mediante software o gestores de contenidos.	1	4	2018-02-27 18:26:10	2018-04-04 03:44:22	\N
+4	Desarrollo	Actividad de proceso y ejecucion para desarrollar soluciones, aplicativos, etc a clientes mediante software o gestores de contenidos.	1	4	2018-02-27 18:32:18	2018-04-04 03:44:37	\N
 \.
 
 
@@ -1927,6 +1932,8 @@ COPY public.aplicaciones (id_aplicacion, id_tipo_aplicacion, id_servicio, id_dom
 11	43	7	1	app004	app004	app004	http://ww.ww.ww	1.1.1.1	app004	false	4	4	2018-04-02 19:57:49	2018-04-02 20:49:38	\N	19
 10	43	7	1	app003	app003	app003	http://ww.ww.ww	1.1.1.1	app003	false	4	4	2018-03-29 20:12:26	2018-04-02 20:49:46	\N	19
 8	43	7	1	app001	allsad	sladsd	http://ww.ww.ww	1.1.1.1	app001	false	4	4	2018-03-29 20:00:56	2018-04-02 20:49:57	\N	20
+12	43	7	1	app005	qqw	alias	http://ww.ww.ww	3.3.3.3	eweq	1	4	4	2018-04-04 01:43:27	2018-04-04 01:43:27	\N	19
+13	43	7	1	app002	app002	app002	http://ww.ww.ww	1.1.1.1	app002	0	4	4	2018-04-04 03:07:50	2018-04-04 03:07:50	\N	20
 3	4	2	1	sdfsadfsa	fsdfsadf	safasdfsadf	http://ww.ww.ww	3.3.3.3	eweq	1	4	4	2018-03-02 20:37:15	2018-03-02 20:37:34	2018-03-02 20:37:34	\N
 2	1	1	1	fsfsadfsadf	sdfsadfsad	fsdafsd	http://weq.qweqw.qwe	1.1.1.1	fsdf	true	4	4	2018-03-02 15:12:17	2018-03-02 20:37:37	2018-03-02 20:37:37	\N
 \.
@@ -1939,8 +1946,8 @@ COPY public.aplicaciones (id_aplicacion, id_tipo_aplicacion, id_servicio, id_dom
 --
 
 COPY public.aplicaciones_accesos (id_aplicacion_acceso, id_aplicacion, id_servidor, usuario, clave, email, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, tipo_acceso) FROM stdin;
-1	4	4	webminsal	Minsal2018	desarrollo@minsal.cl	4	4	2018-03-15 13:55:05	2018-03-16 15:34:31	\N	login
 2	6	1	testerw	test	test@testt.es	4	4	2018-03-21 20:46:06	2018-03-21 20:46:18	2018-03-21 20:46:18	testwer
+1	12	19	webminsal	Minsal2018	desarrollo@minsal.cl	4	4	2018-03-15 13:55:05	2018-04-04 05:03:47	\N	login
 \.
 
 
@@ -2529,9 +2536,9 @@ COPY public.menus (id_menu, url_menu, nom_menu, det_menu, cod_menu, id_usuario_r
 4	servicios	Servicios	servicios	servicios01	4	4	2018-03-28 19:05:04	2018-03-28 19:05:48	\N	\N	\N
 5	servidores	Servidores	servidores	servidores01	4	4	2018-03-28 19:07:03	2018-03-28 19:07:03	\N	\N	\N
 6	aplicaciones	Aplicaciones	aplicacion	aplicacion01	4	4	2018-03-28 19:07:22	2018-03-28 19:07:34	\N	\N	\N
-7	actividades	Actividades	actividades	actividades01	4	4	2018-03-28 19:08:03	2018-03-28 19:08:03	\N	\N	\N
 8	catalogos	Catalogos	catalogos	catalogos01	4	4	2018-03-28 19:08:21	2018-03-28 19:08:21	\N	\N	\N
 9	usuarios_bitacora_servicios	Bitacoras	bitacoras	bitacoras01	4	4	2018-03-28 19:08:33	2018-03-29 05:27:11	2018-03-29 05:27:11	\N	\N
+7	actividades	Actividades	actividades	actividades01	4	4	2018-03-28 19:08:03	2018-04-04 05:00:17	2018-04-04 05:00:17	\N	\N
 \.
 
 
@@ -3057,6 +3064,7 @@ COPY public.servidores (id_servidor, id_datacentro, id_sistema_operativo, nom_se
 16	2	33	rerwer	1.1.1.1	4	4	2018-03-27 13:36:23	2018-03-27 13:42:35	2018-03-27 13:42:35	ewewr	234	234	423	amd	234	3	0	0	0	0	4	234	2	true	\N
 18	2	33	rerwer	1.1.1.1	4	4	2018-03-27 13:37:50	2018-03-27 13:42:44	2018-03-27 13:42:44	ewewr	234	234	423	amd	234	3	0	0	0	0	4	234	2	true	\N
 17	2	33	rerwer	1.1.1.1	4	4	2018-03-27 13:37:15	2018-03-27 13:42:52	2018-03-27 13:42:52	ewewr	234	234	423	amd	234	3	0	0	0	0	4	234	2	true	\N
+21	1	23	APPSQD99QAPROD	1.1.1.1	4	4	2018-04-03 19:02:58	2018-04-04 04:56:26	\N	APPSQD99QAPROD	2048	2048	2048	intel	2048	8	0	ab:ab:ab:ab:ab:ab	0	0	4	2048A	1	0	7
 6	1	1	313123	1.1.1.1	4	4	2018-03-20 18:37:38	2018-03-20 18:37:59	2018-03-20 18:37:59	eqwqwe	1000	1000	1000	intel	1000	8	0	ab:ab:ab:ab:ab:ab	0	0	\N	\N	\N	\N	\N
 5	1	1	313123	1.1.1.1	4	4	2018-03-20 18:34:15	2018-03-20 18:38:05	2018-03-20 18:38:05	eqwqwe	1000	1000	1000	intel	1000	8	0	ab:ab:ab:ab:ab:ab	0	0	\N	\N	\N	\N	\N
 8	1	3	test	2.2.2.2	4	4	2018-03-20 20:29:00	2018-03-20 20:35:30	2018-03-20 20:35:30	test	22	22	22	amd	22	22	0	ab:ab:ab:ab:ab:ab	0	0	\N	\N	\N	\N	\N
@@ -3112,6 +3120,7 @@ COPY public.servidores_estados (id_servidor_estado, id_servidor, id_estado, id_u
 16	18	2	4	4	2018-03-27 13:37:50	2018-03-27 13:37:50	\N
 17	19	2	4	4	2018-03-27 13:44:03	2018-03-27 13:48:41	\N
 18	20	2	4	4	2018-03-27 14:10:27	2018-03-27 14:10:27	\N
+19	21	2	4	4	2018-04-03 19:02:58	2018-04-03 19:02:58	\N
 \.
 
 
@@ -3171,6 +3180,9 @@ COPY public.servidores_historico_cambios (id_servidor_historico, id_servidor, id
 56	20	1	34	APPSQD99QAPROD	1.1.1.1	4	4	2018-04-02 19:53:58	2018-04-02 19:53:58	\N	server2	123	123	123	intel	123	8	0	0	0	0	1	123abcd	\N	\N
 57	20	1	34	APPSQD99QAPROD	1.1.1.1	4	4	2018-04-03 18:49:48	2018-04-03 18:49:48	\N	server2	123	123	123	intel	123	8	0	0	0	0	1	123abcd	\N	\N
 58	19	1	31	server1	1.1.1.1	4	4	2018-04-03 18:50:07	2018-04-03 18:50:07	\N	server1	2048	2342	34	amd	2400	2	0	ab:ab:ab:ab:ab:ab	0	0	4	fsfafsffds	\N	\N
+59	21	1	23	APPSQD99QAPROD	1.1.1.1	\N	\N	2018-04-03 19:02:58	2018-04-03 19:02:58	\N	APPSQD99QAPROD	2048	2048	2048	intel	2048	8	0	ab:ab:ab:ab:ab:ab	0	0	4	2048A	\N	\N
+60	21	1	23	APPSQD99QAPROD	1.1.1.1	4	4	2018-04-03 19:16:35	2018-04-03 19:16:35	\N	APPSQD99QAPROD	2048	2048	2048	intel	2048	8	0	ab:ab:ab:ab:ab:ab	0	0	4	2048A	\N	\N
+61	21	1	23	APPSQD99QAPROD	1.1.1.1	4	4	2018-04-04 04:56:26	2018-04-04 04:56:26	\N	APPSQD99QAPROD	2048	2048	2048	intel	2048	8	0	ab:ab:ab:ab:ab:ab	0	0	4	2048A	\N	\N
 \.
 
 
@@ -3180,10 +3192,11 @@ COPY public.servidores_historico_cambios (id_servidor_historico, id_servidor, id
 -- Data for Name: servidores_lvms; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.servidores_lvms (id_servidor_lvm, lvm_raiz, lvm_usr, lvm_tmp, lvm_var, lvm_home, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, id_servidor) FROM stdin;
-1	234	234	234	234	234	4	4	2018-03-27 13:37:50	2018-03-27 13:37:50	\N	18
-2	101	101	101	101	101	4	4	2018-03-27 13:44:03	2018-03-27 14:07:06	\N	19
-3	10	10	10	10	10	4	4	2018-03-27 14:10:27	2018-03-27 14:10:27	\N	20
+COPY public.servidores_lvms (id_servidor_lvm, lvm_raiz, lvm_usr, lvm_tmp, lvm_var, lvm_home, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, id_servidor, lvm_opt, lvm_instaladores, lvm_boot, lvm_swap, lvm_u01) FROM stdin;
+1	234	234	234	234	234	4	4	2018-03-27 13:37:50	2018-03-27 13:37:50	\N	18	\N	\N	\N	\N	\N
+2	101	101	101	101	101	4	4	2018-03-27 13:44:03	2018-03-27 14:07:06	\N	19	\N	\N	\N	\N	\N
+3	10	10	10	10	10	4	4	2018-03-27 14:10:27	2018-03-27 14:10:27	\N	20	\N	\N	\N	\N	\N
+4	2048	2048	2048	2048	2048	4	4	2018-04-03 19:02:58	2018-04-03 19:02:58	\N	21	\N	\N	\N	\N	\N
 \.
 
 
@@ -3568,7 +3581,7 @@ SELECT pg_catalog.setval('public.aplicaciones_estados_id_seq', 1, false);
 -- Name: aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.aplicaciones_id_seq', 11, true);
+SELECT pg_catalog.setval('public.aplicaciones_id_seq', 13, true);
 
 
 --
@@ -3784,7 +3797,7 @@ SELECT pg_catalog.setval('public.servicios_tags_id_seq', 1, false);
 -- Name: servidor_aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.servidor_aplicaciones_id_seq', 20, true);
+SELECT pg_catalog.setval('public.servidor_aplicaciones_id_seq', 21, true);
 
 
 --
@@ -3793,7 +3806,7 @@ SELECT pg_catalog.setval('public.servidor_aplicaciones_id_seq', 20, true);
 -- Name: servidor_estado_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.servidor_estado_id_seq', 18, true);
+SELECT pg_catalog.setval('public.servidor_estado_id_seq', 19, true);
 
 
 --
@@ -3802,7 +3815,7 @@ SELECT pg_catalog.setval('public.servidor_estado_id_seq', 18, true);
 -- Name: servidor_historico_cambios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.servidor_historico_cambios_id_seq', 58, true);
+SELECT pg_catalog.setval('public.servidor_historico_cambios_id_seq', 61, true);
 
 
 --
@@ -3811,7 +3824,7 @@ SELECT pg_catalog.setval('public.servidor_historico_cambios_id_seq', 58, true);
 -- Name: servidores_lvm_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.servidores_lvm_id_seq', 3, true);
+SELECT pg_catalog.setval('public.servidores_lvm_id_seq', 4, true);
 
 
 --
@@ -4362,7 +4375,7 @@ ALTER TABLE ONLY public.usuarios_servicios
 CREATE INDEX password_resets_email_index ON public.password_resets USING btree (email);
 
 
--- Completed on 2018-04-03 15:59:24 -03
+-- Completed on 2018-04-04 11:09:04 -03
 
 --
 -- PostgreSQL database dump complete
