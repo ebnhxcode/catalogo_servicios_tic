@@ -45,8 +45,10 @@
 
       /* Estilo para las notificaciones */
       .vue-notification {
+         /*
          box-shadow: 0px 5px 5px 2px #f5f5f5 !important;
          border-radius: 5px 5px 5px 5px !important;
+         */
 
          width: 50rem;
          height: 6rem;
