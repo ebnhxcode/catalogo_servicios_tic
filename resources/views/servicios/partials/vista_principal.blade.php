@@ -89,7 +89,7 @@
                   <div :id="`${s.id_servidor}`" class="collapse" :aria-labelledby="`${s.id_servidor}`" data-parent="#accordion">
                      <div class="card-body">
 
-                  <span class="text-success float-right">
+                  <span class="text-success float-right" v-if="s.servidor_estado">
                      Estado : @{{ s.servidor_estado.estado.nom_estado || 0 }}
                   </span>
                         <h4>Información básica del servidor</h4>
@@ -153,9 +153,9 @@
 
                         <hr>
 
-                  <span class="text-info float-right">
-                     N° Apps cargadas : @{{ s.aplicaciones.length || 0 }}
-                  </span>
+                        <span class="text-info float-right" v-if="s.aplicaciones && s.aplicaciones.length >= 0">
+                           N° Apps cargadas : @{{ s.aplicaciones.length || 0 }}
+                        </span>
                         <h4>Aplicaciones</h4>
 
                         <div class="table-responsive pro">
