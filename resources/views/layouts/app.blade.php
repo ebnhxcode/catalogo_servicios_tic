@@ -17,8 +17,8 @@
    <style>
 
       .pro {
-         box-shadow: 2px 5px 5px 2px #e8e8e8;
-         border-radius: 6px;
+         box-shadow: 0px 4px 4px 0px #dedede;
+         border-radius: 5px;
       }
 
 
@@ -45,14 +45,19 @@
 
       /* Estilo para las notificaciones */
       .vue-notification {
-         padding: 10px;
-         margin: 0 5px 5px;
+         box-shadow: 0px 5px 5px 2px #f5f5f5 !important;
+         border-radius: 5px 5px 5px 5px !important;
 
-         font-size: 12px;
+         width: 50rem;
+         height: 6rem;
+         padding: 5px !important;
+         margin: 0 5px 5px !important;
+
+         font-size: 14px !important;
 
          color: #ffffff;
          background: #44A4FC;
-         border-left: 5px solid #187FE7;
+         border-left: 1px solid #187FE7 ;
 
       &
       .default {
@@ -80,8 +85,8 @@
 
       &
       .success {
-         background: #68CD86;
-         border-left-color: #42A85F;
+         background: #63dd85 !important;
+         border-left-color: 1px solid #42A85F !important;
       }
 
       }
@@ -140,7 +145,7 @@
       </div>
    </nav>
 
-   <main class="py-4" style="padding-left: 10px;">
+   <main class="py-4" style="padding-left: 10px;padding-top: 3px !important;">
 
       <div class="container-fluid">
          <div class="row">
@@ -187,7 +192,7 @@ nú
 
                   <ul class="nav flex-column">
                      <li class="nav-item" v-for="menu in filterBy(menus, filtro_menu)">
-                        <a class="nav-link active" style="font-size: .8rem;" :href="menu.url_menu"
+                        <a class="nav-link btn btn-light text-left" style="font-size: .8rem;" :href="menu.url_menu"
                            data-placement="top" data-toggle="tooltip" :title="menu.det_menu">
                            @{{ menu.nom_menu }}<span class="sr-only">(current)</span>
                         </a>
@@ -209,7 +214,7 @@ nú
                      <ul class="nav flex-column mb-2">
 
                         <li class="nav-item" v-for="mant in filterBy(mantenedores, filtro_menu)">
-                           <a class="nav-link" style="font-size: .8rem;" :href="mant.url_mantenedor"
+                           <a class="nav-link btn btn-light text-left" style="font-size: .8rem;" :href="mant.url_mantenedor"
                               data-placement="top" data-toggle="tooltip" :title="mant.det_mantenedor">
                               @{{ mant.nom_mantenedor }}
                            </a>

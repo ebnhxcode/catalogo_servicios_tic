@@ -12,21 +12,15 @@
          <div class="btn-toolbar mb-2 mb-md-0">
             <div class="input-group input-group-sm">
 
-               <div class="btn-group mr-2 pro">
-                  <input type="text" class="form-control input-sm"
-                         data-placement="top" data-toggle="tooltip" title="Filtrar en la lista"
-                         placeholder="filtrar en la lista" v-model="filtro_head" id="filtro_head">
-               </div><!-- .btn-group mr-2 #mr->margin -->
-
                <div class="btn-group mr-0 pro">
-                  <button class="btn btn-sm btn-outline-success"
+                  <button class="btn btn-light btn-outline-success"
                           v-if="en_array(['Administrador','Jefe de Area','Lider Equipo','Jefe Proyecto','App Manager'],usuario_auth.usuario_role.role.nom_role)"
                           data-placement="top" data-toggle="tooltip" title="Crear nuevo/a {{$nombre_modelo}}"
                           @click.prevent="mostrar_modal_crear">
                      Crear {{str_replace('_',' ',$nombre_modelo)}}
                   </button>
 
-                  <button class="btn btn-sm btn-outline-secondary dropdown-toggle"
+                  <button class="btn btn-sm btn-light btn-outline-secondary dropdown-toggle"
                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Lista de opciones">
                      Opciones
                   </button>
@@ -81,7 +75,16 @@
       <br />
       <br />
 
-      <h4 class="h4">Lista de {{$nombre_detalle}}</h4>
+      <h4>
+         <div class="pro float-right">
+            <input type="text" class="form-control input-sm"
+                   data-placement="top" data-toggle="tooltip" title="Filtrar en la lista"
+                   placeholder="filtrar en la lista" v-model="filtro_head" id="filtro_head">
+         </div><!-- .btn-group mr-2 #mr->margin -->
+
+         Lista de {{$nombre_detalle}}
+      </h4>
+      <br>
       <!-- Sección de la tabla que lista los elementos del módulo -->
       <div class="table-responsive pro">
          <!-- dir ./partials -->

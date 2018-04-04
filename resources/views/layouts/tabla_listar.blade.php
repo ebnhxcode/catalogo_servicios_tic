@@ -17,7 +17,7 @@
    </thead>
    <tbody>
    <tr v-for="lom in filterBy(lista_objs_model, filtro_head)"
-       @dblclick.prevent="editar(lom[`id_${nombre_model}`])">
+       {{--@dblclick.prevent="editar(lom[`id_${nombre_model}`])"--}}>
       <template v-if="id_en_edicion != lom[`id_${nombre_model}`] || modal_actualizar_activo == true">
          <td v-for="c,i in tabla_campos" v-show="c">
             {{-- se corre por detras la completitud de relaciones. --}}

@@ -44,6 +44,10 @@ class Aplicacion extends Model {
       return $this->belongsTo(Servidor::class, 'id_servidor');
    }
 
+   public function accesos () {
+      return $this->hasMany(AplicacionAcceso::class, 'id_aplicacion');
+   }
+
    public function tipo_aplicacion() {
       return $this->belongsTo(TipoAplicacion::class, 'id_tipo_aplicacion');
    }

@@ -93,7 +93,16 @@ class ServicioController extends Controller {
         }
 
         $this->servicio = Servicio::where("id_$this->nombre_modelo",'=',$id)
-           ->with(['actividad','usuario','servidores.aplicaciones.dominio','servidores.servidor_estado.estado','aplicaciones.servidor','usuarios_bitacora_servicios.usuario'])
+           ->with([
+              'actividad',
+              'usuario',
+              'servidores.aplicaciones.accesos',
+              'servidores.aplicaciones.dominio',
+              'servidores.servidor_estado.estado',
+              'servidores.accesos',
+              'aplicaciones.servidor',
+              'usuarios_bitacora_servicios.usuario',
+           ])
            ->first();
 
 

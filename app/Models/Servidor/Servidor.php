@@ -73,6 +73,10 @@ class Servidor extends Model {
       return $this->belongsTo(Servicio::class, 'id_servicio');
    }
 
+   public function accesos () {
+      return $this->hasMany(ServidorAcceso::class, 'id_servidor');
+   }
+
    public function servidor_lvm () {
       return $this->hasOne(ServidorLvm::class, 'id_servidor');
    }

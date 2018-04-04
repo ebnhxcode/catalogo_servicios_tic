@@ -17,7 +17,7 @@ Relacionados a ➜ <span class="text-info">@{{ $data[`${nombre_model}`][`nom_${n
    @if(view()->exists("$nombre_tabla.partials.relacionados_a"))
       <li class="nav-item" v-show="true">
          <a class="nav-link" data-toggle="tab" href="#relacionados_a_tab" role="tab"
-            aria-controls="relacionados_a" aria-selected="true">Relacionados a ➜
+            aria-controls="relacionados_a" aria-selected="true">Vínculos Relacionados al servicio ➜
             <span class="text-info">@{{ $data[`${nombre_model}`][`nom_${nombre_model}`] }}</span>
          </a>
       </li>
