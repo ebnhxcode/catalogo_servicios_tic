@@ -118,8 +118,10 @@
             <ul class="navbar-nav ml-auto">
                <!-- Authentication Links -->
                @guest
-               <li><a class="nav-link" href="{{ route('login') }}">Login</a></li>
-               <li><a class="nav-link" href="{{ route('register') }}">Register</a></li>
+               <!--
+               <li><a class="nav-link" href="{{-- route('login') --}}">Login</a></li>
+               <li><a class="nav-link" href="{{-- route('register') --}}">Register</a></li>
+               -->
                @else
                   <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
