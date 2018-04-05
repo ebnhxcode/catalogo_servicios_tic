@@ -93,7 +93,7 @@
                           data-toggle="collapse" :data-target="`#${s.id_servidor}`" aria-expanded="true" :aria-controls="`${s.id_servidor}`">
                      <div class="row">
                         <div class="col-sm-6">
-                           <h5>@{{ s.nom_servidor }}</h5>
+                           <h5><span class="text-success">@{{`${s.ip_servidor || 0}`}}</span> : @{{ `${s.nom_servidor}` }}</h5>
                         </div>
                         <div class="col-sm-3">
                            <span class="text-info" v-if="s.aplicaciones && s.aplicaciones.length >= 0">
@@ -119,20 +119,19 @@
 
                            <dt class="col-md-3">Ip</dt>
                            <dd class="col-md-3">@{{`${s.ip_servidor || 0}`}}</dd>
-                           <dt class="col-md-3">Mac</dt>
-                           <dd class="col-md-3">@{{`${s.mac|| 0}`}}</dd>
                            <dt class="col-md-3">Ram</dt>
                            <dd class="col-md-3">@{{separar_miles(`${s.ram || 0}`)}} mb</dd>
                            <dt class="col-md-3">Disco</dt>
                            <dd class="col-md-3">@{{separar_miles(`${s.memoria_dd || 0}`)}} mb</dd>
-                           <dt class="col-md-3">Swap</dt>
-                           <dd class="col-md-3">@{{separar_miles(`${s.swap || 0}`)}} mb</dd>
-                           <dt class="col-md-3">Proc.</dt>
-                           <dd class="col-md-3">@{{`${s.procesador || 0}`}}</dd>
-                           <dt class="col-md-3">Frec. Proc.</dt>
-                           <dd class="col-md-3">@{{separar_miles(`${s.frec_procesador || 0}`)}} mhz</dd>
                            <dt class="col-md-3">Cores</dt>
                            <dd class="col-md-3">@{{`${s.nucleos || 0}`}}</dd>
+                           <dt class="col-md-3">Sistema Operativo</dt>
+                           <dd class="col-md-3">
+                              @{{`${s.sistema_operativo.nom_sistema_operativo || 0}`}}
+                              @{{`${s.sistema_operativo.vers_sistema_operativo || 0}`}}
+                           </dd>
+                           <dt class="col-md-3">Datacentro</dt>
+                           <dd class="col-md-3">@{{`${s.datacentro.nom_datacentro || 0}`}}</dd>
                         </dl>
 
                         <br>

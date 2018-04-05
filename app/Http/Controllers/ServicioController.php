@@ -96,6 +96,8 @@ class ServicioController extends Controller {
            ->with([
               'actividad',
               'usuario',
+              'servidores.sistema_operativo',
+              'servidores.datacentro',
               'servidores.aplicaciones.accesos',
               'servidores.aplicaciones.dominio',
               'servidores.servidor_estado.estado',
