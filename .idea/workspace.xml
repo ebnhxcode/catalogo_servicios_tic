@@ -5,9 +5,7 @@
     <bookmark url="file://$PROJECT_DIR$/resources/views/menus/partials/formulario_campos.blade.php" line="82" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c71587b-d991-482f-b19e-13dd138d49bc" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="9c71587b-d991-482f-b19e-13dd138d49bc" name="Default" comment="" />
     <ignored path="catalogo_servicios_tic.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -48,7 +46,7 @@
       <file leaf-file-name="vista_principal.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/servicios/partials/vista_principal.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4734748">
+            <state vertical-scroll-proportion="1.591512">
               <caret line="80" column="13" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
               <folding />
             </state>
@@ -228,6 +226,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1222,7 +1221,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -1743,7 +1741,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/servicios/partials/vista_principal.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4734748">
+        <state vertical-scroll-proportion="1.591512">
           <caret line="80" column="13" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
           <folding />
         </state>
