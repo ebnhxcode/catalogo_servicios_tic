@@ -198,6 +198,14 @@ export const inyeccion_funciones_compartidas = {
        *
        *
        * */
+      atribuir_elementos_a_objetos: function (elementos_relaciones, objetos) {
+
+      },
+
+      /*
+       *
+       *
+       * */
       editar: function (id) {
          this.id_en_edicion = id;
          this.lista_actualizar_activo = true;

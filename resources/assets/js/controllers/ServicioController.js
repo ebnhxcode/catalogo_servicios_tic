@@ -48,6 +48,7 @@ const ServicioController = new Vue({
             {'actividad':'id_actividad'},
             {'usuario':'id_usuario'},
          ],
+
          'lom':{},
          'lista_objs_model':[],
          'actividades':[],
@@ -73,7 +74,9 @@ const ServicioController = new Vue({
          'tabla_campos': {
             'id_servicio':false,
             'nom_servicio':true,
-            'det_servicio':true,
+            'det_servicio':false,
+            'n_aplicaciones':true,
+            'n_servidores':true,
             'id_actividad':false,
             'id_usuario':false,
             'id_usuario_registra':false,
@@ -87,6 +90,8 @@ const ServicioController = new Vue({
             'id_servicio':'Id Servicio',
             'nom_servicio':'Nombre servicio',
             'det_servicio':'Detalle servicio',
+            'n_aplicaciones':'# Apps',
+            'n_servidores':'# Servidores',
             'id_actividad':'Id Actividad',
             'id_usuario':'Id Usuario',
             'id_usuario_registra':'Usuario registra',
@@ -174,12 +179,22 @@ const ServicioController = new Vue({
    methods: {
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+
             this.lista_objs_model = response.body.servicios || null;
+
+            this.lista_objs_model.map((lom) => {
+               lom.n_aplicaciones = lom.aplicaciones.length || 0;
+               lom.n_servidores = lom.servidores.length || 0;
+            });
+
             this.actividades = response.body.actividades || null;
             this.usuarios_bitacora_servicios = response.body.usuarios_bitacora_servicios || null;
             this.datos_excel = response.body.servicios || null;
             this.servicios = response.body.servicios || null;
             this.usuario_auth = response.body.usuario_auth || null;
+
+
+
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);
          });

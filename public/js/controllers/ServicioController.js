@@ -2424,6 +2424,12 @@ var inyeccion_funciones_compartidas = {
        *
        *
        * */
+      atribuir_elementos_a_objetos: function atribuir_elementos_a_objetos(elementos_relaciones, objetos) {},
+
+      /*
+       *
+       *
+       * */
       editar: function editar(id) {
          this.id_en_edicion = id;
          this.lista_actualizar_activo = true;
@@ -4006,6 +4012,7 @@ var ServicioController = new Vue({
          },
          'permitido_guardar': ['nom_servicio', 'det_servicio', 'id_actividad', 'id_usuario'],
          'relaciones_clase': [{ 'actividad': 'id_actividad' }, { 'usuario': 'id_usuario' }],
+
          'lom': {},
          'lista_objs_model': [],
          'actividades': [],
@@ -4031,7 +4038,9 @@ var ServicioController = new Vue({
          'tabla_campos': {
             'id_servicio': false,
             'nom_servicio': true,
-            'det_servicio': true,
+            'det_servicio': false,
+            'n_aplicaciones': true,
+            'n_servidores': true,
             'id_actividad': false,
             'id_usuario': false,
             'id_usuario_registra': false,
@@ -4045,6 +4054,8 @@ var ServicioController = new Vue({
             'id_servicio': 'Id Servicio',
             'nom_servicio': 'Nombre servicio',
             'det_servicio': 'Detalle servicio',
+            'n_aplicaciones': '# Apps',
+            'n_servidores': '# Servidores',
             'id_actividad': 'Id Actividad',
             'id_usuario': 'Id Usuario',
             'id_usuario_registra': 'Usuario registra',
@@ -4138,7 +4149,14 @@ var ServicioController = new Vue({
 
          this.$http.get('/' + this.nombre_ruta).then(function (response) {
             // success callback
+
             _this.lista_objs_model = response.body.servicios || null;
+
+            _this.lista_objs_model.map(function (lom) {
+               lom.n_aplicaciones = lom.aplicaciones.length || 0;
+               lom.n_servidores = lom.servidores.length || 0;
+            });
+
             _this.actividades = response.body.actividades || null;
             _this.usuarios_bitacora_servicios = response.body.usuarios_bitacora_servicios || null;
             _this.datos_excel = response.body.servicios || null;

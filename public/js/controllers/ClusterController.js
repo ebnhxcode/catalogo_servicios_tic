@@ -2633,6 +2633,12 @@ var inyeccion_funciones_compartidas = {
        *
        *
        * */
+      atribuir_elementos_a_objetos: function atribuir_elementos_a_objetos(elementos_relaciones, objetos) {},
+
+      /*
+       *
+       *
+       * */
       editar: function editar(id) {
          this.id_en_edicion = id;
          this.lista_actualizar_activo = true;

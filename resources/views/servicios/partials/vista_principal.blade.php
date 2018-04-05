@@ -74,24 +74,36 @@
          <br>
          <br>
 
-         <div class="col-sm-12">
+         <div class="col-sm-12" class="pro">
 
 
-            <div id="accordion" class="pro" v-if="servicio.servidores && servicio.servidores.length > 0">
+            <div id="accordion" v-if="servicio.servidores && servicio.servidores.length > 0"
+                 style="max-height: 800px;overflow-y: scroll;border-top: 6px solid #dddddd;border-bottom: 6px solid #dddddd;border-radius: 10px;">
 
                <div class="card pro" v-for="s in filterBy(servicio.servidores, filtro_componente)">
 
-                  <button class="btn btn-link card-header" id="`heading${s.id_servidor}`"
+                  <button class="btn btn-light card-header text-left" id="`heading${s.id_servidor}`"
                           data-toggle="collapse" :data-target="`#${s.id_servidor}`" aria-expanded="true" :aria-controls="`${s.id_servidor}`">
-                     <h5>@{{ s.nom_servidor }}</h5>
+                     <div class="row">
+                        <div class="col-sm-6">
+                           <h5>@{{ s.nom_servidor }}</h5>
+                        </div>
+                        <div class="col-sm-3">
+                           <span class="text-info" v-if="s.aplicaciones && s.aplicaciones.length >= 0">
+                              #@{{ s.aplicaciones.length || 0 }} App@{{ s.aplicaciones.length > 1 ?'s':'' }}
+                           </span>
+                        </div>
+                        <div class="col-sm-3">
+                           <span class="text-info float-right" v-if="s.servidor_estado">
+                              Estado : @{{ s.servidor_estado.estado.nom_estado || 0 }}
+                           </span>
+                        </div>
+                     </div>
                   </button>
 
                   <div :id="`${s.id_servidor}`" class="collapse" :aria-labelledby="`${s.id_servidor}`" data-parent="#accordion">
                      <div class="card-body">
 
-                  <span class="text-success float-right" v-if="s.servidor_estado">
-                     Estado : @{{ s.servidor_estado.estado.nom_estado || 0 }}
-                  </span>
                         <h4>Información básica del servidor</h4>
 
                         <dl class="row" v-if="s">
@@ -117,8 +129,7 @@
                         </dl>
 
                         <br>
-
-                        <hr>
+                        <br>
 
                         <h4>Credenciales del servidor</h4>
 
@@ -151,7 +162,8 @@
                            No tiene permisos para ver esta sección.
                         </div><!-- .card -->
 
-                        <hr>
+                        <br>
+                        <br>
 
                         <span class="text-info float-right" v-if="s.aplicaciones && s.aplicaciones.length >= 0">
                            N° Apps cargadas : @{{ s.aplicaciones.length || 0 }}
@@ -189,7 +201,8 @@
                            </div><!-- .card -->
                         </div>
 
-                        <hr>
+                        <br>
+                        <br>
 
                         <h4>Credenciales de la aplicación</h4>
 
@@ -223,6 +236,7 @@
 
                      </div>
                   </div>
+
                </div>
 
             </div>
