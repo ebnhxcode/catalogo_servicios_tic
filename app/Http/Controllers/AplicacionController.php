@@ -31,6 +31,7 @@ class AplicacionController extends Controller {
 
    public function __construct () {
       $this->middleware('auth');
+      $this->middleware('mantenedor');#resrtinge a solo usuarios con permiso bajo -> D
       $this->nombre_modelo = "aplicacion"; //nombre tabla o de ruta
       $this->nombre_tabla = $this->nombre_ruta = "aplicaciones";
       $this->nombre_detalle = "Aplicaciones";
