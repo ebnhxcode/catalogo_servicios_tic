@@ -70,7 +70,14 @@
                </div><!-- .btn-group mr-2 #mr->margin -->
             </h4>
          </div>
-
+         <div class="col-sm-12" v-if="filterBy(servicio.servidores, filtro_componente).length">
+            <small class="float-right">@{{ filterBy(servicio.servidores, filtro_componente).length || 0 }} resultados.</small>
+         </div>
+         <div class="col-sm-12" v-else>
+            <small class="float-right">
+               @{{ `Sin resultados para` }} ${`@{{ `${filtro_componente}` }}`}
+            </small>
+         </div>
          <br>
          <br>
 
