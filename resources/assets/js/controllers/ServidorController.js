@@ -100,6 +100,7 @@ const ServidorController = new Vue({
          'relaciones_clase':[
             {'datacentro':'id_datacentro'},
             {'servicio':'id_servicio'},
+            {'servicio':'nom_servicio'},
             {'sistema_operativo':'id_sistema_operativo'},
             {'aplicaciones':'id_aplicacion'},
             {'servidor_estado':'id_estado'},
