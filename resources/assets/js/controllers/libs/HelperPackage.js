@@ -175,11 +175,19 @@ export const inyeccion_funciones_compartidas = {
        *
        * */
       configurar_relaciones: function (objetos_clase, relaciones) {
-         objetos_clase.map((o) => {
-            o = relaciones.map((r) => {
-               let key = Object.keys(r)[0];
-               let pk = r[key];
-               if (o[key]) { o[pk] = o[key][pk] || null; }
+         objetos_clase.map((o) => { //obj de la clase -> servicios
+            o = relaciones.map((r) => { //relaciones -> {nombre_relacion:'key de valor a asignar'}
+               var key = Object.keys(r)[0];
+               var column = r[key];
+               //console.log(o); el obj de la clase en la lista
+               //console.log(r); el obj con la key -> column
+               //console.log(key); //nombre del key del obj de la relacion
+               //console.log(o[key]); //el objeto llamado con el key de la relacion
+               //console.log(column); //key de la columna de la bd ; id_* nom_*
+               //console.log(o[key][column]); //Valor que iria en el key a asociar
+               if (o[key]) {
+                  o[column] = o[key][column] || null;
+               }
                return o;
             });
          });

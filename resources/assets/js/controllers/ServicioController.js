@@ -31,7 +31,9 @@ const ServicioController = new Vue({
             'nom_servicio':null,
             'det_servicio':null,
             'id_actividad':null,
+            'nom_actividad':null,
             'id_usuario':null,
+            'nom_usuario':null,
             'id_usuario_registra':null,
             'id_usuario_modifica':null,
             'created_at':null,
@@ -46,7 +48,9 @@ const ServicioController = new Vue({
          ],
          'relaciones_clase':[
             {'actividad':'id_actividad'},
+            {'actividad':'nom_actividad'},
             {'usuario':'id_usuario'},
+            {'usuario':'nom_usuario'},
          ],
 
          'lom':{},
@@ -72,18 +76,20 @@ const ServicioController = new Vue({
          'orden_lista':'asc',
 
          'tabla_campos': {
-            'id_servicio':false,
+            //'id_servicio':false,
             'nom_servicio':true,
             'det_servicio':false,
             'n_aplicaciones':true,
             'n_servidores':true,
-            'id_actividad':false,
-            'id_usuario':false,
-            'id_usuario_registra':false,
-            'id_usuario_modifica':false,
+            //'id_actividad':false,
+            'nom_actividad':false,
+            //'id_usuario':false,
+            'nom_usuario':false,
+            //'id_usuario_registra':false,
+            //'id_usuario_modifica':false,
             'created_at':false,
             'updated_at':false,
-            'deleted_at':false,
+            //'deleted_at':false,
          },
 
          'tabla_labels': {
@@ -93,7 +99,9 @@ const ServicioController = new Vue({
             'n_aplicaciones':'# Apps',
             'n_servidores':'# Servidores',
             'id_actividad':'Id Actividad',
+            'nom_actividad':'Nombre actividad',
             'id_usuario':'Id Usuario',
+            'nom_usuario':'Nombre usuario asoc.',
             'id_usuario_registra':'Usuario registra',
             'id_usuario_modifica':'Usuario modifica',
             'created_at':'Creado en',
@@ -179,7 +187,7 @@ const ServicioController = new Vue({
    methods: {
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
-
+            this.configurar_relaciones(response.body.servicios, this.relaciones_clase);
             this.lista_objs_model = response.body.servicios || null;
 
             this.lista_objs_model.map((lom) => {
@@ -199,5 +207,14 @@ const ServicioController = new Vue({
             this.checkear_estado_respuesta_http(response.status);
          });
       },
+
+      bytesToSize: function (bytes) {
+         bytes*=1050000;
+         const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']
+         if (bytes === 0) return 'n/a'
+         const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)), 10)
+         if (i === 0) return `${bytes} ${sizes[i]})`
+         return `${(bytes / (1024 ** i)).toFixed(1)} ${sizes[i]}`
+      }
    }
 });

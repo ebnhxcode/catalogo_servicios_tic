@@ -120,9 +120,9 @@
                            <dt class="col-md-3">Ip</dt>
                            <dd class="col-md-3">@{{`${s.ip_servidor || 0}`}}</dd>
                            <dt class="col-md-3">Ram</dt>
-                           <dd class="col-md-3">@{{separar_miles(`${s.ram || 0}`)}} mb</dd>
+                           <dd class="col-md-3">@{{ `${(s.ram)/1024} GB` }}</dd>
                            <dt class="col-md-3">Disco</dt>
-                           <dd class="col-md-3">@{{separar_miles(`${s.memoria_dd || 0}`)}} mb</dd>
+                           <dd class="col-md-3">@{{ `${(s.memoria_dd)/1024} GB` }}</dd>
                            <dt class="col-md-3">Cores</dt>
                            <dd class="col-md-3">@{{`${s.nucleos || 0}`}}</dd>
                            <dt class="col-md-3">Sistema Operativo</dt>
