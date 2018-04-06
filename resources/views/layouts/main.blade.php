@@ -86,15 +86,32 @@
       <br />
       <br />
 
-      <h4>
-         <div class="pro float-right">
-            <input type="text" class="form-control input-sm"
-                   data-placement="top" data-toggle="tooltip" title="Filtrar en la lista"
-                   placeholder="filtrar en la lista" v-model="filtro_head" id="filtro_head">
-         </div><!-- .btn-group mr-2 #mr->margin -->
+      <div class="row">
+         <div class="col-sm-12">
+            <h4>
+               <div class="pro float-right">
+                  <input type="text" class="form-control input-sm"
+                         data-placement="top" data-toggle="tooltip" title="Filtrar en la lista"
+                         placeholder="filtrar en la lista" v-model="filtro_head" id="filtro_head">
+               </div><!-- .btn-group mr-2 #mr->margin -->
 
-         Lista de {{$nombre_detalle}}
-      </h4>
+               Lista de {{$nombre_detalle}}
+            </h4>
+         </div>
+         <div class="col-sm-12">
+            <div class="col-sm-12" v-if="filterBy(lista_objs_model, filtro_head).length">
+               <small class="float-right">@{{ filterBy(lista_objs_model, filtro_head).length || 0 }} resultados.</small>
+            </div>
+            <div class="col-sm-12" v-else>
+               <small class="float-right">
+                  @{{ `Sin resultados para` }} ${`@{{ `${filtro_head}` }}`}
+               </small>
+            </div>
+         </div>
+      </div>
+
+
+
       <br>
       <!-- Sección de la tabla que lista los elementos del módulo -->
 

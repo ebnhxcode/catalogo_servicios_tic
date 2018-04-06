@@ -30,9 +30,9 @@ const ServicioController = new Vue({
          'servicio':{
             'nom_servicio':null,
             'det_servicio':null,
-            'id_actividad':null,
+            //'id_actividad':null,
             'nom_actividad':null,
-            'id_usuario':null,
+            //'id_usuario':null,
             'nom_usuario':null,
             'id_usuario_registra':null,
             'id_usuario_modifica':null,
@@ -47,11 +47,11 @@ const ServicioController = new Vue({
             'id_usuario',
          ],
          'relaciones_clase':[
-            {'actividad':'id_actividad'},
-            {'actividad':'nom_actividad'},
-            {'usuario':'id_usuario'},
-            {'usuario':'nom_usuario'},
+            {'actividad':['id_actividad','nom_actividad']},
+            {'usuario':['id_usuario','nom_usuario']},
          ],
+
+
 
          'lom':{},
          'lista_objs_model':[],

@@ -175,21 +175,57 @@ export const inyeccion_funciones_compartidas = {
        *
        * */
       configurar_relaciones: function (objetos_clase, relaciones) {
+         //console.log(o); el obj de la clase en la lista
+         //console.log(r); el obj con la key -> column
+         //console.log(key); //nombre del key del obj de la relacion
+         //console.log(o[key]); //el objeto llamado con el key de la relacion
+         //console.log(column); //key de la columna de la bd ; id_* nom_*
+         //console.log(o[key][column]); //Valor que iria en el key a asociar
          objetos_clase.map((o) => { //obj de la clase -> servicios
-            o = relaciones.map((r) => { //relaciones -> {nombre_relacion:'key de valor a asignar'}
+            o = relaciones.map((rel) => { //relaciones -> {nombre_relacion:'key de valor a asignar'}
+               for (var r in rel) {
+                  //console.log(rel); //key de la relacion
+                  //console.log(rel[r]); //contenido llamado con el key en el objeto
+                  //console.log(i.split('.')); //el arreglo del key de la relacion en caso que haya una relacion anidada
+                  //console.log(ult_relacion[ult_relacion.length - 1]); // contiene la ultima key de relacion de la anidacion, de donde sacará la data finalmente
+                  var ult_relacion = r.split('.'); //key finales separadas por el punto de la anidacion
+                  //ult_relacion = ult_relacion[ult_relacion.length - 1]; //key final de la relacion
+                  //console.log(o[ult_relacion]); //la relaccion llamada desde su nombre key
+                  switch (ult_relacion.length) {
+                     case 1:
+                        for (var col in rel[r]) {
+                           //console.log( o[ult_relacion][rel[r][col]] );
+                           if(o[ult_relacion] && o[ult_relacion][rel[r][col]]){
+                              o[rel[r][col]] = o[ult_relacion][rel[r][col]] || null;
+                           }
+                           //
+                        }
+                        break;
+                     case 2:
+                        for (var col in rel[r]) {
+                           if(o[ult_relacion[0]][ult_relacion[1]] && o[ult_relacion[0]][ult_relacion[1]][rel[r][col]]){
+                              o[rel[r][col]] = o[ult_relacion[0]][ult_relacion[1]][rel[r][col]] || null;
+                           }
+                        }
+                        break;
+                  }
+                  /*
+                  if (o[key]) {
+                     o[column] = o[key][column] || null;
+                  }
+                  return o;
+                  */
+               }
+               /*
                var key = Object.keys(r)[0];
                var column = r[key];
-               //console.log(o); el obj de la clase en la lista
-               //console.log(r); el obj con la key -> column
-               //console.log(key); //nombre del key del obj de la relacion
-               //console.log(o[key]); //el objeto llamado con el key de la relacion
-               //console.log(column); //key de la columna de la bd ; id_* nom_*
-               //console.log(o[key][column]); //Valor que iria en el key a asociar
                if (o[key]) {
                   o[column] = o[key][column] || null;
                }
                return o;
+               */
             });
+
          });
       },
 

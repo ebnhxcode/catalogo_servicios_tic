@@ -69,7 +69,9 @@ class AplicacionController extends Controller {
 
       $this->usuario_auth = Auth::user();
       $this->tipos_aplicaciones = TipoAplicacion::all();
-      $this->aplicaciones = Aplicacion::all();
+      $this->aplicaciones = Aplicacion::with([
+         'dominio','tipo_aplicacion','servicio','servidor'
+      ])->get();
       $this->servidores = Servidor::all();
       $this->servicios = Servicio::all();
       $this->dominios = Dominio::all();
