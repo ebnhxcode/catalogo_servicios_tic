@@ -21,6 +21,12 @@
                --}}
 
                <div class="btn-group mr-0 pro">
+                  <a href="{{url('/home')}}" class="btn btn-light btn-outline-secondary"
+                          data-placement="top" data-toggle="tooltip" title="Volver al menú">
+                     <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                     Ir al Menu
+                  </a>
+
                   <button class="btn btn-light btn-outline-success"
                           v-if="en_array(['Administrador','Jefe de Area','Lider Equipo','Jefe Proyecto','App Manager'],usuario_auth.usuario_role.role.nom_role)"
                           data-placement="top" data-toggle="tooltip" title="Crear nuevo/a {{$nombre_modelo}}"
