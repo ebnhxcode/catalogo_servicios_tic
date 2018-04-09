@@ -16,6 +16,7 @@ class TipoAplicacionController extends Controller {
    private $nombre_tabla;
    private $nombre_ruta;
    private $nombre_detalle;
+   private $nombre_detalle_singular;
    private $nombre_controller;
 
    private $tipos_aplicaciones;

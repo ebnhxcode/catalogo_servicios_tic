@@ -24,8 +24,12 @@ class TipoAplicacion extends Model {
       'id_usuario_modifica',
    ];
 
+   public function aplicaciones () {
+      return $this->hasMany(Aplicacion::class, 'id_aplicacion');
+   }
+
    public function usuario_registra() {
-      return $this->belongsTo(User::user, 'id_usuario_registra');
+      return $this->belongsTo(User::class, 'id_usuario_registra');
    }
 
    public function usuario_modifica() {

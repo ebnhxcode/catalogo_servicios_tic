@@ -11,6 +11,8 @@ use App\Datacentro;
 use App\ServidorHistoricoCambio;
 use App\ServidorLvm;
 use App\SistemaOperativo;
+use App\Vlan;
+use App\TipoServidor;
 use App\TipoSistemaOperativo;
 use App\Estado;
 use Illuminate\Http\Request;
@@ -34,10 +36,12 @@ class ServidorController extends Controller {
    private $tipos_sistemas_operativos;
    private $ambientes;
    private $clusters;
+   private $vlans;
+   private $tipos_servidores;
    private $estados;
    private $estado;
    private $servidor;
-   private $servidor_sistema_operativo;
+   #private $servidor_sistema_operativo;
    private $new_servidor;
    private $new_servidor_estado;
    private $new_servidor_historico;
@@ -95,6 +99,8 @@ class ServidorController extends Controller {
       $this->estados = Estado::all();
       $this->ambientes = Ambiente::all();
       $this->clusters = Cluster::all();
+      $this->vlans = Vlan::all();
+      $this->tipos_servidores = TipoServidor::all();
       return response()->json([
          'status' => 200,
          'servidores' => $this->servidores,
@@ -104,6 +110,8 @@ class ServidorController extends Controller {
          'tipos_sistemas_operativos' => $this->tipos_sistemas_operativos,
          'ambientes' => $this->ambientes,
          'clusters' => $this->clusters,
+         'vlans' => $this->vlans,
+         'tipos_servidores' => $this->tipos_servidores,
          'estados' => $this->estados,
          'usuario_auth' => $this->usuario_auth,
       ]);
@@ -176,6 +184,8 @@ class ServidorController extends Controller {
          'id_estado' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
          'id_ambiente' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
          'id_cluster' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
+         'id_vlan' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
+         'id_tipo_servidor' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
       ]);
       #Se valida la respuesta con la salida de la validacion
       if ($this->validacion->fails() == true) {
@@ -303,6 +313,8 @@ class ServidorController extends Controller {
          'id_estado' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
          'id_ambiente' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
          'id_cluster' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
+         'id_vlan' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
+         'id_tipo_servidor' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
       ]);
       #Valida si la informacion que se envia para editar al servidor son iguales los ids
       if ($id != $request["id_$this->nombre_modelo"]) {

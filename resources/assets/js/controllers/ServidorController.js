@@ -65,6 +65,8 @@ const ServidorController = new Vue({
             'id_ambiente':null,
             'nom_ambiente':null,
             'id_cluster':null,
+            'id_vlan':null,
+            'id_tipo_servidor':null,
             'nom_cluster':null,
             'id_usuario_registra':null,
             'id_usuario_modifica':null,
@@ -103,6 +105,8 @@ const ServidorController = new Vue({
             'id_estado',
             'id_ambiente',
             'id_cluster',
+            'id_vlan',
+            'id_tipo_servidor',
          ],
          'relaciones_clase':[
 
@@ -114,11 +118,16 @@ const ServidorController = new Vue({
             {'ambiente':['id_ambiente','nom_ambiente']},
             {'cluster':['id_cluster','nom_cluster']},
             {'servidor_lvm':['id_servidor_lvm','lvm_raiz','lvm_usr','lvm_tmp','lvm_var','lvm_home']},
+            {'vlan':['id_vlan','nom_vlan']},
+            {'tipo_servidor':['id_tipo_servidor','nom_tipo_servidor']},
+
          ],
 
          'lom':{},
          'lista_objs_model':[],
          'clusters':[],
+         'vlans':[],
+         'tipos_servidores':[],
          'ambientes':[],
          'datacentros':[],
          'sistemas_operativos':[],
@@ -179,6 +188,8 @@ const ServidorController = new Vue({
             'nom_ambiente':false,
             //'id_cluster':false,
             'nom_cluster':false,
+            'nom_vlan':false,
+            'nom_tipo_servidor':false,
 
             'id_usuario_registra':false,
             'id_usuario_modifica':false,
@@ -222,6 +233,10 @@ const ServidorController = new Vue({
             'nom_ambiente':'Nombre ambiente',
             'id_cluster':'Id Cluster',
             'nom_cluster':'Nombre cluster',
+            'id_vlan':'Id vlan',
+            'nom_vlan':'Nombre vlan',
+            'id_tipo_servidor':'Id tipo servidor',
+            'nom_tipo_servidor':'Nombre tipo servidor',
 
             'id_usuario_registra':'Usuario registra',
             'id_usuario_modifica':'Usuario modifica',
@@ -260,6 +275,8 @@ const ServidorController = new Vue({
             'id_estado':'String',
             'id_ambiente':'String',
             'id_cluster':'String',
+            'id_vlan':'String',
+            'id_tipo_servidor':'String',
 
             'id_usuario_registra':'String',
             'id_usuario_modifica':'String',
@@ -320,6 +337,8 @@ lista_objs_model
                'id_estado': servidor.id_sistema_operativo || '-',
                'id_ambiente': servidor.id_ambiente || '-',
                'id_cluster': servidor.id_cluster || '-',
+               'id_vlan': servidor.id_vlan || '-',
+               'id_tipo_servidor': servidor.id_tipo_servidor || '-',
 
                'id_usuario_registra': servidor.id_usuario_registra || '-',
                'id_usuario_modifica': servidor.id_usuario_modifica || '-',
@@ -360,6 +379,8 @@ lista_objs_model
             this.estados = response.body.estados || null;
             this.ambientes = response.body.ambientes || null;
             this.clusters = response.body.clusters || null;
+            this.vlans = response.body.vlans || null;
+            this.tipos_servidores = response.body.tipos_servidores || null;
 
             this.usuario_auth = response.body.usuario_auth || null;
          }, response => { // error callback

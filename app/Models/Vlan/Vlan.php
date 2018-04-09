@@ -24,7 +24,7 @@ class Vlan extends Model {
    ];
 
    public function servidores () {
-      return $this->belongsTo(Servidor::class, 'id_vlan');
+      return $this->hasMany(Servidor::class, 'id_vlan');
    }
 
    public function usuario_registra() {

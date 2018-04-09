@@ -15,21 +15,22 @@ class TipoServidorController extends Controller {
    private $nombre_tabla;
    private $nombre_ruta;
    private $nombre_detalle;
+   private $nombre_detalle_singular;
    private $nombre_controller;
 
-   private $tipos_aplicaciones;
-   private $tipo_aplicacion;
-   private $new_tipo_aplicacion;
+   private $tipos_servidores;
+   private $tipo_servidor;
+   private $new_tipo_servidor;
    private $validacion;
 
    public function __construct () {
       $this->middleware('auth');
       $this->middleware('mantenedor');#resrtinge a solo usuarios con permiso bajo -> D
-      $this->nombre_modelo = "tipo_aplicacion"; //nombre tabla o de ruta
-      $this->nombre_tabla = $this->nombre_ruta = "tipos_aplicaciones";
-      $this->nombre_detalle = "Tipo Aplicaciones";
-      $this->nombre_detalle_singular = "Tipo Aplicacion";
-      $this->nombre_controller = "TipoAplicacionController";
+      $this->nombre_modelo = "tipo_servidor"; //nombre tabla o de ruta
+      $this->nombre_tabla = $this->nombre_ruta = "tipos_servidores";
+      $this->nombre_detalle = "Tipo Servidores";
+      $this->nombre_detalle_singular = "Tipo Servidor";
+      $this->nombre_controller = "TipoServidorController";
    }
 
    private function es_vacio ($variable) {
@@ -63,10 +64,10 @@ class TipoServidorController extends Controller {
       }
 
       $this->usuario_auth = Auth::user();
-      $this->tipos_aplicaciones = TipoAplicacion::all();
+      $this->tipos_servidores = TipoServidor::all();
       return response()->json([
          'status' => 200,
-         'tipos_aplicaciones' => $this->tipos_aplicaciones,
+         'tipos_servidores' => $this->tipos_servidores,
          'usuario_auth' => $this->usuario_auth,
       ]);
    }
@@ -81,15 +82,15 @@ class TipoServidorController extends Controller {
          ]);
       }
 
-      $this->tipo_aplicacion = TipoAplicacion::where("id_$this->nombre_modelo",'=',$id)->first();
+      $this->tipo_servidor = TipoServidor::where("id_$this->nombre_modelo",'=',$id)->first();
 
 
-      if ($this->tipo_aplicacion) {
+      if ($this->tipo_servidor) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
             'tipo' => 'eliminacion_exitosa', //Para las notificaciones
             'mensajes' => ["new_$this->nombre_modelo" => [0=>"Registro encontrado exitosamente."]],
-            'tipo_aplicacion' => $this->tipo_aplicacion,
+            'tipo_servidor' => $this->tipo_servidor,
             //Para mostrar los mensajes que van desde el backend
          ]);
       }else{
@@ -105,9 +106,9 @@ class TipoServidorController extends Controller {
    public function store(Request $request) {
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario
       $this->validacion = Validator::make($request->all(), [
-         'nom_tipo_aplicacion' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
-         'det_tipo_aplicacion' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
-         'cod_tipo_aplicacion' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|max:255",
+         'nom_tipo_servidor' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
+         'det_tipo_servidor' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
+         'cod_tipo_servidor' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|max:255",
       ]);
       #Se valida la respuesta con la salida de la validacion
       if ($this->validacion->fails() == true) {
@@ -118,36 +119,36 @@ class TipoServidorController extends Controller {
          ]);
       }
       #Como pasó todas las validaciones, se asigna al objeto
-      $this->tipo_aplicacion = $request->all();
+      $this->tipo_servidor = $request->all();
       #Se crea el nuevo registro
-      $this->new_tipo_aplicacion = TipoAplicacion::create([
-         'nom_tipo_aplicacion' => $this->tipo_aplicacion['nom_tipo_aplicacion'],
-         'det_tipo_aplicacion' => $this->tipo_aplicacion['det_tipo_aplicacion'],
-         'cod_tipo_aplicacion' => $this->tipo_aplicacion['cod_tipo_aplicacion'],
+      $this->new_tipo_servidor = TipoServidor::create([
+         'nom_tipo_servidor' => $this->tipo_servidor['nom_tipo_servidor'],
+         'det_tipo_servidor' => $this->tipo_servidor['det_tipo_servidor'],
+         'cod_tipo_servidor' => $this->tipo_servidor['cod_tipo_servidor'],
          'id_usuario_registra' => Auth::user()->id_usuario,
          'id_usuario_modifica' => Auth::user()->id_usuario,
       ]);
 
-      unset($this->tipo_aplicacion, $this->validacion);
+      unset($this->tipo_servidor, $this->validacion);
 
       return response()->json([
          'status' => 200, //Para los popups con alertas de sweet alert
          'tipo' => 'creacion_exitosa', //Para las notificaciones
          'mensajes' => ["new_$this->nombre_modelo" => [0=>"Registro ($this->nombre_modelo) creado exitosamente."]],
          //Para mostrar los mensajes que van desde el backend
-         'tipo_aplicacion' => $this->new_tipo_aplicacion
+         'tipo_servidor' => $this->new_tipo_servidor
       ]);
    }
 
    public function update(Request $request, $id) {
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario
       $this->validacion = Validator::make($request->all(), [
-         'id_tipo_aplicacion' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|max:255',
-         'nom_tipo_aplicacion' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
-         'det_tipo_aplicacion' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
-         'cod_tipo_aplicacion' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|max:255",
+         'id_tipo_servidor' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|max:255',
+         'nom_tipo_servidor' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
+         'det_tipo_servidor' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
+         'cod_tipo_servidor' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|max:255",
       ]);
-      #Valida si la informacion que se envia para editar al tipo_aplicacion son iguales los ids
+      #Valida si la informacion que se envia para editar al tipo_servidor son iguales los ids
       if ($id != $request["id_$this->nombre_modelo"]) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
@@ -163,22 +164,22 @@ class TipoServidorController extends Controller {
             'mensajes' => $this->validacion->messages(), //Para mostrar los mensajes que van desde el backend
          ]);
       }
-      $this->tipo_aplicacion = TipoAplicacion::find($request["id_$this->nombre_modelo"]);
+      $this->tipo_servidor = TipoServidor::find($request["id_$this->nombre_modelo"]);
       $request['id_usuario_modifica'] = Auth::user()->id_usuario;
-      $this->tipo_aplicacion->update($request->all());
+      $this->tipo_servidor->update($request->all());
 
-      #unset($this->new_tipo_aplicacion_permiso, $this->permiso);
+      #unset($this->new_tipo_servidor_permiso, $this->permiso);
       return response()->json([
          'status' => 200, //Para los popups con alertas de sweet alert
          'tipo' => 'actualizacion_exitosa', //Para las notificaciones
          'mensajes' => ["new_$this->nombre_modelo" => [0=>"Registro actualizado exitosamente."]],
          //Para mostrar los mensajes que van desde el backend
-         'tipo_aplicacion' => $this->tipo_aplicacion,
+         'tipo_servidor' => $this->tipo_servidor,
       ]);
    }
 
    public function destroy($id) {
-      #Valida si la informacion que se envia para editar al tipo_aplicacion son iguales los ids
+      #Valida si la informacion que se envia para editar al tipo_servidor son iguales los ids
       if ($this->es_vacio($id) == true || preg_match("/^[0-9]*$/",$id) == 0) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
@@ -187,11 +188,11 @@ class TipoServidorController extends Controller {
          ]);
       }
 
-      $this->tipo_aplicacion = TipoAplicacion::find($id);
+      $this->tipo_servidor = TipoServidor::find($id);
 
-      #Valida si tipo_aplicacion existe y busca si tiene tipo_aplicacion_permiso
-      if ($this->tipo_aplicacion) {
-         $this->tipo_aplicacion->delete();
+      #Valida si tipo_servidor existe y busca si tiene tipo_servidor_permiso
+      if ($this->tipo_servidor) {
+         $this->tipo_servidor->delete();
       }
 
       return response()->json([

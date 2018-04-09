@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 77);
+/******/ 	return __webpack_require__(__webpack_require__.s = 75);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -4022,15 +4022,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 77:
+/***/ 75:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(78);
+module.exports = __webpack_require__(76);
 
 
 /***/ }),
 
-/***/ 78:
+/***/ 76:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4044,7 +4044,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_v_clipboard__);
 
 
-
 //Se importan todas las librerias compartidas y se cargan en el objeto instanciado como alias -> hp
 
 
@@ -4056,51 +4055,44 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
 
 Vue.component('download-excel', __webpack_require__(5));
 
-var AplicacionAccesoController = new Vue({
-   el: '#AplicacionAccesoController',
+var TipoServidorController = new Vue({
+   el: '#TipoServidorController',
    data: function data() {
       return {
          '$': window.jQuery,
-         'pk_tabla': 'id_aplicacion_acceso',
-         'nombre_tabla': 'aplicaciones_accesos', //nombre tabla o de ruta
-         'nombre_ruta': 'aplicaciones_accesos', //nombre tabla o de ruta
-         'nombre_model': 'aplicacion_acceso',
-         'nombre_model_limpio': 'aplicacion_acceso_limpio',
-         'nombre_detalle': 'Aplicaciones Accesos',
-         'nombre_controller': 'AplicacionAccesoController',
+         'pk_tabla': 'id_tipo_servidor',
+         'nombre_tabla': 'tipos_servidores', //nombre tabla o de ruta
+         'nombre_ruta': 'tipos_servidores', //nombre tabla o de ruta
+         'nombre_model': 'tipo_servidor',
+         'nombre_model_limpio': 'tipo_servidor_limpio',
+         'nombre_detalle': 'Tipos Servidores',
+         'nombre_controller': 'TipoServidorController',
 
          'filtro_head': null,
-         'aplicacion_acceso': {
-            'usuario': null,
-            'clave': null,
-            'decrypted_clave': null,
-            'tipo_acceso': null,
-            'email': null,
-            'id_aplicacion': null,
+         'tipo_servidor': {
+            'nom_tipo_servidor': null,
+            'det_tipo_servidor': null,
+            'cod_tipo_servidor': null,
             'id_usuario_registra': null,
             'id_usuario_modifica': null,
             'created_at': null,
             'updated_at': null,
             'deleted_at': null
          },
-         'permitido_guardar': ['usuario', 'clave',
-         //'decrypted_clave',
-         'tipo_acceso', 'email', 'id_aplicacion'],
-         'relaciones_clase': [{ 'aplicacion': 'id_aplicacion' }],
+         'permitido_guardar': ['nom_tipo_servidor', 'det_tipo_servidor', 'cod_tipo_servidor'],
+         'relaciones_clase': [],
          'lom': {},
          'lista_objs_model': [],
-         'aplicaciones': [],
-         'aplicaciones_accesos': [],
+         'tipos_servidores': [],
          'datos_excel': [],
          'usuario_auth': {},
 
          'campos_formularios': [],
          'errores_campos': [],
 
-         //Variables para validar si se está creando o editando, variables del modal
+         //Variables para validar si se está creando o editando
          'modal_crear_activo': false,
          'modal_actualizar_activo': false,
-         'modal_width': 90,
 
          //Estas var se deben conservar para todos los controllers por que se ejecutan para el modal crear (blanquea)
          'lista_actualizar_activo': false,
@@ -4110,24 +4102,22 @@ var AplicacionAccesoController = new Vue({
          'orden_lista': 'asc',
 
          'tabla_campos': {
-            'usuario': true,
-            //'clave':false,
-            'tipo_acceso': true,
-            'email': true,
-            'id_aplicacion': false,
+            'id_tipo_servidor': false,
+            'nom_tipo_servidor': true,
+            'det_tipo_servidor': true,
+            'cod_tipo_servidor': false,
             'id_usuario_registra': false,
             'id_usuario_modifica': false,
-            'created_at': true,
+            'created_at': false,
             'updated_at': false,
             'deleted_at': false
          },
 
          'tabla_labels': {
-            'usuario': 'Usuario',
-            'clave': 'Clave',
-            'tipo_acceso': 'Tipo Acceso',
-            'email': 'email',
-            'id_aplicacion': 'Id Aplicacion',
+            'id_tipo_servidor': 'Id tipo servidor',
+            'nom_tipo_servidor': 'Nombre tipo servidor',
+            'det_tipo_servidor': 'Detalle tipo servidor',
+            'cod_tipo_servidor': 'Codigo tipo servidor',
             'id_usuario_registra': 'Usuario registra',
             'id_usuario_modifica': 'Usuario modifica',
             'created_at': 'Creado en',
@@ -4136,11 +4126,10 @@ var AplicacionAccesoController = new Vue({
          },
 
          'excel_json_campos': {
-            'usuario': 'String',
-            'clave': 'String',
-            'tipo_acceso': 'String',
-            'email': 'String',
-            'id_aplicacion': 'String',
+            'id_tipo_servidor': 'String',
+            'nom_tipo_servidor': 'String',
+            'det_tipo_servidor': 'String',
+            'cod_tipo_servidor': 'String',
             'id_usuario_registra': 'String',
             'id_usuario_modifica': 'String',
             'created_at': 'String',
@@ -4158,31 +4147,30 @@ var AplicacionAccesoController = new Vue({
 
    computed: {},
    watch: {
-      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el aplicacion_acceso
+      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el tipo_servidor
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function id_en_edicion(_id_en_edicion) {
          if (_id_en_edicion == null) {
             this.limpiar_objeto_clase_local();
          } else {
-            this.buscar_objeto_clase_config_relaciones(_id_en_edicion, this.relaciones_clase);
+            this.buscar_objeto_clase(_id_en_edicion);
          }
       },
-      //aplicaciones_accesos se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
-      aplicaciones_accesos: function aplicaciones_accesos(_aplicaciones_accesos) {
+      //tipos_servidores se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
+      tipos_servidores: function tipos_servidores(_tipos_servidores) {
          var self = this;
          this.excel_json_datos = [];
-         return _aplicaciones_accesos.map(function (aplicacion_acceso, index) {
+         return _tipos_servidores.map(function (tipo_servidor, index) {
             return self.excel_json_datos.push({
-               'usuario': aplicacion_acceso.usuario || '-',
-               'clave': aplicacion_acceso.clave || '-',
-               'tipo_acceso': aplicacion_acceso.tipo_acceso || '-',
-               'email': aplicacion_acceso.email || '-',
-               'id_aplicacion': aplicacion_acceso.id_aplicacion || '-',
-               'id_usuario_registra': aplicacion_acceso.id_usuario_registra || '-',
-               'id_usuario_modifica': aplicacion_acceso.id_usuario_modifica || '-',
-               'created_at': aplicacion_acceso.created_at || '-',
-               'updated_at': aplicacion_acceso.updated_at || '-',
-               'deleted_at': aplicacion_acceso.deleted_at || '-'
+               'id_tipo_servidor': tipo_servidor.id_tipo_servidor || '-',
+               'nom_tipo_servidor': tipo_servidor.nom_tipo_servidor || '-',
+               'det_tipo_servidor': tipo_servidor.det_tipo_servidor || '-',
+               'cod_tipo_servidor': tipo_servidor.cod_tipo_servidor || '-',
+               'id_usuario_registra': tipo_servidor.id_usuario_registra || '-',
+               'id_usuario_modifica': tipo_servidor.id_usuario_modifica || '-',
+               'created_at': tipo_servidor.created_at || '-',
+               'updated_at': tipo_servidor.updated_at || '-',
+               'deleted_at': tipo_servidor.deleted_at || '-'
             });
          });
       }
@@ -4192,10 +4180,20 @@ var AplicacionAccesoController = new Vue({
    },
    created: function created() {
       this.inicializar();
-
       $(document).ready(function () {
          $('[data-toggle="tooltip"]').tooltip();
       });
+      /*
+       $(document).ready(function () {
+       //Handle al recargar pagina
+       window.onbeforeunload = function(e){
+       return "Estás seguro que deseas cerrar la ventana?";
+       };
+       window.onunload = function(e){
+       return "Cierre de la ventana";
+       };
+        });
+       */
    },
 
    ready: {},
@@ -4207,13 +4205,11 @@ var AplicacionAccesoController = new Vue({
 
          this.$http.get('/' + this.nombre_ruta).then(function (response) {
             // success callback
-            _this.configurar_relaciones(response.body.aplicaciones_accesos, _this.relaciones_clase);
-            _this.lista_objs_model = response.body.aplicaciones_accesos || null;
-            _this.aplicaciones_accesos = response.body.aplicaciones_accesos || null;
-            _this.datos_excel = response.body.aplicaciones_accesos || null;
-
-            _this.aplicaciones = response.body.aplicaciones || null;
-
+            //Se setean las variables con los datos de la clase
+            _this.lista_objs_model = response.body.tipos_servidores || null;
+            _this.tipos_servidores = response.body.tipos_servidores || null;
+            _this.datos_excel = response.body.tipos_servidores || null;
+            //Se setea el usuario autenticado
             _this.usuario_auth = response.body.usuario_auth || null;
          }, function (response) {
             // error callback
