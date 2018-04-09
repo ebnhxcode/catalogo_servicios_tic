@@ -26,12 +26,20 @@
 
       <br>
       <div v-if="home_items && home_items.length > 0">
-         <h3>Menu Principal</h3>
 
-         <div class="card-columns {{--card-deck--}}" v-if="filterBy(home_items, filtro_head).length > 0">
 
+         <h3>
+            <i class="fa fa-sort-alpha-asc btn btn-info btn-sm float-right" @click.prevent="cambiar_orden_lista('nom_menu','home_items')" aria-hidden="true"
+               data-placement="top" data-toggle="tooltip" title="Clic para ordenar menu principal"></i>
+            Menu Principal
+         </h3>
+
+         <div class="card-columns{{--card-deck--}}" v-if="filterBy(home_items, filtro_head).length > 0">
             <div class="card bg-primary text-white border-light mb-3" v-for="i in filterBy(home_items, filtro_head)">
-               <div class="card-header">@{{ i.nom_menu }}</div>
+               {{--<div class="card-header">@{{ i.nom_menu }}</div>--}}
+               <div class="img-responsive">
+                  <img class="card-img-top" :src="i.imagen_menu || `/img/logo180-180.png`">
+               </div>
                <div class="card-body">
                   <h5 class="card-title">
                      <div class="media">
@@ -43,7 +51,7 @@
                         &nbsp;&nbsp;&nbsp;
                         <div class="media-body">
                            <h5 class="mt-0">@{{ i.nom_menu }}</h5>
-                           <p style="font-size: 12px;">
+                           <p style="font-size: 14px;">
                               @{{ i.det_menu }}
                            </p>
                         </div>
@@ -54,7 +62,7 @@
                   </p>
                </div><!-- -card-body -->
                <div href="#!" class="card-footer">
-                  <a :href="i.url_menu" class="btn btn-sm btn-light">
+                  <a :href="i.url_menu" class="btn btn-primary">
                      <i class="fa fa-sign-in" aria-hidden="true"></i>
                      Ingresar
                   </a>
@@ -71,7 +79,11 @@
 
       <hr>
       <div v-if="mantenedores && mantenedores.length > 0">
-         <h3>Mantenedores</h3>
+         <h3>
+            <i class="fa fa-sort-alpha-asc btn btn-info btn-sm float-right" @click.prevent="cambiar_orden_lista('nom_mantenedor','mantenedores')" aria-hidden="true"
+               data-placement="top" data-toggle="tooltip" title="Clic para ordenar mantenedores"></i>
+            Mantenedores
+         </h3>
          <div v-if="filterBy(mantenedores, filtro_head).length > 0">
 
             <div class="card-columns {{--card-deck--}}" >
@@ -100,7 +112,7 @@
                      </p>
                   </div><!-- -card-body -->
                   <div href="#!" class="card-footer">
-                     <a :href="m.url_mantenedor" class="btn btn-sm btn-light">
+                     <a :href="m.url_mantenedor" class="btn btn-secondary">
                         <i class="fa fa-sign-in" aria-hidden="true"></i>
                         Ingresar
                      </a>

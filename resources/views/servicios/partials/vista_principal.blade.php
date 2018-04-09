@@ -63,7 +63,7 @@
          <div class="col-sm-12">
             <h4>
                Servidores y sus aplicaciones
-               <div class="btn-group pro float-right">
+               <div class="btn-group float-right">
                   <input type="text" class="form-control input-sm"
                          data-placement="top" data-toggle="tooltip" title="Filtrar en la lista"
                          placeholder="filtrar en la lista" v-model="filtro_componente" id="filtro_componente">
@@ -93,7 +93,9 @@
                           data-toggle="collapse" :data-target="`#${s.id_servidor}`" aria-expanded="true" :aria-controls="`${s.id_servidor}`">
                      <div class="row">
                         <div class="col-sm-6">
-                           <h5><span class="text-success">@{{`${s.ip_servidor || 0}`}}</span> : @{{ `${s.nom_servidor}` }}</h5>
+                           <h5><span class="text-success">@{{`${s.ip_servidor || 0}`}}</span>
+                              <span class="text-dark">:</span>
+                              <span class="text-primary">@{{ `${s.nom_servidor}` }}</span></h5>
                         </div>
                         <div class="col-sm-3">
                            <span class="text-info" v-if="s.aplicaciones && s.aplicaciones.length >= 0">

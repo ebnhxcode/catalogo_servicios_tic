@@ -87,6 +87,13 @@ const HomeController = new Vue({
             this.checkear_estado_respuesta_http(response.status);
          });
       },
+      cambiar_orden_lista: function (columna, nom_lista_objetos) {
+         this.$data[`orden_lista_${nom_lista_objetos}`] == 'asc' ?
+            this.$data[`orden_lista_${nom_lista_objetos}`] = 'desc' :
+            this.$data[`orden_lista_${nom_lista_objetos}`] = 'asc';
+
+         this.$data[`${nom_lista_objetos}`] = _.orderBy(this.$data[`${nom_lista_objetos}`], columna, this.$data[`orden_lista_${nom_lista_objetos}`]);
+      },
 
    }
 });

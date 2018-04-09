@@ -56,7 +56,7 @@ mix.js('resources/assets/js/controllers/UsuarioBitacoraServicioController.js','p
 mix.js('resources/assets/js/controllers/ClusterController.js','public/js/controllers/ClusterController.js');
 mix.js('resources/assets/js/controllers/MenuController.js','public/js/controllers/MenuController.js');
 mix.js('resources/assets/js/controllers/MantenedorController.js','public/js/controllers/MantenedorController.js');
-mix.js('resources/assets/js/controllers/VlanController.js','public/js/controllers/VlanController.js');
+//mix.js('resources/assets/js/controllers/VlanController.js','public/js/controllers/VlanController.js');
 
 mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');
