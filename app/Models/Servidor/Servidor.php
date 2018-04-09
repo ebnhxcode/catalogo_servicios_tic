@@ -39,6 +39,7 @@ class Servidor extends Model {
       'id_estado',
       'id_ambiente',
       'id_cluster',
+      'id_vlan',
 
       'id_usuario_registra',
       'id_usuario_modifica',
@@ -67,6 +68,10 @@ class Servidor extends Model {
 
    public function cluster () {
       return $this->belongsTo(Cluster::class, 'id_cluster');
+   }
+
+   public function vlan () {
+      return $this->belongsTo(Vlan::class, 'id_vlan');
    }
 
    public function servicio () {

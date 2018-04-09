@@ -23,6 +23,10 @@ class Vlan extends Model {
       'id_usuario_modifica',
    ];
 
+   public function servidores () {
+      return $this->belongsTo(Servidor::class, 'id_vlan');
+   }
+
    public function usuario_registra() {
       return $this->belongsTo(User::class, 'id_usuario_registra');
    }
