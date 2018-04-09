@@ -41,6 +41,7 @@ class Servidor extends Model {
       'id_cluster',
       'id_vlan',
       'id_tipo_servidor',
+      'id_tipo_respaldo_disco',
 
       'id_usuario_registra',
       'id_usuario_modifica',
@@ -77,6 +78,10 @@ class Servidor extends Model {
 
    public function tipo_servidor () {
       return $this->belongsTo(TipoServidor::class, 'id_tipo_servidor');
+   }
+
+   public function tipo_respaldo_disco () {
+      return $this->belongsTo(TipoRespaldoDisco::class, 'id_tipo_respaldo_disco');
    }
 
    public function servicio () {

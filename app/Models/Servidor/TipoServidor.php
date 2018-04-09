@@ -26,7 +26,7 @@ class TipoServidor extends Model {
 
 
    public function servidores () {
-      return $this->hasMany(Servidor::class, 'id_servidor');
+      return $this->hasMany(Servidor::class, 'id_tipo_servidor');
    }
 
    public function usuario_registra() {

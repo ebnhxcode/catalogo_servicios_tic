@@ -64,6 +64,7 @@ $modules = [
     ['route'=>'menus','controller'=>'MenuController'],
     ['route'=>'mantenedores','controller'=>'MantenedorController'],
     ['route'=>'vlans','controller'=>'VlanController'],
+    ['route'=>'tipos_respaldos_discos','controller'=>'TipoRespaldoDiscoController'],
 ];
 
 $http_requests = [
