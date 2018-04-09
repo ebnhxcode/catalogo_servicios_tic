@@ -107,6 +107,7 @@ const ServidorController = new Vue({
             'id_cluster',
             'id_vlan',
             'id_tipo_servidor',
+            'id_tipo_respaldo_disco',
          ],
          'relaciones_clase':[
 
@@ -120,6 +121,7 @@ const ServidorController = new Vue({
             {'servidor_lvm':['id_servidor_lvm','lvm_raiz','lvm_usr','lvm_tmp','lvm_var','lvm_home']},
             {'vlan':['id_vlan','nom_vlan']},
             {'tipo_servidor':['id_tipo_servidor','nom_tipo_servidor']},
+            {'tipo_respaldo_disco':['id_tipo_respaldo_disco','nom_tipo_respaldo_disco']},
 
          ],
 
@@ -128,6 +130,7 @@ const ServidorController = new Vue({
          'clusters':[],
          'vlans':[],
          'tipos_servidores':[],
+         'tipos_respaldos_discos':[],
          'ambientes':[],
          'datacentros':[],
          'sistemas_operativos':[],
@@ -190,6 +193,7 @@ const ServidorController = new Vue({
             'nom_cluster':false,
             'nom_vlan':false,
             'nom_tipo_servidor':false,
+            'nom_tipo_respaldo_disco':false,
 
             'id_usuario_registra':false,
             'id_usuario_modifica':false,
@@ -237,6 +241,8 @@ const ServidorController = new Vue({
             'nom_vlan':'Nombre vlan',
             'id_tipo_servidor':'Id tipo servidor',
             'nom_tipo_servidor':'Nombre tipo servidor',
+            'id_tipo_respaldo_disco':'Id respaldo disco',
+            'nom_tipo_respaldo_disco':'Nombre respaldo disco',
 
             'id_usuario_registra':'Usuario registra',
             'id_usuario_modifica':'Usuario modifica',
@@ -277,6 +283,7 @@ const ServidorController = new Vue({
             'id_cluster':'String',
             'id_vlan':'String',
             'id_tipo_servidor':'String',
+            'id_tipo_respaldo_disco':'String',
 
             'id_usuario_registra':'String',
             'id_usuario_modifica':'String',
@@ -339,6 +346,7 @@ lista_objs_model
                'id_cluster': servidor.id_cluster || '-',
                'id_vlan': servidor.id_vlan || '-',
                'id_tipo_servidor': servidor.id_tipo_servidor || '-',
+               'id_tipo_respaldo_disco': servidor.id_tipo_respaldo_disco || '-',
 
                'id_usuario_registra': servidor.id_usuario_registra || '-',
                'id_usuario_modifica': servidor.id_usuario_modifica || '-',
@@ -381,6 +389,7 @@ lista_objs_model
             this.clusters = response.body.clusters || null;
             this.vlans = response.body.vlans || null;
             this.tipos_servidores = response.body.tipos_servidores || null;
+            this.tipos_respaldos_discos = response.body.tipos_respaldos_discos || null;
 
             this.usuario_auth = response.body.usuario_auth || null;
          }, response => { // error callback

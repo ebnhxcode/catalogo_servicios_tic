@@ -52,6 +52,7 @@ $modules = [
     ['route'=>'aplicaciones','controller'=>'AplicacionController'],
     ['route'=>'tipos_aplicaciones','controller'=>'TipoAplicacionController'],
     ['route'=>'tipos_servidores','controller'=>'TipoServidorController'],
+   ['route'=>'tipos_respaldos_discos','controller'=>'TipoRespaldoDiscoController'],
     ['route'=>'aplicaciones_accesos','controller'=>'AplicacionAccesoController'],
     ['route'=>'dominios','controller'=>'DominioController'],
     ['route'=>'servidores','controller'=>'ServidorController'],
@@ -64,7 +65,6 @@ $modules = [
     ['route'=>'menus','controller'=>'MenuController'],
     ['route'=>'mantenedores','controller'=>'MantenedorController'],
     ['route'=>'vlans','controller'=>'VlanController'],
-    ['route'=>'tipos_respaldos_discos','controller'=>'TipoRespaldoDiscoController'],
 ];
 
 $http_requests = [

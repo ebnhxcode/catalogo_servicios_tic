@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 104);
+/******/ 	return __webpack_require__(__webpack_require__.s = 77);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2194,207 +2194,6 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 104:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(105);
-
-
-/***/ }),
-
-/***/ 105:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert2__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_v_clipboard__);
-
-
-
-//Se importan todas las librerias compartidas y se cargan en el objeto instanciado como alias -> hp
-
-
-
-Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default.a, { dialog: true });
-
-
-Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
-
-Vue.component('download-excel', __webpack_require__(5));
-
-var UsuarioBitacoraServicioController = new Vue({
-   el: '#UsuarioBitacoraServicioController',
-   data: function data() {
-      return {
-         '$': window.jQuery,
-         'pk_tabla': 'id_usuario_bitacora_servicio',
-         'nombre_tabla': 'usuarios_bitacora_servicios', //nombre tabla o de ruta
-         'nombre_ruta': 'usuarios_bitacora_servicios', //nombre tabla o de ruta
-         'nombre_model': 'usuario_bitacora_servicio',
-         'nombre_model_limpio': 'usuario_bitacora_servicio_limpio',
-         'nombre_detalle': 'Usuarios Bitacora Servicios',
-         'nombre_controller': 'UsuarioBitacoraServicioController',
-
-         'filtro_head': null,
-         'usuario_bitacora_servicio': {
-            'asunto': null,
-            'det_bitacora': null,
-            'id_actividad': null,
-            'id_servicio': null,
-            'id_usuario_registra': null,
-            'id_usuario_modifica': null,
-            'created_at': null,
-            'updated_at': null,
-            'deleted_at': null
-         },
-         'permitido_guardar': ['asunto', 'det_bitacora', 'id_actividad', 'id_servicio'],
-         'relaciones_clase': [{ 'usuario': 'id_usuario' }, { 'servicio': 'id_servicio' }, { 'actividad': 'id_actividad' }],
-         'lom': {},
-         'lista_objs_model': [],
-         'usuarios_bitacora_servicios': [],
-         'actividades': [],
-         'servicios': [],
-         'datos_excel': [],
-         'usuario_auth': [],
-
-         'campos_formularios': [],
-         'errores_campos': [],
-
-         //Variables para validar si se está creando o editando
-         'modal_crear_activo': false,
-         'modal_actualizar_activo': false,
-
-         //Estas var se deben conservar para todos los controllers por que se ejecutan para el modal crear (blanquea)
-         'lista_actualizar_activo': false,
-
-         'id_en_edicion': null,
-
-         'orden_lista': 'asc',
-
-         'tabla_campos': {
-            'id_usuario_bitacora_servicio': false,
-            'asunto': true,
-            'det_bitacora': true,
-            'id_actividad': false,
-            'id_servicio': false,
-            'id_usuario_registra': false,
-            'id_usuario_modifica': false,
-            'created_at': false,
-            'updated_at': false,
-            'deleted_at': false
-         },
-
-         'tabla_labels': {
-            'id_usuario_bitacora_servicio': 'Id actividad',
-            'asunto': 'Asunto',
-            'det_bitacora': 'Detalle bitácora',
-            'id_actividad': 'Id Actividad',
-            'id_servicio': 'Id Servicio',
-            'id_usuario_registra': 'Usuario registra',
-            'id_usuario_modifica': 'Usuario modifica',
-            'created_at': 'Creado en',
-            'updated_at': 'Actualizado en',
-            'deleted_at': 'Eliminado en'
-         },
-
-         'excel_json_campos': {
-            'id_usuario_bitacora_servicio': 'String',
-            'asunto': 'String',
-            'det_bitacora': 'String',
-            'id_actividad': 'String',
-            'id_servicio': 'String',
-            'id_usuario_registra': 'String',
-            'id_usuario_modifica': 'String',
-            'created_at': 'String',
-            'updated_at': 'String',
-            'deleted_at': 'String'
-         },
-
-         'excel_json_datos': [],
-         'excel_data_contador': 0,
-
-         'append_to_json_excel': {}
-
-      };
-   },
-
-   computed: {},
-   watch: {
-      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el usuario_bitacora_servicio
-      // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
-      id_en_edicion: function id_en_edicion(_id_en_edicion) {
-         if (_id_en_edicion == null) {
-            this.limpiar_objeto_clase_local();
-         } else {
-            this.buscar_objeto_clase_config_relaciones(_id_en_edicion, this.relaciones_clase);
-         }
-      },
-      //usuarios_bitacora_servicios se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
-      usuarios_bitacora_servicios: function usuarios_bitacora_servicios(_usuarios_bitacora_servicios) {
-         var self = this;
-         this.excel_json_datos = [];
-         return _usuarios_bitacora_servicios.map(function (usuario_bitacora_servicio, index) {
-            return self.excel_json_datos.push({
-               'id_usuario_bitacora_servicio': usuario_bitacora_servicio.id_usuario_bitacora_servicio || '-',
-               'asunto': usuario_bitacora_servicio.asunto || '-',
-               'det_bitacora': usuario_bitacora_servicio.det_bitacora || '-',
-               'id_servicio': usuario_bitacora_servicio.id_servicio || '-',
-               'id_actividad': usuario_bitacora_servicio.id_actividad || '-',
-               'id_usuario_registra': usuario_bitacora_servicio.id_usuario_registra || '-',
-               'id_usuario_modifica': usuario_bitacora_servicio.id_usuario_modifica || '-',
-               'created_at': usuario_bitacora_servicio.created_at || '-',
-               'updated_at': usuario_bitacora_servicio.updated_at || '-',
-               'deleted_at': usuario_bitacora_servicio.deleted_at || '-'
-            });
-         });
-      }
-   },
-   components: {
-      //'download-excel': DownloadExcel,
-   },
-   created: function created() {
-      this.inicializar();
-      $(document).ready(function () {
-         $('[data-toggle="tooltip"]').tooltip();
-      });
-   },
-
-   ready: {},
-   filters: {},
-   mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
-   methods: {
-      inicializar: function inicializar() {
-         var _this = this;
-
-         this.$http.get('/' + this.nombre_ruta).then(function (response) {
-            // success callback
-            //Al tener relaciones se procesan desde aqui
-            _this.configurar_relaciones(response.body.usuarios_bitacora_servicios, _this.relaciones_clase);
-            //Se setean las variables con los datos de la clase
-            _this.lista_objs_model = response.body.usuarios_bitacora_servicios || null;
-            _this.usuarios_bitacora_servicios = response.body.usuarios_bitacora_servicios || null;
-            _this.datos_excel = response.body.usuarios_bitacora_servicios || null;
-            //Se setean las variables paramétricas (combos, listas, etc)
-            _this.actividades = response.body.actividades || null;
-            _this.servicios = response.body.servicios || null;
-            //Se setea el usuario autenticado
-            _this.usuario_auth = response.body.usuario_auth || null;
-         }, function (response) {
-            // error callback
-            _this.checkear_estado_respuesta_http(response.status);
-         });
-      }
-   }
-});
-
-/***/ }),
-
 /***/ 2:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4220,6 +4019,205 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-795cc6e8", module.exports)
   }
 }
+
+/***/ }),
+
+/***/ 77:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(78);
+
+
+/***/ }),
+
+/***/ 78:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert2__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_v_clipboard__);
+
+
+//Se importan todas las librerias compartidas y se cargan en el objeto instanciado como alias -> hp
+
+
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default.a, { dialog: true });
+
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
+
+Vue.component('download-excel', __webpack_require__(5));
+
+var TipoRespaldoDiscoController = new Vue({
+   el: '#TipoRespaldoDiscoController',
+   data: function data() {
+      return {
+         '$': window.jQuery,
+         'pk_tabla': 'id_tipo_respaldo_disco',
+         'nombre_tabla': 'tipos_respaldos_discos', //nombre tabla o de ruta
+         'nombre_ruta': 'tipos_respaldos_discos', //nombre tabla o de ruta
+         'nombre_model': 'tipo_respaldo_disco',
+         'nombre_model_limpio': 'tipo_respaldo_disco_limpio',
+         'nombre_detalle': 'Tipos Respaldos Discos',
+         'nombre_controller': 'TipoRespaldoDiscoController',
+
+         'filtro_head': null,
+         'tipo_respaldo_disco': {
+            'nom_tipo_respaldo_disco': null,
+            'det_tipo_respaldo_disco': null,
+            'cod_tipo_respaldo_disco': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
+         },
+         'permitido_guardar': ['nom_tipo_respaldo_disco', 'det_tipo_respaldo_disco', 'cod_tipo_respaldo_disco'],
+         'relaciones_clase': [],
+         'lom': {},
+         'lista_objs_model': [],
+         'tipos_respaldos_discos': [],
+         'datos_excel': [],
+         'usuario_auth': {},
+
+         'campos_formularios': [],
+         'errores_campos': [],
+
+         //Variables para validar si se está creando o editando
+         'modal_crear_activo': false,
+         'modal_actualizar_activo': false,
+
+         //Estas var se deben conservar para todos los controllers por que se ejecutan para el modal crear (blanquea)
+         'lista_actualizar_activo': false,
+
+         'id_en_edicion': null,
+
+         'orden_lista': 'asc',
+
+         'tabla_campos': {
+            'id_tipo_respaldo_disco': false,
+            'nom_tipo_respaldo_disco': true,
+            'det_tipo_respaldo_disco': true,
+            'cod_tipo_respaldo_disco': false,
+            'id_usuario_registra': false,
+            'id_usuario_modifica': false,
+            'created_at': false,
+            'updated_at': false,
+            'deleted_at': false
+         },
+
+         'tabla_labels': {
+            'id_tipo_respaldo_disco': 'Id tipo respaldo disco',
+            'nom_tipo_respaldo_disco': 'Nombre tipo respaldo disco',
+            'det_tipo_respaldo_disco': 'Detalle tipo respaldo disco',
+            'cod_tipo_respaldo_disco': 'Codigo tipo respaldo disco',
+            'id_usuario_registra': 'Usuario registra',
+            'id_usuario_modifica': 'Usuario modifica',
+            'created_at': 'Creado en',
+            'updated_at': 'Actualizado en',
+            'deleted_at': 'Eliminado en'
+         },
+
+         'excel_json_campos': {
+            'id_tipo_respaldo_disco': 'String',
+            'nom_tipo_respaldo_disco': 'String',
+            'det_tipo_respaldo_disco': 'String',
+            'cod_tipo_respaldo_disco': 'String',
+            'id_usuario_registra': 'String',
+            'id_usuario_modifica': 'String',
+            'created_at': 'String',
+            'updated_at': 'String',
+            'deleted_at': 'String'
+         },
+
+         'excel_json_datos': [],
+         'excel_data_contador': 0,
+
+         'append_to_json_excel': {}
+
+      };
+   },
+
+   computed: {},
+   watch: {
+      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el tipo_respaldo_disco
+      // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
+      id_en_edicion: function id_en_edicion(_id_en_edicion) {
+         if (_id_en_edicion == null) {
+            this.limpiar_objeto_clase_local();
+         } else {
+            this.buscar_objeto_clase(_id_en_edicion);
+         }
+      },
+      //tipos_respaldos_discos se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
+      tipos_respaldos_discos: function tipos_respaldos_discos(_tipos_respaldos_discos) {
+         var self = this;
+         this.excel_json_datos = [];
+         return _tipos_respaldos_discos.map(function (tipo_respaldo_disco, index) {
+            return self.excel_json_datos.push({
+               'id_tipo_respaldo_disco': tipo_respaldo_disco.id_tipo_respaldo_disco || '-',
+               'nom_tipo_respaldo_disco': tipo_respaldo_disco.nom_tipo_respaldo_disco || '-',
+               'det_tipo_respaldo_disco': tipo_respaldo_disco.det_tipo_respaldo_disco || '-',
+               'cod_tipo_respaldo_disco': tipo_respaldo_disco.cod_tipo_respaldo_disco || '-',
+               'id_usuario_registra': tipo_respaldo_disco.id_usuario_registra || '-',
+               'id_usuario_modifica': tipo_respaldo_disco.id_usuario_modifica || '-',
+               'created_at': tipo_respaldo_disco.created_at || '-',
+               'updated_at': tipo_respaldo_disco.updated_at || '-',
+               'deleted_at': tipo_respaldo_disco.deleted_at || '-'
+            });
+         });
+      }
+   },
+   components: {
+      //'download-excel': DownloadExcel,
+   },
+   created: function created() {
+      this.inicializar();
+      $(document).ready(function () {
+         $('[data-toggle="tooltip"]').tooltip();
+      });
+      /*
+       $(document).ready(function () {
+       //Handle al recargar pagina
+       window.onbeforeunload = function(e){
+       return "Estás seguro que deseas cerrar la ventana?";
+       };
+       window.onunload = function(e){
+       return "Cierre de la ventana";
+       };
+        });
+       */
+   },
+
+   ready: {},
+   filters: {},
+   mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
+   methods: {
+      inicializar: function inicializar() {
+         var _this = this;
+
+         this.$http.get('/' + this.nombre_ruta).then(function (response) {
+            // success callback
+            //Se setean las variables con los datos de la clase
+            _this.lista_objs_model = response.body.tipos_respaldos_discos || null;
+            _this.tipos_respaldos_discos = response.body.tipos_respaldos_discos || null;
+            _this.datos_excel = response.body.tipos_respaldos_discos || null;
+            //Se setea el usuario autenticado
+            _this.usuario_auth = response.body.usuario_auth || null;
+         }, function (response) {
+            // error callback
+            _this.checkear_estado_respuesta_http(response.status);
+         });
+      }
+   }
+});
 
 /***/ })
 

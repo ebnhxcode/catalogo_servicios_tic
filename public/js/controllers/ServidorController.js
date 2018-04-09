@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 81);
+/******/ 	return __webpack_require__(__webpack_require__.s = 83);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -4022,15 +4022,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 81:
+/***/ 83:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(82);
+module.exports = __webpack_require__(84);
 
 
 /***/ }),
 
-/***/ 82:
+/***/ 84:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4042,7 +4042,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_v_clipboard__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_models_Aplicacion_vue__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_models_Aplicacion_vue__ = __webpack_require__(94);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_models_Aplicacion_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_models_Aplicacion_vue__);
 
 
@@ -4057,9 +4057,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default.a, { dialog: true });
 Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
 
 Vue.component('download-excel', __webpack_require__(5));
-Vue.component('vista-principal-servidor', __webpack_require__(83));
-Vue.component('tabla-listar-aplicacion', __webpack_require__(86));
-Vue.component('formulario-campos-aplicacion', __webpack_require__(89));
+Vue.component('vista-principal-servidor', __webpack_require__(85));
+Vue.component('tabla-listar-aplicacion', __webpack_require__(88));
+Vue.component('formulario-campos-aplicacion', __webpack_require__(91));
 
 
 var ServidorController = new Vue({
@@ -4122,16 +4122,17 @@ var ServidorController = new Vue({
          },
          'aplicacion': __WEBPACK_IMPORTED_MODULE_4__components_models_Aplicacion_vue__["Aplicacion"], //objeto importado para ser usado por sus propiedades
 
-         'permitido_guardar': ['nom_servidor', 'det_servidor', 'ip_servidor', 'ram', 'memoria_dd', 'swap', 'procesador', 'modelo_procesador', 'frec_procesador', 'nucleos', 'usuarios_pactados', 'mac', 'nodo', 'interface', 'lvm_raiz', 'lvm_usr', 'lvm_tmp', 'lvm_var', 'lvm_home', 'agente_instana_instalado', 'id_datacentro', 'id_servicio', 'id_sistema_operativo', 'id_estado', 'id_ambiente', 'id_cluster', 'id_vlan', 'id_tipo_servidor'],
+         'permitido_guardar': ['nom_servidor', 'det_servidor', 'ip_servidor', 'ram', 'memoria_dd', 'swap', 'procesador', 'modelo_procesador', 'frec_procesador', 'nucleos', 'usuarios_pactados', 'mac', 'nodo', 'interface', 'lvm_raiz', 'lvm_usr', 'lvm_tmp', 'lvm_var', 'lvm_home', 'agente_instana_instalado', 'id_datacentro', 'id_servicio', 'id_sistema_operativo', 'id_estado', 'id_ambiente', 'id_cluster', 'id_vlan', 'id_tipo_servidor', 'id_tipo_respaldo_disco'],
          'relaciones_clase': [{ 'datacentro': ['id_datacentro', 'nom_datacentro'] }, { 'servicio': ['id_servicio', 'nom_servicio'] }, { 'sistema_operativo': ['id_sistema_operativo', 'nom_sistema_operativo'] },
          //{'aplicaciones':['id_aplicacion','nom_aplicacion']},
-         { 'servidor_estado.estado': ['id_estado', 'nom_estado'] }, { 'ambiente': ['id_ambiente', 'nom_ambiente'] }, { 'cluster': ['id_cluster', 'nom_cluster'] }, { 'servidor_lvm': ['id_servidor_lvm', 'lvm_raiz', 'lvm_usr', 'lvm_tmp', 'lvm_var', 'lvm_home'] }, { 'vlan': ['id_vlan', 'nom_vlan'] }, { 'tipo_servidor': ['id_tipo_servidor', 'nom_tipo_servidor'] }],
+         { 'servidor_estado.estado': ['id_estado', 'nom_estado'] }, { 'ambiente': ['id_ambiente', 'nom_ambiente'] }, { 'cluster': ['id_cluster', 'nom_cluster'] }, { 'servidor_lvm': ['id_servidor_lvm', 'lvm_raiz', 'lvm_usr', 'lvm_tmp', 'lvm_var', 'lvm_home'] }, { 'vlan': ['id_vlan', 'nom_vlan'] }, { 'tipo_servidor': ['id_tipo_servidor', 'nom_tipo_servidor'] }, { 'tipo_respaldo_disco': ['id_tipo_respaldo_disco', 'nom_tipo_respaldo_disco'] }],
 
          'lom': {},
          'lista_objs_model': [],
          'clusters': [],
          'vlans': [],
          'tipos_servidores': [],
+         'tipos_respaldos_discos': [],
          'ambientes': [],
          'datacentros': [],
          'sistemas_operativos': [],
@@ -4194,6 +4195,7 @@ var ServidorController = new Vue({
             'nom_cluster': false,
             'nom_vlan': false,
             'nom_tipo_servidor': false,
+            'nom_tipo_respaldo_disco': false,
 
             'id_usuario_registra': false,
             'id_usuario_modifica': false,
@@ -4241,6 +4243,8 @@ var ServidorController = new Vue({
             'nom_vlan': 'Nombre vlan',
             'id_tipo_servidor': 'Id tipo servidor',
             'nom_tipo_servidor': 'Nombre tipo servidor',
+            'id_tipo_respaldo_disco': 'Id respaldo disco',
+            'nom_tipo_respaldo_disco': 'Nombre respaldo disco',
 
             'id_usuario_registra': 'Usuario registra',
             'id_usuario_modifica': 'Usuario modifica',
@@ -4281,6 +4285,7 @@ var ServidorController = new Vue({
             'id_cluster': 'String',
             'id_vlan': 'String',
             'id_tipo_servidor': 'String',
+            'id_tipo_respaldo_disco': 'String',
 
             'id_usuario_registra': 'String',
             'id_usuario_modifica': 'String',
@@ -4347,6 +4352,7 @@ var ServidorController = new Vue({
                'id_cluster': servidor.id_cluster || '-',
                'id_vlan': servidor.id_vlan || '-',
                'id_tipo_servidor': servidor.id_tipo_servidor || '-',
+               'id_tipo_respaldo_disco': servidor.id_tipo_respaldo_disco || '-',
 
                'id_usuario_registra': servidor.id_usuario_registra || '-',
                'id_usuario_modifica': servidor.id_usuario_modifica || '-',
@@ -4392,6 +4398,7 @@ var ServidorController = new Vue({
             _this.clusters = response.body.clusters || null;
             _this.vlans = response.body.vlans || null;
             _this.tipos_servidores = response.body.tipos_servidores || null;
+            _this.tipos_respaldos_discos = response.body.tipos_respaldos_discos || null;
 
             _this.usuario_auth = response.body.usuario_auth || null;
          }, function (response) {
@@ -4405,15 +4412,15 @@ var ServidorController = new Vue({
 
 /***/ }),
 
-/***/ 83:
+/***/ 85:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(84)
+var __vue_script__ = __webpack_require__(86)
 /* template */
-var __vue_template__ = __webpack_require__(85)
+var __vue_template__ = __webpack_require__(87)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -4453,7 +4460,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 84:
+/***/ 86:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4634,7 +4641,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 85:
+/***/ 87:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -4935,15 +4942,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 86:
+/***/ 88:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(87)
+var __vue_script__ = __webpack_require__(89)
 /* template */
-var __vue_template__ = __webpack_require__(88)
+var __vue_template__ = __webpack_require__(90)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -4983,7 +4990,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 87:
+/***/ 89:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5094,7 +5101,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 88:
+/***/ 90:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -5338,15 +5345,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 89:
+/***/ 91:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(90)
+var __vue_script__ = __webpack_require__(92)
 /* template */
-var __vue_template__ = __webpack_require__(91)
+var __vue_template__ = __webpack_require__(93)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -5386,7 +5393,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 90:
+/***/ 92:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5697,7 +5704,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 91:
+/***/ 93:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -6724,13 +6731,13 @@ if (false) {
 
 /***/ }),
 
-/***/ 92:
+/***/ 94:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(93)
+var __vue_script__ = __webpack_require__(95)
 /* template */
 var __vue_template__ = null
 /* template functional */
@@ -6772,7 +6779,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 93:
+/***/ 95:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

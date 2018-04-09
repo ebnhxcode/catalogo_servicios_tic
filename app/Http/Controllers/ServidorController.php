@@ -14,6 +14,7 @@ use App\SistemaOperativo;
 use App\Vlan;
 use App\TipoServidor;
 use App\TipoSistemaOperativo;
+use App\TipoRespaldoDisco;
 use App\Estado;
 use Illuminate\Http\Request;
 use Auth;
@@ -38,6 +39,7 @@ class ServidorController extends Controller {
    private $clusters;
    private $vlans;
    private $tipos_servidores;
+   private $tipos_respaldos_discos;
    private $estados;
    private $estado;
    private $servidor;
@@ -90,7 +92,8 @@ class ServidorController extends Controller {
 
       $this->usuario_auth = Auth::user();
       $this->servidores = Servidor::with([
-         'datacentro','sistema_operativo','aplicaciones','servidor_estado.estado','ambiente','servidor_historico_cambios','cluster','servidor_lvm','servicio'
+         'datacentro','sistema_operativo','aplicaciones','servidor_estado.estado','ambiente','servidor_historico_cambios','cluster','servidor_lvm','servicio',
+         'vlan','tipo_servidor','tipo_respaldo_disco'
       ])->get();
       $this->servicios = Servicio::all();
       $this->datacentros = Datacentro::all();
@@ -101,6 +104,7 @@ class ServidorController extends Controller {
       $this->clusters = Cluster::all();
       $this->vlans = Vlan::all();
       $this->tipos_servidores = TipoServidor::all();
+      $this->tipos_respaldos_discos = TipoRespaldoDisco::all();
       return response()->json([
          'status' => 200,
          'servidores' => $this->servidores,
@@ -108,6 +112,7 @@ class ServidorController extends Controller {
          'datacentros' => $this->datacentros,
          'sistemas_operativos' => $this->sistemas_operativos,
          'tipos_sistemas_operativos' => $this->tipos_sistemas_operativos,
+         'tipos_respaldos_discos' => $this->tipos_respaldos_discos,
          'ambientes' => $this->ambientes,
          'clusters' => $this->clusters,
          'vlans' => $this->vlans,
@@ -128,7 +133,8 @@ class ServidorController extends Controller {
       }
 
       $this->servidor = Servidor::where("id_$this->nombre_modelo",'=',$id)->with([
-         'datacentro','sistema_operativo','aplicaciones','servidor_estado.estado','ambiente','servidor_historico_cambios','cluster','servidor_lvm'
+         'datacentro','sistema_operativo','aplicaciones','servidor_estado.estado','ambiente','servidor_historico_cambios','cluster','servidor_lvm','servicio',
+         'vlan','tipo_servidor','tipo_respaldo_disco'
       ])->first();
 
       #Valida si servidor existe y busca si tiene servidor_permiso
@@ -186,6 +192,7 @@ class ServidorController extends Controller {
          'id_cluster' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
          'id_vlan' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
          'id_tipo_servidor' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
+         'id_tipo_respaldo_disco' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
       ]);
       #Se valida la respuesta con la salida de la validacion
       if ($this->validacion->fails() == true) {
@@ -221,6 +228,9 @@ class ServidorController extends Controller {
          'id_sistema_operativo' => $this->servidor['id_sistema_operativo'],
          'id_ambiente' => $this->servidor['id_ambiente'],
          'id_cluster' => $this->servidor['id_cluster'],
+         'id_vlan' => $this->servidor['id_cluster'],
+         'id_tipo_servidor' => $this->servidor['id_cluster'],
+         'id_tipo_respaldo_disco' => $this->servidor['id_cluster'],
 
          'id_usuario_registra' => Auth::user()->id_usuario,
          'id_usuario_modifica' => Auth::user()->id_usuario,
@@ -315,6 +325,7 @@ class ServidorController extends Controller {
          'id_cluster' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
          'id_vlan' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
          'id_tipo_servidor' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
+         'id_tipo_respaldo_disco' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
       ]);
       #Valida si la informacion que se envia para editar al servidor son iguales los ids
       if ($id != $request["id_$this->nombre_modelo"]) {

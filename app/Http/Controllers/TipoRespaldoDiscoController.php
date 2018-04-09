@@ -19,7 +19,7 @@ class TipoRespaldoDiscoController extends Controller {
    private $nombre_detalle_singular;
    private $nombre_controller;
 
-   private $tipos_servidores;
+   private $tipos_respaldos_discos;
    private $tipo_respaldo_disco;
    private $new_tipo_respaldo_disco;
    private $validacion;
@@ -28,10 +28,10 @@ class TipoRespaldoDiscoController extends Controller {
       $this->middleware('auth');
       $this->middleware('mantenedor');#resrtinge a solo usuarios con permiso bajo -> D
       $this->nombre_modelo = "tipo_respaldo_disco"; //nombre tabla o de ruta
-      $this->nombre_tabla = $this->nombre_ruta = "tipos_servidores";
-      $this->nombre_detalle = "Tipo Servidores";
-      $this->nombre_detalle_singular = "Tipo Servidor";
-      $this->nombre_controller = "TipoServidorController";
+      $this->nombre_tabla = $this->nombre_ruta = "tipos_respaldos_discos";
+      $this->nombre_detalle = "Tipos Respaldos Discos";
+      $this->nombre_detalle_singular = "Tipo Respaldo Disco";
+      $this->nombre_controller = "TipoRespaldoDiscoController";
    }
 
    private function es_vacio ($variable) {
@@ -65,10 +65,10 @@ class TipoRespaldoDiscoController extends Controller {
       }
 
       $this->usuario_auth = Auth::user();
-      $this->tipos_servidores = TipoRespaldoDisco::all();
+      $this->tipos_respaldos_discos = TipoRespaldoDisco::all();
       return response()->json([
          'status' => 200,
-         'tipos_servidores' => $this->tipos_servidores,
+         'tipos_respaldos_discos' => $this->tipos_respaldos_discos,
          'usuario_auth' => $this->usuario_auth,
       ]);
    }

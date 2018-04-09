@@ -105,7 +105,7 @@
    </div><!-- .col -->
 
 
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-4 col-md-4">
 
       <dt>Tipo Servidor</dt>
       <dd>
@@ -130,7 +130,7 @@
       </dd>
    </div><!-- .col -->
 
-   <div class="col-sm-6 col-md-6">
+   <div class="col-sm-4 col-md-4">
 
       <dt>Vlan</dt>
       <dd>
@@ -149,6 +149,31 @@
             <transition name="bounce">
                   <span v-show="errors.has('id_vlan')" class="text-danger small">
                      @{{ errors.first('id_vlan') }}
+                  </span>
+            </transition>
+         </p>
+      </dd>
+   </div><!-- .col -->
+
+   <div class="col-sm-6 col-md-6">
+
+      <dt>Tipo respaldo de discos</dt>
+      <dd>
+         <p class="control has-icon has-icon-right">
+            <select class="form-control" v-model="servidor.id_tipo_respaldo_disco" name="id_tipo_respaldo_disco"
+                    v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
+               <option :value="trd.id_tipo_respaldo_disco" v-for="trd in tipos_respaldos_discos">
+                  @{{ `${trd.nom_tipo_respaldo_disco} -> ${trd.det_tipo_respaldo_disco}` }}
+               </option>
+            </select>
+
+            <transition name="bounce">
+               <i v-show="errors.has('id_tipo_respaldo_disco')" class="fa fa-exclamation-circle"></i>
+            </transition>
+
+            <transition name="bounce">
+                  <span v-show="errors.has('id_tipo_respaldo_disco')" class="text-danger small">
+                     @{{ errors.first('id_tipo_respaldo_disco') }}
                   </span>
             </transition>
          </p>
