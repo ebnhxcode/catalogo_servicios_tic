@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Vlan;
 use Illuminate\Http\Request;
 use Auth;
-use Illuminate\Support\Facades\Validator; 
+use Illuminate\Support\Facades\Validator;
 
 
 class VlanController extends Controller {
