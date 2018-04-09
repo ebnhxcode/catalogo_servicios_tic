@@ -17,7 +17,7 @@
     <div class="col-md-12">
 
         <div class="float-right">
-            <button @click.prevent="{{"ocultar_modal('$nom_modal')"}}" class="btn btn-sm btn-danger">
+            <button @click.prevent="{{"ocultar_modal('$nom_modal')"}}" class="btn btn-danger">
                 ❌
             </button>
         </div>

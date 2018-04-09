@@ -13,14 +13,14 @@
             <div class="input-group input-group-sm">
 
                <div class="btn-group mr-0 pro">
-                  <button class="btn btn-light btn-outline-success"
+                  <button class="btn btn-light btn-success"
                           v-if="en_array(['Administrador','Jefe de Area','Lider Equipo','Jefe Proyecto','App Manager'],usuario_auth.usuario_role.role.nom_role)"
                           data-placement="top" data-toggle="tooltip" title="Crear nuevo/a {{$nombre_modelo}}"
                           @click.prevent="mostrar_modal_crear">
                      Crear {{str_replace('_',' ',$nombre_modelo)}}
                   </button>
 
-                  <button class="btn btn-sm btn-light btn-outline-secondary dropdown-toggle"
+                  <button class="btn btn-sm btn-light btn-secondary dropdown-toggle"
                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Lista de opciones">
                      Opciones
                   </button>

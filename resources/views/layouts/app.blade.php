@@ -96,6 +96,11 @@
       }
 
       }
+
+
+
+
+
    </style>
 
 
@@ -164,7 +169,7 @@
                <template class="form-group">
 
                   <!-- Input para escribir el termino a buscar -->
-                  <input type="text" class="form-control pro" aria-describedby="filtro_menu_help"
+                  <input type="text" class="form-control" aria-describedby="filtro_menu_help"
                          placeholder="Filtrar en el menú" v-model="filtro_menu" id="filtro_menu">
 
                   {{--
@@ -185,7 +190,7 @@ nú
 
                   <ul class="nav flex-column">
                      <li class="nav-item">
-                        <i class="fa fa-refresh btn btn-light btn-sm" @click.prevent="inicializar" aria-hidden="true"
+                        <i class="fa fa-refresh btn btn-warning" @click.prevent="inicializar" aria-hidden="true"
                            data-placement="top" data-toggle="tooltip" title="Clic para actualizar menu"></i>
 
                      </li>
@@ -200,7 +205,7 @@ nú
 
                   <ul class="nav flex-column">
                      <li class="nav-item" v-for="menu in filterBy(menus, filtro_menu)">
-                        <a class="nav-link btn btn-light text-left" style="font-size: .8rem;" :href="menu.url_menu"
+                        <a class="nav-link btn btn-primary text-left" style="font-size: .8rem;" :href="menu.url_menu"
                            data-placement="top" data-toggle="tooltip" :title="menu.det_menu">
                            @{{ menu.nom_menu }}<span class="sr-only">(current)</span>
                         </a>
@@ -222,7 +227,7 @@ nú
                      <ul class="nav flex-column mb-2">
 
                         <li class="nav-item" v-for="mant in filterBy(mantenedores, filtro_menu)">
-                           <a class="nav-link btn btn-light text-left" style="font-size: .8rem;" :href="mant.url_mantenedor"
+                           <a class="nav-link btn btn-secondary text-left" style="font-size: .8rem;" :href="mant.url_mantenedor"
                               data-placement="top" data-toggle="tooltip" :title="mant.det_mantenedor">
                               @{{ mant.nom_mantenedor }}
                            </a>
