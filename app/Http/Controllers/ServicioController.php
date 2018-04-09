@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Estado;
 use App\Servicio;
-use App\Servidor;
+#use App\Servidor;
 use App\Actividad;
 use App\UsuarioBitacoraServicio;
 use Illuminate\Http\Request;
@@ -24,7 +24,7 @@ class ServicioController extends Controller {
 
     private $actividades;
     private $usuarios_bitacora_servicios;
-    private $servidores;
+    #private $servidores;
     private $estados;
     private $servicios;
     private $servicio;

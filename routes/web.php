@@ -35,6 +35,7 @@ Route::get('/embed/sistemas_operativos', 'SistemaOperativoController@index_compo
 Route::get('/embed/servidores_accesos', 'ServidorAccesoController@index_componente');
 Route::get('/embed/aplicaciones_accesos', 'AplicacionAccesoController@index_componente');
 Route::get('/embed/tipos_aplicaciones', 'TipoAplicacionController@index_componente');
+#Route::get('/embed/tipos_servidores', 'TipoServidorController@index_componente');
 
 
 #Esto aplica solo para las rutas que eran resource , es una forma de mapear las url/rutas
@@ -50,6 +51,7 @@ $modules = [
     ['route'=>'estados','controller'=>'EstadoController'],
     ['route'=>'aplicaciones','controller'=>'AplicacionController'],
     ['route'=>'tipos_aplicaciones','controller'=>'TipoAplicacionController'],
+    ['route'=>'tipos_servidores','controller'=>'TipoServidorController'],
     ['route'=>'aplicaciones_accesos','controller'=>'AplicacionAccesoController'],
     ['route'=>'dominios','controller'=>'DominioController'],
     ['route'=>'servidores','controller'=>'ServidorController'],
@@ -61,6 +63,7 @@ $modules = [
     ['route'=>'clusters','controller'=>'ClusterController'],
     ['route'=>'menus','controller'=>'MenuController'],
     ['route'=>'mantenedores','controller'=>'MantenedorController'],
+    ['route'=>'vlans','controller'=>'VlanController'],
 ];
 
 $http_requests = [

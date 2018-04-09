@@ -3,6 +3,7 @@
     "/css/app.css": "/css/app.css",
     "/js/app.js": "/js/app.js",
     "/js/controllers/ServidorController.js": "/js/controllers/ServidorController.js",
+    "/js/controllers/VlanController.js": "/js/controllers/VlanController.js",
     "/js/controllers/UsuarioController.js": "/js/controllers/UsuarioController.js",
     "/js/controllers/UsuarioBitacoraServicioController.js": "/js/controllers/UsuarioBitacoraServicioController.js",
     "/js/controllers/TipoAplicacionController.js": "/js/controllers/TipoAplicacionController.js",
