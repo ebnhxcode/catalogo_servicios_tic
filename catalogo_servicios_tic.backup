@@ -5,7 +5,7 @@
 -- Dumped from database version 10.3 (Debian 10.3-2)
 -- Dumped by pg_dump version 10.3 (Debian 10.3-2)
 
--- Started on 2018-04-06 13:46:52 -03
+-- Started on 2018-04-09 10:31:26 -03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -2776,12 +2776,9 @@ COPY public.log_navegacion (id_log_navegacion, id_usuario, cod_establecimiento, 
 COPY public.mantenedores (id_mantenedor, url_mantenedor, nom_mantenedor, det_mantenedor, cod_mantenedor, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, imagen_mantenedor, font_icon_mantenedor) FROM stdin;
 1	servicios	Servicio	servicio	servicio	4	4	2018-03-28 18:56:19	2018-03-28 18:56:26	2018-03-28 18:56:26	\N	\N
 11	aplicaciones_accesos	Accesos aplicaciones	Mantenedor para administrar accesos de usuario al aplicativo.	aplicaciones_accesos01	4	4	2018-03-28 20:13:29	2018-03-28 20:13:29	\N	\N	\N
-10	aplicaciones	Aplicaciones	Mantenedor para administrar aplicaciones	aplicaciones01	4	4	2018-03-28 20:12:23	2018-03-28 20:13:56	\N	\N	\N
-7	servidores	Servidores	Mantenedor para administrar servidores	servidores01	4	4	2018-03-28 19:24:26	2018-03-28 20:17:38	\N	\N	\N
 9	actividades	Actividades	Mantenedor para administrar actividades	actividades01	4	4	2018-03-28 20:11:42	2018-03-28 20:20:29	\N	\N	\N
 8	servicios	Servicios	Mantenedor para administrar servicios	servicios01	4	4	2018-03-28 19:24:44	2018-03-28 20:21:19	\N	\N	\N
 6	permisos	Permisos	Mantenedor para administrar permisos asociado a roles	permisos01	4	4	2018-03-28 19:17:35	2018-03-28 20:21:33	\N	\N	\N
-5	roles	Roles	Mantenedor para administrar roles	roles01	4	4	2018-03-28 19:17:17	2018-03-28 20:21:40	\N	\N	\N
 4	usuarios	Usuarios	Mantenedor para administrar usuarios	usuarios01	4	4	2018-03-28 19:11:47	2018-03-28 20:21:46	\N	\N	\N
 2	menus	Menus	Mantenedor para administrar menus	menus01	4	4	2018-03-28 19:09:01	2018-03-28 20:21:52	\N	\N	\N
 3	mantenedores	Mantenedores	Mantenedor para administrar mantenedores	mantenedores01	4	4	2018-03-28 19:09:13	2018-03-28 20:22:00	\N	\N	\N
@@ -2794,7 +2791,11 @@ COPY public.mantenedores (id_mantenedor, url_mantenedor, nom_mantenedor, det_man
 18	sistemas_operativos	Sistemas Operativos	Mantenedor para administrar sistemas operativos	sistemas_operativos01	4	4	2018-03-28 20:27:44	2018-03-28 20:27:44	\N	\N	\N
 20	tipos_aplicaciones	Tipos de Aplicaciones	Mantenedor para administrar los tipos de aplicaciones que se desarrollan	tipos_aplicaciones01	4	4	2018-03-28 20:28:53	2018-03-28 20:28:53	\N	\N	\N
 19	tags	Tags	Mantenedor para administrar tags	tag01	4	4	2018-03-28 20:28:12	2018-03-29 05:20:28	2018-03-29 05:20:28	\N	\N
-21	usuarios_bitacora_servicios	Bitacora Servicios	Bitacoras de servicios	bitacora001	4	4	2018-03-30 19:38:44	2018-03-30 19:38:44	\N	0	0
+22	vlans	Vlan	Vlan, es un metodo para crear redes logicas independientes dentro de una misma red fisica	vlan001	4	4	2018-04-09 13:24:19	2018-04-09 13:24:19	\N	0	0
+10	aplicaciones	Aplicaciones	Mantenedor para administrar aplicaciones, ver, crear, editar y eliminar, asociar a un servidor en especifico o realizar una bitacora especifica sobre una aplicacion en un servicio	aplicaciones01	4	4	2018-03-28 20:12:23	2018-04-09 13:27:42	\N	\N	\N
+21	usuarios_bitacora_servicios	Bitacora Servicios	Bitacoras de servicios que detallan la actividad realizada sobre una aplicacion o servicio especifico	bitacora001	4	4	2018-03-30 19:38:44	2018-04-09 13:28:32	\N	0	0
+5	roles	Roles	Mantenedor para administrar roles del sistema, se basan en perfiles con permisos para las acciones en el sistema	roles01	4	4	2018-03-28 19:17:17	2018-04-09 13:29:02	\N	\N	\N
+7	servidores	Servidores	Mantenedor para administrar servidores, incorporacion o asociacion de aplicaciones, mantencion, revision y busqueda de informacion importante como claves de acceso a servidores o aplicativos	servidores01	4	4	2018-03-28 19:24:26	2018-04-09 13:29:49	\N	\N	\N
 \.
 
 
@@ -2807,13 +2808,13 @@ COPY public.mantenedores (id_mantenedor, url_mantenedor, nom_mantenedor, det_man
 COPY public.menus (id_menu, url_menu, nom_menu, det_menu, cod_menu, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, imagen_menu, font_icon_menu) FROM stdin;
 2	sdfdf	sdf	dsfds	fsdfds	4	4	2018-03-28 18:54:18	2018-03-28 18:54:35	2018-03-28 18:54:35	\N	\N
 1	fdsa	dsf	sdf	sadf	4	4	2018-03-28 18:52:28	2018-03-28 18:54:40	2018-03-28 18:54:40	\N	\N
-3	dashboard	Dashboard	dashboard es el enlace directo al menu principal	dashboard01	4	4	2018-03-28 19:04:04	2018-03-28 19:04:04	\N	\N	\N
-4	servicios	Servicios	servicios	servicios01	4	4	2018-03-28 19:05:04	2018-03-28 19:05:48	\N	\N	\N
 9	usuarios_bitacora_servicios	Bitacoras	bitacoras	bitacoras01	4	4	2018-03-28 19:08:33	2018-03-29 05:27:11	2018-03-29 05:27:11	\N	\N
 7	actividades	Actividades	actividades	actividades01	4	4	2018-03-28 19:08:03	2018-04-04 05:00:17	2018-04-04 05:00:17	\N	\N
 5	servidores	Servidores	servidores	servidores01	4	4	2018-03-28 19:07:03	2018-04-05 23:10:34	2018-04-05 23:10:34	\N	\N
 6	aplicaciones	Aplicaciones	aplicacion	aplicacion01	4	4	2018-03-28 19:07:22	2018-04-05 23:10:40	2018-04-05 23:10:40	\N	\N
-8	catalogos	Catalogo	catalogos	catalogos01	4	4	2018-03-28 19:08:21	2018-04-05 23:12:47	\N	\N	\N
+8	catalogos	Catalogo	El catalogo agrupa los servicios segun la usabilidad de sistema o aplicacion, esta funcion  estara disponible a medida que se use el sistema	catalogos01	4	4	2018-03-28 19:08:21	2018-04-09 06:56:48	\N	/img/catalogo.png	\N
+3	dashboard	Dashboard	Dashboard es el menu central	dashboard01	4	4	2018-03-28 19:04:04	2018-04-09 13:11:16	\N	/img/mosaico.jpg	\N
+4	servicios	Servicios	Los servicios contienen informacion de servidores, aplicaciones y credenciales, aplicable para casos como herramienta de base informativa ante contingencias, buscando credenciales, puertos de acceso, ubicacion de un servidor, ips, bitacoras, ultima version de algun proyecto en especifico, asignacion y busqueda de informacion mantenida por el area de TI	servicios01	4	4	2018-03-28 19:05:04	2018-04-09 13:21:14	\N	/img/servicio.jpg	\N
 \.
 
 
@@ -4139,7 +4140,7 @@ COPY public.usuarios (id_usuario, nom_usuario, nom_completo, ape_paterno, ape_ma
 1	Esteban	\N	Ramos	\N	eramosf	esteban.ramos@minsal.cl	$2y$10$kgh3UjsyfGaSfwFP5fNFZuDCipgTZlAfyIQ9woaR3mWYoguT.7FAG	cWZEQ6u1BYX8KsORXSzzykWPxdZAJL7DHMc7AsmalUNGLWdoQLcXGDK4Nyxm	\N	\N	2018-02-19 18:08:14	2018-03-29 06:17:39	\N
 27	test	test	test	test	testest	test@teset.test	$2y$10$AGVefv00CMW.dn.IbMe1mettsnxJGNAUzgXTjPoVLuGdbNJ5XA3aG	\N	\N	\N	2018-03-20 19:17:31	2018-03-20 19:17:46	2018-03-20 19:17:46
 28	test2	test2	test2	test2	test2	test@minsal.cl2	$2y$10$3R21jKze4ADH41u7YR4hAeZ4KOkgwgFhbFD4LHV92rOBKN4dI/tGC	\N	\N	\N	2018-03-20 19:31:56	2018-03-20 19:32:25	2018-03-20 19:32:25
-4	Esteban	\N	Ramos	Fernandez	fsdsf	esteban.ramos.f@gmail.com	$2y$10$LqVvP2ZOOp42RP.ifSWY4O.m.LAPo0D0bhqcWpWY2msVWk0Y0evxe	mUPn7Rs8Z1WK01WnSbYPgbfhlmsTB1ocCdyjGWtMKmsho9S7Sy1voGfA70Kn	\N	\N	2018-02-27 23:36:43	2018-03-22 05:04:34	\N
+4	Esteban	\N	Ramos	Fernandez	fsdsf	esteban.ramos.f@gmail.com	$2y$10$LqVvP2ZOOp42RP.ifSWY4O.m.LAPo0D0bhqcWpWY2msVWk0Y0evxe	lmgGTY2eNyuzoHnS8yMtDFie2nC1reKTC025mOu5HIMo0osp1Be4NHWXei2O	\N	\N	2018-02-27 23:36:43	2018-03-22 05:04:34	\N
 \.
 
 
@@ -4457,7 +4458,7 @@ SELECT pg_catalog.setval('public.log_navegacion_id_seq', 1, false);
 -- Name: mantenedores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.mantenedores_id_seq', 21, true);
+SELECT pg_catalog.setval('public.mantenedores_id_seq', 22, true);
 
 
 --
@@ -5143,7 +5144,7 @@ ALTER TABLE ONLY public.vlans
 CREATE INDEX password_resets_email_index ON public.password_resets USING btree (email);
 
 
--- Completed on 2018-04-06 13:46:54 -03
+-- Completed on 2018-04-09 10:31:28 -03
 
 --
 -- PostgreSQL database dump complete
