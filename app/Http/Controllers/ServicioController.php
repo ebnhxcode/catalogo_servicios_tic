@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Estado;
 use App\Servicio;
 use App\Servidor;
 use App\Actividad;
@@ -24,6 +25,7 @@ class ServicioController extends Controller {
     private $actividades;
     private $usuarios_bitacora_servicios;
     private $servidores;
+    private $estados;
     private $servicios;
     private $servicio;
     private $new_servicio;
@@ -70,12 +72,14 @@ class ServicioController extends Controller {
         $this->usuario_auth = Auth::user();
         $this->actividades = Actividad::all();
         $this->servicios = Servicio::with(['actividad','usuario','servidores.aplicaciones','aplicaciones.servidor','usuarios_bitacora_servicios.usuario'])->get();
+        $this->estados = Estado::all();
         $this->usuarios_bitacora_servicios =
            UsuarioBitacoraServicio::where('id_usuario', '=', $this->usuario_auth->id_usuario)->get();
         return response()->json([
            'status' => 200,
            'actividades' => $this->actividades,
            'servicios' => $this->servicios,
+           'estados' => $this->estados,
            'usuarios_bitacora_servicios' => $this->usuarios_bitacora_servicios,
            'usuario_auth' => $this->usuario_auth,
         ]);

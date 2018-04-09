@@ -4042,6 +4042,7 @@ var ServicioController = new Vue({
 
          'filtro_head': null,
          'filtro_componente': null,
+         'filtro_estado': null,
          'servicio': {
             'nom_servicio': null,
             'det_servicio': null,
@@ -4062,6 +4063,7 @@ var ServicioController = new Vue({
          'lista_objs_model': [],
          'actividades': [],
          'servicios': [],
+         'estados': [],
          'usuarios_bitacora_servicios': [],
          'datos_excel': [],
          'usuario_auth': {},
@@ -4210,6 +4212,7 @@ var ServicioController = new Vue({
             _this.usuarios_bitacora_servicios = response.body.usuarios_bitacora_servicios || null;
             _this.datos_excel = response.body.servicios || null;
             _this.servicios = response.body.servicios || null;
+            _this.estados = response.body.estados || null;
             _this.usuario_auth = response.body.usuario_auth || null;
          }, function (response) {
             // error callback

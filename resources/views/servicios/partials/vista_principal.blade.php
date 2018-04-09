@@ -71,13 +71,47 @@
             </h4>
          </div>
          <div class="col-sm-12" v-if="filterBy(servicio.servidores, filtro_componente).length">
-            <small class="float-right">@{{ filterBy(servicio.servidores, filtro_componente).length || 0 }} resultados.</small>
+            <small class="float-right">@{{ filterBy(filterBy(servicio.servidores, filtro_componente), filtro_estado).length || 0 }} resultados.</small>
          </div>
          <div class="col-sm-12" v-else>
             <small class="float-right">
                @{{ `Sin resultados para` }} ${`@{{ `${filtro_componente}` }}`}
             </small>
          </div>
+         <div class="col-sm-3">
+            <dt>Filtro por estado</dt>
+            <dd>
+               <select class="form-control" v-model="filtro_estado" name="filtro_estado">
+                  <option :value="e.nom_estado" v-for="e in estados">
+                     @{{ `${e.nom_estado} -> ${e.det_estado}` }}
+                  </option>
+               </select>
+            </dd>
+         </div>
+
+         {{--
+         <div class="col-sm-3">
+            <dt>Filtro por datacentro</dt>
+            <dd>
+               <select class="form-control" v-model="filtro_estado" name="filtro_estado">
+                  <option :value="e.nom_estado" v-for="e in estados">
+                     @{{ `${e.nom_estado} -> ${e.det_estado}` }}
+                  </option>
+               </select>
+            </dd>
+         </div>
+         <div class="col-sm-3">
+            <dt>Filtro por vlan</dt>
+            <dd>
+               <select class="form-control" v-model="filtro_estado" name="filtro_estado">
+                  <option :value="e.nom_estado" v-for="e in estados">
+                     @{{ `${e.nom_estado} -> ${e.det_estado}` }}
+                  </option>
+               </select>
+            </dd>
+         </div>
+         --}}
+
          <br>
          <br>
 
@@ -87,7 +121,7 @@
             <div id="accordion" v-if="servicio.servidores && servicio.servidores.length > 0"
                  style="max-height: 800px;overflow-y: scroll;border-top: 6px solid #dddddd;border-bottom: 6px solid #dddddd;border-radius: 10px;">
 
-               <div class="card pro" v-for="s in filterBy(servicio.servidores, filtro_componente)">
+               <div class="card pro" v-for="s in filterBy(filterBy(servicio.servidores, filtro_componente), filtro_estado)">
 
                   <button class="btn btn-light card-header text-left" id="`heading${s.id_servidor}`"
                           data-toggle="collapse" :data-target="`#${s.id_servidor}`" aria-expanded="true" :aria-controls="`${s.id_servidor}`">

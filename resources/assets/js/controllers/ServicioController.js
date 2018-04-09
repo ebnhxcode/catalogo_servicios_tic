@@ -27,6 +27,7 @@ const ServicioController = new Vue({
 
          'filtro_head':null,
          'filtro_componente':null,
+         'filtro_estado':null,
          'servicio':{
             'nom_servicio':null,
             'det_servicio':null,
@@ -57,6 +58,7 @@ const ServicioController = new Vue({
          'lista_objs_model':[],
          'actividades':[],
          'servicios':[],
+         'estados':[],
          'usuarios_bitacora_servicios':[],
          'datos_excel':[],
          'usuario_auth':{},
@@ -199,6 +201,7 @@ const ServicioController = new Vue({
             this.usuarios_bitacora_servicios = response.body.usuarios_bitacora_servicios || null;
             this.datos_excel = response.body.servicios || null;
             this.servicios = response.body.servicios || null;
+            this.estados = response.body.estados || null;
             this.usuario_auth = response.body.usuario_auth || null;
 
 
