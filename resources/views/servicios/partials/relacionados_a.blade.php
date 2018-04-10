@@ -15,6 +15,10 @@
          aria-controls="v-pills-bitacoras" aria-selected="false">
          Bitacoras del servicio
       </a>
+      <a class="nav-link" id="v-pills-responsables-tab" data-toggle="pill" href="#v-pills-responsables" role="tab"
+         aria-controls="v-pills-responsables" aria-selected="false">
+         Usuarios Responsables
+      </a>
 
       <!--
 
@@ -66,7 +70,7 @@
                <th>Nombre</th>
                <th>Descripción</th>
                <th>Usuario</th>
-            </tr>
+            </tr>644
             </thead>
             <tbody>
             <tr v-for="b in servicio.usuarios_bitacora_servicios">
@@ -79,6 +83,33 @@
          </table><!-- .table -->
          <div class="card card-body bg-light" v-else>
             Hasta el momento no existen bitácoras registradas.
+         </div><!-- .card -->
+
+      </div>
+
+      <div class="tab-pane fade show" id="v-pills-responsables" role="tabpanel" aria-labelledby="v-pills-responsables-tab">
+
+         <h4>Usuarios Responsables</h4>
+         <table class="table table-striped table-hover table-sm" v-if="servicio.usuarios_bitacora_servicios &&
+            servicio.usuarios_bitacora_servicios.length > 0">
+            <thead>
+            <tr>
+               <th>Nombre</th>
+               <th>Descripción</th>
+               <th>Usuario</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="b in servicio.usuarios_bitacora_servicios">
+               <td>@{{ b.asunto }}</td>
+               <td>@{{ b.det_bitacora }}</td>
+               <td>@{{ b.usuario.nom_usuario }}</td>
+            </tr>
+            </tbody>
+
+         </table><!-- .table -->
+         <div class="card card-body bg-light" v-else>
+            Hasta el momento no existen responsables asociados.
          </div><!-- .card -->
 
       </div>

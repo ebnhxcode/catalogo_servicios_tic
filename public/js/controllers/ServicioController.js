@@ -4042,7 +4042,7 @@ var ServicioController = new Vue({
 
          'filtro_head': null,
          'filtro_componente': null,
-         'filtro_estado': null,
+         'filtro_estado': 'Activo',
          'servicio': {
             'nom_servicio': null,
             'det_servicio': null,
