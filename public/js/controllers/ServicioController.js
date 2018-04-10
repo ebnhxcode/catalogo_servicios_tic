@@ -4180,10 +4180,6 @@ var ServicioController = new Vue({
    created: function created() {
       this.inicializar();
 
-      $(document).ready(function () {
-         $('[data-toggle="tooltip"]').tooltip();
-      });
-
       /*
       $(document).ready(function () {
          //Handle al recargar pagina

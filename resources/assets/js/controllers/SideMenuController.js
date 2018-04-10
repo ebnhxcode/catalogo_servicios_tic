@@ -167,7 +167,6 @@ const SideMenuController = new Vue({
    watch: {},
    components: {},
    created(){
-
       this.inicializar();
    },
    ready: {},

@@ -138,9 +138,6 @@ const VlanController = new Vue({
    created(){
       this.inicializar();
 
-      $(document).ready(function(){
-         $('[data-toggle="tooltip"]').tooltip();
-      });
 
       /*
        $(document).ready(function () {

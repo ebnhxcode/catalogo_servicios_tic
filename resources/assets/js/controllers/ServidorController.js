@@ -362,11 +362,6 @@ lista_objs_model
    },
    created(){
       this.inicializar();
-
-      $(document).ready(function(){
-         $('[data-toggle="tooltip"]').tooltip();
-      });
-
    },
    ready: {},
    filters: {},

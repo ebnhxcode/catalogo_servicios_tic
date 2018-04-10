@@ -151,11 +151,6 @@ const ServidorAccesoController = new Vue({
    },
    created(){
       this.inicializar();
-
-      $(document).ready(function(){
-         $('[data-toggle="tooltip"]').tooltip();
-      });
-
    },
    ready: {},
    filters: {},

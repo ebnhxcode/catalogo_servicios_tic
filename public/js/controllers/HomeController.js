@@ -2897,10 +2897,6 @@ var HomeController = new Vue({
    },
    created: function created() {
       this.inicializar();
-
-      $(document).ready(function () {
-         $('[data-toggle="tooltip"]').tooltip();
-      });
    },
 
    ready: {},

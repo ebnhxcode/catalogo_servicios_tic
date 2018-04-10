@@ -47033,7 +47033,6 @@ var SideMenuController = new Vue({
    watch: {},
    components: {},
    created: function created() {
-
       this.inicializar();
    },
 
