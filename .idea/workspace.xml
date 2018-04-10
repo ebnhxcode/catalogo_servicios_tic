@@ -8,7 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c71587b-d991-482f-b19e-13dd138d49bc" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/controllers/ServicioController.js" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/ServicioController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/servicios/partials/relacionados_a.blade.php" afterPath="$PROJECT_DIR$/resources/views/servicios/partials/relacionados_a.blade.php" />
     </list>
     <ignored path="catalogo_servicios_tic.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,21 +37,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="vista_principal.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/servicios/partials/vista_principal.blade.php">
+      <file leaf-file-name="relacionados_a.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/servicios/partials/relacionados_a.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.1296296">
-              <caret line="83" column="66" selection-start-line="83" selection-start-column="66" selection-end-line="83" selection-end-column="66" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServicioController.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/ServicioController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33333334">
-              <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.5689655">
+              <caret line="93" column="59" selection-start-line="93" selection-start-column="59" selection-end-line="93" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -69,7 +59,6 @@
         <option value="$PROJECT_DIR$/resources/views/layouts/main_para_componentes.blade.php" />
         <option value="$PROJECT_DIR$/app/Models/Aplicacion/Aplicacion.php" />
         <option value="$PROJECT_DIR$/resources/views/servidores/partials/relacionados_a.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/servicios/partials/relacionados_a.blade.php" />
         <option value="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/RegistersUsers.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/views/servidores/VistaPrincipalServidor.vue" />
@@ -116,6 +105,7 @@
         <option value="$PROJECT_DIR$/app/ServicioUsuario.php" />
         <option value="$PROJECT_DIR$/resources/views/servicios/partials/vista_principal.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/ServicioController.js" />
+        <option value="$PROJECT_DIR$/resources/views/servicios/partials/relacionados_a.blade.php" />
       </list>
     </option>
   </component>
@@ -1822,18 +1812,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/ServicioController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/servicios/partials/vista_principal.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.1296296">
+        <state vertical-scroll-proportion="0.530303">
           <caret line="83" column="66" selection-start-line="83" selection-start-column="66" selection-end-line="83" selection-end-column="66" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/ServicioController.js">
+    <entry file="file://$PROJECT_DIR$/resources/views/servicios/partials/relacionados_a.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.5689655">
+          <caret line="93" column="59" selection-start-line="93" selection-start-column="59" selection-end-line="93" selection-end-column="59" />
           <folding />
         </state>
       </provider>
