@@ -59,6 +59,7 @@ const ServicioController = new Vue({
          'actividades':[],
          'servicios':[],
          'estados':[],
+         'usuarios':[],
          'usuarios_bitacora_servicios':[],
          'datos_excel':[],
          'usuario_auth':{},
@@ -202,6 +203,7 @@ const ServicioController = new Vue({
             this.datos_excel = response.body.servicios || null;
             this.servicios = response.body.servicios || null;
             this.estados = response.body.estados || null;
+            this.usuarios = response.body.usuarios || null;
             this.usuario_auth = response.body.usuario_auth || null;
 
 
@@ -219,5 +221,7 @@ const ServicioController = new Vue({
          if (i === 0) return `${bytes} ${sizes[i]})`
          return `${(bytes / (1024 ** i)).toFixed(1)} ${sizes[i]}`
       }
+
+
    }
 });

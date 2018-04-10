@@ -6,6 +6,7 @@ use App\Estado;
 use App\Servicio;
 #use App\Servidor;
 use App\Actividad;
+use App\User;
 use App\UsuarioBitacoraServicio;
 use Illuminate\Http\Request;
 use Auth;
@@ -26,6 +27,7 @@ class ServicioController extends Controller {
     private $usuarios_bitacora_servicios;
     #private $servidores;
     private $estados;
+    private $usuarios;
     private $servicios;
     private $servicio;
     private $new_servicio;
@@ -73,6 +75,7 @@ class ServicioController extends Controller {
         $this->actividades = Actividad::all();
         $this->servicios = Servicio::with(['actividad','usuario','servidores.aplicaciones','aplicaciones.servidor','usuarios_bitacora_servicios.usuario'])->get();
         $this->estados = Estado::all();
+        $this->usuarios = User::all();
         $this->usuarios_bitacora_servicios =
            UsuarioBitacoraServicio::where('id_usuario', '=', $this->usuario_auth->id_usuario)->get();
         return response()->json([
@@ -80,6 +83,7 @@ class ServicioController extends Controller {
            'actividades' => $this->actividades,
            'servicios' => $this->servicios,
            'estados' => $this->estados,
+           'usuarios' => $this->usuarios,
            'usuarios_bitacora_servicios' => $this->usuarios_bitacora_servicios,
            'usuario_auth' => $this->usuario_auth,
         ]);

@@ -70,7 +70,7 @@
                <th>Nombre</th>
                <th>Descripción</th>
                <th>Usuario</th>
-            </tr>644
+            </tr>
             </thead>
             <tbody>
             <tr v-for="b in servicio.usuarios_bitacora_servicios">
@@ -90,27 +90,43 @@
       <div class="tab-pane fade show" id="v-pills-responsables" role="tabpanel" aria-labelledby="v-pills-responsables-tab">
 
          <h4>Usuarios Responsables</h4>
-         <table class="table table-striped table-hover table-sm" v-if="servicio.usuarios_bitacora_servicios &&
-            servicio.usuarios_bitacora_servicios.length > 0">
-            <thead>
-            <tr>
-               <th>Nombre</th>
-               <th>Descripción</th>
-               <th>Usuario</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="b in servicio.usuarios_bitacora_servicios">
-               <td>@{{ b.asunto }}</td>
-               <td>@{{ b.det_bitacora }}</td>
-               <td>@{{ b.usuario.nom_usuario }}</td>
-            </tr>
-            </tbody>
+         <br>
+         <div class="row">
+            <div class="col-md-6">
+               <h6>Asociar nuevo usuario</h6>
 
-         </table><!-- .table -->
-         <div class="card card-body bg-light" v-else>
-            Hasta el momento no existen responsables asociados.
-         </div><!-- .card -->
+            </div>
+            <div class="col-md-6">
+               <h6>Tabla de usuarios asociados</h6>
+               <div class="table-responsive">
+
+                  <table class="table table-striped table-hover table-sm" v-if="servicio.usuarios_bitacora_servicios &&
+            servicio.usuarios_bitacora_servicios.length > 0">
+                     <thead>
+                     <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Usuario</th>
+                     </tr>
+                     </thead>
+                     <tbody>
+                     <tr v-for="b in servicio.usuarios_bitacora_servicios">
+                        <td>@{{ b.asunto }}</td>
+                        <td>@{{ b.det_bitacora }}</td>
+                        <td>@{{ b.usuario.nom_usuario }}</td>
+                     </tr>
+                     </tbody>
+
+                  </table><!-- .table -->
+                  <div class="card card-body bg-light" v-else>
+                     Hasta el momento no existen responsables asociados.
+                  </div><!-- .card -->
+
+               </div>
+            </div>
+         </div>
+
+
 
       </div>
 
