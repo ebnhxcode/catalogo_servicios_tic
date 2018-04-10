@@ -167,6 +167,11 @@ const SideMenuController = new Vue({
    watch: {},
    components: {},
    created(){
+      $(document).ready(()=>{
+         //$('.dropdown-toggle').dropdown();
+         $('[data-toggle="tooltip"]').tooltip();
+         //$('body').bootstrapMaterialDesign();
+      });
       this.inicializar();
    },
    ready: {},
