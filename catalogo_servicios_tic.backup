@@ -5,7 +5,7 @@
 -- Dumped from database version 10.3 (Debian 10.3-2)
 -- Dumped by pg_dump version 10.3 (Debian 10.3-2)
 
--- Started on 2018-04-09 10:31:26 -03
+-- Started on 2018-04-10 10:06:50 -03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -26,7 +26,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 3446 (class 0 OID 0)
+-- TOC entry 3481 (class 0 OID 0)
 -- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
@@ -878,7 +878,7 @@ CREATE SEQUENCE public.migrations_id_seq
 ALTER TABLE public.migrations_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3447 (class 0 OID 0)
+-- TOC entry 3482 (class 0 OID 0)
 -- Dependencies: 273
 -- Name: migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -1078,7 +1078,6 @@ ALTER TABLE public.servicios_id_seq OWNER TO postgres;
 CREATE TABLE public.servicios (
     id_servicio integer DEFAULT nextval('public.servicios_id_seq'::regclass) NOT NULL,
     id_actividad integer,
-    id_usuario integer,
     nom_servicio text,
     det_servicio text,
     id_usuario_registra integer,
@@ -1194,6 +1193,40 @@ CREATE TABLE public.servicios_tags (
 ALTER TABLE public.servicios_tags OWNER TO postgres;
 
 --
+-- TOC entry 302 (class 1259 OID 604815)
+-- Name: servicios_usuarios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.servicios_usuarios_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.servicios_usuarios_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 303 (class 1259 OID 604817)
+-- Name: servicios_usuarios; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.servicios_usuarios (
+    id_servicio_usuario integer DEFAULT nextval('public.servicios_usuarios_id_seq'::regclass) NOT NULL,
+    id_servicio integer,
+    id_usuario integer,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
+);
+
+
+ALTER TABLE public.servicios_usuarios OWNER TO postgres;
+
+--
 -- TOC entry 212 (class 1259 OID 587826)
 -- Name: servidor_aplicaciones_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
@@ -1270,7 +1303,9 @@ CREATE TABLE public.servidores (
     id_cluster integer,
     agente_instana_instalado text,
     id_servicio integer,
-    id_vlan integer
+    id_vlan integer,
+    id_tipo_servidor integer,
+    id_tipo_respaldo_disco integer
 );
 
 
@@ -1578,6 +1613,76 @@ CREATE TABLE public.tipos_clusters (
 
 
 ALTER TABLE public.tipos_clusters OWNER TO postgres;
+
+--
+-- TOC entry 300 (class 1259 OID 604804)
+-- Name: tipos_respaldos_discos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.tipos_respaldos_discos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tipos_respaldos_discos_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 301 (class 1259 OID 604806)
+-- Name: tipos_respaldos_discos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tipos_respaldos_discos (
+    id_tipo_respaldo_disco integer DEFAULT nextval('public.tipos_respaldos_discos_id_seq'::regclass) NOT NULL,
+    nom_tipo_respaldo_disco text,
+    det_tipo_respaldo_disco text,
+    cod_tipo_respaldo_disco text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
+);
+
+
+ALTER TABLE public.tipos_respaldos_discos OWNER TO postgres;
+
+--
+-- TOC entry 298 (class 1259 OID 604793)
+-- Name: tipos_servidores_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.tipos_servidores_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tipos_servidores_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 299 (class 1259 OID 604795)
+-- Name: tipos_servidores; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tipos_servidores (
+    id_tipo_servidor integer DEFAULT nextval('public.tipos_servidores_id_seq'::regclass) NOT NULL,
+    nom_tipo_servidor text,
+    det_tipo_servidor text,
+    cod_tipo_servidor text,
+    id_usuario_registra integer,
+    id_usuario_modifica integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    deleted_at timestamp without time zone
+);
+
+
+ALTER TABLE public.tipos_servidores OWNER TO postgres;
 
 --
 -- TOC entry 288 (class 1259 OID 604731)
@@ -1898,7 +2003,7 @@ CREATE TABLE public.vlans (
 ALTER TABLE public.vlans OWNER TO postgres;
 
 --
--- TOC entry 3107 (class 2604 OID 588266)
+-- TOC entry 3127 (class 2604 OID 588266)
 -- Name: migrations id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -1906,7 +2011,7 @@ ALTER TABLE ONLY public.migrations ALTER COLUMN id SET DEFAULT nextval('public.m
 
 
 --
--- TOC entry 3396 (class 0 OID 588007)
+-- TOC entry 3425 (class 0 OID 588007)
 -- Dependencies: 255
 -- Data for Name: actividades; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1929,7 +2034,7 @@ COPY public.actividades (id_actividad, nom_actividad, det_actividad, id_usuario_
 
 
 --
--- TOC entry 3397 (class 0 OID 588014)
+-- TOC entry 3426 (class 0 OID 588014)
 -- Dependencies: 256
 -- Data for Name: actividades_tags; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1939,7 +2044,7 @@ COPY public.actividades_tags (id_actividad_tag, id_actividad, id_tag, id_usuario
 
 
 --
--- TOC entry 3420 (class 0 OID 596504)
+-- TOC entry 3449 (class 0 OID 596504)
 -- Dependencies: 279
 -- Data for Name: ambientes; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1953,7 +2058,7 @@ COPY public.ambientes (id_ambiente, nom_ambiente, det_ambiente, id_usuario_regis
 
 
 --
--- TOC entry 3382 (class 0 OID 587915)
+-- TOC entry 3411 (class 0 OID 587915)
 -- Dependencies: 241
 -- Data for Name: aplicaciones; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2215,7 +2320,7 @@ COPY public.aplicaciones (id_aplicacion, id_tipo_aplicacion, id_servicio, id_dom
 
 
 --
--- TOC entry 3383 (class 0 OID 587922)
+-- TOC entry 3412 (class 0 OID 587922)
 -- Dependencies: 242
 -- Data for Name: aplicaciones_accesos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2227,7 +2332,7 @@ COPY public.aplicaciones_accesos (id_aplicacion_acceso, id_aplicacion, id_servid
 
 
 --
--- TOC entry 3381 (class 0 OID 587911)
+-- TOC entry 3410 (class 0 OID 587911)
 -- Dependencies: 240
 -- Data for Name: aplicaciones_estados; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2237,7 +2342,7 @@ COPY public.aplicaciones_estados (id_aplicacion_estado, id_aplicacion, id_estado
 
 
 --
--- TOC entry 3394 (class 0 OID 587996)
+-- TOC entry 3423 (class 0 OID 587996)
 -- Dependencies: 253
 -- Data for Name: aplicaciones_tags; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2247,7 +2352,7 @@ COPY public.aplicaciones_tags (id_aplicacion_tag, id_aplicacion, id_tag, id_usua
 
 
 --
--- TOC entry 3392 (class 0 OID 587985)
+-- TOC entry 3421 (class 0 OID 587985)
 -- Dependencies: 251
 -- Data for Name: aplicaciones_tecnologias; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2257,7 +2362,7 @@ COPY public.aplicaciones_tecnologias (id_aplicacion_tecnologia, id_aplicacion, i
 
 
 --
--- TOC entry 3404 (class 0 OID 588048)
+-- TOC entry 3433 (class 0 OID 588048)
 -- Dependencies: 263
 -- Data for Name: cargos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2273,7 +2378,7 @@ COPY public.cargos (id_cargo, nom_cargo, det_cargo, id_usuario_registra, id_usua
 
 
 --
--- TOC entry 3402 (class 0 OID 588037)
+-- TOC entry 3431 (class 0 OID 588037)
 -- Dependencies: 261
 -- Data for Name: catalogos_servicios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2283,7 +2388,7 @@ COPY public.catalogos_servicios (id_catalogo_servicio, id_servicio, asunto, det_
 
 
 --
--- TOC entry 3406 (class 0 OID 588166)
+-- TOC entry 3435 (class 0 OID 588166)
 -- Dependencies: 265
 -- Data for Name: catalogos_servicios_tags; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2293,7 +2398,7 @@ COPY public.catalogos_servicios_tags (id_catalogo_servicio_tag, id_catalogo_serv
 
 
 --
--- TOC entry 3426 (class 0 OID 596541)
+-- TOC entry 3455 (class 0 OID 596541)
 -- Dependencies: 285
 -- Data for Name: clusters; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2305,7 +2410,7 @@ COPY public.clusters (id_cluster, nom_cluster, det_cluster, id_usuario_registra,
 
 
 --
--- TOC entry 3339 (class 0 OID 579605)
+-- TOC entry 3368 (class 0 OID 579605)
 -- Dependencies: 198
 -- Data for Name: comuna; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2661,7 +2766,7 @@ COPY public.comuna (id_comuna, id_region, nombre_comuna, created_at, updated_at,
 
 
 --
--- TOC entry 3388 (class 0 OID 587957)
+-- TOC entry 3417 (class 0 OID 587957)
 -- Dependencies: 247
 -- Data for Name: datacentros; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2677,7 +2782,7 @@ COPY public.datacentros (id_datacentro, nom_datacentro, id_usuario_registra, id_
 
 
 --
--- TOC entry 3386 (class 0 OID 587943)
+-- TOC entry 3415 (class 0 OID 587943)
 -- Dependencies: 245
 -- Data for Name: dominios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2692,7 +2797,7 @@ COPY public.dominios (id_dominio, nom_dominio, det_dominio, ip_publica, ip_balan
 
 
 --
--- TOC entry 3408 (class 0 OID 588174)
+-- TOC entry 3437 (class 0 OID 588174)
 -- Dependencies: 267
 -- Data for Name: entregas_credenciales_usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2702,7 +2807,7 @@ COPY public.entregas_credenciales_usuarios (id_entrega_credencial_usuario, usern
 
 
 --
--- TOC entry 3409 (class 0 OID 588183)
+-- TOC entry 3438 (class 0 OID 588183)
 -- Dependencies: 268
 -- Data for Name: establecimientos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2712,7 +2817,7 @@ COPY public.establecimientos (id_establecimiento, id_establecimiento_antiguo, id
 
 
 --
--- TOC entry 3378 (class 0 OID 587893)
+-- TOC entry 3407 (class 0 OID 587893)
 -- Dependencies: 237
 -- Data for Name: estados; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2733,7 +2838,7 @@ COPY public.estados (id_estado, nom_estado, cod_estado, id_usuario_registra, id_
 
 
 --
--- TOC entry 3387 (class 0 OID 587950)
+-- TOC entry 3416 (class 0 OID 587950)
 -- Dependencies: 246
 -- Data for Name: fuentes_aplicaciones; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2743,7 +2848,7 @@ COPY public.fuentes_aplicaciones (id_fuente_aplicacion, id_aplicacion, id_servic
 
 
 --
--- TOC entry 3424 (class 0 OID 596530)
+-- TOC entry 3453 (class 0 OID 596530)
 -- Dependencies: 283
 -- Data for Name: idiomas; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2758,7 +2863,7 @@ COPY public.idiomas (id_idioma, nom_idioma, det_idioma, id_usuario_registra, id_
 
 
 --
--- TOC entry 3411 (class 0 OID 588194)
+-- TOC entry 3440 (class 0 OID 588194)
 -- Dependencies: 270
 -- Data for Name: log_navegacion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2768,7 +2873,7 @@ COPY public.log_navegacion (id_log_navegacion, id_usuario, cod_establecimiento, 
 
 
 --
--- TOC entry 3436 (class 0 OID 604763)
+-- TOC entry 3465 (class 0 OID 604763)
 -- Dependencies: 295
 -- Data for Name: mantenedores; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2796,11 +2901,13 @@ COPY public.mantenedores (id_mantenedor, url_mantenedor, nom_mantenedor, det_man
 21	usuarios_bitacora_servicios	Bitacora Servicios	Bitacoras de servicios que detallan la actividad realizada sobre una aplicacion o servicio especifico	bitacora001	4	4	2018-03-30 19:38:44	2018-04-09 13:28:32	\N	0	0
 5	roles	Roles	Mantenedor para administrar roles del sistema, se basan en perfiles con permisos para las acciones en el sistema	roles01	4	4	2018-03-28 19:17:17	2018-04-09 13:29:02	\N	\N	\N
 7	servidores	Servidores	Mantenedor para administrar servidores, incorporacion o asociacion de aplicaciones, mantencion, revision y busqueda de informacion importante como claves de acceso a servidores o aplicativos	servidores01	4	4	2018-03-28 19:24:26	2018-04-09 13:29:49	\N	\N	\N
+23	tipos_servidores	Tipos de Servidores	Mantenedor para administrar los tipos de servidores que se disponibilizan	tipos_servidores001	4	4	2018-04-09 20:02:42	2018-04-09 20:03:12	\N	0	0
+24	tipos_respaldos_discos	Tipo Respaldo Discos	Mantenedor de tipos de respaldos que pueda tener un servidor	tipos_respaldos_discos001	4	4	2018-04-09 20:46:39	2018-04-09 20:46:39	\N	0	0
 \.
 
 
 --
--- TOC entry 3435 (class 0 OID 604754)
+-- TOC entry 3464 (class 0 OID 604754)
 -- Dependencies: 294
 -- Data for Name: menus; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2819,7 +2926,7 @@ COPY public.menus (id_menu, url_menu, nom_menu, det_menu, cod_menu, id_usuario_r
 
 
 --
--- TOC entry 3415 (class 0 OID 588263)
+-- TOC entry 3444 (class 0 OID 588263)
 -- Dependencies: 274
 -- Data for Name: migrations; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2831,7 +2938,7 @@ COPY public.migrations (id, migration, batch) FROM stdin;
 
 
 --
--- TOC entry 3338 (class 0 OID 579599)
+-- TOC entry 3367 (class 0 OID 579599)
 -- Dependencies: 197
 -- Data for Name: pais; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3081,7 +3188,7 @@ COPY public.pais (id_pais, nombre_pais, created_at, updated_at, deleted_at) FROM
 
 
 --
--- TOC entry 3416 (class 0 OID 588269)
+-- TOC entry 3445 (class 0 OID 588269)
 -- Dependencies: 275
 -- Data for Name: password_resets; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3091,7 +3198,7 @@ COPY public.password_resets (email, token, created_at) FROM stdin;
 
 
 --
--- TOC entry 3375 (class 0 OID 587878)
+-- TOC entry 3404 (class 0 OID 587878)
 -- Dependencies: 234
 -- Data for Name: permisos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3110,7 +3217,7 @@ COPY public.permisos (id_permiso, nom_permiso, det_permiso, cod_permiso, id_usua
 
 
 --
--- TOC entry 3340 (class 0 OID 579611)
+-- TOC entry 3369 (class 0 OID 579611)
 -- Dependencies: 199
 -- Data for Name: region; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3135,7 +3242,7 @@ COPY public.region (id_region, nombre_region, alias, orden, created_at, updated_
 
 
 --
--- TOC entry 3373 (class 0 OID 587867)
+-- TOC entry 3402 (class 0 OID 587867)
 -- Dependencies: 232
 -- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3163,7 +3270,7 @@ COPY public.roles (id_role, nom_role, det_role, id_usuario_registra, id_usuario_
 
 
 --
--- TOC entry 3374 (class 0 OID 587874)
+-- TOC entry 3403 (class 0 OID 587874)
 -- Dependencies: 233
 -- Data for Name: roles_permisos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3235,7 +3342,7 @@ COPY public.roles_permisos (id_role_permiso, id_role, id_permiso, id_usuario_reg
 
 
 --
--- TOC entry 3337 (class 0 OID 579586)
+-- TOC entry 3366 (class 0 OID 579586)
 -- Dependencies: 196
 -- Data for Name: servicio_salud; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3274,46 +3381,46 @@ COPY public.servicio_salud (id_servicio_salud, id_region, nombre_servicio_salud,
 
 
 --
--- TOC entry 3395 (class 0 OID 588000)
+-- TOC entry 3424 (class 0 OID 588000)
 -- Dependencies: 254
 -- Data for Name: servicios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.servicios (id_servicio, id_actividad, id_usuario, nom_servicio, det_servicio, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
-5	7	4	eqweqwe	wqe	4	4	2018-03-06 06:39:50	2018-03-06 06:39:53	2018-03-06 06:39:53
-6	10	4	sdaf	fsadf	4	4	2018-03-06 06:41:42	2018-03-06 06:41:45	2018-03-06 06:41:45
-8	7	4	SDFS	DFSD	4	4	2018-03-28 12:38:02	2018-03-28 12:38:07	2018-03-28 12:38:07
-9	9	1	sadf	sadf	1	1	2018-03-28 12:50:17	2018-03-28 12:50:28	2018-03-28 12:50:28
-10	11	4	sadf	sadf	4	4	2018-03-28 13:04:56	2018-03-28 15:21:41	2018-03-28 15:21:41
-11	7	4	asdf	sdf	4	4	2018-03-28 15:23:21	2018-03-28 16:10:47	2018-03-28 16:10:47
-4	4	4	Web Minsal	Desarrollos relacionados al servicio web minsal	1	4	2018-02-27 19:35:43	2018-04-04 18:49:11	2018-04-04 18:49:11
-7	1	4	Sigte	Sistema de gestion de tiempos de espera	4	4	2018-03-07 13:52:04	2018-04-04 18:49:20	2018-04-04 18:49:20
-3	4	4	Sitios en Yii	Desarrollos que se han realizado en Yii Framework.	1	4	2018-02-27 19:04:06	2018-04-04 18:49:45	2018-04-04 18:49:45
-2	4	4	Wordpress	Servicio que se encarga de mantener y administrar los sitios hechos en wordpress	1	4	2018-02-27 19:04:06	2018-04-04 18:50:01	2018-04-04 18:50:01
-1	4	4	Sitios Web	Servicio que realiza el equipo de soporte	1	4	2018-02-27 18:58:58	2018-04-04 18:50:09	2018-04-04 18:50:09
-12	4	4	GATEWAY HEALTHCARE	GATEWAY HEALTHCARE	4	4	2018-04-04 18:50:41	2018-04-04 18:50:41	\N
-13	4	4	AFIS	AFIS	4	4	2018-04-04 18:50:57	2018-04-04 18:50:57	\N
-14	7	4	BI	BI	4	4	2018-04-04 18:51:33	2018-04-04 18:51:33	\N
-15	4	4	INTERNOS	INTERNOS	4	4	2018-04-04 18:51:53	2018-04-04 18:51:53	\N
-16	1	4	OPERACIONES	OPERACIONES	4	4	2018-04-04 18:52:05	2018-04-04 18:52:05	\N
-17	7	4	SERVIDOR TERMINOLOGICO	SERVIDOR TERMINOLOGICO	4	4	2018-04-04 18:52:35	2018-04-04 18:52:35	\N
-18	2	4	OTROS	OTROS	4	4	2018-04-04 18:52:55	2018-04-04 18:52:55	\N
-19	4	4	SOLUCION HIS HOSTIPAL MAIPU	SOLUCION HIS HOSTIPAL MAIPU	4	4	2018-04-04 18:53:42	2018-04-04 18:53:42	\N
-20	4	4	SURVIH	SURVIH	4	4	2018-04-04 18:54:02	2018-04-04 18:54:02	\N
-21	4	4	SIRH	SIRH	4	4	2018-04-04 18:54:15	2018-04-04 18:54:15	\N
-22	4	4	SIAC	SIAC	4	4	2018-04-04 18:54:26	2018-04-04 18:54:26	\N
-23	4	4	SITE INTESIS	SITE INTESIS	4	4	2018-04-04 18:54:47	2018-04-04 18:54:47	\N
-24	4	4	RIS	RIS	4	4	2018-04-04 18:55:02	2018-04-04 18:55:08	\N
-25	4	4	CHCC	CHCC	4	4	2018-04-04 18:55:22	2018-04-04 18:55:22	\N
-26	4	4	PAID	PAID	4	4	2018-04-04 18:55:34	2018-04-04 18:55:34	\N
-27	4	4	CATALOGO DE IMAGENES	CATALOGO DE IMAGENES	4	4	2018-04-04 18:55:46	2018-04-04 18:55:46	\N
-28	4	4	INTERRUPCION VOLUNTARIA DEL EMBARAZO	INTERRUPCION VOLUNTARIA DEL EMBARAZO	4	4	2018-04-04 18:56:20	2018-04-04 18:56:20	\N
-29	7	4	TABLEAU SERVER	TABLEAU SERVER	4	4	2018-04-04 19:26:43	2018-04-04 19:26:43	\N
+COPY public.servicios (id_servicio, id_actividad, nom_servicio, det_servicio, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+5	7	eqweqwe	wqe	4	4	2018-03-06 06:39:50	2018-03-06 06:39:53	2018-03-06 06:39:53
+6	10	sdaf	fsadf	4	4	2018-03-06 06:41:42	2018-03-06 06:41:45	2018-03-06 06:41:45
+8	7	SDFS	DFSD	4	4	2018-03-28 12:38:02	2018-03-28 12:38:07	2018-03-28 12:38:07
+9	9	sadf	sadf	1	1	2018-03-28 12:50:17	2018-03-28 12:50:28	2018-03-28 12:50:28
+10	11	sadf	sadf	4	4	2018-03-28 13:04:56	2018-03-28 15:21:41	2018-03-28 15:21:41
+11	7	asdf	sdf	4	4	2018-03-28 15:23:21	2018-03-28 16:10:47	2018-03-28 16:10:47
+4	4	Web Minsal	Desarrollos relacionados al servicio web minsal	1	4	2018-02-27 19:35:43	2018-04-04 18:49:11	2018-04-04 18:49:11
+7	1	Sigte	Sistema de gestion de tiempos de espera	4	4	2018-03-07 13:52:04	2018-04-04 18:49:20	2018-04-04 18:49:20
+3	4	Sitios en Yii	Desarrollos que se han realizado en Yii Framework.	1	4	2018-02-27 19:04:06	2018-04-04 18:49:45	2018-04-04 18:49:45
+2	4	Wordpress	Servicio que se encarga de mantener y administrar los sitios hechos en wordpress	1	4	2018-02-27 19:04:06	2018-04-04 18:50:01	2018-04-04 18:50:01
+1	4	Sitios Web	Servicio que realiza el equipo de soporte	1	4	2018-02-27 18:58:58	2018-04-04 18:50:09	2018-04-04 18:50:09
+12	4	GATEWAY HEALTHCARE	GATEWAY HEALTHCARE	4	4	2018-04-04 18:50:41	2018-04-04 18:50:41	\N
+13	4	AFIS	AFIS	4	4	2018-04-04 18:50:57	2018-04-04 18:50:57	\N
+14	7	BI	BI	4	4	2018-04-04 18:51:33	2018-04-04 18:51:33	\N
+15	4	INTERNOS	INTERNOS	4	4	2018-04-04 18:51:53	2018-04-04 18:51:53	\N
+16	1	OPERACIONES	OPERACIONES	4	4	2018-04-04 18:52:05	2018-04-04 18:52:05	\N
+17	7	SERVIDOR TERMINOLOGICO	SERVIDOR TERMINOLOGICO	4	4	2018-04-04 18:52:35	2018-04-04 18:52:35	\N
+18	2	OTROS	OTROS	4	4	2018-04-04 18:52:55	2018-04-04 18:52:55	\N
+19	4	SOLUCION HIS HOSTIPAL MAIPU	SOLUCION HIS HOSTIPAL MAIPU	4	4	2018-04-04 18:53:42	2018-04-04 18:53:42	\N
+20	4	SURVIH	SURVIH	4	4	2018-04-04 18:54:02	2018-04-04 18:54:02	\N
+21	4	SIRH	SIRH	4	4	2018-04-04 18:54:15	2018-04-04 18:54:15	\N
+22	4	SIAC	SIAC	4	4	2018-04-04 18:54:26	2018-04-04 18:54:26	\N
+23	4	SITE INTESIS	SITE INTESIS	4	4	2018-04-04 18:54:47	2018-04-04 18:54:47	\N
+24	4	RIS	RIS	4	4	2018-04-04 18:55:02	2018-04-04 18:55:08	\N
+25	4	CHCC	CHCC	4	4	2018-04-04 18:55:22	2018-04-04 18:55:22	\N
+26	4	PAID	PAID	4	4	2018-04-04 18:55:34	2018-04-04 18:55:34	\N
+27	4	CATALOGO DE IMAGENES	CATALOGO DE IMAGENES	4	4	2018-04-04 18:55:46	2018-04-04 18:55:46	\N
+28	4	INTERRUPCION VOLUNTARIA DEL EMBARAZO	INTERRUPCION VOLUNTARIA DEL EMBARAZO	4	4	2018-04-04 18:56:20	2018-04-04 18:56:20	\N
+29	7	TABLEAU SERVER	TABLEAU SERVER	4	4	2018-04-04 19:26:43	2018-04-04 19:26:43	\N
 \.
 
 
 --
--- TOC entry 3380 (class 0 OID 587907)
+-- TOC entry 3409 (class 0 OID 587907)
 -- Dependencies: 239
 -- Data for Name: servicios_estados; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3323,7 +3430,7 @@ COPY public.servicios_estados (id_servicio_estado, id_servicio, id_estado, id_us
 
 
 --
--- TOC entry 3400 (class 0 OID 588029)
+-- TOC entry 3429 (class 0 OID 588029)
 -- Dependencies: 259
 -- Data for Name: servicios_permisos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3333,7 +3440,7 @@ COPY public.servicios_permisos (id_servicio_permiso, id_servicio, id_permiso, id
 
 
 --
--- TOC entry 3398 (class 0 OID 588018)
+-- TOC entry 3427 (class 0 OID 588018)
 -- Dependencies: 257
 -- Data for Name: servicios_tags; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3343,256 +3450,266 @@ COPY public.servicios_tags (id_servicio_tag, id_servicio, id_tag, id_usuario_reg
 
 
 --
--- TOC entry 3385 (class 0 OID 587936)
--- Dependencies: 244
--- Data for Name: servidores; Type: TABLE DATA; Schema: public; Owner: postgres
+-- TOC entry 3473 (class 0 OID 604817)
+-- Dependencies: 303
+-- Data for Name: servicios_usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.servidores (id_servidor, id_datacentro, id_sistema_operativo, nom_servidor, ip_servidor, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, det_servidor, ram, memoria_dd, swap, procesador, frec_procesador, nucleos, usuarios_pactados, mac, nodo, interface, id_ambiente, modelo_procesador, id_cluster, agente_instana_instalado, id_servicio, id_vlan) FROM stdin;
-695	1	33	MNCASPROD_API02	172.20.34.11	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCASPROD_API02	16384	307200	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	12	\N
-696	1	33	MNCASPROD_API03	172.20.34.12	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCASPROD_API03	16384	307200	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	12	\N
-697	1	33	MNMPPROD_API01	172.20.34.13	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMPPROD_API01	8192	307200	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	12	\N
-698	1	33	MNMPPROD_API02	172.20.34.14	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMPPROD_API02	8192	204800	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	12	\N
-699	1	33	MNAPPROD_API01	172.20.34.15	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNAPPROD_API01	16384	1048576	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	12	\N
-700	1	33	MNAPPROD_API02	172.20.34.16	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNAPPROD_API02	16384	1048576	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	12	\N
-701	1	33	MNQSPROD_API01	172.20.34.17	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNQSPROD_API01	16384	512000	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	12	\N
-702	1	33	MNQSPROD_API02	172.20.34.18	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNQSPROD_API02	16384	512000	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	12	\N
-703	1	33	MNOLDAPPROD_API01	172.20.34.19	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNOLDAPPROD_API01	8192	102400	0	intel	2400	4	0	0	\N	\N	1	E5-2699v3	1	false	12	\N
-704	1	33	MNOLDAPPROD_API02	172.20.34.20	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNOLDAPPROD_API02	8192	102400	0	intel	2400	4	0	0	\N	\N	1	E5-2699v3	1	false	12	\N
-705	1	33	MNMSUPROD_API01	172.20.34.21	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMSUPROD_API01	8192	102400	0	intel	2400	4	0	0	\N	\N	1	E5-2699v3	1	false	12	\N
-706	1	33	MNMSUPROD_API02	172.20.34.22	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMSUPROD_API02	8192	102400	0	intel	2400	4	0	0	\N	\N	1	E5-2699v3	1	false	12	\N
-707	1	33	MNDSDEVQA_API01	172.20.34.23	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNDSDEVQA_API01	16384	307200	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	12	\N
-708	1	33	MNS1DEVQA_API01	172.20.34.24	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNS1DEVQA_API01	16384	204800	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	12	\N
-709	1	33	MNS2DEVQA_API02	172.20.34.25	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNS2DEVQA_API02	16384	204800	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	12	\N
-711	1	33	MNAMQPRO_AFIS02	172.20.34.27	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNAMQPRO_AFIS02	32768	256000	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	13	\N
-712	1	33	MNAMQPRO_AFIS03	172.20.34.28	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNAMQPRO_AFIS03	32768	256000	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	13	\N
-713	1	45	MNIBASEDPROD_ZEKE	172.20.34.29	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNIBASEDPROD_ZEKE	32768	143360	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	14	\N
-714	1	33	MNEASYRPROD_ZEKE	172.20.34.30	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNEASYRPROD_ZEKE	8192	121856	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	\N
-715	1	33	MNSVNPROD_ZEKE	172.20.34.31	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSVNPROD_ZEKE	4096	70656	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	16	\N
-716	1	33	MNCMDBPROD_ZEKE	192.168.20.17 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCMDBPROD_ZEKE	16384	173056	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	16	\N
-717	1	33	MNNAGIOSPROD_ZEKE	192.168.20.16 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNNAGIOSPROD_ZEKE	16384	173056	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	16	\N
-718	1	33	MNWIKIPROD_ZEKE	172.20.34.34	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNWIKIPROD_ZEKE	8192	70656	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	\N
-719	1	33	MNLICMETPROD_ZEKE	172.20.34.35	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNLICMETPROD_ZEKE	8192	102400	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	\N
-720	1	46	MNMONITOREOPROD001_NOUS	172.20.34.36	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMONITOREOPROD001_NOUS	4096	409600	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	18	\N
-721	1	46	MNMONITOREOPROD002_NOUS	172.20.34.37	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMONITOREOPROD002_NOUS	4096	409600	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	18	\N
-722	1	42	MNPROXYBKPVM	172.20.34.38	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPROXYBKPVM	16384	81920	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	\N
-723	1	33	MNSEMANTIKOS_AC_APP01	192.168.10.50	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOS_AC_APP01	6144	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	17	\N
-724	1	33	MNSEMANTIKOS_AC_APP02	192.168.10.51	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOS_AC_APP02	6144	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	17	\N
-725	1	33	MNSEMANTIKOS_PS_APP03	192.168.10.52	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOS_PS_APP03	6144	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	17	\N
-726	1	33	MNSEMANTIKOS_AC_BD01	172.20.65.10	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOS_AC_BD01	16384	102400	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	17	\N
-727	1	33	MNSEMANTIKOS_AC_BD02	172.20.65.11	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOS_AC_BD02	16384	102400	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	17	\N
-728	1	33	MNSEMANTIKOS_PS_BD03	172.20.65.12	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOS_PS_BD03	16384	102400	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	17	\N
-729	1	50	MNIBMIBASEPROD_ZEKE	172.20.34.39	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNIBMIBASEPROD_ZEKE	16384	122880	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	\N
-730	1	50	MNIBMI2ANALYTSPROD_ZEKE	172.20.34.40	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNIBMI2ANALYTSPROD_ZEKE	16384	122880	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	\N
-731	1	48	MNHadoop_MNG_1	172.20.34.41	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNHadoop_MNG_1	32768	1048576	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	\N
-732	1	48	MNHadoop_MNG_2	172.20.34.42	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNHadoop_MNG_2	32768	1048576	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	\N
-733	1	48	MNHadoop_DAT_1	172.20.34.43	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNHadoop_DAT_1	32768	1048576	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	\N
-735	1	48	MNHadoop_DAT_3	172.20.34.45	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNHadoop_DAT_3	32768	1048576	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	\N
-736	1	33	MNFTP_Traspasos_APP	172.20.34.46	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNFTP_Traspasos_APP	4096	307200	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	\N
-737	1	17	MNQASEMANTIKOS_APP01	192.168.10.53	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNQASEMANTIKOS_APP01	8192	112640	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	17	\N
-739	1	41	MNOIRS_DEV_QA	172.20.16.20	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNOIRS_DEV_QA	4096	71680	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	18	\N
-740	1	32	MNANALITYC_APP	172.20.34.47	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNANALITYC_APP	32768	225280	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	14	\N
-741	1	45	MNSPSSStatistics_APP	172.20.34.48	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSPSSStatistics_APP	32768	61440	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	14	\N
-742	1	17	MNSIACINTDEV_APP01	192.168.60.10	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIACINTDEV_APP01	2048	30720	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N
-743	1	17	MNSIACWORDPRESSDEV_APP01	192.168.60.11	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIACWORDPRESSDEV_APP01	2048	30720	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N
-744	1	33	MNMPPRODDMZ_API01	192.168.70.10	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMPPRODDMZ_API01	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	\N
-745	1	33	MNMPPRODDMZ_API02	192.168.70.11	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMPPRODDMZ_API02	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	\N
-746	1	33	MNMPPRODBE_API01	172.20.89.10	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMPPRODBE_API01	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	\N
-747	1	33	MNMPPRODBE_API02	172.20.89.11	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMPPRODBE_API02	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	\N
-748	1	33	MNCASPROD_API01	172.20.90.10	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCASPROD_API01	16384	307200	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	\N
-749	1	33	MNCASPROD_API02	172.20.90.11	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCASPROD_API02	16384	307200	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	\N
-750	1	33	MNCASPROD_API03	172.20.90.12	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCASPROD_API03	16384	307200	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	\N
-751	1	33	MNAPPROD_API01	172.20.90.13	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNAPPROD_API01	16384	1048576	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	\N
-752	1	33	MNDEVPORPROD_API01	172.20.90.14	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNDEVPORPROD_API01	2048	20480	0	intel	2400	2	0	0	\N	\N	1	Sin definir	1	false	12	\N
-753	1	33	MNQSPROD_API01	172.20.90.15	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNQSPROD_API01	8192	25600	0	intel	2400	4	0	0	\N	\N	1	Sin definir	1	false	12	\N
-754	1	33	MNQSPROD_API02	172.20.90.16	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNQSPROD_API02	8192	256000	0	intel	2400	4	0	0	\N	\N	1	Sin definir	1	false	12	\N
-755	1	33	MNMSUPROD_API01	172.20.90.17	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMSUPROD_API01	4096	102400	0	intel	2400	2	0	0	\N	\N	1	Sin definir	1	false	12	\N
-756	1	33	MNMPDEVDMZ_API01	192.168.60.12	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMPDEVDMZ_API01	16384	204800	0	intel	2400	8	0	0	\N	\N	4	Sin definir	1	false	12	\N
-757	1	33	MNMPDEVDMZ_API02	192.168.60.13	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMPDEVDMZ_API02	16384	204800	0	intel	2400	8	0	0	\N	\N	4	Sin definir	1	false	12	\N
-758	1	33	MNMPDEVBE_API01	172.20.34.20	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMPDEVBE_API01	16384	204800	0	intel	2400	8	0	0	\N	\N	4	Sin definir	1	false	12	\N
-759	1	33	MNMPDEVBE_API02	172.20.34.21	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMPDEVBE_API02	16384	204800	0	intel	2400	8	0	0	\N	\N	4	Sin definir	1	false	12	\N
-760	1	33	MNMSUDEV_API01	172.20.34.22	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMSUDEV_API01	16384	307200	0	intel	2400	8	0	0	\N	\N	4	Sin definir	1	false	12	\N
-761	1	33	MNMSUDEV_API02	172.20.34.23	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMSUDEV_API02	16384	307200	0	intel	2400	8	0	0	\N	\N	4	Sin definir	1	false	12	\N
-763	1	33	MNAPDEV_API02	172.20.34.25	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNAPDEV_API02	4096	204800	0	intel	2400	8	0	0	\N	\N	4	Sin definir	1	false	12	\N
-764	1	34	MNREPPIVPROD_API01	172.20.34.49	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNREPPIVPROD_API01	4096	102400	0	intel	2400	1	0	0	\N	\N	1	Sin definir	2	false	12	\N
-765	1	45	MNBIDEV_001	172.20.16.25	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNBIDEV_001	8192	102400	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	14	\N
-766	1	45	MNDATASTAGEPROD_001	172.20.34.50	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNDATASTAGEPROD_001	16384	51200	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	14	\N
-767	1	31	MNINFOSPHERESTREAMS_001	172.20.34.51	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNINFOSPHERESTREAMS_001	16384	143360	0	intel	2400	1	0	0	\N	\N	1	Sin definir	2	false	14	\N
-768	1	45	MNCOGNOSBIPROD_001	172.20.34.52	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCOGNOSBIPROD_001	32768	102400	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	\N
-769	1	45	MNSPSSSTATICS_CLIENT_001	172.20.34.53	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSPSSSTATICS_CLIENT_001	32768	51200	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	14	\N
-770	1	47	MNCOMGESDEV_001	172.20.8.17	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCOMGESDEV_001	18432	204800	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	15	\N
-771	1	33	MNACTIVEMQDEV_001	172.20.8.18	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNACTIVEMQDEV_001	4096	107520	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	14	\N
-772	1	27	MNMINSAL_PROD	192.168.20.13 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMINSAL_PROD	8192	133120	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	\N
-773	1	52	MNOIRS_PROD	192.168.20.14	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNOIRS_PROD	12288	512000	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	\N
-774	1	33	MNSFTPL_PROD	192.168.20.15	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSFTPL_PROD	8192	81920	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	15	\N
-775	1	46	MNOIRS_DEV	172.20.16.18	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNOIRS_DEV	12288	307200	0	intel	2400	8	0	0	\N	\N	4	Sin definir	2	false	15	\N
-776	1	53	MNMINSAL_BD_DEV	172.20.64.21	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMINSAL_BD_DEV	8192	102400	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	15	\N
-777	1	46	MNOIRS_BD_DEV	172.20.64.22	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNOIRS_BD_DEV	8192	358400	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	15	\N
-778	1	45	MNWSUSMINSAL_001	172.20.6.10	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNWSUSMINSAL_001	12288	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	16	\N
-779	1	41	MNPROXYBKPVM_001	172.20.33.20	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPROXYBKPVM_001	16384	81920	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	16	\N
-780	1	17	MNNESSUSCONV_001	192.168.20.12	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNNESSUSCONV_001	16384	112640	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	16	\N
-781	1	33	MNACTIVEMQQA_001	172.20.8.22	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNACTIVEMQQA_001	8192	194560	0	intel	2400	6	0	0	\N	\N	3	Sin definir	2	false	14	\N
-783	1	33	MNACTIVEMQPROD_002	172.20.6.12	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNACTIVEMQPROD_002	16384	194560	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	14	\N
-784	1	45	MNWSUSMINSAL_002	172.20.6.13	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNWSUSMINSAL_002	12288	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	16	\N
-785	1	45	MNWSUSMINSAL_003	172.20.6.14	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNWSUSMINSAL_003	12288	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	16	\N
-786	1	33	MNCMDBDEV_ZEKE	172.20.16.19	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCMDBDEV_ZEKE	16384	173056	0	intel	2400	8	0	0	\N	\N	4	Sin definir	2	false	16	\N
-787	1	15	MNTRANSPARENCIA_QA	172.20.8.23	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNTRANSPARENCIA_QA	2048	337920	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N
-788	1	33	MNCOMGESBD_PROD	172.20.6.15	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCOMGESBD_PROD	8192	197632	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	\N
-789	1	27	MNSEMANTIKOSAPP_DEV	172.20.16.26	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOSAPP_DEV	4096	34816	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	17	\N
-790	1	27	MNSEMANTIKOSWEB_DEV	192.168.60.14	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOSWEB_DEV	4096	34816	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	17	\N
-792	1	27	MNSEMANTIKOSAPP002_QA	172.20.8.26	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOSAPP002_QA	8192	55296	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	17	\N
-793	1	27	MNSEMANTIKOSWEB001_QA	192.168.10.54	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOSWEB001_QA	4096	34816	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	17	\N
-794	1	27	MNSEMANTIKPSWEB002_QA	192.168.10.55	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKPSWEB002_QA	4096	34816	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	17	\N
-795	1	43	MSMOTORSQL_PROD	172.20.64.24	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MSMOTORSQL_PROD	32768	51200	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	\N
-796	1	45	MNGALILEO_APP1_PROD	172.20.33.30	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNGALILEO_APP1_PROD	8192	122880	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	\N
-797	1	33	MNMONGO_PROD	172.20.33.25	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMONGO_PROD	4096	153600	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	\N
-798	1	33	MNPROXY2_PROD	192.168.70.21	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPROXY2_PROD	4096	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	\N
-799	1	33	MNSESIONSRV_PROD	172.20.33.32	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSESIONSRV_PROD	4096	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	\N
-800	1	45	MNGALILEO_APP2_PROD	172.20.33.29	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNGALILEO_APP2_PROD	8192	122880	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	\N
-801	1	33	MNPROXY1_PROD	192.168.70.22	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPROXY1_PROD	4096	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	\N
-802	1	33	MNPROXYGALILEO_PROD	192.168.70.20	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPROXYGALILEO_PROD	4096	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	\N
-803	1	45	MNSINETSFTP_PROD	172.20.33.31	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSINETSFTP_PROD	4096	131072	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	\N
-804	1	45	MNSINETSUR_APP1_PROD	172.20.33.28	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSINETSUR_APP1_PROD	8192	128000	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	\N
-805	1	45	MNSINETSUR_APP2_PROD	172.20.33.27	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSINETSUR_APP2_PROD	8192	128000	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	\N
-806	1	45	MNSINETSUR_APP3_PROD	172.20.33.26	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSINETSUR_APP3_PROD	8192	128000	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	\N
-807	1	49	MNSEGSIDA_PROD	192.168.70.23	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEGSIDA_PROD	32768	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	\N
-808	1	45	MNGALILEO_APP1_DEV	172.20.33.40	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNGALILEO_APP1_DEV	8192	122880	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	\N
-809	1	33	MNMONGO_DEV	172.20.33.41	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMONGO_DEV	4096	153600	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	\N
-810	1	33	MNPROXY2_DEV	192.168.70.30	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPROXY2_DEV	4096	51200	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	\N
-811	1	33	MNSESIONSRV_DEV	172.20.33.42	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSESIONSRV_DEV	4096	51200	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	\N
-812	1	45	MNGALILEO_APP2_DEV	172.20.33.43	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNGALILEO_APP2_DEV	8192	122880	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	\N
-813	1	33	MNPROXY1_DEV	192.168.70.31	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPROXY1_DEV	4096	51200	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	\N
-814	1	33	MNPROXYGALILEO_DEV	192.168.70.32	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPROXYGALILEO_DEV	4096	51200	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	\N
-815	1	45	MNSINETSFTP_DEV	172.20.33.44	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSINETSFTP_DEV	4096	131072	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	\N
-817	1	45	MNSINETSUR_APP2_DEV	172.20.33.46	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSINETSUR_APP2_DEV	8192	128000	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	\N
-818	1	45	MNSINETSUR_APP3_DEV	172.20.33.47	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSINETSUR_APP3_DEV	8192	128000	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	\N
-819	1	49	MNSEGSIDA_DEV	172.20.16.30	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEGSIDA_DEV	32768	51200	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	15	\N
-820	1	17	MNTRANSPARENCIA_PROD	192.168.70.15	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNTRANSPARENCIA_PROD	12288	337920	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	\N
-821	1	49	MNSEGSIDA_QA	172.20.8.27	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEGSIDA_QA	32768	51200	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	\N
-822	1	28	MNCOMPINAPP_PROD	192.168.70.26	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCOMPINAPP_PROD	16384	112640	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	\N
-823	1	28	MNCOMPINBD_PROD	172.20.64.26	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCOMPINBD_PROD	49152	266240	0	intel	2400	6	0	0	\N	\N	1	Sin definir	2	false	15	\N
-824	1	28	MNCOMPINIMG_PROD	172.20.6.19	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCOMPINIMG_PROD	4096	624640	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	\N
-825	1	27	MNSEMANTIKOSAPP003_QA	172.20.8.100	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOSAPP003_QA	8192	55296	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	17	\N
-827	1	43	MNRESPIRATIOAPP_QA	192.168.10.40	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNRESPIRATIOAPP_QA	16384	409600	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	15	\N
-828	1	43	MNRESPIRATIOAPP_PROD	192.168.70.40	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNRESPIRATIOAPP_PROD	16384	409600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	\N
-829	1	17	MNSIDOTAPP_QA	192.168.10.30	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIDOTAPP_QA	12288	133120	0	intel	2400	6	0	0	\N	\N	3	Sin definir	2	false	15	\N
-830	1	51	MNSURVIHAPP_QA	192.168.10.41	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSURVIHAPP_QA	4096	61440	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	20	\N
-831	1	14	MNSIMPO_QA	192.168.10.42	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIMPO_QA	1024	51200	0	intel	2400	1	0	0	\N	\N	3	Sin definir	2	false	15	\N
-832	1	49	MNSIGTE_SOAP_DEV	172.20.16.40	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIGTE_SOAP_DEV	2048	20480	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	15	\N
-833	1	49	MNSIGTE_WEB_DEV	172.20.16.41	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIGTE_WEB_DEV	2048	20480	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	15	\N
-834	1	41	MNPRAIS_APP_QA	192.168.10.20	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPRAIS_APP_QA	8192	81920	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N
-835	1	49	MNDCM4CHEEAPP_PROD	192.168.70.38	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNDCM4CHEEAPP_PROD	32768	2097152	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	\N
-836	1	51	MNSURVIHAPP_PROD	192.168.70.34 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSURVIHAPP_PROD	4096	102400	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	20	\N
-837	1	49	MNPCRONICOS_QA	192.168.10.56	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPCRONICOS_QA	4096	204800	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	18	\N
-838	1	49	MNBDMYSQL_QA	172.20.8.30	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNBDMYSQL_QA	4096	307200	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	\N
-839	1	16	MNSISCOM_PROD	192.168.70.33 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSISCOM_PROD	16384	102400	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	\N
-840	1	51	MSSAMU_APP1_PROD	192.168.70.36	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MSSAMU_APP1_PROD	4096	66560	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	\N
-841	1	51	MSSAMU_APP2_PROD	192.168.70.35 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MSSAMU_APP2_PROD	4096	71680	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	\N
-842	1	43	MNSIRHFE_APP1_DEV	192.168.60.15	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIRHFE_APP1_DEV	16384	204800	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	21	\N
-843	1	43	MNSIRHBE_APP1_DEV	172.20.16.42 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIRHBE_APP1_DEV	16384	204800	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	21	\N
-844	1	16	MNTSSOAP_PROD	172.20.6.20	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNTSSOAP_PROD	8192	40960	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	\N
-845	1	16	MNTSSOAP002_PROD	172.20.6.40	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNTSSOAP002_PROD	8192	40960	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	\N
-846	1	16	MNTSCRON001_PROD	172.20.6.41	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNTSCRON001_PROD	32768	40960	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	\N
-847	1	16	MNTSWEB_PROD	192.168.70.37	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNTSWEB_PROD	4096	30720	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	\N
-848	1	16	MNTSWEB002_PROD	192.168.70.56	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNTSWEB002_PROD	4096	30720	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	\N
-849	1	17	MNGESBO_PROD	192.168.70.41	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNGESBO_PROD	8192	153600	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	18	\N
-850	1	49	MNGESBO_DEV	192.168.60.16	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNGESBO_DEV	8192	153600	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	18	\N
-852	1	16	MNTSSOAP_QA	172.20.8.32	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNTSSOAP_QA	4096	40960	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	\N
-853	1	16	MNTSWEB_QA	192.168.10.58	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNTSWEB_QA	4096	30720	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	\N
-854	1	49	MNSIACPORTAL_PROD	192.168.70.42	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIACPORTAL_PROD	2048	21504	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	22	\N
-855	1	49	MNSIACENC_PROD	192.168.70.43	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIACENC_PROD	2048	21504	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	22	\N
-856	1	49	MNSIACAPPBACK_PROD	192.168.70.44	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIACAPPBACK_PROD	16384	81920	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	22	\N
-857	1	49	MNSIACAPPBD_PROD	1.1.1.1	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIACAPPBD_PROD	16384	81920	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	22	\N
-858	1	49	MNSIACPORTAL_QA	192.168.10.60	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIACPORTAL_QA	2048	21504	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	22	\N
-859	1	49	MNSIACENC_QA	192.168.10.61 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIACENC_QA	2048	21504	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	22	\N
-860	1	49	MNSIACAPPBACK_QA	192.168.10.62 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIACAPPBACK_QA	16384	81920	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	22	\N
-861	1	49	MNSIACAPPBD_QA	172.20.8.28	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIACAPPBD_QA	16384	81920	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	22	\N
-862	1	17	MNCANASTAS_PROD	192.168.70.45	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCANASTAS_PROD	4096	40960	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N
-863	1	17	MNCANASTAS_QA	192.168.10.63	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCANASTAS_QA	4096	40960	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N
-864	1	17	MNJEMETER001_QA	172.20.8.33	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNJEMETER001_QA	4096	40960	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	18	\N
-865	1	17	MNJEMETER002_QA	172.20.8.34	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNJEMETER002_QA	4096	40960	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	18	\N
-866	1	17	MNCL1_MANAGEMENT_NODE_QA	 172.20.8.35	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_MANAGEMENT_NODE_QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N
-867	1	17	MNCL1_MYSQL_NODE_1_QA	172.20.8.36	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_MYSQL_NODE_1_QA	8192	15360	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	\N
-868	1	17	MNCL1_MYSQL_NODE_2_QA	172.20.8.37	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_MYSQL_NODE_2_QA	8192	15360	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	\N
-869	1	17	MNCL1_DATA_NODE_1_QA	172.20.8.38	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_DATA_NODE_1_QA	4096	25600	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N
-871	1	17	MNWRDPRSS_QA	192.168.10.64	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNWRDPRSS_QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N
-872	1	33	MNACTIVEMQQA_001_PM	172.20.8.41 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNACTIVEMQQA_001_PM	8192	194560	0	intel	2400	6	0	0	\N	\N	3	Sin definir	2	false	14	\N
-873	1	33	MNACTIVEMQPROD_001_PM	172.20.6.22 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNACTIVEMQPROD_001_PM	16384	194560	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	14	\N
-874	1	33	MNACTIVEMQPROD_002_PM	172.20.6.23	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNACTIVEMQPROD_002_PM	16384	194560	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	14	\N
-875	1	43	MNBITABLEAUPROD_001	 192.168.70.46	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNBITABLEAUPROD_001	65536	204800	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	29	\N
-876	1	17	MNALFRESCOSIRHDEV_001	 192.168.60.17	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNALFRESCOSIRHDEV_001	4096	40960	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	21	\N
-877	1	28	MNCOMPINAPP002_PROD	192.168.70.51	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCOMPINAPP002_PROD	16384	68608	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	\N
-878	1	33	MNRME001_QA	172.20.8.90	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNRME001_QA	32768	204800	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	15	\N
-879	1	49	MNAPPPORPA001_PROD	192.168.70.52	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNAPPPORPA001_PROD	24576	61440	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	\N
-880	1	49	MNAPPPORPA002_PROD	192.168.70.53	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNAPPPORPA002_PROD	24576	61440	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	\N
-881	1	49	MNELASTICSEARCH001_PROD	192.168.70.54	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNELASTICSEARCH001_PROD	32768	102400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	\N
-882	1	49	MNSTAGING001_PROD	192.168.70.55	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSTAGING001_PROD	24576	215040	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	\N
-883	1	49	MNPORPA01_QA	192.168.10.17	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPORPA01_QA	24576	102400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	\N
-884	1	17	MNCL1_MANAGEMENT_NODE_PROD	172.20.6.23	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_MANAGEMENT_NODE_PROD	4096	15360	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	\N
-885	1	17	MNCL1_MYSQL_NODE_1_PROD	172.20.6.24	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_MYSQL_NODE_1_PROD	16384	15360	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	\N
-886	1	17	MNCL1_DATA_NODE_1_PROD	172.20.6.25	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_DATA_NODE_1_PROD	16384	409600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	\N
-887	1	17	MNCL1_MANAGEMENTPGQL_NODE_QA	 172.20.8.42	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_MANAGEMENTPGQL_NODE_QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N
-888	1	17	MNCL1_PGQLPOOL_NODE_1_QA	 172.20.8.43	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_PGQLPOOL_NODE_1_QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N
-890	1	17	MNCL1_PGQLDATA_NODE_1_QA	 172.20.8.45	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_PGQLDATA_NODE_1_QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N
-891	1	17	MNCL1_PGQLDATA_NODE_2_QA	 172.20.8.46	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_PGQLDATA_NODE_2_QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N
-892	1	17	MNCL1_PGQLPOOL_NODE_2_PROD	172.20.6.26 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_PGQLPOOL_NODE_2_PROD	16384	20480	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	\N
-893	1	17	MNCL1_PGQLDATA_NODE_2_PROD	172.20.6.27 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_PGQLDATA_NODE_2_PROD	16384	102400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	\N
-894	1	33	MNHL7001_QA	 172.20.8.47	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNHL7001_QA	16384	153600	0	intel	2400	6	0	0	\N	\N	3	Sin definir	2	false	18	\N
-895	1	33	MNHL7001_PROD	172.20.6.28 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNHL7001_PROD	16384	256000	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	\N
-896	1	54	MNBDSINETSUR001_PROD	172.20.64.33	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNBDSINETSUR001_PROD	65536	0	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	19	\N
-897	1	43	MNSNIP001_PROD	192.168.70.60	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSNIP001_PROD	8192	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	18	\N
-898	1	43	MNSISQSICARS_APP_QA	192.168.10.66	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSISQSICARS_APP_QA	16384	204800	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	23	\N
-899	1	43	MNSISQSICARS_BD_QA	172.20.8.49	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSISQSICARS_BD_QA	8192	122880	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	23	\N
-900	1	27	MNSEMANTIKOSAPP001_PROD	172.20.6.34	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOSAPP001_PROD	8192	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	17	\N
-901	1	27	MNSEMANTIKOSAPP002_PROD	172.20.6.35 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOSAPP002_PROD	8192	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	17	\N
-902	1	27	MNSEMANTIKOSWEB001_PROD	192.168.70.62 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOSWEB001_PROD	4096	34816	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	17	\N
-903	1	27	MNSEMANTIKOSWEB002_PROD	192.168.70.63 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOSWEB002_PROD	4096	34816	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	17	\N
-904	1	49	MNDCM4CHEEAPP_DEV	192.168.60.18	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNDCM4CHEEAPP_DEV	32768	102400	0	intel	2400	8	0	0	\N	\N	4	Sin definir	2	false	18	\N
-905	1	49	MNSIDOTAPP_PROD	192.168.70.64	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIDOTAPP_PROD	4096	40960	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	\N
-906	1	43	MNSISQ_SICARS_PROD	192.168.70.65	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSISQ_SICARS_PROD	34816	409600	0	intel	2400	16	0	0	\N	\N	1	Sin definir	2	false	23	\N
-907	1	32	MNVIRTV-WHORHEL_PROD	192.168.70.66	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNVIRTV-WHORHEL_PROD	8192	40960	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	16	\N
-908	1	43	MNFLABORATORIOAPP001_QA	192.168.10.67 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNFLABORATORIOAPP001_QA	8192	102400	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	18	\N
-909	1	43	MNFLABORATORIOBD001_QA	172.20.8.51	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNFLABORATORIOBD001_QA	8192	102400	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	18	\N
-910	1	43	MNFLABORATORIOAPP001_DEV	192.168.60.19	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNFLABORATORIOAPP001_DEV	8192	102400	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	18	\N
-911	1	43	MNFLABORATORIOBD001_DEV	 172.20.16.20	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNFLABORATORIOBD001_DEV	8192	102400	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	18	\N
-694	1	33	MNCASPROD_API01	172.20.34.10	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCASPROD_API01	16384	307200	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	12	\N
-710	1	33	MNAMQPRO_AFIS01	172.20.34.26	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNAMQPRO_AFIS01	32768	256000	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	13	\N
-734	1	48	MNHadoop_DAT_2	172.20.34.44	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNHadoop_DAT_2	32768	1048576	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	\N
-738	1	17	MNQASEMANTIKOS_DB01	172.20.8.15	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNQASEMANTIKOS_DB01	8192	112640	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	17	\N
-762	1	33	MNAPDEV_API01	172.20.34.24	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNAPDEV_API01	4096	204800	0	intel	2400	8	0	0	\N	\N	4	Sin definir	1	false	12	\N
-782	1	33	MNACTIVEMQPROD_001	172.20.6.11	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNACTIVEMQPROD_001	16384	194560	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	14	\N
-791	1	27	MNSEMANTIKOSAPP001_QA	172.20.8.24	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOSAPP001_QA	8192	55296	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	17	\N
-816	1	45	MNSINETSUR_APP1_DEV	172.20.33.45	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSINETSUR_APP1_DEV	8192	128000	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	\N
-826	1	27	MNSEMANTIKOSAPP004_QA	172.20.8.101	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOSAPP004_QA	8192	55296	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	17	\N
-851	1	49	MNGESBO_QA	192.168.10.57	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNGESBO_QA	8192	153600	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	18	\N
-870	1	17	MNCL1_DATA_NODE_2_QA	172.20.8.39	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_DATA_NODE_2_QA	4096	25600	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N
-889	1	17	MNCL1_PGQLPOOL_NODE_2_QA	 172.20.8.44	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_PGQLPOOL_NODE_2_QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N
-912	1	17	MNGESDOCP_PROD	192.168.70.17	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNGESDOCP_PROD	8192	512000	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	23	\N
-913	1	17	MNGESDOCQA_QA	192.168.10.22	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNGESDOCQA_QA	4096	204800	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	23	\N
-914	1	45	MNRISAPP001_QA	192.168.10.23 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNRISAPP001_QA	16384	0	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	24	\N
-915	1	45	MNRISBD001_QA	172.20.8.52 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNRISBD001_QA	16384	0	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	24	\N
-916	1	20	MNCHCC001_QA	192.168.10.25	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCHCC001_QA	8192	40960	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	25	\N
-917	1	20	MNVIHDIGERA001_QA	192.168.10.26 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNVIHDIGERA001_QA	2048	21504	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	18	\N
-918	1	49	MNPAID001_QA	192.168.10.31	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPAID001_QA	8192	133120	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	26	\N
-919	1	23	MNCATIMG001_DEV	 192.168.60.20	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCATIMG001_DEV	16384	102400	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	27	\N
-920	1	28	MNCOMPINAPP_QA	192.168.10.27	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCOMPINAPP_QA	16384	68608	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	\N
-921	1	41	MNPRAIS_APP_PROD	192.168.70.72	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPRAIS_APP_PROD	8192	81920	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	\N
-922	1	17	MNSIGTESOAP001_QA	 172.20.8.53	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIGTESOAP001_QA	4096	28672	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	\N
-923	1	17	MNSIGTEWEB001_QA	172.20.8.54	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIGTEWEB001_QA	8192	221184	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	\N
-924	1	33	MNMINSALAPP_QA	192.168.10.32	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMINSALAPP_QA	8192	51200	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N
-925	1	33	MNLOG_PROD	172.20.6.32	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNLOG_PROD	8192	204800	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	\N
-926	1	13	MNSIGEDAPP001_QA	192.168.10.68	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIGEDAPP001_QA	8192	81920	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	\N
-927	1	43	MNSIRHFE_APP1_QA	192.168.10.70 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIRHFE_APP1_QA	16384	204800	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	21	\N
-928	1	43	MNSIRHFE_APP2_QA	192.168.10.71	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIRHFE_APP2_QA	16384	204800	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	21	\N
-929	1	43	MNSIRHBE_APP1_QA	172.20.8.40	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIRHBE_APP1_QA	16384	204800	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	21	\N
-930	1	43	MNSIRHBE_APP2_QA	172.20.8.41	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIRHBE_APP2_QA	16384	204800	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	21	\N
-931	1	43	MNAPPIVE001_QA	192.168.10.69	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNAPPIVE001_QA	8192	40960	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	28	\N
-932	1	43	MNAPPIVE001_PROD	192.168.70.67	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNAPPIVE001_PROD	5120	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	28	\N
+COPY public.servicios_usuarios (id_servicio_usuario, id_servicio, id_usuario, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
 \.
 
 
 --
--- TOC entry 3384 (class 0 OID 587929)
+-- TOC entry 3414 (class 0 OID 587936)
+-- Dependencies: 244
+-- Data for Name: servidores; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.servidores (id_servidor, id_datacentro, id_sistema_operativo, nom_servidor, ip_servidor, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, det_servidor, ram, memoria_dd, swap, procesador, frec_procesador, nucleos, usuarios_pactados, mac, nodo, interface, id_ambiente, modelo_procesador, id_cluster, agente_instana_instalado, id_servicio, id_vlan, id_tipo_servidor, id_tipo_respaldo_disco) FROM stdin;
+695	1	33	MNCASPROD_API02	172.20.34.11	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCASPROD_API02	16384	307200	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	12	\N	\N	\N
+696	1	33	MNCASPROD_API03	172.20.34.12	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCASPROD_API03	16384	307200	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	12	\N	\N	\N
+697	1	33	MNMPPROD_API01	172.20.34.13	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMPPROD_API01	8192	307200	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	12	\N	\N	\N
+698	1	33	MNMPPROD_API02	172.20.34.14	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMPPROD_API02	8192	204800	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	12	\N	\N	\N
+699	1	33	MNAPPROD_API01	172.20.34.15	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNAPPROD_API01	16384	1048576	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	12	\N	\N	\N
+700	1	33	MNAPPROD_API02	172.20.34.16	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNAPPROD_API02	16384	1048576	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	12	\N	\N	\N
+701	1	33	MNQSPROD_API01	172.20.34.17	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNQSPROD_API01	16384	512000	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	12	\N	\N	\N
+702	1	33	MNQSPROD_API02	172.20.34.18	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNQSPROD_API02	16384	512000	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	12	\N	\N	\N
+703	1	33	MNOLDAPPROD_API01	172.20.34.19	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNOLDAPPROD_API01	8192	102400	0	intel	2400	4	0	0	\N	\N	1	E5-2699v3	1	false	12	\N	\N	\N
+704	1	33	MNOLDAPPROD_API02	172.20.34.20	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNOLDAPPROD_API02	8192	102400	0	intel	2400	4	0	0	\N	\N	1	E5-2699v3	1	false	12	\N	\N	\N
+705	1	33	MNMSUPROD_API01	172.20.34.21	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMSUPROD_API01	8192	102400	0	intel	2400	4	0	0	\N	\N	1	E5-2699v3	1	false	12	\N	\N	\N
+706	1	33	MNMSUPROD_API02	172.20.34.22	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMSUPROD_API02	8192	102400	0	intel	2400	4	0	0	\N	\N	1	E5-2699v3	1	false	12	\N	\N	\N
+707	1	33	MNDSDEVQA_API01	172.20.34.23	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNDSDEVQA_API01	16384	307200	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	12	\N	\N	\N
+708	1	33	MNS1DEVQA_API01	172.20.34.24	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNS1DEVQA_API01	16384	204800	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	12	\N	\N	\N
+709	1	33	MNS2DEVQA_API02	172.20.34.25	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNS2DEVQA_API02	16384	204800	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	12	\N	\N	\N
+711	1	33	MNAMQPRO_AFIS02	172.20.34.27	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNAMQPRO_AFIS02	32768	256000	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	13	\N	\N	\N
+712	1	33	MNAMQPRO_AFIS03	172.20.34.28	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNAMQPRO_AFIS03	32768	256000	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	13	\N	\N	\N
+714	1	33	MNEASYRPROD_ZEKE	172.20.34.30	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNEASYRPROD_ZEKE	8192	121856	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+715	1	33	MNSVNPROD_ZEKE	172.20.34.31	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSVNPROD_ZEKE	4096	70656	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	16	\N	\N	\N
+716	1	33	MNCMDBPROD_ZEKE	192.168.20.17 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCMDBPROD_ZEKE	16384	173056	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	16	\N	\N	\N
+717	1	33	MNNAGIOSPROD_ZEKE	192.168.20.16 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNNAGIOSPROD_ZEKE	16384	173056	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	16	\N	\N	\N
+718	1	33	MNWIKIPROD_ZEKE	172.20.34.34	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNWIKIPROD_ZEKE	8192	70656	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+719	1	33	MNLICMETPROD_ZEKE	172.20.34.35	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNLICMETPROD_ZEKE	8192	102400	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+720	1	46	MNMONITOREOPROD001_NOUS	172.20.34.36	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMONITOREOPROD001_NOUS	4096	409600	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	18	\N	\N	\N
+721	1	46	MNMONITOREOPROD002_NOUS	172.20.34.37	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMONITOREOPROD002_NOUS	4096	409600	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	18	\N	\N	\N
+722	1	42	MNPROXYBKPVM	172.20.34.38	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPROXYBKPVM	16384	81920	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+723	1	33	MNSEMANTIKOS_AC_APP01	192.168.10.50	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOS_AC_APP01	6144	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	17	\N	\N	\N
+724	1	33	MNSEMANTIKOS_AC_APP02	192.168.10.51	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOS_AC_APP02	6144	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	17	\N	\N	\N
+725	1	33	MNSEMANTIKOS_PS_APP03	192.168.10.52	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOS_PS_APP03	6144	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	17	\N	\N	\N
+726	1	33	MNSEMANTIKOS_AC_BD01	172.20.65.10	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOS_AC_BD01	16384	102400	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	17	\N	\N	\N
+727	1	33	MNSEMANTIKOS_AC_BD02	172.20.65.11	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOS_AC_BD02	16384	102400	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	17	\N	\N	\N
+728	1	33	MNSEMANTIKOS_PS_BD03	172.20.65.12	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOS_PS_BD03	16384	102400	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	17	\N	\N	\N
+729	1	50	MNIBMIBASEPROD_ZEKE	172.20.34.39	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNIBMIBASEPROD_ZEKE	16384	122880	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	\N	\N	\N
+730	1	50	MNIBMI2ANALYTSPROD_ZEKE	172.20.34.40	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNIBMI2ANALYTSPROD_ZEKE	16384	122880	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	\N	\N	\N
+731	1	48	MNHadoop_MNG_1	172.20.34.41	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNHadoop_MNG_1	32768	1048576	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	\N	\N	\N
+732	1	48	MNHadoop_MNG_2	172.20.34.42	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNHadoop_MNG_2	32768	1048576	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	\N	\N	\N
+733	1	48	MNHadoop_DAT_1	172.20.34.43	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNHadoop_DAT_1	32768	1048576	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	\N	\N	\N
+735	1	48	MNHadoop_DAT_3	172.20.34.45	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNHadoop_DAT_3	32768	1048576	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	\N	\N	\N
+736	1	33	MNFTP_Traspasos_APP	172.20.34.46	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNFTP_Traspasos_APP	4096	307200	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+737	1	17	MNQASEMANTIKOS_APP01	192.168.10.53	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNQASEMANTIKOS_APP01	8192	112640	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	17	\N	\N	\N
+713	1	45	MNIBASEDPROD_ZEKE	172.20.34.29	4	4	2018-04-04 18:26:10	2018-04-09 21:20:47	\N	MNIBASEDPROD_ZEKE	32768	143360	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	0	14	3	3	1
+739	1	41	MNOIRS_DEV_QA	172.20.16.20	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNOIRS_DEV_QA	4096	71680	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	18	\N	\N	\N
+740	1	32	MNANALITYC_APP	172.20.34.47	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNANALITYC_APP	32768	225280	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	14	\N	\N	\N
+741	1	45	MNSPSSStatistics_APP	172.20.34.48	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSPSSStatistics_APP	32768	61440	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	14	\N	\N	\N
+742	1	17	MNSIACINTDEV_APP01	192.168.60.10	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIACINTDEV_APP01	2048	30720	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+743	1	17	MNSIACWORDPRESSDEV_APP01	192.168.60.11	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIACWORDPRESSDEV_APP01	2048	30720	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+744	1	33	MNMPPRODDMZ_API01	192.168.70.10	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMPPRODDMZ_API01	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	\N	\N	\N
+745	1	33	MNMPPRODDMZ_API02	192.168.70.11	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMPPRODDMZ_API02	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	\N	\N	\N
+746	1	33	MNMPPRODBE_API01	172.20.89.10	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMPPRODBE_API01	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	\N	\N	\N
+747	1	33	MNMPPRODBE_API02	172.20.89.11	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMPPRODBE_API02	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	\N	\N	\N
+748	1	33	MNCASPROD_API01	172.20.90.10	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCASPROD_API01	16384	307200	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	\N	\N	\N
+749	1	33	MNCASPROD_API02	172.20.90.11	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCASPROD_API02	16384	307200	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	\N	\N	\N
+750	1	33	MNCASPROD_API03	172.20.90.12	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCASPROD_API03	16384	307200	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	\N	\N	\N
+751	1	33	MNAPPROD_API01	172.20.90.13	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNAPPROD_API01	16384	1048576	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	\N	\N	\N
+752	1	33	MNDEVPORPROD_API01	172.20.90.14	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNDEVPORPROD_API01	2048	20480	0	intel	2400	2	0	0	\N	\N	1	Sin definir	1	false	12	\N	\N	\N
+753	1	33	MNQSPROD_API01	172.20.90.15	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNQSPROD_API01	8192	25600	0	intel	2400	4	0	0	\N	\N	1	Sin definir	1	false	12	\N	\N	\N
+754	1	33	MNQSPROD_API02	172.20.90.16	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNQSPROD_API02	8192	256000	0	intel	2400	4	0	0	\N	\N	1	Sin definir	1	false	12	\N	\N	\N
+755	1	33	MNMSUPROD_API01	172.20.90.17	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMSUPROD_API01	4096	102400	0	intel	2400	2	0	0	\N	\N	1	Sin definir	1	false	12	\N	\N	\N
+756	1	33	MNMPDEVDMZ_API01	192.168.60.12	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMPDEVDMZ_API01	16384	204800	0	intel	2400	8	0	0	\N	\N	4	Sin definir	1	false	12	\N	\N	\N
+757	1	33	MNMPDEVDMZ_API02	192.168.60.13	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMPDEVDMZ_API02	16384	204800	0	intel	2400	8	0	0	\N	\N	4	Sin definir	1	false	12	\N	\N	\N
+758	1	33	MNMPDEVBE_API01	172.20.34.20	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMPDEVBE_API01	16384	204800	0	intel	2400	8	0	0	\N	\N	4	Sin definir	1	false	12	\N	\N	\N
+759	1	33	MNMPDEVBE_API02	172.20.34.21	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMPDEVBE_API02	16384	204800	0	intel	2400	8	0	0	\N	\N	4	Sin definir	1	false	12	\N	\N	\N
+760	1	33	MNMSUDEV_API01	172.20.34.22	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMSUDEV_API01	16384	307200	0	intel	2400	8	0	0	\N	\N	4	Sin definir	1	false	12	\N	\N	\N
+761	1	33	MNMSUDEV_API02	172.20.34.23	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMSUDEV_API02	16384	307200	0	intel	2400	8	0	0	\N	\N	4	Sin definir	1	false	12	\N	\N	\N
+763	1	33	MNAPDEV_API02	172.20.34.25	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNAPDEV_API02	4096	204800	0	intel	2400	8	0	0	\N	\N	4	Sin definir	1	false	12	\N	\N	\N
+764	1	34	MNREPPIVPROD_API01	172.20.34.49	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNREPPIVPROD_API01	4096	102400	0	intel	2400	1	0	0	\N	\N	1	Sin definir	2	false	12	\N	\N	\N
+765	1	45	MNBIDEV_001	172.20.16.25	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNBIDEV_001	8192	102400	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	14	\N	\N	\N
+766	1	45	MNDATASTAGEPROD_001	172.20.34.50	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNDATASTAGEPROD_001	16384	51200	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	14	\N	\N	\N
+767	1	31	MNINFOSPHERESTREAMS_001	172.20.34.51	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNINFOSPHERESTREAMS_001	16384	143360	0	intel	2400	1	0	0	\N	\N	1	Sin definir	2	false	14	\N	\N	\N
+768	1	45	MNCOGNOSBIPROD_001	172.20.34.52	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCOGNOSBIPROD_001	32768	102400	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	\N	\N	\N
+769	1	45	MNSPSSSTATICS_CLIENT_001	172.20.34.53	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSPSSSTATICS_CLIENT_001	32768	51200	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	14	\N	\N	\N
+770	1	47	MNCOMGESDEV_001	172.20.8.17	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCOMGESDEV_001	18432	204800	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	15	\N	\N	\N
+771	1	33	MNACTIVEMQDEV_001	172.20.8.18	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNACTIVEMQDEV_001	4096	107520	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	14	\N	\N	\N
+772	1	27	MNMINSAL_PROD	192.168.20.13 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMINSAL_PROD	8192	133120	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+773	1	52	MNOIRS_PROD	192.168.20.14	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNOIRS_PROD	12288	512000	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+774	1	33	MNSFTPL_PROD	192.168.20.15	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSFTPL_PROD	8192	81920	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	15	\N	\N	\N
+775	1	46	MNOIRS_DEV	172.20.16.18	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNOIRS_DEV	12288	307200	0	intel	2400	8	0	0	\N	\N	4	Sin definir	2	false	15	\N	\N	\N
+776	1	53	MNMINSAL_BD_DEV	172.20.64.21	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMINSAL_BD_DEV	8192	102400	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	15	\N	\N	\N
+777	1	46	MNOIRS_BD_DEV	172.20.64.22	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNOIRS_BD_DEV	8192	358400	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	15	\N	\N	\N
+778	1	45	MNWSUSMINSAL_001	172.20.6.10	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNWSUSMINSAL_001	12288	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	16	\N	\N	\N
+779	1	41	MNPROXYBKPVM_001	172.20.33.20	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPROXYBKPVM_001	16384	81920	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	16	\N	\N	\N
+780	1	17	MNNESSUSCONV_001	192.168.20.12	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNNESSUSCONV_001	16384	112640	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	16	\N	\N	\N
+781	1	33	MNACTIVEMQQA_001	172.20.8.22	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNACTIVEMQQA_001	8192	194560	0	intel	2400	6	0	0	\N	\N	3	Sin definir	2	false	14	\N	\N	\N
+783	1	33	MNACTIVEMQPROD_002	172.20.6.12	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNACTIVEMQPROD_002	16384	194560	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	14	\N	\N	\N
+784	1	45	MNWSUSMINSAL_002	172.20.6.13	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNWSUSMINSAL_002	12288	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	16	\N	\N	\N
+785	1	45	MNWSUSMINSAL_003	172.20.6.14	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNWSUSMINSAL_003	12288	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	16	\N	\N	\N
+786	1	33	MNCMDBDEV_ZEKE	172.20.16.19	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCMDBDEV_ZEKE	16384	173056	0	intel	2400	8	0	0	\N	\N	4	Sin definir	2	false	16	\N	\N	\N
+787	1	15	MNTRANSPARENCIA_QA	172.20.8.23	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNTRANSPARENCIA_QA	2048	337920	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+788	1	33	MNCOMGESBD_PROD	172.20.6.15	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCOMGESBD_PROD	8192	197632	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+789	1	27	MNSEMANTIKOSAPP_DEV	172.20.16.26	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOSAPP_DEV	4096	34816	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	17	\N	\N	\N
+790	1	27	MNSEMANTIKOSWEB_DEV	192.168.60.14	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOSWEB_DEV	4096	34816	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	17	\N	\N	\N
+792	1	27	MNSEMANTIKOSAPP002_QA	172.20.8.26	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOSAPP002_QA	8192	55296	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	17	\N	\N	\N
+793	1	27	MNSEMANTIKOSWEB001_QA	192.168.10.54	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOSWEB001_QA	4096	34816	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	17	\N	\N	\N
+794	1	27	MNSEMANTIKPSWEB002_QA	192.168.10.55	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKPSWEB002_QA	4096	34816	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	17	\N	\N	\N
+795	1	43	MSMOTORSQL_PROD	172.20.64.24	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MSMOTORSQL_PROD	32768	51200	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+796	1	45	MNGALILEO_APP1_PROD	172.20.33.30	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNGALILEO_APP1_PROD	8192	122880	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	\N	\N	\N
+797	1	33	MNMONGO_PROD	172.20.33.25	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMONGO_PROD	4096	153600	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	\N	\N	\N
+798	1	33	MNPROXY2_PROD	192.168.70.21	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPROXY2_PROD	4096	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	\N	\N	\N
+799	1	33	MNSESIONSRV_PROD	172.20.33.32	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSESIONSRV_PROD	4096	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	\N	\N	\N
+800	1	45	MNGALILEO_APP2_PROD	172.20.33.29	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNGALILEO_APP2_PROD	8192	122880	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	\N	\N	\N
+801	1	33	MNPROXY1_PROD	192.168.70.22	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPROXY1_PROD	4096	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	\N	\N	\N
+802	1	33	MNPROXYGALILEO_PROD	192.168.70.20	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPROXYGALILEO_PROD	4096	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	\N	\N	\N
+803	1	45	MNSINETSFTP_PROD	172.20.33.31	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSINETSFTP_PROD	4096	131072	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	\N	\N	\N
+804	1	45	MNSINETSUR_APP1_PROD	172.20.33.28	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSINETSUR_APP1_PROD	8192	128000	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	\N	\N	\N
+805	1	45	MNSINETSUR_APP2_PROD	172.20.33.27	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSINETSUR_APP2_PROD	8192	128000	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	\N	\N	\N
+806	1	45	MNSINETSUR_APP3_PROD	172.20.33.26	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSINETSUR_APP3_PROD	8192	128000	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	\N	\N	\N
+807	1	49	MNSEGSIDA_PROD	192.168.70.23	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEGSIDA_PROD	32768	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+808	1	45	MNGALILEO_APP1_DEV	172.20.33.40	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNGALILEO_APP1_DEV	8192	122880	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	\N	\N	\N
+809	1	33	MNMONGO_DEV	172.20.33.41	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMONGO_DEV	4096	153600	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	\N	\N	\N
+810	1	33	MNPROXY2_DEV	192.168.70.30	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPROXY2_DEV	4096	51200	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	\N	\N	\N
+811	1	33	MNSESIONSRV_DEV	172.20.33.42	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSESIONSRV_DEV	4096	51200	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	\N	\N	\N
+812	1	45	MNGALILEO_APP2_DEV	172.20.33.43	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNGALILEO_APP2_DEV	8192	122880	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	\N	\N	\N
+813	1	33	MNPROXY1_DEV	192.168.70.31	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPROXY1_DEV	4096	51200	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	\N	\N	\N
+814	1	33	MNPROXYGALILEO_DEV	192.168.70.32	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPROXYGALILEO_DEV	4096	51200	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	\N	\N	\N
+815	1	45	MNSINETSFTP_DEV	172.20.33.44	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSINETSFTP_DEV	4096	131072	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	\N	\N	\N
+817	1	45	MNSINETSUR_APP2_DEV	172.20.33.46	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSINETSUR_APP2_DEV	8192	128000	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	\N	\N	\N
+818	1	45	MNSINETSUR_APP3_DEV	172.20.33.47	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSINETSUR_APP3_DEV	8192	128000	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	\N	\N	\N
+819	1	49	MNSEGSIDA_DEV	172.20.16.30	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEGSIDA_DEV	32768	51200	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	15	\N	\N	\N
+820	1	17	MNTRANSPARENCIA_PROD	192.168.70.15	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNTRANSPARENCIA_PROD	12288	337920	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+821	1	49	MNSEGSIDA_QA	172.20.8.27	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEGSIDA_QA	32768	51200	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+822	1	28	MNCOMPINAPP_PROD	192.168.70.26	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCOMPINAPP_PROD	16384	112640	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+823	1	28	MNCOMPINBD_PROD	172.20.64.26	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCOMPINBD_PROD	49152	266240	0	intel	2400	6	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+824	1	28	MNCOMPINIMG_PROD	172.20.6.19	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCOMPINIMG_PROD	4096	624640	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+825	1	27	MNSEMANTIKOSAPP003_QA	172.20.8.100	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOSAPP003_QA	8192	55296	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	17	\N	\N	\N
+827	1	43	MNRESPIRATIOAPP_QA	192.168.10.40	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNRESPIRATIOAPP_QA	16384	409600	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+828	1	43	MNRESPIRATIOAPP_PROD	192.168.70.40	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNRESPIRATIOAPP_PROD	16384	409600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+829	1	17	MNSIDOTAPP_QA	192.168.10.30	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIDOTAPP_QA	12288	133120	0	intel	2400	6	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+830	1	51	MNSURVIHAPP_QA	192.168.10.41	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSURVIHAPP_QA	4096	61440	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	20	\N	\N	\N
+831	1	14	MNSIMPO_QA	192.168.10.42	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIMPO_QA	1024	51200	0	intel	2400	1	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+832	1	49	MNSIGTE_SOAP_DEV	172.20.16.40	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIGTE_SOAP_DEV	2048	20480	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	15	\N	\N	\N
+833	1	49	MNSIGTE_WEB_DEV	172.20.16.41	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIGTE_WEB_DEV	2048	20480	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	15	\N	\N	\N
+834	1	41	MNPRAIS_APP_QA	192.168.10.20	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPRAIS_APP_QA	8192	81920	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+835	1	49	MNDCM4CHEEAPP_PROD	192.168.70.38	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNDCM4CHEEAPP_PROD	32768	2097152	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	\N	\N	\N
+836	1	51	MNSURVIHAPP_PROD	192.168.70.34 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSURVIHAPP_PROD	4096	102400	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	20	\N	\N	\N
+837	1	49	MNPCRONICOS_QA	192.168.10.56	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPCRONICOS_QA	4096	204800	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	18	\N	\N	\N
+838	1	49	MNBDMYSQL_QA	172.20.8.30	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNBDMYSQL_QA	4096	307200	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+839	1	16	MNSISCOM_PROD	192.168.70.33 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSISCOM_PROD	16384	102400	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+840	1	51	MSSAMU_APP1_PROD	192.168.70.36	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MSSAMU_APP1_PROD	4096	66560	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+841	1	51	MSSAMU_APP2_PROD	192.168.70.35 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MSSAMU_APP2_PROD	4096	71680	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+842	1	43	MNSIRHFE_APP1_DEV	192.168.60.15	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIRHFE_APP1_DEV	16384	204800	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	21	\N	\N	\N
+843	1	43	MNSIRHBE_APP1_DEV	172.20.16.42 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIRHBE_APP1_DEV	16384	204800	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	21	\N	\N	\N
+844	1	16	MNTSSOAP_PROD	172.20.6.20	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNTSSOAP_PROD	8192	40960	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+845	1	16	MNTSSOAP002_PROD	172.20.6.40	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNTSSOAP002_PROD	8192	40960	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+846	1	16	MNTSCRON001_PROD	172.20.6.41	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNTSCRON001_PROD	32768	40960	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+847	1	16	MNTSWEB_PROD	192.168.70.37	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNTSWEB_PROD	4096	30720	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+848	1	16	MNTSWEB002_PROD	192.168.70.56	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNTSWEB002_PROD	4096	30720	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+849	1	17	MNGESBO_PROD	192.168.70.41	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNGESBO_PROD	8192	153600	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	18	\N	\N	\N
+850	1	49	MNGESBO_DEV	192.168.60.16	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNGESBO_DEV	8192	153600	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	18	\N	\N	\N
+852	1	16	MNTSSOAP_QA	172.20.8.32	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNTSSOAP_QA	4096	40960	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+853	1	16	MNTSWEB_QA	192.168.10.58	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNTSWEB_QA	4096	30720	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+854	1	49	MNSIACPORTAL_PROD	192.168.70.42	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIACPORTAL_PROD	2048	21504	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	22	\N	\N	\N
+855	1	49	MNSIACENC_PROD	192.168.70.43	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIACENC_PROD	2048	21504	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	22	\N	\N	\N
+856	1	49	MNSIACAPPBACK_PROD	192.168.70.44	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIACAPPBACK_PROD	16384	81920	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	22	\N	\N	\N
+857	1	49	MNSIACAPPBD_PROD	1.1.1.1	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIACAPPBD_PROD	16384	81920	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	22	\N	\N	\N
+858	1	49	MNSIACPORTAL_QA	192.168.10.60	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIACPORTAL_QA	2048	21504	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	22	\N	\N	\N
+859	1	49	MNSIACENC_QA	192.168.10.61 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIACENC_QA	2048	21504	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	22	\N	\N	\N
+860	1	49	MNSIACAPPBACK_QA	192.168.10.62 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIACAPPBACK_QA	16384	81920	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	22	\N	\N	\N
+861	1	49	MNSIACAPPBD_QA	172.20.8.28	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIACAPPBD_QA	16384	81920	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	22	\N	\N	\N
+862	1	17	MNCANASTAS_PROD	192.168.70.45	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCANASTAS_PROD	4096	40960	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+863	1	17	MNCANASTAS_QA	192.168.10.63	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCANASTAS_QA	4096	40960	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+864	1	17	MNJEMETER001_QA	172.20.8.33	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNJEMETER001_QA	4096	40960	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	18	\N	\N	\N
+865	1	17	MNJEMETER002_QA	172.20.8.34	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNJEMETER002_QA	4096	40960	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	18	\N	\N	\N
+866	1	17	MNCL1_MANAGEMENT_NODE_QA	 172.20.8.35	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_MANAGEMENT_NODE_QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+867	1	17	MNCL1_MYSQL_NODE_1_QA	172.20.8.36	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_MYSQL_NODE_1_QA	8192	15360	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+868	1	17	MNCL1_MYSQL_NODE_2_QA	172.20.8.37	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_MYSQL_NODE_2_QA	8192	15360	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+869	1	17	MNCL1_DATA_NODE_1_QA	172.20.8.38	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_DATA_NODE_1_QA	4096	25600	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+871	1	17	MNWRDPRSS_QA	192.168.10.64	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNWRDPRSS_QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+872	1	33	MNACTIVEMQQA_001_PM	172.20.8.41 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNACTIVEMQQA_001_PM	8192	194560	0	intel	2400	6	0	0	\N	\N	3	Sin definir	2	false	14	\N	\N	\N
+873	1	33	MNACTIVEMQPROD_001_PM	172.20.6.22 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNACTIVEMQPROD_001_PM	16384	194560	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	14	\N	\N	\N
+874	1	33	MNACTIVEMQPROD_002_PM	172.20.6.23	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNACTIVEMQPROD_002_PM	16384	194560	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	14	\N	\N	\N
+875	1	43	MNBITABLEAUPROD_001	 192.168.70.46	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNBITABLEAUPROD_001	65536	204800	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	29	\N	\N	\N
+876	1	17	MNALFRESCOSIRHDEV_001	 192.168.60.17	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNALFRESCOSIRHDEV_001	4096	40960	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	21	\N	\N	\N
+877	1	28	MNCOMPINAPP002_PROD	192.168.70.51	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCOMPINAPP002_PROD	16384	68608	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+878	1	33	MNRME001_QA	172.20.8.90	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNRME001_QA	32768	204800	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+879	1	49	MNAPPPORPA001_PROD	192.168.70.52	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNAPPPORPA001_PROD	24576	61440	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	\N	\N	\N
+880	1	49	MNAPPPORPA002_PROD	192.168.70.53	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNAPPPORPA002_PROD	24576	61440	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	\N	\N	\N
+881	1	49	MNELASTICSEARCH001_PROD	192.168.70.54	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNELASTICSEARCH001_PROD	32768	102400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	\N	\N	\N
+882	1	49	MNSTAGING001_PROD	192.168.70.55	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSTAGING001_PROD	24576	215040	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	\N	\N	\N
+883	1	49	MNPORPA01_QA	192.168.10.17	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPORPA01_QA	24576	102400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	\N	\N	\N
+884	1	17	MNCL1_MANAGEMENT_NODE_PROD	172.20.6.23	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_MANAGEMENT_NODE_PROD	4096	15360	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+885	1	17	MNCL1_MYSQL_NODE_1_PROD	172.20.6.24	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_MYSQL_NODE_1_PROD	16384	15360	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+886	1	17	MNCL1_DATA_NODE_1_PROD	172.20.6.25	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_DATA_NODE_1_PROD	16384	409600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+887	1	17	MNCL1_MANAGEMENTPGQL_NODE_QA	 172.20.8.42	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_MANAGEMENTPGQL_NODE_QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+888	1	17	MNCL1_PGQLPOOL_NODE_1_QA	 172.20.8.43	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_PGQLPOOL_NODE_1_QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+890	1	17	MNCL1_PGQLDATA_NODE_1_QA	 172.20.8.45	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_PGQLDATA_NODE_1_QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+891	1	17	MNCL1_PGQLDATA_NODE_2_QA	 172.20.8.46	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_PGQLDATA_NODE_2_QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+892	1	17	MNCL1_PGQLPOOL_NODE_2_PROD	172.20.6.26 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_PGQLPOOL_NODE_2_PROD	16384	20480	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+893	1	17	MNCL1_PGQLDATA_NODE_2_PROD	172.20.6.27 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_PGQLDATA_NODE_2_PROD	16384	102400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+894	1	33	MNHL7001_QA	 172.20.8.47	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNHL7001_QA	16384	153600	0	intel	2400	6	0	0	\N	\N	3	Sin definir	2	false	18	\N	\N	\N
+895	1	33	MNHL7001_PROD	172.20.6.28 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNHL7001_PROD	16384	256000	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	\N	\N	\N
+896	1	54	MNBDSINETSUR001_PROD	172.20.64.33	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNBDSINETSUR001_PROD	65536	0	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	19	\N	\N	\N
+897	1	43	MNSNIP001_PROD	192.168.70.60	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSNIP001_PROD	8192	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	18	\N	\N	\N
+898	1	43	MNSISQSICARS_APP_QA	192.168.10.66	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSISQSICARS_APP_QA	16384	204800	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	23	\N	\N	\N
+899	1	43	MNSISQSICARS_BD_QA	172.20.8.49	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSISQSICARS_BD_QA	8192	122880	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	23	\N	\N	\N
+900	1	27	MNSEMANTIKOSAPP001_PROD	172.20.6.34	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOSAPP001_PROD	8192	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	17	\N	\N	\N
+901	1	27	MNSEMANTIKOSAPP002_PROD	172.20.6.35 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOSAPP002_PROD	8192	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	17	\N	\N	\N
+902	1	27	MNSEMANTIKOSWEB001_PROD	192.168.70.62 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOSWEB001_PROD	4096	34816	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	17	\N	\N	\N
+903	1	27	MNSEMANTIKOSWEB002_PROD	192.168.70.63 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOSWEB002_PROD	4096	34816	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	17	\N	\N	\N
+904	1	49	MNDCM4CHEEAPP_DEV	192.168.60.18	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNDCM4CHEEAPP_DEV	32768	102400	0	intel	2400	8	0	0	\N	\N	4	Sin definir	2	false	18	\N	\N	\N
+905	1	49	MNSIDOTAPP_PROD	192.168.70.64	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIDOTAPP_PROD	4096	40960	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+906	1	43	MNSISQ_SICARS_PROD	192.168.70.65	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSISQ_SICARS_PROD	34816	409600	0	intel	2400	16	0	0	\N	\N	1	Sin definir	2	false	23	\N	\N	\N
+907	1	32	MNVIRTV-WHORHEL_PROD	192.168.70.66	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNVIRTV-WHORHEL_PROD	8192	40960	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	16	\N	\N	\N
+908	1	43	MNFLABORATORIOAPP001_QA	192.168.10.67 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNFLABORATORIOAPP001_QA	8192	102400	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	18	\N	\N	\N
+909	1	43	MNFLABORATORIOBD001_QA	172.20.8.51	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNFLABORATORIOBD001_QA	8192	102400	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	18	\N	\N	\N
+910	1	43	MNFLABORATORIOAPP001_DEV	192.168.60.19	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNFLABORATORIOAPP001_DEV	8192	102400	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	18	\N	\N	\N
+911	1	43	MNFLABORATORIOBD001_DEV	 172.20.16.20	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNFLABORATORIOBD001_DEV	8192	102400	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	18	\N	\N	\N
+694	1	33	MNCASPROD_API01	172.20.34.10	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCASPROD_API01	16384	307200	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	12	\N	\N	\N
+710	1	33	MNAMQPRO_AFIS01	172.20.34.26	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNAMQPRO_AFIS01	32768	256000	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	13	\N	\N	\N
+734	1	48	MNHadoop_DAT_2	172.20.34.44	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNHadoop_DAT_2	32768	1048576	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	\N	\N	\N
+738	1	17	MNQASEMANTIKOS_DB01	172.20.8.15	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNQASEMANTIKOS_DB01	8192	112640	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	17	\N	\N	\N
+762	1	33	MNAPDEV_API01	172.20.34.24	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNAPDEV_API01	4096	204800	0	intel	2400	8	0	0	\N	\N	4	Sin definir	1	false	12	\N	\N	\N
+782	1	33	MNACTIVEMQPROD_001	172.20.6.11	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNACTIVEMQPROD_001	16384	194560	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	14	\N	\N	\N
+791	1	27	MNSEMANTIKOSAPP001_QA	172.20.8.24	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOSAPP001_QA	8192	55296	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	17	\N	\N	\N
+816	1	45	MNSINETSUR_APP1_DEV	172.20.33.45	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSINETSUR_APP1_DEV	8192	128000	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	\N	\N	\N
+826	1	27	MNSEMANTIKOSAPP004_QA	172.20.8.101	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSEMANTIKOSAPP004_QA	8192	55296	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	17	\N	\N	\N
+851	1	49	MNGESBO_QA	192.168.10.57	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNGESBO_QA	8192	153600	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	18	\N	\N	\N
+870	1	17	MNCL1_DATA_NODE_2_QA	172.20.8.39	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_DATA_NODE_2_QA	4096	25600	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+889	1	17	MNCL1_PGQLPOOL_NODE_2_QA	 172.20.8.44	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCL1_PGQLPOOL_NODE_2_QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+912	1	17	MNGESDOCP_PROD	192.168.70.17	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNGESDOCP_PROD	8192	512000	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	23	\N	\N	\N
+913	1	17	MNGESDOCQA_QA	192.168.10.22	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNGESDOCQA_QA	4096	204800	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	23	\N	\N	\N
+914	1	45	MNRISAPP001_QA	192.168.10.23 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNRISAPP001_QA	16384	0	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	24	\N	\N	\N
+915	1	45	MNRISBD001_QA	172.20.8.52 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNRISBD001_QA	16384	0	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	24	\N	\N	\N
+916	1	20	MNCHCC001_QA	192.168.10.25	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCHCC001_QA	8192	40960	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	25	\N	\N	\N
+917	1	20	MNVIHDIGERA001_QA	192.168.10.26 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNVIHDIGERA001_QA	2048	21504	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	18	\N	\N	\N
+918	1	49	MNPAID001_QA	192.168.10.31	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPAID001_QA	8192	133120	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	26	\N	\N	\N
+919	1	23	MNCATIMG001_DEV	 192.168.60.20	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCATIMG001_DEV	16384	102400	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	27	\N	\N	\N
+920	1	28	MNCOMPINAPP_QA	192.168.10.27	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNCOMPINAPP_QA	16384	68608	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+921	1	41	MNPRAIS_APP_PROD	192.168.70.72	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNPRAIS_APP_PROD	8192	81920	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+922	1	17	MNSIGTESOAP001_QA	 172.20.8.53	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIGTESOAP001_QA	4096	28672	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+923	1	17	MNSIGTEWEB001_QA	172.20.8.54	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIGTEWEB001_QA	8192	221184	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+924	1	33	MNMINSALAPP_QA	192.168.10.32	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNMINSALAPP_QA	8192	51200	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+925	1	33	MNLOG_PROD	172.20.6.32	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNLOG_PROD	8192	204800	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	\N	\N	\N
+926	1	13	MNSIGEDAPP001_QA	192.168.10.68	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIGEDAPP001_QA	8192	81920	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	\N	\N	\N
+927	1	43	MNSIRHFE_APP1_QA	192.168.10.70 	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIRHFE_APP1_QA	16384	204800	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	21	\N	\N	\N
+928	1	43	MNSIRHFE_APP2_QA	192.168.10.71	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIRHFE_APP2_QA	16384	204800	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	21	\N	\N	\N
+929	1	43	MNSIRHBE_APP1_QA	172.20.8.40	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIRHBE_APP1_QA	16384	204800	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	21	\N	\N	\N
+930	1	43	MNSIRHBE_APP2_QA	172.20.8.41	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNSIRHBE_APP2_QA	16384	204800	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	21	\N	\N	\N
+931	1	43	MNAPPIVE001_QA	192.168.10.69	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNAPPIVE001_QA	8192	40960	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	28	\N	\N	\N
+932	1	43	MNAPPIVE001_PROD	192.168.70.67	4	4	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	MNAPPIVE001_PROD	5120	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	28	\N	\N	\N
+\.
+
+
+--
+-- TOC entry 3413 (class 0 OID 587929)
 -- Dependencies: 243
 -- Data for Name: servidores_accesos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3608,7 +3725,7 @@ COPY public.servidores_accesos (id_servidor_acceso, id_aplicacion, id_servidor, 
 
 
 --
--- TOC entry 3418 (class 0 OID 596496)
+-- TOC entry 3447 (class 0 OID 596496)
 -- Dependencies: 277
 -- Data for Name: servidores_estados; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3857,7 +3974,7 @@ COPY public.servidores_estados (id_servidor_estado, id_servidor, id_estado, id_u
 
 
 --
--- TOC entry 3422 (class 0 OID 596515)
+-- TOC entry 3451 (class 0 OID 596515)
 -- Dependencies: 281
 -- Data for Name: servidores_historico_cambios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3915,11 +4032,12 @@ COPY public.servidores_historico_cambios (id_servidor_historico, id_servidor, id
 59	21	1	23	APPSQD99QAPROD	1.1.1.1	\N	\N	2018-04-03 19:02:58	2018-04-03 19:02:58	\N	APPSQD99QAPROD	2048	2048	2048	intel	2048	8	0	ab:ab:ab:ab:ab:ab	0	0	4	2048A	\N	\N
 60	21	1	23	APPSQD99QAPROD	1.1.1.1	4	4	2018-04-03 19:16:35	2018-04-03 19:16:35	\N	APPSQD99QAPROD	2048	2048	2048	intel	2048	8	0	ab:ab:ab:ab:ab:ab	0	0	4	2048A	\N	\N
 61	21	1	23	APPSQD99QAPROD	1.1.1.1	4	4	2018-04-04 04:56:26	2018-04-04 04:56:26	\N	APPSQD99QAPROD	2048	2048	2048	intel	2048	8	0	ab:ab:ab:ab:ab:ab	0	0	4	2048A	\N	\N
+62	713	1	45	MNIBASEDPROD_ZEKE	172.20.34.29	4	4	2018-04-09 21:20:47	2018-04-09 21:20:47	\N	MNIBASEDPROD_ZEKE	32768	143360	0	intel	2400	8	0	0	\N	\N	1	Sin definir	\N	\N
 \.
 
 
 --
--- TOC entry 3432 (class 0 OID 604744)
+-- TOC entry 3461 (class 0 OID 604744)
 -- Dependencies: 291
 -- Data for Name: servidores_lvms; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3933,7 +4051,7 @@ COPY public.servidores_lvms (id_servidor_lvm, lvm_raiz, lvm_usr, lvm_tmp, lvm_va
 
 
 --
--- TOC entry 3389 (class 0 OID 587964)
+-- TOC entry 3418 (class 0 OID 587964)
 -- Dependencies: 248
 -- Data for Name: sistemas_operativos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3997,7 +4115,7 @@ COPY public.sistemas_operativos (id_sistema_operativo, arquitectura, nom_sistema
 
 
 --
--- TOC entry 3399 (class 0 OID 588022)
+-- TOC entry 3428 (class 0 OID 588022)
 -- Dependencies: 258
 -- Data for Name: tags; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4010,7 +4128,7 @@ COPY public.tags (id_tag, nom_tag, det_tag, meta_tag, id_usuario_registra, id_us
 
 
 --
--- TOC entry 3393 (class 0 OID 587989)
+-- TOC entry 3422 (class 0 OID 587989)
 -- Dependencies: 252
 -- Data for Name: tecnologia_desarrollo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4020,7 +4138,7 @@ COPY public.tecnologia_desarrollo (id_tecnologia_desarrollo, id_tipo_tecnologia,
 
 
 --
--- TOC entry 3390 (class 0 OID 587971)
+-- TOC entry 3419 (class 0 OID 587971)
 -- Dependencies: 249
 -- Data for Name: tipos_aplicaciones; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4078,7 +4196,7 @@ COPY public.tipos_aplicaciones (id_tipo_aplicacion, nom_tipo_aplicacion, det_tip
 
 
 --
--- TOC entry 3428 (class 0 OID 604722)
+-- TOC entry 3457 (class 0 OID 604722)
 -- Dependencies: 287
 -- Data for Name: tipos_clusters; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4090,7 +4208,34 @@ COPY public.tipos_clusters (id_tipo_cluster, nom_tipo_cluster, det_tipo_cluster,
 
 
 --
--- TOC entry 3430 (class 0 OID 604733)
+-- TOC entry 3471 (class 0 OID 604806)
+-- Dependencies: 301
+-- Data for Name: tipos_respaldos_discos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tipos_respaldos_discos (id_tipo_respaldo_disco, nom_tipo_respaldo_disco, det_tipo_respaldo_disco, cod_tipo_respaldo_disco, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+1	Cinta	Cinta	cinta001	4	4	2018-04-09 21:06:11	2018-04-09 21:06:11	\N
+2	Disco	Disco	disco001	4	4	2018-04-09 21:06:19	2018-04-09 21:06:19	\N
+\.
+
+
+--
+-- TOC entry 3469 (class 0 OID 604795)
+-- Dependencies: 299
+-- Data for Name: tipos_servidores; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tipos_servidores (id_tipo_servidor, nom_tipo_servidor, det_tipo_servidor, cod_tipo_servidor, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+1	APP	Servidor de aplicaciones	app001	4	4	2018-04-09 20:13:30	2018-04-09 20:13:30	\N
+2	DB	Servidor de base de datos	db001	4	4	2018-04-09 20:13:46	2018-04-09 20:13:46	\N
+3	APP y DB	Servidor de aplicaciones y bases de datos	appydb001	4	4	2018-04-09 20:14:04	2018-04-09 20:14:04	\N
+4	PROCESO	Servidor que realiza funciones de procesos de sistema, jobs, crones, etc.	proceso001	4	4	2018-04-09 20:15:26	2018-04-09 20:15:26	\N
+5	BALANCEADOR	Servidor balanceador	balanceador001	4	4	2018-04-09 20:15:46	2018-04-09 20:15:46	\N
+\.
+
+
+--
+-- TOC entry 3459 (class 0 OID 604733)
 -- Dependencies: 289
 -- Data for Name: tipos_sistemas_operativos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4103,7 +4248,7 @@ COPY public.tipos_sistemas_operativos (id_tipo_sistema_operativo, nom_tipo_siste
 
 
 --
--- TOC entry 3391 (class 0 OID 587978)
+-- TOC entry 3420 (class 0 OID 587978)
 -- Dependencies: 250
 -- Data for Name: tipos_tecnologias_desarrollo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4113,7 +4258,7 @@ COPY public.tipos_tecnologias_desarrollo (id_tipo_tecnologia_desarrollo, nom_tip
 
 
 --
--- TOC entry 3413 (class 0 OID 588203)
+-- TOC entry 3442 (class 0 OID 588203)
 -- Dependencies: 272
 -- Data for Name: usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4145,7 +4290,7 @@ COPY public.usuarios (id_usuario, nom_usuario, nom_completo, ape_paterno, ape_ma
 
 
 --
--- TOC entry 3379 (class 0 OID 587900)
+-- TOC entry 3408 (class 0 OID 587900)
 -- Dependencies: 238
 -- Data for Name: usuarios_bitacora_servicios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4158,7 +4303,7 @@ COPY public.usuarios_bitacora_servicios (id_usuario_bitacora_servicio, id_usuari
 
 
 --
--- TOC entry 3403 (class 0 OID 588044)
+-- TOC entry 3432 (class 0 OID 588044)
 -- Dependencies: 262
 -- Data for Name: usuarios_cargos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4194,7 +4339,7 @@ COPY public.usuarios_cargos (id_usuario_cargo, id_usuario, id_cargo, id_usuario_
 
 
 --
--- TOC entry 3377 (class 0 OID 587889)
+-- TOC entry 3406 (class 0 OID 587889)
 -- Dependencies: 236
 -- Data for Name: usuarios_estados; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4230,7 +4375,7 @@ COPY public.usuarios_estados (id_usuario_estado, id_estado, id_usuario, id_usuar
 
 
 --
--- TOC entry 3376 (class 0 OID 587885)
+-- TOC entry 3405 (class 0 OID 587885)
 -- Dependencies: 235
 -- Data for Name: usuarios_roles; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4253,7 +4398,7 @@ COPY public.usuarios_roles (id_usuario_role, id_role, id_usuario, id_usuario_reg
 
 
 --
--- TOC entry 3401 (class 0 OID 588033)
+-- TOC entry 3430 (class 0 OID 588033)
 -- Dependencies: 260
 -- Data for Name: usuarios_servicios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4263,17 +4408,20 @@ COPY public.usuarios_servicios (id_usuario_servicio, id_usuario, id_servicio, id
 
 
 --
--- TOC entry 3438 (class 0 OID 604784)
+-- TOC entry 3467 (class 0 OID 604784)
 -- Dependencies: 297
 -- Data for Name: vlans; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.vlans (id_vlan, nom_vlan, det_vlan, cod_vlan, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+1	ad	asd	asd	4	4	2018-04-09 15:06:47	2018-04-09 15:06:58	2018-04-09 15:06:58
+2	DMZ	Front end Zona DMZ	dmz001	4	4	2018-04-09 15:40:08	2018-04-09 16:17:17	\N
+3	INT	Red interna	int001	4	4	2018-04-09 16:17:59	2018-04-09 19:10:56	\N
 \.
 
 
 --
--- TOC entry 3448 (class 0 OID 0)
+-- TOC entry 3483 (class 0 OID 0)
 -- Dependencies: 210
 -- Name: accesos_aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4282,7 +4430,7 @@ SELECT pg_catalog.setval('public.accesos_aplicaciones_id_seq', 2, true);
 
 
 --
--- TOC entry 3449 (class 0 OID 0)
+-- TOC entry 3484 (class 0 OID 0)
 -- Dependencies: 211
 -- Name: accesos_servidores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4291,7 +4439,7 @@ SELECT pg_catalog.setval('public.accesos_servidores_id_seq', 6, true);
 
 
 --
--- TOC entry 3450 (class 0 OID 0)
+-- TOC entry 3485 (class 0 OID 0)
 -- Dependencies: 223
 -- Name: actividades_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4300,7 +4448,7 @@ SELECT pg_catalog.setval('public.actividades_id_seq', 13, true);
 
 
 --
--- TOC entry 3451 (class 0 OID 0)
+-- TOC entry 3486 (class 0 OID 0)
 -- Dependencies: 224
 -- Name: actividades_tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4309,7 +4457,7 @@ SELECT pg_catalog.setval('public.actividades_tags_id_seq', 1, false);
 
 
 --
--- TOC entry 3452 (class 0 OID 0)
+-- TOC entry 3487 (class 0 OID 0)
 -- Dependencies: 278
 -- Name: ambientes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4318,7 +4466,7 @@ SELECT pg_catalog.setval('public.ambientes_id_seq', 4, true);
 
 
 --
--- TOC entry 3453 (class 0 OID 0)
+-- TOC entry 3488 (class 0 OID 0)
 -- Dependencies: 208
 -- Name: aplicaciones_estados_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4327,7 +4475,7 @@ SELECT pg_catalog.setval('public.aplicaciones_estados_id_seq', 1, false);
 
 
 --
--- TOC entry 3454 (class 0 OID 0)
+-- TOC entry 3489 (class 0 OID 0)
 -- Dependencies: 209
 -- Name: aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4336,7 +4484,7 @@ SELECT pg_catalog.setval('public.aplicaciones_id_seq', 252, true);
 
 
 --
--- TOC entry 3455 (class 0 OID 0)
+-- TOC entry 3490 (class 0 OID 0)
 -- Dependencies: 221
 -- Name: aplicaciones_tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4345,7 +4493,7 @@ SELECT pg_catalog.setval('public.aplicaciones_tags_id_seq', 1, false);
 
 
 --
--- TOC entry 3456 (class 0 OID 0)
+-- TOC entry 3491 (class 0 OID 0)
 -- Dependencies: 219
 -- Name: aplicaciones_tecnologias_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4354,7 +4502,7 @@ SELECT pg_catalog.setval('public.aplicaciones_tecnologias_id_seq', 1, false);
 
 
 --
--- TOC entry 3457 (class 0 OID 0)
+-- TOC entry 3492 (class 0 OID 0)
 -- Dependencies: 231
 -- Name: cargos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4363,7 +4511,7 @@ SELECT pg_catalog.setval('public.cargos_id_seq', 6, true);
 
 
 --
--- TOC entry 3458 (class 0 OID 0)
+-- TOC entry 3493 (class 0 OID 0)
 -- Dependencies: 229
 -- Name: catalogos_servicios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4372,7 +4520,7 @@ SELECT pg_catalog.setval('public.catalogos_servicios_id_seq', 1, false);
 
 
 --
--- TOC entry 3459 (class 0 OID 0)
+-- TOC entry 3494 (class 0 OID 0)
 -- Dependencies: 264
 -- Name: catalogos_servicios_tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4381,7 +4529,7 @@ SELECT pg_catalog.setval('public.catalogos_servicios_tags_id_seq', 1, false);
 
 
 --
--- TOC entry 3460 (class 0 OID 0)
+-- TOC entry 3495 (class 0 OID 0)
 -- Dependencies: 284
 -- Name: clusters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4390,7 +4538,7 @@ SELECT pg_catalog.setval('public.clusters_id_seq', 2, true);
 
 
 --
--- TOC entry 3461 (class 0 OID 0)
+-- TOC entry 3496 (class 0 OID 0)
 -- Dependencies: 215
 -- Name: datacentros_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4399,7 +4547,7 @@ SELECT pg_catalog.setval('public.datacentros_id_seq', 6, true);
 
 
 --
--- TOC entry 3462 (class 0 OID 0)
+-- TOC entry 3497 (class 0 OID 0)
 -- Dependencies: 213
 -- Name: dominios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4408,7 +4556,7 @@ SELECT pg_catalog.setval('public.dominios_id_seq', 5, true);
 
 
 --
--- TOC entry 3463 (class 0 OID 0)
+-- TOC entry 3498 (class 0 OID 0)
 -- Dependencies: 266
 -- Name: entregas_credenciales_usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4417,7 +4565,7 @@ SELECT pg_catalog.setval('public.entregas_credenciales_usuarios_id_seq', 1, fals
 
 
 --
--- TOC entry 3464 (class 0 OID 0)
+-- TOC entry 3499 (class 0 OID 0)
 -- Dependencies: 205
 -- Name: estados_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4426,7 +4574,7 @@ SELECT pg_catalog.setval('public.estados_id_seq', 11, true);
 
 
 --
--- TOC entry 3465 (class 0 OID 0)
+-- TOC entry 3500 (class 0 OID 0)
 -- Dependencies: 214
 -- Name: fuentes_aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4435,7 +4583,7 @@ SELECT pg_catalog.setval('public.fuentes_aplicaciones_id_seq', 1, false);
 
 
 --
--- TOC entry 3466 (class 0 OID 0)
+-- TOC entry 3501 (class 0 OID 0)
 -- Dependencies: 282
 -- Name: idiomas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4444,7 +4592,7 @@ SELECT pg_catalog.setval('public.idiomas_id_seq', 5, true);
 
 
 --
--- TOC entry 3467 (class 0 OID 0)
+-- TOC entry 3502 (class 0 OID 0)
 -- Dependencies: 269
 -- Name: log_navegacion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4453,16 +4601,16 @@ SELECT pg_catalog.setval('public.log_navegacion_id_seq', 1, false);
 
 
 --
--- TOC entry 3468 (class 0 OID 0)
+-- TOC entry 3503 (class 0 OID 0)
 -- Dependencies: 293
 -- Name: mantenedores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.mantenedores_id_seq', 22, true);
+SELECT pg_catalog.setval('public.mantenedores_id_seq', 24, true);
 
 
 --
--- TOC entry 3469 (class 0 OID 0)
+-- TOC entry 3504 (class 0 OID 0)
 -- Dependencies: 292
 -- Name: menus_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4471,7 +4619,7 @@ SELECT pg_catalog.setval('public.menus_id_seq', 9, true);
 
 
 --
--- TOC entry 3470 (class 0 OID 0)
+-- TOC entry 3505 (class 0 OID 0)
 -- Dependencies: 273
 -- Name: migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4480,7 +4628,7 @@ SELECT pg_catalog.setval('public.migrations_id_seq', 2, true);
 
 
 --
--- TOC entry 3471 (class 0 OID 0)
+-- TOC entry 3506 (class 0 OID 0)
 -- Dependencies: 202
 -- Name: permisos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4489,7 +4637,7 @@ SELECT pg_catalog.setval('public.permisos_id_seq', 22, true);
 
 
 --
--- TOC entry 3472 (class 0 OID 0)
+-- TOC entry 3507 (class 0 OID 0)
 -- Dependencies: 200
 -- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4498,7 +4646,7 @@ SELECT pg_catalog.setval('public.roles_id_seq', 72, true);
 
 
 --
--- TOC entry 3473 (class 0 OID 0)
+-- TOC entry 3508 (class 0 OID 0)
 -- Dependencies: 201
 -- Name: roles_permisos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4507,7 +4655,7 @@ SELECT pg_catalog.setval('public.roles_permisos_id_seq', 70, true);
 
 
 --
--- TOC entry 3474 (class 0 OID 0)
+-- TOC entry 3509 (class 0 OID 0)
 -- Dependencies: 207
 -- Name: servicios_estados_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4516,7 +4664,7 @@ SELECT pg_catalog.setval('public.servicios_estados_id_seq', 1, false);
 
 
 --
--- TOC entry 3475 (class 0 OID 0)
+-- TOC entry 3510 (class 0 OID 0)
 -- Dependencies: 222
 -- Name: servicios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4525,7 +4673,7 @@ SELECT pg_catalog.setval('public.servicios_id_seq', 29, true);
 
 
 --
--- TOC entry 3476 (class 0 OID 0)
+-- TOC entry 3511 (class 0 OID 0)
 -- Dependencies: 227
 -- Name: servicios_permisos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4534,7 +4682,7 @@ SELECT pg_catalog.setval('public.servicios_permisos_id_seq', 1, false);
 
 
 --
--- TOC entry 3477 (class 0 OID 0)
+-- TOC entry 3512 (class 0 OID 0)
 -- Dependencies: 225
 -- Name: servicios_tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4543,7 +4691,16 @@ SELECT pg_catalog.setval('public.servicios_tags_id_seq', 1, false);
 
 
 --
--- TOC entry 3478 (class 0 OID 0)
+-- TOC entry 3513 (class 0 OID 0)
+-- Dependencies: 302
+-- Name: servicios_usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.servicios_usuarios_id_seq', 1, false);
+
+
+--
+-- TOC entry 3514 (class 0 OID 0)
 -- Dependencies: 212
 -- Name: servidor_aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4552,7 +4709,7 @@ SELECT pg_catalog.setval('public.servidor_aplicaciones_id_seq', 932, true);
 
 
 --
--- TOC entry 3479 (class 0 OID 0)
+-- TOC entry 3515 (class 0 OID 0)
 -- Dependencies: 276
 -- Name: servidor_estado_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4561,16 +4718,16 @@ SELECT pg_catalog.setval('public.servidor_estado_id_seq', 497, true);
 
 
 --
--- TOC entry 3480 (class 0 OID 0)
+-- TOC entry 3516 (class 0 OID 0)
 -- Dependencies: 280
 -- Name: servidor_historico_cambios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.servidor_historico_cambios_id_seq', 61, true);
+SELECT pg_catalog.setval('public.servidor_historico_cambios_id_seq', 62, true);
 
 
 --
--- TOC entry 3481 (class 0 OID 0)
+-- TOC entry 3517 (class 0 OID 0)
 -- Dependencies: 290
 -- Name: servidores_lvm_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4579,7 +4736,7 @@ SELECT pg_catalog.setval('public.servidores_lvm_id_seq', 4, true);
 
 
 --
--- TOC entry 3482 (class 0 OID 0)
+-- TOC entry 3518 (class 0 OID 0)
 -- Dependencies: 216
 -- Name: sistemas_operativos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4588,7 +4745,7 @@ SELECT pg_catalog.setval('public.sistemas_operativos_id_seq', 54, true);
 
 
 --
--- TOC entry 3483 (class 0 OID 0)
+-- TOC entry 3519 (class 0 OID 0)
 -- Dependencies: 226
 -- Name: tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4597,7 +4754,7 @@ SELECT pg_catalog.setval('public.tags_id_seq', 3, true);
 
 
 --
--- TOC entry 3484 (class 0 OID 0)
+-- TOC entry 3520 (class 0 OID 0)
 -- Dependencies: 220
 -- Name: tecnologia_desarrollo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4606,7 +4763,7 @@ SELECT pg_catalog.setval('public.tecnologia_desarrollo_id_seq', 1, false);
 
 
 --
--- TOC entry 3485 (class 0 OID 0)
+-- TOC entry 3521 (class 0 OID 0)
 -- Dependencies: 217
 -- Name: tipos_aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4615,7 +4772,7 @@ SELECT pg_catalog.setval('public.tipos_aplicaciones_id_seq', 48, true);
 
 
 --
--- TOC entry 3486 (class 0 OID 0)
+-- TOC entry 3522 (class 0 OID 0)
 -- Dependencies: 286
 -- Name: tipos_clusters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4624,7 +4781,25 @@ SELECT pg_catalog.setval('public.tipos_clusters_id_seq', 2, true);
 
 
 --
--- TOC entry 3487 (class 0 OID 0)
+-- TOC entry 3523 (class 0 OID 0)
+-- Dependencies: 300
+-- Name: tipos_respaldos_discos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tipos_respaldos_discos_id_seq', 2, true);
+
+
+--
+-- TOC entry 3524 (class 0 OID 0)
+-- Dependencies: 298
+-- Name: tipos_servidores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tipos_servidores_id_seq', 5, true);
+
+
+--
+-- TOC entry 3525 (class 0 OID 0)
 -- Dependencies: 288
 -- Name: tipos_sistemas_operativos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4633,7 +4808,7 @@ SELECT pg_catalog.setval('public.tipos_sistemas_operativos_id_seq', 3, true);
 
 
 --
--- TOC entry 3488 (class 0 OID 0)
+-- TOC entry 3526 (class 0 OID 0)
 -- Dependencies: 218
 -- Name: tipos_tecnologias_desarrollo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4642,7 +4817,7 @@ SELECT pg_catalog.setval('public.tipos_tecnologias_desarrollo_id_seq', 1, false)
 
 
 --
--- TOC entry 3489 (class 0 OID 0)
+-- TOC entry 3527 (class 0 OID 0)
 -- Dependencies: 206
 -- Name: usuarios_bitacora_servicios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4651,7 +4826,7 @@ SELECT pg_catalog.setval('public.usuarios_bitacora_servicios_id_seq', 3, true);
 
 
 --
--- TOC entry 3490 (class 0 OID 0)
+-- TOC entry 3528 (class 0 OID 0)
 -- Dependencies: 230
 -- Name: usuarios_cargos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4660,7 +4835,7 @@ SELECT pg_catalog.setval('public.usuarios_cargos_id_seq', 29, true);
 
 
 --
--- TOC entry 3491 (class 0 OID 0)
+-- TOC entry 3529 (class 0 OID 0)
 -- Dependencies: 204
 -- Name: usuarios_estados_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4669,7 +4844,7 @@ SELECT pg_catalog.setval('public.usuarios_estados_id_seq', 29, true);
 
 
 --
--- TOC entry 3492 (class 0 OID 0)
+-- TOC entry 3530 (class 0 OID 0)
 -- Dependencies: 271
 -- Name: usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4678,7 +4853,7 @@ SELECT pg_catalog.setval('public.usuarios_id_seq', 28, true);
 
 
 --
--- TOC entry 3493 (class 0 OID 0)
+-- TOC entry 3531 (class 0 OID 0)
 -- Dependencies: 203
 -- Name: usuarios_roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4687,7 +4862,7 @@ SELECT pg_catalog.setval('public.usuarios_roles_id_seq', 30, true);
 
 
 --
--- TOC entry 3494 (class 0 OID 0)
+-- TOC entry 3532 (class 0 OID 0)
 -- Dependencies: 228
 -- Name: usuarios_servicios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4696,16 +4871,16 @@ SELECT pg_catalog.setval('public.usuarios_servicios_id_seq', 1, false);
 
 
 --
--- TOC entry 3495 (class 0 OID 0)
+-- TOC entry 3533 (class 0 OID 0)
 -- Dependencies: 296
 -- Name: vlans_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.vlans_id_seq', 1, false);
+SELECT pg_catalog.setval('public.vlans_id_seq', 3, true);
 
 
 --
--- TOC entry 3140 (class 2606 OID 596493)
+-- TOC entry 3163 (class 2606 OID 596493)
 -- Name: aplicaciones_accesos accesos_aplicaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4714,7 +4889,7 @@ ALTER TABLE ONLY public.aplicaciones_accesos
 
 
 --
--- TOC entry 3142 (class 2606 OID 588191)
+-- TOC entry 3165 (class 2606 OID 588191)
 -- Name: servidores_accesos accesos_servidores_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4723,7 +4898,7 @@ ALTER TABLE ONLY public.servidores_accesos
 
 
 --
--- TOC entry 3166 (class 2606 OID 588064)
+-- TOC entry 3189 (class 2606 OID 588064)
 -- Name: actividades actividades_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4732,7 +4907,7 @@ ALTER TABLE ONLY public.actividades
 
 
 --
--- TOC entry 3168 (class 2606 OID 588067)
+-- TOC entry 3191 (class 2606 OID 588067)
 -- Name: actividades_tags actividades_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4741,7 +4916,7 @@ ALTER TABLE ONLY public.actividades_tags
 
 
 --
--- TOC entry 3197 (class 2606 OID 596512)
+-- TOC entry 3220 (class 2606 OID 596512)
 -- Name: ambientes ambientes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4750,7 +4925,7 @@ ALTER TABLE ONLY public.ambientes
 
 
 --
--- TOC entry 3136 (class 2606 OID 588073)
+-- TOC entry 3159 (class 2606 OID 588073)
 -- Name: aplicaciones_estados aplicaciones_estados_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4759,7 +4934,7 @@ ALTER TABLE ONLY public.aplicaciones_estados
 
 
 --
--- TOC entry 3138 (class 2606 OID 588070)
+-- TOC entry 3161 (class 2606 OID 588070)
 -- Name: aplicaciones aplicaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4768,7 +4943,7 @@ ALTER TABLE ONLY public.aplicaciones
 
 
 --
--- TOC entry 3162 (class 2606 OID 588076)
+-- TOC entry 3185 (class 2606 OID 588076)
 -- Name: aplicaciones_tags aplicaciones_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4777,7 +4952,7 @@ ALTER TABLE ONLY public.aplicaciones_tags
 
 
 --
--- TOC entry 3158 (class 2606 OID 588079)
+-- TOC entry 3181 (class 2606 OID 588079)
 -- Name: aplicaciones_tecnologias aplicaciones_tecnologias_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4786,7 +4961,7 @@ ALTER TABLE ONLY public.aplicaciones_tecnologias
 
 
 --
--- TOC entry 3182 (class 2606 OID 588082)
+-- TOC entry 3205 (class 2606 OID 588082)
 -- Name: cargos cargos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4795,7 +4970,7 @@ ALTER TABLE ONLY public.cargos
 
 
 --
--- TOC entry 3178 (class 2606 OID 588085)
+-- TOC entry 3201 (class 2606 OID 588085)
 -- Name: catalogos_servicios catalogos_servicios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4804,7 +4979,7 @@ ALTER TABLE ONLY public.catalogos_servicios
 
 
 --
--- TOC entry 3184 (class 2606 OID 588218)
+-- TOC entry 3207 (class 2606 OID 588218)
 -- Name: catalogos_servicios_tags catalogos_servicios_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4813,7 +4988,7 @@ ALTER TABLE ONLY public.catalogos_servicios_tags
 
 
 --
--- TOC entry 3203 (class 2606 OID 596549)
+-- TOC entry 3226 (class 2606 OID 596549)
 -- Name: clusters clusters_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4822,7 +4997,7 @@ ALTER TABLE ONLY public.clusters
 
 
 --
--- TOC entry 3150 (class 2606 OID 588088)
+-- TOC entry 3173 (class 2606 OID 588088)
 -- Name: datacentros datacentros_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4831,7 +5006,7 @@ ALTER TABLE ONLY public.datacentros
 
 
 --
--- TOC entry 3146 (class 2606 OID 588091)
+-- TOC entry 3169 (class 2606 OID 588091)
 -- Name: dominios dominios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4840,7 +5015,7 @@ ALTER TABLE ONLY public.dominios
 
 
 --
--- TOC entry 3186 (class 2606 OID 588182)
+-- TOC entry 3209 (class 2606 OID 588182)
 -- Name: entregas_credenciales_usuarios entregas_credenciales_usuarios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4849,7 +5024,7 @@ ALTER TABLE ONLY public.entregas_credenciales_usuarios
 
 
 --
--- TOC entry 3130 (class 2606 OID 588094)
+-- TOC entry 3153 (class 2606 OID 588094)
 -- Name: estados estados_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4858,7 +5033,7 @@ ALTER TABLE ONLY public.estados
 
 
 --
--- TOC entry 3195 (class 2606 OID 596501)
+-- TOC entry 3218 (class 2606 OID 596501)
 -- Name: servidores_estados estados_servidores_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4867,7 +5042,7 @@ ALTER TABLE ONLY public.servidores_estados
 
 
 --
--- TOC entry 3148 (class 2606 OID 588097)
+-- TOC entry 3171 (class 2606 OID 588097)
 -- Name: fuentes_aplicaciones fuentes_aplicaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4876,7 +5051,7 @@ ALTER TABLE ONLY public.fuentes_aplicaciones
 
 
 --
--- TOC entry 3201 (class 2606 OID 596538)
+-- TOC entry 3224 (class 2606 OID 596538)
 -- Name: idiomas idiomas_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4885,7 +5060,7 @@ ALTER TABLE ONLY public.idiomas
 
 
 --
--- TOC entry 3188 (class 2606 OID 588214)
+-- TOC entry 3211 (class 2606 OID 588214)
 -- Name: log_navegacion log_navegacion_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4894,7 +5069,7 @@ ALTER TABLE ONLY public.log_navegacion
 
 
 --
--- TOC entry 3213 (class 2606 OID 604771)
+-- TOC entry 3236 (class 2606 OID 604771)
 -- Name: mantenedores mantenedores_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4903,7 +5078,7 @@ ALTER TABLE ONLY public.mantenedores
 
 
 --
--- TOC entry 3211 (class 2606 OID 604762)
+-- TOC entry 3234 (class 2606 OID 604762)
 -- Name: menus menus_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4912,7 +5087,7 @@ ALTER TABLE ONLY public.menus
 
 
 --
--- TOC entry 3192 (class 2606 OID 588268)
+-- TOC entry 3215 (class 2606 OID 588268)
 -- Name: migrations migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4921,7 +5096,7 @@ ALTER TABLE ONLY public.migrations
 
 
 --
--- TOC entry 3124 (class 2606 OID 588100)
+-- TOC entry 3147 (class 2606 OID 588100)
 -- Name: permisos permisos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4930,7 +5105,7 @@ ALTER TABLE ONLY public.permisos
 
 
 --
--- TOC entry 3122 (class 2606 OID 588106)
+-- TOC entry 3145 (class 2606 OID 588106)
 -- Name: roles_permisos roles_permisos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4939,7 +5114,7 @@ ALTER TABLE ONLY public.roles_permisos
 
 
 --
--- TOC entry 3120 (class 2606 OID 588103)
+-- TOC entry 3143 (class 2606 OID 588103)
 -- Name: roles roles_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4948,7 +5123,7 @@ ALTER TABLE ONLY public.roles
 
 
 --
--- TOC entry 3134 (class 2606 OID 588112)
+-- TOC entry 3157 (class 2606 OID 588112)
 -- Name: servicios_estados servicios_estados_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4957,7 +5132,7 @@ ALTER TABLE ONLY public.servicios_estados
 
 
 --
--- TOC entry 3174 (class 2606 OID 588115)
+-- TOC entry 3197 (class 2606 OID 588115)
 -- Name: servicios_permisos servicios_permisos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4966,7 +5141,7 @@ ALTER TABLE ONLY public.servicios_permisos
 
 
 --
--- TOC entry 3164 (class 2606 OID 588109)
+-- TOC entry 3187 (class 2606 OID 588109)
 -- Name: servicios servicios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4975,7 +5150,7 @@ ALTER TABLE ONLY public.servicios
 
 
 --
--- TOC entry 3170 (class 2606 OID 588159)
+-- TOC entry 3193 (class 2606 OID 588159)
 -- Name: servicios_tags servicios_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4984,7 +5159,16 @@ ALTER TABLE ONLY public.servicios_tags
 
 
 --
--- TOC entry 3144 (class 2606 OID 588121)
+-- TOC entry 3244 (class 2606 OID 604822)
+-- Name: servicios_usuarios servicios_usuarios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.servicios_usuarios
+    ADD CONSTRAINT servicios_usuarios_pkey PRIMARY KEY (id_servicio_usuario);
+
+
+--
+-- TOC entry 3167 (class 2606 OID 588121)
 -- Name: servidores servidor_aplicaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -4993,7 +5177,7 @@ ALTER TABLE ONLY public.servidores
 
 
 --
--- TOC entry 3199 (class 2606 OID 596523)
+-- TOC entry 3222 (class 2606 OID 596523)
 -- Name: servidores_historico_cambios servidor_historico_cambios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5002,7 +5186,7 @@ ALTER TABLE ONLY public.servidores_historico_cambios
 
 
 --
--- TOC entry 3209 (class 2606 OID 604749)
+-- TOC entry 3232 (class 2606 OID 604749)
 -- Name: servidores_lvms servidores_lvms_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5011,7 +5195,7 @@ ALTER TABLE ONLY public.servidores_lvms
 
 
 --
--- TOC entry 3152 (class 2606 OID 588124)
+-- TOC entry 3175 (class 2606 OID 588124)
 -- Name: sistemas_operativos sistemas_operativos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5020,7 +5204,7 @@ ALTER TABLE ONLY public.sistemas_operativos
 
 
 --
--- TOC entry 3172 (class 2606 OID 588127)
+-- TOC entry 3195 (class 2606 OID 588127)
 -- Name: tags tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5029,7 +5213,7 @@ ALTER TABLE ONLY public.tags
 
 
 --
--- TOC entry 3160 (class 2606 OID 588130)
+-- TOC entry 3183 (class 2606 OID 588130)
 -- Name: tecnologia_desarrollo tecnologia_desarrollo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5038,7 +5222,7 @@ ALTER TABLE ONLY public.tecnologia_desarrollo
 
 
 --
--- TOC entry 3154 (class 2606 OID 588133)
+-- TOC entry 3177 (class 2606 OID 588133)
 -- Name: tipos_aplicaciones tipos_aplicaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5047,7 +5231,7 @@ ALTER TABLE ONLY public.tipos_aplicaciones
 
 
 --
--- TOC entry 3205 (class 2606 OID 604730)
+-- TOC entry 3228 (class 2606 OID 604730)
 -- Name: tipos_clusters tipos_clusters_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5056,7 +5240,25 @@ ALTER TABLE ONLY public.tipos_clusters
 
 
 --
--- TOC entry 3207 (class 2606 OID 604741)
+-- TOC entry 3242 (class 2606 OID 604814)
+-- Name: tipos_respaldos_discos tipos_respaldos_discos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tipos_respaldos_discos
+    ADD CONSTRAINT tipos_respaldos_discos_pkey PRIMARY KEY (id_tipo_respaldo_disco);
+
+
+--
+-- TOC entry 3240 (class 2606 OID 604803)
+-- Name: tipos_servidores tipos_servidores_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tipos_servidores
+    ADD CONSTRAINT tipos_servidores_pkey PRIMARY KEY (id_tipo_servidor);
+
+
+--
+-- TOC entry 3230 (class 2606 OID 604741)
 -- Name: tipos_sistemas_operativos tipos_sistemas_operativos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5065,7 +5267,7 @@ ALTER TABLE ONLY public.tipos_sistemas_operativos
 
 
 --
--- TOC entry 3156 (class 2606 OID 588136)
+-- TOC entry 3179 (class 2606 OID 588136)
 -- Name: tipos_tecnologias_desarrollo tipos_tecnologias_desarrollo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5074,7 +5276,7 @@ ALTER TABLE ONLY public.tipos_tecnologias_desarrollo
 
 
 --
--- TOC entry 3132 (class 2606 OID 588139)
+-- TOC entry 3155 (class 2606 OID 588139)
 -- Name: usuarios_bitacora_servicios usuarios_bitacora_servicios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5083,7 +5285,7 @@ ALTER TABLE ONLY public.usuarios_bitacora_servicios
 
 
 --
--- TOC entry 3180 (class 2606 OID 588142)
+-- TOC entry 3203 (class 2606 OID 588142)
 -- Name: usuarios_cargos usuarios_cargos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5092,7 +5294,7 @@ ALTER TABLE ONLY public.usuarios_cargos
 
 
 --
--- TOC entry 3128 (class 2606 OID 588145)
+-- TOC entry 3151 (class 2606 OID 588145)
 -- Name: usuarios_estados usuarios_estados_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5101,7 +5303,7 @@ ALTER TABLE ONLY public.usuarios_estados
 
 
 --
--- TOC entry 3190 (class 2606 OID 588211)
+-- TOC entry 3213 (class 2606 OID 588211)
 -- Name: usuarios usuarios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5110,7 +5312,7 @@ ALTER TABLE ONLY public.usuarios
 
 
 --
--- TOC entry 3126 (class 2606 OID 588148)
+-- TOC entry 3149 (class 2606 OID 588148)
 -- Name: usuarios_roles usuarios_roles_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5119,7 +5321,7 @@ ALTER TABLE ONLY public.usuarios_roles
 
 
 --
--- TOC entry 3176 (class 2606 OID 588151)
+-- TOC entry 3199 (class 2606 OID 588151)
 -- Name: usuarios_servicios usuarios_servicios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5128,7 +5330,7 @@ ALTER TABLE ONLY public.usuarios_servicios
 
 
 --
--- TOC entry 3215 (class 2606 OID 604792)
+-- TOC entry 3238 (class 2606 OID 604792)
 -- Name: vlans vlans_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5137,14 +5339,14 @@ ALTER TABLE ONLY public.vlans
 
 
 --
--- TOC entry 3193 (class 1259 OID 588275)
+-- TOC entry 3216 (class 1259 OID 588275)
 -- Name: password_resets_email_index; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX password_resets_email_index ON public.password_resets USING btree (email);
 
 
--- Completed on 2018-04-09 10:31:28 -03
+-- Completed on 2018-04-10 10:06:52 -03
 
 --
 -- PostgreSQL database dump complete
