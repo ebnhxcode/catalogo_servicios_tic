@@ -14,7 +14,7 @@
                <div class="btn-group mr-2">
                   <input type="text" class="form-control input-sm"
                          data-placement="top" data-toggle="tooltip" title="Filtrar en la lista"
-                         placeholder="filtrar en la lista" v-model="filtro_head" id="filtro_head">
+                         placeholder="Filtrar en la lista" v-model="filtro_head" id="filtro_head">
                </div><!-- .btn-group mr-2 #mr->margin -->
 
 
@@ -34,7 +34,7 @@
             Menu Principal
          </h3>
 
-         <div class="card-columns{{--card-deck--}}" v-if="filterBy(home_items, filtro_head).length > 0">
+         <div class="card-columns{{--card-deck--}}" v-show="filterBy(home_items, filtro_head).length > 0">
             <div class="card bg-primary text-white border-light mb-3" v-for="i in filterBy(home_items, filtro_head)">
                {{--<div class="card-header">@{{ i.nom_menu }}</div>--}}
                <div class="img-responsive">
@@ -62,16 +62,20 @@
                   </p>
                </div><!-- -card-body -->
                <div href="#!" class="card-footer">
-                  <a :href="i.url_menu" class="btn btn-primary">
-                     <i class="fa fa-sign-in" aria-hidden="true"></i>
-                     Ingresar
-                  </a>
+
+                  <form :action="i.url_menu" method="GET">
+                     <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-sign-in" aria-hidden="true"></i>
+                        Ingresar
+                     </button>
+                  </form>
+
                </div>
             </div><!-- .card -->
 
          </div><!-- .card-columns -->
 
-         <div v-else>No se encontró lo que buscas ${`@{{ filtro_head }}`}</div>
+         <div v-show="filterBy(home_items, filtro_head).length <= 0">No se encontró lo que buscas ${`@{{ filtro_head }}`}</div>
 
       </div>
 
@@ -84,7 +88,7 @@
                data-placement="top" data-toggle="tooltip" title="Clic para ordenar mantenedores"></i>
             Mantenedores
          </h3>
-         <div v-if="filterBy(mantenedores, filtro_head).length > 0">
+         <div v-show="filterBy(mantenedores, filtro_head).length > 0">
 
             <div class="card-columns {{--card-deck--}}" >
 
@@ -112,17 +116,19 @@
                      </p>
                   </div><!-- -card-body -->
                   <div href="#!" class="card-footer">
-                     <a :href="m.url_mantenedor" class="btn btn-secondary">
-                        <i class="fa fa-sign-in" aria-hidden="true"></i>
-                        Ingresar
-                     </a>
+                     <form :action="m.url_mantenedor" method="GET">
+                        <button type="submit" class="btn btn-secondary">
+                           <i class="fa fa-sign-in" aria-hidden="true"></i>
+                           Ingresar
+                        </button>
+                     </form>
                   </div>
                </div><!-- .card -->
 
             </div><!-- .card-columns -->
 
          </div>
-         <div v-else>No se encontró lo que buscas ${`@{{ filtro_head }}`}</div>
+         <div v-show="filterBy(mantenedores, filtro_head).length <= 0">No se encontró lo que buscas ${`@{{ filtro_head }}`}</div>
       </div>
 
       <notifications group="global" position="bottom right" />

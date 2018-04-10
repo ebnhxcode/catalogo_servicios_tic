@@ -78,11 +78,11 @@
                @{{ `Sin resultados para` }} ${`@{{ `${filtro_componente}` }}`}
             </small>
          </div>
-         <div class="col-sm-3">
+         <div class="col-sm-4">
             <dt>Filtro por estado</dt>
             <dd>
-               <select class="form-control" v-model="filtro_estado" name="filtro_estado">
-                  <option :value="e.nom_estado" v-for="e in estados">
+               <select class="form-control dropdown btn" data-toggle="dropdown"  v-model="filtro_estado" name="filtro_estado">
+                  <option :value="e.nom_estado" v-for="e in estados" class="dropdown-item">
                      @{{ `${e.nom_estado} -> ${e.det_estado}` }}
                   </option>
                </select>

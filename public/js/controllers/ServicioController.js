@@ -4056,6 +4056,11 @@ var ServicioController = new Vue({
             'updated_at': null,
             'deleted_at': null
          },
+         //en la asociacion de un usuario nuevo a un servicio
+         'servicio_usuario': {
+            'id_usuario': null
+
+         },
          'permitido_guardar': ['nom_servicio', 'det_servicio', 'id_actividad', 'id_usuario'],
          'relaciones_clase': [{ 'actividad': ['id_actividad', 'nom_actividad'] }, { 'usuario': ['id_usuario', 'nom_usuario'] }],
 
@@ -4064,6 +4069,7 @@ var ServicioController = new Vue({
          'actividades': [],
          'servicios': [],
          'estados': [],
+         'usuarios': [],
          'usuarios_bitacora_servicios': [],
          'datos_excel': [],
          'usuario_auth': {},
@@ -4213,12 +4219,15 @@ var ServicioController = new Vue({
             _this.datos_excel = response.body.servicios || null;
             _this.servicios = response.body.servicios || null;
             _this.estados = response.body.estados || null;
+            _this.usuarios = response.body.usuarios || null;
             _this.usuario_auth = response.body.usuario_auth || null;
          }, function (response) {
             // error callback
             _this.checkear_estado_respuesta_http(response.status);
          });
       },
+
+      agregar_usuario_servicio: function agregar_usuario_servicio() {},
 
       bytesToSize: function bytesToSize(bytes) {
          bytes *= 1050000;
@@ -4228,6 +4237,7 @@ var ServicioController = new Vue({
          if (i === 0) return bytes + ' ' + sizes[i] + ')';
          return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
       }
+
    }
 });
 

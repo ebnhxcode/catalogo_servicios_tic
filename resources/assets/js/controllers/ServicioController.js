@@ -41,6 +41,11 @@ const ServicioController = new Vue({
             'updated_at':null,
             'deleted_at':null,
          },
+         //en la asociacion de un usuario nuevo a un servicio
+         'servicio_usuario':{
+            'id_usuario':null,
+
+         },
          'permitido_guardar':[
             'nom_servicio',
             'det_servicio',
@@ -211,6 +216,10 @@ const ServicioController = new Vue({
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);
          });
+      },
+
+      agregar_usuario_servicio: function () {
+
       },
 
       bytesToSize: function (bytes) {

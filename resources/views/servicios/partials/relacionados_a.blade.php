@@ -95,6 +95,33 @@
             <div class="col-md-6">
                <h6>Asociar nuevo usuario</h6>
 
+               <dt></dt>
+               <dd>
+                  <p class="control has-icon has-icon-right">
+                     <select class="form-control" v-model="servicio_usuario.id_usuario" name="id_usuario"
+                             v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
+                        <option :value="u.id_usuario" v-for="u in usuarios">
+                           @{{ `${u.nom_usuario} ${u.ape_paterno} -> ${u.usuario_role.role.nom_role}` }}
+                        </option>
+                     </select>
+                     <br>
+                     <button class="btn btn-success" @clicl.prevent="agregar_usuario_servicio">
+                        Agregar
+                     </button>
+
+                     <transition name="bounce">
+                        <i v-show="errors.has('id_usuario')" class="fa fa-exclamation-circle"></i>
+                     </transition>
+
+                     <transition name="bounce">
+                        <span v-show="errors.has('id_usuario')" class="text-danger small">
+                           @{{ errors.first('id_usuario') }}
+                        </span>
+                     </transition>
+                  </p>
+
+               </dd>
+
             </div>
             <div class="col-md-6">
                <h6>Tabla de usuarios asociados</h6>
