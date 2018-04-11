@@ -5,7 +5,7 @@
 -- Dumped from database version 10.3 (Debian 10.3-2)
 -- Dumped by pg_dump version 10.3 (Debian 10.3-2)
 
--- Started on 2018-04-10 10:06:50 -03
+-- Started on 2018-04-11 17:59:42 -03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -3456,6 +3456,33 @@ COPY public.servicios_tags (id_servicio_tag, id_servicio, id_tag, id_usuario_reg
 --
 
 COPY public.servicios_usuarios (id_servicio_usuario, id_servicio, id_usuario, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+14	12	4	4	4	2018-04-11 15:21:59	2018-04-11 17:27:51	2018-04-11 17:27:51
+15	12	4	4	4	2018-04-11 15:29:56	2018-04-11 17:35:06	2018-04-11 17:35:06
+18	12	9	4	4	2018-04-11 15:50:04	2018-04-11 17:35:10	2018-04-11 17:35:10
+16	12	11	4	4	2018-04-11 15:29:59	2018-04-11 17:35:12	2018-04-11 17:35:12
+19	12	9	4	4	2018-04-11 17:35:37	2018-04-11 17:35:39	2018-04-11 17:35:39
+17	12	11	4	4	2018-04-11 15:30:00	2018-04-11 17:35:51	2018-04-11 17:35:51
+22	12	9	4	4	2018-04-11 17:35:49	2018-04-11 17:36:07	2018-04-11 17:36:07
+21	12	12	4	4	2018-04-11 17:35:47	2018-04-11 17:36:08	2018-04-11 17:36:08
+20	12	4	4	4	2018-04-11 17:35:45	2018-04-11 17:36:09	2018-04-11 17:36:09
+24	12	12	4	4	2018-04-11 17:36:14	2018-04-11 17:36:30	2018-04-11 17:36:30
+29	12	10	4	4	2018-04-11 17:36:27	2018-04-11 17:36:31	2018-04-11 17:36:31
+28	12	9	4	4	2018-04-11 17:36:23	2018-04-11 17:36:32	2018-04-11 17:36:32
+26	12	4	4	4	2018-04-11 17:36:19	2018-04-11 17:36:35	2018-04-11 17:36:35
+23	12	8	4	4	2018-04-11 17:36:13	2018-04-11 17:36:35	2018-04-11 17:36:35
+27	12	9	4	4	2018-04-11 17:36:22	2018-04-11 17:36:36	2018-04-11 17:36:36
+25	12	24	4	4	2018-04-11 17:36:17	2018-04-11 17:36:38	2018-04-11 17:36:38
+30	12	10	4	4	2018-04-11 17:36:40	2018-04-11 17:36:41	2018-04-11 17:36:41
+33	12	4	4	4	2018-04-11 17:37:45	2018-04-11 17:37:47	2018-04-11 17:37:47
+32	12	10	4	4	2018-04-11 17:37:42	2018-04-11 17:37:55	2018-04-11 17:37:55
+31	12	12	4	4	2018-04-11 17:37:40	2018-04-11 17:37:57	2018-04-11 17:37:57
+34	12	4	4	4	2018-04-11 17:37:59	2018-04-11 17:38:01	2018-04-11 17:38:01
+35	12	4	4	4	2018-04-11 17:38:01	2018-04-11 17:38:02	2018-04-11 17:38:02
+36	12	24	4	4	2018-04-11 20:33:43	2018-04-11 20:33:45	2018-04-11 20:33:45
+40	12	9	4	4	2018-04-11 20:58:12	2018-04-11 20:58:13	2018-04-11 20:58:13
+38	12	11	4	4	2018-04-11 20:58:07	2018-04-11 20:58:13	2018-04-11 20:58:13
+37	12	8	4	4	2018-04-11 20:58:05	2018-04-11 20:58:14	2018-04-11 20:58:14
+39	12	1	4	4	2018-04-11 20:58:08	2018-04-11 20:58:16	2018-04-11 20:58:16
 \.
 
 
@@ -4299,6 +4326,17 @@ COPY public.usuarios_bitacora_servicios (id_usuario_bitacora_servicio, id_usuari
 3	4	1	4	test	test	4	4	2018-03-20 19:43:26	2018-03-20 19:43:38	2018-03-20 19:43:38
 1	4	7	1	Cambio en tv minsal	Se realiza cambio menor en formulario de tv minsal.	4	4	2018-03-12 14:49:51	2018-04-02 20:53:22	\N
 2	4	7	1	Nuevo cambio tv minsal	Cambio menor tv minsal	4	4	2018-03-12 14:55:59	2018-04-02 20:53:30	\N
+11	4	12	4	wqeqweqweqe	wqeqwew	4	4	2018-04-11 20:50:34	2018-04-11 20:52:01	2018-04-11 20:52:01
+10	4	12	4	testtt	setsetset	4	4	2018-04-11 20:49:48	2018-04-11 20:52:05	2018-04-11 20:52:05
+9	4	12	4	test	test	4	4	2018-04-11 20:45:57	2018-04-11 20:52:08	2018-04-11 20:52:08
+8	4	12	4	sad	asd	4	4	2018-04-11 20:43:36	2018-04-11 20:52:10	2018-04-11 20:52:10
+6	4	12	4	das	as	4	4	2018-04-11 20:37:17	2018-04-11 20:52:13	2018-04-11 20:52:13
+4	4	12	4	asd	ds	4	4	2018-04-11 20:33:50	2018-04-11 20:52:17	2018-04-11 20:52:17
+5	4	12	4	das	zd	4	4	2018-04-11 20:36:11	2018-04-11 20:52:20	2018-04-11 20:52:20
+7	4	12	4	asunto	bitacora con contenido, mas contenido mas contenido mas contenido mas contenido mas contenido mas contenido mas contenido mas contenido mas contenido	4	4	2018-04-11 20:40:06	2018-04-11 20:56:24	2018-04-11 20:56:24
+14	4	12	4	test	test	4	4	2018-04-11 20:58:33	2018-04-11 20:58:36	2018-04-11 20:58:36
+13	4	12	4	test	test	4	4	2018-04-11 20:58:30	2018-04-11 20:58:38	2018-04-11 20:58:38
+12	4	12	4	test	test	4	4	2018-04-11 20:58:27	2018-04-11 20:58:40	2018-04-11 20:58:40
 \.
 
 
@@ -4696,7 +4734,7 @@ SELECT pg_catalog.setval('public.servicios_tags_id_seq', 1, false);
 -- Name: servicios_usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.servicios_usuarios_id_seq', 1, false);
+SELECT pg_catalog.setval('public.servicios_usuarios_id_seq', 40, true);
 
 
 --
@@ -4822,7 +4860,7 @@ SELECT pg_catalog.setval('public.tipos_tecnologias_desarrollo_id_seq', 1, false)
 -- Name: usuarios_bitacora_servicios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.usuarios_bitacora_servicios_id_seq', 3, true);
+SELECT pg_catalog.setval('public.usuarios_bitacora_servicios_id_seq', 14, true);
 
 
 --
@@ -5346,7 +5384,7 @@ ALTER TABLE ONLY public.vlans
 CREATE INDEX password_resets_email_index ON public.password_resets USING btree (email);
 
 
--- Completed on 2018-04-10 10:06:52 -03
+-- Completed on 2018-04-11 17:59:45 -03
 
 --
 -- PostgreSQL database dump complete
