@@ -16,7 +16,7 @@
                <div class="btn-group mr-2 pro">
                   <input type="text" class="form-control input-sm"
                          data-placement="top" data-toggle="tooltip" title="Filtrar en la lista"
-                         placeholder="filtrar en la lista" v-model="filtro_head" id="filtro_head">
+                         placeholder="Filtrar en la lista" v-model="filtro_head" id="filtro_head">
                </div><!-- .btn-group mr-2 #mr->margin -->
                --}}
 

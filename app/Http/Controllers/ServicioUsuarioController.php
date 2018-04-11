@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\ServicioUsuario;
 use Illuminate\Http\Request;
-
+use App\User;
+use App\Servicio;
 use Auth;
 use Illuminate\Support\Facades\Validator;
-
-
 
 
 class ServicioUsuarioController extends Controller {
@@ -19,18 +19,20 @@ class ServicioUsuarioController extends Controller {
    private $nombre_detalle;
    private $nombre_controller;
 
-   private $cargos;
-   private $cargo;
-   private $new_cargo;
+   private $servicios;
+   private $usuarios;
+   private $servicios_usuarios;
+   private $servicio_usuario;
+   private $new_servicio_usuario;
    private $validacion;
 
    public function __construct () {
       $this->middleware('auth');
       $this->middleware('mantenedor');#resrtinge a solo usuarios con permiso bajo -> D
-      $this->nombre_modelo = "cargo"; //nombre tabla o de ruta
-      $this->nombre_tabla = $this->nombre_ruta = "cargos";
-      $this->nombre_detalle = "Cargos";
-      $this->nombre_controller = "CargoController";
+      $this->nombre_modelo = "servicio_usuario"; //nombre tabla o de ruta
+      $this->nombre_tabla = $this->nombre_ruta = "servicios_usuarios";
+      $this->nombre_detalle = "Servicios Usuarios Responsables";
+      $this->nombre_controller = "ServicioUsuarioController";
    }
 
    private function es_vacio ($variable) {
@@ -54,10 +56,13 @@ class ServicioUsuarioController extends Controller {
       }
 
       $this->usuario_auth = Auth::user();
-      $this->cargos = Cargo::all();
+      $this->servicios = User::all();
+      $this->usuarios = Servicio::all();
       return response()->json([
          'status' => 200,
-         'cargos' => $this->cargos,
+         'servicio_usuario' => $this->servicio_usuario,
+         'servicios' => $this->servicios,
+         'usuarios' => $this->usuarios,
          'usuario_auth' => $this->usuario_auth,
       ]);
    }
@@ -72,15 +77,15 @@ class ServicioUsuarioController extends Controller {
          ]);
       }
 
-      $this->cargo = Cargo::where("id_$this->nombre_modelo",'=',$id)->first();
+      $this->servicio_usuario = ServicioUsuario::where("id_$this->nombre_modelo",'=',$id)->first();
 
-      #Valida si role existe y busca si tiene servidor_permiso
-      if ($this->cargo) {
+      #Valida si role existe y busca si tiene servidor_usuario
+      if ($this->servicio_usuario) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
             'tipo' => 'eliminacion_exitosa', //Para las notificaciones
             'mensajes' => ["new_$this->nombre_modelo" => [0=>"Registro encontrado exitosamente."]],
-            'cargo' => $this->cargo,
+            'servicio_usuario' => $this->servicio_usuario,
             //Para mostrar los mensajes que van desde el backend
          ]);
       }else{
@@ -96,9 +101,8 @@ class ServicioUsuarioController extends Controller {
    public function store(Request $request) {
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario
       $this->validacion = Validator::make($request->all(), [
-         'nom_cargo' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
-         'det_cargo' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
-         'cod_cargo' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|max:255",
+         'id_usuario' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|max:255',
+         'id_servicio' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|max:255',
       ]);
       #Se valida la respuesta con la salida de la validacion
       if ($this->validacion->fails() == true) {
@@ -109,36 +113,34 @@ class ServicioUsuarioController extends Controller {
          ]);
       }
       #Como pasó todas las validaciones, se asigna al objeto
-      $this->cargo = $request->all();
+      $this->servicio_usuario = $request->all();
       #Se crea el nuevo registro
-      $this->new_cargo = Cargo::create([
-         'nom_cargo' => $this->cargo['nom_cargo'],
-         'det_cargo' => $this->cargo['det_cargo'],
-         'cod_cargo' => $this->cargo['cod_cargo'],
+      $this->new_servicio_usuario = ServicioUsuario::create([
+         'id_usuario' => $this->servicio_usuario['id_usuario'],
+         'id_servicio' => $this->servicio_usuario['id_servicio'],
          'id_usuario_registra' => Auth::user()->id_usuario,
          'id_usuario_modifica' => Auth::user()->id_usuario,
       ]);
 
-      unset($this->cargo, $this->validacion);
+      unset($this->servicio_usuario, $this->validacion);
 
       return response()->json([
          'status' => 200, //Para los popups con alertas de sweet alert
          'tipo' => 'creacion_exitosa', //Para las notificaciones
          'mensajes' => ["new_$this->nombre_modelo" => [0=>"Registro ($this->nombre_modelo) creado exitosamente."]],
          //Para mostrar los mensajes que van desde el backend
-         'cargo' => $this->new_cargo
+         'servicio_usuario' => $this->new_servicio_usuario
       ]);
    }
 
    public function update(Request $request, $id) {
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario
       $this->validacion = Validator::make($request->all(), [
-         'id_cargo' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|max:255',
-         'nom_cargo' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
-         'det_cargo' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
-         'cod_cargo' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|max:255",
+         'id_servicio_usuario' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|max:255',
+         'id_usuario' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|max:255',
+         'id_servicio' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|max:255',
       ]);
-      #Valida si la informacion que se envia para editar al cargo son iguales los ids
+      #Valida si la informacion que se envia para editar al servicio_usuario son iguales los ids
       if ($id != $request["id_$this->nombre_modelo"]) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
@@ -154,22 +156,22 @@ class ServicioUsuarioController extends Controller {
             'mensajes' => $this->validacion->messages(), //Para mostrar los mensajes que van desde el backend
          ]);
       }
-      $this->cargo = Cargo::find($request["id_$this->nombre_modelo"]);
+      $this->servicio_usuario = ServicioUsuario::find($request["id_$this->nombre_modelo"]);
       $request['id_usuario_modifica'] = Auth::user()->id_usuario;
-      $this->cargo->update($request->all());
+      $this->servicio_usuario->update($request->all());
 
-      #unset($this->new_cargo_permiso, $this->permiso);
+      #unset($this->new_servicio_usuario);
       return response()->json([
          'status' => 200, //Para los popups con alertas de sweet alert
          'tipo' => 'actualizacion_exitosa', //Para las notificaciones
          'mensajes' => ["new_$this->nombre_modelo" => [0=>"Registro actualizado exitosamente."]],
          //Para mostrar los mensajes que van desde el backend
-         'cargo' => $this->cargo,
+         'servicio_usuario' => $this->servicio_usuario,
       ]);
    }
 
    public function destroy($id) {
-      #Valida si la informacion que se envia para editar al cargo son iguales los ids
+      #Valida si la informacion que se envia para editar al servicio_usuario son iguales los ids
       if ($this->es_vacio($id) == true || preg_match("/^[0-9]*$/",$id) == 0) {
          return response()->json([
             'status' => 200, //Para los popups con alertas de sweet alert
@@ -178,11 +180,11 @@ class ServicioUsuarioController extends Controller {
          ]);
       }
 
-      $this->cargo = Cargo::find($id);
+      $this->servicio_usuario = ServicioUsuario::find($id);
 
-      #Valida si cargo existe y busca si tiene cargo_permiso
-      if ($this->cargo) {
-         $this->cargo->delete();
+      #Valida si servicio_usuario existe y busca si tiene servicio_usuario
+      if ($this->servicio_usuario) {
+         $this->servicio_usuario->delete();
       }
 
       return response()->json([

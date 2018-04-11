@@ -105,7 +105,7 @@
                         </option>
                      </select>
                      <br>
-                     <button class="btn btn-success" @clicl.prevent="agregar_usuario_servicio">
+                     <button class="btn btn-success" @click.prevent="guardar_nuevo_usuario_servicio">
                         Agregar
                      </button>
 

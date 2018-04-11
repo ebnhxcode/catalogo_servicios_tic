@@ -4059,7 +4059,6 @@ var ServicioController = new Vue({
          //en la asociacion de un usuario nuevo a un servicio
          'servicio_usuario': {
             'id_usuario': null
-
          },
          'permitido_guardar': ['nom_servicio', 'det_servicio', 'id_actividad', 'id_usuario'],
          'relaciones_clase': [{ 'actividad': ['id_actividad', 'nom_actividad'] }, { 'usuario': ['id_usuario', 'nom_usuario'] }],
@@ -4179,7 +4178,6 @@ var ServicioController = new Vue({
    },
    created: function created() {
       this.inicializar();
-
       /*
       $(document).ready(function () {
          //Handle al recargar pagina
@@ -4223,7 +4221,38 @@ var ServicioController = new Vue({
          });
       },
 
-      agregar_usuario_servicio: function agregar_usuario_servicio() {},
+      guardar_nuevo_usuario_servicio: function guardar_nuevo_usuario_servicio() {
+         var _this2 = this;
+
+         //Ejecuta validacion sobre los campos con validaciones
+         this.$validator.validateAll().then(function (res) {
+            if (res == true) {
+               //Se adjunta el token
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               //Instancia nuevo form data
+               var formData = new FormData();
+               //Conforma objeto paramétrico para solicitud http
+               formData.append('id_usuario', _this2.servicio_usuario.id_usuario);
+
+               _this2.$http.post('/servicios_usuarios', formData).then(function (response) {
+                  // success callback
+                  if (response.status == 200) {
+                     console.log('Registro exitoso');
+                  } else {
+                     _this2.checkear_estado_respuesta_http(response.status);
+                     return false;
+                  }
+                  if (_this2.mostrar_notificaciones(response) == true) {
+                     return;
+                  }
+               }, function (response) {
+                  // error callback
+                  _this2.checkear_estado_respuesta_http(response.status);
+               });
+            }
+         });
+         return;
+      },
 
       bytesToSize: function bytesToSize(bytes) {
          bytes *= 1050000;

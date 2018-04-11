@@ -44,7 +44,6 @@ const ServicioController = new Vue({
          //en la asociacion de un usuario nuevo a un servicio
          'servicio_usuario':{
             'id_usuario':null,
-
          },
          'permitido_guardar':[
             'nom_servicio',
@@ -170,7 +169,6 @@ const ServicioController = new Vue({
    },
    created(){
       this.inicializar();
-
       /*
       $(document).ready(function () {
          //Handle al recargar pagina
@@ -214,8 +212,33 @@ const ServicioController = new Vue({
          });
       },
 
-      agregar_usuario_servicio: function () {
+      guardar_nuevo_usuario_servicio: function () {
+         //Ejecuta validacion sobre los campos con validaciones
+         this.$validator.validateAll().then( res => {
+            if (res == true) {
+               //Se adjunta el token
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               //Instancia nuevo form data
+               var formData = new FormData();
+               //Conforma objeto paramétrico para solicitud http
+               formData.append(`id_usuario`, this.servicio_usuario.id_usuario);
 
+               this.$http.post(`/servicios_usuarios`, formData).then(response => { // success callback
+                  if (response.status == 200) {
+                     console.log('Registro exitoso');
+                  } else {
+                     this.checkear_estado_respuesta_http(response.status);
+                     return false;
+                  }
+                  if (this.mostrar_notificaciones(response) == true) {
+                     return;
+                  }
+               }, response => { // error callback
+                  this.checkear_estado_respuesta_http(response.status);
+               });
+            }
+         });
+         return;
       },
 
       bytesToSize: function (bytes) {

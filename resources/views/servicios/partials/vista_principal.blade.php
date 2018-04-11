@@ -66,7 +66,7 @@
                <div class="btn-group float-right">
                   <input type="text" class="form-control input-sm"
                          data-placement="top" data-toggle="tooltip" title="Filtrar en la lista"
-                         placeholder="filtrar en la lista" v-model="filtro_componente" id="filtro_componente">
+                         placeholder="Filtrar en la lista" v-model="filtro_componente" id="filtro_componente">
                </div><!-- .btn-group mr-2 #mr->margin -->
             </h4>
          </div>
@@ -115,13 +115,13 @@
          <br>
          <br>
 
-         <div class="col-sm-12" class="pro">
+         <div class="col-sm-12" class="{{--pro--}}">
 
 
-            <div id="accordion" v-if="servicio.servidores && servicio.servidores.length > 0"
-                 style="max-height: 800px;overflow-y: scroll;border-top: 6px solid #dddddd;border-bottom: 6px solid #dddddd;border-radius: 10px;">
+            <div id="accordion" v-show="servicio.servidores && servicio.servidores.length > 0"
+                 style="max-height: 800px;overflow-y: scroll;{{--/*max-height: 800px;overflow-y: scroll;border-top: 6px solid #dddddd;border-bottom: 6px solid #dddddd;border-radius: 10px;*/--}}">
 
-               <div class="card pro" v-for="s in filterBy(filterBy(servicio.servidores, filtro_componente), filtro_estado)">
+               <div class="card" v-for="s in filterBy(filterBy(servicio.servidores, filtro_componente), filtro_estado)">
 
                   <button class="btn btn-light card-header text-left" id="`heading${s.id_servidor}`"
                           data-toggle="collapse" :data-target="`#${s.id_servidor}`" aria-expanded="true" :aria-controls="`${s.id_servidor}`">
@@ -144,7 +144,7 @@
                      </div>
                   </button>
 
-                  <div :id="`${s.id_servidor}`" class="collapse" :aria-labelledby="`${s.id_servidor}`" data-parent="#accordion">
+                  <div :id="`${s.id_servidor}`" class="collapse btn-light" :aria-labelledby="`${s.id_servidor}`" data-parent="#accordion">
                      <div class="card-body">
 
                         <h4>Información básica del servidor</h4>
@@ -282,7 +282,7 @@
                </div>
 
             </div>
-            <div class="card card-body bg-light" v-else>
+            <div class="card card-body bg-light" v-show="servicio.servidores && servicio.servidores.length <= 0">
                Hasta el momento no existen servidores en este servicio.
             </div><!-- .card -->
 
