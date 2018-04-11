@@ -47033,7 +47033,17 @@ var SideMenuController = new Vue({
    watch: {},
    components: {},
    created: function created() {
+      /*
+      $(document).ready(()=>{
+         //$('.dropdown-toggle').dropdown();
+         $('[data-toggle="tooltip"]').tooltip();
+         //$('body').bootstrapMaterialDesign();
+      });
+      */
       this.inicializar();
+      $(document).ready(function () {
+         $('[data-toggle="tooltip"]').tooltip();
+      });
    },
 
    ready: {},

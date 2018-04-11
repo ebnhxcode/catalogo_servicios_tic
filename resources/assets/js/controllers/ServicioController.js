@@ -171,7 +171,6 @@ const ServicioController = new Vue({
    created(){
       this.inicializar();
 
-
       /*
       $(document).ready(function () {
          //Handle al recargar pagina

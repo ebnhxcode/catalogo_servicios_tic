@@ -269,7 +269,12 @@ nú
 <script src="{{url('/js/other_libs/popper.js')}}"></script>
 
 
-<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+<script>
+   $(document).ready(function() {
+      $('body').bootstrapMaterialDesign();
+      $('[data-toggle="tooltip"]').tooltip();
+   });
+</script>
 
 
 
