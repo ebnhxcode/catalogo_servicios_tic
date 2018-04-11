@@ -212,6 +212,67 @@ const ServicioController = new Vue({
          });
       },
 
+      eliminar_usuario_servicio: function (id) {
+
+         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+         this.$http.delete(`/servicios_usuarios/${id}`).then(response => {
+            if (response.status == 200) {
+               this.eliminar_de_array_por_modelo_e_id(id, this.servicio.servicios_usuarios, 'servicio_usuario');
+               //this.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success", 800);
+            } else {
+               this.checkear_estado_respuesta_http(response.status);
+               return false;
+            }
+
+            if (this.mostrar_notificaciones(response) == true) {
+               //Recargar la lista
+               //this.inicializar();
+            }
+         }, response => { // error callback
+            this.checkear_estado_respuesta_http(response.status);
+         });
+
+         /*
+         swal({
+            title: "¿Estás seguro/a?",
+            text: "¿Deseas confirmar la eliminación de este registro?",
+            type: "warning",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            confirmButtonColor: '#DD6B55',
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: 'Si, eliminar!',
+            cancelButtonText: 'No, mantener.'
+         }).then((result) => {
+            if (result.value) {
+               //Se adjunta el token
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+               this.$http.delete(`/servicios_usuarios/${self.id}`).then(response => {
+                  if (response.status == 200) {
+                     this.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
+                  } else {
+                     this.checkear_estado_respuesta_http(response.status);
+                     return false;
+                  }
+
+                  if (this.mostrar_notificaciones(response) == true) {
+                     //Recargar la lista
+                     this.inicializar();
+                  }
+               }, response => { // error callback
+                  this.checkear_estado_respuesta_http(response.status);
+               });
+            } else if (result.dismiss === swal.DismissReason.cancel) {
+               this.auto_alerta_corta("Cancelado", "Se ha cancelado la eliminación", "success");
+            }
+         });
+
+         */
+      },
+
       guardar_nuevo_usuario_servicio: function () {
          //Ejecuta validacion sobre los campos con validaciones
          this.$validator.validateAll().then( res => {
@@ -222,10 +283,16 @@ const ServicioController = new Vue({
                var formData = new FormData();
                //Conforma objeto paramétrico para solicitud http
                formData.append(`id_usuario`, this.servicio_usuario.id_usuario);
+               formData.append(`id_servicio`, this.servicio.id_servicio);
 
                this.$http.post(`/servicios_usuarios`, formData).then(response => { // success callback
+
+                  //console.log(response.body);
+
                   if (response.status == 200) {
-                     console.log('Registro exitoso');
+
+                     this.servicio.servicios_usuarios.push(response.body.servicio_usuario);
+
                   } else {
                      this.checkear_estado_respuesta_http(response.status);
                      return false;

@@ -89,18 +89,23 @@
 
       <div class="tab-pane fade show" id="v-pills-responsables" role="tabpanel" aria-labelledby="v-pills-responsables-tab">
 
-         <h4>Usuarios Responsables</h4>
+         <h4>Usuarios responsables en el servicio</h4>
          <br>
          <div class="row">
             <div class="col-md-6">
-               <h6>Asociar nuevo usuario</h6>
+               <h6>Seleccione y agregue nuevo usuario responsable</h6>
 
                <dt></dt>
                <dd>
                   <p class="control has-icon has-icon-right">
                      <select class="form-control" v-model="servicio_usuario.id_usuario" name="id_usuario"
                              v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
-                        <option :value="u.id_usuario" v-for="u in usuarios">
+                        <option :value="u.id_usuario" v-for="u in usuarios"
+                                {{--
+                                 esta opcion me serviria si me tocara mostrar en una lista si hay usuarios ya asociados
+                                 v-if="existe_en_array_por_modelo_e_id(u.id_usuario, servicio.servicios_usuarios, 'usuario')==true">
+                                --}}
+                                v-if="!existe_en_array_por_modelo_e_id(u.id_usuario, servicio.servicios_usuarios, 'usuario')">
                            @{{ `${u.nom_usuario} ${u.ape_paterno} -> ${u.usuario_role.role.nom_role}` }}
                         </option>
                      </select>
@@ -123,24 +128,35 @@
                </dd>
 
             </div>
+
             <div class="col-md-6">
                <h6>Tabla de usuarios asociados</h6>
-               <div class="table-responsive">
 
-                  <table class="table table-striped table-hover table-sm" v-if="servicio.usuarios_bitacora_servicios &&
-            servicio.usuarios_bitacora_servicios.length > 0">
+               <div class="table-responsive">
+                  <table class="table table-striped table-hover table-sm"
+                         v-if="servicio.servicios_usuarios && servicio.servicios_usuarios.length > 0">
                      <thead>
                      <tr>
                         <th>Nombre</th>
                         <th>Descripción</th>
                         <th>Usuario</th>
+                        <th>Acción</th>
                      </tr>
                      </thead>
                      <tbody>
-                     <tr v-for="b in servicio.usuarios_bitacora_servicios">
-                        <td>@{{ b.asunto }}</td>
-                        <td>@{{ b.det_bitacora }}</td>
-                        <td>@{{ b.usuario.nom_usuario }}</td>
+                     <tr v-for="su in servicio.servicios_usuarios" v-if="su.usuario">
+                        <td>@{{ su.usuario.nom_usuario }}</td>
+                        <td>@{{ su.usuario.ape_paterno }}</td>
+                        <td>@{{ su.usuario.email }}</td>
+                        <td>
+                           @{{ su.id_servicio_usuario }}
+                           <button class="btn btn-danger"
+                                   v-if="en_array(['Administrador','Jefe de Area','Lider Equipo','App Manager'],usuario_auth.usuario_role.role.nom_role)"
+                                   @click.prevent="eliminar_usuario_servicio(su.id_servicio_usuario)"
+                                   data-placement="top" data-toggle="tooltip" title="Quitar">
+                              <i class="fa fa-close"></i>
+                           </button>
+                        </td>
                      </tr>
                      </tbody>
 
@@ -151,6 +167,8 @@
 
                </div>
             </div>
+
+
          </div>
 
 

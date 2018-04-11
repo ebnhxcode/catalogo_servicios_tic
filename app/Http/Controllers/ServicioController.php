@@ -74,7 +74,7 @@ class ServicioController extends Controller {
         $this->usuario_auth = Auth::user();
         $this->actividades = Actividad::all();
         $this->servicios = Servicio::with([
-           'actividad','usuario','servidores.aplicaciones','aplicaciones.servidor','usuarios_bitacora_servicios.usuario'
+           'actividad','usuario','servidores.aplicaciones','aplicaciones.servidor','usuarios_bitacora_servicios.usuario','servicios_usuarios.usuario'
         ])->get();
         $this->estados = Estado::all();
         $this->usuarios = User::with(['usuario_role.role'])->get();
@@ -114,6 +114,7 @@ class ServicioController extends Controller {
               'servidores.accesos',
               'aplicaciones.servidor',
               'usuarios_bitacora_servicios.usuario',
+              'servicios_usuarios.usuario',
            ])
            ->first();
 

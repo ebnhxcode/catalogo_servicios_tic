@@ -18,6 +18,7 @@ class MantenedorMiddleware
             case 'Administrador':
             case 'Jefe de Area':
             case 'Lider Equipo':
+            case 'App Manager':
                return $next($request);
                break;
 

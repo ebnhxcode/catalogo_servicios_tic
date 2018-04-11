@@ -53,6 +53,10 @@ class Servicio extends Model
       return $this->hasMany(UsuarioBitacoraServicio::class, 'id_servicio');
    }
 
+   public function servicios_usuarios /*responsables*/ () {
+      return $this->hasMany(ServicioUsuario::class, 'id_servicio');
+   }
+
    public function usuario_registra () {
       return $this->belongsTo(User::class, 'id_usuario_registra');
    }

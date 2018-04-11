@@ -2682,6 +2682,18 @@ var inyeccion_funciones_compartidas = {
        *
        *
        * */
+      eliminar_de_array_por_modelo_e_id: function eliminar_de_array_por_modelo_e_id(id, array, model) {
+         for (var a in array) {
+            if (array[a]['id_' + model] == id) {
+               return array.splice(a, 1);
+            }
+         }return null;
+      },
+
+      /*
+       *
+       *
+       * */
       eliminar: function eliminar(id) {
          var _swal,
              _this4 = this;
@@ -2735,6 +2747,18 @@ var inyeccion_funciones_compartidas = {
        *
        *
        * */
+      existe_en_array_por_modelo_e_id: function existe_en_array_por_modelo_e_id(id, array, model) {
+         for (var a in array) {
+            if (array[a]['id_' + model] == id) {
+               return true;
+            }
+         }return null;
+      },
+
+      /*
+       *
+       *
+       * */
       es_undefined: function es_undefined(v) {
          return (typeof v === 'undefined' ? 'undefined' : _typeof(v)) == undefined ? true : false;
       },
@@ -2777,6 +2801,18 @@ var inyeccion_funciones_compartidas = {
          }
          return false;
       },
+
+      /*
+       *
+       * var @boolean
+       * */
+      existe_en_arreglo: function existe_en_arreglo(id, arreglo, pkey_name) {},
+
+      /*
+       *
+       *
+       * */
+      existe_en_coleccion: function existe_en_coleccion(id, coleccion, pkey_name) {},
 
       /*
        *

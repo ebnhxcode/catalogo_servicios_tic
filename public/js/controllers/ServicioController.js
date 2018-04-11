@@ -2484,6 +2484,18 @@ var inyeccion_funciones_compartidas = {
        *
        *
        * */
+      eliminar_de_array_por_modelo_e_id: function eliminar_de_array_por_modelo_e_id(id, array, model) {
+         for (var a in array) {
+            if (array[a]['id_' + model] == id) {
+               return array.splice(a, 1);
+            }
+         }return null;
+      },
+
+      /*
+       *
+       *
+       * */
       eliminar: function eliminar(id) {
          var _swal,
              _this4 = this;
@@ -2537,6 +2549,18 @@ var inyeccion_funciones_compartidas = {
        *
        *
        * */
+      existe_en_array_por_modelo_e_id: function existe_en_array_por_modelo_e_id(id, array, model) {
+         for (var a in array) {
+            if (array[a]['id_' + model] == id) {
+               return true;
+            }
+         }return null;
+      },
+
+      /*
+       *
+       *
+       * */
       es_undefined: function es_undefined(v) {
          return (typeof v === 'undefined' ? 'undefined' : _typeof(v)) == undefined ? true : false;
       },
@@ -2579,6 +2603,18 @@ var inyeccion_funciones_compartidas = {
          }
          return false;
       },
+
+      /*
+       *
+       * var @boolean
+       * */
+      existe_en_arreglo: function existe_en_arreglo(id, arreglo, pkey_name) {},
+
+      /*
+       *
+       *
+       * */
+      existe_en_coleccion: function existe_en_coleccion(id, coleccion, pkey_name) {},
 
       /*
        *
@@ -4221,8 +4257,68 @@ var ServicioController = new Vue({
          });
       },
 
-      guardar_nuevo_usuario_servicio: function guardar_nuevo_usuario_servicio() {
+      eliminar_usuario_servicio: function eliminar_usuario_servicio(id) {
          var _this2 = this;
+
+         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+         this.$http.delete('/servicios_usuarios/' + id).then(function (response) {
+            if (response.status == 200) {
+               _this2.eliminar_de_array_por_modelo_e_id(id, _this2.servicio.servicios_usuarios, 'servicio_usuario');
+               //this.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success", 800);
+            } else {
+               _this2.checkear_estado_respuesta_http(response.status);
+               return false;
+            }
+
+            if (_this2.mostrar_notificaciones(response) == true) {
+               //Recargar la lista
+               //this.inicializar();
+            }
+         }, function (response) {
+            // error callback
+            _this2.checkear_estado_respuesta_http(response.status);
+         });
+
+         /*
+         swal({
+            title: "¿Estás seguro/a?",
+            text: "¿Deseas confirmar la eliminación de este registro?",
+            type: "warning",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            confirmButtonColor: '#DD6B55',
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: 'Si, eliminar!',
+            cancelButtonText: 'No, mantener.'
+         }).then((result) => {
+            if (result.value) {
+               //Se adjunta el token
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+                this.$http.delete(`/servicios_usuarios/${self.id}`).then(response => {
+                  if (response.status == 200) {
+                     this.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
+                  } else {
+                     this.checkear_estado_respuesta_http(response.status);
+                     return false;
+                  }
+                   if (this.mostrar_notificaciones(response) == true) {
+                     //Recargar la lista
+                     this.inicializar();
+                  }
+               }, response => { // error callback
+                  this.checkear_estado_respuesta_http(response.status);
+               });
+            } else if (result.dismiss === swal.DismissReason.cancel) {
+               this.auto_alerta_corta("Cancelado", "Se ha cancelado la eliminación", "success");
+            }
+         });
+          */
+      },
+
+      guardar_nuevo_usuario_servicio: function guardar_nuevo_usuario_servicio() {
+         var _this3 = this;
 
          //Ejecuta validacion sobre los campos con validaciones
          this.$validator.validateAll().then(function (res) {
@@ -4232,22 +4328,27 @@ var ServicioController = new Vue({
                //Instancia nuevo form data
                var formData = new FormData();
                //Conforma objeto paramétrico para solicitud http
-               formData.append('id_usuario', _this2.servicio_usuario.id_usuario);
+               formData.append('id_usuario', _this3.servicio_usuario.id_usuario);
+               formData.append('id_servicio', _this3.servicio.id_servicio);
 
-               _this2.$http.post('/servicios_usuarios', formData).then(function (response) {
+               _this3.$http.post('/servicios_usuarios', formData).then(function (response) {
                   // success callback
+
+                  //console.log(response.body);
+
                   if (response.status == 200) {
-                     console.log('Registro exitoso');
+
+                     _this3.servicio.servicios_usuarios.push(response.body.servicio_usuario);
                   } else {
-                     _this2.checkear_estado_respuesta_http(response.status);
+                     _this3.checkear_estado_respuesta_http(response.status);
                      return false;
                   }
-                  if (_this2.mostrar_notificaciones(response) == true) {
+                  if (_this3.mostrar_notificaciones(response) == true) {
                      return;
                   }
                }, function (response) {
                   // error callback
-                  _this2.checkear_estado_respuesta_http(response.status);
+                  _this3.checkear_estado_respuesta_http(response.status);
                });
             }
          });

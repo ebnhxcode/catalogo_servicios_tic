@@ -129,7 +129,8 @@ class ServicioUsuarioController extends Controller {
          'tipo' => 'creacion_exitosa', //Para las notificaciones
          'mensajes' => ["new_$this->nombre_modelo" => [0=>"Registro ($this->nombre_modelo) creado exitosamente."]],
          //Para mostrar los mensajes que van desde el backend
-         'servicio_usuario' => $this->new_servicio_usuario
+         'servicio_usuario' => ServicioUsuario::with(['usuario'])
+            ->where('id_servicio_usuario', $this->new_servicio_usuario->id_servicio_usuario)->first()
       ]);
    }
 

@@ -64,6 +64,8 @@ export const inyeccion_funciones_compartidas = {
          } return null;
       },
 
+
+
       /*
        *
        *
@@ -258,6 +260,20 @@ export const inyeccion_funciones_compartidas = {
             this.buscar_en_array_por_modelo_e_id(this.$data[`${this.nombre_model}`][`${this.pk_tabla}`], this.$data[`${this.nombre_ruta}`], this.nombre_model);
       },
 
+
+
+      /*
+       *
+       *
+       * */
+      eliminar_de_array_por_modelo_e_id: function (id, array, model) {
+         for (let a in array) {
+            if (array[a][`id_${model}`] == id) {
+               return array.splice(a, 1);
+            }
+         } return null;
+      },
+
       /*
        *
        *
@@ -310,6 +326,19 @@ export const inyeccion_funciones_compartidas = {
 
       },
 
+
+      /*
+       *
+       *
+       * */
+      existe_en_array_por_modelo_e_id: function (id, array, model) {
+         for (let a in array) {
+            if (array[a][`id_${model}`] == id) {
+               return true;
+            }
+         } return null;
+      },
+
       /*
        *
        *
@@ -347,6 +376,22 @@ export const inyeccion_funciones_compartidas = {
             return false;
          }
          return false;
+      },
+
+      /*
+       *
+       * var @boolean
+       * */
+      existe_en_arreglo: function (id, arreglo, pkey_name) {
+
+      },
+
+      /*
+       *
+       *
+       * */
+      existe_en_coleccion: function (id, coleccion, pkey_name) {
+
       },
 
       /*
