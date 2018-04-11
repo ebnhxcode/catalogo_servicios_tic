@@ -45,6 +45,10 @@ const ServicioController = new Vue({
          'servicio_usuario':{
             'id_usuario':null,
          },
+         'servicio_nueva_bitacora':{
+            'asunto':null,
+            'det_bitacora':null,
+         },
          'permitido_guardar':[
             'nom_servicio',
             'det_servicio',
@@ -275,7 +279,9 @@ const ServicioController = new Vue({
 
       guardar_nuevo_usuario_servicio: function () {
          //Ejecuta validacion sobre los campos con validaciones
-         this.$validator.validateAll().then( res => {
+         this.$validator.validate({
+            id_usuario:this.servicio_usuario.id_usuario
+         }).then( res => {
             if (res == true) {
                //Se adjunta el token
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
@@ -292,6 +298,47 @@ const ServicioController = new Vue({
                   if (response.status == 200) {
 
                      this.servicio.servicios_usuarios.push(response.body.servicio_usuario);
+
+                  } else {
+                     this.checkear_estado_respuesta_http(response.status);
+                     return false;
+                  }
+                  if (this.mostrar_notificaciones(response) == true) {
+                     return;
+                  }
+               }, response => { // error callback
+                  this.checkear_estado_respuesta_http(response.status);
+               });
+            }
+         });
+         return;
+      },
+
+      guardar_nueva_bitacora: function () {
+         //Ejecuta validacion sobre los campos con validaciones
+         console.log(this.$validator);
+         this.$validator.validate({
+            asunto:this.servicio_nueva_bitacora.asunto,
+            det_bitacora:this.servicio_nueva_bitacora.det_bitacora
+         }).then( res => {
+            if (res == true) {
+               //Se adjunta el token
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               //Instancia nuevo form data
+               var formData = new FormData();
+               //Conforma objeto paramétrico para solicitud http
+               formData.append(`asunto`, this.servicio_nueva_bitacora.asunto);
+               formData.append(`det_bitacora`, this.servicio_nueva_bitacora.det_bitacora);
+               formData.append(`id_servicio`, this.servicio.id_servicio);
+               formData.append(`id_actividad`, this.servicio.id_actividad);
+
+               this.$http.post(`/usuarios_bitacora_servicios`, formData).then(response => { // success callback
+
+                  //console.log(response.body);
+
+                  if (response.status == 200) {
+
+                     this.inicializar();
 
                   } else {
                      this.checkear_estado_respuesta_http(response.status);

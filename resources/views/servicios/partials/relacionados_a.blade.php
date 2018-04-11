@@ -62,28 +62,87 @@
 
       <div class="tab-pane fade show active" id="v-pills-bitacoras" role="tabpanel" aria-labelledby="v-pills-bitacoras-tab">
 
-         <h4>Bitácoras en este servicio</h4>
-         <table class="table table-striped table-hover table-sm" v-if="servicio.usuarios_bitacora_servicios &&
-            servicio.usuarios_bitacora_servicios.length > 0">
-            <thead>
-            <tr>
-               <th>Nombre</th>
-               <th>Descripción</th>
-               <th>Usuario</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="b in servicio.usuarios_bitacora_servicios">
-               <td>@{{ b.asunto }}</td>
-               <td>@{{ b.det_bitacora }}</td>
-               <td>@{{ b.usuario.nom_usuario }}</td>
-            </tr>
-            </tbody>
+         <h4>Crear bitácora</h4>
+         <br>
+         <div class="row">
+            <div class="col-md-6">
+               <h6>Crear nueva bitácora en este servicio</h6>
 
-         </table><!-- .table -->
-         <div class="card card-body bg-light" v-else>
-            Hasta el momento no existen bitácoras registradas.
-         </div><!-- .card -->
+               <dt>Asunto bitácora</dt>
+               <dd>
+                  <p class="control has-icon has-icon-right">
+                     <input type="text" v-model="servicio_nueva_bitacora.asunto" name="asunto"
+                            v-validate="{required:true,regex:/^[a-zA-Z0-9_ ]+$/i}" data-vv-delay="500"
+                            class="form-control" />
+
+                     <transition name="bounce">
+                        <i v-show="errors.has('asunto')" class="fa fa-exclamation-circle"></i>
+                     </transition>
+
+                     <transition name="bounce">
+                        <span v-show="errors.has('asunto')" class="text-danger small">
+                           @{{ errors.first('asunto') }}
+                        </span>
+                     </transition>
+                  </p>
+               </dd>
+
+
+               <dt>Detalle bitácora</dt>
+               <dd>
+                  <p class="control has-icon has-icon-right">
+                     <textarea cols="15" rows="1" v-model="servicio_nueva_bitacora.det_bitacora" name="det_bitacora"
+                               v-validate="{required:true,regex:/^[a-zA-Z0-9_ ,.!@#$%*&]+$/i}" data-vv-delay="500"
+                               class="form-control"></textarea>
+
+                     <transition name="bounce">
+                        <i v-show="errors.has('det_bitacora')" class="fa fa-exclamation-circle"></i>
+                     </transition>
+
+                     <transition name="bounce">
+                        <span v-show="errors.has('det_bitacora')" class="text-danger small">
+                           @{{ errors.first('det_bitacora') }}
+                        </span>
+                     </transition>
+                  </p>
+               </dd>
+
+               <dt>Finalizar</dt>
+               <dd>
+                  <button class="btn btn-success" @click.prevent="guardar_nueva_bitacora">
+                     Agregar
+                  </button>
+               </dd>
+
+            </div>
+
+            <div class="col-md-6">
+               <h6>Bitácoras en este servicio</h6>
+               <div class="table-responsive">
+                  <table class="table table-striped table-hover table-sm" v-if="servicio.usuarios_bitacora_servicios &&
+            servicio.usuarios_bitacora_servicios.length > 0">
+                     <thead>
+                     <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Usuario</th>
+                     </tr>
+                     </thead>
+                     <tbody>
+                     <tr v-for="b in servicio.usuarios_bitacora_servicios">
+                        <td>@{{ b.asunto }}</td>
+                        <td>@{{ b.det_bitacora }}</td>
+                        <td>@{{ b.usuario.nom_usuario }}</td>
+                     </tr>
+                     </tbody>
+
+                  </table><!-- .table -->
+                  <div class="card card-body bg-light" v-else>
+                     Hasta el momento no existen bitácoras registradas.
+                  </div><!-- .card -->
+               </div>
+            </div>
+         </div>
 
       </div>
 
@@ -110,9 +169,12 @@
                         </option>
                      </select>
                      <br>
-                     <button class="btn btn-success" @click.prevent="guardar_nuevo_usuario_servicio">
-                        Agregar
-                     </button>
+                     <dt>Finalizar</dt>
+                     <dd>
+                        <button class="btn btn-success" @click.prevent="guardar_nuevo_usuario_servicio">
+                           Agregar
+                        </button>
+                     </dd>
 
                      <transition name="bounce">
                         <i v-show="errors.has('id_usuario')" class="fa fa-exclamation-circle"></i>

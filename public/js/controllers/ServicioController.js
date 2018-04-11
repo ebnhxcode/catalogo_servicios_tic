@@ -4096,6 +4096,10 @@ var ServicioController = new Vue({
          'servicio_usuario': {
             'id_usuario': null
          },
+         'servicio_nueva_bitacora': {
+            'asunto': null,
+            'det_bitacora': null
+         },
          'permitido_guardar': ['nom_servicio', 'det_servicio', 'id_actividad', 'id_usuario'],
          'relaciones_clase': [{ 'actividad': ['id_actividad', 'nom_actividad'] }, { 'usuario': ['id_usuario', 'nom_usuario'] }],
 
@@ -4321,7 +4325,9 @@ var ServicioController = new Vue({
          var _this3 = this;
 
          //Ejecuta validacion sobre los campos con validaciones
-         this.$validator.validateAll().then(function (res) {
+         this.$validator.validate({
+            id_usuario: this.servicio_usuario.id_usuario
+         }).then(function (res) {
             if (res == true) {
                //Se adjunta el token
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
@@ -4349,6 +4355,50 @@ var ServicioController = new Vue({
                }, function (response) {
                   // error callback
                   _this3.checkear_estado_respuesta_http(response.status);
+               });
+            }
+         });
+         return;
+      },
+
+      guardar_nueva_bitacora: function guardar_nueva_bitacora() {
+         var _this4 = this;
+
+         //Ejecuta validacion sobre los campos con validaciones
+         console.log(this.$validator);
+         this.$validator.validate({
+            asunto: this.servicio_nueva_bitacora.asunto,
+            det_bitacora: this.servicio_nueva_bitacora.det_bitacora
+         }).then(function (res) {
+            if (res == true) {
+               //Se adjunta el token
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               //Instancia nuevo form data
+               var formData = new FormData();
+               //Conforma objeto paramétrico para solicitud http
+               formData.append('asunto', _this4.servicio_nueva_bitacora.asunto);
+               formData.append('det_bitacora', _this4.servicio_nueva_bitacora.det_bitacora);
+               formData.append('id_servicio', _this4.servicio.id_servicio);
+               formData.append('id_actividad', _this4.servicio.id_actividad);
+
+               _this4.$http.post('/usuarios_bitacora_servicios', formData).then(function (response) {
+                  // success callback
+
+                  //console.log(response.body);
+
+                  if (response.status == 200) {
+
+                     _this4.inicializar();
+                  } else {
+                     _this4.checkear_estado_respuesta_http(response.status);
+                     return false;
+                  }
+                  if (_this4.mostrar_notificaciones(response) == true) {
+                     return;
+                  }
+               }, function (response) {
+                  // error callback
+                  _this4.checkear_estado_respuesta_http(response.status);
                });
             }
          });
