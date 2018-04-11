@@ -4321,11 +4321,51 @@ var ServicioController = new Vue({
           */
       },
 
-      guardar_nuevo_usuario_servicio: function guardar_nuevo_usuario_servicio() {
+      eliminar_bitacora_usuario: function eliminar_bitacora_usuario(id) {
          var _this3 = this;
 
+         __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()({
+            title: "¿Estás seguro/a?",
+            text: "¿Deseas confirmar la eliminación de este registro?",
+            type: "warning",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            confirmButtonColor: '#DD6B55',
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: 'Si, eliminar!',
+            cancelButtonText: 'No, mantener.'
+         }).then(function (result) {
+            if (result.value) {
+               //Se adjunta el token
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+               _this3.$http.delete('/usuarios_bitacora_servicios/' + id).then(function (response) {
+                  if (response.status == 200) {
+                     _this3.eliminar_de_array_por_modelo_e_id(id, _this3.servicio.usuarios_bitacora_servicios, 'usuario_bitacora_servicio');
+                     //this.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success", 800);
+                  } else {
+                     _this3.checkear_estado_respuesta_http(response.status);
+                     return false;
+                  }
+
+                  if (_this3.mostrar_notificaciones(response) == true) {
+                     //Recargar la lista
+                     //this.inicializar();
+                  }
+               }, function (response) {
+                  // error callback
+                  _this3.checkear_estado_respuesta_http(response.status);
+               });
+            }
+         });
+      },
+
+      guardar_nuevo_usuario_servicio: function guardar_nuevo_usuario_servicio() {
+         var _this4 = this;
+
          //Ejecuta validacion sobre los campos con validaciones
-         this.$validator.validate({
+         this.$validator.validateAll({
             id_usuario: this.servicio_usuario.id_usuario
          }).then(function (res) {
             if (res == true) {
@@ -4334,61 +4374,17 @@ var ServicioController = new Vue({
                //Instancia nuevo form data
                var formData = new FormData();
                //Conforma objeto paramétrico para solicitud http
-               formData.append('id_usuario', _this3.servicio_usuario.id_usuario);
-               formData.append('id_servicio', _this3.servicio.id_servicio);
-
-               _this3.$http.post('/servicios_usuarios', formData).then(function (response) {
-                  // success callback
-
-                  //console.log(response.body);
-
-                  if (response.status == 200) {
-
-                     _this3.servicio.servicios_usuarios.push(response.body.servicio_usuario);
-                  } else {
-                     _this3.checkear_estado_respuesta_http(response.status);
-                     return false;
-                  }
-                  if (_this3.mostrar_notificaciones(response) == true) {
-                     return;
-                  }
-               }, function (response) {
-                  // error callback
-                  _this3.checkear_estado_respuesta_http(response.status);
-               });
-            }
-         });
-         return;
-      },
-
-      guardar_nueva_bitacora: function guardar_nueva_bitacora() {
-         var _this4 = this;
-
-         //Ejecuta validacion sobre los campos con validaciones
-         console.log(this.$validator);
-         this.$validator.validate({
-            asunto: this.servicio_nueva_bitacora.asunto,
-            det_bitacora: this.servicio_nueva_bitacora.det_bitacora
-         }).then(function (res) {
-            if (res == true) {
-               //Se adjunta el token
-               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-               //Instancia nuevo form data
-               var formData = new FormData();
-               //Conforma objeto paramétrico para solicitud http
-               formData.append('asunto', _this4.servicio_nueva_bitacora.asunto);
-               formData.append('det_bitacora', _this4.servicio_nueva_bitacora.det_bitacora);
+               formData.append('id_usuario', _this4.servicio_usuario.id_usuario);
                formData.append('id_servicio', _this4.servicio.id_servicio);
-               formData.append('id_actividad', _this4.servicio.id_actividad);
 
-               _this4.$http.post('/usuarios_bitacora_servicios', formData).then(function (response) {
+               _this4.$http.post('/servicios_usuarios', formData).then(function (response) {
                   // success callback
 
                   //console.log(response.body);
 
                   if (response.status == 200) {
 
-                     _this4.inicializar();
+                     _this4.servicio.servicios_usuarios.push(response.body.servicio_usuario);
                   } else {
                      _this4.checkear_estado_respuesta_http(response.status);
                      return false;
@@ -4399,6 +4395,55 @@ var ServicioController = new Vue({
                }, function (response) {
                   // error callback
                   _this4.checkear_estado_respuesta_http(response.status);
+               });
+            }
+         });
+         return;
+      },
+
+      guardar_nueva_bitacora: function guardar_nueva_bitacora() {
+         var _this5 = this;
+
+         //Ejecuta validacion sobre los campos con validaciones
+         this.$validator.validateAll({
+            asunto: this.servicio_nueva_bitacora.asunto,
+            det_bitacora: this.servicio_nueva_bitacora.det_bitacora
+         }).then(function (res) {
+            if (res == true) {
+               //Se adjunta el token
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               //Instancia nuevo form data
+               var formData = new FormData();
+               //Conforma objeto paramétrico para solicitud http
+               formData.append('asunto', _this5.servicio_nueva_bitacora.asunto);
+               formData.append('det_bitacora', _this5.servicio_nueva_bitacora.det_bitacora);
+               formData.append('id_servicio', _this5.servicio.id_servicio);
+               formData.append('id_actividad', _this5.servicio.id_actividad);
+
+               _this5.$http.post('/usuarios_bitacora_servicios', formData).then(function (response) {
+                  // success callback
+
+                  //console.log(response.body);
+
+                  if (response.status == 200) {
+                     console.log(response.body.usuario_bitacora_servicio);
+
+                     _this5.servicio_nueva_bitacora.asunto = null;
+                     _this5.servicio_nueva_bitacora.det_bitacora = null;
+                     _this5.servicio.usuarios_bitacora_servicios.push(response.body.usuario_bitacora_servicio);
+                     /*
+                      this.inicializar();
+                     */
+                  } else {
+                     _this5.checkear_estado_respuesta_http(response.status);
+                     return false;
+                  }
+                  if (_this5.mostrar_notificaciones(response) == true) {
+                     return;
+                  }
+               }, function (response) {
+                  // error callback
+                  _this5.checkear_estado_respuesta_http(response.status);
                });
             }
          });

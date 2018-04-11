@@ -143,7 +143,8 @@ class UsuarioBitacoraServicioController extends Controller {
          'tipo' => 'creacion_exitosa', //Para las notificaciones
          'mensajes' => ["new_$this->nombre_modelo" => [0=>"Registro ($this->nombre_modelo) creado exitosamente."]],
          //Para mostrar los mensajes que van desde el backend
-         'usuario_bitacora_servicio' => $this->new_usuario_bitacora_servicio
+         'usuario_bitacora_servicio' => UsuarioBitacoraServicio::with(['usuario'])
+            ->where('id_usuario_bitacora_servicio', $this->new_usuario_bitacora_servicio->id_usuario_bitacora_servicio)->first()
       ]);
    }
 

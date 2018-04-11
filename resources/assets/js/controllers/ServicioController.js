@@ -277,9 +277,52 @@ const ServicioController = new Vue({
          */
       },
 
+      eliminar_bitacora_usuario: function (id) {
+
+         swal({
+            title: "¿Estás seguro/a?",
+            text: "¿Deseas confirmar la eliminación de este registro?",
+            type: "warning",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            confirmButtonColor: '#DD6B55',
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: 'Si, eliminar!',
+            cancelButtonText: 'No, mantener.'
+         }).then((result) => {
+            if (result.value) {
+               //Se adjunta el token
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+               this.$http.delete(`/usuarios_bitacora_servicios/${id}`).then(response => {
+                  if (response.status == 200) {
+                     this.eliminar_de_array_por_modelo_e_id(id, this.servicio.usuarios_bitacora_servicios, 'usuario_bitacora_servicio');
+                     //this.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success", 800);
+                  } else {
+                     this.checkear_estado_respuesta_http(response.status);
+                     return false;
+                  }
+
+                  if (this.mostrar_notificaciones(response) == true) {
+                     //Recargar la lista
+                     //this.inicializar();
+                  }
+               }, response => { // error callback
+                  this.checkear_estado_respuesta_http(response.status);
+               })
+            }
+         });
+
+
+
+
+
+      },
+
       guardar_nuevo_usuario_servicio: function () {
          //Ejecuta validacion sobre los campos con validaciones
-         this.$validator.validate({
+         this.$validator.validateAll({
             id_usuario:this.servicio_usuario.id_usuario
          }).then( res => {
             if (res == true) {
@@ -316,8 +359,7 @@ const ServicioController = new Vue({
 
       guardar_nueva_bitacora: function () {
          //Ejecuta validacion sobre los campos con validaciones
-         console.log(this.$validator);
-         this.$validator.validate({
+         this.$validator.validateAll({
             asunto:this.servicio_nueva_bitacora.asunto,
             det_bitacora:this.servicio_nueva_bitacora.det_bitacora
          }).then( res => {
@@ -337,8 +379,17 @@ const ServicioController = new Vue({
                   //console.log(response.body);
 
                   if (response.status == 200) {
+                     console.log(response.body.usuario_bitacora_servicio);
+
+                     this.servicio_nueva_bitacora.asunto = null;
+                     this.servicio_nueva_bitacora.det_bitacora = null;
+                     this.servicio.usuarios_bitacora_servicios.push(response.body.usuario_bitacora_servicio);
+                     /*
 
                      this.inicializar();
+                     */
+
+
 
                   } else {
                      this.checkear_estado_respuesta_http(response.status);

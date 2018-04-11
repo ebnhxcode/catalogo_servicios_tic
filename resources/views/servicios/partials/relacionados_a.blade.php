@@ -65,7 +65,7 @@
          <h4>Crear bitácora</h4>
          <br>
          <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                <h6>Crear nueva bitácora en este servicio</h6>
 
                <dt>Asunto bitácora</dt>
@@ -116,7 +116,7 @@
 
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-8">
                <h6>Bitácoras en este servicio</h6>
                <div class="table-responsive">
                   <table class="table table-striped table-hover table-sm" v-if="servicio.usuarios_bitacora_servicios &&
@@ -126,6 +126,7 @@
                         <th>Nombre</th>
                         <th>Descripción</th>
                         <th>Usuario</th>
+                        <th>Acción</th>
                      </tr>
                      </thead>
                      <tbody>
@@ -133,6 +134,15 @@
                         <td>@{{ b.asunto }}</td>
                         <td>@{{ b.det_bitacora }}</td>
                         <td>@{{ b.usuario.nom_usuario }}</td>
+                        <td>
+                           <button class="btn btn-danger"
+                                   v-if="en_array(['Administrador','Jefe de Area','Lider Equipo','App Manager'],usuario_auth.usuario_role.role.nom_role) &&
+                                   b.id_usuario == usuario_auth.id_usuario"
+                                   @click.prevent="eliminar_bitacora_usuario(b.id_usuario_bitacora_servicio)"
+                                   data-placement="top" data-toggle="tooltip" title="Quitar">
+                              <i class="fa fa-close"></i>
+                           </button>
+                        </td>
                      </tr>
                      </tbody>
 
@@ -151,7 +161,7 @@
          <h4>Usuarios responsables en el servicio</h4>
          <br>
          <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                <h6>Seleccione y agregue nuevo usuario responsable</h6>
 
                <dt></dt>
@@ -191,7 +201,7 @@
 
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-8">
                <h6>Tabla de usuarios asociados</h6>
 
                <div class="table-responsive">
@@ -211,7 +221,6 @@
                         <td>@{{ su.usuario.ape_paterno }}</td>
                         <td>@{{ su.usuario.email }}</td>
                         <td>
-                           @{{ su.id_servicio_usuario }}
                            <button class="btn btn-danger"
                                    v-if="en_array(['Administrador','Jefe de Area','Lider Equipo','App Manager'],usuario_auth.usuario_role.role.nom_role)"
                                    @click.prevent="eliminar_usuario_servicio(su.id_servicio_usuario)"
