@@ -21,7 +21,10 @@
       <template v-if="id_en_edicion != lom[`id_${nombre_model}`] || modal_actualizar_activo == true">
          <td v-for="c,i in tabla_campos" v-show="c">
             {{-- se corre por detras la completitud de relaciones. --}}
-            @{{ lom[i] }}
+            <div v-if="en_array(['nom_servicio','det_servicio'],i)" @click.prevent="mostrar_modal_actualizar(lom[`id_${nombre_model}`])">
+               @{{ lom[i] }}
+            </div>
+            <div v-else>@{{ lom[i] }}</div>
          </td>
       </template>
       <template v-else>
