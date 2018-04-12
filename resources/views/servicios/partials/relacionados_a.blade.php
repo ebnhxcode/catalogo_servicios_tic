@@ -167,7 +167,7 @@
                <dt></dt>
                <dd>
                   <p class="control has-icon has-icon-right">
-                     <select class="form-control" v-model="servicio_usuario.id_usuario" name="id_usuario"
+                     <select class="custom-select btn btn-outline-dark" v-model="servicio_usuario.id_usuario" name="id_usuario"
                              v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
                         <option :value="u.id_usuario" v-for="u in usuarios"
                                 {{--
@@ -210,8 +210,8 @@
                      <thead>
                      <tr>
                         <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>Usuario</th>
+                        <th>Apellido</th>
+                        <th>Email</th>
                         <th>Acción</th>
                      </tr>
                      </thead>

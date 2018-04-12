@@ -1,5 +1,5 @@
 <div class="row">
-   <div class="col-sm-4 col-md-4">
+   <div class="col-sm-12 col-md-3">
 
       <!-- este bloque será reemplazado dinamicamente -->
       <div class="card pro" style="{{--width: 18rem;--}}">
@@ -31,18 +31,69 @@
       <!-- este bloque será reemplazado dinamicamente -->
       <div class="card pro" style="{{--width: 18rem;--}}">
          <div class="card-body">
-            <h5 class="card-title">
+            <h6 class="card-title">
                Actividad a la que pertenece
-            </h5>
+            </h6>
             <p class="card-text">
 
             <dl class="row" v-if="servicio.actividad">
 
-               <dt class="col-md-6">Nombre actividad</dt>
-               <dd class="col-md-6">@{{ servicio.actividad.nom_actividad || 0 }}</dd>
+               <dt class="col-md-12">Nombre actividad</dt>
+               <dd class="col-md-12">@{{ servicio.actividad.nom_actividad || 0 }}</dd>
 
-               <dt class="col-md-6">Detalle actividad</dt>
-               <dd class="col-md-6">@{{ servicio.actividad.det_actividad || 0 }}</dd>
+               <br>
+
+               <dt class="col-md-12">Detalle actividad</dt>
+               <dd class="col-md-12">@{{ servicio.actividad.det_actividad || 0 }}</dd>
+
+            </dl>
+            <dl v-else>
+               No hay información de actividad.
+            </dl>
+
+            </p>
+            {{--<a href="#" class="btn btn-primary">Go somewhere</a>--}}
+         </div><!-- .card-body -->
+      </div><!-- .card -->
+
+
+
+
+
+      <!-- este bloque será reemplazado dinamicamente -->
+      <div class="card pro" style="{{--width: 18rem;--}}">
+         <div class="card-body">
+            <h6 class="card-title">
+               Tabla de usuarios asociados
+            </h6>
+            <p class="card-text">
+
+            <dl class="row" v-if="servicio.servicios_usuarios">
+
+               <div class="table-responsive">
+                  <table class="table table-striped table-hover table-sm"
+                         v-if="servicio.servicios_usuarios && servicio.servicios_usuarios.length > 0">
+                     <thead>
+                     <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Email</th>
+                     </tr>
+                     </thead>
+                     <tbody>
+                     <tr v-for="su in servicio.servicios_usuarios" v-if="su.usuario">
+                        <td>@{{ su.usuario.nom_usuario }}</td>
+                        <td>@{{ su.usuario.ape_paterno }}</td>
+                        <td>@{{ su.usuario.email }}</td>
+                     </tr>
+                     </tbody>
+
+                  </table><!-- .table -->
+                  <div class="card card-body bg-light" v-else>
+                     Hasta el momento no existen responsables asociados.
+                  </div><!-- .card -->
+
+               </div>
 
             </dl>
             <dl v-else>
@@ -57,7 +108,7 @@
 
    </div><!-- .col -->
 
-   <div class="col-sm-8 col-md-8">
+   <div class="col-sm-12 col-md-9">
 
       <div class="row">
          <div class="col-sm-12">
