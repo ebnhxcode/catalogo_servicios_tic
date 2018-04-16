@@ -158,12 +158,12 @@ const ServidorController = new Vue({
 
          'tabla_campos': {
             'nom_servidor':true,
-            'det_servidor':true,
+            'det_servidor':false,
             'ip_servidor':true,
             'ram':true,
             'memoria_dd':true,
-            'swap':false,
-            'procesador':false,
+            //'swap':false,
+            //'procesador':false,
             //'modelo_procesador':false,
             //'frec_procesador':false,
             'nucleos':false,
