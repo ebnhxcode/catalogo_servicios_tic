@@ -54,8 +54,8 @@
          filter: grayscale(100%);
          *//* Safari 6.0 - 9.0 */
          /**/
-         -webkit-filter: blur(3px);
-         filter: blur(3px);
+         -webkit-filter: blur(0px);
+         filter: blur(0px);
          /**//* Safari 6.0 - 9.0 */
       }
    </style>

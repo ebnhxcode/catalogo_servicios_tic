@@ -35,7 +35,7 @@
          </h3>
 
          <div class="card-columns{{--card-deck--}}" v-show="filterBy(home_items, filtro_head).length > 0">
-            <div class="card bg-primary text-white border-light mb-3" v-for="i in filterBy(home_items, filtro_head)">
+            <div class="card bg-primary text-white border-light mb-12" v-for="i in filterBy(home_items, filtro_head)">
                {{--<div class="card-header">@{{ i.nom_menu }}</div>--}}
                <div class="img-responsive">
                   <img class="card-img-top" :src="i.imagen_menu || `/img/logo180-180.png`">
