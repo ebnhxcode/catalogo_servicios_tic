@@ -2279,8 +2279,8 @@ var VlanController = new Vue({
             'nom_vlan': true,
             'det_vlan': true,
             'cod_vlan': true,
-            'id_usuario_registra': false,
-            'id_usuario_modifica': false,
+            //'id_usuario_registra':false,
+            //'id_usuario_modifica':false,
             'created_at': false,
             'updated_at': false,
             'deleted_at': false

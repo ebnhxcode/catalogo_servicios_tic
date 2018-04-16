@@ -4123,7 +4123,7 @@ var UsuarioController = new Vue({
          'orden_lista': 'asc',
 
          'tabla_campos': {
-            'id_usuario': false,
+            //'id_usuario': false,
             'nom_usuario': true,
             'nom_completo': false,
             'ape_paterno': true,
