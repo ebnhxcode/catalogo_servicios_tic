@@ -140,13 +140,16 @@ const UsuarioController = new Vue({
             'ape_materno': 'String',
             'username': 'String',
             'email': 'String',
-            'password': 'String',
-            'remember_token': 'String',
-            'id_usuario_registra': 'String',
-            'id_usuario_modifica': 'String',
+            //'password': 'String',
+            //'remember_token': 'String',
+            //'id_usuario_registra': 'String',
+            //'id_usuario_modifica': 'String',
             'id_role': 'String',
+            'nom_role': 'String',
             'id_estado': 'String',
+            'nom_estado': 'String',
             'id_cargo': 'String',
+            'nom_cargo': 'String',
             'created_at': 'String',
             'updated_at': 'String',
             'deleted_at': 'String'
@@ -180,13 +183,16 @@ const UsuarioController = new Vue({
                'ape_materno': usuario.ape_materno || '-',
                'username': usuario.username || '-',
                'email': usuario.email || '-',
-               'password': usuario.password || '-',
-               'remember_token': usuario.remember_token || '-',
-               'id_usuario_registra': usuario.id_usuario_registra || '-',
-               'id_usuario_modifica': usuario.id_usuario_modifica || '-',
+               //'password': usuario.password || '-',
+               //'remember_token': usuario.remember_token || '-',
+               //'id_usuario_registra': usuario.id_usuario_registra || '-',
+               //'id_usuario_modifica': usuario.id_usuario_modifica || '-',
                'id_role': usuario.id_role || '-',
+               'nom_role': usuario.nom_role || '-',
                'id_estado': usuario.id_estado || '-',
+               'nom_estado': usuario.nom_estado || '-',
                'id_cargo': usuario.id_cargo || '-',
+               'nom_cargo': usuario.nom_cargo || '-',
                'created_at': usuario.created_at || '-',
                'updated_at': usuario.updated_at || '-',
                'deleted_at': usuario.deleted_at || '-'
@@ -199,20 +205,6 @@ const UsuarioController = new Vue({
    },
    created(){
       this.inicializar();
-
-      /*
-       $(document).ready(function () {
-       //Handle al recargar pagina
-       window.onbeforeunload = function(e){
-       return "Estás seguro que deseas cerrar la ventana?";
-       };
-       window.onunload = function(e){
-       return "Cierre de la ventana";
-       };
-
-       });
-       */
-
    },
    ready: {},
    filters: {},

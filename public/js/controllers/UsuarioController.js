@@ -3041,7 +3041,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       },
       'fields': {
          type: Object,
-         required: true
+         required: false
+      },
+      'labels': {
+         type: Object,
+         required: false
       },
       'name': {
          type: String,
@@ -3068,11 +3072,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
          for (var colName in this.fields) {
             headerRow += '  <ss:Cell>\n';
             headerRow += '    <ss:Data ss:Type="String">';
-            headerRow += colName + '</ss:Data>\n';
+            headerRow += (this.labels[colName] || colName) + '</ss:Data>\n';
             headerRow += '  </ss:Cell>\n';
          }
          headerRow += '</ss:Row>\n';
-         return '<?xml version="1.0"?>\n' + '<ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">\n' + '<ss:Worksheet ss:Name="Sheet1">\n' + '<ss:Table>\n\n' + headerRow;
+         //'<ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">\n' +
+         return '<?xml version="1.0"?>\n' + '<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"\n' + 'xmlns:o="urn:schemas-microsoft-com:office:office"\n' + 'xmlns:x="urn:schemas-microsoft-com:office:excel"\n' + 'xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"\n' + 'xmlns:html="http://www.w3.org/TR/REC-html40">\n' + '<ss:Worksheet ss:Name="Sheet1">\n' + '<ss:Table>\n\n' + headerRow;
       },
 
       emitXmlFooter: function emitXmlFooter() {
@@ -4162,8 +4167,8 @@ var UsuarioController = new Vue({
             //'id_cargo': false,
             'nom_cargo': false,
             'created_at': false,
-            'updated_at': false,
-            'deleted_at': false
+            'updated_at': false
+            //'deleted_at': false,
          },
 
          'tabla_labels': {
@@ -4197,13 +4202,16 @@ var UsuarioController = new Vue({
             'ape_materno': 'String',
             'username': 'String',
             'email': 'String',
-            'password': 'String',
-            'remember_token': 'String',
-            'id_usuario_registra': 'String',
-            'id_usuario_modifica': 'String',
+            //'password': 'String',
+            //'remember_token': 'String',
+            //'id_usuario_registra': 'String',
+            //'id_usuario_modifica': 'String',
             'id_role': 'String',
+            'nom_role': 'String',
             'id_estado': 'String',
+            'nom_estado': 'String',
             'id_cargo': 'String',
+            'nom_cargo': 'String',
             'created_at': 'String',
             'updated_at': 'String',
             'deleted_at': 'String'
@@ -4241,13 +4249,16 @@ var UsuarioController = new Vue({
                'ape_materno': usuario.ape_materno || '-',
                'username': usuario.username || '-',
                'email': usuario.email || '-',
-               'password': usuario.password || '-',
-               'remember_token': usuario.remember_token || '-',
-               'id_usuario_registra': usuario.id_usuario_registra || '-',
-               'id_usuario_modifica': usuario.id_usuario_modifica || '-',
+               //'password': usuario.password || '-',
+               //'remember_token': usuario.remember_token || '-',
+               //'id_usuario_registra': usuario.id_usuario_registra || '-',
+               //'id_usuario_modifica': usuario.id_usuario_modifica || '-',
                'id_role': usuario.id_role || '-',
+               'nom_role': usuario.nom_role || '-',
                'id_estado': usuario.id_estado || '-',
+               'nom_estado': usuario.nom_estado || '-',
                'id_cargo': usuario.id_cargo || '-',
+               'nom_cargo': usuario.nom_cargo || '-',
                'created_at': usuario.created_at || '-',
                'updated_at': usuario.updated_at || '-',
                'deleted_at': usuario.deleted_at || '-'
@@ -4260,18 +4271,6 @@ var UsuarioController = new Vue({
    },
    created: function created() {
       this.inicializar();
-
-      /*
-       $(document).ready(function () {
-       //Handle al recargar pagina
-       window.onbeforeunload = function(e){
-       return "Estás seguro que deseas cerrar la ventana?";
-       };
-       window.onunload = function(e){
-       return "Cierre de la ventana";
-       };
-        });
-       */
    },
 
    ready: {},

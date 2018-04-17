@@ -19,7 +19,11 @@
          },
          'fields': {
             type: Object,
-            required: true
+            required: false
+         },
+         'labels': {
+            type: Object,
+            required: false
          },
          'name': {
             type: String,
@@ -47,12 +51,17 @@
             for (var colName in this.fields) {
                headerRow += '  <ss:Cell>\n';
                headerRow += '    <ss:Data ss:Type="String">';
-               headerRow += colName + '</ss:Data>\n';
+               headerRow += (this.labels[colName] || colName) + '</ss:Data>\n';
                headerRow += '  </ss:Cell>\n';
             }
             headerRow += '</ss:Row>\n';
+            //'<ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">\n' +
             return '<?xml version="1.0"?>\n' +
-               '<ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">\n' +
+               '<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"\n' +
+               'xmlns:o="urn:schemas-microsoft-com:office:office"\n' +
+               'xmlns:x="urn:schemas-microsoft-com:office:excel"\n' +
+               'xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"\n' +
+               'xmlns:html="http://www.w3.org/TR/REC-html40">\n' +
                '<ss:Worksheet ss:Name="Sheet1">\n' +
                '<ss:Table>\n\n' + headerRow;
          },

@@ -43,10 +43,11 @@
                      <!-- Esta seccion ya es un componente, se podria estandarizar solo el nombre de los obj para excel -->
                      <download-excel
                         v-if="(excel_data_contador = filterBy(datos_excel, filtro_head).length) > 0 &&
-                           en_array(['Administrador','Jefe de Area','Lider Equipo'],usuario_auth.usuario_role.role.nom_role)"
-                        :data="filterBy(datos_excel, filtro_head)"
+                           en_array(['Administrador','Jefe de Area','Lider Equipo','App Manager'],usuario_auth.usuario_role.role.nom_role)"
+                        :data="filterBy(excel_json_datos, filtro_head)"
                         :fields="excel_json_campos"
-                        name="datos_excel.xls"
+                        :labels="tabla_labels"
+                        :name="`${nombre_tabla}.xls`"
                         class="dropdown-item">
                         Descargar Excel
                      </download-excel>

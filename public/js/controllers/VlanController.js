@@ -2247,6 +2247,8 @@ var VlanController = new Vue({
             'nom_vlan': null,
             'det_vlan': null,
             'cod_vlan': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
             'created_at': null,
             'updated_at': null,
             'deleted_at': null
@@ -2279,8 +2281,8 @@ var VlanController = new Vue({
             'det_vlan': true,
             'cod_vlan': true,
             'created_at': false,
-            'updated_at': false,
-            'deleted_at': false
+            'updated_at': false
+            //'deleted_at':false,
          },
 
          /* Etiquetas */
@@ -2289,6 +2291,8 @@ var VlanController = new Vue({
             'nom_vlan': 'Nombre vlan',
             'det_vlan': 'Detalle vlan',
             'cod_vlan': 'Codigo vlan',
+            'id_usuario_registra': 'Usuario registra',
+            'id_usuario_modifica': 'Usuario modifica',
             'created_at': 'Creado en',
             'updated_at': 'Actualizado en',
             'deleted_at': 'Eliminado en'
@@ -3221,7 +3225,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       },
       'fields': {
          type: Object,
-         required: true
+         required: false
+      },
+      'labels': {
+         type: Object,
+         required: false
       },
       'name': {
          type: String,
@@ -3248,11 +3256,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
          for (var colName in this.fields) {
             headerRow += '  <ss:Cell>\n';
             headerRow += '    <ss:Data ss:Type="String">';
-            headerRow += colName + '</ss:Data>\n';
+            headerRow += (this.labels[colName] || colName) + '</ss:Data>\n';
             headerRow += '  </ss:Cell>\n';
          }
          headerRow += '</ss:Row>\n';
-         return '<?xml version="1.0"?>\n' + '<ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">\n' + '<ss:Worksheet ss:Name="Sheet1">\n' + '<ss:Table>\n\n' + headerRow;
+         //'<ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">\n' +
+         return '<?xml version="1.0"?>\n' + '<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"\n' + 'xmlns:o="urn:schemas-microsoft-com:office:office"\n' + 'xmlns:x="urn:schemas-microsoft-com:office:excel"\n' + 'xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"\n' + 'xmlns:html="http://www.w3.org/TR/REC-html40">\n' + '<ss:Worksheet ss:Name="Sheet1">\n' + '<ss:Table>\n\n' + headerRow;
       },
 
       emitXmlFooter: function emitXmlFooter() {

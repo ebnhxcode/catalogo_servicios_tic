@@ -31,6 +31,8 @@ const VlanController = new Vue({
             'nom_vlan':null,
             'det_vlan':null,
             'cod_vlan':null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
             'created_at':null,
             'updated_at':null,
             'deleted_at':null,
@@ -77,6 +79,8 @@ const VlanController = new Vue({
             'nom_vlan':'Nombre vlan',
             'det_vlan':'Detalle vlan',
             'cod_vlan':'Codigo vlan',
+            'id_usuario_registra': 'Usuario registra',
+            'id_usuario_modifica': 'Usuario modifica',
             'created_at':'Creado en',
             'updated_at':'Actualizado en',
             'deleted_at':'Eliminado en'
