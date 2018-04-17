@@ -106,7 +106,7 @@ const UsuarioController = new Vue({
             'nom_cargo': false,
             'created_at': false,
             'updated_at': false,
-            'deleted_at': false,
+            //'deleted_at': false,
          },
 
          'tabla_labels': {

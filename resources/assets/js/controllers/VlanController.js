@@ -68,7 +68,7 @@ const VlanController = new Vue({
             'cod_vlan':true,
             'created_at':false,
             'updated_at':false,
-            'deleted_at':false,
+            //'deleted_at':false,
          },
 
           /* Etiquetas */
@@ -88,6 +88,8 @@ const VlanController = new Vue({
             'nom_vlan': 'String',
             'det_vlan': 'String',
             'cod_vlan': 'String',
+            'id_usuario_registra': 'String',
+            'id_usuario_modifica': 'String',
             'created_at': 'String',
             'updated_at': 'String',
             'deleted_at': 'String'

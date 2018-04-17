@@ -202,7 +202,7 @@ nú
 
                   <h5
                      class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                     <span class="h6">Principales</span>
+                     <span class="h6"><b>MENU PRINCIPAL</b></span>
                      <i class="fa fa-sort-alpha-asc btn btn-info btn-sm" @click.prevent="cambiar_orden_lista('nom_menu','menus')" aria-hidden="true"
                         data-placement="top" data-toggle="tooltip" title="Clic para ordenar menu principal"></i>
                   </h5>
@@ -223,7 +223,7 @@ nú
                   <div v-if="mantenedores && mantenedores.length > 0">
                      <h5
                         class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                        <span class="h6">Mantenedores</span>
+                        <span class="h6"><b>MANTENEDORES</b></span>
                         <i class="fa fa-sort-alpha-asc btn btn-info btn-sm" @click.prevent="cambiar_orden_lista('nom_mantenedor','mantenedores')" aria-hidden="true"
                            data-placement="top" data-toggle="tooltip" title="Clic para ordenar menu de mantenedores"></i>
                      </h5>
@@ -272,6 +272,7 @@ nú
 <script>
    $(document).ready(function() {
       $('body').bootstrapMaterialDesign();
+      $('[data-toggle="tooltip"]').tooltip();
       $('[data-toggle="tooltip"]').tooltip();
    });
 </script>
