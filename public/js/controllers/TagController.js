@@ -2280,8 +2280,8 @@ var TagController = new Vue({
             'nom_tag': true,
             'det_tag': true,
             'meta_tag': true,
-            'id_usuario_registra': false,
-            'id_usuario_modifica': false,
+            //'id_usuario_registra':false,
+            //'id_usuario_modifica':false,
             'created_at': false,
             'updated_at': false,
             'deleted_at': false

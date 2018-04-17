@@ -4098,7 +4098,7 @@ var UsuarioController = new Vue({
             'deleted_at': null
          },
          'permitido_guardar': ['nom_usuario', 'nom_completo', 'ape_paterno', 'ape_materno', 'username', 'email', 'password', 'id_role', 'id_estado', 'id_cargo'],
-         'relaciones_clase': [{ 'usuario_estado': ['id_estado', 'nom_estado'] }, { 'usuario_role': ['id_role', 'nom_role'] }, { 'usuario_cargo': ['id_cargo', 'nom_cargo'] }],
+         'relaciones_clase': [{ 'usuario_estado.estado': ['id_estado', 'nom_estado'] }, { 'usuario_role.role': ['id_role', 'nom_role'] }, { 'usuario_cargo.cargo': ['id_cargo', 'nom_cargo'] }],
          'lom': {},
          'lista_objs_model': [],
          'usuarios': [],

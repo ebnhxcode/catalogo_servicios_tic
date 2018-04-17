@@ -4142,8 +4142,8 @@ var TipoServidorController = new Vue({
             'nom_tipo_servidor': true,
             'det_tipo_servidor': true,
             'cod_tipo_servidor': false,
-            'id_usuario_registra': false,
-            'id_usuario_modifica': false,
+            //'id_usuario_registra': false,
+            //'id_usuario_modifica': false,
             'created_at': false,
             'updated_at': false,
             'deleted_at': false

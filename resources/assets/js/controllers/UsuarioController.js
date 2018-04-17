@@ -59,9 +59,9 @@ const UsuarioController = new Vue({
             'id_cargo',
          ],
          'relaciones_clase':[
-            {'usuario_estado':['id_estado','nom_estado']},
-            {'usuario_role':['id_role','nom_role']},
-            {'usuario_cargo':['id_cargo','nom_cargo']},
+            {'usuario_estado.estado':['id_estado','nom_estado']},
+            {'usuario_role.role':['id_role','nom_role']},
+            {'usuario_cargo.cargo':['id_cargo','nom_cargo']},
          ],
          'lom':{},
          'lista_objs_model':[],

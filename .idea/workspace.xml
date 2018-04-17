@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8aa2c585-d310-4a06-92e2-14a844c1db5f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/ServidorAccesoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/ServidorAccesoController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/SistemaOperativoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/SistemaOperativoController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/UsuarioBitacoraServicioController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/UsuarioBitacoraServicioController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsuarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UsuarioController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/ServidorAccesoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/ServidorAccesoController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/SistemaOperativoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/SistemaOperativoController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/TagController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/TagController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/TipoAplicacionController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/TipoAplicacionController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/TipoRespaldoDiscoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/TipoRespaldoDiscoController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/TipoServidorController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/TipoServidorController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/UsuarioBitacoraServicioController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/UsuarioBitacoraServicioController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/UsuarioController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/UsuarioController.js" afterDir="false" />
     </list>
     <ignored path="catalogo_servicios_tic.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,11 +47,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ServidorController.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ServidorController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/ServidorController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-784">
-              <caret line="162" column="23" lean-forward="true" selection-start-line="162" selection-start-column="23" selection-end-line="162" selection-end-column="23" />
+            <state relative-caret-position="876">
+              <caret line="162" column="23" selection-start-line="162" selection-start-column="23" selection-end-line="162" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UsuarioController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UsuarioController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="401">
+              <caret line="75" column="39" selection-start-line="75" selection-start-column="39" selection-end-line="75" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UsuarioController.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/UsuarioController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="56" column="22" lean-forward="true" selection-start-line="56" selection-start-column="22" selection-end-line="56" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -66,7 +90,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/js/other_libs/bootstrap-material-design.js" />
         <option value="$PROJECT_DIR$/public/js/other_libs/popper.js" />
         <option value="$PROJECT_DIR$/public/css/other_libs/font-awesome.min.css" />
         <option value="$PROJECT_DIR$/public/css/other_libs/font-awesome470.min.css" />
@@ -105,7 +128,6 @@
         <option value="$PROJECT_DIR$/resources/views/servicios/partials/vista_principal.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/front.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/ServidorController.js" />
-        <option value="$PROJECT_DIR$/resources/assets/js/controllers/UsuarioController.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/VlanController.js" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/UsuarioBitacoraServicioController.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/main.blade.php" />
@@ -117,6 +139,8 @@
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/UsuarioBitacoraServicioController.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/SistemaOperativoController.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/ServidorAccesoController.js" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/UsuarioController.php" />
+        <option value="$PROJECT_DIR$/resources/assets/js/controllers/UsuarioController.js" />
       </list>
     </option>
   </component>
@@ -325,7 +349,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="database&#9;ACTION&#9;ActivateDatabaseToolWindow&#10;ServicioController.php&#9;FILE&#9;file:///var/www/html/catalogo_servicios_tic/app/Http/Controllers/ServicioController.php&#10;ServicioController.js&#9;FILE&#9;file:///var/www/html/catalogo_servicios_tic/public/js/controllers/ServicioController.js" />
+    <property name="SearchEverywhereHistoryKey" value="usuariocon&#9;null&#9;null&#10;database&#9;ACTION&#9;ActivateDatabaseToolWindow&#10;ServicioController.php&#9;FILE&#9;file:///var/www/html/catalogo_servicios_tic/app/Http/Controllers/ServicioController.php&#10;ServicioController.js&#9;FILE&#9;file:///var/www/html/catalogo_servicios_tic/public/js/controllers/ServicioController.js" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
@@ -411,12 +435,12 @@
       <workItem from="1523840017173" duration="159000" />
       <workItem from="1523883153156" duration="1266000" />
       <workItem from="1523902397702" duration="3750000" />
-      <workItem from="1523969284367" duration="5881000" />
+      <workItem from="1523969284367" duration="6777000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11630000" />
+    <option name="totallyTimeSpent" value="12526000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="878" extended-state="0" />
@@ -472,13 +496,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Models/Servicio/ServicioUsuario.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/servicios/partials/vista_principal.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="915">
@@ -779,13 +796,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/UsuarioController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="695">
-          <caret line="91" column="34" lean-forward="true" selection-start-line="91" selection-start-column="34" selection-end-line="91" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/UsuarioBitacoraServicioController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-89">
@@ -835,10 +845,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UsuarioController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="75" column="39" selection-start-line="75" selection-start-column="39" selection-end-line="75" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/ServidorController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-784">
-          <caret line="162" column="23" lean-forward="true" selection-start-line="162" selection-start-column="23" selection-end-line="162" selection-end-column="23" />
+        <state relative-caret-position="876">
+          <caret line="162" column="23" selection-start-line="162" selection-start-column="23" selection-end-line="162" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/UsuarioController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="56" column="22" lean-forward="true" selection-start-line="56" selection-start-column="22" selection-end-line="56" selection-end-column="22" />
         </state>
       </provider>
     </entry>

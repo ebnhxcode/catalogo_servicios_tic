@@ -73,6 +73,7 @@ class UsuarioController extends Controller {
       return response()->json([
          'status' => 200,
          'usuarios' => $this->usuarios,
+         'usuarios' => $this->usuarios,
          'roles' => $this->roles,
          'estados' => $this->estados,
          'cargos' => $this->cargos,
