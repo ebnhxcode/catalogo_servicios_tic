@@ -2304,8 +2304,8 @@ var VlanController = new Vue({
             'nom_vlan': 'String',
             'det_vlan': 'String',
             'cod_vlan': 'String',
-            'id_usuario_registra': 'String',
-            'id_usuario_modifica': 'String',
+            //'id_usuario_registra': 'String',
+            //'id_usuario_modifica': 'String',
             'created_at': 'String',
             'updated_at': 'String',
             'deleted_at': 'String'

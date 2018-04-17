@@ -89,6 +89,7 @@ const UsuarioBitacoraServicioController = new Vue({
             'deleted_at':false,
          },
 
+         /* Etiquetas */
          'tabla_labels': {
             'id_usuario_bitacora_servicio':'Id actividad',
             'asunto':'Asunto',
@@ -104,14 +105,17 @@ const UsuarioBitacoraServicioController = new Vue({
             'deleted_at':'Eliminado en'
          },
 
+         /* Campos del modelo en el excel */
          'excel_json_campos': {
             'id_usuario_bitacora_servicio': 'String',
             'asunto':'String',
             'det_bitacora':'String',
             'id_actividad':'String',
+            'nom_actividad':'String',
             'id_servicio':'String',
-            'id_usuario_registra': 'String',
-            'id_usuario_modifica': 'String',
+            'nom_servicio':'String',
+            //'id_usuario_registra': 'String',
+            //'id_usuario_modifica': 'String',
             'created_at': 'String',
             'updated_at': 'String',
             'deleted_at': 'String'
@@ -142,9 +146,11 @@ const UsuarioBitacoraServicioController = new Vue({
                'asunto': usuario_bitacora_servicio.asunto || '-',
                'det_bitacora': usuario_bitacora_servicio.det_bitacora || '-',
                'id_servicio': usuario_bitacora_servicio.id_servicio || '-',
+               'nom_servicio': usuario_bitacora_servicio.nom_servicio || '-',
                'id_actividad': usuario_bitacora_servicio.id_actividad || '-',
-               'id_usuario_registra': usuario_bitacora_servicio.id_usuario_registra || '-',
-               'id_usuario_modifica': usuario_bitacora_servicio.id_usuario_modifica || '-',
+               'nom_actividad': usuario_bitacora_servicio.nom_actividad || '-',
+               //'id_usuario_registra': usuario_bitacora_servicio.id_usuario_registra || '-',
+               //'id_usuario_modifica': usuario_bitacora_servicio.id_usuario_modifica || '-',
                'created_at': usuario_bitacora_servicio.created_at || '-',
                'updated_at': usuario_bitacora_servicio.updated_at || '-',
                'deleted_at': usuario_bitacora_servicio.deleted_at || '-'

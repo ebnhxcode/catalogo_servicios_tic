@@ -62,6 +62,7 @@ const EstadoController = new Vue({
 
          'orden_lista':'asc',
 
+         /* Campos que se ven en el tablero */
          'tabla_campos': {
             'id_estado':false,
             'nom_estado':true,
@@ -74,6 +75,7 @@ const EstadoController = new Vue({
             'deleted_at':false,
          },
 
+         /* Etiquetas */
          'tabla_labels': {
             'id_estado':'Id estado',
             'nom_estado':'Nombre estado',
@@ -86,6 +88,7 @@ const EstadoController = new Vue({
             'deleted_at':'Eliminado en'
          },
 
+         /* Campos del modelo en el excel */
          'excel_json_campos': {
             'id_estado': 'String',
             'nom_estado': 'String',

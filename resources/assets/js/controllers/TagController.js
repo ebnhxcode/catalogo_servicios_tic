@@ -63,6 +63,7 @@ const TagController = new Vue({
 
          'orden_lista':'asc',
 
+         /* Campos que se ven en el tablero */
          'tabla_campos': {
             'id_tag':false,
             'nom_tag':true,
@@ -75,6 +76,7 @@ const TagController = new Vue({
             'deleted_at':false,
          },
 
+         /* Etiquetas */
          'tabla_labels': {
             'id_tag':'Id tag',
             'nom_tag':'Nombre tag',
@@ -87,6 +89,7 @@ const TagController = new Vue({
             'deleted_at':'Eliminado en',
          },
 
+         /* Campos del modelo en el excel */
          'excel_json_campos': {
             'id_tag': 'String',
             'nom_tag': 'String',

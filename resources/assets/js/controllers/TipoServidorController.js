@@ -62,6 +62,7 @@ const TipoServidorController = new Vue({
 
          'orden_lista': 'asc',
 
+         /* Campos que se ven en el tablero */
          'tabla_campos': {
             'id_tipo_servidor': false,
             'nom_tipo_servidor': true,
@@ -74,25 +75,27 @@ const TipoServidorController = new Vue({
             'deleted_at': false,
          },
 
+         /* Etiquetas */
          'tabla_labels': {
             'id_tipo_servidor': 'Id tipo servidor',
             'nom_tipo_servidor': 'Nombre tipo servidor',
             'det_tipo_servidor': 'Detalle tipo servidor',
             'cod_tipo_servidor': 'Codigo tipo servidor',
-            'id_usuario_registra': 'Usuario registra',
-            'id_usuario_modifica': 'Usuario modifica',
+            //'id_usuario_registra': 'Usuario registra',
+            //'id_usuario_modifica': 'Usuario modifica',
             'created_at': 'Creado en',
             'updated_at': 'Actualizado en',
             'deleted_at': 'Eliminado en'
          },
 
+         /* Campos del modelo en el excel */
          'excel_json_campos': {
             'id_tipo_servidor': 'String',
             'nom_tipo_servidor': 'String',
             'det_tipo_servidor': 'String',
             'cod_tipo_servidor': 'String',
-            'id_usuario_registra': 'String',
-            'id_usuario_modifica': 'String',
+            //'id_usuario_registra': 'String',
+            //'id_usuario_modifica': 'String',
             'created_at': 'String',
             'updated_at': 'String',
             'deleted_at': 'String'
@@ -123,8 +126,8 @@ const TipoServidorController = new Vue({
                'nom_tipo_servidor': tipo_servidor.nom_tipo_servidor || '-',
                'det_tipo_servidor': tipo_servidor.det_tipo_servidor || '-',
                'cod_tipo_servidor': tipo_servidor.cod_tipo_servidor || '-',
-               'id_usuario_registra': tipo_servidor.id_usuario_registra || '-',
-               'id_usuario_modifica': tipo_servidor.id_usuario_modifica || '-',
+               //'id_usuario_registra': tipo_servidor.id_usuario_registra || '-',
+               //'id_usuario_modifica': tipo_servidor.id_usuario_modifica || '-',
                'created_at': tipo_servidor.created_at || '-',
                'updated_at': tipo_servidor.updated_at || '-',
                'deleted_at': tipo_servidor.deleted_at || '-'

@@ -61,6 +61,7 @@ const ActividadController = new Vue({
 
          'orden_lista':'asc',
 
+         /* Campos que se ven en el tablero */
          'tabla_campos': {
             'id_actividad':false,
             'nom_actividad':true,
@@ -72,6 +73,7 @@ const ActividadController = new Vue({
             'deleted_at':false,
          },
 
+         /* Etiquetas */
          'tabla_labels': {
             'id_actividad':'Id actividad',
             'nom_actividad':'Nombre',
@@ -83,6 +85,7 @@ const ActividadController = new Vue({
             'deleted_at':'Eliminado en'
          },
 
+         /* Campos del modelo en el excel */
          'excel_json_campos': {
             'id_actividad': 'String',
             'nom_actividad': 'String',

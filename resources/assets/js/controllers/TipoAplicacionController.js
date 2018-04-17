@@ -62,6 +62,7 @@ const TipoAplicacionController = new Vue({
 
          'orden_lista': 'asc',
 
+         /* Campos que se ven en el tablero */
          'tabla_campos': {
             'id_tipo_aplicacion': false,
             'nom_tipo_aplicacion': true,
@@ -74,6 +75,7 @@ const TipoAplicacionController = new Vue({
             'deleted_at': false,
          },
 
+         /* Etiquetas */
          'tabla_labels': {
             'id_tipo_aplicacion': 'Id tipo aplicacion',
             'nom_tipo_aplicacion': 'Nombre tipo aplicacion',
@@ -86,6 +88,7 @@ const TipoAplicacionController = new Vue({
             'deleted_at': 'Eliminado en'
          },
 
+         /* Campos del modelo en el excel */
          'excel_json_campos': {
             'id_tipo_aplicacion': 'String',
             'nom_tipo_aplicacion': 'String',

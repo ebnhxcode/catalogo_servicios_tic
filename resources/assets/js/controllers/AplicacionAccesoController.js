@@ -72,6 +72,7 @@ const AplicacionAccesoController = new Vue({
 
          'orden_lista':'asc',
 
+         /* Campos que se ven en el tablero */
          'tabla_campos': {
             'usuario':true,
             //'clave':false,
@@ -85,6 +86,7 @@ const AplicacionAccesoController = new Vue({
             'deleted_at':false,
          },
 
+         /* Etiquetas */
          'tabla_labels': {
             'usuario':'Usuario',
             'clave':'Clave',
@@ -98,6 +100,7 @@ const AplicacionAccesoController = new Vue({
             'deleted_at':'Eliminado en',
          },
 
+         /* Campos del modelo en el excel */
          'excel_json_campos': {
             'usuario':'String',
             'clave':'String',

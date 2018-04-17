@@ -62,6 +62,7 @@ const DatacentroController = new Vue({
 
          'orden_lista':'asc',
 
+         /* Campos que se ven en el tablero */
          'tabla_campos': {
             'id_datacentro':false,
             'nom_datacentro':true,
@@ -74,6 +75,7 @@ const DatacentroController = new Vue({
             'deleted_at':false,
          },
 
+         /* Etiquetas */
          'tabla_labels': {
             'id_datacentro':'Id datacentro',
             'nom_datacentro':'Nombre datacentro',
@@ -86,6 +88,7 @@ const DatacentroController = new Vue({
             'deleted_at':'Eliminado en'
          },
 
+         /* Campos del modelo en el excel */
          'excel_json_campos': {
             'id_datacentro': 'String',
             'nom_datacentro': 'String',

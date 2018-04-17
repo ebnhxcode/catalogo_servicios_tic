@@ -62,6 +62,7 @@ const TipoRespaldoDiscoController = new Vue({
 
          'orden_lista': 'asc',
 
+         /* Campos que se ven en el tablero */
          'tabla_campos': {
             'id_tipo_respaldo_disco': false,
             'nom_tipo_respaldo_disco': true,
@@ -74,25 +75,27 @@ const TipoRespaldoDiscoController = new Vue({
             'deleted_at': false,
          },
 
+         /* Etiquetas */
          'tabla_labels': {
             'id_tipo_respaldo_disco': 'Id tipo respaldo disco',
             'nom_tipo_respaldo_disco': 'Nombre tipo respaldo disco',
             'det_tipo_respaldo_disco': 'Detalle tipo respaldo disco',
             'cod_tipo_respaldo_disco': 'Codigo tipo respaldo disco',
-            'id_usuario_registra': 'Usuario registra',
-            'id_usuario_modifica': 'Usuario modifica',
+            //'id_usuario_registra': 'Usuario registra',
+            //'id_usuario_modifica': 'Usuario modifica',
             'created_at': 'Creado en',
             'updated_at': 'Actualizado en',
             'deleted_at': 'Eliminado en'
          },
 
+         /* Campos del modelo en el excel */
          'excel_json_campos': {
             'id_tipo_respaldo_disco': 'String',
             'nom_tipo_respaldo_disco': 'String',
             'det_tipo_respaldo_disco': 'String',
             'cod_tipo_respaldo_disco': 'String',
-            'id_usuario_registra': 'String',
-            'id_usuario_modifica': 'String',
+            //'id_usuario_registra': 'String',
+            //'id_usuario_modifica': 'String',
             'created_at': 'String',
             'updated_at': 'String',
             'deleted_at': 'String'
@@ -123,8 +126,8 @@ const TipoRespaldoDiscoController = new Vue({
                'nom_tipo_respaldo_disco': tipo_respaldo_disco.nom_tipo_respaldo_disco || '-',
                'det_tipo_respaldo_disco': tipo_respaldo_disco.det_tipo_respaldo_disco || '-',
                'cod_tipo_respaldo_disco': tipo_respaldo_disco.cod_tipo_respaldo_disco || '-',
-               'id_usuario_registra': tipo_respaldo_disco.id_usuario_registra || '-',
-               'id_usuario_modifica': tipo_respaldo_disco.id_usuario_modifica || '-',
+               //'id_usuario_registra': tipo_respaldo_disco.id_usuario_registra || '-',
+               //'id_usuario_modifica': tipo_respaldo_disco.id_usuario_modifica || '-',
                'created_at': tipo_respaldo_disco.created_at || '-',
                'updated_at': tipo_respaldo_disco.updated_at || '-',
                'deleted_at': tipo_respaldo_disco.deleted_at || '-'
@@ -137,18 +140,6 @@ const TipoRespaldoDiscoController = new Vue({
    },
    created(){
       this.inicializar();
-      /*
-       $(document).ready(function () {
-       //Handle al recargar pagina
-       window.onbeforeunload = function(e){
-       return "Estás seguro que deseas cerrar la ventana?";
-       };
-       window.onunload = function(e){
-       return "Cierre de la ventana";
-       };
-
-       });
-       */
    },
    ready: {},
    filters: {},
