@@ -28,11 +28,11 @@ class Vlan extends Model {
    }
 
    public function usuario_registra() {
-      return $this->belongsTo(User::class, 'id_usuario_registra');
+      return $this->belongsTo(User::class, 'id_usuario_registra')->select(['id_usuario','nom_usuario']);
    }
 
    public function usuario_modifica() {
-      return $this->belongsTo(User::class, 'id_usuario_modifica');
+      return $this->belongsTo(User::class, 'id_usuario_modifica')->select(['id_usuario','nom_usuario']);
    }
 
 }

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 58);
+/******/ 	return __webpack_require__(__webpack_require__.s = 98);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2968,389 +2968,6 @@ var inyeccion_funciones_compartidas = {
 /***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(4)
-/* template */
-var __vue_template__ = __webpack_require__(5)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/DownloadExcel.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-795cc6e8", Component.options)
-  } else {
-    hotAPI.reload("data-v-795cc6e8", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 4:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-   name: 'download-excel',
-   props: {
-      'data': {
-         type: Array,
-         required: true
-      },
-      'fields': {
-         type: Object,
-         required: true
-      },
-      'name': {
-         type: String,
-         default: "data.xls"
-      }
-   },
-   //template: ``,
-   data: function data() {
-      return {
-         animate: true,
-         animation: ''
-      };
-   },
-   created: function created() {},
-   computed: {
-      id_name: function id_name() {
-         var now = new Date().getTime();
-         return 'export_' + now;
-      }
-   },
-   methods: {
-      emitXmlHeader: function emitXmlHeader() {
-         var headerRow = '<ss:Row>\n';
-         for (var colName in this.fields) {
-            headerRow += '  <ss:Cell>\n';
-            headerRow += '    <ss:Data ss:Type="String">';
-            headerRow += colName + '</ss:Data>\n';
-            headerRow += '  </ss:Cell>\n';
-         }
-         headerRow += '</ss:Row>\n';
-         return '<?xml version="1.0"?>\n' + '<ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">\n' + '<ss:Worksheet ss:Name="Sheet1">\n' + '<ss:Table>\n\n' + headerRow;
-      },
-
-      emitXmlFooter: function emitXmlFooter() {
-         return '\n</ss:Table>\n' + '</ss:Worksheet>\n' + '</ss:Workbook>\n';
-      },
-
-      jsonToSsXml: function jsonToSsXml(jsonObject) {
-         var row;
-         var col;
-         var xml;
-         //console.log(jsonObject);
-         var data = (typeof jsonObject === 'undefined' ? 'undefined' : _typeof(jsonObject)) != "object" ? JSON.parse(jsonObject) : jsonObject;
-
-         xml = this.emitXmlHeader();
-
-         for (row = 0; row < data.length; row++) {
-            xml += '<ss:Row>\n';
-
-            for (col in data[row]) {
-               xml += '  <ss:Cell>\n';
-               xml += '    <ss:Data ss:Type="' + this.fields[col] + '">';
-               xml += String(data[row][col]).replace(/[^a-zA-Z0-9\s\-ñíéáóú\#\,\.\;\:ÑÍÉÓÁÚ@_]/g, '') + '</ss:Data>\n';
-               xml += '  </ss:Cell>\n';
-            }
-
-            xml += '</ss:Row>\n';
-         }
-
-         xml += this.emitXmlFooter();
-         return xml;
-      },
-      generate_excel: function generate_excel(content, filename, contentType) {
-         var blob = new Blob([this.jsonToSsXml(this.data)], {
-            'type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-         });
-
-         var a = document.getElementById(this.id_name);
-         a.href = window.URL.createObjectURL(blob);
-         a.download = this.name;
-      }
-   }
-});
-
-/***/ }),
-
-/***/ 5:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "a",
-    {
-      attrs: { href: "#", id: _vm.id_name },
-      on: { click: _vm.generate_excel }
-    },
-    [_vm._t("default", [_vm._v("\n      Download Excel\n   ")])],
-    2
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-795cc6e8", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 58:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(59);
-
-
-/***/ }),
-
-/***/ 59:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert2__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_v_clipboard__);
-
-
-
-//Se importan todas las librerias compartidas y se cargan en el objeto instanciado como alias -> hp
-
-
-
-Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default.a, { dialog: true });
-
-
-Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
-
-Vue.component('download-excel', __webpack_require__(3));
-
-var RoleController = new Vue({
-   el: '#RoleController',
-   data: function data() {
-      return {
-         '$': window.jQuery,
-         'pk_tabla': 'id_role',
-         'nombre_tabla': 'roles', //nombre tabla o de ruta
-         'nombre_ruta': 'roles', //nombre tabla o de ruta
-         'nombre_model': 'role',
-         'nombre_model_limpio': 'role_limpio',
-         'nombre_detalle': 'Roles',
-         'nombre_controller': 'RoleController',
-
-         'filtro_head': null,
-         'role': {
-            'nom_role': null,
-            'det_role': null,
-            'id_permiso': null,
-            'id_usuario_registra': null,
-            'id_usuario_modifica': null,
-            'created_at': null,
-            'updated_at': null,
-            'deleted_at': null
-         },
-         'permitido_guardar': ['nom_role', 'det_role', 'id_permiso'],
-         'relaciones_clase': [{ 'role_permiso': 'id_permiso' }],
-         'lom': {},
-         'lista_objs_model': [],
-         'roles': [],
-         'datos_excel': [],
-         'usuario_auth': {},
-
-         'permisos': [],
-         'campos_formularios': [],
-         'errores_campos': [],
-
-         //Variables para validar si se está creando o editando
-         'modal_crear_activo': false,
-         'modal_actualizar_activo': false,
-
-         //Estas var se deben conservar para todos los controllers por que se ejecutan para el modal crear (blanquea)
-         'lista_actualizar_activo': false,
-
-         'id_en_edicion': null,
-
-         'orden_lista': 'asc',
-
-         'tabla_campos': {
-            'id_role': false,
-            'nom_role': true,
-            'det_role': true,
-            //'id_permiso':false,
-            'id_usuario_registra': false,
-            'id_usuario_modifica': false,
-            'created_at': false,
-            'updated_at': false,
-            'deleted_at': false
-         },
-
-         'tabla_labels': {
-            'id_role': 'Id role',
-            'nom_role': 'Nombre role',
-            'det_role': 'Detalle role',
-            'id_usuario_registra': 'Usuario registra',
-            'id_usuario_modifica': 'Usuario modifica',
-            'created_at': 'Creado en',
-            'updated_at': 'Actualizado en',
-            'deleted_at': 'Eliminado en'
-            //'id_permiso':'Permiso role',
-         },
-
-         'excel_json_campos': {
-            'id_role': 'String',
-            'nom_role': 'String',
-            'det_role': 'String',
-            'id_usuario_registra': 'String',
-            'id_usuario_modifica': 'String',
-            'created_at': 'String',
-            'updated_at': 'String',
-            'deleted_at': 'String',
-            'id_permiso': 'String'
-         },
-
-         'excel_json_datos': [],
-         'excel_data_contador': 0,
-
-         'append_to_json_excel': {}
-
-      };
-   },
-
-   computed: {},
-   watch: {
-      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el role
-      // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
-      id_en_edicion: function id_en_edicion(_id_en_edicion) {
-         if (_id_en_edicion == null) {
-            this.limpiar_objeto_clase_local();
-         } else {
-            this.buscar_objeto_clase_config_relaciones(_id_en_edicion, this.relaciones_clase);
-         }
-      },
-      //Roles se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
-      roles: function roles(_roles) {
-         var self = this;
-         this.excel_json_datos = [];
-         return _roles.map(function (role, index) {
-            return self.excel_json_datos.push({
-               'id_role': role.id_role || '-',
-               'nom_role': role.nom_role || '-',
-               'det_role': role.det_role || '-',
-               'id_usuario_registra': role.id_usuario_registra || '-',
-               'id_usuario_modifica': role.id_usuario_modifica || '-',
-               'created_at': role.created_at || '-',
-               'updated_at': role.updated_at || '-',
-               'deleted_at': role.deleted_at || '-',
-               'id_permiso': role.permiso ? role.permiso.id_permiso : '-'
-            });
-         });
-      }
-   },
-   components: {
-      //'download-excel': DownloadExcel,
-   },
-   created: function created() {
-      this.inicializar();
-      /*
-      $(document).ready(function () {
-         //Handle al recargar pagina
-         window.onbeforeunload = function(e){
-            return "Estás seguro que deseas cerrar la ventana?";
-         };
-         window.onunload = function(e){
-            return "Cierre de la ventana";
-         };
-       });
-      */
-   },
-
-   ready: {},
-   filters: {},
-   mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
-   methods: {
-      inicializar: function inicializar() {
-         var _this = this;
-
-         this.$http.get('/' + this.nombre_ruta).then(function (response) {
-            // success callback
-            _this.configurar_relaciones(response.body.roles, _this.relaciones_clase);
-
-            _this.lista_objs_model = response.body.roles || null;
-            _this.roles = response.body.roles || null;
-            _this.datos_excel = response.body.roles || null;
-
-            _this.permisos = response.body.permisos || null;
-
-            _this.usuario_auth = response.body.usuario_auth || null;
-         }, function (response) {
-            // error callback
-            _this.checkear_estado_respuesta_http(response.status);
-         });
-      }
-   }
-});
-
-/***/ }),
-
-/***/ 6:
-/***/ (function(module, exports, __webpack_require__) {
-
 !function(root, factory) {
      true ? module.exports = factory() : "function" == typeof define && define.amd ? define([], factory) : "object" == typeof exports ? exports["vue-js-modal"] = factory() : root["vue-js-modal"] = factory();
 }(this, function() {
@@ -4251,11 +3868,388 @@ var RoleController = new Vue({
 
 /***/ }),
 
-/***/ 7:
+/***/ 4:
 /***/ (function(module, exports, __webpack_require__) {
 
 !function(e,t){ true?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["v-clipboard"]=t():e["v-clipboard"]=t()}(this,function(){return function(e){function t(o){if(n[o])return n[o].exports;var r=n[o]={i:o,l:!1,exports:{}};return e[o].call(r.exports,r,r.exports,t),r.l=!0,r.exports}var n={};return t.m=e,t.c=n,t.i=function(e){return e},t.d=function(e,n,o){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:o})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="/dist/",t(t.s=0)}([function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o=function(e){var t=document.createElement("textarea"),n=!1;t.value=e,t.style.cssText="position:fixed;pointer-events:none;z-index:-9999;opacity:0;",document.body.appendChild(t),t.select();try{n=document.execCommand("copy")}catch(e){}return document.body.removeChild(t),n};t.default={install:function(e){e.prototype.$clipboard=o,e.directive("clipboard",{bind:function(e,t,n){e.addEventListener("click",function(e){if(t.hasOwnProperty("value")){var r=t.value,c={value:r,srcEvent:e},i=n.context;o(r)?i.$emit("copy",c):i.$emit("copyError",c)}})}})}}}])});
 //# sourceMappingURL=index.min.js.map
+
+/***/ }),
+
+/***/ 5:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(6)
+/* template */
+var __vue_template__ = __webpack_require__(7)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/DownloadExcel.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-795cc6e8", Component.options)
+  } else {
+    hotAPI.reload("data-v-795cc6e8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 6:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+   name: 'download-excel',
+   props: {
+      'data': {
+         type: Array,
+         required: true
+      },
+      'fields': {
+         type: Object,
+         required: true
+      },
+      'name': {
+         type: String,
+         default: "data.xls"
+      }
+   },
+   //template: ``,
+   data: function data() {
+      return {
+         animate: true,
+         animation: ''
+      };
+   },
+   created: function created() {},
+   computed: {
+      id_name: function id_name() {
+         var now = new Date().getTime();
+         return 'export_' + now;
+      }
+   },
+   methods: {
+      emitXmlHeader: function emitXmlHeader() {
+         var headerRow = '<ss:Row>\n';
+         for (var colName in this.fields) {
+            headerRow += '  <ss:Cell>\n';
+            headerRow += '    <ss:Data ss:Type="String">';
+            headerRow += colName + '</ss:Data>\n';
+            headerRow += '  </ss:Cell>\n';
+         }
+         headerRow += '</ss:Row>\n';
+         return '<?xml version="1.0"?>\n' + '<ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">\n' + '<ss:Worksheet ss:Name="Sheet1">\n' + '<ss:Table>\n\n' + headerRow;
+      },
+
+      emitXmlFooter: function emitXmlFooter() {
+         return '\n</ss:Table>\n' + '</ss:Worksheet>\n' + '</ss:Workbook>\n';
+      },
+
+      jsonToSsXml: function jsonToSsXml(jsonObject) {
+         var row;
+         var col;
+         var xml;
+         //console.log(jsonObject);
+         var data = (typeof jsonObject === 'undefined' ? 'undefined' : _typeof(jsonObject)) != "object" ? JSON.parse(jsonObject) : jsonObject;
+
+         xml = this.emitXmlHeader();
+
+         for (row = 0; row < data.length; row++) {
+            xml += '<ss:Row>\n';
+
+            for (col in data[row]) {
+               xml += '  <ss:Cell>\n';
+               xml += '    <ss:Data ss:Type="' + this.fields[col] + '">';
+               xml += String(data[row][col]).replace(/[^a-zA-Z0-9\s\-ñíéáóú\#\,\.\;\:ÑÍÉÓÁÚ@_]/g, '') + '</ss:Data>\n';
+               xml += '  </ss:Cell>\n';
+            }
+
+            xml += '</ss:Row>\n';
+         }
+
+         xml += this.emitXmlFooter();
+         return xml;
+      },
+      generate_excel: function generate_excel(content, filename, contentType) {
+         var blob = new Blob([this.jsonToSsXml(this.data)], {
+            'type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+         });
+
+         var a = document.getElementById(this.id_name);
+         a.href = window.URL.createObjectURL(blob);
+         a.download = this.name;
+      }
+   }
+});
+
+/***/ }),
+
+/***/ 7:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "a",
+    {
+      attrs: { href: "#", id: _vm.id_name },
+      on: { click: _vm.generate_excel }
+    },
+    [_vm._t("default", [_vm._v("\n      Download Excel\n   ")])],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-795cc6e8", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 98:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(99);
+
+
+/***/ }),
+
+/***/ 99:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert2__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_v_clipboard__);
+
+
+
+//Se importan todas las librerias compartidas y se cargan en el objeto instanciado como alias -> hp
+
+
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default.a, { dialog: true });
+
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
+
+Vue.component('download-excel', __webpack_require__(5));
+
+var DatacentroController = new Vue({
+   el: '#DatacentroController',
+   data: function data() {
+      return {
+         '$': window.jQuery,
+         'pk_tabla': 'id_datacentro',
+         'nombre_tabla': 'datacenters', //nombre tabla o de ruta
+         'nombre_ruta': 'datacenters', //nombre tabla o de ruta
+         'nombre_model': 'datacentro',
+         'nombre_model_limpio': 'datacentro_limpio',
+         'nombre_detalle': 'datacenters',
+         'nombre_controller': 'DatacentroController',
+
+         'filtro_head': null,
+         'datacentro': {
+            'nom_datacentro': null,
+            'det_datacentro': null,
+            'cod_datacentro': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
+         },
+         'permitido_guardar': ['nom_datacentro', 'det_datacentro', 'cod_datacentro'],
+         'relaciones_clase': [],
+         'lom': {},
+         'lista_objs_model': [],
+         'datacenters': [],
+         'datos_excel': [],
+         'usuario_auth': {},
+
+         'campos_formularios': [],
+         'errores_campos': [],
+
+         //Variables para validar si se está creando o editando
+         'modal_crear_activo': false,
+         'modal_actualizar_activo': false,
+
+         //Estas var se deben conservar para todos los controllers por que se ejecutan para el modal crear (blanquea)
+         'lista_actualizar_activo': false,
+
+         'id_en_edicion': null,
+
+         'orden_lista': 'asc',
+
+         'tabla_campos': {
+            'id_datacentro': false,
+            'nom_datacentro': true,
+            'det_datacentro': true,
+            'cod_datacentro': true,
+            'id_usuario_registra': false,
+            'id_usuario_modifica': false,
+            'created_at': false,
+            'updated_at': false,
+            'deleted_at': false
+         },
+
+         'tabla_labels': {
+            'id_datacentro': 'Id datacentro',
+            'nom_datacentro': 'Nombre datacentro',
+            'det_datacentro': 'Detalle datacentro',
+            'cod_datacentro': 'Codigo datacentro',
+            'id_usuario_registra': 'Usuario registra',
+            'id_usuario_modifica': 'Usuario modifica',
+            'created_at': 'Creado en',
+            'updated_at': 'Actualizado en',
+            'deleted_at': 'Eliminado en'
+         },
+
+         'excel_json_campos': {
+            'id_datacentro': 'String',
+            'nom_datacentro': 'String',
+            'det_datacentro': 'String',
+            'cod_datacentro': 'String',
+            'id_usuario_registra': 'String',
+            'id_usuario_modifica': 'String',
+            'created_at': 'String',
+            'updated_at': 'String',
+            'deleted_at': 'String'
+         },
+
+         'excel_json_datos': [],
+         'excel_data_contador': 0,
+
+         'append_to_json_excel': {}
+
+      };
+   },
+
+   computed: {},
+   watch: {
+      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el datacentro
+      // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
+      id_en_edicion: function id_en_edicion(_id_en_edicion) {
+         if (_id_en_edicion == null) {
+            this.limpiar_objeto_clase_local();
+         } else {
+            this.buscar_objeto_clase(_id_en_edicion);
+         }
+      },
+      //datacenters se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
+      datacenters: function datacenters(_datacenters) {
+         var self = this;
+         this.excel_json_datos = [];
+         return _datacenters.map(function (datacentro, index) {
+            return self.excel_json_datos.push({
+               'id_datacentro': datacentro.id_datacentro || '-',
+               'nom_datacentro': datacentro.nom_datacentro || '-',
+               'det_datacentro': datacentro.det_datacentro || '-',
+               'cod_datacentro': datacentro.cod_datacentro || '-',
+               'id_usuario_registra': datacentro.id_usuario_registra || '-',
+               'id_usuario_modifica': datacentro.id_usuario_modifica || '-',
+               'created_at': datacentro.created_at || '-',
+               'updated_at': datacentro.updated_at || '-',
+               'deleted_at': datacentro.deleted_at || '-'
+            });
+         });
+      }
+   },
+   components: {
+      //'download-excel': DownloadExcel,
+   },
+   created: function created() {
+      this.inicializar();
+      /*
+       $(document).ready(function () {
+       //Handle al recargar pagina
+       window.onbeforeunload = function(e){
+       return "Estás seguro que deseas cerrar la ventana?";
+       };
+       window.onunload = function(e){
+       return "Cierre de la ventana";
+       };
+        });
+       */
+   },
+
+   ready: {},
+   filters: {},
+   mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
+   methods: {
+      inicializar: function inicializar() {
+         var _this = this;
+
+         this.$http.get('/' + this.nombre_ruta).then(function (response) {
+            // success callback
+            _this.lista_objs_model = response.body.datacenters || null;
+            _this.datacenters = response.body.datacenters || null;
+            _this.datos_excel = response.body.datacenters || null;
+            _this.usuario_auth = response.body.usuario_auth || null;
+         }, function (response) {
+            // error callback
+            _this.checkear_estado_respuesta_http(response.status);
+         });
+      }
+   }
+});
 
 /***/ })
 

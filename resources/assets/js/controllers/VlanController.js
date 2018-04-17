@@ -27,11 +27,10 @@ const VlanController = new Vue({
 
          'filtro_head':null,
          'vlan':{
+            'id_vlan':null,
             'nom_vlan':null,
             'det_vlan':null,
             'cod_vlan':null,
-            'id_usuario_registra':null,
-            'id_usuario_modifica':null,
             'created_at':null,
             'updated_at':null,
             'deleted_at':null,
@@ -41,6 +40,7 @@ const VlanController = new Vue({
             'det_vlan',
             'cod_vlan',
          ],
+
          'relaciones_clase':[],
          'lom':{},
          'lista_objs_model':[],
@@ -57,42 +57,37 @@ const VlanController = new Vue({
 
          //Estas var se deben conservar para todos los controllers por que se ejecutan para el modal crear (blanquea)
          'lista_actualizar_activo':false,
-
          'id_en_edicion': null,
-
          'orden_lista':'asc',
 
+          /* Campos que se ven en el tablero */
          'tabla_campos': {
             'id_vlan':false,
             'nom_vlan':true,
             'det_vlan':true,
             'cod_vlan':true,
-            //'id_usuario_registra':false,
-            //'id_usuario_modifica':false,
             'created_at':false,
             'updated_at':false,
             'deleted_at':false,
          },
 
+          /* Etiquetas */
          'tabla_labels': {
             'id_vlan':'Id vlan',
             'nom_vlan':'Nombre vlan',
             'det_vlan':'Detalle vlan',
             'cod_vlan':'Codigo vlan',
-            'id_usuario_registra':'Usuario registra',
-            'id_usuario_modifica':'Usuario modifica',
             'created_at':'Creado en',
             'updated_at':'Actualizado en',
             'deleted_at':'Eliminado en'
          },
 
+          /* Campos del modelo en el excel */
          'excel_json_campos': {
             'id_vlan': 'String',
             'nom_vlan': 'String',
             'det_vlan': 'String',
             'cod_vlan': 'String',
-            'id_usuario_registra': 'String',
-            'id_usuario_modifica': 'String',
             'created_at': 'String',
             'updated_at': 'String',
             'deleted_at': 'String'
@@ -111,7 +106,7 @@ const VlanController = new Vue({
       // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
       id_en_edicion: function (id_en_edicion) {
          if (id_en_edicion == null) { this.limpiar_objeto_clase_local(); }
-         else { this.buscar_objeto_clase(id_en_edicion); }
+         else { this.buscar_objeto_clase_config_relaciones(id_en_edicion, this.relaciones_clase); }
       },
       //vlans se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
       vlans: function (vlans) {
@@ -123,8 +118,6 @@ const VlanController = new Vue({
                'nom_vlan': vlan.nom_vlan || '-',
                'det_vlan': vlan.det_vlan || '-',
                'cod_vlan': vlan.cod_vlan || '-',
-               'id_usuario_registra': vlan.id_usuario_registra || '-',
-               'id_usuario_modifica': vlan.id_usuario_modifica || '-',
                'created_at': vlan.created_at || '-',
                'updated_at': vlan.updated_at || '-',
                'deleted_at': vlan.deleted_at || '-'
@@ -137,21 +130,6 @@ const VlanController = new Vue({
    },
    created(){
       this.inicializar();
-
-
-      /*
-       $(document).ready(function () {
-       //Handle al recargar pagina
-       window.onbeforeunload = function(e){
-       return "Estás seguro que deseas cerrar la ventana?";
-       };
-       window.onunload = function(e){
-       return "Cierre de la ventana";
-       };
-
-       });
-       */
-
    },
    ready: {},
    filters: {},
@@ -159,6 +137,7 @@ const VlanController = new Vue({
    methods: {
       inicializar: function () {
          this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+            this.configurar_relaciones(response.body.vlans, this.relaciones_clase);
             this.lista_objs_model = response.body.vlans || null;
             this.vlans = response.body.vlans || null;
             this.datos_excel = response.body.vlans || null;
