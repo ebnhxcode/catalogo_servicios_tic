@@ -4142,6 +4142,7 @@ var TipoServidorController = new Vue({
 
          'orden_lista': 'asc',
 
+         /* Campos que se ven en el tablero */
          'tabla_campos': {
             'id_tipo_servidor': false,
             'nom_tipo_servidor': true,
@@ -4154,6 +4155,7 @@ var TipoServidorController = new Vue({
             'deleted_at': false
          },
 
+         /* Etiquetas */
          'tabla_labels': {
             'id_tipo_servidor': 'Id tipo servidor',
             'nom_tipo_servidor': 'Nombre tipo servidor',
@@ -4166,6 +4168,7 @@ var TipoServidorController = new Vue({
             'deleted_at': 'Eliminado en'
          },
 
+         /* Campos del modelo en el excel */
          'excel_json_campos': {
             'id_tipo_servidor': 'String',
             'nom_tipo_servidor': 'String',

@@ -4148,6 +4148,7 @@ var UsuarioController = new Vue({
 
          'orden_lista': 'asc',
 
+         /* Campos que se ven en el tablero */
          'tabla_campos': {
             //'id_usuario': false,
             'nom_usuario': true,
@@ -4171,6 +4172,7 @@ var UsuarioController = new Vue({
             //'deleted_at': false,
          },
 
+         /* Etiquetas */
          'tabla_labels': {
             'id_usuario': 'Id usuario',
             'nom_usuario': 'Nombre',
@@ -4194,6 +4196,7 @@ var UsuarioController = new Vue({
             'deleted_at': 'Eliminado en'
          },
 
+         /* Campos del modelo en el excel */
          'excel_json_campos': {
             'id_usuario': 'String',
             'nom_usuario': 'String',

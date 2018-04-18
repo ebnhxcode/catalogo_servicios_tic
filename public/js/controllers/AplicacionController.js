@@ -4160,6 +4160,7 @@ var AplicacionController = new Vue({
 
          'orden_lista': 'asc',
 
+         /* Campos que se ven en el tablero */
          'tabla_campos': {
             'id_aplicacion': false,
             'nom_aplicacion': true,
@@ -4185,6 +4186,7 @@ var AplicacionController = new Vue({
             'deleted_at': false
          },
 
+         /* Etiquetas */
          'tabla_labels': {
             'id_aplicacion': 'Id aplicacion',
 
@@ -4211,6 +4213,7 @@ var AplicacionController = new Vue({
             'deleted_at': 'Eliminado en'
          },
 
+         /* Campos del modelo en el excel */
          'excel_json_campos': {
             'id_aplicacion': 'String',
 

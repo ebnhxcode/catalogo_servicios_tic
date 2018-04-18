@@ -3233,6 +3233,7 @@ var RoleController = new Vue({
 
          'orden_lista': 'asc',
 
+         /* Campos que se ven en el tablero */
          'tabla_campos': {
             'id_role': false,
             'nom_role': true,
@@ -3245,6 +3246,7 @@ var RoleController = new Vue({
             'deleted_at': false
          },
 
+         /* Etiquetas */
          'tabla_labels': {
             'id_role': 'Id role',
             'nom_role': 'Nombre role',
@@ -3257,6 +3259,7 @@ var RoleController = new Vue({
             //'id_permiso':'Permiso role',
          },
 
+         /* Campos del modelo en el excel */
          'excel_json_campos': {
             'id_role': 'String',
             'nom_role': 'String',

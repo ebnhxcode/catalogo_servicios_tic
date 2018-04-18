@@ -2296,6 +2296,7 @@ var UsuarioBitacoraServicioController = new Vue({
             'deleted_at': false
          },
 
+         /* Etiquetas */
          'tabla_labels': {
             'id_usuario_bitacora_servicio': 'Id actividad',
             'asunto': 'Asunto',
@@ -2311,6 +2312,7 @@ var UsuarioBitacoraServicioController = new Vue({
             'deleted_at': 'Eliminado en'
          },
 
+         /* Campos del modelo en el excel */
          'excel_json_campos': {
             'id_usuario_bitacora_servicio': 'String',
             'asunto': 'String',

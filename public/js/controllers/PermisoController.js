@@ -4135,6 +4135,7 @@ var PermisoController = new Vue({
 
          'orden_lista': 'asc',
 
+         /* Campos que se ven en el tablero */
          'tabla_campos': {
             'id_permiso': false,
             'nom_permiso': false,
@@ -4147,6 +4148,7 @@ var PermisoController = new Vue({
             'deleted_at': false
          },
 
+         /* Etiquetas */
          'tabla_labels': {
             'id_permiso': 'Id permiso',
             'nom_permiso': 'Nombre permiso',
@@ -4159,6 +4161,7 @@ var PermisoController = new Vue({
             'deleted_at': 'Eliminado en'
          },
 
+         /* Campos del modelo en el excel */
          'excel_json_campos': {
             'id_permiso': 'String',
             'nom_permiso': 'String',
@@ -4214,18 +4217,6 @@ var PermisoController = new Vue({
    },
    created: function created() {
       this.inicializar();
-
-      /*
-       $(document).ready(function () {
-       //Handle al recargar pagina
-       window.onbeforeunload = function(e){
-       return "Estás seguro que deseas cerrar la ventana?";
-       };
-       window.onunload = function(e){
-       return "Cierre de la ventana";
-       };
-        });
-       */
    },
 
    ready: {},

@@ -2275,6 +2275,7 @@ var ClusterController = new Vue({
 
          'orden_lista': 'asc',
 
+         /* Campos que se ven en el tablero */
          'tabla_campos': {
             'id_cluster': false,
             'nom_cluster': true,
@@ -2288,6 +2289,7 @@ var ClusterController = new Vue({
             'deleted_at': false
          },
 
+         /* Etiquetas */
          'tabla_labels': {
             'id_cluster': 'Id cluster',
             'nom_cluster': 'Nombre cluster',
@@ -2301,6 +2303,7 @@ var ClusterController = new Vue({
             'deleted_at': 'Eliminado en'
          },
 
+         /* Campos del modelo en el excel */
          'excel_json_campos': {
             'id_cluster': 'String',
             'nom_cluster': 'String',

@@ -4153,6 +4153,7 @@ var ServicioController = new Vue({
 
          'orden_lista': 'asc',
 
+         /* Campos que se ven en el tablero */
          'tabla_campos': {
             //'id_servicio':false,
             'nom_servicio': true,
@@ -4170,6 +4171,7 @@ var ServicioController = new Vue({
             //'deleted_at':false,
          },
 
+         /* Etiquetas */
          'tabla_labels': {
             'id_servicio': 'Id Servicio',
             'nom_servicio': 'Nombre servicio',
@@ -4187,6 +4189,7 @@ var ServicioController = new Vue({
             'deleted_at': 'Eliminado en'
          },
 
+         /* Campos del modelo en el excel */
          'excel_json_campos': {
             'id_servicio': 'String',
             'nom_servicio': 'String',

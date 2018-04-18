@@ -2276,6 +2276,7 @@ var MenuController = new Vue({
 
          'orden_lista': 'asc',
 
+         /* Campos que se ven en el tablero */
          'tabla_campos': {
             'id_menu': false,
             'url_menu': true,
@@ -2291,6 +2292,7 @@ var MenuController = new Vue({
             'deleted_at': false
          },
 
+         /* Etiquetas */
          'tabla_labels': {
             'id_menu': 'Id menu',
             'url_menu': 'Ruta menu',
@@ -2306,6 +2308,7 @@ var MenuController = new Vue({
             'deleted_at': 'Eliminado en'
          },
 
+         /* Campos del modelo en el excel */
          'excel_json_campos': {
             'id_menu': 'String',
             'url_menu': 'String',

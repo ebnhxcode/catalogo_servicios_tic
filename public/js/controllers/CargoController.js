@@ -4143,6 +4143,7 @@ var CargoController = new Vue({
 
          'orden_lista': 'asc',
 
+         /* Campos que se ven en el tablero */
          'tabla_campos': {
             'id_cargo': false,
             'nom_cargo': true,
@@ -4155,6 +4156,7 @@ var CargoController = new Vue({
             'deleted_at': false
          },
 
+         /* Etiquetas */
          'tabla_labels': {
             'id_cargo': 'Id cargo',
             'nom_cargo': 'Nombre cargo',
@@ -4167,6 +4169,7 @@ var CargoController = new Vue({
             'deleted_at': 'Eliminado en'
          },
 
+         /* Campos del modelo en el excel */
          'excel_json_campos': {
             'id_cargo': 'String',
             'nom_cargo': 'String',

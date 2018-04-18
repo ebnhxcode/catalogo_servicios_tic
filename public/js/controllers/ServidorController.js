@@ -4199,6 +4199,7 @@ var ServidorController = new Vue({
 
          'orden_lista': 'asc',
 
+         /* Campos que se ven en el tablero */
          'tabla_campos': {
             'nom_servidor': true,
             'det_servidor': false,
@@ -4245,6 +4246,7 @@ var ServidorController = new Vue({
             'deleted_at': false
          },
 
+         /* Etiquetas */
          'tabla_labels': {
             'id_servidor': 'Id servidor',
             'nom_servidor': 'Nombre servidor',
@@ -4294,6 +4296,7 @@ var ServidorController = new Vue({
             'deleted_at': 'Eliminado en'
          },
 
+         /* Campos del modelo en el excel */
          //Este campo se debe generar cuando se va a descargar el excel, recorriendo el objeto de la clase
          'excel_json_campos': {
             'id_servidor': 'String',

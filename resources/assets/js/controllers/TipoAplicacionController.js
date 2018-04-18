@@ -81,8 +81,8 @@ const TipoAplicacionController = new Vue({
             'nom_tipo_aplicacion': 'Nombre tipo aplicacion',
             'det_tipo_aplicacion': 'Detalle tipo aplicacion',
             'cod_tipo_aplicacion': 'Codigo tipo aplicacion',
-            'id_usuario_registra': 'Usuario registra',
-            'id_usuario_modifica': 'Usuario modifica',
+            //'id_usuario_registra': 'Usuario registra',
+            //'id_usuario_modifica': 'Usuario modifica',
             'created_at': 'Creado en',
             'updated_at': 'Actualizado en',
             'deleted_at': 'Eliminado en'
@@ -94,8 +94,8 @@ const TipoAplicacionController = new Vue({
             'nom_tipo_aplicacion': 'String',
             'det_tipo_aplicacion': 'String',
             'cod_tipo_aplicacion': 'String',
-            'id_usuario_registra': 'String',
-            'id_usuario_modifica': 'String',
+            //'id_usuario_registra': 'String',
+            //'id_usuario_modifica': 'String',
             'created_at': 'String',
             'updated_at': 'String',
             'deleted_at': 'String'
@@ -126,8 +126,8 @@ const TipoAplicacionController = new Vue({
                'nom_tipo_aplicacion': tipo_aplicacion.nom_tipo_aplicacion || '-',
                'det_tipo_aplicacion': tipo_aplicacion.det_tipo_aplicacion || '-',
                'cod_tipo_aplicacion': tipo_aplicacion.cod_tipo_aplicacion || '-',
-               'id_usuario_registra': tipo_aplicacion.id_usuario_registra || '-',
-               'id_usuario_modifica': tipo_aplicacion.id_usuario_modifica || '-',
+               //'id_usuario_registra': tipo_aplicacion.id_usuario_registra || '-',
+               //'id_usuario_modifica': tipo_aplicacion.id_usuario_modifica || '-',
                'created_at': tipo_aplicacion.created_at || '-',
                'updated_at': tipo_aplicacion.updated_at || '-',
                'deleted_at': tipo_aplicacion.deleted_at || '-'

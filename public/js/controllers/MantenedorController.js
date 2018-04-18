@@ -2276,6 +2276,7 @@ var MantenedorController = new Vue({
 
          'orden_lista': 'asc',
 
+         /* Campos que se ven en el tablero */
          'tabla_campos': {
             'id_mantenedor': false,
             'url_mantenedor': true,
@@ -2291,6 +2292,7 @@ var MantenedorController = new Vue({
             'deleted_at': false
          },
 
+         /* Etiquetas */
          'tabla_labels': {
             'id_mantenedor': 'Id mantenedor',
             'url_mantenedor': 'Ruta mantenedor',
@@ -2306,6 +2308,7 @@ var MantenedorController = new Vue({
             'deleted_at': 'Eliminado en'
          },
 
+         /* Campos del modelo en el excel */
          'excel_json_campos': {
             'id_mantenedor': 'String',
             'url_mantenedor': 'String',

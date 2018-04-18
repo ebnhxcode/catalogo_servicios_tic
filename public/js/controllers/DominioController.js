@@ -4145,6 +4145,7 @@ var DominioController = new Vue({
 
          'orden_lista': 'asc',
 
+         /* Campos que se ven en el tablero */
          'tabla_campos': {
             'id_dominio': false,
             'nom_dominio': true,
@@ -4159,6 +4160,7 @@ var DominioController = new Vue({
             'deleted_at': false
          },
 
+         /* Etiquetas */
          'tabla_labels': {
             'id_dominio': 'Id dominio',
             'nom_dominio': 'Nombre dominio',
@@ -4173,6 +4175,7 @@ var DominioController = new Vue({
             'deleted_at': 'Eliminado en'
          },
 
+         /* Campos del modelo en el excel */
          'excel_json_campos': {
             'id_dominio': 'String',
             'nom_dominio': 'String',

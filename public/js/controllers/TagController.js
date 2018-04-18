@@ -2275,6 +2275,7 @@ var TagController = new Vue({
 
          'orden_lista': 'asc',
 
+         /* Campos que se ven en el tablero */
          'tabla_campos': {
             'id_tag': false,
             'nom_tag': true,
@@ -2287,25 +2288,27 @@ var TagController = new Vue({
             'deleted_at': false
          },
 
+         /* Etiquetas */
          'tabla_labels': {
             'id_tag': 'Id tag',
             'nom_tag': 'Nombre tag',
             'det_tag': 'Detalle tag',
             'meta_tag': 'Meta tag',
-            'id_usuario_registra': 'Usuario registra',
-            'id_usuario_modifica': 'Usuario modifica',
+            //'id_usuario_registra':'Usuario registra',
+            //'id_usuario_modifica':'Usuario modifica',
             'created_at': 'Creado en',
             'updated_at': 'Actualizado en',
             'deleted_at': 'Eliminado en'
          },
 
+         /* Campos del modelo en el excel */
          'excel_json_campos': {
             'id_tag': 'String',
             'nom_tag': 'String',
             'det_tag': 'String',
             'meta_tag': 'String',
-            'id_usuario_registra': 'String',
-            'id_usuario_modifica': 'String',
+            //'id_usuario_registra': 'String',
+            //'id_usuario_modifica': 'String',
             'created_at': 'String',
             'updated_at': 'String',
             'deleted_at': 'String'
@@ -2340,8 +2343,8 @@ var TagController = new Vue({
                'nom_tag': tag.nom_tag || '-',
                'det_tag': tag.det_tag || '-',
                'meta_tag': tag.meta_tag || '-',
-               'id_usuario_registra': tag.id_usuario_registra || '-',
-               'id_usuario_modifica': tag.id_usuario_modifica || '-',
+               //'id_usuario_registra': tag.id_usuario_registra || '-',
+               //'id_usuario_modifica': tag.id_usuario_modifica || '-',
                'created_at': tag.created_at || '-',
                'updated_at': tag.updated_at || '-',
                'deleted_at': tag.deleted_at || '-'

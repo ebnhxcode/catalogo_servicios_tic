@@ -55,7 +55,7 @@ class MenuController extends Controller {
       }
 
       $this->usuario_auth = Auth::user();
-      $this->menus = Menu::orderBy('nom_menu', 'asc')->get();
+      $this->menus = Menu::orderBy('nom_menu', 'desc')->get();
 
       if($this->usuario_role = $this->usuario_auth->usuario_role){
          $this->role = $this->usuario_role->role;

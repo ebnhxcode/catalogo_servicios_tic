@@ -2283,6 +2283,7 @@ var SistemaOperativoController = new Vue({
 
          'orden_lista': 'asc',
 
+         /* Campos que se ven en el tablero */
          'tabla_campos': {
             'id_sistema_operativo': false,
             'arquitectura': true,
@@ -2302,6 +2303,7 @@ var SistemaOperativoController = new Vue({
             'deleted_at': false
          },
 
+         /* Etiquetas */
          'tabla_labels': {
             'id_sistema_operativo': 'Id tipo aplicacion',
             'arquitectura': 'Arquitectura',
@@ -2321,6 +2323,7 @@ var SistemaOperativoController = new Vue({
             'deleted_at': 'Eliminado en'
          },
 
+         /* Campos del modelo en el excel */
          'excel_json_campos': {
             'id_sistema_operativo': 'String',
             'arquitectura': 'String',
