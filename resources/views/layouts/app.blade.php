@@ -19,12 +19,17 @@
    <!-- Material Design for Bootstrap fonts and icons -->
    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
 
+
    <link rel="stylesheet" href="{{url('/css/other_libs/bootstrap-material-design.min.css')}}">
    <link rel="stylesheet" href="{{url('/css/other_libs/font-awesome470.min.css')}}">
    <!-- Custom styles for this template -->
    <link href="{{url('/css/simple-sidebar.css')}}" rel="stylesheet">
 
    <style>
+
+      body {
+         padding-top: 50px;
+      }
 
       .pro {
          box-shadow: 0px 4px 4px 0px #dedede;
@@ -113,7 +118,7 @@
 </head>
 <body>
 <div id="app">
-   <nav class="navbar navbar-expand-md navbar-light navbar-laravel navbar-fixed-top">
+   <nav class="navbar navbar-light bg-light navbar-expand-md fixed-top">
       <div class="container">
          <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Catálogo Servicios Tic') }} <small class="text-success">beta</small>
@@ -171,11 +176,12 @@
          <div id="wrapper">
 
             <!-- Sidebar -->
-            <div id="sidebar-wrapper">
+            <div id="sidebar-wrapper"
+                 style="z-index:1;margin-top:4px;box-shadow:  1px 1px 1px 1px #b4b4b4">
 
                <div class="row">
 
-                  <nav class="col-md-12 d-md-block bg-light sidebar pro" id="SideMenuController"
+                  <nav class="col-md-12 {{--d-none--}} d-md-block bg-light sidebar pro" id="SideMenuController"
                        style="border-radius: 5px;padding-top: 20px;">
 
                      <template class="form-group">
@@ -253,8 +259,9 @@
 
                      </div>
                      <br>
-
-
+                     <br>
+                     <br>
+                     <br>
                   </nav><!-- #SideMenuController -->
 
 
