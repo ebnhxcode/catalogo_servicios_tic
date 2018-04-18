@@ -101,7 +101,7 @@ const SistemaOperativoController = new Vue({
 
          /* Etiquetas */
          'tabla_labels': {
-            'id_sistema_operativo':'Id tipo aplicacion',
+            'id_sistema_operativo':'Id sistema operativo',
             'arquitectura':'Arquitectura',
             'nom_sistema_operativo':'Nombre SO',
             'det_sistema_operativo':'Detalle SO',
@@ -129,9 +129,11 @@ const SistemaOperativoController = new Vue({
             'lic_sistema_operativo': 'String',
             'det_licencia_sistema_operativo': 'String',
             'id_idioma': 'String',
+            'nom_idioma': 'String',
             'id_tipo_sistema_operativo': 'String',
-            'id_usuario_registra': 'String',
-            'id_usuario_modifica': 'String',
+            'nom_tipo_sistema_operativo': 'String',
+            //'id_usuario_registra': 'String',
+            //'id_usuario_modifica': 'String',
             'created_at': 'String',
             'updated_at': 'String',
             'deleted_at': 'String'
@@ -166,9 +168,9 @@ const SistemaOperativoController = new Vue({
                'lic_sistema_operativo': sistema_operativo.lic_sistema_operativo || '-',
                'det_licencia_sistema_operativo': sistema_operativo.det_licencia_sistema_operativo || '-',
                'id_idioma': sistema_operativo.id_idioma || '-',
+               'nom_idioma': sistema_operativo.nom_idioma || '-',
                'id_tipo_sistema_operativo': sistema_operativo.id_tipo_sistema_operativo || '-',
-               'id_usuario_registra': sistema_operativo.id_usuario_registra || '-',
-               'id_usuario_modifica': sistema_operativo.id_usuario_modifica || '-',
+               'nom_tipo_sistema_operativo': sistema_operativo.nom_tipo_sistema_operativo || '-',
                'created_at': sistema_operativo.created_at || '-',
                'updated_at': sistema_operativo.updated_at || '-',
                'deleted_at': sistema_operativo.deleted_at || '-'
@@ -181,19 +183,6 @@ const SistemaOperativoController = new Vue({
    },
    created(){
       this.inicializar();
-      /*
-       $(document).ready(function () {
-       //Handle al recargar pagina
-       window.onbeforeunload = function(e){
-       return "Estás seguro que deseas cerrar la ventana?";
-       };
-       window.onunload = function(e){
-       return "Cierre de la ventana";
-       };
-
-       });
-       */
-
    },
    ready: {},
    filters: {},
