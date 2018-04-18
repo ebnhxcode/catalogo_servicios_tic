@@ -211,6 +211,9 @@
                               <i class="fa fa-refresh btn btn-warning" @click.prevent="inicializar" aria-hidden="true"
                                  data-placement="top" data-toggle="tooltip" title="Clic para actualizar menu"></i>
 
+                              <a class="fa fa-compress btn btn-warning menu-toggle"  aria-hidden="true"
+                                 data-placement="top" data-toggle="tooltip" title="Clic para cerrar el menu lateral"></a>
+
                            </li>
                         </ul>
 
@@ -275,7 +278,7 @@
             <!-- Page Content -->
             <div id="page-content-wrapper">
                <div class="container-fluid">
-                  <a href="#menu-toggle" class="btn btn-primary" id="menu-toggle">MENU</a>
+                  <a href="#menu-toggle" class="btn btn-primary" id="menu-toggle">MENU IZQUIERDO</a>
 
 
                      @yield('content')
@@ -325,6 +328,10 @@
 <!-- Menu Toggle Script -->
 <script>
    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+   });
+   $(".menu-toggle").click(function(e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
    });
