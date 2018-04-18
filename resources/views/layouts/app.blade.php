@@ -21,6 +21,8 @@
 
    <link rel="stylesheet" href="{{url('/css/other_libs/bootstrap-material-design.min.css')}}">
    <link rel="stylesheet" href="{{url('/css/other_libs/font-awesome470.min.css')}}">
+   <!-- Custom styles for this template -->
+   <link href="{{url('/css/simple-sidebar.css')}}" rel="stylesheet">
 
    <style>
 
@@ -111,7 +113,7 @@
 </head>
 <body>
 <div id="app">
-   <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+   <nav class="navbar navbar-expand-md navbar-light navbar-laravel navbar-fixed-top">
       <div class="container">
          <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Catálogo Servicios Tic') }} <small class="text-success">beta</small>
@@ -165,95 +167,131 @@
    <main class="py-4" style="padding-left: 10px;padding-top: 3px !important;">
 
       <div class="container-fluid">
-         <div class="row">
 
-            <nav class="col-md-3 d-none d-md-block bg-light sidebar pro" id="SideMenuController"
-                 style="border-radius: 5px;padding-top: 20px;">
+         <div id="wrapper">
 
-               <template class="form-group">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper">
 
-                  <!-- Input para escribir el termino a buscar -->
-                  <input type="text" class="form-control" aria-describedby="filtro_menu_help"
-                         placeholder="Filtrar en el menú" v-model="filtro_menu" id="filtro_menu">
+               <div class="row">
 
-                  {{--
-                  <small id="filtro_menu_help" class="form-text text-muted">
-                     Filtrar ú
-nú
-                  </small>
-                  --}}
-               </template>
+                  <nav class="col-md-12 d-md-block bg-light sidebar pro" id="SideMenuController"
+                       style="border-radius: 5px;padding-top: 20px;">
 
-               <br>
-               <div class="sidebar-sticky" style="overflow:auto; max-height: 1000px;">
+                     <template class="form-group">
 
-                  <h5
-                     class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                     <span class="h6 small">Opciones</span>
-                  </h5>
+                        <!-- Input para escribir el termino a buscar -->
+                        <input type="text" class="form-control col-sm-12" aria-describedby="filtro_menu_help"
+                               placeholder="    Filtrar en el menú" v-model="filtro_menu" id="filtro_menu">
 
-                  <ul class="nav flex-column">
-                     <li class="nav-item">
-                        <i class="fa fa-refresh btn btn-warning" @click.prevent="inicializar" aria-hidden="true"
-                           data-placement="top" data-toggle="tooltip" title="Clic para actualizar menu"></i>
+                        {{--
+                        <small id="filtro_menu_help" class="form-text text-muted">
+                        </small>
+                        --}}
+                     </template>
 
-                     </li>
-                  </ul>
+                     <br>
 
-                  <h5
-                     class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                     <span class="h6"><b>MENU PRINCIPAL</b></span>
-                     <i class="fa fa-sort-alpha-asc btn btn-info btn-sm" @click.prevent="cambiar_orden_lista('nom_menu','menus')" aria-hidden="true"
-                        data-placement="top" data-toggle="tooltip" title="Clic para ordenar menu principal"></i>
-                  </h5>
 
-                  <ul class="nav flex-column">
-                     <li class="nav-item" v-for="menu in filterBy(menus, filtro_menu)">
-                        <a class="nav-link btn btn-primary text-left" style="font-size: .8rem;" :href="menu.url_menu"
-                           data-placement="top" data-toggle="tooltip" :title="menu.det_menu">
-                           @{{ menu.nom_menu }}<span class="sr-only">(current)</span>
-                        </a>
-                     </li>
+                     <div class="sidebar-sticky" style="overflow:auto; max-height: 1000px;">
 
-                     <li class="nav-item" v-if="filterBy(menus, filtro_menu).length == 0">
-                        <small class="text-muted text-center">Sin resultados ${`@{{ filtro_menu }}`}.</small>
-                     </li>
-                  </ul>
+                        <h5
+                           class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                           <span class="h6 small">Opciones</span>
+                        </h5>
 
-                  <div v-if="mantenedores && mantenedores.length > 0">
-                     <h5
-                        class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                        <span class="h6"><b>MANTENEDORES</b></span>
-                        <i class="fa fa-sort-alpha-asc btn btn-info btn-sm" @click.prevent="cambiar_orden_lista('nom_mantenedor','mantenedores')" aria-hidden="true"
-                           data-placement="top" data-toggle="tooltip" title="Clic para ordenar menu de mantenedores"></i>
-                     </h5>
+                        <ul class="nav flex-column">
+                           <li class="nav-item">
+                              <i class="fa fa-refresh btn btn-warning" @click.prevent="inicializar" aria-hidden="true"
+                                 data-placement="top" data-toggle="tooltip" title="Clic para actualizar menu"></i>
 
-                     <ul class="nav flex-column mb-2">
+                           </li>
+                        </ul>
 
-                        <li class="nav-item" v-for="mant in filterBy(mantenedores, filtro_menu)">
-                           <a class="nav-link btn btn-secondary text-left" style="font-size: .8rem;" :href="mant.url_mantenedor"
-                              data-placement="top" data-toggle="tooltip" :title="mant.det_mantenedor">
-                              @{{ mant.nom_mantenedor }}
-                           </a>
-                        </li>
+                        <h5
+                           class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                           <span class="h6"><b>MENU PRINCIPAL</b></span>
+                           <i class="fa fa-sort-alpha-asc btn btn-info btn-sm" @click.prevent="cambiar_orden_lista('nom_menu','menus')" aria-hidden="true"
+                              data-placement="top" data-toggle="tooltip" title="Clic para ordenar menu principal"></i>
+                        </h5>
 
-                        <li class="nav-item" v-if="filterBy(mantenedores, filtro_menu).length == 0">
-                           <small class="text-muted text-center">Sin resultados ${`@{{ filtro_menu }}`}.</small>
-                        </li>
-                     </ul>
-                  </div>
+                        <ul class="nav flex-column">
+                           <li class="nav-item" v-for="menu in filterBy(menus, filtro_menu)">
+                              <a class="nav-link btn btn-primary text-left" style="font-size: .8rem;" :href="menu.url_menu"
+                                 data-placement="top" data-toggle="tooltip" :title="menu.det_menu">
+                                 @{{ menu.nom_menu }}<span class="sr-only">(current)</span>
+                              </a>
+                           </li>
+
+                           <li class="nav-item" v-if="filterBy(menus, filtro_menu).length == 0">
+                              <small class="text-muted text-center">Sin resultados ${`@{{ filtro_menu }}`}.</small>
+                           </li>
+                        </ul>
+
+                        <div v-if="mantenedores && mantenedores.length > 0">
+                           <h5
+                              class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                              <span class="h6"><b>MANTENEDORES</b></span>
+                              <i class="fa fa-sort-alpha-asc btn btn-info btn-sm" @click.prevent="cambiar_orden_lista('nom_mantenedor','mantenedores')" aria-hidden="true"
+                                 data-placement="top" data-toggle="tooltip" title="Clic para ordenar menu de mantenedores"></i>
+                           </h5>
+
+                           <ul class="nav flex-column mb-2">
+
+                              <li class="nav-item" v-for="mant in filterBy(mantenedores, filtro_menu)">
+                                 <a class="nav-link btn btn-secondary text-left" style="font-size: .8rem;" :href="mant.url_mantenedor"
+                                    data-placement="top" data-toggle="tooltip" :title="mant.det_mantenedor">
+                                    @{{ mant.nom_mantenedor }}
+                                 </a>
+                              </li>
+
+                              <li class="nav-item" v-if="filterBy(mantenedores, filtro_menu).length == 0">
+                                 <small class="text-muted text-center">Sin resultados ${`@{{ filtro_menu }}`}.</small>
+                              </li>
+                           </ul>
+                        </div>
+
+                     </div>
+                     <br>
+
+
+                  </nav><!-- #SideMenuController -->
+
+
 
                </div>
-               <br>
 
 
-            </nav><!-- #SideMenuController -->
-
-            <div class="col-md-9 col-lg-9">
-               @yield('content')
             </div>
+            <!-- /#sidebar-wrapper -->
+
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+               <div class="container-fluid">
+                  <a href="#menu-toggle" class="btn btn-primary" id="menu-toggle">MENU</a>
+
+
+                     @yield('content')
+
+
+               </div>
+            </div>
+            <!-- /#page-content-wrapper -->
 
          </div>
+         <!-- /#wrapper -->
+
+
+
+
+
+
+
+
+
+
+
+
       </div>
 
    </main>
@@ -277,7 +315,13 @@ nú
    });
 </script>
 
-
+<!-- Menu Toggle Script -->
+<script>
+   $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+   });
+</script>
 
 </body>
 </html>
