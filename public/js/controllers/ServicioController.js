@@ -4194,10 +4194,13 @@ var ServicioController = new Vue({
             'id_servicio': 'String',
             'nom_servicio': 'String',
             'det_servicio': 'String',
+            'n_aplicaciones': 'String',
+            'n_servidores': 'String',
             'id_actividad': 'String',
+            'nom_actividad': 'String',
             //'id_usuario':'String',
-            'id_usuario_registra': 'String',
-            'id_usuario_modifica': 'String',
+            //'id_usuario_registra':'String',
+            //'id_usuario_modifica':'String',
             'created_at': 'String',
             'updated_at': 'String',
             'deleted_at': 'String'
@@ -4232,9 +4235,12 @@ var ServicioController = new Vue({
                'nom_servicio': servicio.nom_servicio || '-',
                'det_servicio': servicio.det_servicio || '-',
                'id_actividad': servicio.id_actividad || '-',
-               'id_usuario': servicio.id_usuario || '-',
-               'id_usuario_registra': servicio.id_usuario_registra || '-',
-               'id_usuario_modifica': servicio.id_usuario_modifica || '-',
+               'nom_actividad': servicio.id_actividad || '-',
+               'n_aplicaciones': servicio.aplicaciones.length || '-',
+               'n_servidores': servicio.servidores.length || '-',
+               //'id_usuario': servicio.id_usuario || '-',
+               //'id_usuario_registra': servicio.id_usuario_registra || '-',
+               //'id_usuario_modifica': servicio.id_usuario_modifica || '-',
                'created_at': servicio.created_at || '-',
                'updated_at': servicio.updated_at || '-',
                'deleted_at': servicio.deleted_at || '-'
@@ -4247,17 +4253,6 @@ var ServicioController = new Vue({
    },
    created: function created() {
       this.inicializar();
-      /*
-      $(document).ready(function () {
-         //Handle al recargar pagina
-         window.onbeforeunload = function(e){
-            return "Estás seguro que deseas cerrar la ventana?";
-         };
-         window.onunload = function(e){
-            return "Cierre de la ventana";
-         };
-       });
-      */
    },
 
    ready: {},
@@ -4312,42 +4307,6 @@ var ServicioController = new Vue({
             // error callback
             _this2.checkear_estado_respuesta_http(response.status);
          });
-
-         /*
-         swal({
-            title: "¿Estás seguro/a?",
-            text: "¿Deseas confirmar la eliminación de este registro?",
-            type: "warning",
-            showCancelButton: true,
-            closeOnConfirm: false,
-            closeOnCancel: false,
-            confirmButtonColor: '#DD6B55',
-            confirmButtonClass: "btn-danger",
-            confirmButtonText: 'Si, eliminar!',
-            cancelButtonText: 'No, mantener.'
-         }).then((result) => {
-            if (result.value) {
-               //Se adjunta el token
-               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-                this.$http.delete(`/servicios_usuarios/${self.id}`).then(response => {
-                  if (response.status == 200) {
-                     this.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
-                  } else {
-                     this.checkear_estado_respuesta_http(response.status);
-                     return false;
-                  }
-                   if (this.mostrar_notificaciones(response) == true) {
-                     //Recargar la lista
-                     this.inicializar();
-                  }
-               }, response => { // error callback
-                  this.checkear_estado_respuesta_http(response.status);
-               });
-            } else if (result.dismiss === swal.DismissReason.cancel) {
-               this.auto_alerta_corta("Cancelado", "Se ha cancelado la eliminación", "success");
-            }
-         });
-          */
       },
 
       eliminar_bitacora_usuario: function eliminar_bitacora_usuario(id) {

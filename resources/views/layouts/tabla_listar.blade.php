@@ -92,7 +92,7 @@
 
    </tr>
    <tr v-if="lista_objs_model && lista_objs_model.length == 0 || filterBy(lista_objs_model, filtro_head).length == 0">
-      <td :colspan="lista_objs_model.length-1">No hay más registros</td>
+      <td class="text-center" :colspan="filterBy(tabla_campos, true).length+1">No hay más registros</td>
    </tr>
    </tbody>
 </table>

@@ -188,7 +188,8 @@
 
                         <!-- Input para escribir el termino a buscar -->
                         <input type="text" class="form-control col-sm-12" aria-describedby="filtro_menu_help"
-                               placeholder="    Filtrar en el menú" v-model="filtro_menu" id="filtro_menu">
+                               style="padding-left: 20px;"
+                               placeholder="Filtrar en el menú" v-model="filtro_menu" id="filtro_menu">
 
                         {{--
                         <small id="filtro_menu_help" class="form-text text-muted">

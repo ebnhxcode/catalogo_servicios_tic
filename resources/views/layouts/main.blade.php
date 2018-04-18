@@ -76,15 +76,15 @@
          <h5 style="position: relative;">TABLERO{{--Mostrar\Ocultar opciones de la tabla--}}</h5>
             {{--(<small>Clic en un botón para mostrar en grilla</small>)</h5>--}}
          {{--<mini-spinner v-if="mini_spinner_table_inputs == true"></mini-spinner> v-else --}}
-         <div class="pro btn-group btn-group-sm btn-group-toggle" v-for="v,c,i in tabla_campos">
+         <div class="pro btn-group btn-group-sm btn-group-toggle" v-for="v,c,i in tabla_campos" style="z-index: 0 !important;">
             <label :class="v==true?'btn btn-success active':'btn btn-secondary'" @click.prevent="cambiar_visibilidad(c)"
                    {{--data-placement="top" data-toggle="tooltip" :title="`Clic para ${(v==true)?'ocultar':'mostrar'}`">--}}
                    data-placement="top" data-toggle="tooltip" title="Clic para mostrar u ocultar">
-         <span style="font-size: 85%;">
-            <i class="fa fa-check" v-if="v==true"></i>
-            {{--<i class="fa fa-eye" v-if="v==true"></i>--}}
-            @{{ tabla_labels[c] }}
-         </span>
+                  <span style="font-size: 85%;">
+                     <i class="fa fa-check" v-if="v==true"></i>
+                     {{--<i class="fa fa-eye" v-if="v==true"></i>--}}
+                     @{{ tabla_labels[c] }}
+                  </span>
             </label>
          </div>
       </template>
