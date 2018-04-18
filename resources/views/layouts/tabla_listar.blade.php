@@ -21,11 +21,20 @@
       <template v-if="id_en_edicion != lom[`id_${nombre_model}`] || modal_actualizar_activo == true">
          <td v-for="c,i in tabla_campos" v-show="c">
             {{-- se corre por detras la completitud de relaciones. --}}
-            <div class="text-center h6 btn btn-lg" style="width: 100%;" v-if="en_array(['nom_servicio'],i)" @click.prevent="mostrar_modal_actualizar(lom[`id_${nombre_model}`])">
+            @if(Request::path() == 'servicios')
+            <div class="text-center h6 btn btn-md" style="width: 100%;" v-if="en_array(['nom_servicio'],i)" @click.prevent="mostrar_modal_actualizar(lom[`id_${nombre_model}`])">
                <i class="fa fa-rocket small float-right btn" data-placement="top" data-toggle="tooltip" title="Abrir modal"></i>
                @{{ lom[i] }}
             </div>
             <div v-else>@{{ lom[i] }}</div>
+            @else
+               <div class="text-center" style="width: 100%;" v-if="en_array(['ram','memoria_dd'],i)">
+                  @{{`${(lom[i])/1024} GB`}}
+               </div>
+               <div v-else>
+                  @{{ lom[i] }}
+               </div>
+            @endif
          </td>
       </template>
       <template v-else>

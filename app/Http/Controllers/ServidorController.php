@@ -92,8 +92,18 @@ class ServidorController extends Controller {
 
       $this->usuario_auth = Auth::user();
       $this->servidores = Servidor::with([
-         'datacentro','sistema_operativo','aplicaciones','servidor_estado.estado','ambiente','servidor_historico_cambios','cluster','servidor_lvm','servicio',
-         'vlan','tipo_servidor','tipo_respaldo_disco'
+         'datacentro',
+         'sistema_operativo',
+         'aplicaciones',
+         'servidor_estado.estado',
+         'ambiente',
+         'servidor_historico_cambios',
+         'cluster',
+         'servidor_lvm',
+         'servicio',
+         'vlan',
+         'tipo_servidor',
+         'tipo_respaldo_disco'
       ])->get();
       $this->servicios = Servicio::all();
       $this->datacentros = Datacentro::all();
@@ -371,14 +381,32 @@ class ServidorController extends Controller {
       $this->new_servidor_historico = ServidorHistoricoCambio::create($request->all());
 
       if ($this->servidor->sistema_operativo->tipo_sistema_operativo->cod_tipo_sistema_operativo == "linux") {
-         $this->servidor_lvm = $this->servidor->servidor_lvm;
-         $this->servidor_lvm->lvm_raiz=$request['lvm_raiz'];
-         $this->servidor_lvm->lvm_usr=$request['lvm_usr'];
-         $this->servidor_lvm->lvm_tmp=$request['lvm_tmp'];
-         $this->servidor_lvm->lvm_var=$request['lvm_var'];
-         $this->servidor_lvm->lvm_home=$request['lvm_home'];
-         $this->servidor_lvm->id_usuario_modifica = Auth::user()->id_usuario;
-         $this->servidor_lvm->save();
+
+         if ($this->servidor->servidor_lvm) {
+            $this->servidor_lvm = $this->servidor->servidor_lvm;
+            $this->servidor_lvm->lvm_raiz=$request['lvm_raiz'];
+            $this->servidor_lvm->lvm_usr=$request['lvm_usr'];
+            $this->servidor_lvm->lvm_tmp=$request['lvm_tmp'];
+            $this->servidor_lvm->lvm_var=$request['lvm_var'];
+            $this->servidor_lvm->lvm_home=$request['lvm_home'];
+            $this->servidor_lvm->id_usuario_modifica = Auth::user()->id_usuario;
+            $this->servidor_lvm->save();
+         } else {
+            $this->servidor_lvm = ServidorLvm::create([
+               'id_servidor' => $this->servidor->id_servidor,
+               'lvm_raiz' => $request['lvm_raiz'],
+               'lvm_raiz' => $request['lvm_raiz'],
+               'lvm_usr' => $request['lvm_usr'],
+               'lvm_tmp' => $request['lvm_tmp'],
+               'lvm_var' => $request['lvm_var'],
+               'lvm_home' => $request['lvm_home'],
+               'id_usuario_registra' => $request['id_usuario_registra'],
+               'id_usuario_modifica' => $request['id_usuario_modifica'],
+            ]);
+         }
+
+
+
       }
 
       #unset($this->new_servidor_permiso, $this->permiso);
