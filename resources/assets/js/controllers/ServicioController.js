@@ -109,10 +109,10 @@ const ServicioController = new Vue({
             'id_servicio':'Id Servicio',
             'nom_servicio':'Nombre servicio',
             'det_servicio':'Detalle servicio',
-            'n_aplicaciones':'# Apps',
-            'n_servidores':'# Servidores',
             'id_actividad':'Id Actividad',
             'nom_actividad':'Nombre actividad',
+            'n_aplicaciones':'# Apps',
+            'n_servidores':'# Servidores',
             'id_usuario':'Id Usuario',
             'nom_usuario':'Nombre usuario asoc.',
             'id_usuario_registra':'Usuario registra',
@@ -127,10 +127,10 @@ const ServicioController = new Vue({
             'id_servicio':'String',
             'nom_servicio':'String',
             'det_servicio':'String',
-            'n_aplicaciones':'String',
-            'n_servidores':'String',
             'id_actividad':'String',
             'nom_actividad':'String',
+            'n_aplicaciones':'String',
+            'n_servidores':'String',
             //'id_usuario':'String',
             //'id_usuario_registra':'String',
             //'id_usuario_modifica':'String',
@@ -164,7 +164,7 @@ const ServicioController = new Vue({
                'nom_servicio': servicio.nom_servicio || '-',
                'det_servicio': servicio.det_servicio || '-',
                'id_actividad': servicio.id_actividad || '-',
-               'nom_actividad': servicio.id_actividad || '-',
+               'nom_actividad': servicio.nom_actividad || '-',
                'n_aplicaciones': servicio.aplicaciones.length || '-',
                'n_servidores': servicio.servidores.length || '-',
                //'id_usuario': servicio.id_usuario || '-',
@@ -272,10 +272,6 @@ const ServicioController = new Vue({
             }
          });
 
-
-
-
-
       },
 
       guardar_nuevo_usuario_servicio: function () {
@@ -343,12 +339,8 @@ const ServicioController = new Vue({
                      this.servicio_nueva_bitacora.det_bitacora = null;
                      this.servicio.usuarios_bitacora_servicios.push(response.body.usuario_bitacora_servicio);
                      /*
-
                      this.inicializar();
                      */
-
-
-
                   } else {
                      this.checkear_estado_respuesta_http(response.status);
                      return false;
@@ -372,7 +364,6 @@ const ServicioController = new Vue({
          if (i === 0) return `${bytes} ${sizes[i]})`
          return `${(bytes / (1024 ** i)).toFixed(1)} ${sizes[i]}`
       }
-
 
    }
 });
