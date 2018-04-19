@@ -3212,7 +3212,7 @@ var RoleController = new Vue({
             'deleted_at': null
          },
          'permitido_guardar': ['nom_role', 'det_role', 'id_permiso'],
-         'relaciones_clase': [{ 'role.role_permiso': ['id_permiso', 'nom_permiso'] }],
+         'relaciones_clase': [{ 'role_permiso.permiso': ['id_permiso', 'nom_permiso'] }],
          'lom': {},
          'lista_objs_model': [],
          'roles': [],

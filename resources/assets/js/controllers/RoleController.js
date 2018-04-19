@@ -43,7 +43,7 @@ const RoleController = new Vue({
             'id_permiso',
          ],
          'relaciones_clase':[
-            {'role.role_permiso':['id_permiso','nom_permiso']},
+            {'role_permiso.permiso':['id_permiso','nom_permiso']},
          ],
          'lom':{},
          'lista_objs_model':[],
