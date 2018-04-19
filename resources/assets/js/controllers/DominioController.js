@@ -104,8 +104,8 @@ const DominioController = new Vue({
             'ip_publica': 'String',
             'ip_balanceador': 'String',
             'dns_asoc_dominio': 'String',
-            'id_usuario_registra': 'String',
-            'id_usuario_modifica': 'String',
+            //'id_usuario_registra': 'String',
+            //'id_usuario_modifica': 'String',
             'created_at': 'String',
             'updated_at': 'String',
             'deleted_at': 'String'
@@ -138,8 +138,8 @@ const DominioController = new Vue({
                'ip_publica': dominio.ip_publica || '-',
                'ip_balanceador': dominio.ip_balanceador || '-',
                'dns_asoc_dominio': dominio.dns_asoc_dominio || '-',
-               'id_usuario_registra': dominio.id_usuario_registra || '-',
-               'id_usuario_modifica': dominio.id_usuario_modifica || '-',
+               //'id_usuario_registra': dominio.id_usuario_registra || '-',
+               //'id_usuario_modifica': dominio.id_usuario_modifica || '-',
                'created_at': dominio.created_at || '-',
                'updated_at': dominio.updated_at || '-',
                'deleted_at': dominio.deleted_at || '-'

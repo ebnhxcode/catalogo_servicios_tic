@@ -2272,8 +2272,8 @@ var DatacentroController = new Vue({
             'nom_datacentro': true,
             'det_datacentro': true,
             'cod_datacentro': true,
-            'id_usuario_registra': false,
-            'id_usuario_modifica': false,
+            //'id_usuario_registra':false,
+            //'id_usuario_modifica':false,
             'created_at': false,
             'updated_at': false,
             'deleted_at': false
@@ -2298,8 +2298,8 @@ var DatacentroController = new Vue({
             'nom_datacentro': 'String',
             'det_datacentro': 'String',
             'cod_datacentro': 'String',
-            'id_usuario_registra': 'String',
-            'id_usuario_modifica': 'String',
+            //'id_usuario_registra': 'String',
+            //'id_usuario_modifica': 'String',
             'created_at': 'String',
             'updated_at': 'String',
             'deleted_at': 'String'
@@ -2334,8 +2334,8 @@ var DatacentroController = new Vue({
                'nom_datacentro': datacentro.nom_datacentro || '-',
                'det_datacentro': datacentro.det_datacentro || '-',
                'cod_datacentro': datacentro.cod_datacentro || '-',
-               'id_usuario_registra': datacentro.id_usuario_registra || '-',
-               'id_usuario_modifica': datacentro.id_usuario_modifica || '-',
+               //'id_usuario_registra': datacentro.id_usuario_registra || '-',
+               //'id_usuario_modifica': datacentro.id_usuario_modifica || '-',
                'created_at': datacentro.created_at || '-',
                'updated_at': datacentro.updated_at || '-',
                'deleted_at': datacentro.deleted_at || '-'

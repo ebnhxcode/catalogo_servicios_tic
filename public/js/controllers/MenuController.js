@@ -2285,8 +2285,8 @@ var MenuController = new Vue({
             'cod_menu': true,
             'imagen_menu': false,
             'font_icon_menu': false,
-            'id_usuario_registra': false,
-            'id_usuario_modifica': false,
+            //'id_usuario_registra':false,
+            //'id_usuario_modifica':false,
             'created_at': false,
             'updated_at': false,
             'deleted_at': false
@@ -2317,8 +2317,8 @@ var MenuController = new Vue({
             'cod_menu': 'String',
             'imagen_menu': 'String',
             'font_icon_menu': 'String',
-            'id_usuario_registra': 'String',
-            'id_usuario_modifica': 'String',
+            //'id_usuario_registra': 'String',
+            //'id_usuario_modifica': 'String',
             'created_at': 'String',
             'updated_at': 'String',
             'deleted_at': 'String'
@@ -2356,8 +2356,8 @@ var MenuController = new Vue({
                'cod_menu': menu.cod_menu || '-',
                'imagen_menu': menu.imagen_menu || '-',
                'font_icon_menu': menu.font_icon_menu || '-',
-               'id_usuario_registra': menu.id_usuario_registra || '-',
-               'id_usuario_modifica': menu.id_usuario_modifica || '-',
+               //'id_usuario_registra': menu.id_usuario_registra || '-',
+               //'id_usuario_modifica': menu.id_usuario_modifica || '-',
                'created_at': menu.created_at || '-',
                'updated_at': menu.updated_at || '-',
                'deleted_at': menu.deleted_at || '-'

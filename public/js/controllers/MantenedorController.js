@@ -2285,8 +2285,8 @@ var MantenedorController = new Vue({
             'cod_mantenedor': true,
             'imagen_mantenedor': false,
             'font_icon_mantenedor': false,
-            'id_usuario_registra': false,
-            'id_usuario_modifica': false,
+            //'id_usuario_registra':false,
+            //'id_usuario_modifica':false,
             'created_at': false,
             'updated_at': false,
             'deleted_at': false
@@ -2317,8 +2317,8 @@ var MantenedorController = new Vue({
             'cod_mantenedor': 'String',
             'imagen_mantenedor': 'String',
             'font_icon_mantenedor': 'String',
-            'id_usuario_registra': 'String',
-            'id_usuario_modifica': 'String',
+            //'id_usuario_registra': 'String',
+            //'id_usuario_modifica': 'String',
             'created_at': 'String',
             'updated_at': 'String',
             'deleted_at': 'String'
@@ -2356,8 +2356,8 @@ var MantenedorController = new Vue({
                'cod_mantenedor': mantenedor.cod_mantenedor || '-',
                'imagen_mantenedor': mantenedor.imagen_mantenedor || '-',
                'font_icon_mantenedor': mantenedor.font_icon_mantenedor || '-',
-               'id_usuario_registra': mantenedor.id_usuario_registra || '-',
-               'id_usuario_modifica': mantenedor.id_usuario_modifica || '-',
+               //'id_usuario_registra': mantenedor.id_usuario_registra || '-',
+               //'id_usuario_modifica': mantenedor.id_usuario_modifica || '-',
                'created_at': mantenedor.created_at || '-',
                'updated_at': mantenedor.updated_at || '-',
                'deleted_at': mantenedor.deleted_at || '-'

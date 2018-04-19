@@ -4141,8 +4141,8 @@ var EstadoController = new Vue({
             'nom_estado': true,
             'det_estado': true,
             'cod_estado': true,
-            'id_usuario_registra': false,
-            'id_usuario_modifica': false,
+            //'id_usuario_registra':false,
+            //'id_usuario_modifica':false,
             'created_at': false,
             'updated_at': false,
             'deleted_at': false
@@ -4167,8 +4167,8 @@ var EstadoController = new Vue({
             'nom_estado': 'String',
             'det_estado': 'String',
             'cod_estado': 'String',
-            'id_usuario_registra': 'String',
-            'id_usuario_modifica': 'String',
+            //'id_usuario_registra': 'String',
+            //'id_usuario_modifica': 'String',
             'created_at': 'String',
             'updated_at': 'String',
             'deleted_at': 'String'
@@ -4203,8 +4203,8 @@ var EstadoController = new Vue({
                'nom_estado': estado.nom_estado || '-',
                'det_estado': estado.det_estado || '-',
                'cod_estado': estado.cod_estado || '-',
-               'id_usuario_registra': estado.id_usuario_registra || '-',
-               'id_usuario_modifica': estado.id_usuario_modifica || '-',
+               //'id_usuario_registra': estado.id_usuario_registra || '-',
+               //'id_usuario_modifica': estado.id_usuario_modifica || '-',
                'created_at': estado.created_at || '-',
                'updated_at': estado.updated_at || '-',
                'deleted_at': estado.deleted_at || '-'
