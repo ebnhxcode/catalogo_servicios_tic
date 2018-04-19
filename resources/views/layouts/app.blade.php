@@ -200,7 +200,7 @@
                      <br>
 
 
-                     <div class="sidebar-sticky" style="overflow:auto; max-height: 1000px;">
+                     <div class="sidebar-sticky" style="overflow:auto;">
 
                         <h5
                            class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
