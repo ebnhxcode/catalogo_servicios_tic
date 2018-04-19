@@ -111,8 +111,8 @@ const AplicacionController = new Vue({
             //'id_servicio':false,
             'nom_servicio':false,
 
-            'id_usuario_registra':false,
-            'id_usuario_modifica':false,
+            //'id_usuario_registra':false,
+            //'id_usuario_modifica':false,
             'created_at':false,
             'updated_at':false,
             'deleted_at':false,
@@ -157,12 +157,16 @@ const AplicacionController = new Vue({
             'subdominio':'String',
             'ssl_tls':'String',
             'id_dominio':'String',
+            'nom_dominio':'String',
             'id_tipo_aplicacion':'String',
+            'nom_tipo_aplicacion':'String',
             'id_servidor':'String',
+            'nom_servidor':'String',
             'id_servicio':'String',
+            'nom_servicio':'String',
 
-            'id_usuario_registra':'String',
-            'id_usuario_modifica':'String',
+            //'id_usuario_registra':'String',
+            //'id_usuario_modifica':'String',
             'created_at':'String',
             'updated_at':'String',
             'deleted_at':'String',
@@ -199,12 +203,16 @@ const AplicacionController = new Vue({
                'subdominio': aplicacion.subdominio || '-',
                'ssl_tls': aplicacion.ssl_tls || '-',
                'id_dominio': aplicacion.id_dominio || '-',
+               'nom_dominio': aplicacion.nom_dominio || '-',
                'id_tipo_aplicacion': aplicacion.id_tipo_aplicacion || '-',
+               'nom_tipo_aplicacion': aplicacion.nom_tipo_aplicacion || '-',
                'id_servidor': aplicacion.id_servidor || '-',
+               'nom_servidor': aplicacion.nom_servidor || '-',
                'id_servicio': aplicacion.id_servicio || '-',
+               'nom_servicio': aplicacion.nom_servicio || '-',
 
-               'id_usuario_registra': aplicacion.id_usuario_registra || '-',
-               'id_usuario_modifica': aplicacion.id_usuario_modifica || '-',
+               //'id_usuario_registra': aplicacion.id_usuario_registra || '-',
+               //'id_usuario_modifica': aplicacion.id_usuario_modifica || '-',
                'created_at': aplicacion.created_at || '-',
                'updated_at': aplicacion.updated_at || '-',
                'deleted_at': aplicacion.deleted_at || '-',
@@ -217,19 +225,6 @@ const AplicacionController = new Vue({
    },
    created(){
       this.inicializar();
-      /*
-      $(document).ready(function () {
-         //Handle al recargar pagina
-         window.onbeforeunload = function(e){
-            return "Estás seguro que deseas cerrar la ventana?";
-         };
-         window.onunload = function(e){
-            return "Cierre de la ventana";
-         };
-
-      });
-      */
-
    },
    ready: {},
    filters: {},

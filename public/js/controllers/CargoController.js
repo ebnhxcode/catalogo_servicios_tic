@@ -4149,8 +4149,8 @@ var CargoController = new Vue({
             'nom_cargo': true,
             'det_cargo': true,
             'cod_cargo': true,
-            'id_usuario_registra': false,
-            'id_usuario_modifica': false,
+            //'id_usuario_registra':false,
+            //'id_usuario_modifica':false,
             'created_at': false,
             'updated_at': false,
             'deleted_at': false
@@ -4175,8 +4175,8 @@ var CargoController = new Vue({
             'nom_cargo': 'String',
             'det_cargo': 'String',
             'cod_cargo': 'String',
-            'id_usuario_registra': 'String',
-            'id_usuario_modifica': 'String',
+            //'id_usuario_registra': 'String',
+            //'id_usuario_modifica': 'String',
             'created_at': 'String',
             'updated_at': 'String',
             'deleted_at': 'String'
@@ -4211,8 +4211,8 @@ var CargoController = new Vue({
                'nom_cargo': cargo.nom_cargo || '-',
                'det_cargo': cargo.det_cargo || '-',
                'cod_cargo': cargo.cod_cargo || '-',
-               'id_usuario_registra': cargo.id_usuario_registra || '-',
-               'id_usuario_modifica': cargo.id_usuario_modifica || '-',
+               //'id_usuario_registra': cargo.id_usuario_registra || '-',
+               //'id_usuario_modifica': cargo.id_usuario_modifica || '-',
                'created_at': cargo.created_at || '-',
                'updated_at': cargo.updated_at || '-',
                'deleted_at': cargo.deleted_at || '-'
@@ -4225,17 +4225,6 @@ var CargoController = new Vue({
    },
    created: function created() {
       this.inicializar();
-      /*
-       $(document).ready(function () {
-       //Handle al recargar pagina
-       window.onbeforeunload = function(e){
-       return "Estás seguro que deseas cerrar la ventana?";
-       };
-       window.onunload = function(e){
-       return "Cierre de la ventana";
-       };
-        });
-       */
    },
 
    ready: {},

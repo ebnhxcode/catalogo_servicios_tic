@@ -2370,17 +2370,6 @@ var MenuController = new Vue({
    },
    created: function created() {
       this.inicializar();
-      /*
-       $(document).ready(function () {
-       //Handle al recargar pagina
-       window.onbeforeunload = function(e){
-       return "Estás seguro que deseas cerrar la ventana?";
-       };
-       window.onunload = function(e){
-       return "Cierre de la ventana";
-       };
-        });
-       */
    },
 
    ready: {},

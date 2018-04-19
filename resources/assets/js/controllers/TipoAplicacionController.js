@@ -81,8 +81,8 @@ const TipoAplicacionController = new Vue({
             'nom_tipo_aplicacion': 'Nombre tipo aplicacion',
             'det_tipo_aplicacion': 'Detalle tipo aplicacion',
             'cod_tipo_aplicacion': 'Codigo tipo aplicacion',
-            //'id_usuario_registra': 'Usuario registra',
-            //'id_usuario_modifica': 'Usuario modifica',
+            'id_usuario_registra': 'Usuario registra',
+            'id_usuario_modifica': 'Usuario modifica',
             'created_at': 'Creado en',
             'updated_at': 'Actualizado en',
             'deleted_at': 'Eliminado en'

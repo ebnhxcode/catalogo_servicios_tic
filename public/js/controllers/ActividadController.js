@@ -4140,8 +4140,8 @@ var ActividadController = new Vue({
             'id_actividad': false,
             'nom_actividad': true,
             'det_actividad': false,
-            'id_usuario_registra': false,
-            'id_usuario_modifica': false,
+            //'id_usuario_registra':false,
+            //'id_usuario_modifica':false,
             'created_at': true,
             'updated_at': false,
             'deleted_at': false
@@ -4164,8 +4164,8 @@ var ActividadController = new Vue({
             'id_actividad': 'String',
             'nom_actividad': 'String',
             'det_actividad': 'String',
-            'id_usuario_registra': 'String',
-            'id_usuario_modifica': 'String',
+            //'id_usuario_registra': 'String',
+            //'id_usuario_modifica': 'String',
             'created_at': 'String',
             'updated_at': 'String',
             'deleted_at': 'String'
@@ -4199,8 +4199,8 @@ var ActividadController = new Vue({
                'id_actividad': actividad.id_actividad || '-',
                'nom_actividad': actividad.nom_actividad || '-',
                'det_actividad': actividad.det_actividad || '-',
-               'id_actividad_registra': actividad.id_actividad_registra || '-',
-               'id_actividad_modifica': actividad.id_actividad_modifica || '-',
+               //'id_usuario_registra': actividad.id_usuario_registra|| '-',
+               //'id_usuario_modifica': actividad.id_usuario_modifica|| '-',
                'created_at': actividad.created_at || '-',
                'updated_at': actividad.updated_at || '-',
                'deleted_at': actividad.deleted_at || '-'

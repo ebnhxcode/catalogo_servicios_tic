@@ -2294,8 +2294,8 @@ var TagController = new Vue({
             'nom_tag': 'Nombre tag',
             'det_tag': 'Detalle tag',
             'meta_tag': 'Meta tag',
-            //'id_usuario_registra':'Usuario registra',
-            //'id_usuario_modifica':'Usuario modifica',
+            'id_usuario_registra': 'Usuario registra',
+            'id_usuario_modifica': 'Usuario modifica',
             'created_at': 'Creado en',
             'updated_at': 'Actualizado en',
             'deleted_at': 'Eliminado en'

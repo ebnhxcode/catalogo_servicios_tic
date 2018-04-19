@@ -3241,8 +3241,8 @@ var RoleController = new Vue({
             'det_role': true,
             //'id_permiso':false,
             'nom_permiso': false,
-            'id_usuario_registra': false,
-            'id_usuario_modifica': false,
+            //'id_usuario_registra':false,
+            //'id_usuario_modifica':false,
             'created_at': false,
             'updated_at': false,
             'deleted_at': false
