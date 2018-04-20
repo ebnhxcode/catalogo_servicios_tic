@@ -279,7 +279,7 @@
             <!-- Page Content -->
             <div id="page-content-wrapper">
                <div class="container-fluid">
-                  <a href="#menu-toggle" class="btn btn-primary" id="menu-toggle">MENU IZQUIERDO</a>
+                  <a href="#menu-toggle" class="btn btn-primary active" id="menu-toggle">ABRIR<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
 
 
                      @yield('content')
@@ -331,10 +331,22 @@
    $("#menu-toggle").click(function(e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
+
+      if ($("#menu-toggle").text() == 'ABRIR') {
+         $("#menu-toggle").text('CERRAR').append('<i class="fa fa-arrow-left" aria-hidden="true"></i>');
+      }else{
+         $("#menu-toggle").text('ABRIR').append('<i class="fa fa-arrow-right" aria-hidden="true"></i>');
+      }
+
    });
    $(".menu-toggle").click(function(e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
+      if ($("#menu-toggle").text() == 'ABRIR') {
+         $("#menu-toggle").text('CERRAR').append('<i class="fa fa-arrow-left" aria-hidden="true"></i>');
+      }else{
+         $("#menu-toggle").text('ABRIR').append('<i class="fa fa-arrow-right" aria-hidden="true"></i>');
+      }
    });
 </script>
 
