@@ -3,7 +3,7 @@
 
       <!-- este bloque será reemplazado dinamicamente -->
       <div class="card pro" style="{{--width: 18rem;--}}">
-         <img class="card-img-top" src="{{ url('/img/sistema_operativo.png') }}" alt="Card image cap">
+         <img class="card-img-top" src="{{ url('/img/menus.jpg') }}" alt="Card image cap">
          <div class="card-body">
             <h5 class="card-title">
                @{{ menu.nom_menu || '' }}
