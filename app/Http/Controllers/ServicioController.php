@@ -160,7 +160,7 @@ class ServicioController extends Controller {
            'nom_servicio' => $this->servicio['nom_servicio'],
            'det_servicio' => $this->servicio['det_servicio'],
            'id_actividad' => $this->servicio['id_actividad'],
-           'id_usuario' => Auth::user()->id_usuario,
+           //'id_usuario' => Auth::user()->id_usuario,
            'id_usuario_registra' => Auth::user()->id_usuario,
            'id_usuario_modifica' => Auth::user()->id_usuario,
         ]);
@@ -201,7 +201,7 @@ class ServicioController extends Controller {
             ]);
         }
         $this->servicio = Servicio::find($request["id_$this->nombre_modelo"]);
-        $request['id_usuario'] = Auth::user()->id_usuario;
+        //$request['id_usuario'] = Auth::user()->id_usuario;
         $request['id_usuario_modifica'] = Auth::user()->id_usuario;
         $this->servicio->update($request->all());
 
