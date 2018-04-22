@@ -5,7 +5,7 @@
 -- Dumped from database version 10.3
 -- Dumped by pg_dump version 10.3
 
--- Started on 2018-04-20 17:24:02 -03
+-- Started on 2018-04-22 20:57:55 -03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -207,7 +207,9 @@ CREATE TABLE public.aplicaciones (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     deleted_at timestamp without time zone,
-    id_servidor integer
+    id_servidor integer,
+    id_template integer,
+    id_environment integer
 );
 
 
@@ -1306,8 +1308,8 @@ CREATE TABLE public.servidores (
     id_vlan integer,
     id_tipo_servidor integer,
     id_tipo_respaldo_disco integer,
-    template text,
-    environment text
+    id_template integer,
+    id_environment integer
 );
 
 
@@ -2066,7 +2068,7 @@ COPY public.ambientes (id_ambiente, nom_ambiente, det_ambiente, id_usuario_regis
 -- Data for Name: aplicaciones; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.aplicaciones (id_aplicacion, id_tipo_aplicacion, id_servicio, id_dominio, nom_aplicacion, det_aplicacion, alias, url_web, ip, subdominio, ssl_tls, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, id_servidor) FROM stdin;
+COPY public.aplicaciones (id_aplicacion, id_tipo_aplicacion, id_servicio, id_dominio, nom_aplicacion, det_aplicacion, alias, url_web, ip, subdominio, ssl_tls, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, id_servidor, id_template, id_environment) FROM stdin;
 \.
 
 
@@ -3256,257 +3258,257 @@ COPY public.servicios_usuarios (id_servicio_usuario, id_servicio, id_usuario, id
 -- Data for Name: servidores; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.servidores (id_servidor, id_datacentro, id_sistema_operativo, nom_servidor, ip_servidor, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, det_servidor, ram, memoria_dd, swap, procesador, frec_procesador, nucleos, usuarios_pactados, mac, nodo, interface, id_ambiente, modelo_procesador, id_cluster, agente_instana_instalado, id_servicio, id_vlan, id_tipo_servidor, id_tipo_respaldo_disco, template, environment) FROM stdin;
-1166	2	33	MNCASPROD_API01	172.20.34.10	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	307200	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	Eliminada	Cassandra
-1167	2	33	MNCASPROD_API02	172.20.34.11	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	307200	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	Eliminada	Cassandra
-1168	2	33	MNCASPROD_API03	172.20.34.12	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	307200	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	Eliminada	Cassandra
-1169	2	33	MNMPPROD_API01	172.20.34.13	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	8192	204800	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	Eliminada	Message Processor
-1170	2	33	MNMPPROD_API02	172.20.34.14	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	8192	204800	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	Eliminada	Message Processor
-1171	2	33	MNAPPROD_API01	172.20.34.15	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	1048576	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	Eliminada	Analytics-PostGre
-1172	2	33	MNAPPROD_API02	172.20.34.16	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	1048576	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	Eliminada	Analytics-PostGre
-1173	2	33	MNQSPROD_API01	172.20.34.17	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	512000	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	Eliminada	Qpid server
-1174	2	33	MNQSPROD_API02	172.20.34.18	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	512000	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	Eliminada	Qpid server
-1175	2	33	MNOLDAPPROD_API01	172.20.34.19	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	8192	102400	0	intel	2400	4	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	Eliminada	OpenLDAP
-1176	2	33	MNOLDAPPROD_API02	172.20.34.20	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	8192	102400	0	intel	2400	4	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	Eliminada	OpenLDAP
-1177	2	33	MNMSUPROD_API01	172.20.34.21	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	8192	102400	0	intel	2400	4	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	Eliminada	Management Server UI
-1178	2	33	MNMSUPROD_API02	172.20.34.22	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	8192	102400	0	intel	2400	4	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	Eliminada	Management Server UI
-1179	2	33	MNDSDEVQA_API01	172.20.34.23	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV QA APPLICATION	16384	307200	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	Eliminada	Drupal Server
-1180	2	33	MNS1DEVQA_API01	172.20.34.24	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV QA APPLICATION	16384	204800	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	Eliminada	Server1
-1181	2	33	MNS2DEVQA_API02	172.20.34.25	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV QA APPLICATION	16384	204800	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	Eliminada	Server2
-1182	2	33	MNAMQPRO_AFIS01	172.20.34.26	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	AFIS-APPLICATION	32768	256000	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	13	5	1	\N	Creada y entregada a Zeke	ActiveMQ   
-1183	2	33	MNAMQPRO_AFIS02	172.20.34.27	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	AFIS-APPLICATION	32768	256000	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	13	5	1	\N	Creada y entregada a Zeke	ActiveMQ   
-1184	2	33	MNAMQPRO_AFIS03	172.20.34.28	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	AFIS-APPLICATION	32768	256000	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	13	5	1	\N	Creada y entregada a Zeke	ActiveMQ   
-1185	2	45	MNIBASEDPROD_ZEKE	172.20.34.29	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	32768	143360	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	14	5	1	\N	Creada y entregada a Zeke	IBase Designer 
-1186	2	33	MNEASYRPROD_ZEKE	172.20.34.30	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	8192	121856	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	5	1	\N	Creada y entregada a Zeke	Easy Redmine 
-1187	2	33	MNSVNPROD_ZEKE	172.20.34.31	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	4096	70656	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	16	5	1	\N	Creada y entregada a Zeke	SVN
-1188	2	33	MNCMDBPROD_ZEKE	192.168.20.17 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	173056	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	16	5	1	\N	Creada y entregada a Zeke	CMDBuild
-1189	2	33	MNNAGIOSPROD_ZEKE	192.168.20.16 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	173056	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	16	5	1	\N	Creada y entregada a Zeke	Nagios XI
-1190	2	33	MNWIKIPROD_ZEKE	172.20.34.34	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	8192	70656	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	5	1	\N	Creada y entregada a Zeke	Wiki
-1191	2	33	MNLICMETPROD_ZEKE	172.20.34.35	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	8192	102400	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	5	1	\N	Creada y entregada a Zeke	IBM Licence Metric 
-1192	2	43	MNMONITOREOPROD001_NOUS	172.20.34.36	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	4096	409600	0	intel	2400	2	0	0	\N	\N	5	Sin definir	2	false	18	5	1	\N	Eliminada	Monitoreo Nous
-1193	2	43	MNMONITOREOPROD002_NOUS	172.20.34.37	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	4096	409600	0	intel	2400	2	0	0	\N	\N	5	Sin definir	2	false	18	5	1	\N	Eliminada	Monitoreo Nous
-1194	2	42	MNPROXYBKPVM	172.20.34.38	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	81920	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	true	15	5	1	\N	Creada y entregada a Intesis	VM respaldo
-1195	2	33	MNSEMANTIKOS_AC_APP01	192.168.10.50	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	6144	51200	0	intel	2400	4	0	0	\N	\N	5	Sin definir	2	false	17	5	1	\N	No se crearon se liberan las IP	Semantikos
-1196	2	33	MNSEMANTIKOS_AC_APP02	192.168.10.51	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	6144	51200	0	intel	2400	4	0	0	\N	\N	5	Sin definir	2	false	17	5	1	\N	No se crearon se liberan las IP	Semantikos
-1197	2	33	MNSEMANTIKOS_PS_APP03	192.168.10.52	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	6144	51200	0	intel	2400	4	0	0	\N	\N	5	Sin definir	2	false	17	5	1	\N	No se crearon se liberan las IP	Semantikos
-1198	2	33	MNSEMANTIKOS_AC_BD01	172.20.65.10	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	102400	0	intel	2400	4	0	0	\N	\N	5	Sin definir	2	false	17	5	2	\N	No se crearon se liberan las IP	Semantikos
-1199	2	33	MNSEMANTIKOS_AC_BD02	172.20.65.11	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	102400	0	intel	2400	4	0	0	\N	\N	5	Sin definir	2	false	17	5	2	\N	No se crearon se liberan las IP	Semantikos
-1200	2	33	MNSEMANTIKOS_PS_BD03	172.20.65.12	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	102400	0	intel	2400	4	0	0	\N	\N	5	Sin definir	2	false	17	5	2	\N	No se crearon se liberan las IP	Semantikos
-1201	2	35	MNIBMIBASEPROD_ZEKE	172.20.34.39	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	0	16384	122880	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	5	7	\N	Creada y entregada a Zeke	IBM IBase 
-1202	2	35	MNIBMI2ANALYTSPROD_ZEKE	172.20.34.40	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	0	16384	122880	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	5	7	\N	Creada y entregada a Zeke	IBM I2 Analyst’s
-1203	2	32	MNHadoop_MNG_1	172.20.34.41	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	32768	1048576	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	5	7	\N	Servicio Virt-who	Hadoop
-1204	2	32	MNHadoop_MNG_2	172.20.34.42	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	32768	1048576	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	5	7	\N	Creada y entregada a Zeke	Hadoop
-1205	2	32	MNHadoop_DAT_1	172.20.34.43	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	32768	1048576	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	5	7	\N	Creada y entregada a Zeke	Hadoop
-1206	2	32	MNHadoop_DAT_2	172.20.34.44	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	32768	1048576	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	5	7	\N	Creada y entregada a Zeke	Hadoop
-1207	2	32	MNHadoop_DAT_3	172.20.34.45	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	32768	1048576	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	5	7	\N	Creada y entregada a Zeke	Hadoop
-1208	2	33	MNFTP_Traspasos_APP	172.20.34.46	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Produccion	4096	307200	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	5	7	\N	Se anula solitud	Traspasos
-1209	2	17	MNQASEMANTIKOS_APP01	192.168.10.53	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	112640	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	17	5	1	\N	Creada y entrega a Claudio Barra	Semantikos
-1210	2	17	MNQASEMANTIKOS_DB01	172.20.8.15	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	112640	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	17	5	2	\N	Creada y entrega a Claudio Barra	Semantikos
-1211	2	40	MNOIRS_DEV_QA	172.20.16.20	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV-QA	4096	71680	0	intel	2400	4	0	0	\N	\N	5	Sin definir	2	false	18	5	3	\N	Creada y entregada a Hugo	Oirs
-1212	2	32	MNANALITYC_APP	172.20.34.47	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	32768	225280	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	14	5	3	\N	Creada y entregada a Zeke	SPSS
-1213	2	45	MNSPSSStatistics_APP	172.20.34.48	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	32768	61440	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	true	14	5	3	\N	Creada y entregada a Zeke	SPSS
-1214	2	17	MNSIACINTDEV_APP01	192.168.60.10	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	2048	30720	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	15	5	3	\N	Creada y entrega a Sergio Roca	TIC_SIAC / LimeSurvey
-1215	2	17	MNSIACWORDPRESSDEV_APP01	192.168.60.11	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	2048	30720	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	15	5	3	\N	Creada y entrega a Sergio Roca	DEV_SIAC / LimeSurvey
-1216	2	33	MNMPPRODDMZ_API01	192.168.70.10	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	2	3	\N	Creada y entregada a Zeke	Message Processor router DMZ
-1217	2	33	MNMPPRODDMZ_API02	192.168.70.11	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	2	3	\N	Creada y entregada a Zeke	Message Processor router DMZ
-1218	2	33	MNMPPRODBE_API01	172.20.89.10	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	3	3	\N	Creada y entregada a Zeke	Message Processor router BE
-1219	2	33	MNMPPRODBE_API02	172.20.89.11	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	3	3	\N	Creada y entregada a Zeke	Message Processor router BE
-1220	2	33	MNCASPROD_API01	172.20.34.10	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	307200	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	Eliminada	Cassandra
-1221	2	33	MNCASPROD_API02	172.20.34.11	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	307200	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	Eliminada	Cassandra
-1222	2	33	MNCASPROD_API03	172.20.34.12	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	307200	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	Eliminada	Cassandra
-1223	2	33	MNAPPROD_API01	172.20.34.15	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	1048576	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	Eliminada	Analytics-PostGre
-1224	2	33	MNDEVPORPROD_API01	172.20.90.14	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	2048	20480	0	intel	2400	2	0	0	\N	\N	1	Sin definir	1	false	12	3	3	\N	Creada y entregada a Zeke	Developer Portal
-1225	2	33	MNQSPROD_API01	172.20.34.17	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	512000	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	Eliminada	Qpid server
-1226	2	33	MNQSPROD_API02	172.20.34.18	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	512000	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	Eliminada	Qpid server
-1227	2	33	MNMSUPROD_API01	172.20.34.21	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	8192	102400	0	intel	2400	4	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	Eliminada	Management Server UI
-1228	2	33	MNMPDEVDMZ_API01	192.168.60.12	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	204800	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	2	3	\N	Creada y entregada a Zeke	Message Processor router DMZ
-1229	2	33	MNMPDEVDMZ_API02	192.168.60.13	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	204800	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	2	3	\N	Creada y entregada a Zeke	Message Processor router DMZ
-1230	2	33	MNMPDEVBE_API01	172.20.34.20	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	204800	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	3	3	\N	Creada y entregada a Zeke	Message Processor router BE
-1231	2	33	MNMPDEVBE_API02	172.20.34.21	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	204800	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	3	3	\N	Creada y entregada a Zeke	Message Processor router BE
-1232	2	33	MNMSUDEV_API01	172.20.34.22	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	307200	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	3	3	\N	Creada y entregada a Zeke	Management Server UI DEV
-1233	2	33	MNMSUDEV_API02	172.20.34.23	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	307200	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	3	3	\N	Creada y entregada a Zeke	Management Server UI DEV
-1234	2	33	MNAPDEV_API01	172.20.34.24	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	4096	204800	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	3	3	\N	Creada y entregada a Zeke	Analytics-PostGre DEV
-1235	2	33	MNAPDEV_API02	172.20.34.25	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	4096	204800	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	3	3	\N	Creada y entregada a Zeke	Analytics-PostGre DEV
-1236	2	34	MNREPPIVPROD_API01	172.20.34.49	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	4096	102400	0	intel	2400	1	0	0	\N	\N	1	Sin definir	2	false	12	3	3	\N	Creada y entregada a Zeke	Pivote repo APIGEE
-1237	2	45	MNBIDEV_001	172.20.16.25	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	8192	102400	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	14	5	3	\N	Creada y entregada a Nabelka	DataStage PROYECTO
-1238	2	42	MNDATASTAGEPROD_001	172.20.34.50	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	51200	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	14	5	3	\N	Creada y entregada a Zeke	DataStage ZEKE
-1239	2	31	MNINFOSPHERESTREAMS_001	172.20.34.51	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	143360	0	intel	2400	1	0	0	\N	\N	1	Sin definir	2	false	14	5	3	\N	Creada y entregada a Zeke	InfoSphere Streams
-1240	2	42	MNCOGNOSBIPROD_001	172.20.34.52	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	32768	102400	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	5	3	\N	Creada y entregada a Zeke	Cognos BI
-1241	2	42	MNSPSSSTATICS_CLIENT_001	172.20.34.53	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	32768	51200	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	14	5	3	\N	Creada y entregada a Zeke	SPSS Statistics Client
-1242	2	47	MNCOMGESDEV_001	172.20.8.17	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	18432	204800	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	15	5	3	\N	Creada y entregada a Nabelka	Comges
-1243	2	33	MNACTIVEMQDEV_001	172.20.8.18	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	4096	107520	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	14	5	3	\N	Entregar VM a Claudio Barra	Active MQ DEV Minsal
-1244	2	27	MNMINSAL_PROD	192.168.70.61	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	133120	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	5	3	\N	minsal, solicitar subir OVF	www.minsal.cl
-1245	2	52	MNOIRS_PROD	192.168.20.14	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	12288	512000	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	5	3	\N	OIRS, solicitar subir OVF	OIRS
-1246	2	33	MNSFTPL_PROD	192.168.20.15	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	8192	81920	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	5	3	\N	Sitio Minsal	MINSAL
-1247	2	58	MNOIRS_DEV	172.20.16.18	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	12288	307200	0	intel	2400	8	0	0	\N	\N	5	Sin definir	2	false	15	5	3	\N	Sitio Oirs	OIRS
-1248	2	53	MNMINSAL_BD_DEV	172.20.64.21	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	8192	102400	0	intel	2400	4	0	0	\N	\N	5	Sin definir	2	false	15	5	3	\N	BD Minsal	MINSAL
-1249	2	58	MNOIRS_BD_DEV	172.20.64.22	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	8192	358400	0	intel	2400	4	0	0	\N	\N	5	Sin definir	2	false	15	5	3	\N	BDOirs	OIRS
-1250	2	42	MNWSUSMINSAL_001	172.20.6.10	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	12288	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	16	3	3	\N	Creada y entregada a Claudio Barra	WSUS MINSAL
-1251	2	41	MNPROXYBKPVM_001	172.20.33.20	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	81920	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	16	5	3	\N	Creada y entregada a Intesis	VM respaldo
-1252	2	17	MNNESSUSCONV_001	192.168.20.12	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	112640	0	intel	2400	4	0	0	\N	\N	5	Sin definir	2	false	16	5	3	\N	Eliminada	Nessus Convergente
-1253	2	33	MNACTIVEMQQA_001	172.20.8.22	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	194560	0	intel	2400	6	0	0	\N	\N	3	Sin definir	2	false	14	5	3	\N	Creada y entregada a Claudio y Eugenio	Active MQ QA Minsal
-1254	2	33	MNACTIVEMQPROD_001	172.20.6.11	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	194560	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	14	5	3	\N	Creada y entregada a Claudio y Eugenio	Active MQ PROD Minsal
-1255	2	33	MNACTIVEMQPROD_002	172.20.6.12	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	194560	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	14	5	3	\N	Creada y entregada a Claudio y Eugenio	Active MQ PROD Minsal
-1256	2	42	MNWSUSMINSAL_002	172.20.6.13	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	12288	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	16	3	3	\N	Creada y entregada a Claudio Barra	WSUS MINSAL
-1257	2	42	MNWSUSMINSAL_003	172.20.6.14	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	12288	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	16	3	3	\N	Creada y entregada a Claudio Barra	WSUS MINSAL
-1258	2	33	MNCMDBDEV_ZEKE	172.20.16.19	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	173056	0	intel	2400	8	0	0	\N	\N	4	Sin definir	2	false	16	5	3	\N	Creada y entregada a Zeke	CMDBuild
-1259	2	15	MNTRANSPARENCIA_QA	172.20.8.23	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	2048	337920	0	intel	2400	2	0	0	\N	\N	5	Sin definir	2	false	15	5	3	\N	Transparencia Solicitar subir OVF	transparencia.redsalud.gob.cl
-1260	2	33	MNCOMGESBD_PROD	172.20.6.15	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	197632	0	intel	2400	2	0	0	\N	\N	5	Sin definir	2	false	15	3	3	\N	No se crearon se liberan las IP	Comges BD
-1261	2	27	MNSEMANTIKOSAPP_DEV	172.20.16.26	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	4096	34816	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	17	3	3	\N	Creada y entregada a Pablo Pizarro	Semantikos DEV APP
-1262	2	27	MNSEMANTIKOSWEB_DEV	192.168.60.14	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	4096	34816	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	17	2	3	\N	Creada y entregada a Pablo Pizarro	Semantikos DEV WEB
-1263	2	27	MNSEMANTIKOSAPP001_QA	172.20.8.24	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	55296	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	17	3	3	\N	Creada y entregada a Pablo Pizarro	Semantikos QA APP001
-1264	2	27	MNSEMANTIKOSAPP002_QA	172.20.8.26	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	55296	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	17	3	3	\N	Creada y entregada a Pablo Pizarro	Semantikos QA APP002
-1265	2	27	MNSEMANTIKOSWEB001_QA	192.168.10.54	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	34816	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	17	2	3	\N	Creada y entregada a Pablo Pizarro	Semantikos QA WEB001
-1266	2	27	MNSEMANTIKPSWEB002_QA	192.168.10.55	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	34816	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	17	2	3	\N	Creada y entregada a Pablo Pizarro	Semantikos QA WEB002
-1267	2	46	MSMOTORSQL_PROD	172.20.64.24	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION 	32768	51200	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	true	15	3	3	\N	Creada y entregada a Zeke	Motor SQL
-1268	2	42	MNGALILEO_APP1_PROD	172.20.33.30	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	122880	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	true	19	3	3	\N	Crear y entregar a Claudio Barra	SinetSUR
-1269	2	33	MNMONGO_PROD	172.20.33.25	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	153600	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	3	3	\N	Crear y entregar a Claudio Barra	SinetSUR
-1270	2	33	MNPROXY2_PROD	192.168.70.21	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	2	3	\N	Crear y entregar a Claudio Barra	SinetSUR
-1271	2	33	MNSESIONSRV_PROD	172.20.33.32	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	3	3	\N	Crear y entregar a Claudio Barra	SinetSUR
-1272	2	42	MNGALILEO_APP2_PROD	172.20.33.29	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	122880	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	true	19	3	3	\N	Crear y entregar a Claudio Barra	SinetSUR
-1273	2	33	MNPROXY1_PROD	192.168.70.22	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	2	3	\N	Crear y entregar a Claudio Barra	SinetSUR
-1274	2	33	MNPROXYGALILEO_PROD	192.168.70.20	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	2	3	\N	Crear y entregar a Claudio Barra	SinetSUR
-1275	2	42	MNSINETSFTP_PROD	172.20.33.31	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	131072	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	true	19	3	3	\N	Crear y entregar a Claudio Barra	SinetSUR
-1276	2	42	MNSINETSUR_APP1_PROD	172.20.33.28	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	128000	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	true	19	3	3	\N	Crear y entregar a Claudio Barra	SinetSUR
-1277	2	42	MNSINETSUR_APP2_PROD	172.20.33.27	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	128000	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	true	19	3	3	\N	Crear y entregar a Claudio Barra	SinetSUR
-1278	2	42	MNSINETSUR_APP3_PROD	172.20.33.26	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	128000	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	true	19	3	3	\N	Crear y entregar a Claudio Barra	SinetSUR
-1279	2	19	MNSEGSIDA_PROD	192.168.70.23	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	2	3	\N	OVF	OVF
-1280	2	42	MNGALILEO_APP1_DEV	172.20.33.40	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DESARROLLO	8192	122880	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	3	3	\N	Crear y entregar a Claudio Barra	SinetSUR
-1281	2	33	MNMONGO_DEV	172.20.33.41	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DESARROLLO	4096	153600	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	3	3	\N	Crear y entregar a Claudio Barra	SinetSUR
-1282	2	33	MNPROXY2_DEV	192.168.70.30	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DESARROLLO	4096	51200	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	2	3	\N	Crear y entregar a Claudio Barra	SinetSUR
-1283	2	33	MNSESIONSRV_DEV	172.20.33.42	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DESARROLLO	4096	51200	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	3	3	\N	Crear y entregar a Claudio Barra	SinetSUR
-1284	2	42	MNGALILEO_APP2_DEV	172.20.33.43	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DESARROLLO	8192	122880	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	3	3	\N	Crear y entregar a Claudio Barra	SinetSUR
-1285	2	33	MNPROXY1_DEV	192.168.70.31	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DESARROLLO	4096	51200	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	2	3	\N	Crear y entregar a Claudio Barra	SinetSUR
-1286	2	33	MNPROXYGALILEO_DEV	192.168.70.32	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DESARROLLO	4096	51200	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	2	3	\N	Crear y entregar a Claudio Barra	SinetSUR
-1287	2	42	MNSINETSFTP_DEV	172.20.33.44	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DESARROLLO	4096	131072	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	3	3	\N	Crear y entregar a Claudio Barra	SinetSUR
-1288	2	42	MNSINETSUR_APP1_DEV	172.20.33.45	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DESARROLLO	8192	128000	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	3	3	\N	Crear y entregar a Claudio Barra	SinetSUR
-1289	2	42	MNSINETSUR_APP2_DEV	172.20.33.46	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DESARROLLO	8192	128000	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	3	3	\N	Crear y entregar a Claudio Barra	SinetSUR
-1290	2	42	MNSINETSUR_APP3_DEV	172.20.33.47	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DESARROLLO	8192	128000	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	3	3	\N	Crear y entregar a Claudio Barra	SinetSUR
-1291	2	19	MNSEGSIDA_DEV	172.20.16.30	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DESARROLLO	32768	51200	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	15	2	3	\N	Creada y entreda a Sergio Roca	Seguimiento VIH
-1292	2	17	MNTRANSPARENCIA_PROD	192.168.70.15	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	12288	337920	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	2	3	\N	Creada y entreda a Sergio Roca	transparencia.redsalud.gob.cl
-1293	2	19	MNSEGSIDA_QA	172.20.8.27	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	32768	51200	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	2	3	\N	Creada y entreda a Sergio Roca	Seguimiento VIH
-1294	2	28	MNCOMPINAPP_PROD	192.168.70.26	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	112640	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	2	3	\N	Creada y entreda a Javier con Enrique Corbalan	Compin
-1295	2	28	MNCOMPINBD_PROD	172.20.64.26	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	49152	266240	0	intel	2400	6	0	0	\N	\N	1	Sin definir	2	false	15	3	3	\N	Creada y entreda a Javier con Enrique Corbalan	Compin
-1296	2	28	MNCOMPINIMG_PROD	172.20.6.19	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	624640	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	3	3	\N	Creada y entreda a Javier con Enrique Corbalan	Compin
-1297	2	27	MNSEMANTIKOSAPP003_QA	172.20.8.100	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	55296	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	17	3	3	\N	Creada y entregada a Pablo Pizarro	Semantikos TEMP QA APP003
-1298	2	27	MNSEMANTIKOSAPP004_QA	172.20.8.101	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	55296	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	17	3	3	\N	Creada y entregada a Pablo Pizarro	Semantikos TEMP QA APP004
-1299	2	46	MNRESPIRATIOAPP_QA	192.168.10.40	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	16384	409600	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	15	2	3	\N	Creada y entreda a Sergio Roca	Respiratorio QA
-1300	2	46	MNRESPIRATIOAPP_PROD	192.168.70.40	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	409600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	true	15	2	3	\N	Creada y entreda a Sergio Roca	Respiratorio Produccion
-1301	2	17	MNSIDOTAPP_QA	192.168.10.30	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	12288	133120	0	intel	2400	6	0	0	\N	\N	3	Sin definir	2	false	15	5	3	\N	Creada y entreda a Sergio Roca	SIDOT
-1302	2	57	MNSURVIHAPP_QA	192.168.10.41	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	12288	61440	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	20	5	3	\N	Creada y entreda a Sergio Roca	SirVIH
-1303	2	14	MNSIMPO_QA	192.168.10.42	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	1024	51200	0	intel	2400	1	0	0	\N	\N	3	Sin definir	2	false	15	5	3	\N	OVF	SIMPO
-1304	2	56	MNSIGTE_SOAP_DEV	172.20.16.40	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	2048	20480	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	15	3	3	\N	Sin informacion	SIGTE
-1305	2	56	MNSIGTE_WEB_DEV	172.20.16.41	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	2048	20480	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	15	3	3	\N	Sin informacion	SIGTE
-1306	2	41	MNPRAIS_APP_QA	192.168.10.20	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	81920	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	2	3	\N	/ISO/MINSAL_PRAIS-clon	PRAIS
-1307	2	19	MNDCM4CHEEAPP_PROD	192.168.70.38	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	2097152	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	2	3	\N	Creada y entregada a Jorge herrera	DCH4CHEE
-1308	2	57	MNSURVIHAPP_PROD	192.168.70.34 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	102400	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	true	20	2	3	\N	Creada y entreda a Sergio Roca	SirVIH
-1309	2	19	MNPCRONICOS_QA	192.168.10.56	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	204800	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	18	2	3	\N	Creada y entregada a Marcela Garcia	0
-1310	2	19	MNBDMYSQL_QA	172.20.8.30	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	307200	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	3	3	\N	Creada y entregada a Marcela Garcia	0
-1311	2	16	MNSISCOM_PROD	192.168.70.33 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	102400	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	2	3	\N	Creada y entregada a Sergio Roca	SISTEMACOMETIDO
-1312	2	57	MSSAMU_APP1_PROD	192.168.70.36	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	66560	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	2	3	\N	Creada y entregada a Sergio Roca	PROYECTO SAMU
-1313	2	57	MSSAMU_APP2_PROD	192.168.70.35 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	71680	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	2	3	\N	Creada y entregada a Sergio Roca	PROYECTO SAMU
-1314	2	46	MNSIRHFE_APP1_DEV	192.168.60.15	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	16384	204800	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	21	2	3	\N	Creada y entregada a Maria Jose Lamas	SIRH
-1315	2	46	MNSIRHBE_APP1_DEV	172.20.16.42 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	16384	204800	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	21	3	3	\N	Creada y entregada a Maria Jose Lamas	SIRH
-1316	2	16	MNTSSOAP_PROD	172.20.6.20	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	24576	40960	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	3	3	\N	Creada y entregada entregar a Yamil	Tiempos de Espera
-1317	2	16	MNTSSOAP002_PROD	172.20.6.40	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	24576	40960	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	3	3	\N	Creada y entregada entregar a Yamil	Tiempos de Espera
-1318	2	16	MNTSCRON001_PROD	172.20.6.41	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	65536	40960	0	intel	2400	16	0	0	\N	\N	1	Sin definir	2	false	15	3	3	\N	Creada y entregada entregar a Yamil	Tiempos de Espera
-1319	2	16	MNTSWEB_PROD	192.168.70.37	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	30720	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	2	3	\N	Creada y entregada entregar a Yamil	Tiempos de Espera
-1320	2	16	MNTSWEB002_PROD	192.168.70.56	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	30720	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	2	3	\N	Creada y entregada entregar a Yamil	Tiempos de Espera
-1321	2	17	MNGESBO_PROD	192.168.70.41	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	153600	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	18	2	3	\N	Creada y entregada a Hugo Nunez Tello	Gestion de Bodegas
-1322	2	50	MNGESBO_DEV	192.168.60.16	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	8192	153600	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	18	2	3	\N	Creada y entregada a Hugo Nunez Tello	Gestion de Bodegas
-1323	2	50	MNGESBO_QA	192.168.10.57	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	153600	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	18	2	3	\N	Creada y entregada a Hugo Nunez Tello	Gestion de Bodegas
-1324	2	16	MNTSSOAP_QA	172.20.8.32	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	40960	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	3	3	\N	Creada y entregada entregar a Yamil	Tiempos de Espera
-1325	2	16	MNTSWEB_QA	192.168.10.58	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	30720	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	2	3	\N	Creada y entregada entregar a Yamil	Tiempos de Espera
-1326	2	19	MNSIACPORTAL_PROD	192.168.70.42	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	2048	21504	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	22	2	3	\N	Creada y entregada a Rodrigo Baeza	SIAC
-1327	2	19	MNSIACENC_PROD	192.168.70.43	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	2048	21504	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	22	2	3	\N	Creada y entregada a Rodrigo Baeza	SIAC
-1328	2	19	MNSIACAPPBACK_PROD	192.168.70.44	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	81920	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	22	2	3	\N	Creada y entregada a Rodrigo Baeza	SIAC
-1329	2	19	MNSIACAPPBD_PROD	0	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	81920	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	22	3	3	\N	Creada y entregada a Rodrigo Baeza	SIAC
-1330	2	19	MNSIACPORTAL_QA	192.168.10.60	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	2048	21504	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	22	2	3	\N	Creada y entregada a Rodrigo Baeza	SIAC
-1331	2	19	MNSIACENC_QA	192.168.10.61 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	2048	21504	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	22	2	3	\N	Creada y entregada a Rodrigo Baeza	SIAC
-1332	2	19	MNSIACAPPBACK_QA	192.168.10.62 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	16384	81920	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	22	2	3	\N	Creada y entregada a Rodrigo Baeza	SIAC
-1333	2	19	MNSIACAPPBD_QA	172.20.8.28	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	16384	81920	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	22	3	3	\N	Creada y entregada a Rodrigo Baeza	SIAC
-1334	2	17	MNCANASTAS_PROD	192.168.70.45	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	40960	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	2	1	\N	Creada y entregada a Pablo Pizarro	CANASTAS
-1335	2	17	MNCANASTAS_QA	192.168.10.63	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	40960	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	2	1	\N	Creada y entregada a Pablo Pizarro	CANASTAS
-1336	2	17	MNJEMETER001_QA	172.20.8.33	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	40960	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	18	3	1	\N	Creada y entregada a Pablo Pizarro	JMETER
-1337	2	17	MNJEMETER002_QA	172.20.8.34	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	40960	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	18	3	1	\N	Creada y entregada a Pablo Pizarro	JMETER
-1338	2	17	MNCL1_MANAGEMENT_NODE_QA	172.20.8.35	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	3	2	\N	Creada y entregada a Ruben Aguilera	Administrador
-1339	2	17	MNCL1_MYSQL_NODE_1_QA	172.20.8.36	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	15360	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	3	2	\N	Creada y entregada a Ruben Aguilera	Nodo MySQL 1
-1340	2	17	MNCL1_MYSQL_NODE_2_QA	172.20.8.37	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	15360	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	3	2	\N	Creada y entregada a Ruben Aguilera	Nodo MySQL 2
-1341	2	17	MNCL1_DATA_NODE_1_QA	172.20.8.38	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	25600	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	3	2	\N	Creada y entregada a Ruben Aguilera	Nodo de datos 1
-1342	2	17	MNCL1_DATA_NODE_2_QA	172.20.8.39	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	25600	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	3	2	\N	Creada y entregada a Ruben Aguilera	Nodo de datos 2
-1343	2	17	MNWRDPRSS_QA	192.168.10.64	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	3	1	\N	Creada y entregada a Ruben Aguilera	Servidor Wordpress QA
-1344	2	33	MNACTIVEMQQA_001_PM	172.20.8.41 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	194560	0	intel	2400	6	0	0	\N	\N	5	Sin definir	2	false	14	3	1	\N	Creada y entregada  a Eugenio Diaz (Se migra a Puerto Montt	ACTIVE MQ
-1345	2	33	MNACTIVEMQPROD_001_PM	172.20.6.22 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	194560	0	intel	2400	8	0	0	\N	\N	5	Sin definir	2	false	14	3	1	\N	Creada y entregada  a Eugenio Diaz (Se migra a Puerto Montt	ACTIVE MQ
-1346	2	33	MNACTIVEMQPROD_002_PM	172.20.6.23	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	194560	0	intel	2400	8	0	0	\N	\N	5	Sin definir	2	false	14	3	1	\N	Creada y entregada  a Eugenio Diaz (Se migra a Puerto Montt	ACTIVE MQ
-1347	2	46	MNBITABLEAUPROD_001	 192.168.70.46	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	65536	204800	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	true	29	2	1	\N	Creada y entregada a Nabelka 	BI TABLEAU
-1348	2	17	MNALFRESCOSIRHDEV_001	 192.168.60.17	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	4096	40960	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	21	2	1	\N	Creada y entregada a Sergio Roca	Alfresco SIRH
-1349	2	28	MNCOMPINAPP002_PROD	192.168.70.51	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	68608	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	2	1	\N	Creada y entregada a Javier con Enrique Corbalan	Compin
-1350	2	33	MNRME001_QA	172.20.8.90	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	32768	204800	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	15	3	1	\N	Creada y entregada a Solange de Zeke	Receta medica electronica
-1351	2	19	MNAPPPORPA001_PROD	192.168.70.52	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	24576	61440	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	30	2	1	\N	Entregar a Jocelin	Portal Pacientes
-1352	2	19	MNAPPPORPA002_PROD	192.168.70.53	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	24576	61440	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	30	2	1	\N	Entregar a Jocelin	Portal Pacientes
-1353	2	19	MNELASTICSEARCH001_PROD	192.168.70.54	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	102400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	2	1	\N	Entregar a Jocelin	Portal Pacientes
-1354	2	19	MNSTAGING001_PROD	192.168.70.55	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	24576	215040	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	2	1	\N	Entregar a Jocelin	Portal Pacientes
-1355	2	19	MNPORPA01_QA	192.168.10.17	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	24576	102400	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	18	2	1	\N	Entregar a Jocelin	Portal Pacientes
-1356	2	17	MNCL1_MANAGEMENT_NODE_PROD	172.20.6.23	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	15360	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	3	2	\N	Creada y entregada a Ruben Aguilera	Administrador
-1357	2	17	MNCL1_MYSQL_NODE_1_PROD	172.20.6.24	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	15360	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	3	2	\N	Creada y entregada a Ruben Aguilera	Nodo MySQL 1
-1358	2	17	MNCL1_DATA_NODE_4_PROD	172.20.6.25	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	409600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	3	2	\N	Creada y entregada a Ruben Aguilera	Nodo de datos 1
-1359	2	17	MNCL1_MANAGEMENTPGQL_NODE_QA	 172.20.8.42	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	3	2	\N	Creada y entregada a Ruben Aguilera	Administrador PSQL
-1360	2	17	MNCL1_PGQLPOOL_NODE_1_QA	 172.20.8.43	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	3	2	\N	Creada y entregada a Ruben Aguilera	Nodo PGpool 1
-1361	2	17	MNCL1_PGQLPOOL_NODE_2_QA	 172.20.8.44	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	3	2	\N	Creada y entregada a Ruben Aguilera	Nodo PGpool 2
-1362	2	17	MNCL1_PGQLDATA_NODE_1_QA	 172.20.8.45	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	3	2	\N	Creada y entregada a Ruben Aguilera	Noso de datos 1
-1363	2	17	MNCL1_PGQLDATA_NODE_2_QA	 172.20.8.46	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	3	2	\N	Creada y entregada a Ruben Aguilera	Nodo de datos 2
-1364	2	17	MNCL1_PGQLPOOL_NODE_2_PROD	172.20.6.26 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	20480	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	3	2	\N	Creada y entregada a Ruben Aguilera	Nodo de PGpool 2
-1365	2	17	MNCL1_PGQLDATA_NODE_2_PROD	172.20.6.27 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	102400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	3	2	\N	Creada y entregada a Ruben Aguilera	Nodo de datos 2
-1366	2	33	MNHL7001_QA	 172.20.8.47	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	16384	153600	0	intel	2400	6	0	0	\N	\N	3	Sin definir	2	false	18	3	1	\N	Creada y entregada a Eugenio con Zeke	HL7
-1367	2	33	MNHL7001_PROD	172.20.6.28 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	256000	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	3	1	\N	Creada y entregada a Eugenio con Zeke	HL7
-1368	2	54	MNBDSINETSUR001_PROD	172.20.64.33	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	65536	358400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	19	3	2	\N	Creada y entregada a Gustavo	BD Sinetsur
-1369	2	46	MNSNIP001_PROD	192.168.70.60	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	true	18	2	1	\N	Creada y entregada  a Hugo Pino	SNIP
-1370	2	46	MNSISQSICARS_APP_QA	192.168.10.66	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	16384	204800	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	23	2	1	\N	Creada y entregada a Sergio Roca Vivianne	SISQ-SICARS
-1371	2	46	MNSISQSICARS_BD_QA	172.20.8.49	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	122880	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	23	3	2	\N	Creada y entregada a Sergio Roca Vivianne	BD SISQ-SICARS
-1372	2	27	MNSEMANTIKOSAPP001_PROD	172.20.6.34	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	17	3	1	\N	Creada y entregada a Pablo Pizarro	Semantikos APP
-1373	2	27	MNSEMANTIKOSAPP002_PROD	172.20.6.35 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	17	3	1	\N	Creada y entregada a Pablo Pizarro	Semantikos APP
-1374	2	27	MNSEMANTIKOSWEB001_PROD	192.168.70.62 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	34816	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	17	2	1	\N	Creada y entregada a Pablo Pizarro	Semantikos APP
-1375	2	27	MNSEMANTIKOSWEB002_PROD	192.168.70.63 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	34816	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	17	2	1	\N	Creada y entregada a Pablo Pizarro	Semantikos APP
-1376	2	19	MNDCM4CHEEAPP_DEV	192.168.60.18	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	32768	102400	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	18	2	1	\N	Creada y entregada a Gabriela	DCM4CHEE
-1377	2	19	MNSIDOTAPP_PROD	192.168.70.64	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	40960	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	2	1	\N	Creada y entregada a Rodrigo Baeza	SIDOT
-1378	2	46	MNSISQ_SICARS_PROD	192.168.70.65	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	34816	409600	0	intel	2400	16	0	0	\N	\N	1	Sin definir	2	true	23	2	1	\N	Creada y entregada a Vivianne	SISQ-SICARS
-1379	2	32	MNVIRTV-WHORHEL_PROD	192.168.70.66	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	40960	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	16	2	1	\N	Creada	Virt-who(Suscripciones RHEL)
-1380	2	46	MNFLABORATORIOAPP001_QA	192.168.10.67 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	102400	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	18	2	1	\N	Creada y entregada a Alejandro Gonzalez	Frente Laboratorio
-1381	2	46	MNFLABORATORIOBD001_QA	172.20.8.51	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	102400	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	18	3	2	\N	Creada y entregada a Alejandro Gonzalez	Frente Laboratorio
-1382	2	46	MNFLABORATORIOAPP001_DEV	192.168.60.19	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	8192	102400	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	18	2	1	\N	Creada y entregada a Alejandro Gonzalez	Frente Laboratorio
-1383	2	46	MNFLABORATORIOBD001_DEV	 172.20.16.20	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	8192	102400	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	18	3	2	\N	Creada y entregada a Alejandro Gonzalez	Frente Laboratorio
-1384	2	17	MNGESDOCP_PROD	192.168.70.17	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	512000	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	23	2	1	\N	Creada y entregada a Vivianne	SISQ-SICARS
-1385	2	17	MNGESDOCQA_QA	192.168.10.22	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	204800	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	23	2	1	\N	Creada y entregada a Vivianne	SISQ-SICARS
-1386	2	42	MNRISAPP001_QA	192.168.10.23 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	16384	307200	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	24	2	1	\N	Creada y entregada a Lucia Neira	RIS
-1387	2	42	MNRISBD001_QA	172.20.8.52 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	16384	409600	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	24	3	2	\N	Creada y entregada a Lucia Neira	RIS
-1388	2	20	MNCHCC001_QA	192.168.10.25	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	40960	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	25	2	1	\N	Creada y entregada a Nabelka y Sergio	Chile-Crece
-1389	2	20	MNVIHDIGERA001_QA	192.168.10.26 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	2048	21504	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	18	2	1	\N	Creada y entregada a Sergio y Esteban	VIH DIGERA
-1390	2	19	MNPAID001_QA	192.168.10.31	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	133120	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	26	2	1	\N	Creada y entregada a Vivianne	PAID
-1391	2	23	MNCATIMG001_DEV	 192.168.60.20	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	16384	102400	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	27	2	1	\N	Creada y entregada a Lucia Neira	Catalogo de Imágenes Centralizada
-1392	2	28	MNCOMPINAPP_QA	192.168.10.27	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	16384	68608	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	2	1	\N	Creada y entregada  a Javier con Enrique Corbalan	Compin
-1393	2	41	MNPRAIS_APP_PROD	192.168.70.72	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	81920	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	true	15	2	1	\N	Creada y entregada a Sergio Roca	PRAIS
-1394	2	17	MNSIGTESOAP001_PRE	 172.20.8.53	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRE-PRODUCCION	24576	28672	0	intel	2400	8	0	0	\N	\N	2	Sin definir	2	false	15	3	1	\N	Creada y entregada  Yamil	SIGTE
-1395	2	17	MNSIGTEWEB001_PRE	172.20.8.54	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRE-PRODUCCION	49152	221184	0	intel	2400	16	0	0	\N	\N	2	Sin definir	2	false	15	3	1	\N	Creada y entregada  Yamil	SIGTE
-1396	2	33	MNMINSALAPP_QA	192.168.10.32	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	51200	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	2	1	\N	Crear y Entregar a Sergio Roca	MINSAL
-1397	2	33	MNLOG_PROD	172.20.6.32	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	204800	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	3	1	\N	Creada y entregada a Rodrigo Zamorano	LOG
-1398	2	13	MNSIGEDAPP001_QA	192.168.10.68	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	81920	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	2	1	\N	Creado y entregado a Sergio Roca	SIGED
-1399	2	46	MNSIRHFE_APP1_QA	192.168.10.70 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	16384	204800	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	21	2	1	\N	Creada y entregada a Hugo Nunez	SIRH
-1400	2	46	MNSIRHFE_APP2_QA	192.168.10.71	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	16384	204800	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	21	2	1	\N	Creada y entregada a Hugo Nunez	SIRH
-1401	2	46	MNSIRHBE_APP1_QA	172.20.8.40	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	16384	204800	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	21	3	1	\N	Creada y entregada a Hugo Nunez	SIRH
-1402	2	46	MNSIRHBE_APP2_QA	172.20.8.41	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	16384	204800	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	21	3	1	\N	Creada y entregada a Hugo Nunez	SIRH
-1403	2	46	MNAPPIVE001_QA	192.168.10.69	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	40960	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	28	2	1	\N	Creada y entregada a Hugo y Vivianne	IVE
-1404	2	46	MNAPPIVE001_PROD	192.168.70.67	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	5120	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	28	2	1	\N	Creada y entregada a Hugo y Vivianne	IVE
-1405	2	33	MNMINSALAPP_PROD	192.168.20.13 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	51200	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	2	1	\N	Crear y Entregar a Sergio Roca	MINSAL
-1406	2	18	MNSIGTECRON001_DEV	172.20.16.21	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	4096	24576	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	15	3	1	\N	Crear y entregar a Maria Jose	SIGTE
-1407	2	46	MNSISQSICARS_PROD 	192.168.70.68	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	204800	0	intel	2400	16	0	0	\N	\N	1	Sin definir	2	false	23	2	1	\N	Creada y entregada a Sergio Roca Vivianne	SISQ-SICARS
-1408	2	19	MNDEMENCIA-APP_PROD	192.168.70.69	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	31	2	1	\N	Creado y entregado a Vivianne	DEMENCIA
-1409	2	46	MNSICARSAPP_PROD	192.168.70.68	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	71680	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	true	23	2	1	\N	Creado y entregado a Sergio Roca	SICARS
-1410	2	46	MNSISQAPP_PROD	192.168.70.70	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	true	23	2	1	\N	Creado y entregado a Sergio Roca	SISQ
-1411	2	17	MNCL1_PGQLDATA_NODE_3_PROD	172.20.6.42	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	102400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	3	2	\N	Creada y entregada a Ruben Aguilera	Nodo de datos 3
-1412	2	20	MNIVE-ER001_QA	192.168.10.72	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	18	2	1	\N	Creada y entregada a Hugo	IVE-ER
-1413	2	42	DNS-SRV-WIN	172.20.33.15	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	0	0	0	intel	2400	0	0	0	\N	\N	1	Sin definir	2	true	15	5	1	\N	Sin informacion	DNS
-1414	2	23	MNALGOPRIORIZACION001_DEV	192.168.60.21	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	24576	1083392	0	intel	2400	8	0	0	\N	\N	4	Sin definir	2	false	32	2	1	\N	Creado y entregado a Gabriela	Algoritmo de priorizacion
-1415	2	55	MNPORTALLIRAY_APP01_PROD	192.168.70.27	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	102400	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	33	2	1	\N	Entregado a Seguridad	Portal Cautivo
+COPY public.servidores (id_servidor, id_datacentro, id_sistema_operativo, nom_servidor, ip_servidor, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, det_servidor, ram, memoria_dd, swap, procesador, frec_procesador, nucleos, usuarios_pactados, mac, nodo, interface, id_ambiente, modelo_procesador, id_cluster, agente_instana_instalado, id_servicio, id_vlan, id_tipo_servidor, id_tipo_respaldo_disco, id_template, id_environment) FROM stdin;
+1166	2	33	MNCASPROD_API01	172.20.34.10	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	307200	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	\N	\N
+1167	2	33	MNCASPROD_API02	172.20.34.11	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	307200	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	\N	\N
+1168	2	33	MNCASPROD_API03	172.20.34.12	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	307200	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	\N	\N
+1169	2	33	MNMPPROD_API01	172.20.34.13	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	8192	204800	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	\N	\N
+1170	2	33	MNMPPROD_API02	172.20.34.14	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	8192	204800	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	\N	\N
+1171	2	33	MNAPPROD_API01	172.20.34.15	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	1048576	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	\N	\N
+1172	2	33	MNAPPROD_API02	172.20.34.16	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	1048576	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	\N	\N
+1173	2	33	MNQSPROD_API01	172.20.34.17	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	512000	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	\N	\N
+1174	2	33	MNQSPROD_API02	172.20.34.18	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	512000	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	\N	\N
+1175	2	33	MNOLDAPPROD_API01	172.20.34.19	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	8192	102400	0	intel	2400	4	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	\N	\N
+1176	2	33	MNOLDAPPROD_API02	172.20.34.20	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	8192	102400	0	intel	2400	4	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	\N	\N
+1177	2	33	MNMSUPROD_API01	172.20.34.21	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	8192	102400	0	intel	2400	4	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	\N	\N
+1178	2	33	MNMSUPROD_API02	172.20.34.22	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	8192	102400	0	intel	2400	4	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	\N	\N
+1179	2	33	MNDSDEVQA_API01	172.20.34.23	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV QA APPLICATION	16384	307200	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	\N	\N
+1180	2	33	MNS1DEVQA_API01	172.20.34.24	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV QA APPLICATION	16384	204800	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	\N	\N
+1181	2	33	MNS2DEVQA_API02	172.20.34.25	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV QA APPLICATION	16384	204800	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	\N	\N
+1182	2	33	MNAMQPRO_AFIS01	172.20.34.26	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	AFIS-APPLICATION	32768	256000	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	13	5	1	\N	\N	\N
+1183	2	33	MNAMQPRO_AFIS02	172.20.34.27	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	AFIS-APPLICATION	32768	256000	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	13	5	1	\N	\N	\N
+1184	2	33	MNAMQPRO_AFIS03	172.20.34.28	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	AFIS-APPLICATION	32768	256000	0	intel	2400	8	0	0	\N	\N	1	E5-2699v3	1	false	13	5	1	\N	\N	\N
+1185	2	45	MNIBASEDPROD_ZEKE	172.20.34.29	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	32768	143360	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	14	5	1	\N	\N	\N
+1186	2	33	MNEASYRPROD_ZEKE	172.20.34.30	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	8192	121856	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	5	1	\N	\N	\N
+1187	2	33	MNSVNPROD_ZEKE	172.20.34.31	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	4096	70656	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	16	5	1	\N	\N	\N
+1188	2	33	MNCMDBPROD_ZEKE	192.168.20.17 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	173056	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	16	5	1	\N	\N	\N
+1189	2	33	MNNAGIOSPROD_ZEKE	192.168.20.16 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	173056	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	16	5	1	\N	\N	\N
+1190	2	33	MNWIKIPROD_ZEKE	172.20.34.34	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	8192	70656	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	5	1	\N	\N	\N
+1191	2	33	MNLICMETPROD_ZEKE	172.20.34.35	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	8192	102400	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	5	1	\N	\N	\N
+1192	2	43	MNMONITOREOPROD001_NOUS	172.20.34.36	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	4096	409600	0	intel	2400	2	0	0	\N	\N	5	Sin definir	2	false	18	5	1	\N	\N	\N
+1193	2	43	MNMONITOREOPROD002_NOUS	172.20.34.37	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	4096	409600	0	intel	2400	2	0	0	\N	\N	5	Sin definir	2	false	18	5	1	\N	\N	\N
+1194	2	42	MNPROXYBKPVM	172.20.34.38	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	81920	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	true	15	5	1	\N	\N	\N
+1195	2	33	MNSEMANTIKOS_AC_APP01	192.168.10.50	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	6144	51200	0	intel	2400	4	0	0	\N	\N	5	Sin definir	2	false	17	5	1	\N	\N	\N
+1196	2	33	MNSEMANTIKOS_AC_APP02	192.168.10.51	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	6144	51200	0	intel	2400	4	0	0	\N	\N	5	Sin definir	2	false	17	5	1	\N	\N	\N
+1197	2	33	MNSEMANTIKOS_PS_APP03	192.168.10.52	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	6144	51200	0	intel	2400	4	0	0	\N	\N	5	Sin definir	2	false	17	5	1	\N	\N	\N
+1198	2	33	MNSEMANTIKOS_AC_BD01	172.20.65.10	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	102400	0	intel	2400	4	0	0	\N	\N	5	Sin definir	2	false	17	5	2	\N	\N	\N
+1199	2	33	MNSEMANTIKOS_AC_BD02	172.20.65.11	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	102400	0	intel	2400	4	0	0	\N	\N	5	Sin definir	2	false	17	5	2	\N	\N	\N
+1200	2	33	MNSEMANTIKOS_PS_BD03	172.20.65.12	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	102400	0	intel	2400	4	0	0	\N	\N	5	Sin definir	2	false	17	5	2	\N	\N	\N
+1201	2	35	MNIBMIBASEPROD_ZEKE	172.20.34.39	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	0	16384	122880	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	5	7	\N	\N	\N
+1202	2	35	MNIBMI2ANALYTSPROD_ZEKE	172.20.34.40	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	0	16384	122880	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	5	7	\N	\N	\N
+1203	2	32	MNHadoop_MNG_1	172.20.34.41	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	32768	1048576	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	5	7	\N	\N	\N
+1204	2	32	MNHadoop_MNG_2	172.20.34.42	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	32768	1048576	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	5	7	\N	\N	\N
+1205	2	32	MNHadoop_DAT_1	172.20.34.43	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	32768	1048576	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	5	7	\N	\N	\N
+1206	2	32	MNHadoop_DAT_2	172.20.34.44	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	32768	1048576	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	5	7	\N	\N	\N
+1207	2	32	MNHadoop_DAT_3	172.20.34.45	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	32768	1048576	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	5	7	\N	\N	\N
+1208	2	33	MNFTP_Traspasos_APP	172.20.34.46	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Produccion	4096	307200	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	5	7	\N	\N	\N
+1209	2	17	MNQASEMANTIKOS_APP01	192.168.10.53	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	112640	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	17	5	1	\N	\N	\N
+1210	2	17	MNQASEMANTIKOS_DB01	172.20.8.15	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	112640	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	17	5	2	\N	\N	\N
+1211	2	40	MNOIRS_DEV_QA	172.20.16.20	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV-QA	4096	71680	0	intel	2400	4	0	0	\N	\N	5	Sin definir	2	false	18	5	3	\N	\N	\N
+1212	2	32	MNANALITYC_APP	172.20.34.47	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	32768	225280	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	14	5	3	\N	\N	\N
+1213	2	45	MNSPSSStatistics_APP	172.20.34.48	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	32768	61440	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	true	14	5	3	\N	\N	\N
+1214	2	17	MNSIACINTDEV_APP01	192.168.60.10	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	2048	30720	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	15	5	3	\N	\N	\N
+1215	2	17	MNSIACWORDPRESSDEV_APP01	192.168.60.11	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	2048	30720	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	15	5	3	\N	\N	\N
+1216	2	33	MNMPPRODDMZ_API01	192.168.70.10	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	2	3	\N	\N	\N
+1217	2	33	MNMPPRODDMZ_API02	192.168.70.11	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	2	3	\N	\N	\N
+1218	2	33	MNMPPRODBE_API01	172.20.89.10	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	3	3	\N	\N	\N
+1219	2	33	MNMPPRODBE_API02	172.20.89.11	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	3	3	\N	\N	\N
+1220	2	33	MNCASPROD_API01	172.20.34.10	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	307200	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	\N	\N
+1221	2	33	MNCASPROD_API02	172.20.34.11	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	307200	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	\N	\N
+1222	2	33	MNCASPROD_API03	172.20.34.12	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	307200	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	\N	\N
+1223	2	33	MNAPPROD_API01	172.20.34.15	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	1048576	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	\N	\N
+1224	2	33	MNDEVPORPROD_API01	172.20.90.14	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	2048	20480	0	intel	2400	2	0	0	\N	\N	1	Sin definir	1	false	12	3	3	\N	\N	\N
+1225	2	33	MNQSPROD_API01	172.20.34.17	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	512000	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	\N	\N
+1226	2	33	MNQSPROD_API02	172.20.34.18	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	512000	0	intel	2400	8	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	\N	\N
+1227	2	33	MNMSUPROD_API01	172.20.34.21	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	8192	102400	0	intel	2400	4	0	0	\N	\N	5	E5-2699v3	1	false	12	5	1	\N	\N	\N
+1228	2	33	MNMPDEVDMZ_API01	192.168.60.12	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	204800	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	2	3	\N	\N	\N
+1229	2	33	MNMPDEVDMZ_API02	192.168.60.13	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	204800	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	2	3	\N	\N	\N
+1230	2	33	MNMPDEVBE_API01	172.20.34.20	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	204800	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	3	3	\N	\N	\N
+1231	2	33	MNMPDEVBE_API02	172.20.34.21	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	204800	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	3	3	\N	\N	\N
+1232	2	33	MNMSUDEV_API01	172.20.34.22	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	307200	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	3	3	\N	\N	\N
+1233	2	33	MNMSUDEV_API02	172.20.34.23	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	307200	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	3	3	\N	\N	\N
+1234	2	33	MNAPDEV_API01	172.20.34.24	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	4096	204800	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	3	3	\N	\N	\N
+1235	2	33	MNAPDEV_API02	172.20.34.25	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	4096	204800	0	intel	2400	8	0	0	\N	\N	1	Sin definir	1	false	12	3	3	\N	\N	\N
+1236	2	34	MNREPPIVPROD_API01	172.20.34.49	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	4096	102400	0	intel	2400	1	0	0	\N	\N	1	Sin definir	2	false	12	3	3	\N	\N	\N
+1237	2	45	MNBIDEV_001	172.20.16.25	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	8192	102400	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	14	5	3	\N	\N	\N
+1238	2	42	MNDATASTAGEPROD_001	172.20.34.50	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	51200	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	14	5	3	\N	\N	\N
+1239	2	31	MNINFOSPHERESTREAMS_001	172.20.34.51	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	143360	0	intel	2400	1	0	0	\N	\N	1	Sin definir	2	false	14	5	3	\N	\N	\N
+1240	2	42	MNCOGNOSBIPROD_001	172.20.34.52	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	32768	102400	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	14	5	3	\N	\N	\N
+1241	2	42	MNSPSSSTATICS_CLIENT_001	172.20.34.53	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	32768	51200	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	14	5	3	\N	\N	\N
+1242	2	47	MNCOMGESDEV_001	172.20.8.17	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	18432	204800	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	15	5	3	\N	\N	\N
+1243	2	33	MNACTIVEMQDEV_001	172.20.8.18	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	4096	107520	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	14	5	3	\N	\N	\N
+1244	2	27	MNMINSAL_PROD	192.168.70.61	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	133120	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	5	3	\N	\N	\N
+1245	2	52	MNOIRS_PROD	192.168.20.14	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	12288	512000	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	5	3	\N	\N	\N
+1246	2	33	MNSFTPL_PROD	192.168.20.15	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	8192	81920	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	5	3	\N	\N	\N
+1247	2	58	MNOIRS_DEV	172.20.16.18	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	12288	307200	0	intel	2400	8	0	0	\N	\N	5	Sin definir	2	false	15	5	3	\N	\N	\N
+1248	2	53	MNMINSAL_BD_DEV	172.20.64.21	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	8192	102400	0	intel	2400	4	0	0	\N	\N	5	Sin definir	2	false	15	5	3	\N	\N	\N
+1249	2	58	MNOIRS_BD_DEV	172.20.64.22	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	8192	358400	0	intel	2400	4	0	0	\N	\N	5	Sin definir	2	false	15	5	3	\N	\N	\N
+1250	2	42	MNWSUSMINSAL_001	172.20.6.10	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	12288	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	16	3	3	\N	\N	\N
+1251	2	41	MNPROXYBKPVM_001	172.20.33.20	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	81920	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	16	5	3	\N	\N	\N
+1252	2	17	MNNESSUSCONV_001	192.168.20.12	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	112640	0	intel	2400	4	0	0	\N	\N	5	Sin definir	2	false	16	5	3	\N	\N	\N
+1253	2	33	MNACTIVEMQQA_001	172.20.8.22	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	194560	0	intel	2400	6	0	0	\N	\N	3	Sin definir	2	false	14	5	3	\N	\N	\N
+1254	2	33	MNACTIVEMQPROD_001	172.20.6.11	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	194560	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	14	5	3	\N	\N	\N
+1255	2	33	MNACTIVEMQPROD_002	172.20.6.12	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	194560	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	14	5	3	\N	\N	\N
+1256	2	42	MNWSUSMINSAL_002	172.20.6.13	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	12288	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	16	3	3	\N	\N	\N
+1257	2	42	MNWSUSMINSAL_003	172.20.6.14	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	12288	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	16	3	3	\N	\N	\N
+1258	2	33	MNCMDBDEV_ZEKE	172.20.16.19	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCTION APPLICATION	16384	173056	0	intel	2400	8	0	0	\N	\N	4	Sin definir	2	false	16	5	3	\N	\N	\N
+1259	2	15	MNTRANSPARENCIA_QA	172.20.8.23	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	2048	337920	0	intel	2400	2	0	0	\N	\N	5	Sin definir	2	false	15	5	3	\N	\N	\N
+1260	2	33	MNCOMGESBD_PROD	172.20.6.15	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	197632	0	intel	2400	2	0	0	\N	\N	5	Sin definir	2	false	15	3	3	\N	\N	\N
+1261	2	27	MNSEMANTIKOSAPP_DEV	172.20.16.26	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	4096	34816	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	17	3	3	\N	\N	\N
+1262	2	27	MNSEMANTIKOSWEB_DEV	192.168.60.14	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	4096	34816	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	17	2	3	\N	\N	\N
+1263	2	27	MNSEMANTIKOSAPP001_QA	172.20.8.24	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	55296	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	17	3	3	\N	\N	\N
+1264	2	27	MNSEMANTIKOSAPP002_QA	172.20.8.26	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	55296	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	17	3	3	\N	\N	\N
+1265	2	27	MNSEMANTIKOSWEB001_QA	192.168.10.54	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	34816	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	17	2	3	\N	\N	\N
+1266	2	27	MNSEMANTIKPSWEB002_QA	192.168.10.55	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	34816	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	17	2	3	\N	\N	\N
+1267	2	46	MSMOTORSQL_PROD	172.20.64.24	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION 	32768	51200	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	true	15	3	3	\N	\N	\N
+1268	2	42	MNGALILEO_APP1_PROD	172.20.33.30	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	122880	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	true	19	3	3	\N	\N	\N
+1269	2	33	MNMONGO_PROD	172.20.33.25	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	153600	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	3	3	\N	\N	\N
+1270	2	33	MNPROXY2_PROD	192.168.70.21	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	2	3	\N	\N	\N
+1271	2	33	MNSESIONSRV_PROD	172.20.33.32	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	3	3	\N	\N	\N
+1272	2	42	MNGALILEO_APP2_PROD	172.20.33.29	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	122880	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	true	19	3	3	\N	\N	\N
+1273	2	33	MNPROXY1_PROD	192.168.70.22	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	2	3	\N	\N	\N
+1274	2	33	MNPROXYGALILEO_PROD	192.168.70.20	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	19	2	3	\N	\N	\N
+1275	2	42	MNSINETSFTP_PROD	172.20.33.31	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	131072	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	true	19	3	3	\N	\N	\N
+1276	2	42	MNSINETSUR_APP1_PROD	172.20.33.28	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	128000	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	true	19	3	3	\N	\N	\N
+1277	2	42	MNSINETSUR_APP2_PROD	172.20.33.27	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	128000	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	true	19	3	3	\N	\N	\N
+1278	2	42	MNSINETSUR_APP3_PROD	172.20.33.26	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	128000	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	true	19	3	3	\N	\N	\N
+1279	2	19	MNSEGSIDA_PROD	192.168.70.23	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	2	3	\N	\N	\N
+1280	2	42	MNGALILEO_APP1_DEV	172.20.33.40	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DESARROLLO	8192	122880	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	3	3	\N	\N	\N
+1281	2	33	MNMONGO_DEV	172.20.33.41	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DESARROLLO	4096	153600	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	3	3	\N	\N	\N
+1282	2	33	MNPROXY2_DEV	192.168.70.30	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DESARROLLO	4096	51200	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	2	3	\N	\N	\N
+1283	2	33	MNSESIONSRV_DEV	172.20.33.42	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DESARROLLO	4096	51200	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	3	3	\N	\N	\N
+1284	2	42	MNGALILEO_APP2_DEV	172.20.33.43	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DESARROLLO	8192	122880	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	3	3	\N	\N	\N
+1285	2	33	MNPROXY1_DEV	192.168.70.31	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DESARROLLO	4096	51200	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	2	3	\N	\N	\N
+1286	2	33	MNPROXYGALILEO_DEV	192.168.70.32	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DESARROLLO	4096	51200	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	2	3	\N	\N	\N
+1287	2	42	MNSINETSFTP_DEV	172.20.33.44	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DESARROLLO	4096	131072	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	3	3	\N	\N	\N
+1288	2	42	MNSINETSUR_APP1_DEV	172.20.33.45	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DESARROLLO	8192	128000	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	3	3	\N	\N	\N
+1289	2	42	MNSINETSUR_APP2_DEV	172.20.33.46	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DESARROLLO	8192	128000	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	3	3	\N	\N	\N
+1290	2	42	MNSINETSUR_APP3_DEV	172.20.33.47	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DESARROLLO	8192	128000	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	19	3	3	\N	\N	\N
+1291	2	19	MNSEGSIDA_DEV	172.20.16.30	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DESARROLLO	32768	51200	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	15	2	3	\N	\N	\N
+1292	2	17	MNTRANSPARENCIA_PROD	192.168.70.15	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	12288	337920	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	2	3	\N	\N	\N
+1293	2	19	MNSEGSIDA_QA	172.20.8.27	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	32768	51200	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	2	3	\N	\N	\N
+1294	2	28	MNCOMPINAPP_PROD	192.168.70.26	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	112640	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	2	3	\N	\N	\N
+1295	2	28	MNCOMPINBD_PROD	172.20.64.26	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	49152	266240	0	intel	2400	6	0	0	\N	\N	1	Sin definir	2	false	15	3	3	\N	\N	\N
+1296	2	28	MNCOMPINIMG_PROD	172.20.6.19	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	624640	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	3	3	\N	\N	\N
+1297	2	27	MNSEMANTIKOSAPP003_QA	172.20.8.100	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	55296	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	17	3	3	\N	\N	\N
+1298	2	27	MNSEMANTIKOSAPP004_QA	172.20.8.101	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	55296	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	17	3	3	\N	\N	\N
+1299	2	46	MNRESPIRATIOAPP_QA	192.168.10.40	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	16384	409600	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	15	2	3	\N	\N	\N
+1300	2	46	MNRESPIRATIOAPP_PROD	192.168.70.40	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	409600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	true	15	2	3	\N	\N	\N
+1301	2	17	MNSIDOTAPP_QA	192.168.10.30	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	12288	133120	0	intel	2400	6	0	0	\N	\N	3	Sin definir	2	false	15	5	3	\N	\N	\N
+1302	2	57	MNSURVIHAPP_QA	192.168.10.41	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	12288	61440	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	20	5	3	\N	\N	\N
+1303	2	14	MNSIMPO_QA	192.168.10.42	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	1024	51200	0	intel	2400	1	0	0	\N	\N	3	Sin definir	2	false	15	5	3	\N	\N	\N
+1304	2	56	MNSIGTE_SOAP_DEV	172.20.16.40	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	2048	20480	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	15	3	3	\N	\N	\N
+1305	2	56	MNSIGTE_WEB_DEV	172.20.16.41	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	2048	20480	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	15	3	3	\N	\N	\N
+1306	2	41	MNPRAIS_APP_QA	192.168.10.20	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	81920	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	2	3	\N	\N	\N
+1307	2	19	MNDCM4CHEEAPP_PROD	192.168.70.38	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	2097152	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	2	3	\N	\N	\N
+1308	2	57	MNSURVIHAPP_PROD	192.168.70.34 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	102400	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	true	20	2	3	\N	\N	\N
+1309	2	19	MNPCRONICOS_QA	192.168.10.56	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	204800	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	18	2	3	\N	\N	\N
+1310	2	19	MNBDMYSQL_QA	172.20.8.30	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	307200	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	3	3	\N	\N	\N
+1311	2	16	MNSISCOM_PROD	192.168.70.33 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	102400	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	2	3	\N	\N	\N
+1312	2	57	MSSAMU_APP1_PROD	192.168.70.36	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	66560	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	2	3	\N	\N	\N
+1313	2	57	MSSAMU_APP2_PROD	192.168.70.35 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	71680	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	2	3	\N	\N	\N
+1314	2	46	MNSIRHFE_APP1_DEV	192.168.60.15	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	16384	204800	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	21	2	3	\N	\N	\N
+1315	2	46	MNSIRHBE_APP1_DEV	172.20.16.42 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	16384	204800	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	21	3	3	\N	\N	\N
+1316	2	16	MNTSSOAP_PROD	172.20.6.20	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	24576	40960	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	3	3	\N	\N	\N
+1317	2	16	MNTSSOAP002_PROD	172.20.6.40	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	24576	40960	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	3	3	\N	\N	\N
+1318	2	16	MNTSCRON001_PROD	172.20.6.41	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	65536	40960	0	intel	2400	16	0	0	\N	\N	1	Sin definir	2	false	15	3	3	\N	\N	\N
+1319	2	16	MNTSWEB_PROD	192.168.70.37	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	30720	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	2	3	\N	\N	\N
+1320	2	16	MNTSWEB002_PROD	192.168.70.56	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	30720	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	2	3	\N	\N	\N
+1321	2	17	MNGESBO_PROD	192.168.70.41	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	153600	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	18	2	3	\N	\N	\N
+1322	2	50	MNGESBO_DEV	192.168.60.16	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	8192	153600	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	18	2	3	\N	\N	\N
+1323	2	50	MNGESBO_QA	192.168.10.57	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	153600	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	18	2	3	\N	\N	\N
+1324	2	16	MNTSSOAP_QA	172.20.8.32	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	40960	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	3	3	\N	\N	\N
+1325	2	16	MNTSWEB_QA	192.168.10.58	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	30720	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	2	3	\N	\N	\N
+1326	2	19	MNSIACPORTAL_PROD	192.168.70.42	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	2048	21504	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	22	2	3	\N	\N	\N
+1327	2	19	MNSIACENC_PROD	192.168.70.43	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	2048	21504	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	22	2	3	\N	\N	\N
+1328	2	19	MNSIACAPPBACK_PROD	192.168.70.44	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	81920	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	22	2	3	\N	\N	\N
+1329	2	19	MNSIACAPPBD_PROD	0	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	81920	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	22	3	3	\N	\N	\N
+1330	2	19	MNSIACPORTAL_QA	192.168.10.60	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	2048	21504	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	22	2	3	\N	\N	\N
+1331	2	19	MNSIACENC_QA	192.168.10.61 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	2048	21504	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	22	2	3	\N	\N	\N
+1332	2	19	MNSIACAPPBACK_QA	192.168.10.62 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	16384	81920	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	22	2	3	\N	\N	\N
+1333	2	19	MNSIACAPPBD_QA	172.20.8.28	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	16384	81920	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	22	3	3	\N	\N	\N
+1334	2	17	MNCANASTAS_PROD	192.168.70.45	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	40960	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	2	1	\N	\N	\N
+1335	2	17	MNCANASTAS_QA	192.168.10.63	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	40960	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	2	1	\N	\N	\N
+1336	2	17	MNJEMETER001_QA	172.20.8.33	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	40960	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	18	3	1	\N	\N	\N
+1337	2	17	MNJEMETER002_QA	172.20.8.34	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	40960	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	18	3	1	\N	\N	\N
+1338	2	17	MNCL1_MANAGEMENT_NODE_QA	172.20.8.35	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	3	2	\N	\N	\N
+1339	2	17	MNCL1_MYSQL_NODE_1_QA	172.20.8.36	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	15360	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	3	2	\N	\N	\N
+1340	2	17	MNCL1_MYSQL_NODE_2_QA	172.20.8.37	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	15360	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	3	2	\N	\N	\N
+1341	2	17	MNCL1_DATA_NODE_1_QA	172.20.8.38	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	25600	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	3	2	\N	\N	\N
+1342	2	17	MNCL1_DATA_NODE_2_QA	172.20.8.39	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	25600	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	3	2	\N	\N	\N
+1343	2	17	MNWRDPRSS_QA	192.168.10.64	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	3	1	\N	\N	\N
+1344	2	33	MNACTIVEMQQA_001_PM	172.20.8.41 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	194560	0	intel	2400	6	0	0	\N	\N	5	Sin definir	2	false	14	3	1	\N	\N	\N
+1345	2	33	MNACTIVEMQPROD_001_PM	172.20.6.22 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	194560	0	intel	2400	8	0	0	\N	\N	5	Sin definir	2	false	14	3	1	\N	\N	\N
+1346	2	33	MNACTIVEMQPROD_002_PM	172.20.6.23	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	194560	0	intel	2400	8	0	0	\N	\N	5	Sin definir	2	false	14	3	1	\N	\N	\N
+1347	2	46	MNBITABLEAUPROD_001	 192.168.70.46	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	65536	204800	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	true	29	2	1	\N	\N	\N
+1348	2	17	MNALFRESCOSIRHDEV_001	 192.168.60.17	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	4096	40960	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	21	2	1	\N	\N	\N
+1349	2	28	MNCOMPINAPP002_PROD	192.168.70.51	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	68608	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	2	1	\N	\N	\N
+1350	2	33	MNRME001_QA	172.20.8.90	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	32768	204800	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	15	3	1	\N	\N	\N
+1351	2	19	MNAPPPORPA001_PROD	192.168.70.52	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	24576	61440	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	30	2	1	\N	\N	\N
+1352	2	19	MNAPPPORPA002_PROD	192.168.70.53	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	24576	61440	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	30	2	1	\N	\N	\N
+1353	2	19	MNELASTICSEARCH001_PROD	192.168.70.54	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	102400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	2	1	\N	\N	\N
+1354	2	19	MNSTAGING001_PROD	192.168.70.55	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	24576	215040	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	2	1	\N	\N	\N
+1355	2	19	MNPORPA01_QA	192.168.10.17	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	24576	102400	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	18	2	1	\N	\N	\N
+1356	2	17	MNCL1_MANAGEMENT_NODE_PROD	172.20.6.23	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	15360	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	3	2	\N	\N	\N
+1357	2	17	MNCL1_MYSQL_NODE_1_PROD	172.20.6.24	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	15360	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	3	2	\N	\N	\N
+1358	2	17	MNCL1_DATA_NODE_4_PROD	172.20.6.25	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	409600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	3	2	\N	\N	\N
+1359	2	17	MNCL1_MANAGEMENTPGQL_NODE_QA	 172.20.8.42	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	3	2	\N	\N	\N
+1360	2	17	MNCL1_PGQLPOOL_NODE_1_QA	 172.20.8.43	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	3	2	\N	\N	\N
+1361	2	17	MNCL1_PGQLPOOL_NODE_2_QA	 172.20.8.44	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	3	2	\N	\N	\N
+1362	2	17	MNCL1_PGQLDATA_NODE_1_QA	 172.20.8.45	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	3	2	\N	\N	\N
+1363	2	17	MNCL1_PGQLDATA_NODE_2_QA	 172.20.8.46	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	3	2	\N	\N	\N
+1364	2	17	MNCL1_PGQLPOOL_NODE_2_PROD	172.20.6.26 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	20480	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	3	2	\N	\N	\N
+1365	2	17	MNCL1_PGQLDATA_NODE_2_PROD	172.20.6.27 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	102400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	3	2	\N	\N	\N
+1366	2	33	MNHL7001_QA	 172.20.8.47	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	16384	153600	0	intel	2400	6	0	0	\N	\N	3	Sin definir	2	false	18	3	1	\N	\N	\N
+1367	2	33	MNHL7001_PROD	172.20.6.28 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	256000	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	3	1	\N	\N	\N
+1368	2	54	MNBDSINETSUR001_PROD	172.20.64.33	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	65536	358400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	19	3	2	\N	\N	\N
+1369	2	46	MNSNIP001_PROD	192.168.70.60	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	true	18	2	1	\N	\N	\N
+1370	2	46	MNSISQSICARS_APP_QA	192.168.10.66	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	16384	204800	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	23	2	1	\N	\N	\N
+1371	2	46	MNSISQSICARS_BD_QA	172.20.8.49	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	122880	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	23	3	2	\N	\N	\N
+1372	2	27	MNSEMANTIKOSAPP001_PROD	172.20.6.34	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	17	3	1	\N	\N	\N
+1373	2	27	MNSEMANTIKOSAPP002_PROD	172.20.6.35 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	17	3	1	\N	\N	\N
+1374	2	27	MNSEMANTIKOSWEB001_PROD	192.168.70.62 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	34816	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	17	2	1	\N	\N	\N
+1375	2	27	MNSEMANTIKOSWEB002_PROD	192.168.70.63 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	34816	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	17	2	1	\N	\N	\N
+1376	2	19	MNDCM4CHEEAPP_DEV	192.168.60.18	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	32768	102400	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	18	2	1	\N	\N	\N
+1377	2	19	MNSIDOTAPP_PROD	192.168.70.64	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	40960	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	2	1	\N	\N	\N
+1378	2	46	MNSISQ_SICARS_PROD	192.168.70.65	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	34816	409600	0	intel	2400	16	0	0	\N	\N	1	Sin definir	2	true	23	2	1	\N	\N	\N
+1379	2	32	MNVIRTV-WHORHEL_PROD	192.168.70.66	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	40960	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	16	2	1	\N	\N	\N
+1380	2	46	MNFLABORATORIOAPP001_QA	192.168.10.67 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	102400	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	18	2	1	\N	\N	\N
+1381	2	46	MNFLABORATORIOBD001_QA	172.20.8.51	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	102400	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	18	3	2	\N	\N	\N
+1382	2	46	MNFLABORATORIOAPP001_DEV	192.168.60.19	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	8192	102400	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	18	2	1	\N	\N	\N
+1383	2	46	MNFLABORATORIOBD001_DEV	 172.20.16.20	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	8192	102400	0	intel	2400	2	0	0	\N	\N	4	Sin definir	2	false	18	3	2	\N	\N	\N
+1384	2	17	MNGESDOCP_PROD	192.168.70.17	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	512000	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	23	2	1	\N	\N	\N
+1385	2	17	MNGESDOCQA_QA	192.168.10.22	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	204800	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	23	2	1	\N	\N	\N
+1386	2	42	MNRISAPP001_QA	192.168.10.23 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	16384	307200	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	24	2	1	\N	\N	\N
+1387	2	42	MNRISBD001_QA	172.20.8.52 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	16384	409600	0	intel	2400	8	0	0	\N	\N	3	Sin definir	2	false	24	3	2	\N	\N	\N
+1388	2	20	MNCHCC001_QA	192.168.10.25	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	40960	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	25	2	1	\N	\N	\N
+1389	2	20	MNVIHDIGERA001_QA	192.168.10.26 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	2048	21504	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	18	2	1	\N	\N	\N
+1390	2	19	MNPAID001_QA	192.168.10.31	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	133120	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	26	2	1	\N	\N	\N
+1391	2	23	MNCATIMG001_DEV	 192.168.60.20	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	16384	102400	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	27	2	1	\N	\N	\N
+1392	2	28	MNCOMPINAPP_QA	192.168.10.27	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	16384	68608	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	15	2	1	\N	\N	\N
+1393	2	41	MNPRAIS_APP_PROD	192.168.70.72	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	81920	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	true	15	2	1	\N	\N	\N
+1394	2	17	MNSIGTESOAP001_PRE	 172.20.8.53	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRE-PRODUCCION	24576	28672	0	intel	2400	8	0	0	\N	\N	2	Sin definir	2	false	15	3	1	\N	\N	\N
+1395	2	17	MNSIGTEWEB001_PRE	172.20.8.54	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRE-PRODUCCION	49152	221184	0	intel	2400	16	0	0	\N	\N	2	Sin definir	2	false	15	3	1	\N	\N	\N
+1396	2	33	MNMINSALAPP_QA	192.168.10.32	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	51200	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	15	2	1	\N	\N	\N
+1397	2	33	MNLOG_PROD	172.20.6.32	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	204800	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	3	1	\N	\N	\N
+1398	2	13	MNSIGEDAPP001_QA	192.168.10.68	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	81920	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	15	2	1	\N	\N	\N
+1399	2	46	MNSIRHFE_APP1_QA	192.168.10.70 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	16384	204800	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	21	2	1	\N	\N	\N
+1400	2	46	MNSIRHFE_APP2_QA	192.168.10.71	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	16384	204800	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	21	2	1	\N	\N	\N
+1401	2	46	MNSIRHBE_APP1_QA	172.20.8.40	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	16384	204800	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	21	3	1	\N	\N	\N
+1402	2	46	MNSIRHBE_APP2_QA	172.20.8.41	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	16384	204800	0	intel	2400	4	0	0	\N	\N	3	Sin definir	2	false	21	3	1	\N	\N	\N
+1403	2	46	MNAPPIVE001_QA	192.168.10.69	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	8192	40960	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	28	2	1	\N	\N	\N
+1404	2	46	MNAPPIVE001_PROD	192.168.70.67	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	5120	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	28	2	1	\N	\N	\N
+1405	2	33	MNMINSALAPP_PROD	192.168.20.13 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	51200	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	2	1	\N	\N	\N
+1406	2	18	MNSIGTECRON001_DEV	172.20.16.21	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	4096	24576	0	intel	2400	4	0	0	\N	\N	4	Sin definir	2	false	15	3	1	\N	\N	\N
+1407	2	46	MNSISQSICARS_PROD 	192.168.70.68	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	204800	0	intel	2400	16	0	0	\N	\N	1	Sin definir	2	false	23	2	1	\N	\N	\N
+1408	2	19	MNDEMENCIA-APP_PROD	192.168.70.69	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	51200	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	31	2	1	\N	\N	\N
+1409	2	46	MNSICARSAPP_PROD	192.168.70.68	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	71680	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	true	23	2	1	\N	\N	\N
+1410	2	46	MNSISQAPP_PROD	192.168.70.70	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	true	23	2	1	\N	\N	\N
+1411	2	17	MNCL1_PGQLDATA_NODE_3_PROD	172.20.6.42	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	102400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	15	3	2	\N	\N	\N
+1412	2	20	MNIVE-ER001_QA	192.168.10.72	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	QA	4096	15360	0	intel	2400	2	0	0	\N	\N	3	Sin definir	2	false	18	2	1	\N	\N	\N
+1413	2	42	DNS-SRV-WIN	172.20.33.15	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	0	0	0	intel	2400	0	0	0	\N	\N	1	Sin definir	2	true	15	5	1	\N	\N	\N
+1414	2	23	MNALGOPRIORIZACION001_DEV	192.168.60.21	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	24576	1083392	0	intel	2400	8	0	0	\N	\N	4	Sin definir	2	false	32	2	1	\N	\N	\N
+1415	2	55	MNPORTALLIRAY_APP01_PROD	192.168.70.27	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	102400	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	33	2	1	\N	\N	\N
 \.
 
 
@@ -4055,6 +4057,7 @@ COPY public.usuarios (id_usuario, nom_usuario, nom_completo, ape_paterno, ape_ma
 --
 
 COPY public.usuarios_bitacora_servicios (id_usuario_bitacora_servicio, id_usuario, id_servicio, id_actividad, asunto, det_bitacora, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at) FROM stdin;
+20	1	15	4	sdasd	asd	1	1	2018-04-20 21:57:23	2018-04-20 21:57:27	2018-04-20 21:57:27
 \.
 
 
@@ -4583,7 +4586,7 @@ SELECT pg_catalog.setval('public.tipos_tecnologias_desarrollo_id_seq', 1, false)
 -- Name: usuarios_bitacora_servicios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.usuarios_bitacora_servicios_id_seq', 19, true);
+SELECT pg_catalog.setval('public.usuarios_bitacora_servicios_id_seq', 20, true);
 
 
 --
@@ -5107,7 +5110,7 @@ ALTER TABLE ONLY public.vlans
 CREATE INDEX password_resets_email_index ON public.password_resets USING btree (email);
 
 
--- Completed on 2018-04-20 17:24:03 -03
+-- Completed on 2018-04-22 20:57:56 -03
 
 --
 -- PostgreSQL database dump complete
