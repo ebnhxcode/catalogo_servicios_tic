@@ -282,7 +282,7 @@
 
                      <div class="col-md-10">
 
-                        <div class="sticky-top" style="padding-top: 10px;z-index: 1;">
+                        <div class="sticky-top" style="padding-top: 10px;z-index: 10;">
                            <a href="#menu-toggle" class="btn btn-xs btn-primary active" id="menu-toggle">ABRIR<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                         </div>
 
