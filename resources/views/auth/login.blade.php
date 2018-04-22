@@ -7,7 +7,7 @@
             <div class="card card-default">
                 <div class="card-header">
                     Login
-                    <span class="float-right">Catálogo de Servicios</span>
+                    <span class="float-right">{{-- Catálogo Servicios --}}</span>
                 </div>
 
                 <div class="card-body">

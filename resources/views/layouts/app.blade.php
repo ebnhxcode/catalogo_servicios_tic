@@ -121,7 +121,7 @@
    <nav class="navbar navbar-light bg-light navbar-expand-md fixed-top">
       <div class="container">
          <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Catálogo Servicios Tic') }} <small class="text-success">beta</small>
+            <small class="text-muted">{{ config('app.name', 'Catálogo Servicios') }}</small>
          </a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -279,11 +279,63 @@
             <!-- Page Content -->
             <div id="page-content-wrapper">
                <div class="container-fluid">
-                  <a href="#menu-toggle" class="btn btn-primary active" id="menu-toggle">ABRIR<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                  <div class="sticky-top" style="padding-top: 10px;">
+                     <a href="#menu-toggle" class="btn btn-primary active" id="menu-toggle">ABRIR<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                  </div>
+
+                  {{--sticky-top--}}
+                  <div class="row">
+
+                     <div class="col-md-10">
+
+                        @yield('content')
+
+                     </div>
+                     <div class="col-md-2">
+
+                        <div class="sidebar-sticky sticky-top" style="overflow:auto;" style="padding-top: 50px;">
 
 
-                     @yield('content')
+                           <div class="alert alert-primary" role="alert">
+                              Memorias
+                           </div>
 
+                           <h5
+                              class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                              <span class="h6 small">Opciones</span>
+                           </h5>
+
+                           <ul class="nav flex-column">
+                              <li class="nav-item">
+                                 <i class="fa fa-refresh btn btn-warning" aria-hidden="true"
+                                    data-placement="top" data-toggle="tooltip" title="Clic para actualizar menu"></i>
+
+                                 <a class="fa fa-compress btn btn-warning"  aria-hidden="true"
+                                    data-placement="top" data-toggle="tooltip" title="Clic para cerrar el menu lateral"></a>
+
+                              </li>
+                           </ul>
+
+                           <h5
+                              class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                              <span class="h6"><b>MENU PRINCIPAL</b></span>
+                              <i class="fa fa-sort-alpha-asc btn btn-info btn-sm" aria-hidden="true"
+                                 data-placement="top" data-toggle="tooltip" title="Clic para ordenar menu principal"></i>
+                           </h5>
+
+                           <ul class="nav flex-column">
+                              <li class="nav-item">
+                                 <a class="nav-link btn btn-primary text-left" style="font-size: .8rem;" href="#!"
+                                    data-placement="top" data-toggle="tooltip" title="">
+                                    <span class="sr-only">(current)</span>
+                                 </a>
+                              </li>
+
+                           </ul>
+                        </div>
+                     </div>
+
+                  </div>
 
                </div>
             </div>

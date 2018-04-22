@@ -125,6 +125,8 @@
          <!-- dir ./partials -->
 
          @include("layouts.tabla_listar")
+
+
       </div>
 
 
