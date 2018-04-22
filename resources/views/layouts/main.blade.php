@@ -6,9 +6,9 @@
    <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
 
    <main role="main" class="ml-sm-auto {{--pt-3 px-4--}}" id="{{$nombre_controller}}">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-         <h2 class="h2">{{$nombre_detalle}}</h2>
-
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom sticky-top">
+         {{--<div class="h2 float-right">{{$nombre_detalle}}</div>--}}
+         <h2>&nbsp;</h2>
 
          <div class="btn-toolbar mb-2 mb-md-0">
             <div class="input-group input-group-sm">

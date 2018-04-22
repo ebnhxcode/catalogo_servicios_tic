@@ -120,8 +120,9 @@
 <div id="app">
    <nav class="navbar navbar-light bg-light navbar-expand-md fixed-top">
       <div class="container">
-         <a class="navbar-brand" href="{{ url('/') }}">
-            <small class="text-muted">{{ config('app.name', 'Catálogo Servicios') }}</small>
+         <a class="navbar-brand mx-auto" href="{{ url('/') }}">
+            {{--<small class="text-muted">{{ config('app.name', 'Catálogo Servicios') }}</small>--}}
+            <small class="text-muted">&nbsp;</small>
          </a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -135,14 +136,12 @@
             </ul>
 
             <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto d-sm-block d-md-none float-right" style="padding-top: 30px;">
                <!-- Authentication Links -->
-               @guest
                <!--
-               <li><a class="nav-link" href="{{-- route('login') --}}">Login</a></li>
-               <li><a class="nav-link" href="{{-- route('register') --}}">Register</a></li>
-               -->
-               @else
+                              <li><a class="nav-link" href="{{-- route('login') --}}">Login</a></li>
+                              <li><a class="nav-link" href="{{-- route('register') --}}">Register</a></li>
+                              -->
                   <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
@@ -163,7 +162,6 @@
                         </form>
                      </div>
                   </li>
-                  @endguest
             </ul>
          </div>
       </div>
@@ -279,25 +277,53 @@
             <!-- Page Content -->
             <div id="page-content-wrapper">
                <div class="container-fluid">
-                  <div class="sticky-top" style="padding-top: 10px;">
-                     <a href="#menu-toggle" class="btn btn-primary active" id="menu-toggle">ABRIR<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                  </div>
-
                   {{--sticky-top--}}
                   <div class="row">
 
                      <div class="col-md-10">
+
+                        <div class="sticky-top" style="padding-top: 10px;z-index: 1;">
+                           <a href="#menu-toggle" class="btn btn-xs btn-primary active" id="menu-toggle">ABRIR<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
 
                         @yield('content')
 
                      </div>
                      <div class="col-md-2">
 
-                        <div class="sidebar-sticky sticky-top" style="overflow:auto;" style="padding-top: 50px;">
+                        <div class="sidebar-sticky sticky-top" style="overflow:auto;padding-top: 10px;z-index: 1;">
 
-
-                           <div class="alert alert-primary" role="alert">
-                              Memorias
+                           <div class="" role="alert">
+                              <ul class="navbar-nav ml-auto">
+                                 <!-- Authentication Links -->
+                              @guest
+                                 <!--
+                              <li><a class="nav-link" href="{{-- route('login') --}}">Login</a></li>
+                              <li><a class="nav-link" href="{{-- route('register') --}}">Register</a></li>
+                              -->
+                                 @else
+                                    <li class="nav-item dropdown">
+                                       <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                                          aria-haspopup="true" aria-expanded="false">
+                                          {{ isset(Auth::user()->nom_usuario) ?
+                                              Auth::user()->nom_usuario : 'Sin Nombre' }}
+                                          <span class="caret"></span>
+                                       </a>
+                                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                          <a class="dropdown-item" href="{{ route('logout') }}"
+                                             onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                             Logout
+                                          </a>
+                                          <a class="dropdown-item" href="{{ route('home') }}">
+                                             Menú
+                                          </a>
+                                          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                             @csrf
+                                          </form>
+                                       </div>
+                                    </li>
+                                 @endguest
+                              </ul>
                            </div>
 
                            <h5
