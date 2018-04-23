@@ -170,9 +170,9 @@ class ServidorController extends Controller {
    public function store(Request $request) {
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario
       $this->validacion = Validator::make($request->all(), [
-         'nom_servidor' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
-         'det_servidor' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
-         'ip_servidor' => "ip|max:255",
+         'nom_servidor' => "required|regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|max:255",
+         'det_servidor' => "nullable|regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|max:255",
+         'ip_servidor' => "nullable|ip|max:255",
 
          'ram' => "nullable|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
          'memoria_dd' => "nullable|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
@@ -194,15 +194,15 @@ class ServidorController extends Controller {
          'lvm_var' => "nullable|regex:/(^([0-9_ ]+)(\d+)?$)/u|max:255",
          'lvm_home' => "nullable|regex:/(^([0-9_ ]+)(\d+)?$)/u|max:255",
 
-         'id_servicio' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
-         'id_datacentro' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
-         'id_sistema_operativo' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
-         'id_estado' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
-         'id_ambiente' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
-         'id_cluster' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
-         'id_vlan' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
-         'id_tipo_servidor' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
-         'id_tipo_respaldo_disco' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
+         'id_servicio' => "required|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'id_datacentro' => "required|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'id_sistema_operativo' => "required|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'id_estado' => "required|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'id_ambiente' => "required|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'id_cluster' => "required|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'id_vlan' => "required|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'id_tipo_servidor' => "required|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'id_tipo_respaldo_disco' => "required|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
       ]);
       #Se valida la respuesta con la salida de la validacion
       if ($this->validacion->fails() == true) {
@@ -302,10 +302,10 @@ class ServidorController extends Controller {
    public function update(Request $request, $id) {
       #Se realiza validacion de los parametros de entrada que vienen desde el formulario
       $this->validacion = Validator::make($request->all(), [
-         'id_servidor' => 'regex:/(^([0-9]+)(\d+)?$)/u|required|max:255',
-         'nom_servidor' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
-         'det_servidor' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
-         'ip_servidor' => "ip|max:255",
+         'id_servidor' => 'required|regex:/(^([0-9]+)(\d+)?$)/u|max:255',
+         'nom_servidor' => "required|regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|max:255",
+         'det_servidor' => "nullable|regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|max:255",
+         'ip_servidor' => "nullable|ip|max:255",
 
          'ram' => "nullable|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
          'memoria_dd' => "nullable|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
@@ -327,15 +327,15 @@ class ServidorController extends Controller {
          'lvm_var' => "nullable|regex:/(^([0-9_ ]+)(\d+)?$)/u|max:255",
          'lvm_home' => "nullable|regex:/(^([0-9_ ]+)(\d+)?$)/u|max:255",
 
-         'id_servicio' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
-         'id_datacentro' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
-         'id_sistema_operativo' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
-         'id_estado' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
-         'id_ambiente' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
-         'id_cluster' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
-         'id_vlan' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
-         'id_tipo_servidor' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
-         'id_tipo_respaldo_disco' => "regex:/(^([0-9]+)(\d+)?$)/u|required|max:255",
+         'id_servicio' => "required|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'id_datacentro' => "required|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'id_sistema_operativo' => "required|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'id_estado' => "required|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'id_ambiente' => "required|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'id_cluster' => "required|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'id_vlan' => "required|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'id_tipo_servidor' => "required|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+         'id_tipo_respaldo_disco' => "required|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
       ]);
       #Valida si la informacion que se envia para editar al servidor son iguales los ids
       if ($id != $request["id_$this->nombre_modelo"]) {

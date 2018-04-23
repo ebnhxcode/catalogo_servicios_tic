@@ -141,9 +141,9 @@ class ServicioController extends Controller {
     public function store(Request $request) {
         #Se realiza validacion de los parametros de entrada que vienen desde el formulario
         $this->validacion = Validator::make($request->all(), [
-           'nom_servicio' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
-           'det_completo' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|max:255",
-           'id_actividad' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+           'nom_servicio' => "required|regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|max:255",
+           'det_completo' => "nullable|regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|max:255",
+           'id_actividad' => "required|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
         ]);
         #Se valida la respuesta con la salida de la validacion
         if ($this->validacion->fails() == true) {
@@ -179,10 +179,10 @@ class ServicioController extends Controller {
     public function update(Request $request, $id) {
         #Se realiza validacion de los parametros de entrada que vienen desde el formulario
         $this->validacion = Validator::make($request->all(), [
-           "id_{$this->nombre_modelo}" => 'regex:/(^([0-9]+)(\d+)?$)/u|required|max:255',
-           'nom_servicio' => "regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|required|max:255",
-           'det_servicio' => "regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|required|max:255",
-           'id_actividad' => "regex:/(^([0-9]+)(\d+)?$)/u|max:255",
+           "id_{$this->nombre_modelo}" => 'required|regex:/(^([0-9]+)(\d+)?$)/u|max:255',
+           'nom_servicio' => "required|regex:/(^([a-zA-Z0-9_ ]+)(\d+)?$)/u|max:255",
+           'det_servicio' => "nullable|regex:/(^([a-zA-Z0-9_ ,.!@#$%*&]+)(\d+)?$)/u|max:255",
+           'id_actividad' => "required|regex:/(^([0-9]+)(\d+)?$)/u|max:255",
         ]);
         #Valida si la informacion que se envia para editar al servicio son iguales los ids
         if ($id != $request["id_$this->nombre_modelo"]) {
