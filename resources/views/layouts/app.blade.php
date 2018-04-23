@@ -167,9 +167,9 @@
       </div>
    </nav>
 
-   <main class="py-4" style="padding-left: 10px;padding-top: 3px !important;">
+   <main class="{{--py-4--}}" style="/*padding-left: 10px;*/padding-top: 3px !important;">
 
-      <div class="container-fluid">
+      <div class="{{--container-fluid--}}">
 
          <div id="wrapper">
 
@@ -185,8 +185,8 @@
                      <template class="form-group">
 
                         <!-- Input para escribir el termino a buscar -->
-                        <input type="text" class="form-control col-sm-12" aria-describedby="filtro_menu_help"
-                               style="padding-left: 20px;"
+                        <input type="text" class="form-control bg-light col-sm-12 sticky-top" aria-describedby="filtro_menu_help"
+                               style="z-index: 10; padding-left: 20px;"
                                placeholder="Filtrar en el menú" v-model="filtro_menu" id="filtro_menu">
 
                         {{--
@@ -276,20 +276,20 @@
 
             <!-- Page Content -->
             <div id="page-content-wrapper">
-               <div class="container-fluid">
+               <div class="{{--container-fluid--}}">
                   {{--sticky-top--}}
                   <div class="row">
 
-                     <div class="col-md-10">
+                     <div class="col-md-10" style="padding-left: 10px !important;padding-right: 10px !important;">
 
-                        <div class="sticky-top" style="padding-top: 10px;z-index: 10;">
+                        <div class="float-left sticky-top" style="padding-top: 10px;z-index: 10;">
                            <a href="#menu-toggle" class="btn btn-xs btn-primary active" id="menu-toggle">ABRIR<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                         </div>
 
                         @yield('content')
 
                      </div>
-                     <div class="col-md-2">
+                     <div class="col-md-2" style="padding-left: 10px !important;">
 
                         <div class="sidebar-sticky sticky-top" style="overflow:auto;padding-top: 10px;z-index: 1;">
 

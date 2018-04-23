@@ -1,25 +1,16 @@
 @extends('layouts.app')
 @section('content')
-
-
    <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
+   <main role="main" class="ml-sm-auto {{-- col-md-12  col-lg-12 pt-3 px-4--}}" id="{{$nombre_controller}}">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 sticky-top">
+         &nbsp;
+         <h2 class="h2" style="padding-top: 10px;">{{$nombre_detalle}}</h2>
 
-   <main role="main" class="col-md-12 ml-sm-auto col-lg-12 {{--pt-3 px-4--}}" id="{{$nombre_controller}}">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 border-bottom">
-         <h2 class="h2">{{$nombre_detalle}}</h2>
-
-         <div class="btn-toolbar mb-2 mb-md-0">
-            <div class="input-group input-group-sm">
-
-               <div class="btn-group mr-2">
-                  <input type="text" class="form-control input-sm"
-                         data-placement="top" data-toggle="tooltip" title="Filtrar en la lista"
-                         placeholder="Filtrar en la lista" v-model="filtro_head" id="filtro_head">
-               </div><!-- .btn-group mr-2 #mr->margin -->
-
-
-            </div><!-- input-* -->
-         </div><!-- .btn .btn-toolbar -->
+         <div class="input-group input-group-sm">
+               <input type="text" class="form-control" style="padding-left: 10px;"
+                      data-placement="top" data-toggle="tooltip" title="Filtrar en la lista"
+                      placeholder="Filtrar en la lista" v-model="filtro_head" id="filtro_head">
+         </div><!-- input-* -->
 
       </div><!-- .d-flex .justify-* .flex-wrap .flex-md-nowrap .align-items-center -->
 

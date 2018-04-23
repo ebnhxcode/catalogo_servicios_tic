@@ -1,14 +1,11 @@
-
 @extends('layouts.app')
 @section('content')
-
-
    <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
-
    <main role="main" class="ml-sm-auto {{--pt-3 px-4--}}" id="{{$nombre_controller}}">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom sticky-top">
-         {{--<div class="h2 float-right">{{$nombre_detalle}}</div>--}}
-         <h2>&nbsp;</h2>
+      <div class="{{----}} flex-md-nowrap flex-wrap align-items-center d-flex justify-content-between pb-2 mb-3 sticky-top"
+           style="z-index: 10;">
+         &nbsp;
+         <h2 class="h2" style="padding-top: 10px;">{{$nombre_detalle}}</h2>
 
          <div class="btn-toolbar mb-2 mb-md-0">
             <div class="input-group input-group-sm">
@@ -20,7 +17,8 @@
                </div><!-- .btn-group mr-2 #mr->margin -->
                --}}
 
-               <div class="btn-group mr-0">
+               <div class="btn-group mr-0 ml-auto d-md-block d-sm-none">
+
                   <a href="{{url('/home')}}" class="btn btn-secondary"
                           data-placement="top" data-toggle="tooltip" title="Volver al menú">
                      <i class="fa fa-arrow-left" aria-hidden="true"></i>
@@ -62,6 +60,7 @@
                      <a class="dropdown-item" href="{{ url('/home') }}">
                         Volver al menú principal
                      </a>
+
                   </div>
                </div><!-- .btn-group mr-0 #mr->margin -->
 
@@ -93,6 +92,54 @@
       <br />
 
       <div class="row">
+         <div class="col-sm-12">
+            <div class="btn-group mr-0 ml-auto d-sm-block d-md-none">
+
+               <a href="{{url('/home')}}" class="btn btn-secondary"
+                  data-placement="top" data-toggle="tooltip" title="Volver al menú">
+                  <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                  Ir al Menu
+               </a>
+
+               <button class="btn btn-success"
+                       v-if="en_array(['Administrador','Jefe de Area','Lider Equipo','Jefe Proyecto','App Manager'],usuario_auth.usuario_role.role.nom_role)"
+                       data-placement="top" data-toggle="tooltip" title="Crear nuevo/a {{$nombre_modelo}}"
+                       @click.prevent="mostrar_modal_crear">
+                  Crear {{str_replace('_',' ',$nombre_modelo)}}
+               </button>
+
+               <button class="btn btn-secondary dropdown-toggle"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Lista de opciones">
+                  Opciones
+               </button>
+
+               <div class="dropdown-menu">
+                  <!-- Esta seccion ya es un componente, se podria estandarizar solo el nombre de los obj para excel -->
+                  <download-excel
+                     v-if="(excel_data_contador = filterBy(datos_excel, filtro_head).length) > 0 &&
+                           en_array(['Administrador','Jefe de Area','Lider Equipo','App Manager'],usuario_auth.usuario_role.role.nom_role)"
+                     :data="filterBy(excel_json_datos, filtro_head)"
+                     :fields="excel_json_campos"
+                     :labels="tabla_labels"
+                     :name="`${nombre_tabla}.xls`"
+                     class="dropdown-item">
+                     Descargar Excel
+                  </download-excel>
+
+                  <a class="dropdown-item" href="#!" @click.prevent="inicializar">
+                     Actualizar tabla
+                  </a>
+                  <a class="dropdown-item" href="#!" @click.prevent="filtro_head=null">
+                     Limpiar filtro
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{{ url('/home') }}">
+                     Volver al menú principal
+                  </a>
+
+               </div>
+            </div><!-- .btn-group mr-0 #mr->margin -->
+         </div>
          <div class="col-sm-12">
             <h4>
                <div class="float-right">
