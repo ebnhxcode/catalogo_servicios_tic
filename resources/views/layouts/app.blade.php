@@ -265,12 +265,7 @@
                      <br>
                      <br>
                   </nav><!-- #SideMenuController -->
-
-
-
                </div>
-
-
             </div>
             <!-- /#sidebar-wrapper -->
 
@@ -283,53 +278,55 @@
                      <div class="col-md-10" style="padding-left: 10px !important;padding-right: 10px !important;">
 
                         <div class="float-left sticky-top" style="padding-top: 10px;z-index: 10;">
-                           <a href="#menu-toggle" class="btn btn-xs btn-primary active" id="menu-toggle">ABRIR<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                           <a href="#menu-toggle" class="btn btn-xs btn-primary active" id="menu-toggle">ABRIR<i style="padding-left:5px;" class="fa fa-lock" aria-hidden="true"></i></a>
                         </div>
 
                         @yield('content')
 
                      </div>
+
                      <div class="col-md-2" style="padding-left: 10px !important;">
 
                         <div class="sidebar-sticky sticky-top" style="overflow:auto;padding-top: 10px;z-index: 1;">
 
                            <div class="" role="alert">
                               <ul class="navbar-nav ml-auto">
-                                 <!-- Authentication Links -->
-                              @guest
-                                 <!--
-                              <li><a class="nav-link" href="{{-- route('login') --}}">Login</a></li>
-                              <li><a class="nav-link" href="{{-- route('register') --}}">Register</a></li>
-                              -->
-                                 @else
-                                    <li class="nav-item dropdown">
-                                       <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                                          aria-haspopup="true" aria-expanded="false">
-                                          {{ isset(Auth::user()->nom_usuario) ?
-                                              Auth::user()->nom_usuario : 'Sin Nombre' }}
-                                          <span class="caret"></span>
+                                 <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false">
+                                       {{ isset(Auth::user()->nom_usuario) ?
+                                           Auth::user()->nom_usuario : 'Sin Nombre' }}
+                                       <span class="caret"></span>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                       <a class="dropdown-item" href="{{ route('logout') }}"
+                                          onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                          Logout
                                        </a>
-                                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                          <a class="dropdown-item" href="{{ route('logout') }}"
-                                             onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                             Logout
-                                          </a>
-                                          <a class="dropdown-item" href="{{ route('home') }}">
-                                             Menú
-                                          </a>
-                                          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                             @csrf
-                                          </form>
-                                       </div>
-                                    </li>
-                                 @endguest
+                                       <a class="dropdown-item" href="{{ route('home') }}">
+                                          Menú
+                                       </a>
+                                       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                          @csrf
+                                       </form>
+                                    </div>
+                                 </li>
                               </ul>
                            </div>
 
                            <h5
                               class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                              <span class="h6 small">Opciones</span>
+                              <span class="{{--h6 small--}} btn btn-primary">MENSAJES</span>
                            </h5>
+
+                           <div class="card bg-light mb-3" style="max-width: 18rem;">
+                              <div class="card-header">Header</div>
+                              <div class="card-body">
+                                 <h5 class="card-title">Light card title</h5>
+                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              </div>
+                           </div>
+
 
                            <ul class="nav flex-column">
                               <li class="nav-item">
@@ -411,9 +408,9 @@
       $("#wrapper").toggleClass("toggled");
 
       if ($("#menu-toggle").text() == 'ABRIR') {
-         $("#menu-toggle").text('CERRAR').append('<i class="fa fa-arrow-left" aria-hidden="true"></i>');
+         $("#menu-toggle").text('CERRAR').append('<i style="padding-left:5px;" class="fa fa-unlock-alt" aria-hidden="true"></i>');
       }else{
-         $("#menu-toggle").text('ABRIR').append('<i class="fa fa-arrow-right" aria-hidden="true"></i>');
+         $("#menu-toggle").text('ABRIR').append('<i style="padding-left:5px;" class="fa fa-lock" aria-hidden="true"></i>');
       }
 
    });
@@ -421,9 +418,9 @@
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
       if ($("#menu-toggle").text() == 'ABRIR') {
-         $("#menu-toggle").text('CERRAR').append('<i class="fa fa-arrow-left" aria-hidden="true"></i>');
+         $("#menu-toggle").text('CERRAR').append('<i style="padding-left:5px;" class="fa fa-unlock-alt" aria-hidden="true"></i>');
       }else{
-         $("#menu-toggle").text('ABRIR').append('<i class="fa fa-arrow-right" aria-hidden="true"></i>');
+         $("#menu-toggle").text('ABRIR').append('<i style="padding-left:5px;" class="fa fa-lock" aria-hidden="true"></i>');
       }
    });
 </script>
