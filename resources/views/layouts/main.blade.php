@@ -12,8 +12,8 @@
                {{--
                <div class="btn-group mr-2 pro">
                   <input type="text" class="form-control input-sm"
-                         data-placement="top" data-toggle="tooltip" title="Filtrar en la lista"
-                         placeholder="Filtrar en la lista" v-model="filtro_head" id="filtro_head">
+                         data-placement="top" data-toggle="tooltip" title="FILTRAR EN LA LISTA"
+                         placeholder="FILTRAR EN LA LISTA" v-model="filtro_head" id="filtro_head">
                </div><!-- .btn-group mr-2 #mr->margin -->
                --}}
 
@@ -144,8 +144,8 @@
             <h4>
                <div class="float-right">
                   <input type="text" class="form-control input-sm"
-                         data-placement="top" data-toggle="tooltip" title="Filtrar en la lista"
-                         placeholder="Filtrar en la lista" v-model="filtro_head" id="filtro_head">
+                         data-placement="top" data-toggle="tooltip" title="FILTRAR EN LA LISTA"
+                         placeholder="FILTRAR EN LA LISTA" v-model="filtro_head" id="filtro_head">
                </div><!-- .btn-group mr-2 #mr->margin -->
 
                Lista de {{$nombre_detalle}}

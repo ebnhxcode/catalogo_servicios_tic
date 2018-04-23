@@ -7,9 +7,9 @@
          <h2 class="h2" style="padding-top: 10px;">{{$nombre_detalle}}</h2>
 
          <div class="input-group input-group-sm">
-               <input type="text" class="form-control" style="padding-left: 10px;"
-                      data-placement="top" data-toggle="tooltip" title="Filtrar en la lista"
-                      placeholder="Filtrar en la lista" v-model="filtro_head" id="filtro_head">
+               <input type="text" class="form-control" style="padding-left: 10px;padding-top: 0px !important;"
+                      data-placement="top" data-toggle="tooltip" title="FILTRAR"
+                      placeholder="FILTRAR" v-model="filtro_head" id="filtro_head">
          </div><!-- input-* -->
 
       </div><!-- .d-flex .justify-* .flex-wrap .flex-md-nowrap .align-items-center -->

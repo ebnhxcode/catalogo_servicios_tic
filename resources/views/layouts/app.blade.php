@@ -187,7 +187,7 @@
                         <!-- Input para escribir el termino a buscar -->
                         <input type="text" class="form-control bg-light col-sm-12 sticky-top" aria-describedby="filtro_menu_help"
                                style="z-index: 10; padding-left: 20px;"
-                               placeholder="Filtrar en el menú" v-model="filtro_menu" id="filtro_menu">
+                               placeholder="FILTRAR EN EL MENU" v-model="filtro_menu" id="filtro_menu">
 
                         {{--
                         <small id="filtro_menu_help" class="form-text text-muted">
@@ -270,7 +270,7 @@
             <!-- /#sidebar-wrapper -->
 
             <!-- Page Content -->
-            <div id="page-content-wrapper">
+            <div id="page-content-wrapper" style="padding-top: 0px !important;">
                <div class="{{--container-fluid--}}">
                   {{--sticky-top--}}
                   <div class="row">
@@ -285,9 +285,9 @@
 
                      </div>
 
-                     <div class="col-md-2" style="padding-left: 10px !important;">
+                     <div class="col-md-2 bg-light sidebar-sticky pro" style="padding-left: 10px !important;">
 
-                        <div class="sidebar-sticky sticky-top" style="overflow:auto;padding-top: 10px;z-index: 1;">
+                        <div class=" sticky-top" style="padding-top: 10px;z-index: 1;">
 
                            <div class="" role="alert">
                               <ul class="navbar-nav ml-auto">
@@ -314,37 +314,107 @@
                               </ul>
                            </div>
 
-                           <h5
-                              class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                              <span class="{{--h6 small--}} btn btn-primary">MENSAJES</span>
-                           </h5>
-
-                           <div class="card bg-light mb-3" style="max-width: 18rem;">
-                              <div class="card-header">Header</div>
-                              <div class="card-body">
-                                 <h5 class="card-title">Light card title</h5>
-                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              </div>
+                           &nbsp;
+                           {{--
+                           <div style=""
+                              class="h5 btn-lg bg-light sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                              <span class="<!--h6 small-->">MENSAJES</span>
                            </div>
+                           --}}
+
+                           {{--
+                           <div class="" style="overflow-y: scroll;max-height: 600px;z-index: 0 !important;">
+
+                              <ul class="nav flex-column">
+
+                                 <li class="nav-item">
+                                    <button class="btn btn-danger btn-sm float-right"
+                                            data-placement="top" data-toggle="tooltip" title="Eliminar">
+                                       <i class="fa fa-close"></i>
+                                    </button>
+                                    <a class="nav-link" style="font-size: .7rem;padding-left: 0px;" href="#!"
+                                       data-placement="top" data-toggle="tooltip" title="">
+                                       <dl class="">
+                                          <dt>Usuario</dt>
+                                          <dd>Mensaje adjskdaskdjasdj asjdk sjkdas</dd>
+                                       </dl>
+                                    </a>
+                                 </li>
+                                 <li class="nav-item">
+                                    <button class="btn btn-danger btn-sm float-right"
+                                            data-placement="top" data-toggle="tooltip" title="Eliminar">
+                                       <i class="fa fa-close"></i>
+                                    </button>
+                                    <a class="nav-link" style="font-size: .7rem;padding-left: 0px;" href="#!"
+                                       data-placement="top" data-toggle="tooltip" title="">
+                                       <dl class="">
+                                          <dt>Usuario</dt>
+                                          <dd>Mensaje adjskdaskdjasdj asjdk sjkdas</dd>
+                                       </dl>
+                                    </a>
+                                 </li>
+
+
+                              </ul>
+
+                              <div class=" ">
+                                 <div class="" >
+                                    <div class="card bg-light mb-3" style="max-width: 18rem;">
+                                       <div class="card-header">Header</div>
+                                       <div class="card-body">
+                                          <h5 class="card-title">Light card title</h5>
+                                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                       </div>
+                                    </div>
+
+                                    <div class="card bg-light mb-3" style="max-width: 18rem;">
+                                       <div class="card-header">Header</div>
+                                       <div class="card-body">
+                                          <h5 class="card-title">Light card title</h5>
+                                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                       </div>
+                                    </div>
+
+                                    <div class="card bg-light mb-3" style="max-width: 18rem;">
+                                       <div class="card-header">Header</div>
+                                       <div class="card-body">
+                                          <h5 class="card-title">Light card title</h5>
+                                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+
+                           </div>
+                           --}}
+
 
 
                            <ul class="nav flex-column">
                               <li class="nav-item">
+
+                                 {{--
                                  <i class="fa fa-refresh btn btn-warning" aria-hidden="true"
-                                    data-placement="top" data-toggle="tooltip" title="Clic para actualizar menu"></i>
+                                    data-placement="top" data-toggle="tooltip" title="Clic para actualizar mensajes"></i>
 
                                  <a class="fa fa-compress btn btn-warning"  aria-hidden="true"
                                     data-placement="top" data-toggle="tooltip" title="Clic para cerrar el menu lateral"></a>
+                                 --}}
 
                               </li>
                            </ul>
 
-                           <h5
-                              class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                              <span class="h6"><b>MENU PRINCIPAL</b></span>
-                              <i class="fa fa-sort-alpha-asc btn btn-info btn-sm" aria-hidden="true"
-                                 data-placement="top" data-toggle="tooltip" title="Clic para ordenar menu principal"></i>
-                           </h5>
+                           <!--hr-->
+
+                           <span class="small text-center sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                              <b>CATÁLOGO DE SERVICIOS TIC</b>
+                           </span>
+
+                           <div class="text-center">
+                              <a href="#!">
+                                 <img class="img-thumbnail" src="{{url('img/tic_.jpeg')}}" alt="">
+                              </a>
+                           </div>
 
                            <ul class="nav flex-column">
                               <li class="nav-item">
@@ -355,8 +425,15 @@
                               </li>
 
                            </ul>
+
+
                         </div>
+
+
+
+
                      </div>
+
 
                   </div>
 
