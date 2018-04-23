@@ -80,7 +80,7 @@ class ServidorController extends Controller {
    }
 
    public function index(Request $request) {
-      if (!$request->wantsJson() && !$request->ajax()) {
+      if (!$request->ajax()) {
          return view("layouts.main", [
             'nombre_modelo' => $this->nombre_modelo,
             'nombre_tabla' => $this->nombre_tabla,
