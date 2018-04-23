@@ -323,6 +323,55 @@
                            --}}
 
                            {{--
+<div class="" style="overflow-y: scroll;max-height: 600px;z-index: 0 !important;">
+
+                              <ul class="nav flex-column">
+
+                                 <li class="nav-item">
+                                    <button class="btn btn-danger btn-sm float-right"
+                                            data-placement="top" data-toggle="tooltip" title="Eliminar">
+                                       <i class="fa fa-close"></i>
+                                    </button>
+                                    <a class="nav-link" style="font-size: .7rem;padding-left: 0px;" href="#!"
+                                       data-placement="top" data-toggle="tooltip" title="">
+                                       <dl class="">
+                                          <dt>Usuario</dt>
+                                          <dd>Mensaje adjskdaskdjasdj asjdk sjkdas</dd>
+                                       </dl>
+                                    </a>
+                                 </li>
+                                 <li class="nav-item">
+                                    <button class="btn btn-danger btn-sm float-right"
+                                            data-placement="top" data-toggle="tooltip" title="Eliminar">
+                                       <i class="fa fa-close"></i>
+                                    </button>
+                                    <a class="nav-link" style="font-size: .7rem;padding-left: 0px;" href="#!"
+                                       data-placement="top" data-toggle="tooltip" title="">
+                                       <dl class="">
+                                          <dt>Usuario</dt>
+                                          <dd>Mensaje adjskdaskdjasdj asjdk sjkdas</dd>
+                                       </dl>
+                                    </a>
+                                 </li>
+                                 <li class="nav-item">
+                                    <button class="btn btn-danger btn-sm float-right"
+                                            data-placement="top" data-toggle="tooltip" title="Eliminar">
+                                       <i class="fa fa-close"></i>
+                                    </button>
+                                    <a class="nav-link" style="font-size: .7rem;padding-left: 0px;" href="#!"
+                                       data-placement="top" data-toggle="tooltip" title="">
+                                       <dl class="">
+                                          <dt>Usuario</dt>
+                                          <dd>Mensaje adjskdaskdjasdj asjdk sjkdas</dd>
+                                       </dl>
+                                    </a>
+                                 </li>
+
+                              </ul>
+                           </div>
+                           --}}
+
+                           {{--
                            <div class="" style="overflow-y: scroll;max-height: 600px;z-index: 0 !important;">
 
                               <ul class="nav flex-column">
@@ -387,8 +436,6 @@
 
                            </div>
                            --}}
-
-
 
                            <ul class="nav flex-column">
                               <li class="nav-item">
