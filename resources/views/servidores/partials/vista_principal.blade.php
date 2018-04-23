@@ -6,12 +6,12 @@
       <div class="card pro">
          <img class="card-img-top" :src="'/img/source.gif'" alt="Card image cap">
          <div class="card-body">
-            <h5 class="card-title">
+            <small class=" h6 card-title">
                @{{ servidor.nom_servidor || '' }}
                <span class="badge badge-success float-right" v-if="servidor.servidor_estado">
                   @{{ `Estado : ${servidor.servidor_estado.estado.nom_estado}` || '' }}
                </span>
-            </h5>
+            </small>
             <p class="card-text">
 
             <dl class="row" v-if="servidor">

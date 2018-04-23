@@ -4173,9 +4173,9 @@ var AplicacionController = new Vue({
             //'id_dominio':false,
             'nom_dominio': false,
             //'id_tipo_aplicacion':false,
-            'nom_tipo_aplicacion': true,
+            'nom_tipo_aplicacion': false,
             //'id_servidor':false,
-            'nom_servidor': true,
+            'nom_servidor': false,
             //'id_servicio':false,
             'nom_servicio': false,
 

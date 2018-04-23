@@ -1,5 +1,6 @@
 <div class="row">
    <div class="nav flex-column nav-pills col-sm-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
       <a class="nav-link active" id="v-pills-aplicaciones-tab" data-toggle="pill" href="#v-pills-aplicaciones" role="tab"
          aria-controls="v-pills-aplicaciones" aria-selected="true">
          Aplicaciones

@@ -57,7 +57,7 @@
       </div><!-- .card -->
 
 
-
+      <br>
 
 
       <!-- este bloque será reemplazado dinamicamente -->
