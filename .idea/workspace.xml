@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8aa2c585-d310-4a06-92e2-14a844c1db5f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/colecciones.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/colecciones.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/actividades/partials/formulario_campos.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/actividades/partials/formulario_campos.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/aplicaciones/partials/formulario_campos.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/aplicaciones/partials/formulario_campos.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/actividades/partials/relacionados_a.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/actividades/partials/relacionados_a_.blade.php" afterDir="false" />
     </list>
     <ignored path="catalogo_servicios_tic.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -680,16 +676,15 @@
       <workItem from="1524227971441" duration="6450000" />
       <workItem from="1524354770901" duration="743000" />
       <workItem from="1524414227156" duration="4731000" />
-      <workItem from="1524471109387" duration="15511000" />
+      <workItem from="1524471109387" duration="16196000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72280000" />
+    <option name="totallyTimeSpent" value="72965000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="878" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
