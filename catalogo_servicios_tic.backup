@@ -5,7 +5,7 @@
 -- Dumped from database version 10.3
 -- Dumped by pg_dump version 10.3
 
--- Started on 2018-04-22 20:57:55 -03
+-- Started on 2018-04-23 05:29:32 -03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -2069,6 +2069,256 @@ COPY public.ambientes (id_ambiente, nom_ambiente, det_ambiente, id_usuario_regis
 --
 
 COPY public.aplicaciones (id_aplicacion, id_tipo_aplicacion, id_servicio, id_dominio, nom_aplicacion, det_aplicacion, alias, url_web, ip, subdominio, ssl_tls, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, id_servidor, id_template, id_environment) FROM stdin;
+253	43	12	1	APIgee	Template: Eliminada ;  Environtment: Cassandra			172.20.34.10		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1166	\N	\N
+254	43	12	1	APIgee	Template: Eliminada ;  Environtment: Cassandra			172.20.34.11		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1167	\N	\N
+255	43	12	1	APIgee	Template: Eliminada ;  Environtment: Cassandra			172.20.34.12		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1168	\N	\N
+256	43	12	1	APIgee	Template: Eliminada ;  Environtment: Message Processor			172.20.34.13		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1169	\N	\N
+257	43	12	1	APIgee	Template: Eliminada ;  Environtment: Message Processor			172.20.34.14		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1170	\N	\N
+258	43	12	1	APIgee	Template: Eliminada ;  Environtment: Analytics-PostGre			172.20.34.15		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1171	\N	\N
+259	43	12	1	APIgee	Template: Eliminada ;  Environtment: Analytics-PostGre			172.20.34.16		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1172	\N	\N
+260	43	12	1	APIgee	Template: Eliminada ;  Environtment: Qpid server			172.20.34.17		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1173	\N	\N
+261	43	12	1	APigee	Template: Eliminada ;  Environtment: Qpid server			172.20.34.18		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1174	\N	\N
+262	43	12	1	APIgee	Template: Eliminada ;  Environtment: OpenLDAP			172.20.34.19		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1175	\N	\N
+263	43	12	1	APIgee	Template: Eliminada ;  Environtment: OpenLDAP			172.20.34.20		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1176	\N	\N
+264	43	12	1	APIgee	Template: Eliminada ;  Environtment: Management Server UI			172.20.34.21		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1177	\N	\N
+265	43	12	1	APIgee	Template: Eliminada ;  Environtment: Management Server UI			172.20.34.22		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1178	\N	\N
+266	43	12	1	APIgee	Template: Eliminada ;  Environtment: Drupal Server			172.20.34.23		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1179	\N	\N
+267	43	12	1	APIgee	Template: Eliminada ;  Environtment: Server1			172.20.34.24		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1180	\N	\N
+268	43	12	1	APIgee	Template: Eliminada ;  Environtment: Server2			172.20.34.25		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1181	\N	\N
+269	43	13	1	AFIS	Template: Creada y entregada a Zeke ;  Environtment: ActiveMQ   			172.20.34.26		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1182	\N	\N
+270	43	13	1	AFIS	Template: Creada y entregada a Zeke ;  Environtment: ActiveMQ   			172.20.34.27		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1183	\N	\N
+271	43	13	1	AFIS	Template: Creada y entregada a Zeke ;  Environtment: ActiveMQ   			172.20.34.28		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1184	\N	\N
+272	43	14	1	IBM I2	Template: Creada y entregada a Zeke ;  Environtment: IBase Designer 			172.20.34.29		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1185	\N	\N
+273	43	15	1	GES PROYECTOS	Template: Creada y entregada a Zeke ;  Environtment: Easy Redmine 			172.20.34.30		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1186	\N	\N
+274	43	16	1	SVN	Template: Creada y entregada a Zeke ;  Environtment: SVN			172.20.34.31		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1187	\N	\N
+275	43	16	1	CMDB	Template: Creada y entregada a Zeke ;  Environtment: CMDBuild	glpi.minsal.cl	glpi.minsal.cl	192.168.20.17 	glpi	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1188	\N	\N
+276	43	16	1	MONITOREO	Template: Creada y entregada a Zeke ;  Environtment: Nagios XI	nagios.minsal.cl	nagios.minsal.cl	192.168.20.16 	nagios	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1189	\N	\N
+277	43	15	1	WIKI	Template: Creada y entregada a Zeke ;  Environtment: Wiki			172.20.34.34		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1190	\N	\N
+278	43	15	1	LMT	Template: Creada y entregada a Zeke ;  Environtment: IBM Licence Metric 			172.20.34.35		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1191	\N	\N
+279	43	18	1	MONITOREO	Template: Eliminada ;  Environtment: Monitoreo Nous			172.20.34.36		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1192	\N	\N
+280	43	18	1	MONITOREO	Template: Eliminada ;  Environtment: Monitoreo Nous			172.20.34.37		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1193	\N	\N
+281	43	15	1	SPECTRUM	Template: Creada y entregada a Intesis ;  Environtment: VM respaldo			172.20.34.38		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1194	\N	\N
+282	43	17	1	SEMANTIKO	Template: No se crearon se liberan las IP ;  Environtment: Semantikos			192.168.10.50		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1195	\N	\N
+283	43	17	1	SEMANTIKO	Template: No se crearon se liberan las IP ;  Environtment: Semantikos			192.168.10.51		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1196	\N	\N
+284	43	17	1	SEMANTIKO	Template: No se crearon se liberan las IP ;  Environtment: Semantikos			192.168.10.52		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1197	\N	\N
+285	44	17	1	SEMANTIKO	Template: No se crearon se liberan las IP ;  Environtment: Semantikos			172.20.65.10		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1198	\N	\N
+286	44	17	1	SEMANTIKO	Template: No se crearon se liberan las IP ;  Environtment: Semantikos			172.20.65.11		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1199	\N	\N
+287	44	17	1	SEMANTIKO	Template: No se crearon se liberan las IP ;  Environtment: Semantikos			172.20.65.12		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1200	\N	\N
+288	50	14	1	IBASE	Template: Creada y entregada a Zeke ;  Environtment: IBM IBase 			172.20.34.39		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1201	\N	\N
+289	50	14	1	I2	Template: Creada y entregada a Zeke ;  Environtment: IBM I2 Analyst’s			172.20.34.40		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1202	\N	\N
+290	50	14	1	Hadoop	Template: Servicio Virt-who ;  Environtment: Hadoop			172.20.34.41		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1203	\N	\N
+291	50	14	1	Hadoop	Template: Creada y entregada a Zeke ;  Environtment: Hadoop			172.20.34.42		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1204	\N	\N
+292	50	14	1	Hadoop	Template: Creada y entregada a Zeke ;  Environtment: Hadoop			172.20.34.43		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1205	\N	\N
+293	50	14	1	Hadoop	Template: Creada y entregada a Zeke ;  Environtment: Hadoop			172.20.34.44		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1206	\N	\N
+294	50	14	1	Hadoop	Template: Creada y entregada a Zeke ;  Environtment: Hadoop			172.20.34.45		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1207	\N	\N
+295	50	15	1	FTP	Template: Se anula solitud ;  Environtment: Traspasos			172.20.34.46		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1208	\N	\N
+296	43	17	1	SEMANTIKO	Template: Creada y entrega a Claudio Barra ;  Environtment: Semantikos			192.168.10.53		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1209	\N	\N
+297	44	17	1	SEMANTIKO	Template: Creada y entrega a Claudio Barra ;  Environtment: Semantikos			172.20.8.15		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1210	\N	\N
+298	45	18	1	OIRS	Template: Creada y entregada a Hugo ;  Environtment: Oirs			172.20.16.20		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1211	\N	\N
+299	45	14	1	SPSS	Template: Creada y entregada a Zeke ;  Environtment: SPSS			172.20.34.47		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1212	\N	\N
+300	45	14	1	SPSS	Template: Creada y entregada a Zeke ;  Environtment: SPSS			172.20.34.48		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1213	\N	\N
+301	45	15	1	SURVEY	Template: Creada y entrega a Sergio Roca ;  Environtment: TIC_SIAC / LimeSurvey			192.168.60.10		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1214	\N	\N
+302	45	15	1	SURVEY	Template: Creada y entrega a Sergio Roca ;  Environtment: DEV_SIAC / LimeSurvey			192.168.60.11		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1215	\N	\N
+303	45	12	1	APIgee	Template: Creada y entregada a Zeke ;  Environtment: Message Processor router DMZ	api.minsal.cl	api.minsal.cl	192.168.70.10	api	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1216	\N	\N
+304	45	12	1	APIgee	Template: Creada y entregada a Zeke ;  Environtment: Message Processor router DMZ			192.168.70.11		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1217	\N	\N
+305	45	12	1	APIgee	Template: Creada y entregada a Zeke ;  Environtment: Message Processor router BE			172.20.89.10		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1218	\N	\N
+306	45	12	1	APIgee	Template: Creada y entregada a Zeke ;  Environtment: Message Processor router BE			172.20.89.11		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1219	\N	\N
+307	43	12	1	APIgee	Template: Eliminada ;  Environtment: Cassandra			172.20.34.10		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1166	\N	\N
+308	43	12	1	APIgee	Template: Eliminada ;  Environtment: Cassandra			172.20.34.11		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1167	\N	\N
+309	43	12	1	APIgee	Template: Eliminada ;  Environtment: Cassandra			172.20.34.12		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1168	\N	\N
+310	43	12	1	APIgee	Template: Eliminada ;  Environtment: Analytics-PostGre			172.20.34.15		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1171	\N	\N
+311	45	12	1	APIgee	Template: Creada y entregada a Zeke ;  Environtment: Developer Portal			172.20.90.14		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1224	\N	\N
+312	43	12	1	APIgee	Template: Eliminada ;  Environtment: Qpid server			172.20.34.17		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1173	\N	\N
+313	43	12	1	APIgee	Template: Eliminada ;  Environtment: Qpid server			172.20.34.18		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1174	\N	\N
+314	43	12	1	APIgee	Template: Eliminada ;  Environtment: Management Server UI			172.20.34.21		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1177	\N	\N
+315	45	12	1	APIgee	Template: Creada y entregada a Zeke ;  Environtment: Message Processor router DMZ	apiqa.minsal.cl	apiqa.minsal.cl	192.168.60.12	apiqa	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1228	\N	\N
+316	45	12	1	APIgee	Template: Creada y entregada a Zeke ;  Environtment: Message Processor router DMZ			192.168.60.13		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1229	\N	\N
+317	45	12	1	APIgee	Template: Creada y entregada a Zeke ;  Environtment: Message Processor router BE			172.20.34.20		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1230	\N	\N
+318	45	12	1	APIgee	Template: Creada y entregada a Zeke ;  Environtment: Message Processor router BE			172.20.34.21		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1231	\N	\N
+319	45	12	1	APIgee	Template: Creada y entregada a Zeke ;  Environtment: Management Server UI DEV			172.20.34.22		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1232	\N	\N
+320	45	12	1	APIgee	Template: Creada y entregada a Zeke ;  Environtment: Management Server UI DEV			172.20.34.23		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1233	\N	\N
+321	45	12	1	APIgee	Template: Creada y entregada a Zeke ;  Environtment: Analytics-PostGre DEV			172.20.34.24		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1234	\N	\N
+322	45	12	1	APIgee	Template: Creada y entregada a Zeke ;  Environtment: Analytics-PostGre DEV			172.20.34.25		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1235	\N	\N
+323	45	12	1	APIgee	Template: Creada y entregada a Zeke ;  Environtment: Pivote repo APIGEE			172.20.34.49		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1236	\N	\N
+324	45	14	1	BI	Template: Creada y entregada a Nabelka ;  Environtment: DataStage PROYECTO			172.20.16.25		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1237	\N	\N
+325	45	14	1	Datastage	Template: Creada y entregada a Zeke ;  Environtment: DataStage ZEKE			172.20.34.50		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1238	\N	\N
+326	45	14	1	BI	Template: Creada y entregada a Zeke ;  Environtment: InfoSphere Streams			172.20.34.51		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1239	\N	\N
+327	45	14	1	BI	Template: Creada y entregada a Zeke ;  Environtment: Cognos BI			172.20.34.52		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1240	\N	\N
+328	45	14	1	BI	Template: Creada y entregada a Zeke ;  Environtment: SPSS Statistics Client			172.20.34.53		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1241	\N	\N
+329	45	15	1	COMGES	Template: Creada y entregada a Nabelka ;  Environtment: Comges			172.20.8.17		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1242	\N	\N
+330	45	14	1	Active MQ	Template: Entregar VM a Claudio Barra ;  Environtment: Active MQ DEV Minsal			172.20.8.18		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1243	\N	\N
+331	45	15	1	MINSAL	Template: minsal, solicitar subir OVF ;  Environtment: www.minsal.cl	www.minsal.cl web.minsal.cl    - webqa.minsal.cl	www.minsal.cl web.minsal.cl    - webqa.minsal.cl	192.168.70.61	www	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1244	\N	\N
+332	45	15	1	OIRS	Template: OIRS, solicitar subir OVF ;  Environtment: OIRS	oirs.minsal.cl  - oirsqa.minsal.cl	oirs.minsal.cl  - oirsqa.minsal.cl	192.168.20.14	oirs	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1245	\N	\N
+333	45	15	1	SFTP	Template: Sitio Minsal ;  Environtment: MINSAL	sftphuellas.minsal.cl	sftphuellas.minsal.cl	192.168.20.15	sftphuellas	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1246	\N	\N
+334	45	15	1	OIRS	Template: Sitio Oirs ;  Environtment: OIRS			172.20.16.18		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1247	\N	\N
+335	45	15	1	MINSAL	Template: BD Minsal ;  Environtment: MINSAL			172.20.64.21		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1248	\N	\N
+336	45	15	1	OIRS	Template: BDOirs ;  Environtment: OIRS			172.20.64.22		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1249	\N	\N
+337	45	16	1	WSUS	Template: Creada y entregada a Claudio Barra ;  Environtment: WSUS MINSAL			172.20.6.10		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1250	\N	\N
+338	45	16	1	SPECTRUM	Template: Creada y entregada a Intesis ;  Environtment: VM respaldo			172.20.33.20		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1251	\N	\N
+339	45	16	1	NESSUS	Template: Eliminada ;  Environtment: Nessus Convergente			192.168.20.12		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1252	\N	\N
+340	45	14	1	Active	Template: Creada y entregada a Claudio y Eugenio ;  Environtment: Active MQ QA Minsal			172.20.8.22		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1253	\N	\N
+341	45	14	1	Active	Template: Creada y entregada a Claudio y Eugenio ;  Environtment: Active MQ PROD Minsal			172.20.6.11		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1254	\N	\N
+342	45	14	1	Active	Template: Creada y entregada a Claudio y Eugenio ;  Environtment: Active MQ PROD Minsal			172.20.6.12		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1255	\N	\N
+343	45	16	1	WSUS	Template: Creada y entregada a Claudio Barra ;  Environtment: WSUS MINSAL			172.20.6.13		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1256	\N	\N
+344	45	16	1	WSUS	Template: Creada y entregada a Claudio Barra ;  Environtment: WSUS MINSAL			172.20.6.14		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1257	\N	\N
+345	45	16	1	CMDB	Template: Creada y entregada a Zeke ;  Environtment: CMDBuild	glpidev.minsal.cl	glpidev.minsal.cl	172.20.16.19	glpidev	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1258	\N	\N
+346	45	15	1	TRANSPARENCIA	Template: Transparencia Solicitar subir OVF ;  Environtment: transparencia.redsalud.gob.cl			172.20.8.23		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1259	\N	\N
+347	45	15	1	COMGES	Template: No se crearon se liberan las IP ;  Environtment: Comges BD			172.20.6.15		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1260	\N	\N
+348	45	17	1	SEMANTIKO	Template: Creada y entregada a Pablo Pizarro ;  Environtment: Semantikos DEV APP			172.20.16.26		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1261	\N	\N
+349	45	17	1	SEMANTIKO	Template: Creada y entregada a Pablo Pizarro ;  Environtment: Semantikos DEV WEB			192.168.60.14		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1262	\N	\N
+350	45	17	1	SEMANTIKO	Template: Creada y entregada a Pablo Pizarro ;  Environtment: Semantikos QA APP001			172.20.8.24		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1263	\N	\N
+351	45	17	1	SEMANTIKO	Template: Creada y entregada a Pablo Pizarro ;  Environtment: Semantikos QA APP002			172.20.8.26		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1264	\N	\N
+352	45	17	1	SEMANTIKO	Template: Creada y entregada a Pablo Pizarro ;  Environtment: Semantikos QA WEB001			192.168.10.54		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1265	\N	\N
+353	45	17	1	SEMANTIKO	Template: Creada y entregada a Pablo Pizarro ;  Environtment: Semantikos QA WEB002			192.168.10.55		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1266	\N	\N
+354	45	15	1	BBDD	Template: Creada y entregada a Zeke ;  Environtment: Motor SQL			172.20.64.24		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1267	\N	\N
+355	45	19	1	SINETSUR	Template: Crear y entregar a Claudio Barra ;  Environtment: SinetSUR			172.20.33.30		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1268	\N	\N
+356	45	19	1	SINETSUR	Template: Crear y entregar a Claudio Barra ;  Environtment: SinetSUR			172.20.33.25		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1269	\N	\N
+357	45	19	1	SINETSUR	Template: Crear y entregar a Claudio Barra ;  Environtment: SinetSUR			192.168.70.21		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1270	\N	\N
+358	45	19	1	SINETSUR	Template: Crear y entregar a Claudio Barra ;  Environtment: SinetSUR			172.20.33.32		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1271	\N	\N
+359	45	19	1	SINETSUR	Template: Crear y entregar a Claudio Barra ;  Environtment: SinetSUR			172.20.33.29		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1272	\N	\N
+360	45	19	1	SINETSUR	Template: Crear y entregar a Claudio Barra ;  Environtment: SinetSUR			192.168.70.22		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1273	\N	\N
+361	45	19	1	SINETSUR	Template: Crear y entregar a Claudio Barra ;  Environtment: SinetSUR			192.168.70.20		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1274	\N	\N
+362	45	19	1	SINETSUR	Template: Crear y entregar a Claudio Barra ;  Environtment: SinetSUR			172.20.33.31		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1275	\N	\N
+363	45	19	1	SINETSUR	Template: Crear y entregar a Claudio Barra ;  Environtment: SinetSUR			172.20.33.28		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1276	\N	\N
+364	45	19	1	SINETSUR	Template: Crear y entregar a Claudio Barra ;  Environtment: SinetSUR			172.20.33.27		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1277	\N	\N
+365	45	19	1	SINETSUR	Template: Crear y entregar a Claudio Barra ;  Environtment: SinetSUR			172.20.33.26		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1278	\N	\N
+366	45	15	1	SEG VIH	Template: OVF ;  Environtment: OVF	https://seguimientovih.minsal.cl	https://seguimientovih.minsal.cl	192.168.70.23	seguimientovih	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1279	\N	\N
+367	45	19	1	SINETSUR	Template: Crear y entregar a Claudio Barra ;  Environtment: SinetSUR			172.20.33.40		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1280	\N	\N
+368	45	19	1	SINETSUR	Template: Crear y entregar a Claudio Barra ;  Environtment: SinetSUR			172.20.33.41		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1281	\N	\N
+369	45	19	1	SINETSUR	Template: Crear y entregar a Claudio Barra ;  Environtment: SinetSUR			192.168.70.30		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1282	\N	\N
+370	45	19	1	SINETSUR	Template: Crear y entregar a Claudio Barra ;  Environtment: SinetSUR			172.20.33.42		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1283	\N	\N
+371	45	19	1	SINETSUR	Template: Crear y entregar a Claudio Barra ;  Environtment: SinetSUR			172.20.33.43		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1284	\N	\N
+372	45	19	1	SINETSUR	Template: Crear y entregar a Claudio Barra ;  Environtment: SinetSUR			192.168.70.31		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1285	\N	\N
+373	45	19	1	SINETSUR	Template: Crear y entregar a Claudio Barra ;  Environtment: SinetSUR			192.168.70.32		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1286	\N	\N
+374	45	19	1	SINETSUR	Template: Crear y entregar a Claudio Barra ;  Environtment: SinetSUR			172.20.33.44		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1287	\N	\N
+375	45	19	1	SINETSUR	Template: Crear y entregar a Claudio Barra ;  Environtment: SinetSUR			172.20.33.45		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1288	\N	\N
+376	45	19	1	SINETSUR	Template: Crear y entregar a Claudio Barra ;  Environtment: SinetSUR			172.20.33.46		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1289	\N	\N
+377	45	19	1	SINETSUR	Template: Crear y entregar a Claudio Barra ;  Environtment: SinetSUR			172.20.33.47		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1290	\N	\N
+378	45	15	1	SEG VIH	Template: Creada y entreda a Sergio Roca ;  Environtment: Seguimiento VIH			172.20.16.30		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1291	\N	\N
+379	45	15	1	TRANSPARENCIA	Template: Creada y entreda a Sergio Roca ;  Environtment: transparencia.redsalud.gob.cl	transparencia.redsalud.gov.cl - cargatransparencia.minsal.cl	transparencia.redsalud.gov.cl - cargatransparencia.minsal.cl	192.168.70.15	transparencia	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1292	\N	\N
+380	45	15	1	SEG VIH	Template: Creada y entreda a Sergio Roca ;  Environtment: Seguimiento VIH	seguimientovihqa.minsal.cl	seguimientovihqa.minsal.cl	172.20.8.27	seguimientovihqa	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1293	\N	\N
+422	43	18	1	JMETER	Template: Creada y entregada a Pablo Pizarro ;  Environtment: JMETER			172.20.8.33		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1336	\N	\N
+381	45	15	1	COMPIN	Template: Creada y entreda a Javier con Enrique Corbalan ;  Environtment: Compin	isa20585.minsal.cl 	isa20585.minsal.cl 	192.168.70.26	isa20585	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1294	\N	\N
+382	45	15	1	COMPIN	Template: Creada y entreda a Javier con Enrique Corbalan ;  Environtment: Compin			172.20.64.26		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1295	\N	\N
+383	45	15	1	COMPIN	Template: Creada y entreda a Javier con Enrique Corbalan ;  Environtment: Compin			172.20.6.19		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1296	\N	\N
+384	45	17	1	SEMANTIKO	Template: Creada y entregada a Pablo Pizarro ;  Environtment: Semantikos TEMP QA APP003			172.20.8.100		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1297	\N	\N
+385	45	17	1	SEMANTIKO	Template: Creada y entregada a Pablo Pizarro ;  Environtment: Semantikos TEMP QA APP004			172.20.8.101		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1298	\N	\N
+386	45	15	1	RESPIRATORIOAPS	Template: Creada y entreda a Sergio Roca ;  Environtment: Respiratorio QA	respiratorioqa.minsal.cl	respiratorioqa.minsal.cl	192.168.10.40	respiratorioqa	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1299	\N	\N
+387	45	15	1	RESPIRATORIOAPS	Template: Creada y entreda a Sergio Roca ;  Environtment: Respiratorio Produccion	respiratorio.minsal.cl	respiratorio.minsal.cl	192.168.70.40	respiratorio	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1300	\N	\N
+388	45	15	1	SIDOT	Template: Creada y entreda a Sergio Roca ;  Environtment: SIDOT			192.168.10.30		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1301	\N	\N
+389	45	20	1	SURVIH	Template: Creada y entreda a Sergio Roca ;  Environtment: SirVIH	survihqa.minsal.cl 	survihqa.minsal.cl 	192.168.10.41	survihqa	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1302	\N	\N
+390	45	15	1	SIMPO	Template: OVF ;  Environtment: SIMPO	simpoqa.minsal.cl	simpoqa.minsal.cl	192.168.10.42	simpoqa	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1303	\N	\N
+391	45	15	1	SIGTE	Template: Sin informacion ;  Environtment: SIGTE			172.20.16.40		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1304	\N	\N
+392	45	15	1	SIGTE	Template: Sin informacion ;  Environtment: SIGTE			172.20.16.41		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1305	\N	\N
+393	45	15	1	PRAIS	Template: /ISO/MINSAL_PRAIS-clon ;  Environtment: PRAIS			192.168.10.20		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1306	\N	\N
+394	45	18	1	DCM4CHEE	Template: Creada y entregada a Jorge herrera ;  Environtment: DCH4CHEE			192.168.70.38		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1307	\N	\N
+395	45	20	1	SURVIH	Template: Creada y entreda a Sergio Roca ;  Environtment: SirVIH	survih.minsal.cl 	survih.minsal.cl 	192.168.70.34 	survih	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1308	\N	\N
+396	45	18	1	P CRONICOS	Template: Creada y entregada a Marcela Garcia ;  Environtment: 0			192.168.10.56		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1309	\N	\N
+397	45	15	1	BD MYSQL	Template: Creada y entregada a Marcela Garcia ;  Environtment: 0			172.20.8.30		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1310	\N	\N
+398	45	15	1	COMETIDO	Template: Creada y entregada a Sergio Roca ;  Environtment: SISTEMACOMETIDO			192.168.70.33 		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1311	\N	\N
+399	45	15	1	SAMU	Template: Creada y entregada a Sergio Roca ;  Environtment: PROYECTO SAMU			192.168.70.35 		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1313	\N	\N
+400	45	21	1	SIRH	Template: Creada y entregada a Maria Jose Lamas ;  Environtment: SIRH			192.168.60.15		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1314	\N	\N
+401	45	21	1	SIRH	Template: Creada y entregada a Maria Jose Lamas ;  Environtment: SIRH			172.20.16.42 		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1315	\N	\N
+402	45	15	1	SIGTE	Template: Creada y entregada entregar a Yamil ;  Environtment: Tiempos de Espera			172.20.6.20		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1316	\N	\N
+403	45	15	1	SIGTE	Template: Creada y entregada entregar a Yamil ;  Environtment: Tiempos de Espera			172.20.6.40		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1317	\N	\N
+404	45	15	1	SIGTE	Template: Creada y entregada entregar a Yamil ;  Environtment: Tiempos de Espera			172.20.6.41		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1318	\N	\N
+405	45	15	1	SIGTE	Template: Creada y entregada entregar a Yamil ;  Environtment: Tiempos de Espera	sigte.minsal.cl	sigte.minsal.cl	192.168.70.37	sigte	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1319	\N	\N
+406	45	15	1	SIGTE	Template: Creada y entregada entregar a Yamil ;  Environtment: Tiempos de Espera			192.168.70.56		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1320	\N	\N
+407	45	18	1	Gestión de Bodegas	Template: Creada y entregada a Hugo Nunez Tello ;  Environtment: Gestion de Bodegas			192.168.70.41		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1321	\N	\N
+408	45	18	1	Gestión de Bodegas	Template: Creada y entregada a Hugo Nunez Tello ;  Environtment: Gestion de Bodegas			192.168.60.16		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1322	\N	\N
+409	45	18	1	Gestión de Bodegas	Template: Creada y entregada a Hugo Nunez Tello ;  Environtment: Gestion de Bodegas			192.168.10.57		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1323	\N	\N
+410	45	15	1	SIGTE	Template: Creada y entregada entregar a Yamil ;  Environtment: Tiempos de Espera			172.20.8.32		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1324	\N	\N
+411	45	15	1	SIGTE	Template: Creada y entregada entregar a Yamil ;  Environtment: Tiempos de Espera	Sigte-web-qa.minsal.cl	Sigte-web-qa.minsal.cl	192.168.10.58	Sigte-web-qa	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1325	\N	\N
+412	45	22	1	SIAC	Template: Creada y entregada a Rodrigo Baeza ;  Environtment: SIAC			192.168.70.42		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1326	\N	\N
+413	45	22	1	SIAC	Template: Creada y entregada a Rodrigo Baeza ;  Environtment: SIAC			192.168.70.43		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1327	\N	\N
+414	45	22	1	SIAC	Template: Creada y entregada a Rodrigo Baeza ;  Environtment: SIAC			192.168.70.44		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1328	\N	\N
+415	45	22	1	SIAC	Template: Creada y entregada a Rodrigo Baeza ;  Environtment: SIAC			0		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1329	\N	\N
+416	45	22	1	SIAC	Template: Creada y entregada a Rodrigo Baeza ;  Environtment: SIAC			192.168.10.60		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1330	\N	\N
+417	45	22	1	SIAC	Template: Creada y entregada a Rodrigo Baeza ;  Environtment: SIAC			192.168.10.61 		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1331	\N	\N
+418	45	22	1	SIAC	Template: Creada y entregada a Rodrigo Baeza ;  Environtment: SIAC			192.168.10.62 		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1332	\N	\N
+419	45	22	1	SIAC	Template: Creada y entregada a Rodrigo Baeza ;  Environtment: SIAC			172.20.8.28		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1333	\N	\N
+420	43	15	1	CANASTAS	Template: Creada y entregada a Pablo Pizarro ;  Environtment: CANASTAS			192.168.70.45		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1334	\N	\N
+421	43	15	1	CANASTAS	Template: Creada y entregada a Pablo Pizarro ;  Environtment: CANASTAS			192.168.10.63		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1335	\N	\N
+423	43	18	1	JMETER	Template: Creada y entregada a Pablo Pizarro ;  Environtment: JMETER			172.20.8.34		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1337	\N	\N
+424	44	15	1	Cluster BD MySQL	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Administrador			172.20.8.35		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1338	\N	\N
+425	44	15	1	Cluster BD MySQL	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Nodo MySQL 1			172.20.8.36		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1339	\N	\N
+426	44	15	1	Cluster BD MySQL	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Nodo MySQL 2			172.20.8.37		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1340	\N	\N
+427	44	15	1	Cluster BD MySQL	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Nodo de datos 1			172.20.8.38		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1341	\N	\N
+428	44	15	1	Cluster BD MySQL	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Nodo de datos 2			172.20.8.39		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1342	\N	\N
+429	43	15	1	APP WORDPRESS QA	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Servidor Wordpress QA			192.168.10.64		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1343	\N	\N
+430	43	14	1	Active	Template: Creada y entregada  a Eugenio Diaz (Se migra a Puerto Montt ;  Environtment: ACTIVE MQ			172.20.8.41 		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1344	\N	\N
+431	43	14	1	Active	Template: Creada y entregada  a Eugenio Diaz (Se migra a Puerto Montt ;  Environtment: ACTIVE MQ			172.20.6.22 		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1345	\N	\N
+432	43	14	1	Active	Template: Creada y entregada  a Eugenio Diaz (Se migra a Puerto Montt ;  Environtment: ACTIVE MQ			172.20.6.23		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1346	\N	\N
+433	43	29	1	BI	Template: Creada y entregada a Nabelka  ;  Environtment: BI TABLEAU	tableau.minsal.cl	tableau.minsal.cl	 192.168.70.46	tableau	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1347	\N	\N
+434	43	21	1	SIRH	Template: Creada y entregada a Sergio Roca ;  Environtment: Alfresco SIRH			 192.168.60.17		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1348	\N	\N
+435	43	15	1	COMPIN	Template: Creada y entregada a Javier con Enrique Corbalan ;  Environtment: Compin			192.168.70.51		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1349	\N	\N
+436	43	15	1	RME	Template: Creada y entregada a Solange de Zeke ;  Environtment: Receta medica electronica			172.20.8.90		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1350	\N	\N
+437	43	30	1	PORTAL PACIENTE	Template: Entregar a Jocelin ;  Environtment: Portal Pacientes	portalpaciente.minsal.cl 	portalpaciente.minsal.cl 	192.168.70.52	portalpaciente	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1351	\N	\N
+438	43	30	1	PORTAL PACIENTE	Template: Entregar a Jocelin ;  Environtment: Portal Pacientes			192.168.70.53		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1352	\N	\N
+439	43	18	1	OTROS	Template: Entregar a Jocelin ;  Environtment: Portal Pacientes			192.168.70.54		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1353	\N	\N
+440	43	18	1	OTROS	Template: Entregar a Jocelin ;  Environtment: Portal Pacientes			192.168.70.55		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1354	\N	\N
+441	43	18	1	OTROS	Template: Entregar a Jocelin ;  Environtment: Portal Pacientes	portalpaciente-test.minsal.cl 	portalpaciente-test.minsal.cl 	192.168.10.17	portalpaciente-test	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1355	\N	\N
+442	44	15	1	Cluster BD MySQL PROD	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Administrador			172.20.6.23		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1356	\N	\N
+443	44	15	1	Cluster BD MySQL PROD	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Nodo MySQL 1			172.20.6.24		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1357	\N	\N
+444	44	15	1	Cluster BD MySQL PROD	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Nodo de datos 1			172.20.6.25		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1358	\N	\N
+445	44	15	1	Cluster Postgres QA	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Administrador PSQL			 172.20.8.42		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1359	\N	\N
+446	44	15	1	Cluster Postgres QA	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Nodo PGpool 1			 172.20.8.43		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1360	\N	\N
+447	44	15	1	Cluster Postgres QA	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Nodo PGpool 2			 172.20.8.44		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1361	\N	\N
+448	44	15	1	Cluster Postgres QA	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Noso de datos 1			 172.20.8.45		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1362	\N	\N
+449	44	15	1	Cluster Postgres QA	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Nodo de datos 2			 172.20.8.46		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1363	\N	\N
+450	44	15	1	Cluster Postgres PROD	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Nodo de PGpool 2			172.20.6.26 		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1364	\N	\N
+451	44	15	1	Cluster Postgres PROD	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Nodo de datos 2			172.20.6.27 		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1365	\N	\N
+452	43	18	1	HL7	Template: Creada y entregada a Eugenio con Zeke ;  Environtment: HL7			 172.20.8.47		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1366	\N	\N
+453	43	18	1	HL7	Template: Creada y entregada a Eugenio con Zeke ;  Environtment: HL7			172.20.6.28 		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1367	\N	\N
+454	44	19	1	SINETSUR	Template: Creada y entregada a Gustavo ;  Environtment: BD Sinetsur			172.20.64.33		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1368	\N	\N
+455	43	18	1	SNIP	Template: Creada y entregada  a Hugo Pino ;  Environtment: SNIP	snip.minsal.cl	snip.minsal.cl	192.168.70.60	snip	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1369	\N	\N
+456	43	23	1	SISQ-SICARS	Template: Creada y entregada a Sergio Roca Vivianne ;  Environtment: SISQ-SICARS	sisq-qa.minsal.cl / sisq-g-qa-nuevo.minsal.cl / sicars-qa.minsal.cl           	sisq-qa.minsal.cl / sisq-g-qa-nuevo.minsal.cl / sicars-qa.minsal.cl           	192.168.10.66	sisq-qa	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1370	\N	\N
+457	44	23	1	SISQ-SICARS	Template: Creada y entregada a Sergio Roca Vivianne ;  Environtment: BD SISQ-SICARS			172.20.8.49		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1371	\N	\N
+458	43	17	1	SEMANTIKO	Template: Creada y entregada a Pablo Pizarro ;  Environtment: Semantikos APP			172.20.6.34		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1372	\N	\N
+459	43	17	1	SEMANTIKO	Template: Creada y entregada a Pablo Pizarro ;  Environtment: Semantikos APP			172.20.6.35 		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1373	\N	\N
+460	43	17	1	SEMANTIKO	Template: Creada y entregada a Pablo Pizarro ;  Environtment: Semantikos APP			192.168.70.62 		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1374	\N	\N
+461	43	17	1	SEMANTIKO	Template: Creada y entregada a Pablo Pizarro ;  Environtment: Semantikos APP			192.168.70.63 		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1375	\N	\N
+462	43	18	1	DCM4CHEE	Template: Creada y entregada a Gabriela ;  Environtment: DCM4CHEE			192.168.60.18		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1376	\N	\N
+463	43	15	1	SIDOT	Template: Creada y entregada a Rodrigo Baeza ;  Environtment: SIDOT			192.168.70.64		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1377	\N	\N
+464	43	23	1	SISQ-SICARS	Template: Creada y entregada a Vivianne ;  Environtment: SISQ-SICARS	sisq-ag2.minsal.cl / sisq-app.minsal.cl / sicars.minsal.cl /  appsicars.minsal.cl /sisq.minsal.cl	sisq-ag2.minsal.cl / sisq-app.minsal.cl / sicars.minsal.cl /  appsicars.minsal.cl /sisq.minsal.cl	192.168.70.65	sisq-ag2	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1378	\N	\N
+465	43	16	1	Suscripciones RHEL	Template: Creada ;  Environtment: Virt-who(Suscripciones RHEL)			192.168.70.66		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1379	\N	\N
+466	43	18	1	FRENTE LABORATORIO	Template: Creada y entregada a Alejandro Gonzalez ;  Environtment: Frente Laboratorio			192.168.10.67 		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1380	\N	\N
+467	44	18	1	FRENTE LABORATORIO	Template: Creada y entregada a Alejandro Gonzalez ;  Environtment: Frente Laboratorio			172.20.8.51		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1381	\N	\N
+468	43	18	1	FRENTE LABORATORIO	Template: Creada y entregada a Alejandro Gonzalez ;  Environtment: Frente Laboratorio			192.168.60.19		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1382	\N	\N
+469	44	18	1	FRENTE LABORATORIO	Template: Creada y entregada a Alejandro Gonzalez ;  Environtment: Frente Laboratorio			 172.20.16.20		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1383	\N	\N
+470	43	23	1	SISQ-SICARS	Template: Creada y entregada a Vivianne ;  Environtment: SISQ-SICARS	gestorsisq.minsal.cl	gestorsisq.minsal.cl	192.168.70.17	gestorsisq	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1384	\N	\N
+471	43	23	1	SISQ-SICARS	Template: Creada y entregada a Vivianne ;  Environtment: SISQ-SICARS	gestorsisq_qa.minsal.cl	gestorsisq_qa.minsal.cl	192.168.10.22	gestorsisq_qa	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1385	\N	\N
+472	43	24	1	RIS	Template: Creada y entregada a Lucia Neira ;  Environtment: RIS			192.168.10.23 		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1386	\N	\N
+473	44	24	1	RIS	Template: Creada y entregada a Lucia Neira ;  Environtment: RIS			172.20.8.52 		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1387	\N	\N
+474	43	25	1	CHCC	Template: Creada y entregada a Nabelka y Sergio ;  Environtment: Chile-Crece			192.168.10.25		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1388	\N	\N
+475	43	18	1	VIH DIGERA	Template: Creada y entregada a Sergio y Esteban ;  Environtment: VIH DIGERA			192.168.10.26 		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1389	\N	\N
+476	43	26	1	PAID	Template: Creada y entregada a Vivianne ;  Environtment: PAID			192.168.10.31		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1390	\N	\N
+477	43	27	1	Catalogos de Imagenes	Template: Creada y entregada a Lucia Neira ;  Environtment: Catalogo de Imágenes Centralizada			 192.168.60.20		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1391	\N	\N
+478	43	15	1	COMPIN	Template: Creada y entregada  a Javier con Enrique Corbalan ;  Environtment: Compin			192.168.10.27		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1392	\N	\N
+479	43	15	1	PRAIS	Template: Creada y entregada a Sergio Roca ;  Environtment: PRAIS	prais.minsal.cl	prais.minsal.cl	192.168.70.72	prais	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1393	\N	\N
+480	43	15	1	SIGTE	Template: Creada y entregada  Yamil ;  Environtment: SIGTE			 172.20.8.53		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1394	\N	\N
+481	43	15	1	SIGTE	Template: Creada y entregada  Yamil ;  Environtment: SIGTE			172.20.8.54		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1395	\N	\N
+482	43	15	1	MINSAL	Template: Crear y Entregar a Sergio Roca ;  Environtment: MINSAL			192.168.10.32		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1396	\N	\N
+483	43	15	1	LOG	Template: Creada y entregada a Rodrigo Zamorano ;  Environtment: LOG			172.20.6.32		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1397	\N	\N
+484	43	15	1	SIGED	Template: Creado y entregado a Sergio Roca ;  Environtment: SIGED			192.168.10.68		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1398	\N	\N
+485	43	21	1	SIRH	Template: Creada y entregada a Hugo Nunez ;  Environtment: SIRH	sirhn.minsal.cl	sirhn.minsal.cl	192.168.10.70 	sirhn	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1399	\N	\N
+486	43	21	1	SIRH	Template: Creada y entregada a Hugo Nunez ;  Environtment: SIRH			192.168.10.71		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1400	\N	\N
+487	43	21	1	SIRH	Template: Creada y entregada a Hugo Nunez ;  Environtment: SIRH			172.20.8.40		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1401	\N	\N
+488	43	21	1	SIRH	Template: Creada y entregada a Hugo Nunez ;  Environtment: SIRH			172.20.8.41		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1402	\N	\N
+489	43	28	1	IVE	Template: Creada y entregada a Hugo y Vivianne ;  Environtment: IVE			192.168.10.69		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1403	\N	\N
+490	43	28	1	IVE	Template: Creada y entregada a Hugo y Vivianne ;  Environtment: IVE			192.168.70.67		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1404	\N	\N
+491	43	15	1	MINSAL	Template: Crear y Entregar a Sergio Roca ;  Environtment: MINSAL			192.168.20.13 		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1405	\N	\N
+492	43	15	1	SIGTE	Template: Crear y entregar a Maria Jose ;  Environtment: SIGTE			172.20.16.21		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1406	\N	\N
+493	43	23	1	SISQ-SICARS	Template: Creada y entregada a Sergio Roca Vivianne ;  Environtment: SISQ-SICARS			192.168.70.68		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1407	\N	\N
+494	43	31	1	DEMENCIA	Template: Creado y entregado a Vivianne ;  Environtment: DEMENCIA			192.168.70.69		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1408	\N	\N
+495	43	23	1	SISQ-SICARS	Template: Creado y entregado a Sergio Roca ;  Environtment: SICARS			192.168.70.68		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1409	\N	\N
+496	43	23	1	SISQ-SICARS	Template: Creado y entregado a Sergio Roca ;  Environtment: SISQ			192.168.70.70		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1410	\N	\N
+497	44	15	1	Cluster Postgres PROD	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Nodo de datos 3			172.20.6.42		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1411	\N	\N
+498	43	18	1	IVE-ER	Template: Creada y entregada a Hugo ;  Environtment: IVE-ER			192.168.10.72		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1412	\N	\N
+499	43	15	1	DNS	Template: Sin informacion ;  Environtment: DNS			172.20.33.15		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1413	\N	\N
+500	43	32	1	Algoritmo de priorizacion	Template: Creado y entregado a Gabriela ;  Environtment: Algoritmo de priorizacion			192.168.60.21		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1414	\N	\N
+501	43	33	1	PORTALCAUTIVO	Template: Entregado a Seguridad ;  Environtment: Portal Cautivo			192.168.70.27		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1415	\N	\N
+502	45	15	1	SAMU	Template: Creada y entregada a Sergio Roca ;  Environtment: PROYECTO SAMU	alertatemprana.minsal.cl	alertatemprana.minsal.cl	192.168.70.36	alertatemprana	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1312	\N	\N
 \.
 
 
@@ -4244,7 +4494,7 @@ SELECT pg_catalog.setval('public.aplicaciones_estados_id_seq', 1, false);
 -- Name: aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.aplicaciones_id_seq', 252, true);
+SELECT pg_catalog.setval('public.aplicaciones_id_seq', 502, true);
 
 
 --
@@ -5110,7 +5360,7 @@ ALTER TABLE ONLY public.vlans
 CREATE INDEX password_resets_email_index ON public.password_resets USING btree (email);
 
 
--- Completed on 2018-04-22 20:57:56 -03
+-- Completed on 2018-04-23 05:29:33 -03
 
 --
 -- PostgreSQL database dump complete
