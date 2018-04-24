@@ -2802,6 +2802,10 @@ var inyeccion_funciones_compartidas = {
          this.modal_actualizar_activo = true;
          this.id_en_edicion = id;
 
+         if ($data['filtro_componente']) {
+            $data['filtro_componente'] = null;
+         }
+
          this.$modal.show('actualizar', {
             title: 'Alert!',
             text: 'You are too awesome',
@@ -4262,7 +4266,7 @@ var ServicioController = new Vue({
       inicializar: function inicializar() {
          var _this = this;
 
-         this.$http.get('/ajax/' + this.nombre_ruta).then(function (response) {
+         this.$http.get('/ajax/servicios').then(function (response) {
             // success callback
             _this.configurar_relaciones(response.body.servicios, _this.relaciones_clase);
             _this.lista_objs_model = response.body.servicios || null;

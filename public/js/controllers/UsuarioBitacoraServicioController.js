@@ -3014,6 +3014,10 @@ var inyeccion_funciones_compartidas = {
          this.modal_actualizar_activo = true;
          this.id_en_edicion = id;
 
+         if ($data['filtro_componente']) {
+            $data['filtro_componente'] = null;
+         }
+
          this.$modal.show('actualizar', {
             title: 'Alert!',
             text: 'You are too awesome',

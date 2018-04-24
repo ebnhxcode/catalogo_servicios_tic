@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8aa2c585-d310-4a06-92e2-14a844c1db5f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AplicacionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AplicacionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ServicioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ServicioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ServidorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ServidorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/components/DownloadExcel.vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/components/DownloadExcel.vue.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/controllers/ActividadController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/ActividadController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/controllers/AplicacionAccesoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/AplicacionAccesoController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/controllers/AplicacionController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/AplicacionController.js" afterDir="false" />
@@ -25,7 +19,6 @@
       <change beforePath="$PROJECT_DIR$/public/js/controllers/ServicioController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/ServicioController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/controllers/ServidorAccesoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/ServidorAccesoController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/controllers/ServidorController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/ServidorController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/controllers/SideMenuController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/SideMenuController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/controllers/SistemaOperativoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/SistemaOperativoController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/controllers/TagController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/TagController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/controllers/TipoAplicacionController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/TipoAplicacionController.js" afterDir="false" />
@@ -34,11 +27,7 @@
       <change beforePath="$PROJECT_DIR$/public/js/controllers/UsuarioBitacoraServicioController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/UsuarioBitacoraServicioController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/controllers/UsuarioController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/UsuarioController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/controllers/VlanController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/VlanController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/AplicacionController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/AplicacionController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/ServicioController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/ServicioController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/ServidorController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/ServidorController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/servicios/partials/vista_principal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/servicios/partials/vista_principal.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js" afterDir="false" />
     </list>
     <ignored path="catalogo_servicios_tic.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -78,8 +67,8 @@
       <file leaf-file-name="vista_principal.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/servicios/partials/vista_principal.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="39" column="58" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
+            <state>
+              <caret column="16" selection-start-column="16" selection-end-column="16" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -90,10 +79,28 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="relacionados_a.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/servicios/partials/relacionados_a.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="622">
+              <caret line="273" column="6" lean-forward="true" selection-start-line="273" selection-start-column="6" selection-end-line="273" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="formulario_campos.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/servicios/partials/formulario_campos.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-line="62" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="AplicacionController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AplicacionController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
+            <state relative-caret-position="1080">
               <caret line="80" column="25" selection-start-line="80" selection-start-column="25" selection-end-line="80" selection-end-column="25" />
             </state>
           </provider>
@@ -102,7 +109,7 @@
       <file leaf-file-name="ServidorController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ServidorController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-263">
+            <state relative-caret-position="15">
               <caret line="55" column="36" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="36" />
             </state>
           </provider>
@@ -111,18 +118,19 @@
       <file leaf-file-name="ServicioController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ServicioController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
+            <state relative-caret-position="444">
               <caret line="83" column="45" selection-start-line="83" selection-start-column="45" selection-end-line="83" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ServicioController.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ServicioController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/ServicioController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="193" selection-start-line="193" selection-end-line="193" />
+            <state relative-caret-position="358">
+              <caret line="194" column="48" lean-forward="true" selection-start-line="194" selection-start-column="48" selection-end-line="194" selection-end-column="48" />
               <folding>
+                <element signature="e#134#205#0" expanded="true" />
                 <element signature="e#7622#8450#0" />
                 <element signature="e#8500#10021#0" />
                 <element signature="e#10074#11480#0" />
@@ -132,10 +140,28 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="HelperPackage.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="291">
+              <caret line="563" column="44" selection-start-line="563" selection-start-column="44" selection-end-line="563" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServidorController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/ServidorController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="453">
+              <caret line="387" selection-start-line="387" selection-end-line="387" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
+            <state relative-caret-position="480">
               <caret line="41" selection-start-line="41" selection-end-line="41" />
             </state>
           </provider>
@@ -158,7 +184,6 @@
       <find>tabla_label</find>
       <find>'tabla_campos': {</find>
       <find>ip servi</find>
-      <find>actualizar</find>
       <find>tablero</find>
       <find>beta</find>
       <find>ABRIR</find>
@@ -167,6 +192,7 @@
       <find>Filtrar en la lista</find>
       <find>FIL</find>
       <find>text-left</find>
+      <find>actualizar</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -187,8 +213,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/layouts/main_para_componentes.blade.php" />
-        <option value="$PROJECT_DIR$/resources/assets/js/components/DownloadExcel.vue" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/VlanController.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/UsuarioController.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/UsuarioBitacoraServicioController.js" />
@@ -223,7 +247,6 @@
         <option value="$PROJECT_DIR$/resources/views/servidores/partials/vista_principal.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/servidores/partials/relacionados_a.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/servidores/partials/formulario_campos.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/servicios/partials/formulario_campos.blade.php" />
         <option value="$PROJECT_DIR$/config/colecciones.php" />
         <option value="$PROJECT_DIR$/resources/views/actividades/partials/formulario_campos.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/aplicaciones/partials/formulario_campos.blade.php" />
@@ -234,10 +257,13 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/ActividadController.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AplicacionController.php" />
-        <option value="$PROJECT_DIR$/resources/views/servicios/partials/vista_principal.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ServidorController.php" />
-        <option value="$PROJECT_DIR$/resources/assets/js/controllers/ServicioController.js" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ServicioController.php" />
+        <option value="$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js" />
+        <option value="$PROJECT_DIR$/resources/assets/js/controllers/ServicioController.js" />
+        <option value="$PROJECT_DIR$/resources/views/servicios/partials/formulario_campos.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/servicios/partials/vista_principal.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/servicios/partials/relacionados_a.blade.php" />
       </list>
     </option>
   </component>
@@ -353,7 +379,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -365,46 +390,6 @@
               <item name="catalogo_servicios_tic" type="b2602c69:ProjectViewProjectNode" />
               <item name="catalogo_servicios_tic" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="catalogo_servicios_tic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="catalogo_servicios_tic" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="catalogo_servicios_tic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="catalogo_servicios_tic" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="catalogo_servicios_tic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="catalogo_servicios_tic" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Models" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="catalogo_servicios_tic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="catalogo_servicios_tic" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Models" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Servidor" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="catalogo_servicios_tic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="catalogo_servicios_tic" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Models" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Usuario" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="catalogo_servicios_tic" type="b2602c69:ProjectViewProjectNode" />
-              <item name="catalogo_servicios_tic" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Models" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Vlan" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="catalogo_servicios_tic" type="b2602c69:ProjectViewProjectNode" />
@@ -618,6 +603,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -720,14 +706,15 @@
       <workItem from="1524471109387" duration="16761000" />
       <workItem from="1524498254024" duration="490000" />
       <workItem from="1524508837069" duration="3541000" />
+      <workItem from="1524574056774" duration="2727000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77561000" />
+    <option name="totallyTimeSpent" value="80288000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="22" width="1440" height="878" extended-state="6" />
+    <frame x="0" y="22" width="1440" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -737,7 +724,7 @@
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info anchor="bottom" x="-92" y="473" width="1440" height="112" id="Terminal" order="7" weight="0.102163464" />
+      <window_info anchor="bottom" x="-92" y="473" width="1440" height="112" id="Terminal" order="7" visible="true" weight="0.090101525" />
       <window_info anchor="right" id="Remote Host" order="3" weight="0.109375" />
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49873096" visible="true" weight="0.19861111" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
@@ -758,26 +745,26 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="NativeScript" order="12" />
       <window_info anchor="right" id="Remote Host" order="3" weight="0.109375" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49873096" visible="true" weight="0.19861111" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3288889" />
       <window_info anchor="bottom" id="Command Line Tools Console" order="13" weight="0.32868022" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" x="-92" y="473" width="1440" height="112" id="Terminal" order="7" weight="0.102163464" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info id="Favorites" order="3" sideWeight="0.50126904" side_tool="true" weight="0.2125" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" id="Database" order="4" weight="0.26041666" />
-      <window_info id="Favorites" order="3" sideWeight="0.50126904" side_tool="true" weight="0.2125" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49873096" visible="true" weight="0.19861111" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -796,30 +783,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js</url>
-          <line>281</line>
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="3" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/TipoAplicacionController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="84" column="12" selection-start-line="84" selection-start-column="12" selection-end-line="84" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/TagController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="85" column="12" selection-start-line="85" selection-start-column="12" selection-end-line="85" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/AplicacionAccesoController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-392">
@@ -958,13 +925,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2790">
-          <caret line="186" column="35" selection-start-line="186" selection-start-column="32" selection-end-line="186" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="498">
@@ -1048,13 +1008,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/servicios/partials/formulario_campos.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/ActividadController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -1111,6 +1064,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AplicacionController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="80" column="25" selection-start-line="80" selection-start-column="25" selection-end-line="80" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/ServidorController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="453">
@@ -1118,17 +1085,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AplicacionController.php">
+    <entry file="file://$PROJECT_DIR$/app/Console/bash/crear_vista_modulo_estandar_dialog.sh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="80" column="25" selection-start-line="80" selection-start-column="25" selection-end-line="80" selection-end-column="25" />
+        <state relative-caret-position="291">
+          <caret line="563" column="44" selection-start-line="563" selection-start-column="44" selection-end-line="563" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ServidorController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="55" column="36" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ServicioController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="83" column="45" selection-start-line="83" selection-start-column="45" selection-end-line="83" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/ServicioController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="194" column="48" lean-forward="true" selection-start-line="194" selection-start-column="48" selection-end-line="194" selection-end-column="48" />
+          <folding>
+            <element signature="e#134#205#0" expanded="true" />
+            <element signature="e#7622#8450#0" />
+            <element signature="e#8500#10021#0" />
+            <element signature="e#10074#11480#0" />
+            <element signature="e#11525#13490#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/servicios/partials/formulario_campos.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="62" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/servicios/partials/vista_principal.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="39" column="58" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
+        <state>
+          <caret column="16" selection-start-column="16" selection-end-column="16" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -1138,37 +1143,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ServidorController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/servicios/partials/relacionados_a.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-263">
-          <caret line="55" column="36" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ServicioController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="83" column="45" selection-start-line="83" selection-start-column="45" selection-end-line="83" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/ServicioController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="193" selection-start-line="193" selection-end-line="193" />
-          <folding>
-            <element signature="e#7622#8450#0" />
-            <element signature="e#8500#10021#0" />
-            <element signature="e#10074#11480#0" />
-            <element signature="e#11525#13490#0" />
-          </folding>
+        <state relative-caret-position="622">
+          <caret line="273" column="6" lean-forward="true" selection-start-line="273" selection-start-column="6" selection-end-line="273" selection-end-column="6" />
         </state>
       </provider>
     </entry>
