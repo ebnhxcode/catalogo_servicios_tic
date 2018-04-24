@@ -36,7 +36,8 @@ class ServicioController extends Controller {
     public function __construct () {
         $this->middleware('auth');
         $this->nombre_modelo = "servicio"; //nombre tabla o de ruta
-        $this->nombre_tabla = $this->nombre_ruta = "servicios";
+        $this->nombre_tabla = "servicios";
+        $this->nombre_ruta = "servicios";
         $this->nombre_detalle = "Servicios";
         $this->nombre_controller = "ServicioController";
     }
@@ -64,7 +65,12 @@ class ServicioController extends Controller {
        $this->usuario_auth = Auth::user();
        $this->actividades = Actividad::all();
        $this->servicios = Servicio::with([
-          'actividad','usuario','servidores.aplicaciones','aplicaciones.servidor','usuarios_bitacora_servicios.usuario','servicios_usuarios.usuario'
+          'actividad',
+          'usuario',
+          'servidores.aplicaciones',
+          'aplicaciones.servidor',
+          'usuarios_bitacora_servicios.usuario',
+          'servicios_usuarios.usuario'
        ])->get();
        $this->estados = Estado::all();
        $this->usuarios = User::with(['usuario_role.role'])->get();
@@ -81,7 +87,7 @@ class ServicioController extends Controller {
        ]);
     }
 
-    public function index(Request $request) {
+    public function index() {
       return view("layouts.main", [
          'nombre_modelo' => $this->nombre_modelo,
          'nombre_tabla' => $this->nombre_tabla,

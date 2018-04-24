@@ -21,6 +21,9 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 
-
+RewriteEngine On
+#RewriteCond %{HTTP_REFERER} !^https://(.+\.)?catalogotic.minsal\.cl/ [NC]
+RewriteCond %{HTTP_REFERER} !^http://(.+\.)?local.catalogoserviciostic [NC]
+RewriteRule .*\.(js|css)$ - [F]
 
 </IfModule>

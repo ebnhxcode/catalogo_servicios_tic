@@ -57,7 +57,7 @@ const ServicioController = new Vue({
          ],
          'relaciones_clase':[
             {'actividad':['id_actividad','nom_actividad']},
-            {'usuario':['id_usuario','nom_usuario']},
+            //{'usuario':['id_usuario','nom_usuario']},
          ],
 
 
@@ -189,6 +189,7 @@ const ServicioController = new Vue({
    methods: {
       inicializar: function () {
          this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
+
             this.configurar_relaciones(response.body.servicios, this.relaciones_clase);
             this.lista_objs_model = response.body.servicios || null;
 
@@ -204,8 +205,6 @@ const ServicioController = new Vue({
             this.estados = response.body.estados || null;
             this.usuarios = response.body.usuarios || null;
             this.usuario_auth = response.body.usuario_auth || null;
-
-
 
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);

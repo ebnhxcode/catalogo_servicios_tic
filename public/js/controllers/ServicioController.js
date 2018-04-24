@@ -4131,7 +4131,7 @@ var ServicioController = new Vue({
             'det_bitacora': null
          },
          'permitido_guardar': ['nom_servicio', 'det_servicio', 'id_actividad', 'id_usuario'],
-         'relaciones_clase': [{ 'actividad': ['id_actividad', 'nom_actividad'] }, { 'usuario': ['id_usuario', 'nom_usuario'] }],
+         'relaciones_clase': [{ 'actividad': ['id_actividad', 'nom_actividad'] }],
 
          'lom': {},
          'lista_objs_model': [],
@@ -4266,8 +4266,9 @@ var ServicioController = new Vue({
       inicializar: function inicializar() {
          var _this = this;
 
-         this.$http.get('/ajax/servicios').then(function (response) {
+         this.$http.get('/ajax/' + this.nombre_ruta).then(function (response) {
             // success callback
+
             _this.configurar_relaciones(response.body.servicios, _this.relaciones_clase);
             _this.lista_objs_model = response.body.servicios || null;
 
