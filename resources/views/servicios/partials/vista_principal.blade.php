@@ -27,7 +27,6 @@
 
       <br>
 
-
       <!-- este bloque será reemplazado dinamicamente -->
       <div class="card pro" style="{{--width: 18rem;--}}">
          <div class="card-body">
@@ -56,9 +55,7 @@
          </div><!-- .card-body -->
       </div><!-- .card -->
 
-
       <br>
-
 
       <!-- este bloque será reemplazado dinamicamente -->
       <div class="card pro" style="{{--width: 18rem;--}}">

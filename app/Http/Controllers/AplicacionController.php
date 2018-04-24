@@ -24,6 +24,8 @@ class AplicacionController extends Controller {
    private $aplicaciones;
    private $tipos_aplicaciones;
    private $servicios;
+   private $servidores;
+   private $dominios;
    private $aplicacion;
    private $new_aplicacion;
    private $validacion;
@@ -56,17 +58,7 @@ class AplicacionController extends Controller {
       ]);
    }
 
-   public function index(Request $request) {
-      if (!$request->wantsJson() && !$request->ajax()) {
-         return view("layouts.main", [
-            'nombre_modelo' => $this->nombre_modelo,
-            'nombre_tabla' => $this->nombre_tabla,
-            'nombre_ruta' => $this->nombre_ruta,
-            'nombre_detalle' => $this->nombre_detalle,
-            'nombre_controller' => $this->nombre_controller,
-         ]);
-      }
-
+   public function index_ajax () {
       $this->usuario_auth = Auth::user();
       $this->tipos_aplicaciones = TipoAplicacion::all();
       $this->aplicaciones = Aplicacion::with([
@@ -83,6 +75,16 @@ class AplicacionController extends Controller {
          'servidores' => $this->servidores,
          'dominios' => $this->dominios,
          'usuario_auth' => $this->usuario_auth,
+      ]);
+   }
+
+   public function index() {
+      return view("layouts.main", [
+         'nombre_modelo' => $this->nombre_modelo,
+         'nombre_tabla' => $this->nombre_tabla,
+         'nombre_ruta' => $this->nombre_ruta,
+         'nombre_detalle' => $this->nombre_detalle,
+         'nombre_controller' => $this->nombre_controller,
       ]);
    }
 

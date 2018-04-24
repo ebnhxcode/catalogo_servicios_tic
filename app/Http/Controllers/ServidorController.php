@@ -79,17 +79,7 @@ class ServidorController extends Controller {
       ]);
    }
 
-   public function index(Request $request) {
-      if (!$request->ajax()) {
-         return view("layouts.main", [
-            'nombre_modelo' => $this->nombre_modelo,
-            'nombre_tabla' => $this->nombre_tabla,
-            'nombre_ruta' => $this->nombre_ruta,
-            'nombre_detalle' => $this->nombre_detalle,
-            'nombre_controller' => $this->nombre_controller,
-         ]);
-      }
-
+   public function index_ajax () {
       $this->usuario_auth = Auth::user();
       $this->servidores = Servidor::with([
          'datacentro',
@@ -129,6 +119,16 @@ class ServidorController extends Controller {
          'tipos_servidores' => $this->tipos_servidores,
          'estados' => $this->estados,
          'usuario_auth' => $this->usuario_auth,
+      ]);
+   }
+
+   public function index() {
+      return view("layouts.main", [
+         'nombre_modelo' => $this->nombre_modelo,
+         'nombre_tabla' => $this->nombre_tabla,
+         'nombre_ruta' => $this->nombre_ruta,
+         'nombre_detalle' => $this->nombre_detalle,
+         'nombre_controller' => $this->nombre_controller,
       ]);
    }
 

@@ -188,7 +188,7 @@ const ServicioController = new Vue({
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
       inicializar: function () {
-         this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+         this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
             this.configurar_relaciones(response.body.servicios, this.relaciones_clase);
             this.lista_objs_model = response.body.servicios || null;
 

@@ -59,36 +59,36 @@ class ServicioController extends Controller {
         ]);
     }
 
+
+    public function index_ajax () {
+       $this->usuario_auth = Auth::user();
+       $this->actividades = Actividad::all();
+       $this->servicios = Servicio::with([
+          'actividad','usuario','servidores.aplicaciones','aplicaciones.servidor','usuarios_bitacora_servicios.usuario','servicios_usuarios.usuario'
+       ])->get();
+       $this->estados = Estado::all();
+       $this->usuarios = User::with(['usuario_role.role'])->get();
+       $this->usuarios_bitacora_servicios =
+          UsuarioBitacoraServicio::where('id_usuario', '=', $this->usuario_auth->id_usuario)->get();
+       return response()->json([
+          'status' => 200,
+          'actividades' => $this->actividades,
+          'servicios' => $this->servicios,
+          'estados' => $this->estados,
+          'usuarios' => $this->usuarios,
+          'usuarios_bitacora_servicios' => $this->usuarios_bitacora_servicios,
+          'usuario_auth' => $this->usuario_auth,
+       ]);
+    }
+
     public function index(Request $request) {
-
-        if (!$request->wantsJson() && !$request->ajax()) {
-            return view("layouts.main", [
-               'nombre_modelo' => $this->nombre_modelo,
-               'nombre_tabla' => $this->nombre_tabla,
-               'nombre_ruta' => $this->nombre_ruta,
-               'nombre_detalle' => $this->nombre_detalle,
-               'nombre_controller' => $this->nombre_controller,
-            ]);
-        }
-
-        $this->usuario_auth = Auth::user();
-        $this->actividades = Actividad::all();
-        $this->servicios = Servicio::with([
-           'actividad','usuario','servidores.aplicaciones','aplicaciones.servidor','usuarios_bitacora_servicios.usuario','servicios_usuarios.usuario'
-        ])->get();
-        $this->estados = Estado::all();
-        $this->usuarios = User::with(['usuario_role.role'])->get();
-        $this->usuarios_bitacora_servicios =
-           UsuarioBitacoraServicio::where('id_usuario', '=', $this->usuario_auth->id_usuario)->get();
-        return response()->json([
-           'status' => 200,
-           'actividades' => $this->actividades,
-           'servicios' => $this->servicios,
-           'estados' => $this->estados,
-           'usuarios' => $this->usuarios,
-           'usuarios_bitacora_servicios' => $this->usuarios_bitacora_servicios,
-           'usuario_auth' => $this->usuario_auth,
-        ]);
+      return view("layouts.main", [
+         'nombre_modelo' => $this->nombre_modelo,
+         'nombre_tabla' => $this->nombre_tabla,
+         'nombre_ruta' => $this->nombre_ruta,
+         'nombre_detalle' => $this->nombre_detalle,
+         'nombre_controller' => $this->nombre_controller,
+      ]);
     }
 
     public function show (Request $request, $id) {
