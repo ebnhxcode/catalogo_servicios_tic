@@ -1,3 +1,4 @@
+
 <IfModule mod_rewrite.c>
 
 
@@ -21,9 +22,26 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 
-RewriteEngine On
-#RewriteCond %{HTTP_REFERER} !^https://(.+\.)?catalogotic.minsal\.cl/ [NC]
-RewriteCond %{HTTP_REFERER} !^http://(.+\.)?local.catalogoserviciostic [NC]
-RewriteRule .*\.(js|css)$ - [F]
+    #Imgs,etc
+    RewriteEngine On
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    
+    RewriteCond %{REQUEST_URI} !^.*\.(jpg|css|js|gif|png)$ [NC]
+    RewriteRule ^(.*)$ public/index.php?url=$1
+
+    RewriteEngine On
+    #RewriteCond %{HTTP_REFERER} !^https://(.+\.)?catalogotic.minsal\.cl/ [NC]
+    #RewriteCond %{HTTP_REFERER} !^http://(.+\.)?local.catalogoserviciostic [NC]
+    #RewriteCond %{HTTP_REFERER} !^https://(.+\.)?local.catalogoserviciostic [NC]
+    #RewriteRule .*\.(js|css)$ "-" [NC] #[F]	
+
+    #RewriteCond "%{HTTP_REFERER}" "!^$"
+    #RewriteCond "%{HTTP_REFERER}" "!local.catalogoserviciostic" [NC]
+    #RewriteRule "\.(gif|jpg|png)$"    "-"   [F,NC]
+ 
+    #Prevent script exec
+    AddHandler cgi-script .pl .py .jsp .asp .htm .shtml .sh .cgi #.php
+    Options -ExecCGI
 
 </IfModule>
