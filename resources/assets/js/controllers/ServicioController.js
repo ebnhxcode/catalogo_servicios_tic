@@ -193,6 +193,7 @@ const ServicioController = new Vue({
             this.configurar_relaciones(response.body.servicios, this.relaciones_clase);
             this.lista_objs_model = response.body.servicios || null;
 
+
             this.lista_objs_model.map((lom) => {
                lom.n_aplicaciones = lom.aplicaciones.length || 0;
                lom.n_servidores = lom.servidores.length || 0;
