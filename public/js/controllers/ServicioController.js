@@ -4272,12 +4272,10 @@ var ServicioController = new Vue({
             _this.configurar_relaciones(response.body.servicios, _this.relaciones_clase);
             _this.lista_objs_model = response.body.servicios || null;
 
-            /*
-            this.lista_objs_model.map((lom) => {
+            _this.lista_objs_model.map(function (lom) {
                lom.n_aplicaciones = lom.aplicaciones.length || 0;
                lom.n_servidores = lom.servidores.length || 0;
             });
-            */
 
             _this.actividades = response.body.actividades || null;
             _this.usuarios_bitacora_servicios = response.body.usuarios_bitacora_servicios || null;

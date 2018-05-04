@@ -63,5 +63,6 @@ class Kernel extends HttpKernel
         'c'=>\App\Http\Middleware\Role\CMiddleware::class,
         'r'=>\App\Http\Middleware\Role\RMiddleware::class,
         'mantenedor'=>\App\Http\Middleware\MantenedorMiddleware::class,
+        'mesaservicios'=>\App\Http\Middleware\MantenedorMiddleware::class,
     ];
 }

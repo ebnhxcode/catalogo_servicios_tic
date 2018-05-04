@@ -35,6 +35,7 @@ class ServicioController extends Controller {
 
     public function __construct () {
         $this->middleware('auth');
+       $this->middleware('mesaservicios');#Quiere decir que todos lo pueden ver
         $this->nombre_modelo = "servicio"; //nombre tabla o de ruta
         $this->nombre_tabla = "servicios";
         $this->nombre_ruta = "servicios";
