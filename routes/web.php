@@ -44,47 +44,6 @@ Route::get('/ajax/servidores', 'ServidorController@index_ajax');
 Route::get('/ajax/aplicaciones', 'AplicacionController@index_ajax');
 
 
-
-/*
- * Modulos :
- * Se define arreglo (de módulos) con las rutas de recursos para crud básico (resources)
- * Y el controller asociado a esta ruta
- *
- *    En este caso :
- *
- *
- * */
-$modules = [
-    [
-       'route'=>'roles',
-       'controller'=>'RoleController'
-    ],
-    ['route'=>'permisos','controller'=>'PermisoController'],
-    ['route'=>'usuarios','controller'=>'UsuarioController'],
-    ['route'=>'servicios','controller'=>'ServicioController'],
-    ['route'=>'servicios_usuarios','controller'=>'ServicioUsuarioController'],
-    ['route'=>'actividades','controller'=>'ActividadController'],
-    ['route'=>'cargos','controller'=>'CargoController'],
-    ['route'=>'estados','controller'=>'EstadoController'],
-    ['route'=>'aplicaciones','controller'=>'AplicacionController'],
-    ['route'=>'tipos_aplicaciones','controller'=>'TipoAplicacionController'],
-    ['route'=>'tipos_servidores','controller'=>'TipoServidorController'],
-    ['route'=>'tipos_respaldos_discos','controller'=>'TipoRespaldoDiscoController'],
-    ['route'=>'aplicaciones_accesos','controller'=>'AplicacionAccesoController'],
-    ['route'=>'dominios','controller'=>'DominioController'],
-    ['route'=>'servidores','controller'=>'ServidorController'],
-    ['route'=>'servidores_accesos','controller'=>'ServidorAccesoController'],
-    ['route'=>'datacentros','controller'=>'DatacentroController'],
-    ['route'=>'sistemas_operativos','controller'=>'SistemaOperativoController'],
-    ['route'=>'tags','controller'=>'TagController'],
-    ['route'=>'usuarios_bitacora_servicios','controller'=>'UsuarioBitacoraServicioController'],
-    ['route'=>'clusters','controller'=>'ClusterController'],
-    ['route'=>'menus','controller'=>'MenuController'],
-    ['route'=>'mantenedores','controller'=>'MantenedorController'],
-    ['route'=>'vlans','controller'=>'VlanController'],
-];
-
-
 /*
  * Grupos :
  * Se define arreglo (de grupos) con los middlewares que serán distribuídos los recursos
@@ -165,7 +124,6 @@ $groups = ['r','c','u','d'];
 $http_requests = [
    'r' => [
       'index' => 'get',
-      'index_ajax' => 'get',
       'show' => 'get'
    ],
    'c' => [
@@ -179,10 +137,51 @@ $http_requests = [
    ]
 ];
 
+/*
+ * Modulos :
+ * Se define arreglo (de módulos) con las rutas de recursos para crud básico (resources)
+ * Y el controller asociado a esta ruta
+ *
+ *    En este caso :
+ *
+ *
+ * */
+$modules = [
+   [
+      'route'=>'roles',
+      'controller'=>'RoleController'
+   ],
+   ['route'=>'permisos','controller'=>'PermisoController'],
+   ['route'=>'usuarios','controller'=>'UsuarioController'],
+   ['route'=>'servicios','controller'=>'ServicioController'],
+   ['route'=>'servicios_usuarios','controller'=>'ServicioUsuarioController'],
+   ['route'=>'actividades','controller'=>'ActividadController'],
+   ['route'=>'cargos','controller'=>'CargoController'],
+   ['route'=>'estados','controller'=>'EstadoController'],
+   ['route'=>'aplicaciones','controller'=>'AplicacionController'],
+   ['route'=>'tipos_aplicaciones','controller'=>'TipoAplicacionController'],
+   ['route'=>'tipos_servidores','controller'=>'TipoServidorController'],
+   ['route'=>'tipos_respaldos_discos','controller'=>'TipoRespaldoDiscoController'],
+   ['route'=>'aplicaciones_accesos','controller'=>'AplicacionAccesoController'],
+   ['route'=>'dominios','controller'=>'DominioController'],
+   ['route'=>'servidores','controller'=>'ServidorController'],
+   ['route'=>'servidores_accesos','controller'=>'ServidorAccesoController'],
+   ['route'=>'datacentros','controller'=>'DatacentroController'],
+   ['route'=>'sistemas_operativos','controller'=>'SistemaOperativoController'],
+   ['route'=>'tags','controller'=>'TagController'],
+   ['route'=>'usuarios_bitacora_servicios','controller'=>'UsuarioBitacoraServicioController'],
+   ['route'=>'clusters','controller'=>'ClusterController'],
+   ['route'=>'menus','controller'=>'MenuController'],
+   ['route'=>'mantenedores','controller'=>'MantenedorController'],
+   ['route'=>'vlans','controller'=>'VlanController'],
+];
+
 foreach ($groups as $group) {
     Route::group(['middleware' => "${group}"], function() use ($modules,$http_requests,$group){
-        foreach ($http_requests["${group}"] as $method => $http)
-            foreach ($modules as $module)
+        foreach ($http_requests["${group}"] as $method => $http):
+            foreach ($modules as $module):
                eval("Route::${http}('/${module['route']}/".(in_array($method,["show","update","destroy"])?"{id}":"")."', '${module['controller']}@${method}');");
+            endforeach;
+        endforeach;
     });
 }

@@ -51,11 +51,12 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="167" column="17" selection-start-line="167" selection-start-column="17" selection-end-line="167" selection-end-column="17" />
+            <state relative-caret-position="343">
+              <caret line="139" column="2" selection-start-line="139" selection-start-column="2" selection-end-line="139" selection-end-column="2" />
               <folding>
                 <element signature="e#3776#3788#0#PHP" />
                 <element signature="e#4490#4506#0#PHP" />
+                <element signature="e#4811#4991#0#PHP" />
               </folding>
             </state>
           </provider>
@@ -273,7 +274,7 @@
       <path value="$PROJECT_DIR$/vendor/jakub-onderka/php-console-highlighter" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="878" />
@@ -650,7 +651,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89944000" />
+    <option name="totallyTimeSpent" value="90760000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="878" extended-state="6" />
@@ -1103,11 +1104,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="167" column="17" selection-start-line="167" selection-start-column="17" selection-end-line="167" selection-end-column="17" />
+        <state relative-caret-position="343">
+          <caret line="139" column="2" selection-start-line="139" selection-start-column="2" selection-end-line="139" selection-end-column="2" />
           <folding>
             <element signature="e#3776#3788#0#PHP" />
             <element signature="e#4490#4506#0#PHP" />
+            <element signature="e#4811#4991#0#PHP" />
           </folding>
         </state>
       </provider>
