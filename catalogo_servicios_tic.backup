@@ -5,7 +5,7 @@
 -- Dumped from database version 10.3
 -- Dumped by pg_dump version 10.3
 
--- Started on 2018-05-07 14:56:18 -03
+-- Started on 2018-05-07 15:19:12 -03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -2322,6 +2322,60 @@ COPY public.aplicaciones (id_aplicacion, id_tipo_aplicacion, id_servicio, id_dom
 501	43	33	1	PORTALCAUTIVO	Template: Entregado a Seguridad ;  Environtment: Portal Cautivo			192.168.70.27		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1415	\N	\N
 502	45	15	1	SAMU	Template: Creada y entregada a Sergio Roca ;  Environtment: PROYECTO SAMU	alertatemprana.minsal.cl	alertatemprana.minsal.cl	192.168.70.36	alertatemprana	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1312	\N	\N
 503	43	34	1	vacunas	vacunas	vacunas	http://vacunas.minsal.cl	10.8.139.75	vacunas	0	1	1	2018-04-26 14:41:45	2018-04-26 14:41:45	\N	1416	\N	\N
+504	43	12	33	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			192.168.170.10			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1471	\N	\N
+505	43	12	33	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			192.168.170.11			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1472	\N	\N
+506	43	12	33	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.89.10			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1473	\N	\N
+507	43	12	33	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.89.11			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1474	\N	\N
+508	43	12	33	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.90.10			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1475	\N	\N
+509	43	12	33	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.90.11			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1476	\N	\N
+510	43	12	33	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.90.12			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1477	\N	\N
+511	43	12	33	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.90.13			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1478	\N	\N
+512	43	12	33	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.90.14			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1479	\N	\N
+513	43	12	33	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.90.15			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1480	\N	\N
+514	43	12	33	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.90.16			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1481	\N	\N
+515	43	12	33	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.90.17			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1482	\N	\N
+516	44	15	17	Cluster BD MySQL PROD	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Creada y entregada a Ruben Aguilera			172.25.6.17 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1483	\N	\N
+517	44	15	17	Cluster BD MySQL PROD	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Creada y entregada a Ruben Aguilera			172.25.6.18 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1484	\N	\N
+518	44	15	17	Cluster BD MySQL PROD	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Creada y entregada a Ruben Aguilera			172.25.6.33			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1485	\N	\N
+519	44	15	17	Cluster Postgres PROD	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Creada y entregada a Ruben Aguilera			172.25.6.19			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1486	\N	\N
+520	44	15	17	Cluster Postgres PROD	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Creada y entregada a Ruben Aguilera			172.25.6.20			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1487	\N	\N
+521	44	15	17	Cluster Postgres PROD	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Creada y entregada a Ruben Aguilera			172.25.6.21			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1488	\N	\N
+522	43	35	17	MIDAS	Template: Creado y entregado a Roxana Peña ;  Environtment: Creado y entregado a Roxana Peña			192.168.170.14			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1489	\N	\N
+523	43	35	17	MIDAS	Template: Creado y entregado a Roxana Peña ;  Environtment: Creado y entregado a Roxana Peña			172.25.6.22 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1490	\N	\N
+524	43	18	33	HL7	Template: Creado y entregado a Eugenio y Zeke ;  Environtment: Creado y entregado a Eugenio y Zeke			172.25.6.23			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1491	\N	\N
+525	43	18	19	VIHRECO	Template: Creado y entregado a Sergio Roca ;  Environtment: Creado y entregado a Sergio Roca			192.168.170.16			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1492	\N	\N
+526	44	18	54	PWIM	Template: Crear y entregar a Gustavo ;  Environtment: Crear y entregar a Gustavo			172.25.64.33			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1493	\N	\N
+527	43	36	19	RASVALDIVIA	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.20			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1494	\N	\N
+528	43	36	42	RASVALDIVIA	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.21			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1495	\N	\N
+529	44	36	19	RASVALDIVIA	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.22			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1496	\N	\N
+530	43	36	19	RASVALDIVIA	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.23			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1497	\N	\N
+531	43	36	19	RASVALDIVIA	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.24			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1498	\N	\N
+532	43	36	19	RASVALDIVIA	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.25			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1499	\N	\N
+533	43	36	19	RASVALDIVIA	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.26			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1500	\N	\N
+534	43	16	41	DNS PUBLICO SECUNDARIO	Template: Creada y entregada a Infra ;  Environtment: Creada y entregada a Infra			 192.168.170.18			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1501	\N	\N
+535	44	24	46	RIS	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			172.25.6.29			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1502	\N	\N
+536	43	24	46	RIS	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.29			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1503	\N	\N
+537	43	24	19	RIS	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.28			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1504	\N	\N
+538	43	24	46	RIS	Template: Creada y entregada a Jorge ;  Environtment: Creada y entregada a Jorge			192.168.170.31			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1505	\N	\N
+539	44	24	46	RIS	Template: Creada y entregada a Jorge ;  Environtment: Creada y entregada a Jorge			172.25.6.32			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1506	\N	\N
+540	43	35	20	MIDAS	Template: Creada y entregada Sandra ;  Environtment: Creada y entregada Sandra			192.168.170.33			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1507	\N	\N
+541	43	35	20	MIDAS	Template: Creada y entregada Sandra ;  Environtment: Creada y entregada Sandra			192.168.170.34			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1508	\N	\N
+542	43	35	20	MIDAS	Template: Creada y entregada Sandra ;  Environtment: Creada y entregada Sandra			192.168.170.35			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1509	\N	\N
+543	43	35	20	MIDAS	Template: Creada y entregada Sandra ;  Environtment: Creada y entregada Sandra			192.168.170.36			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1510	\N	\N
+544	43	35	20	MIDAS	Template: Creada y entregada Sandra ;  Environtment: Creada y entregada Sandra			192.168.170.37			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1511	\N	\N
+545	44	35	20	MIDAS	Template: Solicitada ;  Environtment: Solicitada			172.25.64.34			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1512	\N	\N
+546	43	24	46	RIS	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.43 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1513	\N	\N
+547	43	24	46	RIS	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.44 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1514	\N	\N
+548	43	24	46	RIS	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.45 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1515	\N	\N
+549	43	24	46	RIS	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.46 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1516	\N	\N
+550	43	24	46	RIS	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.47 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1517	\N	\N
+551	43	33	55	PORTALCAUTIVO	Template: Entregado a Seguridad ;  Environtment: Entregado a Seguridad			192.168.170.30			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1518	\N	\N
+552	43	37	19	SGC	Template: Solicitada ;  Environtment: Solicitada			192.168.170.50			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1519	\N	\N
+553	43	38	23	HADOOP	Template: Por Solicitar ;  Environtment: Por Solicitar			172.25.33.40			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1520	\N	\N
+554	43	38	23	HADOOP	Template: Por Solicitar ;  Environtment: Por Solicitar			172.25.33.41			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1521	\N	\N
+555	43	38	23	HADOOP	Template: Por Solicitar ;  Environtment: Por Solicitar			172.25.33.42			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1522	\N	\N
+556	43	35	20	SICEX	Template: Creada y entrega a Carlos y Claudio ;  Environtment: Creada y entrega a Carlos y Claudio			192.168.170.51			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1523	\N	\N
+557	43	35	20	ESCRITORIO EMPRESA	Template: Creada y entrega a Carlos y Claudio ;  Environtment: Creada y entrega a Carlos y Claudio			192.168.170.52			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1524	\N	\N
 \.
 
 
@@ -3743,60 +3797,60 @@ COPY public.servidores (id_servidor, id_datacentro, id_sistema_operativo, nom_se
 1414	2	23	MNALGOPRIORIZACION001_DEV	192.168.60.21	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	DEV	24576	1083392	0	intel	2400	8	0	0	\N	\N	4	Sin definir	2	false	32	2	1	\N	\N	\N	\N	\N
 1415	2	55	MNPORTALLIRAY_APP01_PROD	192.168.70.27	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	102400	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	33	2	1	\N	\N	\N	\N	\N
 1416	1	26	VM1258	10.8.139.75	1	1	2018-04-26 14:29:02	2018-04-26 14:29:31	\N	VM1258	11912	100000	4096	intel	2400	4	0	00:50:56:81:3A:BF	0	0	1	0	1	0	34	1	1	1	\N	\N	\N	\N
-1417	2	33	MNMPPRODDMZ_PM_API01	192.168.170.10	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Message Processor/ Router (DMZ)	16384	226304	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	12	2	1	\N	\N	\N	Creado y entregado a Zeke	Creado y entregado a Zeke
-1418	2	33	MNMPPRODDMZ_PM_API02	192.168.170.11	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Message Processor/ Router (DMZ)	16384	226304	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	12	2	1	\N	\N	\N	Creado y entregado a Zeke	Creado y entregado a Zeke
-1419	2	33	MNMPPRODBE_PM_API01	172.25.89.10	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Message Processor/ Router (BACKEND)	16384	226304	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	12	3	1	\N	\N	\N	Creado y entregado a Zeke	Creado y entregado a Zeke
-1420	2	33	MNMPPRODBE_PM_API02	172.25.89.11	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Message Processor/ Router (BACKEND)	16384	226304	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	12	3	1	\N	\N	\N	Creado y entregado a Zeke	Creado y entregado a Zeke
-1421	2	33	MNCASPROD_PM_API01	172.25.90.10	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Cassandra	16384	328704	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	12	3	1	\N	\N	\N	Creado y entregado a Zeke	Creado y entregado a Zeke
-1422	2	33	MNCASPROD_PM_API02	172.25.90.11	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Cassandra	16384	328704	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	12	3	1	\N	\N	\N	Creado y entregado a Zeke	Creado y entregado a Zeke
-1423	2	33	MNCASPROD_PM_API03	172.25.90.12	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Cassandra	16384	328704	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	12	3	1	\N	\N	\N	Creado y entregado a Zeke	Creado y entregado a Zeke
-1424	2	33	MNAPPROD_PM_API01	172.25.90.13	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Analytics - Postgres	16384	1070080	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	12	3	1	\N	\N	\N	Creado y entregado a Zeke	Creado y entregado a Zeke
-1425	2	33	MNDEVPORPROD_PM_API01	172.25.90.14	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Developer Portal	2048	41984	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	12	3	1	\N	\N	\N	Creado y entregado a Zeke	Creado y entregado a Zeke
-1426	2	33	MNQSPROD_PM_API01	172.25.90.15	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Qpid server	8192	277504	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	12	3	1	\N	\N	\N	Creado y entregado a Zeke	Creado y entregado a Zeke
-1427	2	33	MNQSPROD_PM_API02	172.25.90.16	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Qpid server	8192	277504	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	12	3	1	\N	\N	\N	Creado y entregado a Zeke	Creado y entregado a Zeke
-1428	2	33	MNMSUPROD_PM_API01	172.25.90.17	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Management Server UI	8192	123904	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	12	3	1	\N	\N	\N	Creado y entregado a Zeke	Creado y entregado a Zeke
-1429	2	17	MNCL1_MYSQL_NODE_2_PROD	172.25.6.17 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	15360	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	true	15	3	2	\N	\N	\N	Creada y entregada a Ruben Aguilera	Creada y entregada a Ruben Aguilera
-1430	2	17	MNCL1_DATA_NODE_2_PROD	172.25.6.18 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	409600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	true	15	3	2	\N	\N	\N	Creada y entregada a Ruben Aguilera	Creada y entregada a Ruben Aguilera
-1431	2	17	MNCL1_DATA_NODE_3_PROD	172.25.6.33	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	409600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	true	15	3	2	\N	\N	\N	Creada y entregada a Ruben Aguilera	Creada y entregada a Ruben Aguilera
-1432	2	17	MNCL1_MANAGEMENTPGQL_NODO_PROD	172.25.6.19	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	15360	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	3	2	\N	\N	\N	Creada y entregada a Ruben Aguilera	Creada y entregada a Ruben Aguilera
-1433	2	17	MNCL1_PGQLPOOL_NODE_1_PROD	172.25.6.20	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	20480	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	true	15	3	2	\N	\N	\N	Creada y entregada a Ruben Aguilera	Creada y entregada a Ruben Aguilera
-1434	2	17	MNCL1_PGQLDATA_NODE_1_PROD	172.25.6.21	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	102400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	true	15	3	2	\N	\N	\N	Creada y entregada a Ruben Aguilera	Creada y entregada a Ruben Aguilera
-1435	2	17	MNAPPMIDAS001_PROD	192.168.170.14	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	153600	0	intel	2400	16	0	0	\N	\N	1	Sin definir	2	false	35	2	1	\N	\N	\N	Creado y entregado a Roxana Peña	Creado y entregado a Roxana Peña
-1436	2	17	MNFILESERVERMIDAS001_PROD	172.25.6.22 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	575488	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	35	3	1	\N	\N	\N	Creado y entregado a Roxana Peña	Creado y entregado a Roxana Peña
-1437	2	33	MNHL7002_ROD	172.25.6.23	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	256000	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	3	1	\N	\N	\N	Creado y entregado a Eugenio y Zeke	Creado y entregado a Eugenio y Zeke
-1438	2	19	MNVIHRECO001_PROD	192.168.170.16	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	6144	102400	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	18	2	1	\N	\N	\N	Creado y entregado a Sergio Roca	Creado y entregado a Sergio Roca
-1439	2	54	MNPWIMDB001_PROD	172.25.64.33	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION 81 / 1024	65536	1131520	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	3	2	\N	\N	\N	Crear y entregar a Gustavo	Crear y entregar a Gustavo
-1440	2	19	MNRASAPP_PROD	192.168.170.20	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	102400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	36	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
-1441	2	42	MN_RASINTER_PROD	192.168.170.21	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION 60/40	16384	102400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	36	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
-1442	2	19	MNRASMDB_PROD	192.168.170.22	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	307200	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	36	2	2	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
-1443	2	19	MNRASCUM_PROD	192.168.170.23	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	204800	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	36	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
-1444	2	19	MNRASJENK_PROD	192.168.170.24	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	102400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	36	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
-1445	2	19	MNRASREDCAP_PROD	192.168.170.25	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	102400	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	36	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
-1446	2	19	MNRASNFS_PROD	192.168.170.26	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	4096000	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	36	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
-1447	2	41	MNDNSPUBLICOSEC_002_PROD	 192.168.170.18	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	102400	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	16	2	1	\N	\N	\N	Creada y entregada a Infra	Creada y entregada a Infra
-1448	2	46	MNTELERISPACSBD001_PROD	172.25.6.29	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION 100 /500	16384	614400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	24	3	2	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
-1449	2	46	MNTELERISPACS001_PROD	192.168.170.29	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	24	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
-1450	2	19	MNCRMINSAL001_PROD	192.168.170.28	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	204800	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	24	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
-1451	2	46	MNTELERISPACSDATA001_PROD	192.168.170.31	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	24	2	1	\N	\N	\N	Creada y entregada a Jorge	Creada y entregada a Jorge
-1452	2	46	MNTELERISPACSBD002_PROD	172.25.6.32	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION 100 /500	16384	614400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	24	3	2	\N	\N	\N	Creada y entregada a Jorge	Creada y entregada a Jorge
-1453	2	20	MNAPP_ASDIGITAL001_PROD	192.168.170.33	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	204800	0	intel	2400	16	0	0	\N	\N	1	Sin definir	2	false	35	2	1	\N	\N	\N	Creada y entregada Sandra	Creada y entregada Sandra
-1454	2	20	MNAPP_PROGRAMACION001_PROD	192.168.170.34	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	307200	0	intel	2400	16	0	0	\N	\N	1	Sin definir	2	false	35	2	1	\N	\N	\N	Creada y entregada Sandra	Creada y entregada Sandra
-1455	2	20	MNAPP_PAGO001_PROD	192.168.170.35	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	204800	0	intel	2400	16	0	0	\N	\N	1	Sin definir	2	false	35	2	1	\N	\N	\N	Creada y entregada Sandra	Creada y entregada Sandra
-1456	2	20	MNAPP_GEN001_PROD	192.168.170.36	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	307200	0	intel	2400	16	0	0	\N	\N	1	Sin definir	2	false	35	2	1	\N	\N	\N	Creada y entregada Sandra	Creada y entregada Sandra
-1457	2	20	MNAPP_EMERGENCIA001_PROD	192.168.170.37	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	307200	0	intel	2400	16	0	0	\N	\N	1	Sin definir	2	false	35	2	1	\N	\N	\N	Creada y entregada Sandra	Creada y entregada Sandra
-1458	2	20	MNBD_MIDAS_PROD	172.25.64.34	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	512000	0	intel	2400	32	0	0	\N	\N	1	Sin definir	2	false	35	3	2	\N	\N	\N	Solicitada	Solicitada
-1459	2	46	MNTELERISPACS002_PROD	192.168.170.43 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	24	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
-1460	2	46	MNTELERISPACS003_PROD	192.168.170.44 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	24	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
-1461	2	46	MNTELERISPACS004_PROD	192.168.170.45 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	24	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
-1462	2	46	MNTELERISPACS005_PROD	192.168.170.46 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	24	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
-1463	2	46	MNTELERISPACS006_PROD	192.168.170.47 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	24	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
-1464	2	55	MNPORTALPM_APP02_PROD	192.168.170.30	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	102400	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	33	2	1	\N	\N	\N	Entregado a Seguridad	Entregado a Seguridad
-1465	2	19	MNSGC001_PROD	192.168.170.50	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	71680	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	37	2	1	\N	\N	\N	Solicitada	Solicitada
-1466	2	23	MNHADOOPNN1PROD	172.25.33.40	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	210944	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	38	3	1	\N	\N	\N	Por Solicitar	Por Solicitar
-1467	2	23	MNHADOOPDN1PROD	172.25.33.41	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	1234944	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	38	3	1	\N	\N	\N	Por Solicitar	Por Solicitar
-1468	2	23	MNHADOOPDN2PROD	172.25.33.42	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	1234944	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	38	3	1	\N	\N	\N	Por Solicitar	Por Solicitar
-1469	2	20	MNAPP_SICEX001_PROD	192.168.170.51	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	70656	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	35	2	1	\N	\N	\N	Creada y entrega a Carlos y Claudio	Creada y entrega a Carlos y Claudio
-1470	2	20	MNAPP_ESCEMP001_PROD	192.168.170.52	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	70656	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	35	2	1	\N	\N	\N	Creada y entrega a Carlos y Claudio	Creada y entrega a Carlos y Claudio
+1471	2	33	MNMPPRODDMZ_PM_API01	192.168.170.10	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Message Processor/ Router (DMZ)	16384	226304	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	12	2	1	\N	\N	\N	Creado y entregado a Zeke	Creado y entregado a Zeke
+1472	2	33	MNMPPRODDMZ_PM_API02	192.168.170.11	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Message Processor/ Router (DMZ)	16384	226304	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	12	2	1	\N	\N	\N	Creado y entregado a Zeke	Creado y entregado a Zeke
+1473	2	33	MNMPPRODBE_PM_API01	172.25.89.10	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Message Processor/ Router (BACKEND)	16384	226304	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	12	3	1	\N	\N	\N	Creado y entregado a Zeke	Creado y entregado a Zeke
+1474	2	33	MNMPPRODBE_PM_API02	172.25.89.11	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Message Processor/ Router (BACKEND)	16384	226304	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	12	3	1	\N	\N	\N	Creado y entregado a Zeke	Creado y entregado a Zeke
+1475	2	33	MNCASPROD_PM_API01	172.25.90.10	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Cassandra	16384	328704	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	12	3	1	\N	\N	\N	Creado y entregado a Zeke	Creado y entregado a Zeke
+1476	2	33	MNCASPROD_PM_API02	172.25.90.11	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Cassandra	16384	328704	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	12	3	1	\N	\N	\N	Creado y entregado a Zeke	Creado y entregado a Zeke
+1477	2	33	MNCASPROD_PM_API03	172.25.90.12	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Cassandra	16384	328704	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	12	3	1	\N	\N	\N	Creado y entregado a Zeke	Creado y entregado a Zeke
+1478	2	33	MNAPPROD_PM_API01	172.25.90.13	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Analytics - Postgres	16384	1070080	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	12	3	1	\N	\N	\N	Creado y entregado a Zeke	Creado y entregado a Zeke
+1479	2	33	MNDEVPORPROD_PM_API01	172.25.90.14	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Developer Portal	2048	41984	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	12	3	1	\N	\N	\N	Creado y entregado a Zeke	Creado y entregado a Zeke
+1480	2	33	MNQSPROD_PM_API01	172.25.90.15	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Qpid server	8192	277504	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	12	3	1	\N	\N	\N	Creado y entregado a Zeke	Creado y entregado a Zeke
+1481	2	33	MNQSPROD_PM_API02	172.25.90.16	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Qpid server	8192	277504	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	12	3	1	\N	\N	\N	Creado y entregado a Zeke	Creado y entregado a Zeke
+1482	2	33	MNMSUPROD_PM_API01	172.25.90.17	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	Management Server UI	8192	123904	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	12	3	1	\N	\N	\N	Creado y entregado a Zeke	Creado y entregado a Zeke
+1483	2	17	MNCL1_MYSQL_NODE_2_PROD	172.25.6.17 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	15360	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	true	15	3	2	\N	\N	\N	Creada y entregada a Ruben Aguilera	Creada y entregada a Ruben Aguilera
+1484	2	17	MNCL1_DATA_NODE_2_PROD	172.25.6.18 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	409600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	true	15	3	2	\N	\N	\N	Creada y entregada a Ruben Aguilera	Creada y entregada a Ruben Aguilera
+1485	2	17	MNCL1_DATA_NODE_3_PROD	172.25.6.33	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	409600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	true	15	3	2	\N	\N	\N	Creada y entregada a Ruben Aguilera	Creada y entregada a Ruben Aguilera
+1486	2	17	MNCL1_MANAGEMENTPGQL_NODO_PROD	172.25.6.19	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	15360	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	15	3	2	\N	\N	\N	Creada y entregada a Ruben Aguilera	Creada y entregada a Ruben Aguilera
+1487	2	17	MNCL1_PGQLPOOL_NODE_1_PROD	172.25.6.20	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	20480	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	true	15	3	2	\N	\N	\N	Creada y entregada a Ruben Aguilera	Creada y entregada a Ruben Aguilera
+1488	2	17	MNCL1_PGQLDATA_NODE_1_PROD	172.25.6.21	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	102400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	true	15	3	2	\N	\N	\N	Creada y entregada a Ruben Aguilera	Creada y entregada a Ruben Aguilera
+1489	2	17	MNAPPMIDAS001_PROD	192.168.170.14	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	153600	0	intel	2400	16	0	0	\N	\N	1	Sin definir	2	false	35	2	1	\N	\N	\N	Creado y entregado a Roxana Peña	Creado y entregado a Roxana Peña
+1490	2	17	MNFILESERVERMIDAS001_PROD	172.25.6.22 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	575488	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	35	3	1	\N	\N	\N	Creado y entregado a Roxana Peña	Creado y entregado a Roxana Peña
+1491	2	33	MNHL7002_ROD	172.25.6.23	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	256000	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	3	1	\N	\N	\N	Creado y entregado a Eugenio y Zeke	Creado y entregado a Eugenio y Zeke
+1492	2	19	MNVIHRECO001_PROD	192.168.170.16	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	6144	102400	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	18	2	1	\N	\N	\N	Creado y entregado a Sergio Roca	Creado y entregado a Sergio Roca
+1493	2	54	MNPWIMDB001_PROD	172.25.64.33	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION 81 / 1024	65536	1131520	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	18	3	2	\N	\N	\N	Crear y entregar a Gustavo	Crear y entregar a Gustavo
+1494	2	19	MNRASAPP_PROD	192.168.170.20	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	102400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	36	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
+1495	2	42	MN_RASINTER_PROD	192.168.170.21	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION 60/40	16384	102400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	36	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
+1496	2	19	MNRASMDB_PROD	192.168.170.22	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	307200	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	36	2	2	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
+1497	2	19	MNRASCUM_PROD	192.168.170.23	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	204800	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	36	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
+1498	2	19	MNRASJENK_PROD	192.168.170.24	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	102400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	36	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
+1499	2	19	MNRASREDCAP_PROD	192.168.170.25	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	4096	102400	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	36	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
+1500	2	19	MNRASNFS_PROD	192.168.170.26	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	4096000	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	36	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
+1501	2	41	MNDNSPUBLICOSEC_002_PROD	 192.168.170.18	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	102400	0	intel	2400	4	0	0	\N	\N	1	Sin definir	2	false	16	2	1	\N	\N	\N	Creada y entregada a Infra	Creada y entregada a Infra
+1502	2	46	MNTELERISPACSBD001_PROD	172.25.6.29	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION 100 /500	16384	614400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	24	3	2	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
+1503	2	46	MNTELERISPACS001_PROD	192.168.170.29	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	24	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
+1504	2	19	MNCRMINSAL001_PROD	192.168.170.28	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	204800	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	24	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
+1505	2	46	MNTELERISPACSDATA001_PROD	192.168.170.31	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	24	2	1	\N	\N	\N	Creada y entregada a Jorge	Creada y entregada a Jorge
+1506	2	46	MNTELERISPACSBD002_PROD	172.25.6.32	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION 100 /500	16384	614400	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	24	3	2	\N	\N	\N	Creada y entregada a Jorge	Creada y entregada a Jorge
+1507	2	20	MNAPP_ASDIGITAL001_PROD	192.168.170.33	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	204800	0	intel	2400	16	0	0	\N	\N	1	Sin definir	2	false	35	2	1	\N	\N	\N	Creada y entregada Sandra	Creada y entregada Sandra
+1508	2	20	MNAPP_PROGRAMACION001_PROD	192.168.170.34	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	307200	0	intel	2400	16	0	0	\N	\N	1	Sin definir	2	false	35	2	1	\N	\N	\N	Creada y entregada Sandra	Creada y entregada Sandra
+1509	2	20	MNAPP_PAGO001_PROD	192.168.170.35	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	204800	0	intel	2400	16	0	0	\N	\N	1	Sin definir	2	false	35	2	1	\N	\N	\N	Creada y entregada Sandra	Creada y entregada Sandra
+1510	2	20	MNAPP_GEN001_PROD	192.168.170.36	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	307200	0	intel	2400	16	0	0	\N	\N	1	Sin definir	2	false	35	2	1	\N	\N	\N	Creada y entregada Sandra	Creada y entregada Sandra
+1511	2	20	MNAPP_EMERGENCIA001_PROD	192.168.170.37	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	307200	0	intel	2400	16	0	0	\N	\N	1	Sin definir	2	false	35	2	1	\N	\N	\N	Creada y entregada Sandra	Creada y entregada Sandra
+1512	2	20	MNBD_MIDAS_PROD	172.25.64.34	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	512000	0	intel	2400	32	0	0	\N	\N	1	Sin definir	2	false	35	3	2	\N	\N	\N	Solicitada	Solicitada
+1513	2	46	MNTELERISPACS002_PROD	192.168.170.43 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	24	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
+1514	2	46	MNTELERISPACS003_PROD	192.168.170.44 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	24	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
+1515	2	46	MNTELERISPACS004_PROD	192.168.170.45 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	24	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
+1516	2	46	MNTELERISPACS005_PROD	192.168.170.46 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	24	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
+1517	2	46	MNTELERISPACS006_PROD	192.168.170.47 	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	153600	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	24	2	1	\N	\N	\N	Creada y entregada a Lucia	Creada y entregada a Lucia
+1518	2	55	MNPORTALPM_APP02_PROD	192.168.170.30	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	102400	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	33	2	1	\N	\N	\N	Entregado a Seguridad	Entregado a Seguridad
+1519	2	19	MNSGC001_PROD	192.168.170.50	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	16384	71680	0	intel	2400	2	0	0	\N	\N	1	Sin definir	2	false	37	2	1	\N	\N	\N	Solicitada	Solicitada
+1520	2	23	MNHADOOPNN1PROD	172.25.33.40	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	210944	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	38	3	1	\N	\N	\N	Por Solicitar	Por Solicitar
+1521	2	23	MNHADOOPDN1PROD	172.25.33.41	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	1234944	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	38	3	1	\N	\N	\N	Por Solicitar	Por Solicitar
+1522	2	23	MNHADOOPDN2PROD	172.25.33.42	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	32768	1234944	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	38	3	1	\N	\N	\N	Por Solicitar	Por Solicitar
+1523	2	20	MNAPP_SICEX001_PROD	192.168.170.51	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	70656	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	35	2	1	\N	\N	\N	Creada y entrega a Carlos y Claudio	Creada y entrega a Carlos y Claudio
+1524	2	20	MNAPP_ESCEMP001_PROD	192.168.170.52	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	PRODUCCION	8192	70656	0	intel	2400	8	0	0	\N	\N	1	Sin definir	2	false	35	2	1	\N	\N	\N	Creada y entrega a Carlos y Claudio	Creada y entrega a Carlos y Claudio
 \.
 
 
@@ -4068,6 +4122,60 @@ COPY public.servidores_estados (id_servidor_estado, id_servidor, id_estado, id_u
 759	1414	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
 760	1415	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
 761	1416	2	1	1	2018-04-26 14:29:02	2018-04-26 14:29:02	\N
+762	1471	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+763	1472	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+764	1473	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+765	1474	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+766	1475	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+767	1476	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+768	1477	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+769	1478	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+770	1479	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+771	1480	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+772	1481	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+773	1482	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+774	1483	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+775	1484	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+776	1485	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+777	1486	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+778	1487	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+779	1488	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+780	1489	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+781	1490	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+782	1491	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+783	1492	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+784	1493	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+785	1494	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+786	1495	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+787	1496	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+788	1497	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+789	1498	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+790	1499	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+791	1500	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+792	1501	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+793	1502	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+794	1503	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+795	1504	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+796	1505	12	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+797	1506	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+798	1507	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+799	1508	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+800	1509	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+801	1510	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+802	1511	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+803	1512	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+804	1513	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+805	1514	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+806	1515	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+807	1516	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+808	1517	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+809	1518	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+810	1519	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+811	1520	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+812	1521	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+813	1522	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+814	1523	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
+815	1524	2	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N
 \.
 
 
@@ -4542,7 +4650,7 @@ SELECT pg_catalog.setval('public.aplicaciones_estados_id_seq', 1, false);
 -- Name: aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.aplicaciones_id_seq', 503, true);
+SELECT pg_catalog.setval('public.aplicaciones_id_seq', 557, true);
 
 
 --
@@ -4767,7 +4875,7 @@ SELECT pg_catalog.setval('public.servicios_usuarios_id_seq', 61, true);
 -- Name: servidor_aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.servidor_aplicaciones_id_seq', 1470, true);
+SELECT pg_catalog.setval('public.servidor_aplicaciones_id_seq', 1524, true);
 
 
 --
@@ -4776,7 +4884,7 @@ SELECT pg_catalog.setval('public.servidor_aplicaciones_id_seq', 1470, true);
 -- Name: servidor_estado_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.servidor_estado_id_seq', 761, true);
+SELECT pg_catalog.setval('public.servidor_estado_id_seq', 815, true);
 
 
 --
@@ -5408,7 +5516,7 @@ ALTER TABLE ONLY public.vlans
 CREATE INDEX password_resets_email_index ON public.password_resets USING btree (email);
 
 
--- Completed on 2018-05-07 14:56:19 -03
+-- Completed on 2018-05-07 15:19:13 -03
 
 --
 -- PostgreSQL database dump complete
