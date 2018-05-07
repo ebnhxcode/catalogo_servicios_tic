@@ -5,7 +5,7 @@
 -- Dumped from database version 10.3
 -- Dumped by pg_dump version 10.3
 
--- Started on 2018-05-07 15:19:12 -03
+-- Started on 2018-05-07 15:35:48 -03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -2322,60 +2322,60 @@ COPY public.aplicaciones (id_aplicacion, id_tipo_aplicacion, id_servicio, id_dom
 501	43	33	1	PORTALCAUTIVO	Template: Entregado a Seguridad ;  Environtment: Portal Cautivo			192.168.70.27		false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1415	\N	\N
 502	45	15	1	SAMU	Template: Creada y entregada a Sergio Roca ;  Environtment: PROYECTO SAMU	alertatemprana.minsal.cl	alertatemprana.minsal.cl	192.168.70.36	alertatemprana	false	24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1312	\N	\N
 503	43	34	1	vacunas	vacunas	vacunas	http://vacunas.minsal.cl	10.8.139.75	vacunas	0	1	1	2018-04-26 14:41:45	2018-04-26 14:41:45	\N	1416	\N	\N
-504	43	12	33	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			192.168.170.10			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1471	\N	\N
-505	43	12	33	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			192.168.170.11			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1472	\N	\N
-506	43	12	33	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.89.10			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1473	\N	\N
-507	43	12	33	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.89.11			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1474	\N	\N
-508	43	12	33	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.90.10			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1475	\N	\N
-509	43	12	33	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.90.11			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1476	\N	\N
-510	43	12	33	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.90.12			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1477	\N	\N
-511	43	12	33	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.90.13			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1478	\N	\N
-512	43	12	33	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.90.14			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1479	\N	\N
-513	43	12	33	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.90.15			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1480	\N	\N
-514	43	12	33	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.90.16			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1481	\N	\N
-515	43	12	33	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.90.17			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1482	\N	\N
-516	44	15	17	Cluster BD MySQL PROD	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Creada y entregada a Ruben Aguilera			172.25.6.17 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1483	\N	\N
-517	44	15	17	Cluster BD MySQL PROD	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Creada y entregada a Ruben Aguilera			172.25.6.18 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1484	\N	\N
-518	44	15	17	Cluster BD MySQL PROD	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Creada y entregada a Ruben Aguilera			172.25.6.33			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1485	\N	\N
-519	44	15	17	Cluster Postgres PROD	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Creada y entregada a Ruben Aguilera			172.25.6.19			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1486	\N	\N
-520	44	15	17	Cluster Postgres PROD	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Creada y entregada a Ruben Aguilera			172.25.6.20			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1487	\N	\N
-521	44	15	17	Cluster Postgres PROD	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Creada y entregada a Ruben Aguilera			172.25.6.21			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1488	\N	\N
-522	43	35	17	MIDAS	Template: Creado y entregado a Roxana Peña ;  Environtment: Creado y entregado a Roxana Peña			192.168.170.14			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1489	\N	\N
-523	43	35	17	MIDAS	Template: Creado y entregado a Roxana Peña ;  Environtment: Creado y entregado a Roxana Peña			172.25.6.22 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1490	\N	\N
-524	43	18	33	HL7	Template: Creado y entregado a Eugenio y Zeke ;  Environtment: Creado y entregado a Eugenio y Zeke			172.25.6.23			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1491	\N	\N
-525	43	18	19	VIHRECO	Template: Creado y entregado a Sergio Roca ;  Environtment: Creado y entregado a Sergio Roca			192.168.170.16			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1492	\N	\N
-526	44	18	54	PWIM	Template: Crear y entregar a Gustavo ;  Environtment: Crear y entregar a Gustavo			172.25.64.33			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1493	\N	\N
-527	43	36	19	RASVALDIVIA	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.20			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1494	\N	\N
-528	43	36	42	RASVALDIVIA	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.21			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1495	\N	\N
-529	44	36	19	RASVALDIVIA	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.22			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1496	\N	\N
-530	43	36	19	RASVALDIVIA	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.23			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1497	\N	\N
-531	43	36	19	RASVALDIVIA	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.24			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1498	\N	\N
-532	43	36	19	RASVALDIVIA	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.25			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1499	\N	\N
-533	43	36	19	RASVALDIVIA	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.26			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1500	\N	\N
-534	43	16	41	DNS PUBLICO SECUNDARIO	Template: Creada y entregada a Infra ;  Environtment: Creada y entregada a Infra			 192.168.170.18			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1501	\N	\N
-535	44	24	46	RIS	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			172.25.6.29			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1502	\N	\N
-536	43	24	46	RIS	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.29			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1503	\N	\N
-537	43	24	19	RIS	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.28			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1504	\N	\N
-538	43	24	46	RIS	Template: Creada y entregada a Jorge ;  Environtment: Creada y entregada a Jorge			192.168.170.31			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1505	\N	\N
-539	44	24	46	RIS	Template: Creada y entregada a Jorge ;  Environtment: Creada y entregada a Jorge			172.25.6.32			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1506	\N	\N
-540	43	35	20	MIDAS	Template: Creada y entregada Sandra ;  Environtment: Creada y entregada Sandra			192.168.170.33			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1507	\N	\N
-541	43	35	20	MIDAS	Template: Creada y entregada Sandra ;  Environtment: Creada y entregada Sandra			192.168.170.34			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1508	\N	\N
-542	43	35	20	MIDAS	Template: Creada y entregada Sandra ;  Environtment: Creada y entregada Sandra			192.168.170.35			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1509	\N	\N
-543	43	35	20	MIDAS	Template: Creada y entregada Sandra ;  Environtment: Creada y entregada Sandra			192.168.170.36			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1510	\N	\N
-544	43	35	20	MIDAS	Template: Creada y entregada Sandra ;  Environtment: Creada y entregada Sandra			192.168.170.37			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1511	\N	\N
-545	44	35	20	MIDAS	Template: Solicitada ;  Environtment: Solicitada			172.25.64.34			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1512	\N	\N
-546	43	24	46	RIS	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.43 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1513	\N	\N
-547	43	24	46	RIS	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.44 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1514	\N	\N
-548	43	24	46	RIS	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.45 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1515	\N	\N
-549	43	24	46	RIS	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.46 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1516	\N	\N
-550	43	24	46	RIS	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.47 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1517	\N	\N
-551	43	33	55	PORTALCAUTIVO	Template: Entregado a Seguridad ;  Environtment: Entregado a Seguridad			192.168.170.30			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1518	\N	\N
-552	43	37	19	SGC	Template: Solicitada ;  Environtment: Solicitada			192.168.170.50			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1519	\N	\N
-553	43	38	23	HADOOP	Template: Por Solicitar ;  Environtment: Por Solicitar			172.25.33.40			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1520	\N	\N
-554	43	38	23	HADOOP	Template: Por Solicitar ;  Environtment: Por Solicitar			172.25.33.41			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1521	\N	\N
-555	43	38	23	HADOOP	Template: Por Solicitar ;  Environtment: Por Solicitar			172.25.33.42			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1522	\N	\N
-556	43	35	20	SICEX	Template: Creada y entrega a Carlos y Claudio ;  Environtment: Creada y entrega a Carlos y Claudio			192.168.170.51			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1523	\N	\N
-557	43	35	20	ESCRITORIO EMPRESA	Template: Creada y entrega a Carlos y Claudio ;  Environtment: Creada y entrega a Carlos y Claudio			192.168.170.52			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1524	\N	\N
+504	43	12	1	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			192.168.170.10			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1471	\N	\N
+505	43	12	1	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			192.168.170.11			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1472	\N	\N
+506	43	12	1	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.89.10			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1473	\N	\N
+507	43	12	1	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.89.11			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1474	\N	\N
+508	43	12	1	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.90.10			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1475	\N	\N
+509	43	12	1	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.90.11			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1476	\N	\N
+510	43	12	1	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.90.12			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1477	\N	\N
+511	43	12	1	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.90.13			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1478	\N	\N
+512	43	12	1	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.90.14			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1479	\N	\N
+513	43	12	1	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.90.15			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1480	\N	\N
+514	43	12	1	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.90.16			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1481	\N	\N
+515	43	12	1	APIgee	Template: Creado y entregado a Zeke ;  Environtment: Creado y entregado a Zeke			172.25.90.17			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1482	\N	\N
+516	44	15	1	Cluster BD MySQL PROD	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Creada y entregada a Ruben Aguilera			172.25.6.17 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1483	\N	\N
+517	44	15	1	Cluster BD MySQL PROD	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Creada y entregada a Ruben Aguilera			172.25.6.18 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1484	\N	\N
+518	44	15	1	Cluster BD MySQL PROD	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Creada y entregada a Ruben Aguilera			172.25.6.33			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1485	\N	\N
+519	44	15	1	Cluster Postgres PROD	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Creada y entregada a Ruben Aguilera			172.25.6.19			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1486	\N	\N
+520	44	15	1	Cluster Postgres PROD	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Creada y entregada a Ruben Aguilera			172.25.6.20			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1487	\N	\N
+521	44	15	1	Cluster Postgres PROD	Template: Creada y entregada a Ruben Aguilera ;  Environtment: Creada y entregada a Ruben Aguilera			172.25.6.21			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1488	\N	\N
+522	43	35	1	MIDAS	Template: Creado y entregado a Roxana Peña ;  Environtment: Creado y entregado a Roxana Peña			192.168.170.14			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1489	\N	\N
+523	43	35	1	MIDAS	Template: Creado y entregado a Roxana Peña ;  Environtment: Creado y entregado a Roxana Peña			172.25.6.22 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1490	\N	\N
+524	43	18	1	HL7	Template: Creado y entregado a Eugenio y Zeke ;  Environtment: Creado y entregado a Eugenio y Zeke			172.25.6.23			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1491	\N	\N
+525	43	18	1	VIHRECO	Template: Creado y entregado a Sergio Roca ;  Environtment: Creado y entregado a Sergio Roca			192.168.170.16			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1492	\N	\N
+526	44	18	1	PWIM	Template: Crear y entregar a Gustavo ;  Environtment: Crear y entregar a Gustavo			172.25.64.33			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1493	\N	\N
+527	43	36	1	RASVALDIVIA	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.20			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1494	\N	\N
+528	43	36	1	RASVALDIVIA	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.21			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1495	\N	\N
+529	44	36	1	RASVALDIVIA	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.22			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1496	\N	\N
+530	43	36	1	RASVALDIVIA	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.23			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1497	\N	\N
+531	43	36	1	RASVALDIVIA	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.24			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1498	\N	\N
+532	43	36	1	RASVALDIVIA	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.25			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1499	\N	\N
+533	43	36	1	RASVALDIVIA	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.26			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1500	\N	\N
+534	43	16	1	DNS PUBLICO SECUNDARIO	Template: Creada y entregada a Infra ;  Environtment: Creada y entregada a Infra			 192.168.170.18			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1501	\N	\N
+535	44	24	1	RIS	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			172.25.6.29			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1502	\N	\N
+536	43	24	1	RIS	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.29			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1503	\N	\N
+537	43	24	1	RIS	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.28			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1504	\N	\N
+538	43	24	1	RIS	Template: Creada y entregada a Jorge ;  Environtment: Creada y entregada a Jorge			192.168.170.31			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1505	\N	\N
+539	44	24	1	RIS	Template: Creada y entregada a Jorge ;  Environtment: Creada y entregada a Jorge			172.25.6.32			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1506	\N	\N
+540	43	35	1	MIDAS	Template: Creada y entregada Sandra ;  Environtment: Creada y entregada Sandra			192.168.170.33			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1507	\N	\N
+541	43	35	1	MIDAS	Template: Creada y entregada Sandra ;  Environtment: Creada y entregada Sandra			192.168.170.34			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1508	\N	\N
+542	43	35	1	MIDAS	Template: Creada y entregada Sandra ;  Environtment: Creada y entregada Sandra			192.168.170.35			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1509	\N	\N
+543	43	35	1	MIDAS	Template: Creada y entregada Sandra ;  Environtment: Creada y entregada Sandra			192.168.170.36			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1510	\N	\N
+544	43	35	1	MIDAS	Template: Creada y entregada Sandra ;  Environtment: Creada y entregada Sandra			192.168.170.37			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1511	\N	\N
+545	44	35	1	MIDAS	Template: Solicitada ;  Environtment: Solicitada			172.25.64.34			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1512	\N	\N
+546	43	24	1	RIS	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.43 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1513	\N	\N
+547	43	24	1	RIS	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.44 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1514	\N	\N
+548	43	24	1	RIS	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.45 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1515	\N	\N
+549	43	24	1	RIS	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.46 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1516	\N	\N
+550	43	24	1	RIS	Template: Creada y entregada a Lucia ;  Environtment: Creada y entregada a Lucia			192.168.170.47 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1517	\N	\N
+551	43	33	1	PORTALCAUTIVO	Template: Entregado a Seguridad ;  Environtment: Entregado a Seguridad			192.168.170.30			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1518	\N	\N
+552	43	37	1	SGC	Template: Solicitada ;  Environtment: Solicitada			192.168.170.50			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1519	\N	\N
+553	43	38	1	HADOOP	Template: Por Solicitar ;  Environtment: Por Solicitar			172.25.33.40			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1520	\N	\N
+554	43	38	1	HADOOP	Template: Por Solicitar ;  Environtment: Por Solicitar			172.25.33.41			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1521	\N	\N
+555	43	38	1	HADOOP	Template: Por Solicitar ;  Environtment: Por Solicitar			172.25.33.42			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1522	\N	\N
+556	43	35	1	SICEX	Template: Creada y entrega a Carlos y Claudio ;  Environtment: Creada y entrega a Carlos y Claudio			192.168.170.51			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1523	\N	\N
+557	43	35	1	ESCRITORIO EMPRESA	Template: Creada y entrega a Carlos y Claudio ;  Environtment: Creada y entrega a Carlos y Claudio			192.168.170.52			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1524	\N	\N
 \.
 
 
@@ -5516,7 +5516,7 @@ ALTER TABLE ONLY public.vlans
 CREATE INDEX password_resets_email_index ON public.password_resets USING btree (email);
 
 
--- Completed on 2018-05-07 15:19:13 -03
+-- Completed on 2018-05-07 15:35:48 -03
 
 --
 -- PostgreSQL database dump complete
