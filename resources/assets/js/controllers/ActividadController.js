@@ -154,7 +154,7 @@ const ActividadController = new Vue({
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
       inicializar: function () {
-         this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+         this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
             this.lista_objs_model = response.body.actividades || null;
             this.actividades = response.body.actividades || null;
             this.tipos_actividades = response.body.tipos_actividades || null;

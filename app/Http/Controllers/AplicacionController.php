@@ -58,24 +58,26 @@ class AplicacionController extends Controller {
       ]);
    }
 
-   public function index_ajax () {
-      $this->usuario_auth = Auth::user();
-      $this->tipos_aplicaciones = TipoAplicacion::all();
-      $this->aplicaciones = Aplicacion::with([
-         'dominio','tipo_aplicacion','servicio','servidor'
-      ])->get();
-      $this->servidores = Servidor::all();
-      $this->servicios = Servicio::all();
-      $this->dominios = Dominio::all();
-      return response()->json([
-         'status' => 200,
-         'tipos_aplicaciones' => $this->tipos_aplicaciones,
-         'aplicaciones' => $this->aplicaciones,
-         'servicios' => $this->servicios,
-         'servidores' => $this->servidores,
-         'dominios' => $this->dominios,
-         'usuario_auth' => $this->usuario_auth,
-      ]);
+   public function index_ajax (Request $request) {
+      if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
+         $this->usuario_auth = Auth::user();
+         $this->tipos_aplicaciones = TipoAplicacion::all();
+         $this->aplicaciones = Aplicacion::with([
+            'dominio','tipo_aplicacion','servicio','servidor'
+         ])->get();
+         $this->servidores = Servidor::all();
+         $this->servicios = Servicio::all();
+         $this->dominios = Dominio::all();
+         return response()->json([
+            'status' => 200,
+            'tipos_aplicaciones' => $this->tipos_aplicaciones,
+            'aplicaciones' => $this->aplicaciones,
+            'servicios' => $this->servicios,
+            'servidores' => $this->servidores,
+            'dominios' => $this->dominios,
+            'usuario_auth' => $this->usuario_auth,
+         ]);
+      }
    }
 
    public function index() {

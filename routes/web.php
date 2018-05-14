@@ -38,10 +38,15 @@ Route::get('/', function () {
 #Route::get('/embed/tipos_aplicaciones', 'TipoAplicacionController@index_componente');
 #Route::get('/embed/tipos_servidores', 'TipoServidorController@index_componente');
 
-#Rutas para los ajax de cada index.
+#Rutas para los ajax de cada index. (No olvidar proteger por perfilamiento, roles y si la peticion es ajax request. )
+#Primeras rutas
 Route::get('/ajax/servicios', 'ServicioController@index_ajax');
 Route::get('/ajax/servidores', 'ServidorController@index_ajax');
 Route::get('/ajax/aplicaciones', 'AplicacionController@index_ajax');
+
+#Rutas que le siguen a la mecanica de ruteos.
+Route::get('/ajax/actividades', 'ActividadController@index_ajax');
+Route::get('/ajax/aplicaciones_accesos', 'AplicacionAccesoController@index_ajax');
 
 
 /*

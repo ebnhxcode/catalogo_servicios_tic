@@ -24,6 +24,7 @@ class ActividadController extends Controller {
 
    public function __construct () {
       $this->middleware('auth');
+      $this->middleware('mantenedor'/*, ['except'=>['index','show','index_componente']]*/);#resrtinge a solo usuarios con permiso bajo -> D
       $this->nombre_modelo = "actividad"; //nombre tabla o de ruta
       $this->nombre_tabla = $this->nombre_ruta = "actividades";
       $this->nombre_detalle = "Actividades";
@@ -38,25 +39,25 @@ class ActividadController extends Controller {
       }
    }
 
-   
-
-   public function index(Request $request) {
-      if (!$request->wantsJson() && !$request->ajax()) {
-         return view("layouts.main", [
-            'nombre_modelo' => $this->nombre_modelo,
-            'nombre_tabla' => $this->nombre_tabla,
-            'nombre_ruta' => $this->nombre_ruta,
-            'nombre_detalle' => $this->nombre_detalle,
-            'nombre_controller' => $this->nombre_controller,
+   public function index_ajax (Request $request) {
+      if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
+         $this->usuario_auth = Auth::user();
+         $this->actividades = Actividad::all();
+         return response()->json([
+            'status' => 200,
+            'actividades' => $this->actividades,
+            'usuario_auth' => $this->usuario_auth,
          ]);
       }
+   }
 
-      $this->usuario_auth = Auth::user();
-      $this->actividades = Actividad::all();
-      return response()->json([
-         'status' => 200,
-         'actividades' => $this->actividades,
-         'usuario_auth' => $this->usuario_auth,
+   public function index() {
+      return view("layouts.main", [
+         'nombre_modelo' => $this->nombre_modelo,
+         'nombre_tabla' => $this->nombre_tabla,
+         'nombre_ruta' => $this->nombre_ruta,
+         'nombre_detalle' => $this->nombre_detalle,
+         'nombre_controller' => $this->nombre_controller,
       ]);
    }
 

@@ -79,47 +79,49 @@ class ServidorController extends Controller {
       ]);
    }
 
-   public function index_ajax () {
-      $this->usuario_auth = Auth::user();
-      $this->servidores = Servidor::with([
-         'datacentro',
-         'sistema_operativo',
-         'aplicaciones',
-         'servidor_estado.estado',
-         'ambiente',
-         'servidor_historico_cambios',
-         'cluster',
-         'servidor_lvm',
-         'servicio',
-         'vlan',
-         'tipo_servidor',
-         'tipo_respaldo_disco'
-      ])->get();
-      $this->servicios = Servicio::all();
-      $this->datacentros = Datacentro::all();
-      $this->sistemas_operativos = SistemaOperativo::with('tipo_sistema_operativo')->get();
-      $this->tipos_sistemas_operativos = TipoSistemaOperativo::all();
-      $this->estados = Estado::all();
-      $this->ambientes = Ambiente::all();
-      $this->clusters = Cluster::all();
-      $this->vlans = Vlan::all();
-      $this->tipos_servidores = TipoServidor::all();
-      $this->tipos_respaldos_discos = TipoRespaldoDisco::all();
-      return response()->json([
-         'status' => 200,
-         'servidores' => $this->servidores,
-         'servicios' => $this->servicios,
-         'datacentros' => $this->datacentros,
-         'sistemas_operativos' => $this->sistemas_operativos,
-         'tipos_sistemas_operativos' => $this->tipos_sistemas_operativos,
-         'tipos_respaldos_discos' => $this->tipos_respaldos_discos,
-         'ambientes' => $this->ambientes,
-         'clusters' => $this->clusters,
-         'vlans' => $this->vlans,
-         'tipos_servidores' => $this->tipos_servidores,
-         'estados' => $this->estados,
-         'usuario_auth' => $this->usuario_auth,
-      ]);
+   public function index_ajax (Request $request) {
+      if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
+         $this->usuario_auth = Auth::user();
+         $this->servidores = Servidor::with([
+            'datacentro',
+            'sistema_operativo',
+            'aplicaciones',
+            'servidor_estado.estado',
+            'ambiente',
+            'servidor_historico_cambios',
+            'cluster',
+            'servidor_lvm',
+            'servicio',
+            'vlan',
+            'tipo_servidor',
+            'tipo_respaldo_disco'
+         ])->get();
+         $this->servicios = Servicio::all();
+         $this->datacentros = Datacentro::all();
+         $this->sistemas_operativos = SistemaOperativo::with('tipo_sistema_operativo')->get();
+         $this->tipos_sistemas_operativos = TipoSistemaOperativo::all();
+         $this->estados = Estado::all();
+         $this->ambientes = Ambiente::all();
+         $this->clusters = Cluster::all();
+         $this->vlans = Vlan::all();
+         $this->tipos_servidores = TipoServidor::all();
+         $this->tipos_respaldos_discos = TipoRespaldoDisco::all();
+         return response()->json([
+            'status' => 200,
+            'servidores' => $this->servidores,
+            'servicios' => $this->servicios,
+            'datacentros' => $this->datacentros,
+            'sistemas_operativos' => $this->sistemas_operativos,
+            'tipos_sistemas_operativos' => $this->tipos_sistemas_operativos,
+            'tipos_respaldos_discos' => $this->tipos_respaldos_discos,
+            'ambientes' => $this->ambientes,
+            'clusters' => $this->clusters,
+            'vlans' => $this->vlans,
+            'tipos_servidores' => $this->tipos_servidores,
+            'estados' => $this->estados,
+            'usuario_auth' => $this->usuario_auth,
+         ]);
+      }
    }
 
    public function index() {

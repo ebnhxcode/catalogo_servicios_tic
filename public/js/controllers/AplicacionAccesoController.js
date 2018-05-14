@@ -4253,7 +4253,7 @@ var AplicacionAccesoController = new Vue({
       inicializar: function inicializar() {
          var _this = this;
 
-         this.$http.get('/' + this.nombre_ruta).then(function (response) {
+         this.$http.get('/ajax/' + this.nombre_ruta).then(function (response) {
             // success callback
             _this.configurar_relaciones(response.body.aplicaciones_accesos, _this.relaciones_clase);
             _this.lista_objs_model = response.body.aplicaciones_accesos || null;
