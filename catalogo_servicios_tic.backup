@@ -5,7 +5,7 @@
 -- Dumped from database version 10.3
 -- Dumped by pg_dump version 10.3
 
--- Started on 2018-05-07 16:57:37 -03
+-- Started on 2018-05-07 17:06:21 -03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -2376,16 +2376,16 @@ COPY public.aplicaciones (id_aplicacion, id_tipo_aplicacion, id_servicio, id_dom
 555	43	38	1	HADOOP	Template: Por Solicitar ;  Environtment: Por Solicitar			172.25.33.42			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1522	\N	\N
 556	43	35	1	SICEX	Template: Creada y entrega a Carlos y Claudio ;  Environtment: Creada y entrega a Carlos y Claudio			192.168.170.51			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1523	\N	\N
 557	43	35	1	ESCRITORIO EMPRESA	Template: Creada y entrega a Carlos y Claudio ;  Environtment: Creada y entrega a Carlos y Claudio			192.168.170.52			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1524	\N	\N
-558	43	14	33	ACTIVE	Template: Creada y entregada  a Eugenio Diaz (Se migra a Puerto Montt ;  Environtment: ACTIVE MQ			172.20.8.41 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1344	\N	\N
-559	43	14	33	ACTIVE	Template: Creada y entregada  a Eugenio Diaz (Se migra a Puerto Montt ;  Environtment: ACTIVE MQ			172.20.6.22 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1345	\N	\N
-560	43	14	33	ACTIVE	Template: Creada y entregada  a Eugenio Diaz (Se migra a Puerto Montt ;  Environtment: ACTIVE MQ			172.20.6.23			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1346	\N	\N
-561	50	14	32	HADOOP	Template: Servicio Virt-who ;  Environtment: Hadoop			172.20.34.41			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1203	\N	\N
-562	50	14	32	HADOOP	Template: Creada y entregada a Zeke ;  Environtment: Hadoop			172.20.34.42			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1204	\N	\N
-563	50	14	32	HADOOP	Template: Creada y entregada a Zeke ;  Environtment: Hadoop			172.20.34.43			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1205	\N	\N
-564	50	14	32	HADOOP	Template: Creada y entregada a Zeke ;  Environtment: Hadoop			172.20.34.44			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1206	\N	\N
-565	50	14	32	HADOOP	Template: Creada y entregada a Zeke ;  Environtment: Hadoop			172.20.34.45			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1207	\N	\N
-566	45	15	52	OIRS	Template: OIRS, solicitar subir OVF ;  Environtment: OIRS			192.168.20.14			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1245	\N	\N
-567	43	16	33	MONITOREO	Template: Creada y entregada a Zeke ;  Environtment: Nagios XI			192.168.20.16 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1189	\N	\N
+558	43	14	1	ACTIVE	Template: Creada y entregada  a Eugenio Diaz (Se migra a Puerto Montt ;  Environtment: ACTIVE MQ			172.20.8.41 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1344	\N	\N
+559	43	14	1	ACTIVE	Template: Creada y entregada  a Eugenio Diaz (Se migra a Puerto Montt ;  Environtment: ACTIVE MQ			172.20.6.22 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1345	\N	\N
+560	43	14	1	ACTIVE	Template: Creada y entregada  a Eugenio Diaz (Se migra a Puerto Montt ;  Environtment: ACTIVE MQ			172.20.6.23			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1346	\N	\N
+561	50	14	1	HADOOP	Template: Servicio Virt-who ;  Environtment: Hadoop			172.20.34.41			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1203	\N	\N
+562	50	14	1	HADOOP	Template: Creada y entregada a Zeke ;  Environtment: Hadoop			172.20.34.42			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1204	\N	\N
+563	50	14	1	HADOOP	Template: Creada y entregada a Zeke ;  Environtment: Hadoop			172.20.34.43			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1205	\N	\N
+564	50	14	1	HADOOP	Template: Creada y entregada a Zeke ;  Environtment: Hadoop			172.20.34.44			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1206	\N	\N
+565	50	14	1	HADOOP	Template: Creada y entregada a Zeke ;  Environtment: Hadoop			172.20.34.45			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1207	\N	\N
+566	45	15	1	OIRS	Template: OIRS, solicitar subir OVF ;  Environtment: OIRS			192.168.20.14			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1245	\N	\N
+567	43	16	1	MONITOREO	Template: Creada y entregada a Zeke ;  Environtment: Nagios XI			192.168.20.16 			24	24	2018-04-04 18:26:10	2018-04-04 18:26:10	\N	1189	\N	\N
 \.
 
 
@@ -5527,7 +5527,7 @@ ALTER TABLE ONLY public.vlans
 CREATE INDEX password_resets_email_index ON public.password_resets USING btree (email);
 
 
--- Completed on 2018-05-07 16:57:37 -03
+-- Completed on 2018-05-07 17:06:22 -03
 
 --
 -- PostgreSQL database dump complete

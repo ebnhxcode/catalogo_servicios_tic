@@ -130,6 +130,7 @@
             <dt>Filtro por estado</dt>
             <dd>
                <select class="form-control dropdown btn" data-toggle="dropdown"  v-model="filtro_estado" name="filtro_estado">
+                  <option value=""></option>
                   <option :value="e.nom_estado" v-for="e in estados" class="dropdown-item">
                      @{{ `${e.nom_estado} -> ${e.det_estado}` }}
                   </option>

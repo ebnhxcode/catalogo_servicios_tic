@@ -38,6 +38,8 @@ class ActividadController extends Controller {
       }
    }
 
+   
+
    public function index(Request $request) {
       if (!$request->wantsJson() && !$request->ajax()) {
          return view("layouts.main", [
