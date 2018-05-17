@@ -40,13 +40,46 @@ Route::get('/', function () {
 
 #Rutas para los ajax de cada index. (No olvidar proteger por perfilamiento, roles y si la peticion es ajax request. )
 #Primeras rutas
-Route::get('/ajax/servicios', 'ServicioController@index_ajax');
-Route::get('/ajax/servidores', 'ServidorController@index_ajax');
-Route::get('/ajax/aplicaciones', 'AplicacionController@index_ajax');
 
 #Rutas que le siguen a la mecanica de ruteos.
 Route::get('/ajax/actividades', 'ActividadController@index_ajax');
 Route::get('/ajax/aplicaciones_accesos', 'AplicacionAccesoController@index_ajax');
+Route::get('/ajax/aplicaciones', 'AplicacionController@index_ajax');
+
+/* En Proceso */
+Route::get('/ajax/cargos', 'CargoController@index_ajax');
+Route::get('/ajax/clusters', 'ClusterController@index_ajax');
+Route::get('/ajax/datacentros', 'DatacentroController@index_ajax');
+Route::get('/ajax/dominios', 'DatacentroController@index_ajax');
+Route::get('/ajax/estados', 'EstadoController@index_ajax');
+Route::get('/ajax/mantenedores', 'MantenedorController@index_ajax');
+Route::get('/ajax/menus', 'MenuController@index_ajax');
+Route::get('/ajax/permisos', 'PermisoController@index_ajax');
+Route::get('/ajax/roles', 'RoleController@index_ajax');
+/* End En Proceso */
+
+Route::get('/ajax/servicios', 'ServicioController@index_ajax');
+
+/* En Proceso */
+Route::get('/ajax/servicios_usuarios', 'ServicioUsuarioController@index_ajax');
+Route::get('/ajax/servidores_accesos', 'ServidorAccesoController@index_ajax');
+/* End En Proceso */
+
+Route::get('/ajax/servidores', 'ServidorController@index_ajax');
+
+/* En Proceso */
+
+Route::get('/ajax/sistemas_operativos', 'SistemaOperativoController@index_ajax');
+Route::get('/ajax/tags', 'TagController@index_ajax');
+Route::get('/ajax/tipos_aplicaciones', 'TipoAplicacionController@index_ajax');
+Route::get('/ajax/tipos_respaldos_discos', 'TipoRespaldoDiscoController@index_ajax');
+Route::get('/ajax/tipos_servidores', 'TipoServidorController@index_ajax');
+Route::get('/ajax/usuarios_bitacora_servicios', 'UsuarioBitacoraServicioController@index_ajax');
+Route::get('/ajax/usuarios', 'UsuarioController@index_ajax');
+Route::get('/ajax/vlans', 'VlanController@index_ajax');
+
+/* End En Proceso */
+
 
 
 /*
