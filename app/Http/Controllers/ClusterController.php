@@ -40,26 +40,27 @@ class ClusterController extends Controller {   private $usuario_auth;
       }
    }
 
-
-   public function index(Request $request) {
-      if (!$request->wantsJson() && !$request->ajax()) {
-         return view("layouts.main", [
-            'nombre_modelo' => $this->nombre_modelo,
-            'nombre_tabla' => $this->nombre_tabla,
-            'nombre_ruta' => $this->nombre_ruta,
-            'nombre_detalle' => $this->nombre_detalle,
-            'nombre_controller' => $this->nombre_controller,
+   public function index_java (Request $request) {
+      if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
+         $this->usuario_auth = Auth::user();
+         $this->clusters = Cluster::with(['tipo_cluster'])->get();
+         $this->tipos_clusters = TipoCluster::all();
+         return response()->json([
+            'status' => 200,
+            'clusters' => $this->clusters,
+            'tipos_clusters' => $this->tipos_clusters,
+            'usuario_auth' => $this->usuario_auth,
          ]);
       }
+   }
 
-      $this->usuario_auth = Auth::user();
-      $this->clusters = Cluster::with(['tipo_cluster'])->get();
-      $this->tipos_clusters = TipoCluster::all();
-      return response()->json([
-         'status' => 200,
-         'clusters' => $this->clusters,
-         'tipos_clusters' => $this->tipos_clusters,
-         'usuario_auth' => $this->usuario_auth,
+   public function index() {
+      return view("layouts.main", [
+         'nombre_modelo' => $this->nombre_modelo,
+         'nombre_tabla' => $this->nombre_tabla,
+         'nombre_ruta' => $this->nombre_ruta,
+         'nombre_detalle' => $this->nombre_detalle,
+         'nombre_controller' => $this->nombre_controller,
       ]);
    }
 

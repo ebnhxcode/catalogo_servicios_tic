@@ -45,6 +45,11 @@ class AplicacionAccesoController extends Controller {
       }
    }
 
+
+   /*
+    * Index componente aplica para las pantallas que estan hechas con iframes
+    * que son interfaces mas livianas como accesos directos
+    * */
    public function index_componente () {
       return view("layouts.main_para_componentes", [
          'nombre_modelo' => $this->nombre_modelo,
@@ -55,6 +60,9 @@ class AplicacionAccesoController extends Controller {
       ]);
    }
 
+   /*
+    * Index ajax aplica para traer la data de las interfaces
+    * */
    public function index_ajax (Request $request) {
       if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
          $this->usuario_auth = Auth::user();

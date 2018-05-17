@@ -42,6 +42,10 @@ class TipoRespaldoDiscoController extends Controller {
       }
    }
 
+   /*
+    * Index componente aplica para las pantallas que estan hechas con iframes
+    * que son interfaces mas livianas como accesos directos
+    * */
    public function index_componente () {
       return view("layouts.main_para_componentes", [
          'nombre_modelo' => $this->nombre_modelo,
@@ -52,24 +56,29 @@ class TipoRespaldoDiscoController extends Controller {
       ]);
    }
 
-   public function index(Request $request) {
-      if (!$request->wantsJson() && !$request->ajax()) {
-         return view("layouts.main", [
-            'nombre_modelo' => $this->nombre_modelo,
-            'nombre_tabla' => $this->nombre_tabla,
-            'nombre_ruta' => $this->nombre_ruta,
-            'nombre_detalle' => $this->nombre_detalle,
-            'nombre_detalle_singular' => $this->nombre_detalle_singular,
-            'nombre_controller' => $this->nombre_controller,
+   /*
+   * Index ajax aplica para traer la data de las interfaces
+   * */
+   public function index_ajax (Request $request) {
+      if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
+         $this->usuario_auth = Auth::user();
+         $this->tipos_respaldos_discos = TipoRespaldoDisco::all();
+         return response()->json([
+            'status' => 200,
+            'tipos_respaldos_discos' => $this->tipos_respaldos_discos,
+            'usuario_auth' => $this->usuario_auth,
          ]);
       }
+   }
 
-      $this->usuario_auth = Auth::user();
-      $this->tipos_respaldos_discos = TipoRespaldoDisco::all();
-      return response()->json([
-         'status' => 200,
-         'tipos_respaldos_discos' => $this->tipos_respaldos_discos,
-         'usuario_auth' => $this->usuario_auth,
+   public function index() {
+      return view("layouts.main", [
+         'nombre_modelo' => $this->nombre_modelo,
+         'nombre_tabla' => $this->nombre_tabla,
+         'nombre_ruta' => $this->nombre_ruta,
+         'nombre_detalle' => $this->nombre_detalle,
+         'nombre_detalle_singular' => $this->nombre_detalle_singular,
+         'nombre_controller' => $this->nombre_controller,
       ]);
    }
 

@@ -44,30 +44,35 @@ class UsuarioBitacoraServicioController extends Controller {
       }
    }
 
-   public function index(Request $request) {
-      if (!$request->wantsJson() && !$request->ajax()) {
-         return view("layouts.main", [
-            'nombre_modelo' => $this->nombre_modelo,
-            'nombre_tabla' => $this->nombre_tabla,
-            'nombre_ruta' => $this->nombre_ruta,
-            'nombre_detalle' => $this->nombre_detalle,
-            'nombre_controller' => $this->nombre_controller,
+   /*
+   * Index ajax aplica para traer la data de las interfaces
+   * */
+   public function index_ajax (Request $request) {
+      if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
+         $this->usuario_auth = Auth::user();
+         $this->actividades = Actividad::all();
+         $this->servicios = Servicio::all();
+         $this->usuarios_bitacora_servicios = UsuarioBitacoraServicio::with([
+            'usuario','servicio','actividad'
+         ])->where('id_usuario', '=', $this->usuario_auth->id_usuario)->get();
+
+         return response()->json([
+            'status' => 200,
+            'actividades' => $this->actividades,
+            'servicios' => $this->servicios,
+            'usuarios_bitacora_servicios' => $this->usuarios_bitacora_servicios,
+            'usuario_auth' => $this->usuario_auth,
          ]);
       }
+   }
 
-      $this->usuario_auth = Auth::user();
-      $this->actividades = Actividad::all();
-      $this->servicios = Servicio::all();
-      $this->usuarios_bitacora_servicios = UsuarioBitacoraServicio::with([
-          'usuario','servicio','actividad'
-      ])->where('id_usuario', '=', $this->usuario_auth->id_usuario)->get();
-
-      return response()->json([
-         'status' => 200,
-         'actividades' => $this->actividades,
-         'servicios' => $this->servicios,
-         'usuarios_bitacora_servicios' => $this->usuarios_bitacora_servicios,
-         'usuario_auth' => $this->usuario_auth,
+   public function index() {
+      return view("layouts.main", [
+         'nombre_modelo' => $this->nombre_modelo,
+         'nombre_tabla' => $this->nombre_tabla,
+         'nombre_ruta' => $this->nombre_ruta,
+         'nombre_detalle' => $this->nombre_detalle,
+         'nombre_controller' => $this->nombre_controller,
       ]);
    }
 

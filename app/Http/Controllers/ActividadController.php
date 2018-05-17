@@ -39,6 +39,9 @@ class ActividadController extends Controller {
       }
    }
 
+   /*
+    * Index ajax aplica para traer la data de las interfaces
+    * */
    public function index_ajax (Request $request) {
       if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
          $this->usuario_auth = Auth::user();

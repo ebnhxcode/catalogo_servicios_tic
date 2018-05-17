@@ -40,23 +40,25 @@ class CargoController extends Controller {
    }
 
 
-   public function index(Request $request) {
-      if (!$request->wantsJson() && !$request->ajax()) {
-         return view("layouts.main", [
-            'nombre_modelo' => $this->nombre_modelo,
-            'nombre_tabla' => $this->nombre_tabla,
-            'nombre_ruta' => $this->nombre_ruta,
-            'nombre_detalle' => $this->nombre_detalle,
-            'nombre_controller' => $this->nombre_controller,
+   public function index_ajax (Request $request) {
+      if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
+         $this->usuario_auth = Auth::user();
+         $this->cargos = Cargo::all();
+         return response()->json([
+            'status' => 200,
+            'cargos' => $this->cargos,
+            'usuario_auth' => $this->usuario_auth,
          ]);
       }
+   }
 
-      $this->usuario_auth = Auth::user();
-      $this->cargos = Cargo::all();
-      return response()->json([
-         'status' => 200,
-         'cargos' => $this->cargos,
-         'usuario_auth' => $this->usuario_auth,
+   public function index() {
+      return view("layouts.main", [
+         'nombre_modelo' => $this->nombre_modelo,
+         'nombre_tabla' => $this->nombre_tabla,
+         'nombre_ruta' => $this->nombre_ruta,
+         'nombre_detalle' => $this->nombre_detalle,
+         'nombre_controller' => $this->nombre_controller,
       ]);
    }
 

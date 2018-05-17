@@ -42,38 +42,44 @@ class MenuController extends Controller {
       }
    }
 
+   /*
+    * Index ajax aplica para traer la data de las interfaces
+    * */
+   public function index_ajax (Request $request) {
+      if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
 
-   public function index(Request $request) {
-      if (!$request->wantsJson() && !$request->ajax()) {
-         return view("layouts.main", [
-            'nombre_modelo' => $this->nombre_modelo,
-            'nombre_tabla' => $this->nombre_tabla,
-            'nombre_ruta' => $this->nombre_ruta,
-            'nombre_detalle' => $this->nombre_detalle,
-            'nombre_controller' => $this->nombre_controller,
+         $this->usuario_auth = Auth::user();
+         $this->menus = Menu::orderBy('nom_menu', 'desc')->get();
+
+         if($this->usuario_role = $this->usuario_auth->usuario_role){
+            $this->role = $this->usuario_role->role;
+            switch($this->role->nom_role){
+               case 'Administrador':
+               case 'Jefe de Area':
+               case 'Lider Equipo':
+                  $this->mantenedores = Mantenedor::orderBy('nom_mantenedor', 'asc')->get();
+                  break;
+            }
+         }
+
+         #$this->mantenedores = Mantenedor::orderBy('nom_mantenedor', 'asc')->get();
+         return response()->json([
+            'status' => 200,
+            'menus' => $this->menus,
+            'mantenedores' => $this->mantenedores,
+            'usuario_auth' => $this->usuario_auth,
          ]);
       }
+   }
 
-      $this->usuario_auth = Auth::user();
-      $this->menus = Menu::orderBy('nom_menu', 'desc')->get();
 
-      if($this->usuario_role = $this->usuario_auth->usuario_role){
-         $this->role = $this->usuario_role->role;
-         switch($this->role->nom_role){
-            case 'Administrador':
-            case 'Jefe de Area':
-            case 'Lider Equipo':
-               $this->mantenedores = Mantenedor::orderBy('nom_mantenedor', 'asc')->get();
-               break;
-         }
-      }
-
-      #$this->mantenedores = Mantenedor::orderBy('nom_mantenedor', 'asc')->get();
-      return response()->json([
-         'status' => 200,
-         'menus' => $this->menus,
-         'mantenedores' => $this->mantenedores,
-         'usuario_auth' => $this->usuario_auth,
+   public function index () {
+      return view("layouts.main", [
+         'nombre_modelo' => $this->nombre_modelo,
+         'nombre_tabla' => $this->nombre_tabla,
+         'nombre_ruta' => $this->nombre_ruta,
+         'nombre_detalle' => $this->nombre_detalle,
+         'nombre_controller' => $this->nombre_controller,
       ]);
    }
 
