@@ -3333,7 +3333,7 @@ var RoleController = new Vue({
       inicializar: function inicializar() {
          var _this = this;
 
-         this.$http.get('/' + this.nombre_ruta).then(function (response) {
+         this.$http.get('/ajax/' + this.nombre_ruta).then(function (response) {
             // success callback
             _this.configurar_relaciones(response.body.roles, _this.relaciones_clase);
 

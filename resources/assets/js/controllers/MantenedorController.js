@@ -163,7 +163,7 @@ const MantenedorController = new Vue({
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
       inicializar: function () {
-         this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+         this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
             this.lista_objs_model = response.body.mantenedores || null;
             this.mantenedores = response.body.mantenedores || null;
             this.datos_excel = response.body.mantenedores || null;

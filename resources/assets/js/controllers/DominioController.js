@@ -158,7 +158,7 @@ const DominioController = new Vue({
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
       inicializar: function () {
-         this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+         this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
             this.lista_objs_model = response.body.dominios || null;
             this.dominios = response.body.dominios || null;
             this.datos_excel = response.body.dominios || null;

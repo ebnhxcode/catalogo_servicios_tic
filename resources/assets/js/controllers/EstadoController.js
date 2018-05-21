@@ -146,7 +146,7 @@ const EstadoController = new Vue({
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
       inicializar: function () {
-         this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+         this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
             this.lista_objs_model = response.body.estados || null;
             this.estados = response.body.estados || null;
             this.datos_excel = response.body.estados || null;

@@ -2379,7 +2379,7 @@ var MantenedorController = new Vue({
       inicializar: function inicializar() {
          var _this = this;
 
-         this.$http.get('/' + this.nombre_ruta).then(function (response) {
+         this.$http.get('/ajax/' + this.nombre_ruta).then(function (response) {
             // success callback
             _this.lista_objs_model = response.body.mantenedores || null;
             _this.mantenedores = response.body.mantenedores || null;

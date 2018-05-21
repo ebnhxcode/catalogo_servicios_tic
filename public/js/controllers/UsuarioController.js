@@ -4287,7 +4287,7 @@ var UsuarioController = new Vue({
       inicializar: function inicializar() {
          var _this = this;
 
-         this.$http.get('/' + this.nombre_ruta).then(function (response) {
+         this.$http.get('/ajax/' + this.nombre_ruta).then(function (response) {
             // success callback
             //Al tener relaciones se procesan desde aqui
             _this.configurar_relaciones(response.body.usuarios, _this.relaciones_clase);

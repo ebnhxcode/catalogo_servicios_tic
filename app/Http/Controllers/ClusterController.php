@@ -40,7 +40,7 @@ class ClusterController extends Controller {   private $usuario_auth;
       }
    }
 
-   public function index_java (Request $request) {
+   public function index_ajax (Request $request) {
       if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
          $this->usuario_auth = Auth::user();
          $this->clusters = Cluster::with(['tipo_cluster'])->get();

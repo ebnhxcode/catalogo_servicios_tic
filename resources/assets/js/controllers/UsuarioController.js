@@ -214,7 +214,7 @@ const UsuarioController = new Vue({
    mixins: [inyeccion_funciones_compartidas],
    methods: {
       inicializar: function () {
-         this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+         this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
             //Al tener relaciones se procesan desde aqui
             this.configurar_relaciones(response.body.usuarios, this.relaciones_clase);
             //Se setean las variables con los datos de la clase

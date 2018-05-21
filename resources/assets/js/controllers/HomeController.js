@@ -70,7 +70,7 @@ const HomeController = new Vue({
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
       inicializar: function () {
-         this.$http.get('/menus').then(response => { // success callback
+         this.$http.get('/ajax/menus').then(response => { // success callback
 
             this.lista_objs_model = response.body.menus || null;
             this.home_items = response.body.menus || null;

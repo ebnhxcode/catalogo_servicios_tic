@@ -158,7 +158,7 @@ const TipoServidorController = new Vue({
    mixins: [inyeccion_funciones_compartidas],
    methods: {
       inicializar: function () {
-         this.$http.get(`/${this.nombre_ruta}`).then(response => { // success callback
+         this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
             //Se setean las variables con los datos de la clase
             this.lista_objs_model = response.body.tipos_servidores || null;
             this.tipos_servidores = response.body.tipos_servidores || null;

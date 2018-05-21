@@ -4248,7 +4248,7 @@ var DominioController = new Vue({
       inicializar: function inicializar() {
          var _this = this;
 
-         this.$http.get('/' + this.nombre_ruta).then(function (response) {
+         this.$http.get('/ajax/' + this.nombre_ruta).then(function (response) {
             // success callback
             _this.lista_objs_model = response.body.dominios || null;
             _this.dominios = response.body.dominios || null;

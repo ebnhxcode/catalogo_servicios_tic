@@ -4237,7 +4237,7 @@ var TipoRespaldoDiscoController = new Vue({
       inicializar: function inicializar() {
          var _this = this;
 
-         this.$http.get('/' + this.nombre_ruta).then(function (response) {
+         this.$http.get('/ajax/' + this.nombre_ruta).then(function (response) {
             // success callback
             //Se setean las variables con los datos de la clase
             _this.lista_objs_model = response.body.tipos_respaldos_discos || null;

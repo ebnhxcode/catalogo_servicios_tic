@@ -2946,7 +2946,7 @@ var HomeController = new Vue({
       inicializar: function inicializar() {
          var _this = this;
 
-         this.$http.get('/menus').then(function (response) {
+         this.$http.get('/ajax/menus').then(function (response) {
             // success callback
 
             _this.lista_objs_model = response.body.menus || null;
