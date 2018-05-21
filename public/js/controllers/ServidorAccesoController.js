@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 97);
+/******/ 	return __webpack_require__(__webpack_require__.s = 106);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2194,6 +2194,214 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
+/***/ 106:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(107);
+
+
+/***/ }),
+
+/***/ 107:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert2__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_v_clipboard__);
+
+
+
+//Se importan todas las librerias compartidas y se cargan en el objeto instanciado como alias -> hp
+
+
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default.a, { dialog: true });
+
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
+
+Vue.component('download-excel', __webpack_require__(3));
+
+var ServidorAccesoController = new Vue({
+   el: '#ServidorAccesoController',
+   data: function data() {
+      return {
+         '$': window.jQuery,
+         'pk_tabla': 'id_servidor_acceso',
+         'nombre_tabla': 'servidores_accesos', //nombre tabla o de ruta
+         'nombre_ruta': 'servidores_accesos', //nombre tabla o de ruta
+         'nombre_model': 'servidor_acceso',
+         'nombre_model_limpio': 'servidor_acceso_limpio',
+         'nombre_detalle': 'Servidores Accesos',
+         'nombre_controller': 'ServidorAccesoController',
+
+         'filtro_head': null,
+         'servidor_acceso': {
+            'usuario': null,
+            'clave': null,
+            'decrypted_clave': null,
+            'tipo_acceso': null,
+            'puerto': null,
+            'id_servidor': null,
+            'nom_servidor': null,
+            'id_usuario_registra': null,
+            'id_usuario_modifica': null,
+            'created_at': null,
+            'updated_at': null,
+            'deleted_at': null
+         },
+         'permitido_guardar': ['usuario', 'clave',
+         //'decrypted_clave',
+         'tipo_acceso', 'puerto', 'id_servidor'],
+         'relaciones_clase': [{ 'servidor': ['id_servidor', 'nom_servidor'] }],
+         'lom': {},
+         'lista_objs_model': [],
+         'servidores': [],
+         'servidores_accesos': [],
+         'datos_excel': [],
+         'usuario_auth': {},
+
+         'campos_formularios': [],
+         'errores_campos': [],
+
+         //Variables para validar si se está creando o editando, variables del modal
+         'modal_crear_activo': false,
+         'modal_actualizar_activo': false,
+         'modal_width': 90,
+
+         //Estas var se deben conservar para todos los controllers por que se ejecutan para el modal crear (blanquea)
+         'lista_actualizar_activo': false,
+
+         'id_en_edicion': null,
+
+         'orden_lista': 'asc',
+
+         /* Campos que se ven en el tablero */
+         'tabla_campos': {
+            'usuario': true,
+            //'clave':false,
+            'tipo_acceso': true,
+            'puerto': true,
+            //'id_servidor':false,
+            'nom_servidor': false,
+            //'id_usuario_registra':false,
+            //'id_usuario_modifica':false,
+            'created_at': false,
+            'updated_at': false,
+            'deleted_at': false
+         },
+
+         /* Etiquetas */
+         'tabla_labels': {
+            'usuario': 'Usuario',
+            'clave': 'Clave',
+            'tipo_acceso': 'Tipo Acceso',
+            'puerto': 'Puerto',
+            'id_servidor': 'Id Servidor',
+            'nom_servidor': 'Nombre Servidor',
+            'id_usuario_registra': 'Usuario registra',
+            'id_usuario_modifica': 'Usuario modifica',
+            'created_at': 'Creado en',
+            'updated_at': 'Actualizado en',
+            'deleted_at': 'Eliminado en'
+         },
+
+         /* Campos del modelo en el excel */
+         'excel_json_campos': {
+            'usuario': 'String',
+            'clave': 'String',
+            'tipo_acceso': 'String',
+            'puerto': 'String',
+            'id_servidor': 'String',
+            'nom_servidor': 'String',
+            //'id_usuario_registra':'String',
+            //'id_usuario_modifica':'String',
+            'created_at': 'String',
+            'updated_at': 'String',
+            'deleted_at': 'String'
+         },
+
+         'excel_json_datos': [],
+         'excel_data_contador': 0,
+
+         'append_to_json_excel': {}
+
+      };
+   },
+
+   computed: {},
+   watch: {
+      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el servidor_acceso
+      // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
+      id_en_edicion: function id_en_edicion(_id_en_edicion) {
+         if (_id_en_edicion == null) {
+            this.limpiar_objeto_clase_local();
+         } else {
+            this.buscar_objeto_clase_config_relaciones(_id_en_edicion, this.relaciones_clase);
+         }
+      },
+      //servidores_accesos se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
+      servidores_accesos: function servidores_accesos(_servidores_accesos) {
+         var self = this;
+         this.excel_json_datos = [];
+         return _servidores_accesos.map(function (servidor_acceso, index) {
+            return self.excel_json_datos.push({
+               'usuario': servidor_acceso.usuario || '-',
+               'clave': servidor_acceso.clave || '-',
+               'tipo_acceso': servidor_acceso.tipo_acceso || '-',
+               'puerto': servidor_acceso.puerto || '-',
+               'id_servidor': servidor_acceso.id_servidor || '-',
+               'nom_servidor': servidor_acceso.nom_servidor || '-',
+               //'id_usuario_registra': servidor_acceso.id_usuario_registra || '-',
+               //'id_usuario_modifica': servidor_acceso.id_usuario_modifica || '-',
+               'created_at': servidor_acceso.created_at || '-',
+               'updated_at': servidor_acceso.updated_at || '-',
+               'deleted_at': servidor_acceso.deleted_at || '-'
+            });
+         });
+      }
+   },
+   components: {
+      //'download-excel': DownloadExcel,
+   },
+   created: function created() {
+      this.inicializar();
+   },
+
+   ready: {},
+   filters: {},
+   mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
+   methods: {
+      inicializar: function inicializar() {
+         var _this = this;
+
+         this.$http.get('/ajax/' + this.nombre_ruta).then(function (response) {
+            // success callback
+            _this.configurar_relaciones(response.body.servidores_accesos, _this.relaciones_clase);
+
+            _this.lista_objs_model = response.body.servidores_accesos || null;
+            _this.servidores_accesos = response.body.servidores_accesos || null;
+            _this.datos_excel = response.body.servidores_accesos || null;
+
+            _this.servidores = response.body.servidores || null;
+
+            _this.usuario_auth = response.body.usuario_auth || null;
+         }, function (response) {
+            // error callback
+            _this.checkear_estado_respuesta_http(response.status);
+         });
+      }
+   }
+});
+
+/***/ }),
+
 /***/ 2:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4064,214 +4272,6 @@ if (false) {
 
 !function(e,t){ true?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports["v-clipboard"]=t():e["v-clipboard"]=t()}(this,function(){return function(e){function t(o){if(n[o])return n[o].exports;var r=n[o]={i:o,l:!1,exports:{}};return e[o].call(r.exports,r,r.exports,t),r.l=!0,r.exports}var n={};return t.m=e,t.c=n,t.i=function(e){return e},t.d=function(e,n,o){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:o})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="/dist/",t(t.s=0)}([function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o=function(e){var t=document.createElement("textarea"),n=!1;t.value=e,t.style.cssText="position:fixed;pointer-events:none;z-index:-9999;opacity:0;",document.body.appendChild(t),t.select();try{n=document.execCommand("copy")}catch(e){}return document.body.removeChild(t),n};t.default={install:function(e){e.prototype.$clipboard=o,e.directive("clipboard",{bind:function(e,t,n){e.addEventListener("click",function(e){if(t.hasOwnProperty("value")){var r=t.value,c={value:r,srcEvent:e},i=n.context;o(r)?i.$emit("copy",c):i.$emit("copyError",c)}})}})}}}])});
 //# sourceMappingURL=index.min.js.map
-
-/***/ }),
-
-/***/ 97:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(98);
-
-
-/***/ }),
-
-/***/ 98:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert2__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_v_clipboard__);
-
-
-
-//Se importan todas las librerias compartidas y se cargan en el objeto instanciado como alias -> hp
-
-
-
-Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default.a, { dialog: true });
-
-
-Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
-
-Vue.component('download-excel', __webpack_require__(3));
-
-var ServidorAccesoController = new Vue({
-   el: '#ServidorAccesoController',
-   data: function data() {
-      return {
-         '$': window.jQuery,
-         'pk_tabla': 'id_servidor_acceso',
-         'nombre_tabla': 'servidores_accesos', //nombre tabla o de ruta
-         'nombre_ruta': 'servidores_accesos', //nombre tabla o de ruta
-         'nombre_model': 'servidor_acceso',
-         'nombre_model_limpio': 'servidor_acceso_limpio',
-         'nombre_detalle': 'Servidores Accesos',
-         'nombre_controller': 'ServidorAccesoController',
-
-         'filtro_head': null,
-         'servidor_acceso': {
-            'usuario': null,
-            'clave': null,
-            'decrypted_clave': null,
-            'tipo_acceso': null,
-            'puerto': null,
-            'id_servidor': null,
-            'nom_servidor': null,
-            'id_usuario_registra': null,
-            'id_usuario_modifica': null,
-            'created_at': null,
-            'updated_at': null,
-            'deleted_at': null
-         },
-         'permitido_guardar': ['usuario', 'clave',
-         //'decrypted_clave',
-         'tipo_acceso', 'puerto', 'id_servidor'],
-         'relaciones_clase': [{ 'servidor': ['id_servidor', 'nom_servidor'] }],
-         'lom': {},
-         'lista_objs_model': [],
-         'servidores': [],
-         'servidores_accesos': [],
-         'datos_excel': [],
-         'usuario_auth': {},
-
-         'campos_formularios': [],
-         'errores_campos': [],
-
-         //Variables para validar si se está creando o editando, variables del modal
-         'modal_crear_activo': false,
-         'modal_actualizar_activo': false,
-         'modal_width': 90,
-
-         //Estas var se deben conservar para todos los controllers por que se ejecutan para el modal crear (blanquea)
-         'lista_actualizar_activo': false,
-
-         'id_en_edicion': null,
-
-         'orden_lista': 'asc',
-
-         /* Campos que se ven en el tablero */
-         'tabla_campos': {
-            'usuario': true,
-            //'clave':false,
-            'tipo_acceso': true,
-            'puerto': true,
-            //'id_servidor':false,
-            'nom_servidor': false,
-            //'id_usuario_registra':false,
-            //'id_usuario_modifica':false,
-            'created_at': false,
-            'updated_at': false,
-            'deleted_at': false
-         },
-
-         /* Etiquetas */
-         'tabla_labels': {
-            'usuario': 'Usuario',
-            'clave': 'Clave',
-            'tipo_acceso': 'Tipo Acceso',
-            'puerto': 'Puerto',
-            'id_servidor': 'Id Servidor',
-            'nom_servidor': 'Nombre Servidor',
-            'id_usuario_registra': 'Usuario registra',
-            'id_usuario_modifica': 'Usuario modifica',
-            'created_at': 'Creado en',
-            'updated_at': 'Actualizado en',
-            'deleted_at': 'Eliminado en'
-         },
-
-         /* Campos del modelo en el excel */
-         'excel_json_campos': {
-            'usuario': 'String',
-            'clave': 'String',
-            'tipo_acceso': 'String',
-            'puerto': 'String',
-            'id_servidor': 'String',
-            'nom_servidor': 'String',
-            //'id_usuario_registra':'String',
-            //'id_usuario_modifica':'String',
-            'created_at': 'String',
-            'updated_at': 'String',
-            'deleted_at': 'String'
-         },
-
-         'excel_json_datos': [],
-         'excel_data_contador': 0,
-
-         'append_to_json_excel': {}
-
-      };
-   },
-
-   computed: {},
-   watch: {
-      //Lo que hace este watcher o funcion de seguimiento es que cuando id en edicion es null se blanquea el servidor_acceso
-      // o el objeto al que se le está haciendo seguimiento y permite que no choque con el que se está creando
-      id_en_edicion: function id_en_edicion(_id_en_edicion) {
-         if (_id_en_edicion == null) {
-            this.limpiar_objeto_clase_local();
-         } else {
-            this.buscar_objeto_clase_config_relaciones(_id_en_edicion, this.relaciones_clase);
-         }
-      },
-      //servidores_accesos se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
-      servidores_accesos: function servidores_accesos(_servidores_accesos) {
-         var self = this;
-         this.excel_json_datos = [];
-         return _servidores_accesos.map(function (servidor_acceso, index) {
-            return self.excel_json_datos.push({
-               'usuario': servidor_acceso.usuario || '-',
-               'clave': servidor_acceso.clave || '-',
-               'tipo_acceso': servidor_acceso.tipo_acceso || '-',
-               'puerto': servidor_acceso.puerto || '-',
-               'id_servidor': servidor_acceso.id_servidor || '-',
-               'nom_servidor': servidor_acceso.nom_servidor || '-',
-               //'id_usuario_registra': servidor_acceso.id_usuario_registra || '-',
-               //'id_usuario_modifica': servidor_acceso.id_usuario_modifica || '-',
-               'created_at': servidor_acceso.created_at || '-',
-               'updated_at': servidor_acceso.updated_at || '-',
-               'deleted_at': servidor_acceso.deleted_at || '-'
-            });
-         });
-      }
-   },
-   components: {
-      //'download-excel': DownloadExcel,
-   },
-   created: function created() {
-      this.inicializar();
-   },
-
-   ready: {},
-   filters: {},
-   mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
-   methods: {
-      inicializar: function inicializar() {
-         var _this = this;
-
-         this.$http.get('/ajax/' + this.nombre_ruta).then(function (response) {
-            // success callback
-            _this.configurar_relaciones(response.body.servidores_accesos, _this.relaciones_clase);
-
-            _this.lista_objs_model = response.body.servidores_accesos || null;
-            _this.servidores_accesos = response.body.servidores_accesos || null;
-            _this.datos_excel = response.body.servidores_accesos || null;
-
-            _this.servidores = response.body.servidores || null;
-
-            _this.usuario_auth = response.body.usuario_auth || null;
-         }, function (response) {
-            // error callback
-            _this.checkear_estado_respuesta_http(response.status);
-         });
-      }
-   }
-});
 
 /***/ })
 

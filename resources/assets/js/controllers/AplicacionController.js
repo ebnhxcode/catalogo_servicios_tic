@@ -82,7 +82,9 @@ const AplicacionController = new Vue({
          'campos_formularios':[],
          'errores_campos':[],
 
-         'pagination': {},
+         'pagination': {
+            'per_page':null,
+         },
 
          //Variables para validar si se está creando o editando
          'modal_crear_activo': false,
@@ -235,13 +237,16 @@ const AplicacionController = new Vue({
    methods: {
       inicializar: function () {
          this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
-            this.configurar_relaciones(response.body.aplicaciones, this.relaciones_clase);
+            console.log(response);
+            this.configurar_relaciones(response.body.aplicaciones.data, this.relaciones_clase);
 
-            this.pagination = response.data.lista_objs_model;
 
-            this.lista_objs_model = response.body.aplicaciones || null;
-            this.aplicaciones = response.body.aplicaciones || null;
-            this.datos_excel = response.body.aplicaciones || null;
+
+            this.lista_objs_model = response.body.aplicaciones.data || null;
+            this.aplicaciones = response.body.aplicaciones.data || null;
+            this.datos_excel = response.body.aplicaciones.data || null;
+
+            this.pagination = response.body.aplicaciones.data;
 
             this.actividades = response.body.actividades || null;
 
@@ -255,7 +260,39 @@ const AplicacionController = new Vue({
             this.checkear_estado_respuesta_http(response.status);
          });
       },
-
+      // public method for navigate on paginator
+      navigate (page) {
+         //this.spinner_table_inputs = true;
+         //this.mini_spinner_table_inputs = true;
+         this.$http.get(`/ajax/${this.nombre_ruta}?page=` + page + '&per_page=' + this.pagination.per_page).then(response => {
+            // get body json data
+            console.log(response);
+            if (response.status == 200) {
+               //this.users = response.data.users.data;
+               //this.pagination = response.data.users;
+               //this.spinner_table_inputs = false;
+               //this.mini_spinner_table_inputs = false;
+            }
+         }, response => {
+            // error callback
+         });
+      },
+      navigateCustom () {
+         //this.spinner_table_inputs = true;
+         //this.mini_spinner_table_inputs = true;
+         this.$http.get(`/ajax/${this.nombre_ruta}?page=` + 1 + '&per_page=' + this.pagination.per_page).then(response => {
+            // get body json data
+            console.log(response);
+            if (response.status == 200) {
+               //this.users = response.data.users.data;
+               //this.pagination = response.data.users;
+               //this.spinner_table_inputs = false;
+               //this.mini_spinner_table_inputs = false;
+            }
+         }, response => {
+            // error callback
+         });
+      },
 
    }
 });

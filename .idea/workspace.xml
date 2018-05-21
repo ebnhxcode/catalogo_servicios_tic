@@ -2,11 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8aa2c585-d310-4a06-92e2-14a844c1db5f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/components/Paginators.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AplicacionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AplicacionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/components/DownloadExcel.vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/components/DownloadExcel.vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/ActividadController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/ActividadController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/AplicacionAccesoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/AplicacionAccesoController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/AplicacionController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/AplicacionController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/CargoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/CargoController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/ClusterController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/ClusterController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/DatacentroController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/DatacentroController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/DominioController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/DominioController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/EstadoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/EstadoController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/HomeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/HomeController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/MantenedorController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/MantenedorController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/MenuController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/MenuController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/PermisoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/PermisoController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/RoleController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/RoleController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/ServicioController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/ServicioController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/ServidorAccesoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/ServidorAccesoController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/ServidorController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/ServidorController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/SideMenuController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/SideMenuController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/SistemaOperativoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/SistemaOperativoController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/TagController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/TagController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/TipoAplicacionController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/TipoAplicacionController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/TipoRespaldoDiscoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/TipoRespaldoDiscoController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/TipoServidorController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/TipoServidorController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/UsuarioBitacoraServicioController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/UsuarioBitacoraServicioController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/UsuarioController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/UsuarioController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/controllers/VlanController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/VlanController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/components/Paginators.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/components/Paginators.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/AplicacionController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/AplicacionController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/servicios/partials/relacionados_a.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/servicios/partials/relacionados_a.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <ignored path="catalogo_servicios_tic.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,8 +77,8 @@
       <file leaf-file-name="HelperPackage.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="598">
-              <caret line="730" column="8" selection-start-line="730" selection-start-column="8" selection-end-line="730" selection-end-column="8" />
+            <state relative-caret-position="123">
+              <caret line="698" selection-start-line="698" selection-end-line="698" />
               <folding>
                 <element signature="e#375#523#0" />
                 <element signature="e#631#779#0" />
@@ -84,8 +115,8 @@
       <file leaf-file-name="AplicacionController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/AplicacionController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="239" column="60" selection-start-line="239" selection-start-column="60" selection-end-line="239" selection-end-column="60" />
+            <state relative-caret-position="429">
+              <caret line="248" column="61" selection-start-line="248" selection-start-column="61" selection-end-line="248" selection-end-column="61" />
               <folding>
                 <element signature="e#942#1606#0" />
                 <element signature="e#1637#1934#0" />
@@ -99,11 +130,56 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Paginators.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/assets/js/components/Paginators.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
+              <folding>
+                <element signature="e#300#307#1" expanded="true" />
+                <element signature="e#871#878#1" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AplicacionController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AplicacionController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="202">
+              <caret line="77" selection-start-line="77" selection-end-line="77" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="webpack.mix.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webpack.mix.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="555">
+              <caret line="37" column="87" selection-start-line="37" selection-start-column="87" selection-end-line="37" selection-end-column="87" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="main.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/layouts/main.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="173" column="24" selection-start-line="173" selection-start-column="24" selection-end-line="173" selection-end-column="24" />
+            <state relative-caret-position="521">
+              <caret line="181" column="30" selection-start-line="181" selection-start-column="30" selection-end-line="181" selection-end-column="30" />
+              <folding>
+                <element signature="e#7463#7489#0#HTML" expanded="true" />
+                <element signature="e#7824#7850#0#HTML" expanded="true" />
+                <element signature="e#9138#9164#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="relacionados_a.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/servicios/partials/relacionados_a.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="169" column="49" selection-start-line="169" selection-start-column="49" selection-end-line="169" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -123,7 +199,6 @@
       <find>usuario_mod</find>
       <find>fields</find>
       <find>mantenedores</find>
-      <find>TABLERO</find>
       <find>Mostrar</find>
       <find>excel</find>
       <find>ss:</find>
@@ -145,6 +220,7 @@
       <find>filtro_com</find>
       <find>home</find>
       <find>FILTRAR</find>
+      <find>TABLERO</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -165,8 +241,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/config/regex_patterns.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/CargoController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/DominioController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/DatacentroController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/EstadoController.php" />
@@ -179,7 +253,6 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/AplicacionAccesoController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ServidorAccesoController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ServidorController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/AplicacionController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SistemaOperativoController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/UsuarioController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/VlanController.php" />
@@ -212,9 +285,12 @@
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/HomeController.js" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MenuController.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/Paginator.vue" />
-        <option value="$PROJECT_DIR$/resources/assets/js/components/Paginators.vue" />
+        <option value="$PROJECT_DIR$/webpack.mix.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/AplicacionController.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/AplicacionController.js" />
+        <option value="$PROJECT_DIR$/resources/views/servicios/partials/relacionados_a.blade.php" />
+        <option value="$PROJECT_DIR$/resources/assets/js/components/Paginators.vue" />
         <option value="$PROJECT_DIR$/resources/views/layouts/main.blade.php" />
       </list>
     </option>
@@ -715,12 +791,12 @@
       <workItem from="1526437486025" duration="1228000" />
       <workItem from="1526563675357" duration="2001000" />
       <workItem from="1526572550652" duration="6224000" />
-      <workItem from="1526928300358" duration="4161000" />
+      <workItem from="1526928300358" duration="7538000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109478000" />
+    <option name="totallyTimeSpent" value="112855000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="878" extended-state="6" />
@@ -796,27 +872,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/EstadoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="54" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MantenedorController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="39" selection-start-line="39" selection-end-line="52" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PermisoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="40" selection-start-line="40" selection-end-line="54" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/RoleController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="155">
@@ -1105,21 +1160,41 @@
     <entry file="file://$PROJECT_DIR$/resources/assets/js/components/DownloadExcel.vue">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/Paginators.vue">
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/tabla_listar.blade.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/aplicaciones/partials/vista_principal.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+        <state relative-caret-position="-1" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/servicios/partials/relacionados_a.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="169" column="49" selection-start-line="169" selection-start-column="49" selection-end-line="169" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/AplicacionController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="248" column="61" selection-start-line="248" selection-start-column="61" selection-end-line="248" selection-end-column="61" />
           <folding>
-            <element signature="e#300#307#1" expanded="true" />
-            <element signature="e#871#878#1" expanded="true" />
+            <element signature="e#942#1606#0" />
+            <element signature="e#1637#1934#0" />
+            <element signature="e#1964#2222#0" />
+            <element signature="e#3003#3732#0" />
+            <element signature="e#3785#4686#0" />
+            <element signature="e#4764#5551#0" />
+            <element signature="e#6334#7860#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="730" column="8" selection-start-line="730" selection-start-column="8" selection-end-line="730" selection-end-column="8" />
+        <state relative-caret-position="123">
+          <caret line="698" selection-start-line="698" selection-end-line="698" />
           <folding>
             <element signature="e#375#523#0" />
             <element signature="e#631#779#0" />
@@ -1152,34 +1227,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/tabla_listar.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/aplicaciones/partials/vista_principal.blade.php">
+    <entry file="file://$PROJECT_DIR$/webpack.mix.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1" />
+        <state relative-caret-position="555">
+          <caret line="37" column="87" selection-start-line="37" selection-start-column="87" selection-end-line="37" selection-end-column="87" />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/AplicacionController.js">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AplicacionController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="239" column="60" selection-start-line="239" selection-start-column="60" selection-end-line="239" selection-end-column="60" />
+        <state relative-caret-position="202">
+          <caret line="77" selection-start-line="77" selection-end-line="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/Paginators.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
           <folding>
-            <element signature="e#942#1606#0" />
-            <element signature="e#1637#1934#0" />
-            <element signature="e#1964#2222#0" />
-            <element signature="e#3003#3732#0" />
-            <element signature="e#3785#4686#0" />
-            <element signature="e#4764#5551#0" />
-            <element signature="e#6334#7860#0" />
+            <element signature="e#300#307#1" expanded="true" />
+            <element signature="e#871#878#1" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/main.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="173" column="24" selection-start-line="173" selection-start-column="24" selection-end-line="173" selection-end-column="24" />
+        <state relative-caret-position="521">
+          <caret line="181" column="30" selection-start-line="181" selection-start-column="30" selection-end-line="181" selection-end-column="30" />
+          <folding>
+            <element signature="e#7463#7489#0#HTML" expanded="true" />
+            <element signature="e#7824#7850#0#HTML" expanded="true" />
+            <element signature="e#9138#9164#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

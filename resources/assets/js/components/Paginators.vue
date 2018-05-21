@@ -2,7 +2,7 @@
     <nav aria-label="Page navigation">
         <ul class="pagination">
             <li :class="{ disabled: pagination.current_page == 1}">
-                <a href="#!" aria-label="Previous" @click="nextPrev($event, pagination.current_page-1)">
+                <a href="#!" class="btn btn-success" aria-label="Previous" @click="nextPrev($event, pagination.current_page-1)">
                     <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
@@ -13,7 +13,7 @@
             </li>
 
             <li :class="{ disabled: pagination.current_page == pagination.last_page}">
-                <a href="#!" aria-label="Next" @click="nextPrev($event, pagination.current_page+1)">
+                <a href="#!" class="btn btn-success" aria-label="Next" @click="nextPrev($event, pagination.current_page+1)">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
             </li>

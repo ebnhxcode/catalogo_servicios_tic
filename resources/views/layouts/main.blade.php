@@ -141,45 +141,49 @@
             </div><!-- .btn-group mr-0 #mr->margin -->
          </div>
          <div class="col-sm-12">
-            <h4>
-               <div class="float-right">
-
-                  <h5>Paginar resultados</h5>
-                  <paginators :pagination="pagination" @navigate="navigate"></paginators>
-
-                  <div class="pull-left" style="padding-bottom: 10px;">
-                     Ver mas resultados <small>(top)</small>
-                     <select style="width: 8rem !important;" v-model="pagination.per_page" @change="navigateCustom"
-                             class="btn btn-default">
-                        <option selected disabled>@{{ pagination.per_page }}</option>
-                        <option :value="5">5</option>
-                        <option :value="10">10</option>
-                        <option :value="15">15</option>
-                        <option :value="20">20</option>
-                        <option :value="25">25</option>
-                        <option :value="30">30</option>
-                        <option :value="35">35</option>
-                        <option :value="40">40</option>
-                        <option :value="45">45</option>
-                        <option :value="50">50</option>
-                        <option :value="100">100</option>
-                        <option :value="250">250</option>
-                        <option :value="500">500</option>
-                        <option :value="750">750</option>
-                        <option :value="1250">1250</option>
-                        <option :value="1500">1500</option>
-                        <option :value="1750">1750</option>
-                        <option :value="2000">2000</option>
-                     </select>
-                  </div>
-
+            <div>
+               <div class="float-right" style="padding-left: 15px;">
                   <input type="text" class="form-control input-sm"
                          data-placement="top" data-toggle="tooltip" title="FILTRAR EN LA LISTA"
                          placeholder="FILTRAR EN LA LISTA" v-model="filtro_head" id="filtro_head">
                </div><!-- .btn-group mr-2 #mr->margin -->
+               <div class="float-right" style="padding-left: 15px;">
+                  <select v-model="pagination.per_page" @change="navigateCustom"
+                          class="custom-select custom-select-sm btn btn-outline-success">
+                     <option selected disabled>@{{ pagination.per_page }}</option>
+                     <option :value="5">5</option>
+                     <option :value="10">10</option>
+                     <option :value="15">15</option>
+                     <option :value="20">20</option>
+                     <option :value="25">25</option>
+                     <option :value="30">30</option>
+                     <option :value="35">35</option>
+                     <option :value="40">40</option>
+                     <option :value="45">45</option>
+                     <option :value="50">50</option>
+                     <option :value="100">100</option>
+                     <option :value="250">250</option>
+                     <option :value="500">500</option>
+                     <option :value="750">750</option>
+                     <option :value="1250">1250</option>
+                     <option :value="1500">1500</option>
+                     <option :value="1750">1750</option>
+                     <option :value="2000">2000</option>
+                  </select>
 
-               Lista de {{$nombre_detalle}}
-            </h4>
+               </div>
+
+               <div class="float-right" style="padding-left: 15px;">
+                  <paginators :pagination="pagination" @navigate="navigate"></paginators>
+
+               </div>
+
+
+               <span class="h5">
+                  Lista de {{$nombre_detalle}}
+               </span>
+            </div>
+
          </div>
          <div class="col-sm-12">
             <div class="col-sm-12" v-if="filterBy(lista_objs_model, filtro_head).length">
@@ -190,6 +194,7 @@
                   @{{ `Sin resultados para` }} ${`@{{ `${filtro_head}` }}`}
                </small>
             </div>
+
          </div>
       </div>
 
@@ -199,6 +204,7 @@
       <!-- Sección de la tabla que lista los elementos del módulo -->
 
       <div class="table-responsive pro">
+
          <!-- dir ./partials -->
 
          @include("layouts.tabla_listar")

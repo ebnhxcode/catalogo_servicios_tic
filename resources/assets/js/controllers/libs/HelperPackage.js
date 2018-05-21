@@ -696,39 +696,7 @@ export const inyeccion_funciones_compartidas = {
          return num.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
       },
 
-      // public method for navigate on paginator
-      navigate (page) {
-         //this.spinner_table_inputs = true;
-         //this.mini_spinner_table_inputs = true;
-         this.$http.get(`/ajax/${this.nombre_ruta}?page=` + page + '&per_page=' + this.pagination.per_page).then(response => {
-            // get body json data
-            console.log(response);
-            if (response.status == 200) {
-               //this.users = response.data.users.data;
-               //this.pagination = response.data.users;
-               //this.spinner_table_inputs = false;
-               //this.mini_spinner_table_inputs = false;
-            }
-         }, response => {
-            // error callback
-         });
-      },
-      navigateCustom () {
-         //this.spinner_table_inputs = true;
-         //this.mini_spinner_table_inputs = true;
-         this.$http.get(`/ajax/${this.nombre_ruta}?page=` + 1 + '&per_page=' + this.pagination.per_page).then(response => {
-            // get body json data
-            console.log(response);
-            if (response.status == 200) {
-               //this.users = response.data.users.data;
-               //this.pagination = response.data.users;
-               //this.spinner_table_inputs = false;
-               //this.mini_spinner_table_inputs = false;
-            }
-         }, response => {
-            // error callback
-         });
-      },
+
 
    }
 }

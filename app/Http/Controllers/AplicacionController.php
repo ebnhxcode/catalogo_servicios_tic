@@ -29,6 +29,7 @@ class AplicacionController extends Controller {
    private $aplicacion;
    private $new_aplicacion;
    private $validacion;
+   private $per_page;
 
 
    public function __construct () {
@@ -67,11 +68,19 @@ class AplicacionController extends Controller {
     * */
    public function index_ajax (Request $request) {
       if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
+
+
+         if (!$request->per_page) {
+            $this->per_page = 500;
+         } else {
+            $this->per_page = $request->per_page;
+         }
+
          $this->usuario_auth = Auth::user();
          $this->tipos_aplicaciones = TipoAplicacion::all();
          $this->aplicaciones = Aplicacion::with([
             'dominio','tipo_aplicacion','servicio','servidor'
-         ])->get();
+         ])->paginate((int)$this->per_page);
          $this->servidores = Servidor::all();
          $this->servicios = Servicio::all();
          $this->dominios = Dominio::all();
