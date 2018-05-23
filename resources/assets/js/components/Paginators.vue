@@ -7,7 +7,7 @@
                 </a>
             </li>
 
-            <li v-for="page in pages" track-by="$index" :class="{ active: pagination.current_page == page }">
+            <li v-for="page in pages" track-by="$index" :class="{ pro: pagination.current_page == page }">
                 <span class="btn btn-success" v-if="page == '...'">{{page}}</span>
                 <a href="#!" class="btn btn-success" v-if="page != '...'" @click="navigate($event, page)">{{page}}</a>
             </li>

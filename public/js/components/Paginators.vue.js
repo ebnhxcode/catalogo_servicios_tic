@@ -764,11 +764,15 @@ var render = function() {
           return _c(
             "li",
             {
-              class: { active: _vm.pagination.current_page == page },
+              class: { pro: _vm.pagination.current_page == page },
               attrs: { "track-by": "$index" }
             },
             [
-              page == "..." ? _c("span", [_vm._v(_vm._s(page))]) : _vm._e(),
+              page == "..."
+                ? _c("span", { staticClass: "btn btn-success" }, [
+                    _vm._v(_vm._s(page))
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               page != "..."
                 ? _c(
