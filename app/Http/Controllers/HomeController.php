@@ -14,6 +14,7 @@ class HomeController extends Controller {
     private $nombre_ruta;
     private $nombre_detalle;
     private $nombre_controller;
+   private $per_page;
 
     public function __construct() {
         $this->middleware('auth');

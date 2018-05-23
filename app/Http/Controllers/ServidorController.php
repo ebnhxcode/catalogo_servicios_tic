@@ -50,6 +50,7 @@ class ServidorController extends Controller {
    private $new_servidor_lvm;
    private $servidor_lvm;
    private $validacion;
+   private $per_page;
 
    public function __construct () {
       $this->middleware('auth');
@@ -95,7 +96,8 @@ class ServidorController extends Controller {
     * */
    public function index_ajax (Request $request) {
       if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
-         $this->usuario_auth = Auth::user();
+         $this->validar_paginacion($request);
+
          $this->servidores = Servidor::with([
             'datacentro',
             'sistema_operativo',
@@ -109,7 +111,8 @@ class ServidorController extends Controller {
             'vlan',
             'tipo_servidor',
             'tipo_respaldo_disco'
-         ])->get();
+         ])->paginate((int)$this->per_page);
+
          $this->servicios = Servicio::all();
          $this->datacentros = Datacentro::all();
          $this->sistemas_operativos = SistemaOperativo::with('tipo_sistema_operativo')->get();
@@ -120,6 +123,7 @@ class ServidorController extends Controller {
          $this->vlans = Vlan::all();
          $this->tipos_servidores = TipoServidor::all();
          $this->tipos_respaldos_discos = TipoRespaldoDisco::all();
+         $this->usuario_auth = Auth::user();
          return response()->json([
             'status' => 200,
             'servidores' => $this->servidores,

@@ -21,6 +21,7 @@ class DominioController extends Controller {
    private $dominio;
    private $new_dominio;
    private $validacion;
+   private $per_page;
 
 
    public function __construct () {
@@ -53,8 +54,11 @@ class DominioController extends Controller {
     * */
    public function index_ajax (Request $request) {
       if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
+         $this->validar_paginacion($request);
+
+         $this->dominios = Dominio::paginate((int)$this->per_page);
+
          $this->usuario_auth = Auth::user();
-         $this->dominios = Dominio::all();
          return response()->json([
             'status' => 200,
             'dominios' => $this->dominios,

@@ -35,6 +35,7 @@ class UsuarioController extends Controller {
    private $new_usuario_estado;
    private $new_usuario_cargo;
    private $validacion;
+   private $per_page;
 
    public function __construct () {
       $this->middleware('auth');
@@ -66,12 +67,13 @@ class UsuarioController extends Controller {
    * */
    public function index_ajax (Request $request) {
       if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
-         $this->usuario_auth = Auth::user();
-         $this->usuarios = User::with(['usuario_estado.estado','usuario_role.role','usuario_cargo.cargo','usuario_bitacora_servicios'])->get();
+         $this->validar_paginacion($request);
+
+         $this->usuarios = User::with(['usuario_estado.estado','usuario_role.role','usuario_cargo.cargo','usuario_bitacora_servicios'])->paginate((int)$this->per_page);
          $this->roles = Role::all();
          $this->estados = Estado::all();
          $this->cargos = Cargo::all();
-
+         $this->usuario_auth = Auth::user();
          return response()->json([
             'status' => 200,
             'usuarios' => $this->usuarios,

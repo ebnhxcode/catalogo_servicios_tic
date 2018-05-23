@@ -25,6 +25,7 @@ class UsuarioBitacoraServicioController extends Controller {
    private $usuario_bitacora_servicio;
    private $new_usuario_bitacora_servicio;
    private $validacion;
+   private $per_page;
 
 
    public function __construct () {
@@ -57,13 +58,15 @@ class UsuarioBitacoraServicioController extends Controller {
    * */
    public function index_ajax (Request $request) {
       if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
-         $this->usuario_auth = Auth::user();
+         $this->validar_paginacion($request);
+
          $this->actividades = Actividad::all();
          $this->servicios = Servicio::all();
          $this->usuarios_bitacora_servicios = UsuarioBitacoraServicio::with([
             'usuario','servicio','actividad'
-         ])->where('id_usuario', '=', $this->usuario_auth->id_usuario)->get();
+         ])->where('id_usuario', '=', $this->usuario_auth->id_usuario)->paginate((int)$this->per_page);
 
+         $this->usuario_auth = Auth::user();
          return response()->json([
             'status' => 200,
             'actividades' => $this->actividades,

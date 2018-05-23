@@ -22,6 +22,7 @@ class ClusterController extends Controller {   private $usuario_auth;
    private $cluster;
    private $new_cluster;
    private $validacion;
+   private $per_page;
 
    public function __construct () {
       $this->middleware('auth');
@@ -50,9 +51,12 @@ class ClusterController extends Controller {   private $usuario_auth;
 
    public function index_ajax (Request $request) {
       if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
-         $this->usuario_auth = Auth::user();
-         $this->clusters = Cluster::with(['tipo_cluster'])->get();
+         $this->validar_paginacion($request);
+
+         $this->clusters = Cluster::with(['tipo_cluster'])->paginate((int)$this->per_page);
          $this->tipos_clusters = TipoCluster::all();
+
+         $this->usuario_auth = Auth::user();
          return response()->json([
             'status' => 200,
             'clusters' => $this->clusters,

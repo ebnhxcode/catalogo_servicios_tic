@@ -21,6 +21,7 @@ class EstadoController extends Controller {
    private $estado;
    private $new_estado;
    private $validacion;
+   private $per_page;
 
    public function __construct () {
       $this->middleware('auth');
@@ -52,8 +53,10 @@ class EstadoController extends Controller {
     * */
    public function index_ajax (Request $request) {
       if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
+         $this->validar_paginacion($request);
+         $this->estados = Estado::paginate((int)$this->per_page);
+
          $this->usuario_auth = Auth::user();
-         $this->estados = Estado::all();
          return response()->json([
             'status' => 200,
             'estados' => $this->estados,

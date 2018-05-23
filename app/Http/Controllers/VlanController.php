@@ -21,6 +21,7 @@ class VlanController extends Controller {
    private $vlan;
    private $new_vlan;
    private $validacion;
+   private $per_page;
 
    public function __construct () {
       $this->middleware('auth');
@@ -52,8 +53,10 @@ class VlanController extends Controller {
    * */
    public function index_ajax (Request $request) {
       if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
+         $this->validar_paginacion($request);
+
+         $this->vlans = Vlan::paginate((int)$this->per_page);
          $this->usuario_auth = Auth::user();
-         $this->vlans = Vlan::all();
          return response()->json([
             'status' => 200,
             'vlans' => $this->vlans,

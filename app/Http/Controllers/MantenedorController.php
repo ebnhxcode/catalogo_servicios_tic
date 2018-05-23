@@ -18,7 +18,8 @@ class MantenedorController extends Controller {
    private $mantenedores;
    private $mantenedor;
    private $new_mantenedor;
-   private $validacion; //Uso en valicaciones de reques
+   private $validacion; //Uso en valicaciones de request
+   private $per_page;
 
    public function __construct () {
       $this->middleware('auth');
@@ -50,8 +51,10 @@ class MantenedorController extends Controller {
     * */
    public function index_ajax (Request $request) {
       if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
+         $this->validar_paginacion($request);
+         $this->mantenedores = Mantenedor::paginate((int)$this->per_page);
+
          $this->usuario_auth = Auth::user();
-         $this->mantenedores = Mantenedor::all();
          return response()->json([
             'status' => 200,
             'mantenedores' => $this->mantenedores,

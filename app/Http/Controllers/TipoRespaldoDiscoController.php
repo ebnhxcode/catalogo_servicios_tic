@@ -23,6 +23,7 @@ class TipoRespaldoDiscoController extends Controller {
    private $tipo_respaldo_disco;
    private $new_tipo_respaldo_disco;
    private $validacion;
+   private $per_page;
 
    public function __construct () {
       $this->middleware('auth');
@@ -69,8 +70,10 @@ class TipoRespaldoDiscoController extends Controller {
    * */
    public function index_ajax (Request $request) {
       if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
+         $this->validar_paginacion($request);
+
+         $this->tipos_respaldos_discos = TipoRespaldoDisco::paginate((int)$this->per_page);
          $this->usuario_auth = Auth::user();
-         $this->tipos_respaldos_discos = TipoRespaldoDisco::all();
          return response()->json([
             'status' => 200,
             'tipos_respaldos_discos' => $this->tipos_respaldos_discos,

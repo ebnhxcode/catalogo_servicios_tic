@@ -25,6 +25,7 @@ class ServicioUsuarioController extends Controller {
    private $servicio_usuario;
    private $new_servicio_usuario;
    private $validacion;
+   private $per_page;
 
    public function __construct () {
       $this->middleware('auth');
@@ -56,9 +57,12 @@ class ServicioUsuarioController extends Controller {
     * */
    public function index_ajax (Request $request) {
       if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
-         $this->usuario_auth = Auth::user();
+         /* En construccion - falta crear mantenedor */
+
          $this->servicios = User::all();
          $this->usuarios = Servicio::all();
+         $this->usuario_auth = Auth::user();
+
          return response()->json([
             'status' => 200,
             'servicio_usuario' => $this->servicio_usuario,

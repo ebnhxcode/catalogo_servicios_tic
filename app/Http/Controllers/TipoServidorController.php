@@ -22,6 +22,7 @@ class TipoServidorController extends Controller {
    private $tipo_servidor;
    private $new_tipo_servidor;
    private $validacion;
+   private $per_page;
 
    public function __construct () {
       $this->middleware('auth');
@@ -68,8 +69,10 @@ class TipoServidorController extends Controller {
    * */
    public function index_ajax (Request $request) {
       if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
+         $this->validar_paginacion($request);
+
+         $this->tipos_servidores = TipoServidor::paginate((int)$this->per_page);
          $this->usuario_auth = Auth::user();
-         $this->tipos_servidores = TipoServidor::all();
          return response()->json([
             'status' => 200,
             'tipos_servidores' => $this->tipos_servidores,

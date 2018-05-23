@@ -21,6 +21,7 @@ class CargoController extends Controller {
    private $cargo;
    private $new_cargo;
    private $validacion;
+   private $per_page;
 
    public function __construct () {
       $this->middleware('auth');
@@ -49,8 +50,10 @@ class CargoController extends Controller {
 
    public function index_ajax (Request $request) {
       if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
+         $this->validar_paginacion($request);
+         $this->cargos = Cargo::paginate((int)$this->per_page);
+
          $this->usuario_auth = Auth::user();
-         $this->cargos = Cargo::all();
          return response()->json([
             'status' => 200,
             'cargos' => $this->cargos,

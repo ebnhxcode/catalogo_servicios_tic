@@ -83,6 +83,7 @@ class AplicacionController extends Controller {
          ])->paginate((int)$this->per_page);
 
          $this->usuario_auth = Auth::user();
+
          $this->tipos_aplicaciones = TipoAplicacion::all();
          $this->servidores = Servidor::all();
          $this->servicios = Servicio::all();

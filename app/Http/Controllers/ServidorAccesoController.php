@@ -25,6 +25,7 @@ class ServidorAccesoController extends Controller {
    private $servidor_acceso;
    private $new_servidor_acceso;
    private $validacion;
+   private $per_page;
 
 
    public function __construct () {
@@ -72,10 +73,11 @@ class ServidorAccesoController extends Controller {
     * */
    public function index_ajax (Request $request) {
       if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
-         $this->usuario_auth = Auth::user();
-         $this->servidores_accesos = ServidorAcceso::with(['servidor'])->get();
-         $this->servidores = Servidor::all();
+         $this->validar_paginacion($request);
 
+         $this->servidores_accesos = ServidorAcceso::with(['servidor'])->paginate((int)$this->per_page);
+         $this->servidores = Servidor::all();
+         $this->usuario_auth = Auth::user();
          return response()->json([
             'status' => 200,
             'servidores_accesos' => $this->servidores_accesos,

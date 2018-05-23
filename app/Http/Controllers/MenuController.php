@@ -23,7 +23,8 @@ class MenuController extends Controller {
    private $role;
    private $usuario_role;
    private $new_menu;
-   private $validacion; //Uso en valicaciones de reques
+   private $validacion; //Uso en valicaciones de request
+   private $per_page;
 
    public function __construct () {
       $this->middleware('auth');
@@ -56,8 +57,10 @@ class MenuController extends Controller {
    public function index_ajax (Request $request) {
       if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
 
+         $this->validar_paginacion($request);
+
+         $this->menus = Menu::orderBy('nom_menu', 'desc')->paginate((int)$this->per_page);
          $this->usuario_auth = Auth::user();
-         $this->menus = Menu::orderBy('nom_menu', 'desc')->get();
 
          if($this->usuario_role = $this->usuario_auth->usuario_role){
             $this->role = $this->usuario_role->role;

@@ -20,6 +20,7 @@ class PermisoController extends Controller {
    private $permiso;
    private $new_permiso;
    private $validacion; //Uso en valicaciones de request
+   private $per_page;
 
    public function __construct() {
       $this->middleware('auth');
@@ -52,8 +53,10 @@ class PermisoController extends Controller {
    public function index_ajax (Request $request) {
       if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
          #$this->roles = Role::with('role_permiso.permiso')->get();
+         $this->validar_paginacion($request);
+         $this->permisos = Permiso::paginate((int)$this->per_page);
+
          $this->usuario_auth = Auth::user();
-         $this->permisos = Permiso::all();
          return response()->json([
             'status' => 200,
             'permisos' => $this->permisos,

@@ -20,6 +20,7 @@ class TagController extends Controller {
    private $tag;
    private $new_tag;
    private $validacion; //Uso en valicaciones de request
+   private $per_page;
 
    public function __construct () {
       $this->middleware('auth');
@@ -51,8 +52,11 @@ class TagController extends Controller {
    * */
    public function index_ajax (Request $request) {
       if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
+         $this->validar_paginacion($request);
+
+         $this->tags = Tag::paginate((int)$this->per_page);
          $this->usuario_auth = Auth::user();
-         $this->tags = Tag::all();
+
          return response()->json([
             'status' => 200,
             'tags' => $this->tags,
