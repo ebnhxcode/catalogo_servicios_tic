@@ -774,6 +774,7 @@ var render = function() {
                 ? _c(
                     "a",
                     {
+                      staticClass: "btn btn-success",
                       attrs: { href: "#!" },
                       on: {
                         click: function($event) {

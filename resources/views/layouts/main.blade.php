@@ -140,13 +140,19 @@
                </div>
             </div><!-- .btn-group mr-0 #mr->margin -->
          </div>
+
          <div class="col-sm-12">
+
             <div>
+
+               <!-- Filtro grid -->
                <div class="float-right" style="padding-left: 15px;">
                   <input type="text" class="form-control input-sm"
                          data-placement="top" data-toggle="tooltip" title="FILTRAR EN LA LISTA"
                          placeholder="FILTRAR EN LA LISTA" v-model="filtro_head" id="filtro_head">
                </div><!-- .btn-group mr-2 #mr->margin -->
+
+               <!-- Cantidad a paginar -->
                <div class="float-right" style="padding-left: 15px;">
                   <select v-model="pagination.per_page" @change="navigateCustom"
                           class="custom-select custom-select-sm btn btn-outline-success">
@@ -173,18 +179,20 @@
 
                </div>
 
+               <!-- Componente paginador -->
                <div class="float-right" style="padding-left: 15px;">
                   <paginators :pagination="pagination" @navigate="navigate"></paginators>
-
                </div>
-
 
                <span class="h5">
                   Lista de {{$nombre_detalle}}
                </span>
+
             </div>
 
          </div>
+
+         <!-- Filtro detalle -->
          <div class="col-sm-12">
             <div class="col-sm-12" v-if="filterBy(lista_objs_model, filtro_head).length">
                <small class="float-right">@{{ filterBy(lista_objs_model, filtro_head).length || 0 }} resultados.</small>
@@ -204,12 +212,8 @@
       <!-- Sección de la tabla que lista los elementos del módulo -->
 
       <div class="table-responsive pro">
-
          <!-- dir ./partials -->
-
          @include("layouts.tabla_listar")
-
-
       </div>
 
 

@@ -237,41 +237,46 @@ const AplicacionController = new Vue({
    methods: {
       inicializar: function () {
          this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
+
             console.log(response);
+
             this.configurar_relaciones(response.body.aplicaciones.data, this.relaciones_clase);
+            this.asignar_recursos(response);
 
-
-
-            this.lista_objs_model = response.body.aplicaciones.data || null;
-            this.aplicaciones = response.body.aplicaciones.data || null;
-            this.datos_excel = response.body.aplicaciones.data || null;
-
-            this.pagination = response.body.aplicaciones.data;
-
-            this.actividades = response.body.actividades || null;
-
-            this.tipos_aplicaciones = response.body.tipos_aplicaciones || null;
-            this.servidores = response.body.servidores || null;
-            this.servicios = response.body.servicios || null;
-            this.dominios = response.body.dominios || null;
-
-            this.usuario_auth = response.body.usuario_auth || null;
          }, response => { // error callback
             this.checkear_estado_respuesta_http(response.status);
          });
       },
+
+      asignar_recursos: function (response) {
+
+         this.lista_objs_model = response.body.aplicaciones.data || null;
+         this.aplicaciones = response.body.aplicaciones.data || null;
+         this.datos_excel = response.body.aplicaciones.data || null;
+
+         this.pagination = response.body.aplicaciones || null;
+
+         this.actividades = response.body.actividades || null;
+
+         this.tipos_aplicaciones = response.body.tipos_aplicaciones || null;
+         this.servidores = response.body.servidores || null;
+         this.servicios = response.body.servicios || null;
+         this.dominios = response.body.dominios || null;
+
+         this.usuario_auth = response.body.usuario_auth || null;
+
+      },
+
       // public method for navigate on paginator
       navigate (page) {
          //this.spinner_table_inputs = true;
          //this.mini_spinner_table_inputs = true;
          this.$http.get(`/ajax/${this.nombre_ruta}?page=` + page + '&per_page=' + this.pagination.per_page).then(response => {
             // get body json data
-            console.log(response);
+            this.aplicaciones = {};
             if (response.status == 200) {
-               //this.users = response.data.users.data;
-               //this.pagination = response.data.users;
-               //this.spinner_table_inputs = false;
-               //this.mini_spinner_table_inputs = false;
+               this.configurar_relaciones(response.body.aplicaciones.data, this.relaciones_clase);
+               this.asignar_recursos(response);
             }
          }, response => {
             // error callback
@@ -284,10 +289,8 @@ const AplicacionController = new Vue({
             // get body json data
             console.log(response);
             if (response.status == 200) {
-               //this.users = response.data.users.data;
-               //this.pagination = response.data.users;
-               //this.spinner_table_inputs = false;
-               //this.mini_spinner_table_inputs = false;
+               this.configurar_relaciones(response.body.aplicaciones.data, this.relaciones_clase);
+               this.asignar_recursos(response);
             }
          }, response => {
             // error callback

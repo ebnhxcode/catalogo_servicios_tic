@@ -71,7 +71,7 @@ class AplicacionController extends Controller {
 
 
          if (!$request->per_page) {
-            $this->per_page = 500;
+            $this->per_page = 20;
          } else {
             $this->per_page = $request->per_page;
          }

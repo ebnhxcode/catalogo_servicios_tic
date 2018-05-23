@@ -2,10 +2,10 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.3
+-- Dumped from database version 10.4
 -- Dumped by pg_dump version 10.3
 
--- Started on 2018-05-07 17:06:21 -03
+-- Started on 2018-05-22 17:38:04 -04
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -18,7 +18,7 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- TOC entry 1 (class 3079 OID 13792)
+-- TOC entry 1 (class 3079 OID 13253)
 -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
 --
 
@@ -26,7 +26,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 4291 (class 0 OID 0)
+-- TOC entry 3752 (class 0 OID 0)
 -- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
@@ -35,7 +35,7 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
 --
--- TOC entry 196 (class 1259 OID 19687)
+-- TOC entry 196 (class 1259 OID 19185)
 -- Name: accesos_aplicaciones_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -50,7 +50,7 @@ CREATE SEQUENCE public.accesos_aplicaciones_id_seq
 ALTER TABLE public.accesos_aplicaciones_id_seq OWNER TO postgres;
 
 --
--- TOC entry 197 (class 1259 OID 19689)
+-- TOC entry 197 (class 1259 OID 19187)
 -- Name: accesos_servidores_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -65,7 +65,7 @@ CREATE SEQUENCE public.accesos_servidores_id_seq
 ALTER TABLE public.accesos_servidores_id_seq OWNER TO postgres;
 
 --
--- TOC entry 198 (class 1259 OID 19691)
+-- TOC entry 198 (class 1259 OID 19189)
 -- Name: actividades_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -84,7 +84,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 199 (class 1259 OID 19693)
+-- TOC entry 199 (class 1259 OID 19191)
 -- Name: actividades; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -103,7 +103,7 @@ CREATE TABLE public.actividades (
 ALTER TABLE public.actividades OWNER TO postgres;
 
 --
--- TOC entry 200 (class 1259 OID 19700)
+-- TOC entry 200 (class 1259 OID 19198)
 -- Name: actividades_tags_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -118,7 +118,7 @@ CREATE SEQUENCE public.actividades_tags_id_seq
 ALTER TABLE public.actividades_tags_id_seq OWNER TO postgres;
 
 --
--- TOC entry 201 (class 1259 OID 19702)
+-- TOC entry 201 (class 1259 OID 19200)
 -- Name: actividades_tags; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -137,7 +137,7 @@ CREATE TABLE public.actividades_tags (
 ALTER TABLE public.actividades_tags OWNER TO postgres;
 
 --
--- TOC entry 202 (class 1259 OID 19706)
+-- TOC entry 202 (class 1259 OID 19204)
 -- Name: ambientes_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -152,7 +152,7 @@ CREATE SEQUENCE public.ambientes_id_seq
 ALTER TABLE public.ambientes_id_seq OWNER TO postgres;
 
 --
--- TOC entry 203 (class 1259 OID 19708)
+-- TOC entry 203 (class 1259 OID 19206)
 -- Name: ambientes; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -171,7 +171,7 @@ CREATE TABLE public.ambientes (
 ALTER TABLE public.ambientes OWNER TO postgres;
 
 --
--- TOC entry 204 (class 1259 OID 19715)
+-- TOC entry 204 (class 1259 OID 19213)
 -- Name: aplicaciones_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -186,7 +186,7 @@ CREATE SEQUENCE public.aplicaciones_id_seq
 ALTER TABLE public.aplicaciones_id_seq OWNER TO postgres;
 
 --
--- TOC entry 205 (class 1259 OID 19717)
+-- TOC entry 205 (class 1259 OID 19215)
 -- Name: aplicaciones; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -216,7 +216,7 @@ CREATE TABLE public.aplicaciones (
 ALTER TABLE public.aplicaciones OWNER TO postgres;
 
 --
--- TOC entry 206 (class 1259 OID 19724)
+-- TOC entry 206 (class 1259 OID 19222)
 -- Name: aplicaciones_accesos; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -239,7 +239,7 @@ CREATE TABLE public.aplicaciones_accesos (
 ALTER TABLE public.aplicaciones_accesos OWNER TO postgres;
 
 --
--- TOC entry 207 (class 1259 OID 19731)
+-- TOC entry 207 (class 1259 OID 19229)
 -- Name: aplicaciones_estados_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -254,7 +254,7 @@ CREATE SEQUENCE public.aplicaciones_estados_id_seq
 ALTER TABLE public.aplicaciones_estados_id_seq OWNER TO postgres;
 
 --
--- TOC entry 208 (class 1259 OID 19733)
+-- TOC entry 208 (class 1259 OID 19231)
 -- Name: aplicaciones_estados; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -273,7 +273,7 @@ CREATE TABLE public.aplicaciones_estados (
 ALTER TABLE public.aplicaciones_estados OWNER TO postgres;
 
 --
--- TOC entry 209 (class 1259 OID 19737)
+-- TOC entry 209 (class 1259 OID 19235)
 -- Name: aplicaciones_tags_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -288,7 +288,7 @@ CREATE SEQUENCE public.aplicaciones_tags_id_seq
 ALTER TABLE public.aplicaciones_tags_id_seq OWNER TO postgres;
 
 --
--- TOC entry 210 (class 1259 OID 19739)
+-- TOC entry 210 (class 1259 OID 19237)
 -- Name: aplicaciones_tags; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -307,7 +307,7 @@ CREATE TABLE public.aplicaciones_tags (
 ALTER TABLE public.aplicaciones_tags OWNER TO postgres;
 
 --
--- TOC entry 211 (class 1259 OID 19743)
+-- TOC entry 211 (class 1259 OID 19241)
 -- Name: aplicaciones_tecnologias_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -322,7 +322,7 @@ CREATE SEQUENCE public.aplicaciones_tecnologias_id_seq
 ALTER TABLE public.aplicaciones_tecnologias_id_seq OWNER TO postgres;
 
 --
--- TOC entry 212 (class 1259 OID 19745)
+-- TOC entry 212 (class 1259 OID 19243)
 -- Name: aplicaciones_tecnologias; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -341,7 +341,7 @@ CREATE TABLE public.aplicaciones_tecnologias (
 ALTER TABLE public.aplicaciones_tecnologias OWNER TO postgres;
 
 --
--- TOC entry 213 (class 1259 OID 19749)
+-- TOC entry 213 (class 1259 OID 19247)
 -- Name: cargos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -356,7 +356,7 @@ CREATE SEQUENCE public.cargos_id_seq
 ALTER TABLE public.cargos_id_seq OWNER TO postgres;
 
 --
--- TOC entry 214 (class 1259 OID 19751)
+-- TOC entry 214 (class 1259 OID 19249)
 -- Name: cargos; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -376,7 +376,7 @@ CREATE TABLE public.cargos (
 ALTER TABLE public.cargos OWNER TO postgres;
 
 --
--- TOC entry 215 (class 1259 OID 19758)
+-- TOC entry 215 (class 1259 OID 19256)
 -- Name: catalogos_servicios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -391,7 +391,7 @@ CREATE SEQUENCE public.catalogos_servicios_id_seq
 ALTER TABLE public.catalogos_servicios_id_seq OWNER TO postgres;
 
 --
--- TOC entry 216 (class 1259 OID 19760)
+-- TOC entry 216 (class 1259 OID 19258)
 -- Name: catalogos_servicios; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -412,7 +412,7 @@ CREATE TABLE public.catalogos_servicios (
 ALTER TABLE public.catalogos_servicios OWNER TO postgres;
 
 --
--- TOC entry 217 (class 1259 OID 19767)
+-- TOC entry 217 (class 1259 OID 19265)
 -- Name: catalogos_servicios_tags_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -427,7 +427,7 @@ CREATE SEQUENCE public.catalogos_servicios_tags_id_seq
 ALTER TABLE public.catalogos_servicios_tags_id_seq OWNER TO postgres;
 
 --
--- TOC entry 218 (class 1259 OID 19769)
+-- TOC entry 218 (class 1259 OID 19267)
 -- Name: catalogos_servicios_tags; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -446,7 +446,7 @@ CREATE TABLE public.catalogos_servicios_tags (
 ALTER TABLE public.catalogos_servicios_tags OWNER TO postgres;
 
 --
--- TOC entry 219 (class 1259 OID 19773)
+-- TOC entry 219 (class 1259 OID 19271)
 -- Name: clusters_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -461,7 +461,7 @@ CREATE SEQUENCE public.clusters_id_seq
 ALTER TABLE public.clusters_id_seq OWNER TO postgres;
 
 --
--- TOC entry 220 (class 1259 OID 19775)
+-- TOC entry 220 (class 1259 OID 19273)
 -- Name: clusters; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -482,7 +482,7 @@ CREATE TABLE public.clusters (
 ALTER TABLE public.clusters OWNER TO postgres;
 
 --
--- TOC entry 221 (class 1259 OID 19782)
+-- TOC entry 221 (class 1259 OID 19280)
 -- Name: comuna; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -499,7 +499,7 @@ CREATE TABLE public.comuna (
 ALTER TABLE public.comuna OWNER TO postgres;
 
 --
--- TOC entry 222 (class 1259 OID 19788)
+-- TOC entry 222 (class 1259 OID 19286)
 -- Name: datacentros_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -514,7 +514,7 @@ CREATE SEQUENCE public.datacentros_id_seq
 ALTER TABLE public.datacentros_id_seq OWNER TO postgres;
 
 --
--- TOC entry 223 (class 1259 OID 19790)
+-- TOC entry 223 (class 1259 OID 19288)
 -- Name: datacentros; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -534,7 +534,7 @@ CREATE TABLE public.datacentros (
 ALTER TABLE public.datacentros OWNER TO postgres;
 
 --
--- TOC entry 224 (class 1259 OID 19797)
+-- TOC entry 224 (class 1259 OID 19295)
 -- Name: dominios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -549,7 +549,7 @@ CREATE SEQUENCE public.dominios_id_seq
 ALTER TABLE public.dominios_id_seq OWNER TO postgres;
 
 --
--- TOC entry 225 (class 1259 OID 19799)
+-- TOC entry 225 (class 1259 OID 19297)
 -- Name: dominios; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -571,7 +571,7 @@ CREATE TABLE public.dominios (
 ALTER TABLE public.dominios OWNER TO postgres;
 
 --
--- TOC entry 226 (class 1259 OID 19806)
+-- TOC entry 226 (class 1259 OID 19304)
 -- Name: entregas_credenciales_usuarios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -586,7 +586,7 @@ CREATE SEQUENCE public.entregas_credenciales_usuarios_id_seq
 ALTER TABLE public.entregas_credenciales_usuarios_id_seq OWNER TO postgres;
 
 --
--- TOC entry 227 (class 1259 OID 19808)
+-- TOC entry 227 (class 1259 OID 19306)
 -- Name: entregas_credenciales_usuarios; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -607,7 +607,7 @@ CREATE TABLE public.entregas_credenciales_usuarios (
 ALTER TABLE public.entregas_credenciales_usuarios OWNER TO postgres;
 
 --
--- TOC entry 228 (class 1259 OID 19815)
+-- TOC entry 228 (class 1259 OID 19313)
 -- Name: establecimientos; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -630,7 +630,7 @@ CREATE TABLE public.establecimientos (
 ALTER TABLE public.establecimientos OWNER TO postgres;
 
 --
--- TOC entry 229 (class 1259 OID 19821)
+-- TOC entry 229 (class 1259 OID 19319)
 -- Name: estados_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -645,7 +645,7 @@ CREATE SEQUENCE public.estados_id_seq
 ALTER TABLE public.estados_id_seq OWNER TO postgres;
 
 --
--- TOC entry 230 (class 1259 OID 19823)
+-- TOC entry 230 (class 1259 OID 19321)
 -- Name: estados; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -665,7 +665,7 @@ CREATE TABLE public.estados (
 ALTER TABLE public.estados OWNER TO postgres;
 
 --
--- TOC entry 231 (class 1259 OID 19830)
+-- TOC entry 231 (class 1259 OID 19328)
 -- Name: fuentes_aplicaciones_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -680,7 +680,7 @@ CREATE SEQUENCE public.fuentes_aplicaciones_id_seq
 ALTER TABLE public.fuentes_aplicaciones_id_seq OWNER TO postgres;
 
 --
--- TOC entry 232 (class 1259 OID 19832)
+-- TOC entry 232 (class 1259 OID 19330)
 -- Name: fuentes_aplicaciones; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -702,7 +702,7 @@ CREATE TABLE public.fuentes_aplicaciones (
 ALTER TABLE public.fuentes_aplicaciones OWNER TO postgres;
 
 --
--- TOC entry 233 (class 1259 OID 19839)
+-- TOC entry 233 (class 1259 OID 19337)
 -- Name: idiomas_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -717,7 +717,7 @@ CREATE SEQUENCE public.idiomas_id_seq
 ALTER TABLE public.idiomas_id_seq OWNER TO postgres;
 
 --
--- TOC entry 234 (class 1259 OID 19841)
+-- TOC entry 234 (class 1259 OID 19339)
 -- Name: idiomas; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -736,7 +736,7 @@ CREATE TABLE public.idiomas (
 ALTER TABLE public.idiomas OWNER TO postgres;
 
 --
--- TOC entry 235 (class 1259 OID 19848)
+-- TOC entry 235 (class 1259 OID 19346)
 -- Name: log_navegacion_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -751,7 +751,7 @@ CREATE SEQUENCE public.log_navegacion_id_seq
 ALTER TABLE public.log_navegacion_id_seq OWNER TO postgres;
 
 --
--- TOC entry 236 (class 1259 OID 19850)
+-- TOC entry 236 (class 1259 OID 19348)
 -- Name: log_navegacion; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -774,7 +774,7 @@ CREATE TABLE public.log_navegacion (
 ALTER TABLE public.log_navegacion OWNER TO postgres;
 
 --
--- TOC entry 237 (class 1259 OID 19857)
+-- TOC entry 237 (class 1259 OID 19355)
 -- Name: mantenedores_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -789,7 +789,7 @@ CREATE SEQUENCE public.mantenedores_id_seq
 ALTER TABLE public.mantenedores_id_seq OWNER TO postgres;
 
 --
--- TOC entry 238 (class 1259 OID 19859)
+-- TOC entry 238 (class 1259 OID 19357)
 -- Name: mantenedores; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -812,7 +812,7 @@ CREATE TABLE public.mantenedores (
 ALTER TABLE public.mantenedores OWNER TO postgres;
 
 --
--- TOC entry 239 (class 1259 OID 19866)
+-- TOC entry 239 (class 1259 OID 19364)
 -- Name: menus_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -827,7 +827,7 @@ CREATE SEQUENCE public.menus_id_seq
 ALTER TABLE public.menus_id_seq OWNER TO postgres;
 
 --
--- TOC entry 240 (class 1259 OID 19868)
+-- TOC entry 240 (class 1259 OID 19366)
 -- Name: menus; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -850,7 +850,7 @@ CREATE TABLE public.menus (
 ALTER TABLE public.menus OWNER TO postgres;
 
 --
--- TOC entry 241 (class 1259 OID 19875)
+-- TOC entry 241 (class 1259 OID 19373)
 -- Name: migrations; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -864,7 +864,7 @@ CREATE TABLE public.migrations (
 ALTER TABLE public.migrations OWNER TO postgres;
 
 --
--- TOC entry 242 (class 1259 OID 19878)
+-- TOC entry 242 (class 1259 OID 19376)
 -- Name: migrations_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -880,7 +880,7 @@ CREATE SEQUENCE public.migrations_id_seq
 ALTER TABLE public.migrations_id_seq OWNER TO postgres;
 
 --
--- TOC entry 4292 (class 0 OID 0)
+-- TOC entry 3753 (class 0 OID 0)
 -- Dependencies: 242
 -- Name: migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -889,7 +889,7 @@ ALTER SEQUENCE public.migrations_id_seq OWNED BY public.migrations.id;
 
 
 --
--- TOC entry 243 (class 1259 OID 19880)
+-- TOC entry 243 (class 1259 OID 19378)
 -- Name: pais; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -905,7 +905,7 @@ CREATE TABLE public.pais (
 ALTER TABLE public.pais OWNER TO postgres;
 
 --
--- TOC entry 244 (class 1259 OID 19886)
+-- TOC entry 244 (class 1259 OID 19384)
 -- Name: password_resets; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -919,7 +919,7 @@ CREATE TABLE public.password_resets (
 ALTER TABLE public.password_resets OWNER TO postgres;
 
 --
--- TOC entry 245 (class 1259 OID 19892)
+-- TOC entry 245 (class 1259 OID 19390)
 -- Name: permisos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -934,7 +934,7 @@ CREATE SEQUENCE public.permisos_id_seq
 ALTER TABLE public.permisos_id_seq OWNER TO postgres;
 
 --
--- TOC entry 246 (class 1259 OID 19894)
+-- TOC entry 246 (class 1259 OID 19392)
 -- Name: permisos; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -954,7 +954,7 @@ CREATE TABLE public.permisos (
 ALTER TABLE public.permisos OWNER TO postgres;
 
 --
--- TOC entry 247 (class 1259 OID 19901)
+-- TOC entry 247 (class 1259 OID 19399)
 -- Name: region; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -972,7 +972,7 @@ CREATE TABLE public.region (
 ALTER TABLE public.region OWNER TO postgres;
 
 --
--- TOC entry 248 (class 1259 OID 19907)
+-- TOC entry 248 (class 1259 OID 19405)
 -- Name: roles_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -987,7 +987,7 @@ CREATE SEQUENCE public.roles_id_seq
 ALTER TABLE public.roles_id_seq OWNER TO postgres;
 
 --
--- TOC entry 249 (class 1259 OID 19909)
+-- TOC entry 249 (class 1259 OID 19407)
 -- Name: roles; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1006,7 +1006,7 @@ CREATE TABLE public.roles (
 ALTER TABLE public.roles OWNER TO postgres;
 
 --
--- TOC entry 250 (class 1259 OID 19916)
+-- TOC entry 250 (class 1259 OID 19414)
 -- Name: roles_permisos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1021,7 +1021,7 @@ CREATE SEQUENCE public.roles_permisos_id_seq
 ALTER TABLE public.roles_permisos_id_seq OWNER TO postgres;
 
 --
--- TOC entry 251 (class 1259 OID 19918)
+-- TOC entry 251 (class 1259 OID 19416)
 -- Name: roles_permisos; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1040,7 +1040,7 @@ CREATE TABLE public.roles_permisos (
 ALTER TABLE public.roles_permisos OWNER TO postgres;
 
 --
--- TOC entry 252 (class 1259 OID 19922)
+-- TOC entry 252 (class 1259 OID 19420)
 -- Name: servicio_salud; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1058,7 +1058,7 @@ CREATE TABLE public.servicio_salud (
 ALTER TABLE public.servicio_salud OWNER TO postgres;
 
 --
--- TOC entry 253 (class 1259 OID 19928)
+-- TOC entry 253 (class 1259 OID 19426)
 -- Name: servicios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1073,7 +1073,7 @@ CREATE SEQUENCE public.servicios_id_seq
 ALTER TABLE public.servicios_id_seq OWNER TO postgres;
 
 --
--- TOC entry 254 (class 1259 OID 19930)
+-- TOC entry 254 (class 1259 OID 19428)
 -- Name: servicios; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1093,7 +1093,7 @@ CREATE TABLE public.servicios (
 ALTER TABLE public.servicios OWNER TO postgres;
 
 --
--- TOC entry 255 (class 1259 OID 19937)
+-- TOC entry 255 (class 1259 OID 19435)
 -- Name: servicios_estados_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1108,7 +1108,7 @@ CREATE SEQUENCE public.servicios_estados_id_seq
 ALTER TABLE public.servicios_estados_id_seq OWNER TO postgres;
 
 --
--- TOC entry 256 (class 1259 OID 19939)
+-- TOC entry 256 (class 1259 OID 19437)
 -- Name: servicios_estados; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1127,7 +1127,7 @@ CREATE TABLE public.servicios_estados (
 ALTER TABLE public.servicios_estados OWNER TO postgres;
 
 --
--- TOC entry 257 (class 1259 OID 19943)
+-- TOC entry 257 (class 1259 OID 19441)
 -- Name: servicios_permisos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1142,7 +1142,7 @@ CREATE SEQUENCE public.servicios_permisos_id_seq
 ALTER TABLE public.servicios_permisos_id_seq OWNER TO postgres;
 
 --
--- TOC entry 258 (class 1259 OID 19945)
+-- TOC entry 258 (class 1259 OID 19443)
 -- Name: servicios_permisos; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1161,7 +1161,7 @@ CREATE TABLE public.servicios_permisos (
 ALTER TABLE public.servicios_permisos OWNER TO postgres;
 
 --
--- TOC entry 259 (class 1259 OID 19949)
+-- TOC entry 259 (class 1259 OID 19447)
 -- Name: servicios_tags_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1176,7 +1176,7 @@ CREATE SEQUENCE public.servicios_tags_id_seq
 ALTER TABLE public.servicios_tags_id_seq OWNER TO postgres;
 
 --
--- TOC entry 260 (class 1259 OID 19951)
+-- TOC entry 260 (class 1259 OID 19449)
 -- Name: servicios_tags; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1195,7 +1195,7 @@ CREATE TABLE public.servicios_tags (
 ALTER TABLE public.servicios_tags OWNER TO postgres;
 
 --
--- TOC entry 261 (class 1259 OID 19955)
+-- TOC entry 261 (class 1259 OID 19453)
 -- Name: servicios_usuarios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1210,7 +1210,7 @@ CREATE SEQUENCE public.servicios_usuarios_id_seq
 ALTER TABLE public.servicios_usuarios_id_seq OWNER TO postgres;
 
 --
--- TOC entry 262 (class 1259 OID 19957)
+-- TOC entry 262 (class 1259 OID 19455)
 -- Name: servicios_usuarios; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1229,7 +1229,7 @@ CREATE TABLE public.servicios_usuarios (
 ALTER TABLE public.servicios_usuarios OWNER TO postgres;
 
 --
--- TOC entry 263 (class 1259 OID 19961)
+-- TOC entry 263 (class 1259 OID 19459)
 -- Name: servidor_aplicaciones_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1244,7 +1244,7 @@ CREATE SEQUENCE public.servidor_aplicaciones_id_seq
 ALTER TABLE public.servidor_aplicaciones_id_seq OWNER TO postgres;
 
 --
--- TOC entry 264 (class 1259 OID 19963)
+-- TOC entry 264 (class 1259 OID 19461)
 -- Name: servidor_estado_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1259,7 +1259,7 @@ CREATE SEQUENCE public.servidor_estado_id_seq
 ALTER TABLE public.servidor_estado_id_seq OWNER TO postgres;
 
 --
--- TOC entry 265 (class 1259 OID 19965)
+-- TOC entry 265 (class 1259 OID 19463)
 -- Name: servidor_historico_cambios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1274,7 +1274,7 @@ CREATE SEQUENCE public.servidor_historico_cambios_id_seq
 ALTER TABLE public.servidor_historico_cambios_id_seq OWNER TO postgres;
 
 --
--- TOC entry 266 (class 1259 OID 19967)
+-- TOC entry 266 (class 1259 OID 19465)
 -- Name: servidores; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1318,7 +1318,7 @@ CREATE TABLE public.servidores (
 ALTER TABLE public.servidores OWNER TO postgres;
 
 --
--- TOC entry 267 (class 1259 OID 19974)
+-- TOC entry 267 (class 1259 OID 19472)
 -- Name: servidores_accesos; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1341,7 +1341,7 @@ CREATE TABLE public.servidores_accesos (
 ALTER TABLE public.servidores_accesos OWNER TO postgres;
 
 --
--- TOC entry 268 (class 1259 OID 19981)
+-- TOC entry 268 (class 1259 OID 19479)
 -- Name: servidores_estados; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1360,7 +1360,7 @@ CREATE TABLE public.servidores_estados (
 ALTER TABLE public.servidores_estados OWNER TO postgres;
 
 --
--- TOC entry 269 (class 1259 OID 19985)
+-- TOC entry 269 (class 1259 OID 19483)
 -- Name: servidores_historico_cambios; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1397,7 +1397,7 @@ CREATE TABLE public.servidores_historico_cambios (
 ALTER TABLE public.servidores_historico_cambios OWNER TO postgres;
 
 --
--- TOC entry 270 (class 1259 OID 19992)
+-- TOC entry 270 (class 1259 OID 19490)
 -- Name: servidores_lvm_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1412,7 +1412,7 @@ CREATE SEQUENCE public.servidores_lvm_id_seq
 ALTER TABLE public.servidores_lvm_id_seq OWNER TO postgres;
 
 --
--- TOC entry 271 (class 1259 OID 19994)
+-- TOC entry 271 (class 1259 OID 19492)
 -- Name: servidores_lvms; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1440,7 +1440,7 @@ CREATE TABLE public.servidores_lvms (
 ALTER TABLE public.servidores_lvms OWNER TO postgres;
 
 --
--- TOC entry 272 (class 1259 OID 19998)
+-- TOC entry 272 (class 1259 OID 19496)
 -- Name: sistemas_operativos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1455,7 +1455,7 @@ CREATE SEQUENCE public.sistemas_operativos_id_seq
 ALTER TABLE public.sistemas_operativos_id_seq OWNER TO postgres;
 
 --
--- TOC entry 273 (class 1259 OID 20000)
+-- TOC entry 273 (class 1259 OID 19498)
 -- Name: sistemas_operativos; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1480,7 +1480,7 @@ CREATE TABLE public.sistemas_operativos (
 ALTER TABLE public.sistemas_operativos OWNER TO postgres;
 
 --
--- TOC entry 274 (class 1259 OID 20007)
+-- TOC entry 274 (class 1259 OID 19505)
 -- Name: tags_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1495,7 +1495,7 @@ CREATE SEQUENCE public.tags_id_seq
 ALTER TABLE public.tags_id_seq OWNER TO postgres;
 
 --
--- TOC entry 275 (class 1259 OID 20009)
+-- TOC entry 275 (class 1259 OID 19507)
 -- Name: tags; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1515,7 +1515,7 @@ CREATE TABLE public.tags (
 ALTER TABLE public.tags OWNER TO postgres;
 
 --
--- TOC entry 276 (class 1259 OID 20016)
+-- TOC entry 276 (class 1259 OID 19514)
 -- Name: tecnologia_desarrollo_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1530,7 +1530,7 @@ CREATE SEQUENCE public.tecnologia_desarrollo_id_seq
 ALTER TABLE public.tecnologia_desarrollo_id_seq OWNER TO postgres;
 
 --
--- TOC entry 277 (class 1259 OID 20018)
+-- TOC entry 277 (class 1259 OID 19516)
 -- Name: tecnologia_desarrollo; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1551,7 +1551,7 @@ CREATE TABLE public.tecnologia_desarrollo (
 ALTER TABLE public.tecnologia_desarrollo OWNER TO postgres;
 
 --
--- TOC entry 278 (class 1259 OID 20025)
+-- TOC entry 278 (class 1259 OID 19523)
 -- Name: tipos_aplicaciones_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1566,7 +1566,7 @@ CREATE SEQUENCE public.tipos_aplicaciones_id_seq
 ALTER TABLE public.tipos_aplicaciones_id_seq OWNER TO postgres;
 
 --
--- TOC entry 279 (class 1259 OID 20027)
+-- TOC entry 279 (class 1259 OID 19525)
 -- Name: tipos_aplicaciones; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1586,7 +1586,7 @@ CREATE TABLE public.tipos_aplicaciones (
 ALTER TABLE public.tipos_aplicaciones OWNER TO postgres;
 
 --
--- TOC entry 280 (class 1259 OID 20034)
+-- TOC entry 280 (class 1259 OID 19532)
 -- Name: tipos_clusters_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1601,7 +1601,7 @@ CREATE SEQUENCE public.tipos_clusters_id_seq
 ALTER TABLE public.tipos_clusters_id_seq OWNER TO postgres;
 
 --
--- TOC entry 281 (class 1259 OID 20036)
+-- TOC entry 281 (class 1259 OID 19534)
 -- Name: tipos_clusters; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1621,7 +1621,7 @@ CREATE TABLE public.tipos_clusters (
 ALTER TABLE public.tipos_clusters OWNER TO postgres;
 
 --
--- TOC entry 282 (class 1259 OID 20043)
+-- TOC entry 282 (class 1259 OID 19541)
 -- Name: tipos_respaldos_discos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1636,7 +1636,7 @@ CREATE SEQUENCE public.tipos_respaldos_discos_id_seq
 ALTER TABLE public.tipos_respaldos_discos_id_seq OWNER TO postgres;
 
 --
--- TOC entry 283 (class 1259 OID 20045)
+-- TOC entry 283 (class 1259 OID 19543)
 -- Name: tipos_respaldos_discos; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1656,7 +1656,7 @@ CREATE TABLE public.tipos_respaldos_discos (
 ALTER TABLE public.tipos_respaldos_discos OWNER TO postgres;
 
 --
--- TOC entry 284 (class 1259 OID 20052)
+-- TOC entry 284 (class 1259 OID 19550)
 -- Name: tipos_servidores_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1671,7 +1671,7 @@ CREATE SEQUENCE public.tipos_servidores_id_seq
 ALTER TABLE public.tipos_servidores_id_seq OWNER TO postgres;
 
 --
--- TOC entry 285 (class 1259 OID 20054)
+-- TOC entry 285 (class 1259 OID 19552)
 -- Name: tipos_servidores; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1691,7 +1691,7 @@ CREATE TABLE public.tipos_servidores (
 ALTER TABLE public.tipos_servidores OWNER TO postgres;
 
 --
--- TOC entry 286 (class 1259 OID 20061)
+-- TOC entry 286 (class 1259 OID 19559)
 -- Name: tipos_sistemas_operativos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1706,7 +1706,7 @@ CREATE SEQUENCE public.tipos_sistemas_operativos_id_seq
 ALTER TABLE public.tipos_sistemas_operativos_id_seq OWNER TO postgres;
 
 --
--- TOC entry 287 (class 1259 OID 20063)
+-- TOC entry 287 (class 1259 OID 19561)
 -- Name: tipos_sistemas_operativos; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1726,7 +1726,7 @@ CREATE TABLE public.tipos_sistemas_operativos (
 ALTER TABLE public.tipos_sistemas_operativos OWNER TO postgres;
 
 --
--- TOC entry 288 (class 1259 OID 20070)
+-- TOC entry 288 (class 1259 OID 19568)
 -- Name: tipos_tecnologias_desarrollo_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1741,7 +1741,7 @@ CREATE SEQUENCE public.tipos_tecnologias_desarrollo_id_seq
 ALTER TABLE public.tipos_tecnologias_desarrollo_id_seq OWNER TO postgres;
 
 --
--- TOC entry 289 (class 1259 OID 20072)
+-- TOC entry 289 (class 1259 OID 19570)
 -- Name: tipos_tecnologias_desarrollo; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1761,7 +1761,7 @@ CREATE TABLE public.tipos_tecnologias_desarrollo (
 ALTER TABLE public.tipos_tecnologias_desarrollo OWNER TO postgres;
 
 --
--- TOC entry 290 (class 1259 OID 20079)
+-- TOC entry 290 (class 1259 OID 19577)
 -- Name: usuarios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1776,7 +1776,7 @@ CREATE SEQUENCE public.usuarios_id_seq
 ALTER TABLE public.usuarios_id_seq OWNER TO postgres;
 
 --
--- TOC entry 291 (class 1259 OID 20081)
+-- TOC entry 291 (class 1259 OID 19579)
 -- Name: usuarios; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1801,7 +1801,7 @@ CREATE TABLE public.usuarios (
 ALTER TABLE public.usuarios OWNER TO postgres;
 
 --
--- TOC entry 292 (class 1259 OID 20088)
+-- TOC entry 292 (class 1259 OID 19586)
 -- Name: usuarios_bitacora_servicios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1816,7 +1816,7 @@ CREATE SEQUENCE public.usuarios_bitacora_servicios_id_seq
 ALTER TABLE public.usuarios_bitacora_servicios_id_seq OWNER TO postgres;
 
 --
--- TOC entry 293 (class 1259 OID 20090)
+-- TOC entry 293 (class 1259 OID 19588)
 -- Name: usuarios_bitacora_servicios; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1838,7 +1838,7 @@ CREATE TABLE public.usuarios_bitacora_servicios (
 ALTER TABLE public.usuarios_bitacora_servicios OWNER TO postgres;
 
 --
--- TOC entry 294 (class 1259 OID 20097)
+-- TOC entry 294 (class 1259 OID 19595)
 -- Name: usuarios_cargos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1853,7 +1853,7 @@ CREATE SEQUENCE public.usuarios_cargos_id_seq
 ALTER TABLE public.usuarios_cargos_id_seq OWNER TO postgres;
 
 --
--- TOC entry 295 (class 1259 OID 20099)
+-- TOC entry 295 (class 1259 OID 19597)
 -- Name: usuarios_cargos; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1872,7 +1872,7 @@ CREATE TABLE public.usuarios_cargos (
 ALTER TABLE public.usuarios_cargos OWNER TO postgres;
 
 --
--- TOC entry 296 (class 1259 OID 20103)
+-- TOC entry 296 (class 1259 OID 19601)
 -- Name: usuarios_estados_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1887,7 +1887,7 @@ CREATE SEQUENCE public.usuarios_estados_id_seq
 ALTER TABLE public.usuarios_estados_id_seq OWNER TO postgres;
 
 --
--- TOC entry 297 (class 1259 OID 20105)
+-- TOC entry 297 (class 1259 OID 19603)
 -- Name: usuarios_estados; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1906,7 +1906,7 @@ CREATE TABLE public.usuarios_estados (
 ALTER TABLE public.usuarios_estados OWNER TO postgres;
 
 --
--- TOC entry 298 (class 1259 OID 20109)
+-- TOC entry 298 (class 1259 OID 19607)
 -- Name: usuarios_roles_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1921,7 +1921,7 @@ CREATE SEQUENCE public.usuarios_roles_id_seq
 ALTER TABLE public.usuarios_roles_id_seq OWNER TO postgres;
 
 --
--- TOC entry 299 (class 1259 OID 20111)
+-- TOC entry 299 (class 1259 OID 19609)
 -- Name: usuarios_roles; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1940,7 +1940,7 @@ CREATE TABLE public.usuarios_roles (
 ALTER TABLE public.usuarios_roles OWNER TO postgres;
 
 --
--- TOC entry 300 (class 1259 OID 20115)
+-- TOC entry 300 (class 1259 OID 19613)
 -- Name: usuarios_servicios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1955,7 +1955,7 @@ CREATE SEQUENCE public.usuarios_servicios_id_seq
 ALTER TABLE public.usuarios_servicios_id_seq OWNER TO postgres;
 
 --
--- TOC entry 301 (class 1259 OID 20117)
+-- TOC entry 301 (class 1259 OID 19615)
 -- Name: usuarios_servicios; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1974,7 +1974,7 @@ CREATE TABLE public.usuarios_servicios (
 ALTER TABLE public.usuarios_servicios OWNER TO postgres;
 
 --
--- TOC entry 302 (class 1259 OID 20121)
+-- TOC entry 302 (class 1259 OID 19619)
 -- Name: vlans_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1989,7 +1989,7 @@ CREATE SEQUENCE public.vlans_id_seq
 ALTER TABLE public.vlans_id_seq OWNER TO postgres;
 
 --
--- TOC entry 303 (class 1259 OID 20123)
+-- TOC entry 303 (class 1259 OID 19621)
 -- Name: vlans; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -2009,7 +2009,7 @@ CREATE TABLE public.vlans (
 ALTER TABLE public.vlans OWNER TO postgres;
 
 --
--- TOC entry 3922 (class 2604 OID 20130)
+-- TOC entry 3383 (class 2604 OID 19628)
 -- Name: migrations id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -2017,7 +2017,7 @@ ALTER TABLE ONLY public.migrations ALTER COLUMN id SET DEFAULT nextval('public.m
 
 
 --
--- TOC entry 4179 (class 0 OID 19693)
+-- TOC entry 3640 (class 0 OID 19191)
 -- Dependencies: 199
 -- Data for Name: actividades; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2040,7 +2040,7 @@ COPY public.actividades (id_actividad, nom_actividad, det_actividad, id_usuario_
 
 
 --
--- TOC entry 4181 (class 0 OID 19702)
+-- TOC entry 3642 (class 0 OID 19200)
 -- Dependencies: 201
 -- Data for Name: actividades_tags; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2050,7 +2050,7 @@ COPY public.actividades_tags (id_actividad_tag, id_actividad, id_tag, id_usuario
 
 
 --
--- TOC entry 4183 (class 0 OID 19708)
+-- TOC entry 3644 (class 0 OID 19206)
 -- Dependencies: 203
 -- Data for Name: ambientes; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2065,7 +2065,7 @@ COPY public.ambientes (id_ambiente, nom_ambiente, det_ambiente, id_usuario_regis
 
 
 --
--- TOC entry 4185 (class 0 OID 19717)
+-- TOC entry 3646 (class 0 OID 19215)
 -- Dependencies: 205
 -- Data for Name: aplicaciones; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2390,7 +2390,7 @@ COPY public.aplicaciones (id_aplicacion, id_tipo_aplicacion, id_servicio, id_dom
 
 
 --
--- TOC entry 4186 (class 0 OID 19724)
+-- TOC entry 3647 (class 0 OID 19222)
 -- Dependencies: 206
 -- Data for Name: aplicaciones_accesos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2400,7 +2400,7 @@ COPY public.aplicaciones_accesos (id_aplicacion_acceso, id_aplicacion, id_servid
 
 
 --
--- TOC entry 4188 (class 0 OID 19733)
+-- TOC entry 3649 (class 0 OID 19231)
 -- Dependencies: 208
 -- Data for Name: aplicaciones_estados; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2410,7 +2410,7 @@ COPY public.aplicaciones_estados (id_aplicacion_estado, id_aplicacion, id_estado
 
 
 --
--- TOC entry 4190 (class 0 OID 19739)
+-- TOC entry 3651 (class 0 OID 19237)
 -- Dependencies: 210
 -- Data for Name: aplicaciones_tags; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2420,7 +2420,7 @@ COPY public.aplicaciones_tags (id_aplicacion_tag, id_aplicacion, id_tag, id_usua
 
 
 --
--- TOC entry 4192 (class 0 OID 19745)
+-- TOC entry 3653 (class 0 OID 19243)
 -- Dependencies: 212
 -- Data for Name: aplicaciones_tecnologias; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2430,7 +2430,7 @@ COPY public.aplicaciones_tecnologias (id_aplicacion_tecnologia, id_aplicacion, i
 
 
 --
--- TOC entry 4194 (class 0 OID 19751)
+-- TOC entry 3655 (class 0 OID 19249)
 -- Dependencies: 214
 -- Data for Name: cargos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2446,7 +2446,7 @@ COPY public.cargos (id_cargo, nom_cargo, det_cargo, id_usuario_registra, id_usua
 
 
 --
--- TOC entry 4196 (class 0 OID 19760)
+-- TOC entry 3657 (class 0 OID 19258)
 -- Dependencies: 216
 -- Data for Name: catalogos_servicios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2456,7 +2456,7 @@ COPY public.catalogos_servicios (id_catalogo_servicio, id_servicio, asunto, det_
 
 
 --
--- TOC entry 4198 (class 0 OID 19769)
+-- TOC entry 3659 (class 0 OID 19267)
 -- Dependencies: 218
 -- Data for Name: catalogos_servicios_tags; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2466,7 +2466,7 @@ COPY public.catalogos_servicios_tags (id_catalogo_servicio_tag, id_catalogo_serv
 
 
 --
--- TOC entry 4200 (class 0 OID 19775)
+-- TOC entry 3661 (class 0 OID 19273)
 -- Dependencies: 220
 -- Data for Name: clusters; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2478,7 +2478,7 @@ COPY public.clusters (id_cluster, nom_cluster, det_cluster, id_usuario_registra,
 
 
 --
--- TOC entry 4201 (class 0 OID 19782)
+-- TOC entry 3662 (class 0 OID 19280)
 -- Dependencies: 221
 -- Data for Name: comuna; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2834,24 +2834,24 @@ COPY public.comuna (id_comuna, id_region, nombre_comuna, created_at, updated_at,
 
 
 --
--- TOC entry 4203 (class 0 OID 19790)
+-- TOC entry 3664 (class 0 OID 19288)
 -- Dependencies: 223
 -- Data for Name: datacentros; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.datacentros (id_datacentro, nom_datacentro, id_usuario_registra, id_usuario_modifica, created_at, updated_at, deleted_at, det_datacentro, cod_datacentro) FROM stdin;
-1	CPD	4	4	2018-03-06 01:31:31	2018-03-06 01:31:31	\N	Datacentro local en minsal	CPD001
 2	Convergente	4	4	2018-03-06 01:32:08	2018-03-06 01:32:08	\N	Datacentro convergente ubicado en puerto montt.	CVGT001
 3	asdfsdf	4	4	2018-03-06 06:46:05	2018-03-06 06:46:07	2018-03-06 06:46:07	afd	af
 5	null	4	4	2018-03-21 19:06:13	2018-03-21 19:06:32	2018-03-21 19:06:32	null	null
 4	null	4	4	2018-03-21 19:06:07	2018-03-21 19:06:37	2018-03-21 19:06:37	null	null
 6	sdfdfasf	4	4	2018-03-21 19:32:31	2018-03-21 19:32:39	2018-03-21 19:32:39	adsfsa	0
 7	Liray	1	1	2018-04-20 17:17:54	2018-04-20 17:17:54	\N	liray001	Liray
+1	CPD	4	1	2018-03-06 01:31:31	2018-05-16 02:10:18	\N	Datacentro local en minsal	CPD001
 \.
 
 
 --
--- TOC entry 4205 (class 0 OID 19799)
+-- TOC entry 3666 (class 0 OID 19297)
 -- Dependencies: 225
 -- Data for Name: dominios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2866,7 +2866,7 @@ COPY public.dominios (id_dominio, nom_dominio, det_dominio, ip_publica, ip_balan
 
 
 --
--- TOC entry 4207 (class 0 OID 19808)
+-- TOC entry 3668 (class 0 OID 19306)
 -- Dependencies: 227
 -- Data for Name: entregas_credenciales_usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2876,7 +2876,7 @@ COPY public.entregas_credenciales_usuarios (id_entrega_credencial_usuario, usern
 
 
 --
--- TOC entry 4208 (class 0 OID 19815)
+-- TOC entry 3669 (class 0 OID 19313)
 -- Dependencies: 228
 -- Data for Name: establecimientos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2886,7 +2886,7 @@ COPY public.establecimientos (id_establecimiento, id_establecimiento_antiguo, id
 
 
 --
--- TOC entry 4210 (class 0 OID 19823)
+-- TOC entry 3671 (class 0 OID 19321)
 -- Dependencies: 230
 -- Data for Name: estados; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2908,7 +2908,7 @@ COPY public.estados (id_estado, nom_estado, cod_estado, id_usuario_registra, id_
 
 
 --
--- TOC entry 4212 (class 0 OID 19832)
+-- TOC entry 3673 (class 0 OID 19330)
 -- Dependencies: 232
 -- Data for Name: fuentes_aplicaciones; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2918,7 +2918,7 @@ COPY public.fuentes_aplicaciones (id_fuente_aplicacion, id_aplicacion, id_servic
 
 
 --
--- TOC entry 4214 (class 0 OID 19841)
+-- TOC entry 3675 (class 0 OID 19339)
 -- Dependencies: 234
 -- Data for Name: idiomas; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2933,7 +2933,7 @@ COPY public.idiomas (id_idioma, nom_idioma, det_idioma, id_usuario_registra, id_
 
 
 --
--- TOC entry 4216 (class 0 OID 19850)
+-- TOC entry 3677 (class 0 OID 19348)
 -- Dependencies: 236
 -- Data for Name: log_navegacion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2943,7 +2943,7 @@ COPY public.log_navegacion (id_log_navegacion, id_usuario, cod_establecimiento, 
 
 
 --
--- TOC entry 4218 (class 0 OID 19859)
+-- TOC entry 3679 (class 0 OID 19357)
 -- Dependencies: 238
 -- Data for Name: mantenedores; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2977,7 +2977,7 @@ COPY public.mantenedores (id_mantenedor, url_mantenedor, nom_mantenedor, det_man
 
 
 --
--- TOC entry 4220 (class 0 OID 19868)
+-- TOC entry 3681 (class 0 OID 19366)
 -- Dependencies: 240
 -- Data for Name: menus; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -2996,7 +2996,7 @@ COPY public.menus (id_menu, url_menu, nom_menu, det_menu, cod_menu, id_usuario_r
 
 
 --
--- TOC entry 4221 (class 0 OID 19875)
+-- TOC entry 3682 (class 0 OID 19373)
 -- Dependencies: 241
 -- Data for Name: migrations; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3008,7 +3008,7 @@ COPY public.migrations (id, migration, batch) FROM stdin;
 
 
 --
--- TOC entry 4223 (class 0 OID 19880)
+-- TOC entry 3684 (class 0 OID 19378)
 -- Dependencies: 243
 -- Data for Name: pais; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3258,7 +3258,7 @@ COPY public.pais (id_pais, nombre_pais, created_at, updated_at, deleted_at) FROM
 
 
 --
--- TOC entry 4224 (class 0 OID 19886)
+-- TOC entry 3685 (class 0 OID 19384)
 -- Dependencies: 244
 -- Data for Name: password_resets; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3268,7 +3268,7 @@ COPY public.password_resets (email, token, created_at) FROM stdin;
 
 
 --
--- TOC entry 4226 (class 0 OID 19894)
+-- TOC entry 3687 (class 0 OID 19392)
 -- Dependencies: 246
 -- Data for Name: permisos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3287,7 +3287,7 @@ COPY public.permisos (id_permiso, nom_permiso, det_permiso, cod_permiso, id_usua
 
 
 --
--- TOC entry 4227 (class 0 OID 19901)
+-- TOC entry 3688 (class 0 OID 19399)
 -- Dependencies: 247
 -- Data for Name: region; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3312,7 +3312,7 @@ COPY public.region (id_region, nombre_region, alias, orden, created_at, updated_
 
 
 --
--- TOC entry 4229 (class 0 OID 19909)
+-- TOC entry 3690 (class 0 OID 19407)
 -- Dependencies: 249
 -- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3340,7 +3340,7 @@ COPY public.roles (id_role, nom_role, det_role, id_usuario_registra, id_usuario_
 
 
 --
--- TOC entry 4231 (class 0 OID 19918)
+-- TOC entry 3692 (class 0 OID 19416)
 -- Dependencies: 251
 -- Data for Name: roles_permisos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3412,7 +3412,7 @@ COPY public.roles_permisos (id_role_permiso, id_role, id_permiso, id_usuario_reg
 
 
 --
--- TOC entry 4232 (class 0 OID 19922)
+-- TOC entry 3693 (class 0 OID 19420)
 -- Dependencies: 252
 -- Data for Name: servicio_salud; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3451,7 +3451,7 @@ COPY public.servicio_salud (id_servicio_salud, id_region, nombre_servicio_salud,
 
 
 --
--- TOC entry 4234 (class 0 OID 19930)
+-- TOC entry 3695 (class 0 OID 19428)
 -- Dependencies: 254
 -- Data for Name: servicios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3499,7 +3499,7 @@ COPY public.servicios (id_servicio, id_actividad, nom_servicio, det_servicio, id
 
 
 --
--- TOC entry 4236 (class 0 OID 19939)
+-- TOC entry 3697 (class 0 OID 19437)
 -- Dependencies: 256
 -- Data for Name: servicios_estados; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3509,7 +3509,7 @@ COPY public.servicios_estados (id_servicio_estado, id_servicio, id_estado, id_us
 
 
 --
--- TOC entry 4238 (class 0 OID 19945)
+-- TOC entry 3699 (class 0 OID 19443)
 -- Dependencies: 258
 -- Data for Name: servicios_permisos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3519,7 +3519,7 @@ COPY public.servicios_permisos (id_servicio_permiso, id_servicio, id_permiso, id
 
 
 --
--- TOC entry 4240 (class 0 OID 19951)
+-- TOC entry 3701 (class 0 OID 19449)
 -- Dependencies: 260
 -- Data for Name: servicios_tags; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3529,7 +3529,7 @@ COPY public.servicios_tags (id_servicio_tag, id_servicio, id_tag, id_usuario_reg
 
 
 --
--- TOC entry 4242 (class 0 OID 19957)
+-- TOC entry 3703 (class 0 OID 19455)
 -- Dependencies: 262
 -- Data for Name: servicios_usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3550,7 +3550,7 @@ COPY public.servicios_usuarios (id_servicio_usuario, id_servicio, id_usuario, id
 
 
 --
--- TOC entry 4246 (class 0 OID 19967)
+-- TOC entry 3707 (class 0 OID 19465)
 -- Dependencies: 266
 -- Data for Name: servidores; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3865,7 +3865,7 @@ COPY public.servidores (id_servidor, id_datacentro, id_sistema_operativo, nom_se
 
 
 --
--- TOC entry 4247 (class 0 OID 19974)
+-- TOC entry 3708 (class 0 OID 19472)
 -- Dependencies: 267
 -- Data for Name: servidores_accesos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -3875,7 +3875,7 @@ COPY public.servidores_accesos (id_servidor_acceso, id_aplicacion, id_servidor, 
 
 
 --
--- TOC entry 4248 (class 0 OID 19981)
+-- TOC entry 3709 (class 0 OID 19479)
 -- Dependencies: 268
 -- Data for Name: servidores_estados; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4190,7 +4190,7 @@ COPY public.servidores_estados (id_servidor_estado, id_servidor, id_estado, id_u
 
 
 --
--- TOC entry 4249 (class 0 OID 19985)
+-- TOC entry 3710 (class 0 OID 19483)
 -- Dependencies: 269
 -- Data for Name: servidores_historico_cambios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4203,7 +4203,7 @@ COPY public.servidores_historico_cambios (id_servidor_historico, id_servidor, id
 
 
 --
--- TOC entry 4251 (class 0 OID 19994)
+-- TOC entry 3712 (class 0 OID 19492)
 -- Dependencies: 271
 -- Data for Name: servidores_lvms; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4214,7 +4214,7 @@ COPY public.servidores_lvms (id_servidor_lvm, lvm_raiz, lvm_usr, lvm_tmp, lvm_va
 
 
 --
--- TOC entry 4253 (class 0 OID 20000)
+-- TOC entry 3714 (class 0 OID 19498)
 -- Dependencies: 273
 -- Data for Name: sistemas_operativos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4282,7 +4282,7 @@ COPY public.sistemas_operativos (id_sistema_operativo, arquitectura, nom_sistema
 
 
 --
--- TOC entry 4255 (class 0 OID 20009)
+-- TOC entry 3716 (class 0 OID 19507)
 -- Dependencies: 275
 -- Data for Name: tags; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4295,7 +4295,7 @@ COPY public.tags (id_tag, nom_tag, det_tag, meta_tag, id_usuario_registra, id_us
 
 
 --
--- TOC entry 4257 (class 0 OID 20018)
+-- TOC entry 3718 (class 0 OID 19516)
 -- Dependencies: 277
 -- Data for Name: tecnologia_desarrollo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4305,7 +4305,7 @@ COPY public.tecnologia_desarrollo (id_tecnologia_desarrollo, id_tipo_tecnologia,
 
 
 --
--- TOC entry 4259 (class 0 OID 20027)
+-- TOC entry 3720 (class 0 OID 19525)
 -- Dependencies: 279
 -- Data for Name: tipos_aplicaciones; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4365,7 +4365,7 @@ COPY public.tipos_aplicaciones (id_tipo_aplicacion, nom_tipo_aplicacion, det_tip
 
 
 --
--- TOC entry 4261 (class 0 OID 20036)
+-- TOC entry 3722 (class 0 OID 19534)
 -- Dependencies: 281
 -- Data for Name: tipos_clusters; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4377,7 +4377,7 @@ COPY public.tipos_clusters (id_tipo_cluster, nom_tipo_cluster, det_tipo_cluster,
 
 
 --
--- TOC entry 4263 (class 0 OID 20045)
+-- TOC entry 3724 (class 0 OID 19543)
 -- Dependencies: 283
 -- Data for Name: tipos_respaldos_discos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4389,7 +4389,7 @@ COPY public.tipos_respaldos_discos (id_tipo_respaldo_disco, nom_tipo_respaldo_di
 
 
 --
--- TOC entry 4265 (class 0 OID 20054)
+-- TOC entry 3726 (class 0 OID 19552)
 -- Dependencies: 285
 -- Data for Name: tipos_servidores; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4407,7 +4407,7 @@ COPY public.tipos_servidores (id_tipo_servidor, nom_tipo_servidor, det_tipo_serv
 
 
 --
--- TOC entry 4267 (class 0 OID 20063)
+-- TOC entry 3728 (class 0 OID 19561)
 -- Dependencies: 287
 -- Data for Name: tipos_sistemas_operativos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4420,7 +4420,7 @@ COPY public.tipos_sistemas_operativos (id_tipo_sistema_operativo, nom_tipo_siste
 
 
 --
--- TOC entry 4269 (class 0 OID 20072)
+-- TOC entry 3730 (class 0 OID 19570)
 -- Dependencies: 289
 -- Data for Name: tipos_tecnologias_desarrollo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4430,7 +4430,7 @@ COPY public.tipos_tecnologias_desarrollo (id_tipo_tecnologia_desarrollo, nom_tip
 
 
 --
--- TOC entry 4271 (class 0 OID 20081)
+-- TOC entry 3732 (class 0 OID 19579)
 -- Dependencies: 291
 -- Data for Name: usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4464,7 +4464,7 @@ COPY public.usuarios (id_usuario, nom_usuario, nom_completo, ape_paterno, ape_ma
 
 
 --
--- TOC entry 4273 (class 0 OID 20090)
+-- TOC entry 3734 (class 0 OID 19588)
 -- Dependencies: 293
 -- Data for Name: usuarios_bitacora_servicios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4476,7 +4476,7 @@ COPY public.usuarios_bitacora_servicios (id_usuario_bitacora_servicio, id_usuari
 
 
 --
--- TOC entry 4275 (class 0 OID 20099)
+-- TOC entry 3736 (class 0 OID 19597)
 -- Dependencies: 295
 -- Data for Name: usuarios_cargos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4514,7 +4514,7 @@ COPY public.usuarios_cargos (id_usuario_cargo, id_usuario, id_cargo, id_usuario_
 
 
 --
--- TOC entry 4277 (class 0 OID 20105)
+-- TOC entry 3738 (class 0 OID 19603)
 -- Dependencies: 297
 -- Data for Name: usuarios_estados; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4552,7 +4552,7 @@ COPY public.usuarios_estados (id_usuario_estado, id_estado, id_usuario, id_usuar
 
 
 --
--- TOC entry 4279 (class 0 OID 20111)
+-- TOC entry 3740 (class 0 OID 19609)
 -- Dependencies: 299
 -- Data for Name: usuarios_roles; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4577,7 +4577,7 @@ COPY public.usuarios_roles (id_usuario_role, id_role, id_usuario, id_usuario_reg
 
 
 --
--- TOC entry 4281 (class 0 OID 20117)
+-- TOC entry 3742 (class 0 OID 19615)
 -- Dependencies: 301
 -- Data for Name: usuarios_servicios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4587,7 +4587,7 @@ COPY public.usuarios_servicios (id_usuario_servicio, id_usuario, id_servicio, id
 
 
 --
--- TOC entry 4283 (class 0 OID 20123)
+-- TOC entry 3744 (class 0 OID 19621)
 -- Dependencies: 303
 -- Data for Name: vlans; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4602,7 +4602,7 @@ COPY public.vlans (id_vlan, nom_vlan, det_vlan, cod_vlan, id_usuario_registra, i
 
 
 --
--- TOC entry 4293 (class 0 OID 0)
+-- TOC entry 3754 (class 0 OID 0)
 -- Dependencies: 196
 -- Name: accesos_aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4611,7 +4611,7 @@ SELECT pg_catalog.setval('public.accesos_aplicaciones_id_seq', 2, true);
 
 
 --
--- TOC entry 4294 (class 0 OID 0)
+-- TOC entry 3755 (class 0 OID 0)
 -- Dependencies: 197
 -- Name: accesos_servidores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4620,7 +4620,7 @@ SELECT pg_catalog.setval('public.accesos_servidores_id_seq', 7, true);
 
 
 --
--- TOC entry 4295 (class 0 OID 0)
+-- TOC entry 3756 (class 0 OID 0)
 -- Dependencies: 198
 -- Name: actividades_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4629,7 +4629,7 @@ SELECT pg_catalog.setval('public.actividades_id_seq', 13, true);
 
 
 --
--- TOC entry 4296 (class 0 OID 0)
+-- TOC entry 3757 (class 0 OID 0)
 -- Dependencies: 200
 -- Name: actividades_tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4638,7 +4638,7 @@ SELECT pg_catalog.setval('public.actividades_tags_id_seq', 1, false);
 
 
 --
--- TOC entry 4297 (class 0 OID 0)
+-- TOC entry 3758 (class 0 OID 0)
 -- Dependencies: 202
 -- Name: ambientes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4647,7 +4647,7 @@ SELECT pg_catalog.setval('public.ambientes_id_seq', 5, true);
 
 
 --
--- TOC entry 4298 (class 0 OID 0)
+-- TOC entry 3759 (class 0 OID 0)
 -- Dependencies: 207
 -- Name: aplicaciones_estados_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4656,7 +4656,7 @@ SELECT pg_catalog.setval('public.aplicaciones_estados_id_seq', 1, false);
 
 
 --
--- TOC entry 4299 (class 0 OID 0)
+-- TOC entry 3760 (class 0 OID 0)
 -- Dependencies: 204
 -- Name: aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4665,7 +4665,7 @@ SELECT pg_catalog.setval('public.aplicaciones_id_seq', 567, true);
 
 
 --
--- TOC entry 4300 (class 0 OID 0)
+-- TOC entry 3761 (class 0 OID 0)
 -- Dependencies: 209
 -- Name: aplicaciones_tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4674,7 +4674,7 @@ SELECT pg_catalog.setval('public.aplicaciones_tags_id_seq', 1, false);
 
 
 --
--- TOC entry 4301 (class 0 OID 0)
+-- TOC entry 3762 (class 0 OID 0)
 -- Dependencies: 211
 -- Name: aplicaciones_tecnologias_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4683,7 +4683,7 @@ SELECT pg_catalog.setval('public.aplicaciones_tecnologias_id_seq', 1, false);
 
 
 --
--- TOC entry 4302 (class 0 OID 0)
+-- TOC entry 3763 (class 0 OID 0)
 -- Dependencies: 213
 -- Name: cargos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4692,7 +4692,7 @@ SELECT pg_catalog.setval('public.cargos_id_seq', 6, true);
 
 
 --
--- TOC entry 4303 (class 0 OID 0)
+-- TOC entry 3764 (class 0 OID 0)
 -- Dependencies: 215
 -- Name: catalogos_servicios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4701,7 +4701,7 @@ SELECT pg_catalog.setval('public.catalogos_servicios_id_seq', 1, false);
 
 
 --
--- TOC entry 4304 (class 0 OID 0)
+-- TOC entry 3765 (class 0 OID 0)
 -- Dependencies: 217
 -- Name: catalogos_servicios_tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4710,7 +4710,7 @@ SELECT pg_catalog.setval('public.catalogos_servicios_tags_id_seq', 1, false);
 
 
 --
--- TOC entry 4305 (class 0 OID 0)
+-- TOC entry 3766 (class 0 OID 0)
 -- Dependencies: 219
 -- Name: clusters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4719,7 +4719,7 @@ SELECT pg_catalog.setval('public.clusters_id_seq', 2, true);
 
 
 --
--- TOC entry 4306 (class 0 OID 0)
+-- TOC entry 3767 (class 0 OID 0)
 -- Dependencies: 222
 -- Name: datacentros_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4728,7 +4728,7 @@ SELECT pg_catalog.setval('public.datacentros_id_seq', 7, true);
 
 
 --
--- TOC entry 4307 (class 0 OID 0)
+-- TOC entry 3768 (class 0 OID 0)
 -- Dependencies: 224
 -- Name: dominios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4737,7 +4737,7 @@ SELECT pg_catalog.setval('public.dominios_id_seq', 5, true);
 
 
 --
--- TOC entry 4308 (class 0 OID 0)
+-- TOC entry 3769 (class 0 OID 0)
 -- Dependencies: 226
 -- Name: entregas_credenciales_usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4746,7 +4746,7 @@ SELECT pg_catalog.setval('public.entregas_credenciales_usuarios_id_seq', 1, fals
 
 
 --
--- TOC entry 4309 (class 0 OID 0)
+-- TOC entry 3770 (class 0 OID 0)
 -- Dependencies: 229
 -- Name: estados_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4755,7 +4755,7 @@ SELECT pg_catalog.setval('public.estados_id_seq', 12, true);
 
 
 --
--- TOC entry 4310 (class 0 OID 0)
+-- TOC entry 3771 (class 0 OID 0)
 -- Dependencies: 231
 -- Name: fuentes_aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4764,7 +4764,7 @@ SELECT pg_catalog.setval('public.fuentes_aplicaciones_id_seq', 1, false);
 
 
 --
--- TOC entry 4311 (class 0 OID 0)
+-- TOC entry 3772 (class 0 OID 0)
 -- Dependencies: 233
 -- Name: idiomas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4773,7 +4773,7 @@ SELECT pg_catalog.setval('public.idiomas_id_seq', 5, true);
 
 
 --
--- TOC entry 4312 (class 0 OID 0)
+-- TOC entry 3773 (class 0 OID 0)
 -- Dependencies: 235
 -- Name: log_navegacion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4782,7 +4782,7 @@ SELECT pg_catalog.setval('public.log_navegacion_id_seq', 1, false);
 
 
 --
--- TOC entry 4313 (class 0 OID 0)
+-- TOC entry 3774 (class 0 OID 0)
 -- Dependencies: 237
 -- Name: mantenedores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4791,7 +4791,7 @@ SELECT pg_catalog.setval('public.mantenedores_id_seq', 24, true);
 
 
 --
--- TOC entry 4314 (class 0 OID 0)
+-- TOC entry 3775 (class 0 OID 0)
 -- Dependencies: 239
 -- Name: menus_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4800,7 +4800,7 @@ SELECT pg_catalog.setval('public.menus_id_seq', 9, true);
 
 
 --
--- TOC entry 4315 (class 0 OID 0)
+-- TOC entry 3776 (class 0 OID 0)
 -- Dependencies: 242
 -- Name: migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4809,7 +4809,7 @@ SELECT pg_catalog.setval('public.migrations_id_seq', 2, true);
 
 
 --
--- TOC entry 4316 (class 0 OID 0)
+-- TOC entry 3777 (class 0 OID 0)
 -- Dependencies: 245
 -- Name: permisos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4818,7 +4818,7 @@ SELECT pg_catalog.setval('public.permisos_id_seq', 22, true);
 
 
 --
--- TOC entry 4317 (class 0 OID 0)
+-- TOC entry 3778 (class 0 OID 0)
 -- Dependencies: 248
 -- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4827,7 +4827,7 @@ SELECT pg_catalog.setval('public.roles_id_seq', 72, true);
 
 
 --
--- TOC entry 4318 (class 0 OID 0)
+-- TOC entry 3779 (class 0 OID 0)
 -- Dependencies: 250
 -- Name: roles_permisos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4836,7 +4836,7 @@ SELECT pg_catalog.setval('public.roles_permisos_id_seq', 70, true);
 
 
 --
--- TOC entry 4319 (class 0 OID 0)
+-- TOC entry 3780 (class 0 OID 0)
 -- Dependencies: 255
 -- Name: servicios_estados_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4845,7 +4845,7 @@ SELECT pg_catalog.setval('public.servicios_estados_id_seq', 1, false);
 
 
 --
--- TOC entry 4320 (class 0 OID 0)
+-- TOC entry 3781 (class 0 OID 0)
 -- Dependencies: 253
 -- Name: servicios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4854,7 +4854,7 @@ SELECT pg_catalog.setval('public.servicios_id_seq', 38, true);
 
 
 --
--- TOC entry 4321 (class 0 OID 0)
+-- TOC entry 3782 (class 0 OID 0)
 -- Dependencies: 257
 -- Name: servicios_permisos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4863,7 +4863,7 @@ SELECT pg_catalog.setval('public.servicios_permisos_id_seq', 1, false);
 
 
 --
--- TOC entry 4322 (class 0 OID 0)
+-- TOC entry 3783 (class 0 OID 0)
 -- Dependencies: 259
 -- Name: servicios_tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4872,7 +4872,7 @@ SELECT pg_catalog.setval('public.servicios_tags_id_seq', 1, false);
 
 
 --
--- TOC entry 4323 (class 0 OID 0)
+-- TOC entry 3784 (class 0 OID 0)
 -- Dependencies: 261
 -- Name: servicios_usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4881,7 +4881,7 @@ SELECT pg_catalog.setval('public.servicios_usuarios_id_seq', 61, true);
 
 
 --
--- TOC entry 4324 (class 0 OID 0)
+-- TOC entry 3785 (class 0 OID 0)
 -- Dependencies: 263
 -- Name: servidor_aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4890,7 +4890,7 @@ SELECT pg_catalog.setval('public.servidor_aplicaciones_id_seq', 1524, true);
 
 
 --
--- TOC entry 4325 (class 0 OID 0)
+-- TOC entry 3786 (class 0 OID 0)
 -- Dependencies: 264
 -- Name: servidor_estado_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4899,7 +4899,7 @@ SELECT pg_catalog.setval('public.servidor_estado_id_seq', 815, true);
 
 
 --
--- TOC entry 4326 (class 0 OID 0)
+-- TOC entry 3787 (class 0 OID 0)
 -- Dependencies: 265
 -- Name: servidor_historico_cambios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4908,7 +4908,7 @@ SELECT pg_catalog.setval('public.servidor_historico_cambios_id_seq', 68, true);
 
 
 --
--- TOC entry 4327 (class 0 OID 0)
+-- TOC entry 3788 (class 0 OID 0)
 -- Dependencies: 270
 -- Name: servidores_lvm_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4917,7 +4917,7 @@ SELECT pg_catalog.setval('public.servidores_lvm_id_seq', 6, true);
 
 
 --
--- TOC entry 4328 (class 0 OID 0)
+-- TOC entry 3789 (class 0 OID 0)
 -- Dependencies: 272
 -- Name: sistemas_operativos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4926,7 +4926,7 @@ SELECT pg_catalog.setval('public.sistemas_operativos_id_seq', 58, true);
 
 
 --
--- TOC entry 4329 (class 0 OID 0)
+-- TOC entry 3790 (class 0 OID 0)
 -- Dependencies: 274
 -- Name: tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4935,7 +4935,7 @@ SELECT pg_catalog.setval('public.tags_id_seq', 3, true);
 
 
 --
--- TOC entry 4330 (class 0 OID 0)
+-- TOC entry 3791 (class 0 OID 0)
 -- Dependencies: 276
 -- Name: tecnologia_desarrollo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4944,7 +4944,7 @@ SELECT pg_catalog.setval('public.tecnologia_desarrollo_id_seq', 1, false);
 
 
 --
--- TOC entry 4331 (class 0 OID 0)
+-- TOC entry 3792 (class 0 OID 0)
 -- Dependencies: 278
 -- Name: tipos_aplicaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4953,7 +4953,7 @@ SELECT pg_catalog.setval('public.tipos_aplicaciones_id_seq', 50, true);
 
 
 --
--- TOC entry 4332 (class 0 OID 0)
+-- TOC entry 3793 (class 0 OID 0)
 -- Dependencies: 280
 -- Name: tipos_clusters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4962,7 +4962,7 @@ SELECT pg_catalog.setval('public.tipos_clusters_id_seq', 2, true);
 
 
 --
--- TOC entry 4333 (class 0 OID 0)
+-- TOC entry 3794 (class 0 OID 0)
 -- Dependencies: 282
 -- Name: tipos_respaldos_discos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4971,7 +4971,7 @@ SELECT pg_catalog.setval('public.tipos_respaldos_discos_id_seq', 2, true);
 
 
 --
--- TOC entry 4334 (class 0 OID 0)
+-- TOC entry 3795 (class 0 OID 0)
 -- Dependencies: 284
 -- Name: tipos_servidores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4980,7 +4980,7 @@ SELECT pg_catalog.setval('public.tipos_servidores_id_seq', 8, true);
 
 
 --
--- TOC entry 4335 (class 0 OID 0)
+-- TOC entry 3796 (class 0 OID 0)
 -- Dependencies: 286
 -- Name: tipos_sistemas_operativos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4989,7 +4989,7 @@ SELECT pg_catalog.setval('public.tipos_sistemas_operativos_id_seq', 3, true);
 
 
 --
--- TOC entry 4336 (class 0 OID 0)
+-- TOC entry 3797 (class 0 OID 0)
 -- Dependencies: 288
 -- Name: tipos_tecnologias_desarrollo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -4998,7 +4998,7 @@ SELECT pg_catalog.setval('public.tipos_tecnologias_desarrollo_id_seq', 1, false)
 
 
 --
--- TOC entry 4337 (class 0 OID 0)
+-- TOC entry 3798 (class 0 OID 0)
 -- Dependencies: 292
 -- Name: usuarios_bitacora_servicios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -5007,7 +5007,7 @@ SELECT pg_catalog.setval('public.usuarios_bitacora_servicios_id_seq', 21, true);
 
 
 --
--- TOC entry 4338 (class 0 OID 0)
+-- TOC entry 3799 (class 0 OID 0)
 -- Dependencies: 294
 -- Name: usuarios_cargos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -5016,7 +5016,7 @@ SELECT pg_catalog.setval('public.usuarios_cargos_id_seq', 31, true);
 
 
 --
--- TOC entry 4339 (class 0 OID 0)
+-- TOC entry 3800 (class 0 OID 0)
 -- Dependencies: 296
 -- Name: usuarios_estados_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -5025,7 +5025,7 @@ SELECT pg_catalog.setval('public.usuarios_estados_id_seq', 31, true);
 
 
 --
--- TOC entry 4340 (class 0 OID 0)
+-- TOC entry 3801 (class 0 OID 0)
 -- Dependencies: 290
 -- Name: usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -5034,7 +5034,7 @@ SELECT pg_catalog.setval('public.usuarios_id_seq', 30, true);
 
 
 --
--- TOC entry 4341 (class 0 OID 0)
+-- TOC entry 3802 (class 0 OID 0)
 -- Dependencies: 298
 -- Name: usuarios_roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -5043,7 +5043,7 @@ SELECT pg_catalog.setval('public.usuarios_roles_id_seq', 32, true);
 
 
 --
--- TOC entry 4342 (class 0 OID 0)
+-- TOC entry 3803 (class 0 OID 0)
 -- Dependencies: 300
 -- Name: usuarios_servicios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -5052,7 +5052,7 @@ SELECT pg_catalog.setval('public.usuarios_servicios_id_seq', 1, false);
 
 
 --
--- TOC entry 4343 (class 0 OID 0)
+-- TOC entry 3804 (class 0 OID 0)
 -- Dependencies: 302
 -- Name: vlans_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -5061,7 +5061,7 @@ SELECT pg_catalog.setval('public.vlans_id_seq', 5, true);
 
 
 --
--- TOC entry 3961 (class 2606 OID 20132)
+-- TOC entry 3422 (class 2606 OID 19630)
 -- Name: aplicaciones_accesos accesos_aplicaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5070,7 +5070,7 @@ ALTER TABLE ONLY public.aplicaciones_accesos
 
 
 --
--- TOC entry 4016 (class 2606 OID 20134)
+-- TOC entry 3477 (class 2606 OID 19632)
 -- Name: servidores_accesos accesos_servidores_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5079,7 +5079,7 @@ ALTER TABLE ONLY public.servidores_accesos
 
 
 --
--- TOC entry 3953 (class 2606 OID 20136)
+-- TOC entry 3414 (class 2606 OID 19634)
 -- Name: actividades actividades_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5088,7 +5088,7 @@ ALTER TABLE ONLY public.actividades
 
 
 --
--- TOC entry 3955 (class 2606 OID 20138)
+-- TOC entry 3416 (class 2606 OID 19636)
 -- Name: actividades_tags actividades_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5097,7 +5097,7 @@ ALTER TABLE ONLY public.actividades_tags
 
 
 --
--- TOC entry 3957 (class 2606 OID 20140)
+-- TOC entry 3418 (class 2606 OID 19638)
 -- Name: ambientes ambientes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5106,7 +5106,7 @@ ALTER TABLE ONLY public.ambientes
 
 
 --
--- TOC entry 3963 (class 2606 OID 20142)
+-- TOC entry 3424 (class 2606 OID 19640)
 -- Name: aplicaciones_estados aplicaciones_estados_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5115,7 +5115,7 @@ ALTER TABLE ONLY public.aplicaciones_estados
 
 
 --
--- TOC entry 3959 (class 2606 OID 20144)
+-- TOC entry 3420 (class 2606 OID 19642)
 -- Name: aplicaciones aplicaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5124,7 +5124,7 @@ ALTER TABLE ONLY public.aplicaciones
 
 
 --
--- TOC entry 3965 (class 2606 OID 20146)
+-- TOC entry 3426 (class 2606 OID 19644)
 -- Name: aplicaciones_tags aplicaciones_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5133,7 +5133,7 @@ ALTER TABLE ONLY public.aplicaciones_tags
 
 
 --
--- TOC entry 3967 (class 2606 OID 20148)
+-- TOC entry 3428 (class 2606 OID 19646)
 -- Name: aplicaciones_tecnologias aplicaciones_tecnologias_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5142,7 +5142,7 @@ ALTER TABLE ONLY public.aplicaciones_tecnologias
 
 
 --
--- TOC entry 3969 (class 2606 OID 20150)
+-- TOC entry 3430 (class 2606 OID 19648)
 -- Name: cargos cargos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5151,7 +5151,7 @@ ALTER TABLE ONLY public.cargos
 
 
 --
--- TOC entry 3971 (class 2606 OID 20152)
+-- TOC entry 3432 (class 2606 OID 19650)
 -- Name: catalogos_servicios catalogos_servicios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5160,7 +5160,7 @@ ALTER TABLE ONLY public.catalogos_servicios
 
 
 --
--- TOC entry 3973 (class 2606 OID 20154)
+-- TOC entry 3434 (class 2606 OID 19652)
 -- Name: catalogos_servicios_tags catalogos_servicios_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5169,7 +5169,7 @@ ALTER TABLE ONLY public.catalogos_servicios_tags
 
 
 --
--- TOC entry 3975 (class 2606 OID 20156)
+-- TOC entry 3436 (class 2606 OID 19654)
 -- Name: clusters clusters_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5178,7 +5178,7 @@ ALTER TABLE ONLY public.clusters
 
 
 --
--- TOC entry 3977 (class 2606 OID 20158)
+-- TOC entry 3438 (class 2606 OID 19656)
 -- Name: datacentros datacentros_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5187,7 +5187,7 @@ ALTER TABLE ONLY public.datacentros
 
 
 --
--- TOC entry 3979 (class 2606 OID 20160)
+-- TOC entry 3440 (class 2606 OID 19658)
 -- Name: dominios dominios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5196,7 +5196,7 @@ ALTER TABLE ONLY public.dominios
 
 
 --
--- TOC entry 3981 (class 2606 OID 20162)
+-- TOC entry 3442 (class 2606 OID 19660)
 -- Name: entregas_credenciales_usuarios entregas_credenciales_usuarios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5205,7 +5205,7 @@ ALTER TABLE ONLY public.entregas_credenciales_usuarios
 
 
 --
--- TOC entry 3983 (class 2606 OID 20164)
+-- TOC entry 3444 (class 2606 OID 19662)
 -- Name: estados estados_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5214,7 +5214,7 @@ ALTER TABLE ONLY public.estados
 
 
 --
--- TOC entry 4018 (class 2606 OID 20166)
+-- TOC entry 3479 (class 2606 OID 19664)
 -- Name: servidores_estados estados_servidores_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5223,7 +5223,7 @@ ALTER TABLE ONLY public.servidores_estados
 
 
 --
--- TOC entry 3985 (class 2606 OID 20168)
+-- TOC entry 3446 (class 2606 OID 19666)
 -- Name: fuentes_aplicaciones fuentes_aplicaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5232,7 +5232,7 @@ ALTER TABLE ONLY public.fuentes_aplicaciones
 
 
 --
--- TOC entry 3987 (class 2606 OID 20170)
+-- TOC entry 3448 (class 2606 OID 19668)
 -- Name: idiomas idiomas_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5241,7 +5241,7 @@ ALTER TABLE ONLY public.idiomas
 
 
 --
--- TOC entry 3989 (class 2606 OID 20172)
+-- TOC entry 3450 (class 2606 OID 19670)
 -- Name: log_navegacion log_navegacion_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5250,7 +5250,7 @@ ALTER TABLE ONLY public.log_navegacion
 
 
 --
--- TOC entry 3991 (class 2606 OID 20174)
+-- TOC entry 3452 (class 2606 OID 19672)
 -- Name: mantenedores mantenedores_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5259,7 +5259,7 @@ ALTER TABLE ONLY public.mantenedores
 
 
 --
--- TOC entry 3993 (class 2606 OID 20176)
+-- TOC entry 3454 (class 2606 OID 19674)
 -- Name: menus menus_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5268,7 +5268,7 @@ ALTER TABLE ONLY public.menus
 
 
 --
--- TOC entry 3995 (class 2606 OID 20178)
+-- TOC entry 3456 (class 2606 OID 19676)
 -- Name: migrations migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5277,7 +5277,7 @@ ALTER TABLE ONLY public.migrations
 
 
 --
--- TOC entry 3998 (class 2606 OID 20180)
+-- TOC entry 3459 (class 2606 OID 19678)
 -- Name: permisos permisos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5286,7 +5286,7 @@ ALTER TABLE ONLY public.permisos
 
 
 --
--- TOC entry 4002 (class 2606 OID 20182)
+-- TOC entry 3463 (class 2606 OID 19680)
 -- Name: roles_permisos roles_permisos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5295,7 +5295,7 @@ ALTER TABLE ONLY public.roles_permisos
 
 
 --
--- TOC entry 4000 (class 2606 OID 20184)
+-- TOC entry 3461 (class 2606 OID 19682)
 -- Name: roles roles_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5304,7 +5304,7 @@ ALTER TABLE ONLY public.roles
 
 
 --
--- TOC entry 4006 (class 2606 OID 20186)
+-- TOC entry 3467 (class 2606 OID 19684)
 -- Name: servicios_estados servicios_estados_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5313,7 +5313,7 @@ ALTER TABLE ONLY public.servicios_estados
 
 
 --
--- TOC entry 4008 (class 2606 OID 20188)
+-- TOC entry 3469 (class 2606 OID 19686)
 -- Name: servicios_permisos servicios_permisos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5322,7 +5322,7 @@ ALTER TABLE ONLY public.servicios_permisos
 
 
 --
--- TOC entry 4004 (class 2606 OID 20190)
+-- TOC entry 3465 (class 2606 OID 19688)
 -- Name: servicios servicios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5331,7 +5331,7 @@ ALTER TABLE ONLY public.servicios
 
 
 --
--- TOC entry 4010 (class 2606 OID 20192)
+-- TOC entry 3471 (class 2606 OID 19690)
 -- Name: servicios_tags servicios_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5340,7 +5340,7 @@ ALTER TABLE ONLY public.servicios_tags
 
 
 --
--- TOC entry 4012 (class 2606 OID 20194)
+-- TOC entry 3473 (class 2606 OID 19692)
 -- Name: servicios_usuarios servicios_usuarios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5349,7 +5349,7 @@ ALTER TABLE ONLY public.servicios_usuarios
 
 
 --
--- TOC entry 4014 (class 2606 OID 20196)
+-- TOC entry 3475 (class 2606 OID 19694)
 -- Name: servidores servidor_aplicaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5358,7 +5358,7 @@ ALTER TABLE ONLY public.servidores
 
 
 --
--- TOC entry 4020 (class 2606 OID 20198)
+-- TOC entry 3481 (class 2606 OID 19696)
 -- Name: servidores_historico_cambios servidor_historico_cambios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5367,7 +5367,7 @@ ALTER TABLE ONLY public.servidores_historico_cambios
 
 
 --
--- TOC entry 4022 (class 2606 OID 20200)
+-- TOC entry 3483 (class 2606 OID 19698)
 -- Name: servidores_lvms servidores_lvms_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5376,7 +5376,7 @@ ALTER TABLE ONLY public.servidores_lvms
 
 
 --
--- TOC entry 4024 (class 2606 OID 20202)
+-- TOC entry 3485 (class 2606 OID 19700)
 -- Name: sistemas_operativos sistemas_operativos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5385,7 +5385,7 @@ ALTER TABLE ONLY public.sistemas_operativos
 
 
 --
--- TOC entry 4026 (class 2606 OID 20204)
+-- TOC entry 3487 (class 2606 OID 19702)
 -- Name: tags tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5394,7 +5394,7 @@ ALTER TABLE ONLY public.tags
 
 
 --
--- TOC entry 4028 (class 2606 OID 20206)
+-- TOC entry 3489 (class 2606 OID 19704)
 -- Name: tecnologia_desarrollo tecnologia_desarrollo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5403,7 +5403,7 @@ ALTER TABLE ONLY public.tecnologia_desarrollo
 
 
 --
--- TOC entry 4030 (class 2606 OID 20208)
+-- TOC entry 3491 (class 2606 OID 19706)
 -- Name: tipos_aplicaciones tipos_aplicaciones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5412,7 +5412,7 @@ ALTER TABLE ONLY public.tipos_aplicaciones
 
 
 --
--- TOC entry 4032 (class 2606 OID 20210)
+-- TOC entry 3493 (class 2606 OID 19708)
 -- Name: tipos_clusters tipos_clusters_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5421,7 +5421,7 @@ ALTER TABLE ONLY public.tipos_clusters
 
 
 --
--- TOC entry 4034 (class 2606 OID 20212)
+-- TOC entry 3495 (class 2606 OID 19710)
 -- Name: tipos_respaldos_discos tipos_respaldos_discos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5430,7 +5430,7 @@ ALTER TABLE ONLY public.tipos_respaldos_discos
 
 
 --
--- TOC entry 4036 (class 2606 OID 20214)
+-- TOC entry 3497 (class 2606 OID 19712)
 -- Name: tipos_servidores tipos_servidores_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5439,7 +5439,7 @@ ALTER TABLE ONLY public.tipos_servidores
 
 
 --
--- TOC entry 4038 (class 2606 OID 20216)
+-- TOC entry 3499 (class 2606 OID 19714)
 -- Name: tipos_sistemas_operativos tipos_sistemas_operativos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5448,7 +5448,7 @@ ALTER TABLE ONLY public.tipos_sistemas_operativos
 
 
 --
--- TOC entry 4040 (class 2606 OID 20218)
+-- TOC entry 3501 (class 2606 OID 19716)
 -- Name: tipos_tecnologias_desarrollo tipos_tecnologias_desarrollo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5457,7 +5457,7 @@ ALTER TABLE ONLY public.tipos_tecnologias_desarrollo
 
 
 --
--- TOC entry 4044 (class 2606 OID 20220)
+-- TOC entry 3505 (class 2606 OID 19718)
 -- Name: usuarios_bitacora_servicios usuarios_bitacora_servicios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5466,7 +5466,7 @@ ALTER TABLE ONLY public.usuarios_bitacora_servicios
 
 
 --
--- TOC entry 4046 (class 2606 OID 20222)
+-- TOC entry 3507 (class 2606 OID 19720)
 -- Name: usuarios_cargos usuarios_cargos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5475,7 +5475,7 @@ ALTER TABLE ONLY public.usuarios_cargos
 
 
 --
--- TOC entry 4048 (class 2606 OID 20224)
+-- TOC entry 3509 (class 2606 OID 19722)
 -- Name: usuarios_estados usuarios_estados_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5484,7 +5484,7 @@ ALTER TABLE ONLY public.usuarios_estados
 
 
 --
--- TOC entry 4042 (class 2606 OID 20226)
+-- TOC entry 3503 (class 2606 OID 19724)
 -- Name: usuarios usuarios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5493,7 +5493,7 @@ ALTER TABLE ONLY public.usuarios
 
 
 --
--- TOC entry 4050 (class 2606 OID 20228)
+-- TOC entry 3511 (class 2606 OID 19726)
 -- Name: usuarios_roles usuarios_roles_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5502,7 +5502,7 @@ ALTER TABLE ONLY public.usuarios_roles
 
 
 --
--- TOC entry 4052 (class 2606 OID 20230)
+-- TOC entry 3513 (class 2606 OID 19728)
 -- Name: usuarios_servicios usuarios_servicios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5511,7 +5511,7 @@ ALTER TABLE ONLY public.usuarios_servicios
 
 
 --
--- TOC entry 4054 (class 2606 OID 20232)
+-- TOC entry 3515 (class 2606 OID 19730)
 -- Name: vlans vlans_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5520,14 +5520,14 @@ ALTER TABLE ONLY public.vlans
 
 
 --
--- TOC entry 3996 (class 1259 OID 20233)
+-- TOC entry 3457 (class 1259 OID 19731)
 -- Name: password_resets_email_index; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX password_resets_email_index ON public.password_resets USING btree (email);
 
 
--- Completed on 2018-05-07 17:06:22 -03
+-- Completed on 2018-05-22 17:38:05 -04
 
 --
 -- PostgreSQL database dump complete

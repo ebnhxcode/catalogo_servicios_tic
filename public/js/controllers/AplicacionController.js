@@ -3568,6 +3568,7 @@ var render = function() {
                 ? _c(
                     "a",
                     {
+                      staticClass: "btn btn-success",
                       attrs: { href: "#!" },
                       on: {
                         click: function($event) {
@@ -4970,56 +4971,63 @@ var AplicacionController = new Vue({
 
          this.$http.get('/ajax/' + this.nombre_ruta).then(function (response) {
             // success callback
+
             console.log(response);
+
             _this.configurar_relaciones(response.body.aplicaciones.data, _this.relaciones_clase);
-
-            _this.lista_objs_model = response.body.aplicaciones.data || null;
-            _this.aplicaciones = response.body.aplicaciones.data || null;
-            _this.datos_excel = response.body.aplicaciones.data || null;
-
-            _this.pagination = response.body.aplicaciones.data;
-
-            _this.actividades = response.body.actividades || null;
-
-            _this.tipos_aplicaciones = response.body.tipos_aplicaciones || null;
-            _this.servidores = response.body.servidores || null;
-            _this.servicios = response.body.servicios || null;
-            _this.dominios = response.body.dominios || null;
-
-            _this.usuario_auth = response.body.usuario_auth || null;
+            _this.asignar_recursos(response);
          }, function (response) {
             // error callback
             _this.checkear_estado_respuesta_http(response.status);
          });
       },
+
+      asignar_recursos: function asignar_recursos(response) {
+
+         this.lista_objs_model = response.body.aplicaciones.data || null;
+         this.aplicaciones = response.body.aplicaciones.data || null;
+         this.datos_excel = response.body.aplicaciones.data || null;
+
+         this.pagination = response.body.aplicaciones || null;
+
+         this.actividades = response.body.actividades || null;
+
+         this.tipos_aplicaciones = response.body.tipos_aplicaciones || null;
+         this.servidores = response.body.servidores || null;
+         this.servicios = response.body.servicios || null;
+         this.dominios = response.body.dominios || null;
+
+         this.usuario_auth = response.body.usuario_auth || null;
+      },
+
       // public method for navigate on paginator
       navigate: function navigate(page) {
+         var _this2 = this;
+
          //this.spinner_table_inputs = true;
          //this.mini_spinner_table_inputs = true;
          this.$http.get('/ajax/' + this.nombre_ruta + '?page=' + page + '&per_page=' + this.pagination.per_page).then(function (response) {
             // get body json data
-            console.log(response);
+            _this2.aplicaciones = {};
             if (response.status == 200) {
-               //this.users = response.data.users.data;
-               //this.pagination = response.data.users;
-               //this.spinner_table_inputs = false;
-               //this.mini_spinner_table_inputs = false;
+               _this2.configurar_relaciones(response.body.aplicaciones.data, _this2.relaciones_clase);
+               _this2.asignar_recursos(response);
             }
          }, function (response) {
             // error callback
          });
       },
       navigateCustom: function navigateCustom() {
+         var _this3 = this;
+
          //this.spinner_table_inputs = true;
          //this.mini_spinner_table_inputs = true;
          this.$http.get('/ajax/' + this.nombre_ruta + '?page=' + 1 + '&per_page=' + this.pagination.per_page).then(function (response) {
             // get body json data
             console.log(response);
             if (response.status == 200) {
-               //this.users = response.data.users.data;
-               //this.pagination = response.data.users;
-               //this.spinner_table_inputs = false;
-               //this.mini_spinner_table_inputs = false;
+               _this3.configurar_relaciones(response.body.aplicaciones.data, _this3.relaciones_clase);
+               _this3.asignar_recursos(response);
             }
          }, function (response) {
             // error callback
