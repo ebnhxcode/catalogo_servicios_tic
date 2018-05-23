@@ -11,6 +11,7 @@ import Clipboard from 'v-clipboard';
 Vue.use(Clipboard);
 
 Vue.component('download-excel', require('../components/DownloadExcel.vue'));
+Vue.component('paginators', require('../components/Paginators.vue'));
 
 const AplicacionAccesoController = new Vue({
    el: '#AplicacionAccesoController',
@@ -59,6 +60,10 @@ const AplicacionAccesoController = new Vue({
 
          'campos_formularios':[],
          'errores_campos':[],
+
+         'pagination': {
+            'per_page':null,
+         },
 
          //Variables para validar si se está creando o editando, variables del modal
          'modal_crear_activo': false,
@@ -163,19 +168,26 @@ const AplicacionAccesoController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-      inicializar: function () {
-         this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
-            this.configurar_relaciones(response.body.aplicaciones_accesos, this.relaciones_clase);
-            this.lista_objs_model = response.body.aplicaciones_accesos || null;
-            this.aplicaciones_accesos = response.body.aplicaciones_accesos || null;
-            this.datos_excel = response.body.aplicaciones_accesos || null;
 
-            this.aplicaciones = response.body.aplicaciones || null;
+      asignar_recursos: function (response) {
 
-            this.usuario_auth = response.body.usuario_auth || null;
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
+
+         /* Datos intrinsecos de la entidad */
+         this.lista_objs_model = response.body.aplicaciones_accesos.data || null;
+         this.aplicaciones_accesos = response.body.aplicaciones_accesos.data || null;
+         this.datos_excel = response.body.aplicaciones_accesos.data || null;
+
+         /* Datos de la entidad hacia el paginador */
+         this.pagination = response.body.aplicaciones_accesos || null;
+
+         /* Datos de las relaciones con la entidad */
+         this.aplicaciones = response.body.aplicaciones || null;
+         this.usuario_auth = response.body.usuario_auth || null;
+
+         /* Datos de la sesion actual del usuario */
+         this.usuario_auth = response.body.usuario_auth || null;
       },
+
+
    }
 });

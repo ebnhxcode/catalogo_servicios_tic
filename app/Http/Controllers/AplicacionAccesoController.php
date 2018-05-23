@@ -45,6 +45,13 @@ class AplicacionAccesoController extends Controller {
       }
    }
 
+   private function validar_paginacion ($request) {
+      if (!$request->per_page) {
+         $this->per_page = 20;
+      } else {
+         $this->per_page = $request->per_page;
+      }
+   }
 
    /*
     * Index componente aplica para las pantallas que estan hechas con iframes
@@ -65,8 +72,11 @@ class AplicacionAccesoController extends Controller {
     * */
    public function index_ajax (Request $request) {
       if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
+
+         $this->validar_paginacion($request);
+         $this->aplicaciones_accesos = AplicacionAcceso::paginate((int)$this->per_page);
+
          $this->usuario_auth = Auth::user();
-         $this->aplicaciones_accesos = AplicacionAcceso::all();
          $this->aplicaciones = Aplicacion::all();
          return response()->json([
             'status' => 200,

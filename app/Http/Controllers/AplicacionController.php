@@ -49,6 +49,14 @@ class AplicacionController extends Controller {
       }
    }
 
+   private function validar_paginacion ($request) {
+      if (!$request->per_page) {
+         $this->per_page = 20;
+      } else {
+         $this->per_page = $request->per_page;
+      }
+   }
+
    /*
     * Index componente aplica para las pantallas que estan hechas con iframes
     * que son interfaces mas livianas como accesos directos
@@ -69,21 +77,17 @@ class AplicacionController extends Controller {
    public function index_ajax (Request $request) {
       if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
 
-
-         if (!$request->per_page) {
-            $this->per_page = 20;
-         } else {
-            $this->per_page = $request->per_page;
-         }
-
-         $this->usuario_auth = Auth::user();
-         $this->tipos_aplicaciones = TipoAplicacion::all();
+         $this->validar_paginacion($request);
          $this->aplicaciones = Aplicacion::with([
             'dominio','tipo_aplicacion','servicio','servidor'
          ])->paginate((int)$this->per_page);
+
+         $this->usuario_auth = Auth::user();
+         $this->tipos_aplicaciones = TipoAplicacion::all();
          $this->servidores = Servidor::all();
          $this->servicios = Servicio::all();
          $this->dominios = Dominio::all();
+
          return response()->json([
             'status' => 200,
             'tipos_aplicaciones' => $this->tipos_aplicaciones,

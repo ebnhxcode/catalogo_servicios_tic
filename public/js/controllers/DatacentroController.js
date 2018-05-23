@@ -3118,8 +3118,53 @@ var inyeccion_funciones_compartidas = {
        * */
       separar_miles: function separar_miles(num) {
          return num.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
-      }
+      },
 
+      inicializar: function inicializar() {
+         var _this10 = this;
+
+         this.$http.get('/ajax/' + this.nombre_ruta).then(function (response) {
+            // success callback
+            if (response.status == 200) {
+               _this10.configurar_relaciones(response.body[_this10.nombre_ruta].data, _this10.relaciones_clase);
+               _this10.asignar_recursos(response);
+            } else {
+               _this10.checkear_estado_respuesta_http(response.status);
+            }
+         }, function (response) {
+            _this10.checkear_estado_respuesta_http(response.status);
+         }); // error callback
+      },
+
+      navigate: function navigate(page) {
+         var _this11 = this;
+
+         this.$http.get('/ajax/' + this.nombre_ruta + '?page=' + page + '&per_page=' + this.pagination.per_page).then(function (response) {
+            if (response.status == 200) {
+               _this11.configurar_relaciones(response.body[_this11.nombre_ruta].data, _this11.relaciones_clase);
+               _this11.asignar_recursos(response);
+            } else {
+               _this11.checkear_estado_respuesta_http(response.status);
+            }
+         }, function (response) {
+            _this11.checkear_estado_respuesta_http(response.status);
+         }); // error callback
+      },
+      navigateCustom: function navigateCustom() {
+         var _this12 = this;
+
+         this.$http.get('/ajax/' + this.nombre_ruta + '?page=' + 1 + '&per_page=' + this.pagination.per_page).then(function (response) {
+            console.log(response);
+            if (response.status == 200) {
+               _this12.configurar_relaciones(response.body[_this12.nombre_ruta].data, _this12.relaciones_clase);
+               _this12.asignar_recursos(response);
+            } else {
+               _this12.checkear_estado_respuesta_http(response.status);
+            }
+         }, function (response) {
+            _this12.checkear_estado_respuesta_http(response.status);
+         }); // error callback
+      }
    }
 
    /*

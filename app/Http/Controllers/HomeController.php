@@ -31,6 +31,7 @@ class HomeController extends Controller {
         }
     }
 
+
     public function index(Request $request) {
         if (!$request->wantsJson() && !$request->ajax()) {
             return view("home.main", [

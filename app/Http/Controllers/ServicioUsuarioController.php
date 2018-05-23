@@ -43,6 +43,14 @@ class ServicioUsuarioController extends Controller {
       }
    }
 
+   private function validar_paginacion ($request) {
+      if (!$request->per_page) {
+         $this->per_page = 20;
+      } else {
+         $this->per_page = $request->per_page;
+      }
+   }
+
    /*
     * Index ajax aplica para traer la data de las interfaces
     * */

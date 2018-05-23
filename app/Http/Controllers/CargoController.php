@@ -39,6 +39,13 @@ class CargoController extends Controller {
       }
    }
 
+   private function validar_paginacion ($request) {
+      if (!$request->per_page) {
+         $this->per_page = 20;
+      } else {
+         $this->per_page = $request->per_page;
+      }
+   }
 
    public function index_ajax (Request $request) {
       if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {

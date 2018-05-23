@@ -41,6 +41,14 @@ class TipoServidorController extends Controller {
       }
    }
 
+   private function validar_paginacion ($request) {
+      if (!$request->per_page) {
+         $this->per_page = 20;
+      } else {
+         $this->per_page = $request->per_page;
+      }
+   }
+
    /*
     * Index componente aplica para las pantallas que estan hechas con iframes
     * que son interfaces mas livianas como accesos directos

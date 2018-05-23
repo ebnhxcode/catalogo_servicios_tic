@@ -696,7 +696,33 @@ export const inyeccion_funciones_compartidas = {
          return num.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
       },
 
+      inicializar: function () {
+         this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
+            if (response.status == 200) {
+               this.configurar_relaciones(response.body[this.nombre_ruta].data, this.relaciones_clase);
+               this.asignar_recursos(response);
+            } else { this.checkear_estado_respuesta_http(response.status); }
+         }, response => { this.checkear_estado_respuesta_http(response.status); }); // error callback
+      },
 
+      navigate (page) {
+         this.$http.get(`/ajax/${this.nombre_ruta}?page=` + page + '&per_page=' + this.pagination.per_page).then(response => {
+            if (response.status == 200) {
+               this.configurar_relaciones(response.body[this.nombre_ruta].data, this.relaciones_clase);
+               this.asignar_recursos(response);
+            } else { this.checkear_estado_respuesta_http(response.status); }
+         }, response => { this.checkear_estado_respuesta_http(response.status); });// error callback
+      },
+
+      navigateCustom () {
+         this.$http.get(`/ajax/${this.nombre_ruta}?page=` + 1 + '&per_page=' + this.pagination.per_page).then(response => {
+            console.log(response);
+            if (response.status == 200) {
+               this.configurar_relaciones(response.body[this.nombre_ruta].data, this.relaciones_clase);
+               this.asignar_recursos(response);
+            } else { this.checkear_estado_respuesta_http(response.status); }
+         }, response => { this.checkear_estado_respuesta_http(response.status); });// error callback
+      },
 
    }
 }
