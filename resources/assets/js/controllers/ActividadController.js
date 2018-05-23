@@ -11,6 +11,7 @@ import Clipboard from 'v-clipboard';
 Vue.use(Clipboard);
 
 Vue.component('download-excel', require('../components/DownloadExcel.vue'));
+Vue.component('paginators', require('../components/Paginators.vue'));
 
 const ActividadController = new Vue({
    el: '#ActividadController',
@@ -39,7 +40,7 @@ const ActividadController = new Vue({
             'nom_actividad',
             'det_actividad',
          ],
-         'relaciones_clases':[],
+         'relaciones_clase':[],
          'lom':{},
          'lista_objs_model':[],
          'tipos_actividades':[],
@@ -49,6 +50,10 @@ const ActividadController = new Vue({
 
          'campos_formularios':[],
          'errores_campos':[],
+
+         'pagination': {
+            'per_page':null,
+         },
 
          //Variables para validar si se está creando o editando
          'modal_crear_activo': false,
@@ -135,35 +140,26 @@ const ActividadController = new Vue({
    },
    created(){
       this.inicializar();
-      /*
-      $(document).ready(function () {
-         //Handle al recargar pagina
-         window.onbeforeunload = function(e){
-            return "Estás seguro que deseas cerrar la ventana?";
-         };
-         window.onunload = function(e){
-            return "Cierre de la ventana";
-         };
-
-      });
-      */
-
    },
    ready: {},
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-      inicializar: function () {
-         this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
-            this.lista_objs_model = response.body.actividades || null;
-            this.actividades = response.body.actividades || null;
-            this.tipos_actividades = response.body.tipos_actividades || null;
-            this.datos_excel = response.body.actividades || null;
 
-            this.usuario_auth = response.body.usuario_auth;
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
+      asignar_recursos: function (response) {
+
+         /* Datos intrinsecos de la entidad */
+         this.lista_objs_model = response.body.actividades.data || null;
+         this.actividades = response.body.actividades.data || null;
+         this.datos_excel = response.body.actividades.data || null;
+
+         /* Datos de la entidad hacia el paginador */
+         this.pagination = response.body.actividades || null;
+
+         /* Datos de la sesion actual del usuario */
+         this.usuario_auth = response.body.usuario_auth || null;
+
       },
+
    }
 });

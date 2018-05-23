@@ -21,6 +21,7 @@ class ActividadController extends Controller {
    private $actividad;
    private $new_actividad;
    private $validacion;
+   private $per_page;
 
    public function __construct () {
       $this->middleware('auth');
@@ -52,8 +53,11 @@ class ActividadController extends Controller {
     * */
    public function index_ajax (Request $request) {
       if ($request->wantsJson() && $request->ajax() && $request->isXmlHttpRequest()) {
+
+         $this->validar_paginacion($request);
+         $this->actividades = Actividad::paginate((int)$this->per_page);
          $this->usuario_auth = Auth::user();
-         $this->actividades = Actividad::all();
+
          return response()->json([
             'status' => 200,
             'actividades' => $this->actividades,

@@ -4,6 +4,7 @@
     "/js/controllers/ServidorController.js": "/js/controllers/ServidorController.js",
     "/js/controllers/AplicacionController.js": "/js/controllers/AplicacionController.js",
     "/js/controllers/AplicacionAccesoController.js": "/js/controllers/AplicacionAccesoController.js",
+    "/js/controllers/ActividadController.js": "/js/controllers/ActividadController.js",
     "/js/components/Paginators.vue.js": "/js/components/Paginators.vue.js",
     "/js/controllers/VlanController.js": "/js/controllers/VlanController.js",
     "/js/controllers/UsuarioController.js": "/js/controllers/UsuarioController.js",
@@ -24,7 +25,6 @@
     "/js/controllers/DatacentroController.js": "/js/controllers/DatacentroController.js",
     "/js/controllers/ClusterController.js": "/js/controllers/ClusterController.js",
     "/js/controllers/CargoController.js": "/js/controllers/CargoController.js",
-    "/js/controllers/ActividadController.js": "/js/controllers/ActividadController.js",
     "/js/components/DownloadExcel.vue.js": "/js/components/DownloadExcel.vue.js",
     "/css/app.css": "/css/app.css",
     "/js/controllers/HomeController.js": "/js/controllers/HomeController.js"

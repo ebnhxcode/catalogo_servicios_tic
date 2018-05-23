@@ -25,6 +25,7 @@ class AplicacionAccesoController extends Controller {
    private $aplicacion;
    private $new_aplicacion_acceso;
    private $validacion;
+   private $per_page;
 
 
    public function __construct () {
