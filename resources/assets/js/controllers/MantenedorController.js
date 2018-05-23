@@ -10,6 +10,7 @@ import Clipboard from 'v-clipboard';
 Vue.use(Clipboard);
 
 Vue.component('download-excel', require('../components/DownloadExcel.vue'));
+Vue.component('paginators', require('../components/Paginators.vue'));
 
 const MantenedorController = new Vue({
    el: '#MantenedorController',
@@ -55,6 +56,10 @@ const MantenedorController = new Vue({
 
          'campos_formularios':[],
          'errores_campos':[],
+
+         'pagination': {
+            'per_page':null,
+         },
 
          //Variables para validar si se está creando o editando
          'modal_crear_activo': false,

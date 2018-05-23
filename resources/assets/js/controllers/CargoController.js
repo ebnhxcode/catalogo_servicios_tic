@@ -11,6 +11,7 @@ import Clipboard from 'v-clipboard';
 Vue.use(Clipboard);
 
 Vue.component('download-excel', require('../components/DownloadExcel.vue'));
+Vue.component('paginators', require('../components/Paginators.vue'));
 
 const CargoController = new Vue({
    el: '#CargoController',
@@ -50,6 +51,10 @@ const CargoController = new Vue({
 
          'campos_formularios':[],
          'errores_campos':[],
+
+         'pagination': {
+            'per_page':null,
+         },
 
          //Variables para validar si se está creando o editando
          'modal_crear_activo': false,
@@ -145,15 +150,20 @@ const CargoController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-      inicializar: function () {
-         this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
-            this.lista_objs_model = response.body.cargos || null;
-            this.cargos = response.body.cargos || null;
-            this.datos_excel = response.body.cargos || null;
-            this.usuario_auth = response.body.usuario_auth || null;
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
+
+      asignar_recursos: function (response) {
+
+         /* Datos intrinsecos de la entidad */
+         this.lista_objs_model = response.body.cargos.data || null;
+         this.cargos = response.body.cargos.data || null;
+         this.datos_excel = response.body.cargos.data || null;
+
+         /* Datos de la entidad hacia el paginador */
+         this.pagination = response.body.cargos || null;
+
+         /* Datos de la sesion actual del usuario */
+         this.usuario_auth = response.body.usuario_auth || null;
       },
+
    }
 });

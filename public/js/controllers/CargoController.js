@@ -4181,6 +4181,10 @@ var CargoController = new Vue({
          'campos_formularios': [],
          'errores_campos': [],
 
+         'pagination': {
+            'per_page': null
+         },
+
          //Variables para validar si se está creando o editando
          'modal_crear_activo': false,
          'modal_actualizar_activo': false,
@@ -4280,20 +4284,21 @@ var CargoController = new Vue({
    filters: {},
    mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
    methods: {
-      inicializar: function inicializar() {
-         var _this = this;
 
-         this.$http.get('/ajax/' + this.nombre_ruta).then(function (response) {
-            // success callback
-            _this.lista_objs_model = response.body.cargos || null;
-            _this.cargos = response.body.cargos || null;
-            _this.datos_excel = response.body.cargos || null;
-            _this.usuario_auth = response.body.usuario_auth || null;
-         }, function (response) {
-            // error callback
-            _this.checkear_estado_respuesta_http(response.status);
-         });
+      asignar_recursos: function asignar_recursos(response) {
+
+         /* Datos intrinsecos de la entidad */
+         this.lista_objs_model = response.body.cargos.data || null;
+         this.cargos = response.body.cargos.data || null;
+         this.datos_excel = response.body.cargos.data || null;
+
+         /* Datos de la entidad hacia el paginador */
+         this.pagination = response.body.cargos || null;
+
+         /* Datos de la sesion actual del usuario */
+         this.usuario_auth = response.body.usuario_auth || null;
       }
+
    }
 });
 
