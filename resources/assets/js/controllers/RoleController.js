@@ -158,20 +158,22 @@ const RoleController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-      inicializar: function () {
-         this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
-            this.configurar_relaciones(response.body.roles, this.relaciones_clase);
+      asignar_recursos: function (response) {
 
-            this.lista_objs_model = response.body.roles || null;
-            this.roles = response.body.roles || null;
-            this.datos_excel = response.body.roles || null;
+         /* Datos intrinsecos de la entidad */
+         this.lista_objs_model = response.body.roles.data || null;
+         this.roles = response.body.roles.data || null;
+         this.datos_excel = response.body.roles.data || null;
 
-            this.permisos = response.body.permisos || null;
+         /* Datos de la entidad hacia el paginador */
+         this.pagination = response.body.roles || null;
 
-            this.usuario_auth = response.body.usuario_auth || null;
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
+         /* Datos roles las relaciones con la entidad */
+         this.permisos = response.body.permisos || null;
+
+         /* Datos de la sesion actual del usuario */
+         this.usuario_auth = response.body.usuario_auth || null;
+
       },
    }
 });

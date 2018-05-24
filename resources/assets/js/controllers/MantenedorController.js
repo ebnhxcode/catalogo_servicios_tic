@@ -167,15 +167,20 @@ const MantenedorController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-      inicializar: function () {
-         this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
-            this.lista_objs_model = response.body.mantenedores || null;
-            this.mantenedores = response.body.mantenedores || null;
-            this.datos_excel = response.body.mantenedores || null;
-            this.usuario_auth = response.body.usuario_auth || null;
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
+
+      asignar_recursos: function (response) {
+
+         /* Datos intrinsecos de la entidad */
+         this.lista_objs_model = response.body.mantenedores.data || null;
+         this.mantenedores = response.body.mantenedores.data || null;
+         this.datos_excel = response.body.mantenedores.data || null;
+
+         /* Datos de la entidad hacia el paginador */
+         this.pagination = response.body.mantenedores || null;
+
+         /* Datos de la sesion actual del usuario */
+         this.usuario_auth = response.body.usuario_auth || null;
+
       },
    }
 });

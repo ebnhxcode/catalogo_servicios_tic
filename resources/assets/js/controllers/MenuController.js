@@ -167,15 +167,20 @@ const MenuController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-      inicializar: function () {
-         this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
-            this.lista_objs_model = response.body.menus || null;
-            this.menus = response.body.menus || null;
-            this.datos_excel = response.body.menus || null;
-            this.usuario_auth = response.body.usuario_auth || null;
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
+
+      asignar_recursos: function (response) {
+
+         /* Datos intrinsecos de la entidad */
+         this.lista_objs_model = response.body.menus.data || null;
+         this.menus = response.body.menus.data || null;
+         this.datos_excel = response.body.menus.data || null;
+
+         /* Datos de la entidad hacia el paginador */
+         this.pagination = response.body.menus || null;
+
+         /* Datos de la sesion actual del usuario */
+         this.usuario_auth = response.body.usuario_auth || null;
+
       },
    }
 });

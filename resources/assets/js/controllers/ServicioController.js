@@ -192,29 +192,33 @@ const ServicioController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-      inicializar: function () {
-         this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
-
-            this.configurar_relaciones(response.body.servicios, this.relaciones_clase);
-            this.lista_objs_model = response.body.servicios || null;
 
 
-            this.lista_objs_model.map((lom) => {
-               lom.n_aplicaciones = lom.aplicaciones.length || 0;
-               lom.n_servidores = lom.servidores.length || 0;
-            });
+      asignar_recursos: function (response) {
 
-            this.actividades = response.body.actividades || null;
-            this.usuarios_bitacora_servicios = response.body.usuarios_bitacora_servicios || null;
-            this.datos_excel = response.body.servicios || null;
-            this.servicios = response.body.servicios || null;
-            this.estados = response.body.estados || null;
-            this.usuarios = response.body.usuarios || null;
-            this.usuario_auth = response.body.usuario_auth || null;
+         /* Datos intrinsecos de la entidad */
+         this.lista_objs_model = response.body.servicios.data || null;
+         this.servicios = response.body.servicios.data || null;
+         this.datos_excel = response.body.servicios.data || null;
 
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
+         /* Datos de la entidad hacia el paginador */
+         this.pagination = response.body.servicios || null;
+
+         /* Relaciones con la entidad */
+         this.permisos = response.body.permisos || null;
+         this.actividades = response.body.actividades || null;
+         this.usuarios_bitacora_servicios = response.body.usuarios_bitacora_servicios || null;
+         this.estados = response.body.estados || null;
+         this.usuarios = response.body.usuarios || null;
+
+         /* Datos de la sesion actual del usuario */
+         this.usuario_auth = response.body.usuario_auth || null;
+
+         this.lista_objs_model.map((lom) => {
+            lom.n_aplicaciones = lom.aplicaciones.length || 0;
+            lom.n_servidores = lom.servidores.length || 0;
          });
+
       },
 
       eliminar_usuario_servicio: function (id) {

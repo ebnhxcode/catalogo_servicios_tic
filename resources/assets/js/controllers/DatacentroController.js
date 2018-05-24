@@ -150,15 +150,20 @@ const DatacentroController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-      inicializar: function () {
-         this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
-            this.lista_objs_model = response.body.datacentros || null;
-            this.datacentros = response.body.datacentros || null;
-            this.datos_excel = response.body.datacentros || null;
-            this.usuario_auth = response.body.usuario_auth || null;
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
+      asignar_recursos: function (response) {
+
+         /* Datos intrinsecos de la entidad */
+         this.lista_objs_model = response.body.datacentros.data || null;
+         this.datacentros = response.body.datacentros.data || null;
+         this.datos_excel = response.body.datacentros.data || null;
+
+         /* Datos de la entidad hacia el paginador */
+         this.pagination = response.body.datacentros || null;
+
+         /* Datos de la sesion actual del usuario */
+         this.usuario_auth = response.body.usuario_auth || null;
+
       },
+
    }
 });

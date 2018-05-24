@@ -163,19 +163,23 @@ const ClusterController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-      inicializar: function () {
-         this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
-            this.configurar_relaciones(response.body.clusters, this.relaciones_clase);
+      asignar_recursos: function (response) {
 
-            this.lista_objs_model = response.body.clusters || null;
-            this.clusters = response.body.clusters || null;
-            this.datos_excel = response.body.clusters || null;
+         /* Datos intrinsecos de la entidad */
+         this.lista_objs_model = response.body.clusters.data || null;
+         this.clusters = response.body.clusters.data || null;
+         this.datos_excel = response.body.clusters.data || null;
 
-            this.tipos_clusters = response.body.tipos_clusters || null;
-            this.usuario_auth = response.body.usuario_auth || null;
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
+         /* Datos de la entidad hacia el paginador */
+         this.pagination = response.body.clusters || null;
+
+         /* Datos de las relaciones con la entidad */
+         this.tipos_clusters  = response.body.tipos_clusters || null;
+
+         /* Datos de la sesion actual del usuario */
+         this.usuario_auth = response.body.usuario_auth || null;
+
       },
+
    }
 });

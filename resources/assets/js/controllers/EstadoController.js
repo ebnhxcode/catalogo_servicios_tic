@@ -150,16 +150,20 @@ const EstadoController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-      inicializar: function () {
-         this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
-            this.lista_objs_model = response.body.estados || null;
-            this.estados = response.body.estados || null;
-            this.datos_excel = response.body.estados || null;
-            this.usuario_auth = response.body.usuario_auth || null;
-            //this.limpiar_objeto_clase_local();
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
+
+      asignar_recursos: function (response) {
+
+         /* Datos intrinsecos de la entidad */
+         this.lista_objs_model = response.body.estados.data || null;
+         this.estados = response.body.estados.data || null;
+         this.datos_excel = response.body.estados.data || null;
+
+         /* Datos de la entidad hacia el paginador */
+         this.pagination = response.body.estados || null;
+
+         /* Datos de la sesion actual del usuario */
+         this.usuario_auth = response.body.usuario_auth || null;
+
       },
    }
 });

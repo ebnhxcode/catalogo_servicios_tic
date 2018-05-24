@@ -186,7 +186,7 @@ const SideMenuController = new Vue({
       inicializar: function () {
          this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
             this.filtro_menu = null;
-            this.menus = response.body.menus;
+            this.menus = response.body.menus.data;
             this.mantenedores = response.body.mantenedores;
             this.usuario_auth = response.body.usuario_auth || null;
          }, response => { // error callback

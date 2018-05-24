@@ -72,8 +72,8 @@ const HomeController = new Vue({
       inicializar: function () {
          this.$http.get('/ajax/menus').then(response => { // success callback
 
-            this.lista_objs_model = response.body.menus || null;
-            this.home_items = response.body.menus || null;
+            this.lista_objs_model = response.body.menus.data || null;
+            this.home_items = response.body.menus.data || null;
             this.mantenedores = response.body.mantenedores || null;
 
             this.usuario_auth = response.body.usuario_auth || null;

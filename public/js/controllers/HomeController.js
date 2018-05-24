@@ -65,7 +65,7 @@
 /************************************************************************/
 /******/ ({
 
-/***/ 0:
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -2089,7 +2089,7 @@ if (typeof window !== 'undefined' && window.Sweetalert2) window.sweetAlert = win
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return inyeccion_funciones_compartidas; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert2__);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -2994,8 +2994,8 @@ var HomeController = new Vue({
          this.$http.get('/ajax/menus').then(function (response) {
             // success callback
 
-            _this.lista_objs_model = response.body.menus || null;
-            _this.home_items = response.body.menus || null;
+            _this.lista_objs_model = response.body.menus.data || null;
+            _this.home_items = response.body.menus.data || null;
             _this.mantenedores = response.body.mantenedores || null;
 
             _this.usuario_auth = response.body.usuario_auth || null;
