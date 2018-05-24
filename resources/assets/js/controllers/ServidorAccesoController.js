@@ -169,20 +169,23 @@ const ServidorAccesoController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-      inicializar: function () {
-         this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
-            this.configurar_relaciones(response.body.servidores_accesos, this.relaciones_clase);
+      asignar_recursos: function (response) {
 
-            this.lista_objs_model = response.body.servidores_accesos || null;
-            this.servidores_accesos = response.body.servidores_accesos || null;
-            this.datos_excel = response.body.servidores_accesos || null;
+         /* Datos intrinsecos de la entidad */
+         this.lista_objs_model = response.body.servidores_accesos.data || null;
+         this.servidores_accesos = response.body.servidores_accesos.data || null;
+         this.datos_excel = response.body.servidores_accesos.data || null;
 
-            this.servidores = response.body.servidores || null;
+         /* Datos de la entidad hacia el paginador */
+         this.pagination = response.body.servidores_accesos || null;
 
-            this.usuario_auth = response.body.usuario_auth || null;
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
+         /* Relaciones con la entidad */
+         this.servidores = response.body.servidores || null;
+
+         /* Datos de la sesion actual del usuario */
+         this.usuario_auth = response.body.usuario_auth || null;
+
       },
+
    }
 });

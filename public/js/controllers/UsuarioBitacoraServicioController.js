@@ -2648,27 +2648,25 @@ var UsuarioBitacoraServicioController = new Vue({
    filters: {},
    mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
    methods: {
-      inicializar: function inicializar() {
-         var _this = this;
 
-         this.$http.get('/ajax/' + this.nombre_ruta).then(function (response) {
-            // success callback
-            //Al tener relaciones se procesan desde aqui
-            _this.configurar_relaciones(response.body.usuarios_bitacora_servicios, _this.relaciones_clase);
-            //Se setean las variables con los datos de la clase
-            _this.lista_objs_model = response.body.usuarios_bitacora_servicios || null;
-            _this.usuarios_bitacora_servicios = response.body.usuarios_bitacora_servicios || null;
-            _this.datos_excel = response.body.usuarios_bitacora_servicios || null;
-            //Se setean las variables paramétricas (combos, listas, etc)
-            _this.actividades = response.body.actividades || null;
-            _this.servicios = response.body.servicios || null;
-            //Se setea el usuario autenticado
-            _this.usuario_auth = response.body.usuario_auth || null;
-         }, function (response) {
-            // error callback
-            _this.checkear_estado_respuesta_http(response.status);
-         });
+      asignar_recursos: function asignar_recursos(response) {
+
+         /* Datos intrinsecos de la entidad */
+         this.lista_objs_model = response.body.usuarios_bitacora_servicios.data || null;
+         this.usuarios_bitacora_servicios = response.body.usuarios_bitacora_servicios.data || null;
+         this.datos_excel = response.body.usuarios_bitacora_servicios.data || null;
+
+         /* Datos de la entidad hacia el paginador */
+         this.pagination = response.body.usuarios_bitacora_servicios || null;
+
+         /* Relaciones con la entidad */
+         this.actividades = response.body.actividades || null;
+         this.servicios = response.body.servicios || null;
+
+         /* Datos de la sesion actual del usuario */
+         this.usuario_auth = response.body.usuario_auth || null;
       }
+
    }
 });
 

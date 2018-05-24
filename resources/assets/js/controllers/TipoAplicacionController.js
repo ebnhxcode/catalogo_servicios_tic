@@ -162,17 +162,21 @@ const TipoAplicacionController = new Vue({
    filters: {},
    mixins: [inyeccion_funciones_compartidas],
    methods: {
-      inicializar: function () {
-         this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
-            //Se setean las variables con los datos de la clase
-            this.lista_objs_model = response.body.tipos_aplicaciones || null;
-            this.tipos_aplicaciones = response.body.tipos_aplicaciones || null;
-            this.datos_excel = response.body.tipos_aplicaciones || null;
-            //Se setea el usuario autenticado
-            this.usuario_auth = response.body.usuario_auth || null;
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
+
+      asignar_recursos: function (response) {
+
+         /* Datos intrinsecos de la entidad */
+         this.lista_objs_model = response.body.tipos_aplicaciones.data || null;
+         this.tipos_aplicaciones = response.body.tipos_aplicaciones.data || null;
+         this.datos_excel = response.body.tipos_aplicaciones.data || null;
+
+         /* Datos de la entidad hacia el paginador */
+         this.pagination = response.body.tipos_aplicaciones || null;
+
+         /* Datos de la sesion actual del usuario */
+         this.usuario_auth = response.body.usuario_auth || null;
+
       },
+
    }
 });

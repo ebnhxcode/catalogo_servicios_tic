@@ -151,18 +151,23 @@ const TagController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-      inicializar: function () {
-         this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
-            this.lista_objs_model = response.body.tags || null;
-            this.tags = response.body.tags || null;
-            this.datos_excel = response.body.tags || null;
 
-            this.permisos = response.body.permisos || null;
-            this.usuario_auth = response.body.usuario_auth || null;
+      asignar_recursos: function (response) {
 
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
+         /* Datos intrinsecos de la entidad */
+         this.lista_objs_model = response.body.tags.data || null;
+         this.tags = response.body.tags.data || null;
+         this.datos_excel = response.body.tags.data || null;
+
+         /* Datos de la entidad hacia el paginador */
+         this.pagination = response.body.tags || null;
+
+         /* Relaciones con la entidad */
+         this.permisos = response.body.permisos || null;
+
+         /* Datos de la sesion actual del usuario */
+         this.usuario_auth = response.body.usuario_auth || null;
+
       },
    }
 });

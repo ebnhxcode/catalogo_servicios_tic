@@ -173,22 +173,25 @@ const UsuarioBitacoraServicioController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-      inicializar: function () {
-         this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
-            //Al tener relaciones se procesan desde aqui
-            this.configurar_relaciones(response.body.usuarios_bitacora_servicios, this.relaciones_clase);
-            //Se setean las variables con los datos de la clase
-            this.lista_objs_model = response.body.usuarios_bitacora_servicios || null;
-            this.usuarios_bitacora_servicios = response.body.usuarios_bitacora_servicios || null;
-            this.datos_excel = response.body.usuarios_bitacora_servicios || null;
-            //Se setean las variables paramétricas (combos, listas, etc)
-            this.actividades = response.body.actividades || null;
-            this.servicios = response.body.servicios || null;
-            //Se setea el usuario autenticado
-            this.usuario_auth = response.body.usuario_auth || null;
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
+
+      asignar_recursos: function (response) {
+
+         /* Datos intrinsecos de la entidad */
+         this.lista_objs_model = response.body.usuarios_bitacora_servicios.data || null;
+         this.usuarios_bitacora_servicios = response.body.usuarios_bitacora_servicios.data || null;
+         this.datos_excel = response.body.usuarios_bitacora_servicios.data || null;
+
+         /* Datos de la entidad hacia el paginador */
+         this.pagination = response.body.usuarios_bitacora_servicios || null;
+
+         /* Relaciones con la entidad */
+         this.actividades = response.body.actividades || null;
+         this.servicios = response.body.servicios || null;
+
+         /* Datos de la sesion actual del usuario */
+         this.usuario_auth = response.body.usuario_auth || null;
+
       },
+
    }
 });

@@ -48,7 +48,7 @@ Route::get('/ajax/aplicaciones', 'AplicacionController@index_ajax');
 Route::get('/ajax/cargos', 'CargoController@index_ajax');
 Route::get('/ajax/clusters', 'ClusterController@index_ajax');
 Route::get('/ajax/datacentros', 'DatacentroController@index_ajax');
-Route::get('/ajax/dominios', 'DatacentroController@index_ajax');
+Route::get('/ajax/dominios', 'DominioController@index_ajax');
 Route::get('/ajax/estados', 'EstadoController@index_ajax');
 Route::get('/ajax/mantenedores', 'MantenedorController@index_ajax');
 Route::get('/ajax/menus', 'MenuController@index_ajax');

@@ -5201,35 +5201,31 @@ var ServidorController = new Vue({
    filters: {},
    mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
    methods: {
-      inicializar: function inicializar() {
-         var _this = this;
+      asignar_recursos: function asignar_recursos(response) {
 
-         this.$http.get('/ajax/' + this.nombre_ruta).then(function (response) {
-            // success callback
-            _this.configurar_relaciones(response.body.servidores, _this.relaciones_clase);
+         /* Datos intrinsecos de la entidad */
+         this.lista_objs_model = response.body.servidores.data || null;
+         this.servidores = response.body.servidores.data || null;
+         this.datos_excel = response.body.servidores.data || null;
 
-            _this.lista_objs_model = response.body.servidores || null;
-            _this.servidores = response.body.servidores || null;
-            _this.datos_excel = response.body.servidores || null;
+         /* Datos de la entidad hacia el paginador */
+         this.pagination = response.body.servidores || null;
 
-            _this.datacentros = response.body.datacentros || null;
-            _this.servicios = response.body.servicios || null;
-            _this.sistemas_operativos = response.body.sistemas_operativos || null;
-            _this.tipos_sistemas_operativos = response.body.tipos_sistemas_operativos || null;
-            _this.estados = response.body.estados || null;
-            _this.ambientes = response.body.ambientes || null;
-            _this.clusters = response.body.clusters || null;
-            _this.vlans = response.body.vlans || null;
-            _this.tipos_servidores = response.body.tipos_servidores || null;
-            _this.tipos_respaldos_discos = response.body.tipos_respaldos_discos || null;
+         /* Relaciones con la entidad */
+         this.datacentros = response.body.datacentros || null;
+         this.servicios = response.body.servicios || null;
+         this.sistemas_operativos = response.body.sistemas_operativos || null;
+         this.tipos_sistemas_operativos = response.body.tipos_sistemas_operativos || null;
+         this.estados = response.body.estados || null;
+         this.ambientes = response.body.ambientes || null;
+         this.clusters = response.body.clusters || null;
+         this.vlans = response.body.vlans || null;
+         this.tipos_servidores = response.body.tipos_servidores || null;
+         this.tipos_respaldos_discos = response.body.tipos_respaldos_discos || null;
 
-            _this.usuario_auth = response.body.usuario_auth || null;
-         }, function (response) {
-            // error callback
-            _this.checkear_estado_respuesta_http(response.status);
-         });
+         /* Datos de la sesion actual del usuario */
+         this.usuario_auth = response.body.usuario_auth || null;
       }
-
    }
 });
 

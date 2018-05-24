@@ -4958,27 +4958,24 @@ var UsuarioController = new Vue({
    filters: {},
    mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
    methods: {
-      inicializar: function inicializar() {
-         var _this = this;
 
-         this.$http.get('/ajax/' + this.nombre_ruta).then(function (response) {
-            // success callback
-            //Al tener relaciones se procesan desde aqui
-            _this.configurar_relaciones(response.body.usuarios, _this.relaciones_clase);
-            //Se setean las variables con los datos de la clase
-            _this.lista_objs_model = response.body.usuarios || null;
-            _this.usuarios = response.body.usuarios || null;
-            _this.datos_excel = response.body.usuarios || null;
-            //Se setean las variables paramétricas (combos, listas, etc)
-            _this.roles = response.body.roles || null;
-            _this.estados = response.body.estados || null;
-            _this.cargos = response.body.cargos || null;
-            //Se setea el usuario autenticado
-            _this.usuario_auth = response.body.usuario_auth || null;
-         }, function (response) {
-            // error callback
-            _this.checkear_estado_respuesta_http(response.status);
-         });
+      asignar_recursos: function asignar_recursos(response) {
+
+         /* Datos intrinsecos de la entidad */
+         this.lista_objs_model = response.body.usuarios.data || null;
+         this.usuarios = response.body.usuarios.data || null;
+         this.datos_excel = response.body.usuarios.data || null;
+
+         /* Datos de la entidad hacia el paginador */
+         this.pagination = response.body.usuarios || null;
+
+         /* Relaciones con la entidad */
+         this.roles = response.body.roles || null;
+         this.estados = response.body.estados || null;
+         this.cargos = response.body.cargos || null;
+
+         /* Datos de la sesion actual del usuario */
+         this.usuario_auth = response.body.usuario_auth || null;
       }
    }
 });

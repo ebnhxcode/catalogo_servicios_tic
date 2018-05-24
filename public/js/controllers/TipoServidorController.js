@@ -4938,21 +4938,18 @@ var TipoServidorController = new Vue({
    filters: {},
    mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
    methods: {
-      inicializar: function inicializar() {
-         var _this = this;
+      asignar_recursos: function asignar_recursos(response) {
 
-         this.$http.get('/ajax/' + this.nombre_ruta).then(function (response) {
-            // success callback
-            //Se setean las variables con los datos de la clase
-            _this.lista_objs_model = response.body.tipos_servidores || null;
-            _this.tipos_servidores = response.body.tipos_servidores || null;
-            _this.datos_excel = response.body.tipos_servidores || null;
-            //Se setea el usuario autenticado
-            _this.usuario_auth = response.body.usuario_auth || null;
-         }, function (response) {
-            // error callback
-            _this.checkear_estado_respuesta_http(response.status);
-         });
+         /* Datos intrinsecos de la entidad */
+         this.lista_objs_model = response.body.tipos_servidores.data || null;
+         this.tipos_servidores = response.body.tipos_servidores.data || null;
+         this.datos_excel = response.body.tipos_servidores.data || null;
+
+         /* Datos de la entidad hacia el paginador */
+         this.pagination = response.body.tipos_servidores || null;
+
+         /* Datos de la sesion actual del usuario */
+         this.usuario_auth = response.body.usuario_auth || null;
       }
    }
 });

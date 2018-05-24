@@ -218,23 +218,25 @@ const UsuarioController = new Vue({
    filters: {},
    mixins: [inyeccion_funciones_compartidas],
    methods: {
-      inicializar: function () {
-         this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
-            //Al tener relaciones se procesan desde aqui
-            this.configurar_relaciones(response.body.usuarios, this.relaciones_clase);
-            //Se setean las variables con los datos de la clase
-            this.lista_objs_model = response.body.usuarios || null;
-            this.usuarios = response.body.usuarios || null;
-            this.datos_excel = response.body.usuarios || null;
-            //Se setean las variables paramétricas (combos, listas, etc)
-            this.roles = response.body.roles || null;
-            this.estados = response.body.estados || null;
-            this.cargos = response.body.cargos || null;
-            //Se setea el usuario autenticado
-            this.usuario_auth = response.body.usuario_auth || null;
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
+
+      asignar_recursos: function (response) {
+
+         /* Datos intrinsecos de la entidad */
+         this.lista_objs_model = response.body.usuarios.data || null;
+         this.usuarios = response.body.usuarios.data || null;
+         this.datos_excel = response.body.usuarios.data || null;
+
+         /* Datos de la entidad hacia el paginador */
+         this.pagination = response.body.usuarios || null;
+
+         /* Relaciones con la entidad */
+         this.roles = response.body.roles || null;
+         this.estados = response.body.estados || null;
+         this.cargos = response.body.cargos || null;
+
+         /* Datos de la sesion actual del usuario */
+         this.usuario_auth = response.body.usuario_auth || null;
+
       },
    }
 });

@@ -193,21 +193,23 @@ const SistemaOperativoController = new Vue({
    filters: {},
    mixins: [ inyeccion_funciones_compartidas ],
    methods: {
-      inicializar: function () {
-         this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
-            this.configurar_relaciones(response.body.sistemas_operativos, this.relaciones_clase);
+      asignar_recursos: function (response) {
 
-            this.lista_objs_model = response.body.sistemas_operativos || null;
-            this.sistemas_operativos = response.body.sistemas_operativos || null;
-            this.idiomas = response.body.idiomas || null;
-            this.tipos_sistemas_operativos = response.body.tipos_sistemas_operativos || null;
+         /* Datos intrinsecos de la entidad */
+         this.lista_objs_model = response.body.sistemas_operativos.data || null;
+         this.sistemas_operativos = response.body.sistemas_operativos.data || null;
+         this.datos_excel = response.body.sistemas_operativos.data || null;
 
-            this.datos_excel = response.body.sistemas_operativos || null;
+         /* Datos de la entidad hacia el paginador */
+         this.pagination = response.body.sistemas_operativos || null;
 
-            this.usuario_auth = response.body.usuario_auth || null;
-         }, response => { // error callback
-            this.checkear_estado_respuesta_http(response.status);
-         });
+         /* Relaciones con la entidad */
+         this.idiomas = response.body.idiomas || null;
+         this.tipos_sistemas_operativos = response.body.tipos_sistemas_operativos || null;
+
+         /* Datos de la sesion actual del usuario */
+         this.usuario_auth = response.body.usuario_auth || null;
+
       },
    }
 });

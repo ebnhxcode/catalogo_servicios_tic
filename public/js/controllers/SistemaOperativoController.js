@@ -2665,25 +2665,22 @@ var SistemaOperativoController = new Vue({
    filters: {},
    mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
    methods: {
-      inicializar: function inicializar() {
-         var _this = this;
+      asignar_recursos: function asignar_recursos(response) {
 
-         this.$http.get('/ajax/' + this.nombre_ruta).then(function (response) {
-            // success callback
-            _this.configurar_relaciones(response.body.sistemas_operativos, _this.relaciones_clase);
+         /* Datos intrinsecos de la entidad */
+         this.lista_objs_model = response.body.sistemas_operativos.data || null;
+         this.sistemas_operativos = response.body.sistemas_operativos.data || null;
+         this.datos_excel = response.body.sistemas_operativos.data || null;
 
-            _this.lista_objs_model = response.body.sistemas_operativos || null;
-            _this.sistemas_operativos = response.body.sistemas_operativos || null;
-            _this.idiomas = response.body.idiomas || null;
-            _this.tipos_sistemas_operativos = response.body.tipos_sistemas_operativos || null;
+         /* Datos de la entidad hacia el paginador */
+         this.pagination = response.body.sistemas_operativos || null;
 
-            _this.datos_excel = response.body.sistemas_operativos || null;
+         /* Relaciones con la entidad */
+         this.idiomas = response.body.idiomas || null;
+         this.tipos_sistemas_operativos = response.body.tipos_sistemas_operativos || null;
 
-            _this.usuario_auth = response.body.usuario_auth || null;
-         }, function (response) {
-            // error callback
-            _this.checkear_estado_respuesta_http(response.status);
-         });
+         /* Datos de la sesion actual del usuario */
+         this.usuario_auth = response.body.usuario_auth || null;
       }
    }
 });

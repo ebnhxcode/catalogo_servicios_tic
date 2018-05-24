@@ -2612,25 +2612,23 @@ var ServidorAccesoController = new Vue({
    filters: {},
    mixins: [__WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__["a" /* inyeccion_funciones_compartidas */]],
    methods: {
-      inicializar: function inicializar() {
-         var _this = this;
+      asignar_recursos: function asignar_recursos(response) {
 
-         this.$http.get('/ajax/' + this.nombre_ruta).then(function (response) {
-            // success callback
-            _this.configurar_relaciones(response.body.servidores_accesos, _this.relaciones_clase);
+         /* Datos intrinsecos de la entidad */
+         this.lista_objs_model = response.body.servidores_accesos.data || null;
+         this.servidores_accesos = response.body.servidores_accesos.data || null;
+         this.datos_excel = response.body.servidores_accesos.data || null;
 
-            _this.lista_objs_model = response.body.servidores_accesos || null;
-            _this.servidores_accesos = response.body.servidores_accesos || null;
-            _this.datos_excel = response.body.servidores_accesos || null;
+         /* Datos de la entidad hacia el paginador */
+         this.pagination = response.body.servidores_accesos || null;
 
-            _this.servidores = response.body.servidores || null;
+         /* Relaciones con la entidad */
+         this.servidores = response.body.servidores || null;
 
-            _this.usuario_auth = response.body.usuario_auth || null;
-         }, function (response) {
-            // error callback
-            _this.checkear_estado_respuesta_http(response.status);
-         });
+         /* Datos de la sesion actual del usuario */
+         this.usuario_auth = response.body.usuario_auth || null;
       }
+
    }
 });
 

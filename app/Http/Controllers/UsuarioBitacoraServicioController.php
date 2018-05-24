@@ -62,11 +62,13 @@ class UsuarioBitacoraServicioController extends Controller {
 
          $this->actividades = Actividad::all();
          $this->servicios = Servicio::all();
+
+         $this->usuario_auth = Auth::user();
          $this->usuarios_bitacora_servicios = UsuarioBitacoraServicio::with([
             'usuario','servicio','actividad'
          ])->where('id_usuario', '=', $this->usuario_auth->id_usuario)->paginate((int)$this->per_page);
 
-         $this->usuario_auth = Auth::user();
+
          return response()->json([
             'status' => 200,
             'actividades' => $this->actividades,
