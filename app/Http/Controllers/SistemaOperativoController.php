@@ -71,7 +71,7 @@ class SistemaOperativoController extends Controller {
             'sistemas_operativos' => $this->sistemas_operativos,
             'idiomas' => $this->idiomas,
             'tipos_sistemas_operativos' => $this->tipos_sistemas_operativos,
-            'usuario_auth' => $this->usuario_auth,
+            'usuario_auth' => $this->usuario_auth->load('usuario_role.role'),
          ]);
       }
    }

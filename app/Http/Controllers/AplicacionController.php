@@ -96,7 +96,7 @@ class AplicacionController extends Controller {
             'servicios' => $this->servicios,
             'servidores' => $this->servidores,
             'dominios' => $this->dominios,
-            'usuario_auth' => $this->usuario_auth,
+            'usuario_auth' => $this->usuario_auth->load('usuario_role.role'),
          ]);
       }
    }

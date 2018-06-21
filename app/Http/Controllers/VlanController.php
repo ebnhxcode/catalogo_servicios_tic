@@ -60,7 +60,7 @@ class VlanController extends Controller {
          return response()->json([
             'status' => 200,
             'vlans' => $this->vlans,
-            'usuario_auth' => $this->usuario_auth,
+            'usuario_auth' => $this->usuario_auth->load('usuario_role.role'),
          ]);
       }
    }

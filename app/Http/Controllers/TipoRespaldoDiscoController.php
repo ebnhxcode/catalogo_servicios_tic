@@ -77,7 +77,7 @@ class TipoRespaldoDiscoController extends Controller {
          return response()->json([
             'status' => 200,
             'tipos_respaldos_discos' => $this->tipos_respaldos_discos,
-            'usuario_auth' => $this->usuario_auth,
+            'usuario_auth' => $this->usuario_auth->load('usuario_role.role'),
          ]);
       }
    }

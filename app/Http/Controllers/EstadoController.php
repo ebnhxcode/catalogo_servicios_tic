@@ -60,7 +60,7 @@ class EstadoController extends Controller {
          return response()->json([
             'status' => 200,
             'estados' => $this->estados,
-            'usuario_auth' => $this->usuario_auth,
+            'usuario_auth' => $this->usuario_auth->load('usuario_role.role'),
          ]);
       }
    }

@@ -83,7 +83,7 @@ class AplicacionAccesoController extends Controller {
             'status' => 200,
             'aplicaciones_accesos' => $this->aplicaciones_accesos,
             'aplicaciones' => $this->aplicaciones,
-            'usuario_auth' => $this->usuario_auth,
+            'usuario_auth' => $this->usuario_auth->load('usuario_role.role'),
          ]);
       }
    }

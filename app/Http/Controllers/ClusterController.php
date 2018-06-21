@@ -61,7 +61,7 @@ class ClusterController extends Controller {   private $usuario_auth;
             'status' => 200,
             'clusters' => $this->clusters,
             'tipos_clusters' => $this->tipos_clusters,
-            'usuario_auth' => $this->usuario_auth,
+            'usuario_auth' => $this->usuario_auth->load('usuario_role.role'),
          ]);
       }
    }

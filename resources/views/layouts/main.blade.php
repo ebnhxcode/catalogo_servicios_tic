@@ -26,7 +26,8 @@
                   </a>
 
                   <button class="btn btn-success"
-                          v-if="en_array(['Administrador','Jefe de Area','Lider Equipo','Jefe Proyecto','App Manager'],usuario_auth.usuario_role.role.nom_role)"
+                          v-if="usuario_auth.usuario_role &&
+                          en_array(['Administrador','Jefe de Area','Lider Equipo','Jefe Proyecto','App Manager'],usuario_auth.usuario_role.role.nom_role)"
                           data-placement="top" data-toggle="tooltip" title="Crear nuevo/a {{$nombre_modelo}}"
                           @click.prevent="mostrar_modal_crear">
                      Crear {{str_replace('_',' ',$nombre_modelo)}}
@@ -40,7 +41,7 @@
                   <div class="dropdown-menu">
                      <!-- Esta seccion ya es un componente, se podria estandarizar solo el nombre de los obj para excel -->
                      <download-excel
-                        v-if="(excel_data_contador = filterBy(datos_excel, filtro_head).length) > 0 &&
+                        v-if="(excel_data_contador = filterBy(datos_excel, filtro_head).length) > 0 && usuario_auth.usuario_role &&
                            en_array(['Administrador','Jefe de Area','Lider Equipo','App Manager'],usuario_auth.usuario_role.role.nom_role)"
                         :data="filterBy(excel_json_datos, filtro_head)"
                         :fields="excel_json_campos"
@@ -102,7 +103,8 @@
                </a>
 
                <button class="btn btn-success"
-                       v-if="en_array(['Administrador','Jefe de Area','Lider Equipo','Jefe Proyecto','App Manager'],usuario_auth.usuario_role.role.nom_role)"
+                       v-if="usuario_auth.usuario_role &&
+                       en_array(['Administrador','Jefe de Area','Lider Equipo','Jefe Proyecto','App Manager'],usuario_auth.usuario_role.role.nom_role)"
                        data-placement="top" data-toggle="tooltip" title="Crear nuevo/a {{$nombre_modelo}}"
                        @click.prevent="mostrar_modal_crear">
                   Crear {{str_replace('_',' ',$nombre_modelo)}}
@@ -116,7 +118,7 @@
                <div class="dropdown-menu">
                   <!-- Esta seccion ya es un componente, se podria estandarizar solo el nombre de los obj para excel -->
                   <download-excel
-                     v-if="(excel_data_contador = filterBy(datos_excel, filtro_head).length) > 0 &&
+                     v-if="(excel_data_contador = filterBy(datos_excel, filtro_head).length) > 0 && usuario_auth.usuario_role &&
                            en_array(['Administrador','Jefe de Area','Lider Equipo','App Manager'],usuario_auth.usuario_role.role.nom_role)"
                      :data="filterBy(excel_json_datos, filtro_head)"
                      :fields="excel_json_campos"

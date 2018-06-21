@@ -70,7 +70,7 @@ class RoleController extends Controller {
             'status' => 200,
             'roles' => $this->roles,
             'permisos' => $this->permisos,
-            'usuario_auth' => $this->usuario_auth,
+            'usuario_auth' => $this->usuario_auth->load('usuario_role.role'),
          ]);
       }
    }

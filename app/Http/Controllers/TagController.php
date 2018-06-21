@@ -60,7 +60,7 @@ class TagController extends Controller {
          return response()->json([
             'status' => 200,
             'tags' => $this->tags,
-            'usuario_auth' => $this->usuario_auth,
+            'usuario_auth' => $this->usuario_auth->load('usuario_role.role'),
          ]);
       }
    }

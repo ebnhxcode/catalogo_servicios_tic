@@ -75,7 +75,7 @@ class DatacentroController extends Controller {
          return response()->json([
             'status' => 200,
             'datacentros' => $this->datacentros,
-            'usuario_auth' => $this->usuario_auth,
+            'usuario_auth' => $this->usuario_auth->load('usuario_role.role'),
          ]);
       }
    }

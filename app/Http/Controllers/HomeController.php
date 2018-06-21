@@ -47,7 +47,7 @@ class HomeController extends Controller {
         $this->usuario_auth = Auth::user();
         return response()->json([
            'status' => 200,
-           'usuario_auth' => $this->usuario_auth,
+           'usuario_auth' => $this->usuario_auth->load('usuario_role.role'),
         ]);
     }
 

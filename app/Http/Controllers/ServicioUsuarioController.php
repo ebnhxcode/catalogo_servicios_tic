@@ -68,7 +68,7 @@ class ServicioUsuarioController extends Controller {
             'servicio_usuario' => $this->servicio_usuario,
             'servicios' => $this->servicios,
             'usuarios' => $this->usuarios,
-            'usuario_auth' => $this->usuario_auth,
+            'usuario_auth' => $this->usuario_auth->load('usuario_role.role'),
          ]);
       }
    }

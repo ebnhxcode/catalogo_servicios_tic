@@ -76,7 +76,7 @@ class TipoServidorController extends Controller {
          return response()->json([
             'status' => 200,
             'tipos_servidores' => $this->tipos_servidores,
-            'usuario_auth' => $this->usuario_auth,
+            'usuario_auth' => $this->usuario_auth->load('usuario_role.role'),
          ]);
       }
    }

@@ -82,7 +82,7 @@ class ServidorAccesoController extends Controller {
             'status' => 200,
             'servidores_accesos' => $this->servidores_accesos,
             'servidores' => $this->servidores,
-            'usuario_auth' => $this->usuario_auth,
+            'usuario_auth' => $this->usuario_auth->load('usuario_role.role'),
          ]);
       }
    }

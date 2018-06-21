@@ -57,7 +57,7 @@ class CargoController extends Controller {
          return response()->json([
             'status' => 200,
             'cargos' => $this->cargos,
-            'usuario_auth' => $this->usuario_auth,
+            'usuario_auth' => $this->usuario_auth->load('usuario_role.role'),
          ]);
       }
    }

@@ -137,7 +137,7 @@ class ServidorController extends Controller {
             'vlans' => $this->vlans,
             'tipos_servidores' => $this->tipos_servidores,
             'estados' => $this->estados,
-            'usuario_auth' => $this->usuario_auth,
+            'usuario_auth' => $this->usuario_auth->load('usuario_role.role'),
          ]);
       }
    }

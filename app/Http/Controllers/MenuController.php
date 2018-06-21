@@ -78,7 +78,7 @@ class MenuController extends Controller {
             'status' => 200,
             'menus' => $this->menus,
             'mantenedores' => $this->mantenedores,
-            'usuario_auth' => $this->usuario_auth,
+            'usuario_auth' => $this->usuario_auth->load('usuario_role.role'),
          ]);
       }
    }

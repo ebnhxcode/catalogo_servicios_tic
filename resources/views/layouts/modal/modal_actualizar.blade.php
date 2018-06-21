@@ -15,7 +15,7 @@ Relacionados a ➜ <span class="text-info">@{{ $data[`${nombre_model}`][`nom_${n
          aria-controls="vista_principal" aria-selected="true">Vista Principal</a>
    </li>
    <li class="nav-item"
-       v-if="en_array(['Administrador','Jefe de Area','Lider Equipo','App Manager'],usuario_auth.usuario_role.role.nom_role)">
+       v-if="usuario_auth.usuario_role && en_array(['Administrador','Jefe de Area','Lider Equipo','App Manager'],usuario_auth.usuario_role.role.nom_role)">
       <a class="nav-link" data-toggle="tab" href="#vista_actualizar_tab" role="tab"
          aria-controls="vista_actualizar" aria-selected="false">Opciones</a>
    </li>
@@ -43,7 +43,7 @@ Relacionados a ➜ <span class="text-info">@{{ $data[`${nombre_model}`][`nom_${n
 
    <!-- La subvista que se encarga de importar los campos del formulario -->
    <div class="tab-pane fade show" id="vista_actualizar_tab" role="tabpanel" aria-labelledby="vista_actualizar_tab"
-      v-if="en_array(['Administrador','Jefe de Area','Lider Equipo','App Manager'],usuario_auth.usuario_role.role.nom_role)">
+      v-if="usuario_auth.usuario_role && en_array(['Administrador','Jefe de Area','Lider Equipo','App Manager'],usuario_auth.usuario_role.role.nom_role)">
 
       <br>
 

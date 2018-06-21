@@ -26,7 +26,7 @@
             <div class="card bg-primary text-white border-light mb-12" v-for="i in filterBy(home_items, filtro_head)">
                <div class="card-header">@{{ i.nom_menu }}</div>
                <div class="img-responsive">
-                  <img class="card-img-top" :src="i.imagen_menu || `/img/logo180-180.png`">
+                  <img class="card-img-top" style="max-width: 300px !important;" :src="`/img/logo180-180.png`">
                </div>
                <div class="card-body">
                   <h5 class="card-title">

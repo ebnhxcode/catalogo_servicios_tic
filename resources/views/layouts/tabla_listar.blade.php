@@ -58,7 +58,7 @@
             <button class="btn btn-primary"
                     v-show="id_en_edicion != lom[`id_${nombre_model}`] &&
                         id_en_edicion == null &&
-                        modal_actualizar_activo == false &&
+                        modal_actualizar_activo == false && usuario_auth.usuario_role &&
                         en_array(['Administrador','Jefe de Area','Lider Equipo','App Manager'],usuario_auth.usuario_role.role.nom_role)"
                     data-placement="top" data-toggle="tooltip" title="Editar desde aquí"
                     @click.prevent="editar(lom[`id_${nombre_model}`])">
@@ -82,7 +82,8 @@
                <i class="fa fa-close"></i>
             </button>
             <button class="btn btn-danger" v-show="id_en_edicion == null"
-                    v-if="en_array(['Administrador','Jefe de Area','Lider Equipo','App Manager'],usuario_auth.usuario_role.role.nom_role)"
+                    v-if="usuario_auth.usuario_role &&
+                    en_array(['Administrador','Jefe de Area','Lider Equipo','App Manager'],usuario_auth.usuario_role.role.nom_role)"
                     @click.prevent="eliminar(lom[`id_${nombre_model}`])"
                     data-placement="top" data-toggle="tooltip" title="Eliminar">
                <i class="fa fa-close"></i>

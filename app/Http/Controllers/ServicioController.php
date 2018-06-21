@@ -97,7 +97,7 @@ class ServicioController extends Controller {
              'estados' => $this->estados,
              'usuarios' => $this->usuarios,
              'usuarios_bitacora_servicios' => $this->usuarios_bitacora_servicios,
-             'usuario_auth' => $this->usuario_auth,
+             'usuario_auth' => $this->usuario_auth->load('usuario_role.role'),
           ]);
        }
     }

@@ -74,7 +74,7 @@ class UsuarioBitacoraServicioController extends Controller {
             'actividades' => $this->actividades,
             'servicios' => $this->servicios,
             'usuarios_bitacora_servicios' => $this->usuarios_bitacora_servicios,
-            'usuario_auth' => $this->usuario_auth,
+            'usuario_auth' => $this->usuario_auth->load('usuario_role.role'),
          ]);
       }
    }
