@@ -51,21 +51,29 @@ Relacionados a ➜ <span class="text-info">@{{ $data[`${nombre_model}`][`nom_${n
          @include("$nombre_tabla.partials.formulario_campos")
       @endif
 
-      <dt>Finalizar</dt>
+      <br>
 
-      <dd>
+      <div class="card">
+         <div class="card-body pro">
+            <dt>Finalizar</dt>
 
-         <button class="btn btn-success" @click.prevent="guardar_editado">
-            Guardar
-         </button>
-         <button class="btn float-right" @click.prevent="limpiar_objeto_clase_local">
-            Limpiar Formulario
-         </button>
-         <button class="btn btn-danger float-right mr-sm-2" @click.prevent="{{ "eliminar($nombre_modelo.id_$nombre_modelo)" }}">
-            Eliminar
-         </button>
+            <dd>
 
-      </dd>
+               <button class="btn btn-success float-left" @click.prevent="guardar_editado">
+                  Guardar
+               </button>
+               <button class="btn float-right" @click.prevent="limpiar_objeto_clase_local">
+                  Limpiar Formulario
+               </button>
+               <button class="btn btn-danger float-right mr-sm-2" @click.prevent="{{ "eliminar($nombre_modelo.id_$nombre_modelo)" }}">
+                  Eliminar
+               </button>
+
+            </dd>
+
+         </div>
+      </div>
+
 
    </div>
 
