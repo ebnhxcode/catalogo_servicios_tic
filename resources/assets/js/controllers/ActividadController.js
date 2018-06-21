@@ -45,6 +45,9 @@ const ActividadController = new Vue({
          'lista_objs_model':[],
          'tipos_actividades':[],
          'actividades':[],
+
+         'spinner_table':true,
+
          'datos_excel':[],
          'usuario_auth':{},
 

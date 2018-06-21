@@ -63,6 +63,9 @@ const SistemaOperativoController = new Vue({
          'lista_objs_model':[],
          'sistemas_operativos':[],
          'idiomas':[],
+
+         'spinner_table':true,
+
          'datos_excel':[],
          'usuario_auth':{},
 

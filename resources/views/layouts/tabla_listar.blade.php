@@ -1,4 +1,4 @@
-<table class="table table-striped table-hover table-sm">
+<table class="table table-sm" v-if="typeof spinner_table != 'undefined' && spinner_table == false">
    <thead>
    <tr class="text-center">
       <th v-for="c,i in tabla_campos" v-if="c">
@@ -55,6 +55,8 @@
       <!-- Botonera de acciones -->
       <td>
          <div class="btn-group btn-group-sm" style="margin:0;" role="group" aria-label="Basic example">
+
+           {{--
             <button class="btn btn-primary"
                     v-show="id_en_edicion != lom[`id_${nombre_model}`] &&
                         id_en_edicion == null &&
@@ -69,6 +71,8 @@
                     @click.prevent="guardar_editado">
                <i class="fa fa-save"></i>
             </button>
+           --}}
+
             <button class="btn btn-secondary"
                     data-placement="top" data-toggle="tooltip" title="Actualizar desde modal"
                     @click.prevent="mostrar_modal_actualizar(lom[`id_${nombre_model}`])"
@@ -97,3 +101,6 @@
    </tr>
    </tbody>
 </table>
+<div v-if="typeof spinner_table != 'undefined' && spinner_table == true">
+   <spinner></spinner>
+</div>

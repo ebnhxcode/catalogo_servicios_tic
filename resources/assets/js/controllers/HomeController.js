@@ -30,6 +30,8 @@ const HomeController = new Vue({
          'home_items':[],
          'mantenedores':[],
 
+         'spinner_table':true,
+
          'usuario_auth':{},
 
          'campos_formularios':[],

@@ -70,6 +70,9 @@ const ServicioController = new Vue({
          'estados':[],
          'usuarios':[],
          'usuarios_bitacora_servicios':[],
+
+         'spinner_table':true,
+
          'datos_excel':[],
          'usuario_auth':{},
 

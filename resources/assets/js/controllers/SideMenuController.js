@@ -104,6 +104,9 @@ Vue.use(Vue2Filters);
 import ToggleButton from 'vue-js-toggle-button';
 Vue.use(ToggleButton);
 
+Vue.component('spinner', require('../components/Spinner.vue'));
+Vue.component('paginators', require('../components/Paginators.vue'));
+
 /*
 import tinymce from 'tinymce/tinymce'
 import 'tinymce/themes/modern/theme'

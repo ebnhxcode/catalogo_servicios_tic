@@ -70,6 +70,9 @@ const UsuarioController = new Vue({
          'roles': [],
          'estados': [],
          'cargos': [],
+
+         'spinner_table':true,
+
          'datos_excel': [],
          'usuario_auth': {},
 

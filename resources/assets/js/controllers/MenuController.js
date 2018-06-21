@@ -51,6 +51,9 @@ const MenuController = new Vue({
          'lom':{},
          'lista_objs_model':[],
          'menus':[],
+
+         'spinner_table':true,
+
          'datos_excel':[],
          'usuario_auth':{},
 

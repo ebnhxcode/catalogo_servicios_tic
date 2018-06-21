@@ -56,6 +56,9 @@ const ServidorAccesoController = new Vue({
          'lista_objs_model':[],
          'servidores':[],
          'servidores_accesos':[],
+
+         'spinner_table':true,
+
          'datos_excel':[],
          'usuario_auth':{},
 

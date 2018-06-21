@@ -46,6 +46,9 @@ const TipoRespaldoDiscoController = new Vue({
          'lom':{},
          'lista_objs_model':[],
          'tipos_respaldos_discos': [],
+
+         'spinner_table':true,
+
          'datos_excel': [],
          'usuario_auth': {},
 

@@ -46,6 +46,9 @@ const PermisoController = new Vue({
          'lom':{},
          'lista_objs_model':[],
          'permisos':[],
+
+         'spinner_table':true,
+
          'datos_excel':[],
          'usuario_auth':{},
 

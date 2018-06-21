@@ -139,6 +139,9 @@ const ServidorController = new Vue({
          'estados':[],
          'dominios':[],
          'servidores':[],
+
+         'spinner_table':true,
+
          'datos_excel':[],
          'usuario_auth':{},
 

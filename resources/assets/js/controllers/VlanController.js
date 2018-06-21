@@ -48,6 +48,9 @@ const VlanController = new Vue({
          'lom':{},
          'lista_objs_model':[],
          'vlans':[],
+
+         'spinner_table':true,
+
          'datos_excel':[],
          'usuario_auth':{},
 

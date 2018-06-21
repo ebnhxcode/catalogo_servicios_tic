@@ -46,6 +46,9 @@ const TipoAplicacionController = new Vue({
          'lom':{},
          'lista_objs_model':[],
          'tipos_aplicaciones': [],
+
+         'spinner_table':true,
+
          'datos_excel': [],
          'usuario_auth': {},
 

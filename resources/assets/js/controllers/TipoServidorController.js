@@ -46,6 +46,9 @@ const TipoServidorController = new Vue({
          'lom':{},
          'lista_objs_model':[],
          'tipos_servidores': [],
+
+         'spinner_table':true,
+
          'datos_excel': [],
          'usuario_auth': {},
 

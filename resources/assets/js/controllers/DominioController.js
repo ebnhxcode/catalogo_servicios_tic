@@ -50,6 +50,9 @@ const DominioController = new Vue({
          'lom':{},
          'lista_objs_model':[],
          'dominios':[],
+
+         'spinner_table':true,
+
          'datos_excel':[],
          'usuario_auth':{},
 

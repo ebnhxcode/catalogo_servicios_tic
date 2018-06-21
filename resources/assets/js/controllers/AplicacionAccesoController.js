@@ -55,6 +55,9 @@ const AplicacionAccesoController = new Vue({
          'lista_objs_model':[],
          'aplicaciones':[],
          'aplicaciones_accesos':[],
+
+         'spinner_table':true,
+
          'datos_excel':[],
          'usuario_auth':{},
 

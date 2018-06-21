@@ -46,6 +46,9 @@ const TagController = new Vue({
          'lom':{},
          'lista_objs_model':[],
          'tags':[],
+
+         'spinner_table':true,
+
          'datos_excel':[],
          'usuario_auth':{},
 

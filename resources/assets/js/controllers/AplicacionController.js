@@ -76,6 +76,9 @@ const AplicacionController = new Vue({
          'servicios':[],
          'dominios':[],
          'aplicaciones':[],
+
+         'spinner_table':true,
+
          'datos_excel':[],
          'usuario_auth':{},
 
