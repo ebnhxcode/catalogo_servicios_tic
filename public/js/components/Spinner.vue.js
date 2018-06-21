@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 60);
+/******/ 	return __webpack_require__(__webpack_require__.s = 61);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -254,6 +254,58 @@ function toComment(sourceMap) {
 
 	return '/*# ' + data + ' */';
 }
+
+
+/***/ }),
+
+/***/ 29:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(30)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(32)
+/* template */
+var __vue_template__ = __webpack_require__(33)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-36a7cc9c"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Spinner.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-36a7cc9c", Component.options)
+  } else {
+    hotAPI.reload("data-v-36a7cc9c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
 
 
 /***/ }),
@@ -487,6 +539,101 @@ function applyToTag (styleElement, obj) {
 
 /***/ }),
 
+/***/ 30:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(31);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("7157bc13", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-36a7cc9c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Spinner.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-36a7cc9c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Spinner.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ 31:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ 32:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+   'spinner': {
+      props: [''],
+      'name': 'spinner',
+      'template': '',
+      data: function data() {
+         return {
+            visible: false
+         };
+      },
+      ready: function ready() {},
+      created: function created() {},
+
+      filters: {},
+      methods: {}
+   }
+});
+
+/***/ }),
+
+/***/ 33:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "loader text-center" }, [
+    _vm._v("Cargando tabla, espere por favor...")
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-36a7cc9c", module.exports)
+  }
+}
+
+/***/ }),
+
 /***/ 4:
 /***/ (function(module, exports) {
 
@@ -521,323 +668,11 @@ module.exports = function listToStyles (parentId, list) {
 
 /***/ }),
 
-/***/ 5:
+/***/ 61:
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(6)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(8)
-/* template */
-var __vue_template__ = __webpack_require__(9)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-267f8af9"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/Paginators.vue"
+module.exports = __webpack_require__(29);
 
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-267f8af9", Component.options)
-  } else {
-    hotAPI.reload("data-v-267f8af9", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 6:
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(7);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(3)("63d3e7e1", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-267f8af9\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Paginators.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-267f8af9\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Paginators.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-
-/***/ 60:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(5);
-
-
-/***/ }),
-
-/***/ 7:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ 8:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-   name: "paginators",
-   props: ['pagination'],
-   data: function data() {
-      return {
-         pages: []
-      };
-   },
-   ready: function ready() {},
-   created: function created() {
-      //console.log(this.pagination); //está trayendo pagination
-      var p = this.pagination;
-      this.pages = this.generatePagesArray(p.current_page, p.total, p.per_page, 7);
-   },
-
-
-   methods: {
-      navigate: function navigate(ev, page) {
-         ev.preventDefault();
-         //console.log(page);
-         this.$emit('navigate', page);
-      },
-      nextPrev: function nextPrev(ev, page) {
-         if (page == 0 || page == this.pagination.last_page + 1) {
-            return;
-         }
-         this.navigate(ev, page);
-      },
-      generatePagesArray: function generatePagesArray(currentPage, collectionLength, rowsPerPage, paginationRange) {
-         var pages = [];
-         var totalPages = Math.ceil(collectionLength / rowsPerPage);
-         var halfWay = Math.ceil(paginationRange / 2);
-         var position;
-
-         if (currentPage <= halfWay) {
-            position = 'start';
-         } else if (totalPages - halfWay < currentPage) {
-            position = 'end';
-         } else {
-            position = 'middle';
-         }
-
-         var ellipsesNeeded = paginationRange < totalPages;
-         var i = 1;
-         while (i <= totalPages && i <= paginationRange) {
-            var pageNumber = this.calculatePageNumber(i, currentPage, paginationRange, totalPages);
-            var openingEllipsesNeeded = i === 2 && (position === 'middle' || position === 'end');
-            var closingEllipsesNeeded = i === paginationRange - 1 && (position === 'middle' || position === 'start');
-            if (ellipsesNeeded && (openingEllipsesNeeded || closingEllipsesNeeded)) {
-               pages.push('...');
-            } else {
-               pages.push(pageNumber);
-            }
-            i++;
-         }
-         return pages;
-      },
-      calculatePageNumber: function calculatePageNumber(i, currentPage, paginationRange, totalPages) {
-         var halfWay = Math.ceil(paginationRange / 2);
-         if (i === paginationRange) {
-            return totalPages;
-         } else if (i === 1) {
-            return i;
-         } else if (paginationRange < totalPages) {
-            if (totalPages - halfWay < currentPage) {
-               return totalPages - paginationRange + i;
-            } else if (halfWay < currentPage) {
-               return currentPage - halfWay + i;
-            } else {
-               return i;
-            }
-         } else {
-            return i;
-         }
-      }
-   },
-
-   watch: {
-      pagination: function pagination() {
-         //console.log('Estoy llegando al watch');
-         var p = this.pagination;
-         this.pages = this.generatePagesArray(p.current_page, p.total, p.per_page, 7);
-      }
-   }
-});
-
-/***/ }),
-
-/***/ 9:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("nav", { attrs: { "aria-label": "Page navigation" } }, [
-    _c(
-      "ul",
-      { staticClass: "pagination" },
-      [
-        _c("li", { class: { disabled: _vm.pagination.current_page == 1 } }, [
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-success",
-              attrs: { href: "#!", "aria-label": "Previous" },
-              on: {
-                click: function($event) {
-                  _vm.nextPrev($event, _vm.pagination.current_page - 1)
-                }
-              }
-            },
-            [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("«")])]
-          )
-        ]),
-        _vm._v(" "),
-        _vm._l(_vm.pages, function(page) {
-          return _c(
-            "li",
-            {
-              class: { pro: _vm.pagination.current_page == page },
-              attrs: { "track-by": "$index" }
-            },
-            [
-              page == "..."
-                ? _c("span", { staticClass: "btn btn-success" }, [
-                    _vm._v(_vm._s(page))
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              page != "..."
-                ? _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-success",
-                      attrs: { href: "#!" },
-                      on: {
-                        click: function($event) {
-                          _vm.navigate($event, page)
-                        }
-                      }
-                    },
-                    [_vm._v(_vm._s(page))]
-                  )
-                : _vm._e()
-            ]
-          )
-        }),
-        _vm._v(" "),
-        _c(
-          "li",
-          {
-            class: {
-              disabled: _vm.pagination.current_page == _vm.pagination.last_page
-            }
-          },
-          [
-            _c(
-              "a",
-              {
-                staticClass: "btn btn-success",
-                attrs: { href: "#!", "aria-label": "Next" },
-                on: {
-                  click: function($event) {
-                    _vm.nextPrev($event, _vm.pagination.current_page + 1)
-                  }
-                }
-              },
-              [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("»")])]
-            )
-          ]
-        )
-      ],
-      2
-    )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-267f8af9", module.exports)
-  }
-}
 
 /***/ })
 

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 65);
+/******/ 	return __webpack_require__(__webpack_require__.s = 71);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2084,7 +2084,7 @@ if (typeof window !== 'undefined' && window.Sweetalert2) window.sweetAlert = win
 
 /***/ }),
 
-/***/ 2:
+/***/ 10:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2826,11 +2826,17 @@ var inyeccion_funciones_compartidas = {
       inicializar: function inicializar() {
          var _this10 = this;
 
+         if (typeof this.spinner_table != "undefined") {
+            this.spinner_table = true;
+         }
          this.$http.get('/ajax/' + this.nombre_ruta).then(function (response) {
             // success callback
             if (response.status == 200) {
                _this10.configurar_relaciones(response.body[_this10.nombre_ruta].data, _this10.relaciones_clase);
                _this10.asignar_recursos(response);
+               if (typeof _this10.spinner_table != "undefined") {
+                  _this10.spinner_table = false;
+               }
             } else {
                _this10.checkear_estado_respuesta_http(response.status);
             }
@@ -2842,10 +2848,16 @@ var inyeccion_funciones_compartidas = {
       navigate: function navigate(page) {
          var _this11 = this;
 
+         if (typeof this.spinner_table != "undefined") {
+            this.spinner_table = true;
+         }
          this.$http.get('/ajax/' + this.nombre_ruta + '?page=' + page + '&per_page=' + this.pagination.per_page).then(function (response) {
             if (response.status == 200) {
                _this11.configurar_relaciones(response.body[_this11.nombre_ruta].data, _this11.relaciones_clase);
                _this11.asignar_recursos(response);
+               if (typeof _this11.spinner_table != "undefined") {
+                  _this11.spinner_table = false;
+               }
             } else {
                _this11.checkear_estado_respuesta_http(response.status);
             }
@@ -2856,11 +2868,17 @@ var inyeccion_funciones_compartidas = {
       navigateCustom: function navigateCustom() {
          var _this12 = this;
 
+         if (typeof this.spinner_table != "undefined") {
+            this.spinner_table = true;
+         }
          this.$http.get('/ajax/' + this.nombre_ruta + '?page=' + 1 + '&per_page=' + this.pagination.per_page).then(function (response) {
             console.log(response);
             if (response.status == 200) {
                _this12.configurar_relaciones(response.body[_this12.nombre_ruta].data, _this12.relaciones_clase);
                _this12.asignar_recursos(response);
+               if (typeof _this12.spinner_table != "undefined") {
+                  _this12.spinner_table = false;
+               }
             } else {
                _this12.checkear_estado_respuesta_http(response.status);
             }
@@ -2904,20 +2922,20 @@ var inyeccion_funciones_compartidas = {
 
 /***/ }),
 
-/***/ 65:
+/***/ 71:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(66);
+module.exports = __webpack_require__(72);
 
 
 /***/ }),
 
-/***/ 66:
+/***/ 72:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__libs_HelperPackage__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__libs_HelperPackage__ = __webpack_require__(10);
 //require('../bootstrap');
 
 //window.Vue = require('vue');
@@ -2949,6 +2967,8 @@ var HomeController = new Vue({
 
          'home_items': [],
          'mantenedores': [],
+
+         'spinner_table': true,
 
          'usuario_auth': {},
 

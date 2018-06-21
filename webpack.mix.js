@@ -38,7 +38,6 @@ mix.js('resources/assets/js/components/DownloadExcel.vue','public/js/components/
 mix.js('resources/assets/js/components/Paginators.vue','public/js/components/Paginators.vue');
 mix.js('resources/assets/js/components/Spinner.vue','public/js/components/Spinner.vue');
 
-mix.js('resources/assets/js/components/Paginators.vue','public/js/components/Paginators.vue');
 mix.js('resources/assets/js/controllers/SideMenuController.js','public/js/controllers/SideMenuController.js');
 mix.js('resources/assets/js/controllers/HomeController.js','public/js/controllers/HomeController.js');
 mix.js('resources/assets/js/controllers/RoleController.js','public/js/controllers/RoleController.js');

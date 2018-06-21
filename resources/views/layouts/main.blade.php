@@ -153,7 +153,7 @@
             </div>
 
             <!-- Sección de la tabla que lista los elementos del módulo -->
-            <div class="table-responsive pro">
+            <div class="table-responsive">
                <!-- dir ./partials -->
                @include("layouts.tabla_listar")
             </div>

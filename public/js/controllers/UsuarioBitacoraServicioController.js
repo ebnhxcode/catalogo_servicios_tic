@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 114);
+/******/ 	return __webpack_require__(__webpack_require__.s = 120);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2195,284 +2195,1017 @@ if (typeof window !== 'undefined' && window.Sweetalert2) window.sweetAlert = win
 /***/ }),
 
 /***/ 10:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-/*
-  MIT License http://www.opensource.org/licenses/mit-license.php
-  Author Tobias Koppers @sokra
-  Modified by Evan You @yyx990803
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return inyeccion_funciones_compartidas; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert2__);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//Algunas funciones lo necesitan
+
+
+/**
+ *  Este objeto tiene permisos para manejar otros mudulos siempre que no afecte a otros metodos u
+ *  objetos en donde ha sido importado
 */
+var inyeccion_funciones_compartidas = {
+   methods: {
+      /*
+      *
+      *
+      * */
+      auto_alerta_corta: function auto_alerta_corta(titulo, texto, tipo) {
+         var tiempo = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1500;
 
-var hasDocument = typeof document !== 'undefined'
+         __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()({
+            title: titulo,
+            text: texto,
+            type: tipo,
+            timer: tiempo || 1500
+         });
+      },
 
-if (typeof DEBUG !== 'undefined' && DEBUG) {
-  if (!hasDocument) {
-    throw new Error(
-    'vue-style-loader cannot be used in a non-browser environment. ' +
-    "Use { target: 'node' } in your Webpack config to indicate a server-rendering environment."
-  ) }
-}
+      /*
+       *
+       *
+       * */
+      auto_alerta_media: function auto_alerta_media(titulo, texto, tipo) {
+         var tiempo = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 3000;
 
-var listToStyles = __webpack_require__(11)
+         __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()({
+            title: titulo,
+            text: texto,
+            type: tipo,
+            timer: tiempo || 3000
+         });
+      },
 
-/*
-type StyleObject = {
-  id: number;
-  parts: Array<StyleObjectPart>
-}
+      /*
+       * Esta funcion en ingles es propia de los modal para hacer algo antes que se cierre
+       *
+       * */
+      before_close: function before_close(event) {
+         //console.log(event.name);
+         switch (event.name) {
+            case 'crear':
+               this.modal_crear_activo = false;
+               break;
+            case 'actualizar':
+               this.modal_actualizar_activo = false;
+               this.id_en_edicion = null;
+               break;
+         }
+         return;
+      },
 
-type StyleObjectPart = {
-  css: string;
-  media: string;
-  sourceMap: ?string
-}
-*/
+      /*
+       *
+       *
+       * */
+      buscar_en_array_por_modelo_e_id: function buscar_en_array_por_modelo_e_id(id, array, model) {
+         for (var a in array) {
+            if (array[a]['id_' + model] == id) {
+               return array[a];
+            }
+         }return null;
+      },
 
-var stylesInDom = {/*
-  [id: number]: {
-    id: number,
-    refs: number,
-    parts: Array<(obj?: StyleObjectPart) => void>
-  }
-*/}
+      /*
+       *
+       *
+       * */
+      buscar_objeto_clase: function buscar_objeto_clase(id) {
+         var _this = this;
 
-var head = hasDocument && (document.head || document.getElementsByTagName('head')[0])
-var singletonElement = null
-var singletonCounter = 0
-var isProduction = false
-var noop = function () {}
-var options = null
-var ssrIdKey = 'data-vue-ssr-id'
+         this.$http.get('/' + this.nombre_tabla + '/' + id).then(function (response) {
+            // success callback
+            _this.$data['' + _this.nombre_model] = response.body['' + _this.nombre_model];
+         }, function (response) {
+            // error callback
+            _this.checkear_estado_respuesta_http(response.status);
+         });
+      },
 
-// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-// tags it will allow on a page
-var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\b/.test(navigator.userAgent.toLowerCase())
+      /*
+       *
+       *
+       * */
+      buscar_objeto_otra_clase: function buscar_objeto_otra_clase(id, nombre_tabla, nombre_model) {
+         var _this2 = this;
 
-module.exports = function (parentId, list, _isProduction, _options) {
-  isProduction = _isProduction
+         this.$http.get('/' + nombre_tabla + '/' + id).then(function (response) {
+            // success callback
+            return response.body['' + nombre_model];
+         }, function (response) {
+            // error callback
+            _this2.checkear_estado_respuesta_http(response.status);
+         });
+      },
 
-  options = _options || {}
+      /*
+       *
+       *
+       * */
+      buscar_objeto_clase_config_relaciones: function buscar_objeto_clase_config_relaciones(id, relaciones) {
+         var _this3 = this;
 
-  var styles = listToStyles(parentId, list)
-  addStylesToDom(styles)
+         this.$http.get('/' + this.nombre_tabla + '/' + id).then(function (response) {
+            // success callback
+            _this3.$data['' + _this3.nombre_model] = response.body['' + _this3.nombre_model];
+            _this3.configurar_relaciones([_this3.$data['' + _this3.nombre_model]], relaciones);
+         }, function (response) {
+            // error callback
+            _this3.checkear_estado_respuesta_http(response.status);
+         });
+      },
 
-  return function update (newList) {
-    var mayRemove = []
-    for (var i = 0; i < styles.length; i++) {
-      var item = styles[i]
-      var domStyle = stylesInDom[item.id]
-      domStyle.refs--
-      mayRemove.push(domStyle)
-    }
-    if (newList) {
-      styles = listToStyles(parentId, newList)
-      addStylesToDom(styles)
-    } else {
-      styles = []
-    }
-    for (var i = 0; i < mayRemove.length; i++) {
-      var domStyle = mayRemove[i]
-      if (domStyle.refs === 0) {
-        for (var j = 0; j < domStyle.parts.length; j++) {
-          domStyle.parts[j]()
-        }
-        delete stylesInDom[domStyle.id]
+      /*
+       * change order variable direction
+       *
+       * */
+      cambiar_orden_lista: function cambiar_orden_lista(columna) {
+         this.orden_lista == 'asc' ? this.orden_lista = 'desc' : this.orden_lista = 'asc';
+         this.ordenar_lista(columna);
+      },
+
+      /*
+       *
+       *
+       * */
+      cambiar_visibilidad: function cambiar_visibilidad(campo) {
+         return this.tabla_campos[campo] = !this.tabla_campos[campo];
+      },
+
+      /*
+       *
+       *
+       * */
+      checkear_estado_respuesta_http: function checkear_estado_respuesta_http(status_code) {
+         switch (status_code) {
+            case 401:
+
+               __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()({
+                  title: "Atencion",
+                  text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
+                  type: "warning",
+                  confirmButtonClass: "btn-danger",
+                  closeOnConfirm: true
+               }, function (isConfirm) {
+                  if (isConfirm) {
+                     window.location.href = '/login';
+                  }
+               });
+
+               break;
+
+            case 500:
+
+               __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()({
+                  title: "Atencion",
+                  text: "Ocurrio un error al guardar, por favor actualice la página.",
+                  type: "warning",
+                  confirmButtonClass: "btn-danger",
+                  closeOnConfirm: true
+               }, function (isConfirm) {
+                  if (isConfirm) {
+                     window.location.href = '/login';
+                  }
+               });
+
+               break;
+
+            default:
+               __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()({
+                  title: "Atencion",
+                  text: "Ocurrio un error al procesar el formulario, por favor actualice la página.",
+                  type: "warning",
+                  confirmButtonClass: "btn-danger",
+                  closeOnConfirm: true
+               }, function (isConfirm) {
+                  if (isConfirm) {
+                     window.location.href = '/login';
+                  }
+               });
+               break;
+         }
+      },
+
+      /*
+       *
+       *
+       * */
+      configurar_relaciones: function configurar_relaciones(objetos_clase, relaciones) {
+         //console.log(o); el obj de la clase en la lista
+         //console.log(r); el obj con la key -> column
+         //console.log(key); //nombre del key del obj de la relacion
+         //console.log(o[key]); //el objeto llamado con el key de la relacion
+         //console.log(column); //key de la columna de la bd ; id_* nom_*
+         //console.log(o[key][column]); //Valor que iria en el key a asociar
+         objetos_clase.map(function (o) {
+            //obj de la clase -> servicios
+            o = relaciones.map(function (rel) {
+               //relaciones -> {nombre_relacion:'key de valor a asignar'}
+               for (var r in rel) {
+                  //console.log(rel); //key de la relacion
+                  //console.log(rel[r]); //contenido llamado con el key en el objeto
+                  //console.log(i.split('.')); //el arreglo del key de la relacion en caso que haya una relacion anidada
+                  //console.log(ult_relacion[ult_relacion.length - 1]); // contiene la ultima key de relacion de la anidacion, de donde sacará la data finalmente
+                  var ult_relacion = r.split('.'); //key finales separadas por el punto de la anidacion
+                  //ult_relacion = ult_relacion[ult_relacion.length - 1]; //key final de la relacion
+                  //console.log(o[ult_relacion]); //la relaccion llamada desde su nombre key
+                  switch (ult_relacion.length) {
+                     case 1:
+                        for (var col in rel[r]) {
+                           //console.log( o[ult_relacion][rel[r][col]] );
+                           if (o[ult_relacion] && o[ult_relacion][rel[r][col]]) {
+                              o[rel[r][col]] = o[ult_relacion][rel[r][col]] || null;
+                           }
+                           //
+                        }
+                        break;
+                     case 2:
+                        for (var col in rel[r]) {
+                           if (o[ult_relacion[0]][ult_relacion[1]] && o[ult_relacion[0]][ult_relacion[1]][rel[r][col]]) {
+                              o[rel[r][col]] = o[ult_relacion[0]][ult_relacion[1]][rel[r][col]] || null;
+                           }
+                        }
+                        break;
+                  }
+                  /*
+                  if (o[key]) {
+                     o[column] = o[key][column] || null;
+                  }
+                  return o;
+                  */
+               }
+               /*
+               var key = Object.keys(r)[0];
+               var column = r[key];
+               if (o[key]) {
+                  o[column] = o[key][column] || null;
+               }
+               return o;
+               */
+            });
+         });
+      },
+
+      /*
+       *
+       *
+       * */
+      dejar_de_editar: function dejar_de_editar() {
+         this.lista_actualizar_activo = false;
+         this.id_en_edicion = null;
+      },
+
+      /*
+       *
+       *
+       * */
+      atribuir_elementos_a_objetos: function atribuir_elementos_a_objetos(elementos_relaciones, objetos) {},
+
+      /*
+       *
+       *
+       * */
+      editar: function editar(id) {
+         this.id_en_edicion = id;
+         this.lista_actualizar_activo = true;
+         //id_objeto + array de objetos + nombre del model en lower case
+         this.$data['' + this.nombre_model] = this.buscar_en_array_por_modelo_e_id(this.$data['' + this.nombre_model]['' + this.pk_tabla], this.$data['' + this.nombre_ruta], this.nombre_model);
+      },
+
+      /*
+       *
+       *
+       * */
+      eliminar_de_array_por_modelo_e_id: function eliminar_de_array_por_modelo_e_id(id, array, model) {
+         for (var a in array) {
+            if (array[a]['id_' + model] == id) {
+               return array.splice(a, 1);
+            }
+         }return null;
+      },
+
+      /*
+       *
+       *
+       * */
+      eliminar: function eliminar(id) {
+         var _swal,
+             _this4 = this;
+
+         __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()((_swal = {
+            title: "¿Estás seguro/a?",
+            text: "¿Deseas confirmar la eliminación de este registro?",
+            type: "warning",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            confirmButtonColor: '#DD6B55',
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: 'Si, eliminar!'
+         }, _defineProperty(_swal, 'confirmButtonClass', "btn-warning"), _defineProperty(_swal, 'cancelButtonText', 'No, mantener.'), _swal)).then(function (result) {
+            if (result.value) {
+               //Se adjunta el token
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+               _this4.$http.delete('/' + _this4.nombre_ruta + '/' + id).then(function (response) {
+                  if (response.status == 200) {
+                     _this4.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
+                  } else {
+                     _this4.checkear_estado_respuesta_http(response.status);
+                     return false;
+                  }
+
+                  if (_this4.mostrar_notificaciones(response) == true) {
+                     //Aqui que pregunte si el modal está activo para que lo cierre
+                     if (_this4.modal_actualizar_activo == true) {
+                        _this4.ocultar_modal('actualizar');
+                        _this4.modal_actualizar_activo = false;
+                     }
+                     _this4.lista_actualizar_activo = false;
+                     _this4.id_en_edicion = null;
+
+                     //Recargar la lista
+                     _this4.inicializar();
+                  }
+               }, function (response) {
+                  // error callback
+                  _this4.checkear_estado_respuesta_http(response.status);
+               });
+            } else if (result.dismiss === __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default.a.DismissReason.cancel) {
+               _this4.auto_alerta_corta("Cancelado", "Se ha cancelado la eliminación", "success");
+            }
+         });
+      },
+
+      /*
+       *
+       *
+       * */
+      existe_en_array_por_modelo_e_id: function existe_en_array_por_modelo_e_id(id, array, model) {
+         for (var a in array) {
+            if (array[a]['id_' + model] == id) {
+               return true;
+            }
+         }return null;
+      },
+
+      /*
+       *
+       *
+       * */
+      es_undefined: function es_undefined(v) {
+         return (typeof v === 'undefined' ? 'undefined' : _typeof(v)) == undefined ? true : false;
+      },
+
+      /*
+       *
+       *
+       * */
+      es_null: function es_null(v) {
+         return v == null ? true : false;
+      },
+
+      /*
+       *
+       *
+       * */
+      es_empty: function es_empty(v) {
+         return !v || v == null || v == '' || (typeof v === 'undefined' ? 'undefined' : _typeof(v)) == undefined ? true : false;
+      },
+
+      /*
+       *
+       *
+       * */
+      en_array: function en_array(array, v) {
+         return array.indexOf(v) > -1 ? true : false;
+      },
+
+      /*
+       *
+       *
+       * */
+      es_linux: function es_linux() {
+         if (this.$data['' + this.nombre_model]['id_sistema_operativo'] != null) {
+            var so = this.buscar_en_array_por_modelo_e_id(this.$data['' + this.nombre_model]['id_sistema_operativo'], this.$data['sistemas_operativos'], 'sistema_operativo');
+            if (so.tipo_sistema_operativo.cod_tipo_sistema_operativo == 'linux') {
+               return true;
+            }
+            return false;
+         }
+         return false;
+      },
+
+      /*
+       *
+       * var @boolean
+       * */
+      existe_en_arreglo: function existe_en_arreglo(id, arreglo, pkey_name) {},
+
+      /*
+       *
+       *
+       * */
+      existe_en_coleccion: function existe_en_coleccion(id, coleccion, pkey_name) {},
+
+      /*
+       *
+       *
+       * */
+      encontrar: function encontrar(id) {
+         var _this5 = this;
+
+         this.$http.get('/' + this.nombre_tabla + '/' + id).then(function (response) {
+            // success callback
+            return response.body['' + _this5.nombre_model];
+         }, function (response) {
+            // error callback
+            _this5.checkear_estado_respuesta_http(response.status);
+         });
+      },
+
+      /*
+       *
+       *
+       * */
+      guardar: function guardar() {
+         var _this6 = this;
+
+         //Ejecuta validacion sobre los campos con validaciones
+         //console.log(this.validar_campos());
+         this.$validator.validateAll().then(function (res) {
+            if (res == true) {
+               //Se adjunta el token
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               //Instancia nuevo form data
+               var formData = new FormData();
+               //Conforma objeto paramétrico para solicitud http
+               for (var i in _this6.permitido_guardar) {
+                  formData.append('' + _this6.permitido_guardar[i], _this6.$data['' + _this6.nombre_model]['' + _this6.permitido_guardar[i]] || 0);
+               }
+               _this6.$http.post('/' + _this6.nombre_ruta, formData).then(function (response) {
+                  // success callback
+                  if (response.status == 200) {
+                     if (!_this6.es_null(response.body['' + _this6.nombre_model])) {
+                        // del backend viene el objeto con el nombre
+                        _this6.id_en_edicion = null; // se resetea el objeto reactivo de la clase
+                     } //this.inicializar();
+                  } else {
+                     _this6.checkear_estado_respuesta_http(response.status);
+                     return false;
+                  }
+                  if (_this6.mostrar_notificaciones(response) == true) {
+                     _this6.limpiar_objeto_clase_local();
+                     _this6.inicializar();
+                     _this6.ocultar_modal('crear');
+                     return;
+                  }
+               }, function (response) {
+                  // error callback
+                  _this6.checkear_estado_respuesta_http(response.status);
+               });
+            }
+         });
+         return;
+      },
+
+      /*
+       *
+       *
+       * */
+      guardar_editado: function guardar_editado() {
+         var _this7 = this;
+
+         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+         this.$http.put('/' + this.nombre_ruta + '/' + this.$data[this.nombre_model][this.pk_tabla], this.$data[this.nombre_model]).then(function (response) {
+            // success callback
+            if (response.status == 200) {
+               /*
+                if (!this.es_null(response.body.usuario)) {
+                this.lista_actualizar_activo = false;
+                this.id_en_edicion = null;
+                }
+                */
+            } else {
+               _this7.checkear_estado_respuesta_http(response.status);
+               return false;
+            }
+
+            if (_this7.mostrar_notificaciones(response) == true) {
+               _this7.buscar_objeto_clase_config_relaciones(_this7.$data[_this7.nombre_model][_this7.pk_tabla], _this7.relaciones_clase);
+               /*
+                //Aqui que pregunte si el modal está activo para que lo cierre
+                if (this.modal_actualizar_activo == true) {
+                this.ocultar_modal('actualizar');
+                this.modal_actualizar_activo = false;
+                }
+                 this.lista_actualizar_activo = false;
+                this.id_en_edicion = null;
+                */
+               //Recargar la lista
+               _this7.inicializar();
+            }
+         }, function (response) {
+            // error callback
+            _this7.checkear_estado_respuesta_http(response.status);
+         });
+         return;
+      },
+
+      /*
+       *
+       *
+       * */
+      guardar_editado_de_otra_clase: function guardar_editado_de_otra_clase(id, nombre_tabla, objeto_clase) {
+         var _this8 = this;
+
+         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+         this.$http.put('/' + nombre_tabla + '/' + id, objeto_clase).then(function (response) {
+            // success callback
+            if (response.status == 200) {
+               /*
+                if (!this.es_null(response.body.usuario)) {
+                this.lista_actualizar_activo = false;
+                this.id_en_edicion = null;
+                }
+                */
+            } else {
+               _this8.checkear_estado_respuesta_http(response.status);
+               return false;
+            }
+
+            if (_this8.mostrar_notificaciones(response) == true) {
+               //this.buscar_objeto_clase_config_relaciones(id, this.relaciones_clase);
+
+               /*
+                //Aqui que pregunte si el modal está activo para que lo cierre
+                if (this.modal_actualizar_activo == true) {
+                this.ocultar_modal('actualizar');
+                this.modal_actualizar_activo = false;
+                }
+                 this.lista_actualizar_activo = false;
+                this.id_en_edicion = null;
+                */
+               //Recargar la lista
+               //this.inicializar();
+            }
+         }, function (response) {
+            // error callback
+            _this8.checkear_estado_respuesta_http(response.status);
+         });
+         return;
+      },
+
+      /*
+       *
+       *
+       * */
+      limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
+         for (var k in this.$data['' + this.nombre_model]) {
+            this.$data['' + this.nombre_model][k] = null;
+         }
+      },
+
+      /*
+       *
+       *
+       * */
+      mostrar: function mostrar(id, tabla, modelo) {
+         var _this9 = this;
+
+         this.$http.get('/' + tabla + '/' + id).then(function (response) {
+            // success callback
+            //console.log(response.body[modelo][0]);
+            //var obj = console.log(response.body[modelo]);
+            var obj = response.body[modelo];
+            return obj;
+         }, function (response) {
+            // error callback
+            _this9.checkear_estado_respuesta_http(response.status);
+         });
+      },
+
+      /*
+       *
+       *
+       * */
+      mostrar_modal_actualizar: function mostrar_modal_actualizar(id) {
+         this.lista_actualizar_activo = false;
+         this.modal_actualizar_activo = true;
+         this.id_en_edicion = id;
+
+         if (this.$data['filtro_componente']) {
+            this.$data['filtro_componente'] = null;
+         }
+
+         this.$modal.show('actualizar', {
+            title: 'Alert!',
+            text: 'You are too awesome',
+            buttons: [{
+               title: 'Deal with it',
+               handler: function handler() {
+                  alert('Woot!');
+               }
+            }, {
+               title: '', // Button title
+               default: true, // Will be triggered by default if 'Enter' pressed.
+               handler: function handler() {} // Button click handler
+            }, {
+               title: 'Close'
+            }]
+         });
+      },
+
+      /*
+       *
+       *
+       * */
+      mostrar_modal_crear: function mostrar_modal_crear() {
+         this.lista_actualizar_activo = false;
+         this.modal_crear_activo = true;
+         this.id_en_edicion = null;
+
+         this.$modal.show('crear', {
+            title: 'Alert!',
+            text: 'You are too awesome',
+            buttons: [{
+               title: 'Deal with it',
+               handler: function handler() {
+                  alert('Woot!');
+               }
+            }, {
+               title: '', // Button title
+               default: true, // Will be triggered by default if 'Enter' pressed.
+               handler: function handler() {} // Button click handler
+            }, {
+               title: 'Close'
+            }]
+         });
+      },
+
+      /*
+       *
+       *
+       * */
+      mostrar_notificaciones: function mostrar_notificaciones(respuesta_http) {
+
+         var status = respuesta_http.status;
+         var tipo = respuesta_http.body.tipo;
+         var mensajes = respuesta_http.body.mensajes;
+
+         switch (tipo) {
+            case 'creacion_exitosa':
+               // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
+               this.notificar('success', 'Registro exitoso', mensajes, 'global');
+               return true;break;
+            case 'actualizacion_exitosa':
+               // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
+               this.notificar('success', 'Actualización exitosa', mensajes, 'global');
+               return true;break;
+            case 'eliminacion_exitosa':
+               // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
+               this.notificar('success', 'Eliminación exitosa', mensajes, 'global');
+               return true;break;
+            case 'errores_campos_requeridos':
+               // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
+               this.notificar('warn', 'Advertencia campo requerido', mensajes, 'global');
+               return false;break;
+            case 'error_datos_invalidos':
+               // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
+               this.notificar('error', 'Error datos invalidos', mensajes, 'global');
+               return false;break;
+         }
+         //Como no hay nada mas que pueda deneter la ejecucion, se cierra el modal con esta verificacion true.
+         return true;
+      },
+
+      /*
+       *
+       *
+       * */
+      validar_campos: function validar_campos() {
+         /*DEPRECATED*/
+         this.$validator.validateAll().then(function (res) {
+            return res;
+         });
+      },
+
+      /*
+       *
+       *
+       * */
+      notificar: function notificar(tipo, titulo, mensajes, grupo) {
+         for (var m in mensajes) {
+            this.$notify({ group: grupo, type: tipo, title: titulo, text: mensajes[m][0] });
+         }
+         return true;
+      },
+
+      /*
+       *
+       *
+       * */
+      ocultar_modal: function ocultar_modal(nom_modal) {
+         this.$modal.hide(nom_modal);
+      },
+      /*
+       *
+       *
+       * */
+      // function to order lists
+      ordenar_lista: function ordenar_lista(columna) {
+         this.lista_objs_model = _.orderBy(this.lista_objs_model, columna, this.orden_lista);
+      },
+
+      /*
+       *
+       *
+       * */
+      separar_miles: function separar_miles(num) {
+         return num.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+      },
+
+      inicializar: function inicializar() {
+         var _this10 = this;
+
+         if (typeof this.spinner_table != "undefined") {
+            this.spinner_table = true;
+         }
+         this.$http.get('/ajax/' + this.nombre_ruta).then(function (response) {
+            // success callback
+            if (response.status == 200) {
+               _this10.configurar_relaciones(response.body[_this10.nombre_ruta].data, _this10.relaciones_clase);
+               _this10.asignar_recursos(response);
+               if (typeof _this10.spinner_table != "undefined") {
+                  _this10.spinner_table = false;
+               }
+            } else {
+               _this10.checkear_estado_respuesta_http(response.status);
+            }
+         }, function (response) {
+            _this10.checkear_estado_respuesta_http(response.status);
+         }); // error callback
+      },
+
+      navigate: function navigate(page) {
+         var _this11 = this;
+
+         if (typeof this.spinner_table != "undefined") {
+            this.spinner_table = true;
+         }
+         this.$http.get('/ajax/' + this.nombre_ruta + '?page=' + page + '&per_page=' + this.pagination.per_page).then(function (response) {
+            if (response.status == 200) {
+               _this11.configurar_relaciones(response.body[_this11.nombre_ruta].data, _this11.relaciones_clase);
+               _this11.asignar_recursos(response);
+               if (typeof _this11.spinner_table != "undefined") {
+                  _this11.spinner_table = false;
+               }
+            } else {
+               _this11.checkear_estado_respuesta_http(response.status);
+            }
+         }, function (response) {
+            _this11.checkear_estado_respuesta_http(response.status);
+         }); // error callback
+      },
+      navigateCustom: function navigateCustom() {
+         var _this12 = this;
+
+         if (typeof this.spinner_table != "undefined") {
+            this.spinner_table = true;
+         }
+         this.$http.get('/ajax/' + this.nombre_ruta + '?page=' + 1 + '&per_page=' + this.pagination.per_page).then(function (response) {
+            console.log(response);
+            if (response.status == 200) {
+               _this12.configurar_relaciones(response.body[_this12.nombre_ruta].data, _this12.relaciones_clase);
+               _this12.asignar_recursos(response);
+               if (typeof _this12.spinner_table != "undefined") {
+                  _this12.spinner_table = false;
+               }
+            } else {
+               _this12.checkear_estado_respuesta_http(response.status);
+            }
+         }, function (response) {
+            _this12.checkear_estado_respuesta_http(response.status);
+         }); // error callback
       }
-    }
-  }
-}
+   }
 
-function addStylesToDom (styles /* Array<StyleObject> */) {
-  for (var i = 0; i < styles.length; i++) {
-    var item = styles[i]
-    var domStyle = stylesInDom[item.id]
-    if (domStyle) {
-      domStyle.refs++
-      for (var j = 0; j < domStyle.parts.length; j++) {
-        domStyle.parts[j](item.parts[j])
-      }
-      for (; j < item.parts.length; j++) {
-        domStyle.parts.push(addStyle(item.parts[j]))
-      }
-      if (domStyle.parts.length > item.parts.length) {
-        domStyle.parts.length = item.parts.length
-      }
-    } else {
-      var parts = []
-      for (var j = 0; j < item.parts.length; j++) {
-        parts.push(addStyle(item.parts[j]))
-      }
-      stylesInDom[item.id] = { id: item.id, refs: 1, parts: parts }
-    }
-  }
-}
+   /*
+   
+   Ejemplos
+   -----
+   const hola = {
+      test1(){console.log('test1')},
+      test2:function(){console.log('test2')}
+   }
+   export default hola
+   -----
+   export const hola2 = {
+      test1(){console.log('test1')},
+      test2:function(){console.log('test2')}
+   }
+   -----
+   var hola3 = {
+      test1(){console.log('test1')},
+      test2:function(){console.log('test2')}
+   }
+   
+   export var hola3
+   
+   -----
+   export function ocultar_modal (nom_modal) {
+      this.$modal.hide(nom_modal);
+   }
+   
+   
+   */
 
-function createStyleElement () {
-  var styleElement = document.createElement('style')
-  styleElement.type = 'text/css'
-  head.appendChild(styleElement)
-  return styleElement
-}
-
-function addStyle (obj /* StyleObjectPart */) {
-  var update, remove
-  var styleElement = document.querySelector('style[' + ssrIdKey + '~="' + obj.id + '"]')
-
-  if (styleElement) {
-    if (isProduction) {
-      // has SSR styles and in production mode.
-      // simply do nothing.
-      return noop
-    } else {
-      // has SSR styles but in dev mode.
-      // for some reason Chrome can't handle source map in server-rendered
-      // style tags - source maps in <style> only works if the style tag is
-      // created and inserted dynamically. So we remove the server rendered
-      // styles and inject new ones.
-      styleElement.parentNode.removeChild(styleElement)
-    }
-  }
-
-  if (isOldIE) {
-    // use singleton mode for IE9.
-    var styleIndex = singletonCounter++
-    styleElement = singletonElement || (singletonElement = createStyleElement())
-    update = applyToSingletonTag.bind(null, styleElement, styleIndex, false)
-    remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true)
-  } else {
-    // use multi-style-tag mode in all other cases
-    styleElement = createStyleElement()
-    update = applyToTag.bind(null, styleElement)
-    remove = function () {
-      styleElement.parentNode.removeChild(styleElement)
-    }
-  }
-
-  update(obj)
-
-  return function updateStyle (newObj /* StyleObjectPart */) {
-    if (newObj) {
-      if (newObj.css === obj.css &&
-          newObj.media === obj.media &&
-          newObj.sourceMap === obj.sourceMap) {
-        return
-      }
-      update(obj = newObj)
-    } else {
-      remove()
-    }
-  }
-}
-
-var replaceText = (function () {
-  var textStore = []
-
-  return function (index, replacement) {
-    textStore[index] = replacement
-    return textStore.filter(Boolean).join('\n')
-  }
-})()
-
-function applyToSingletonTag (styleElement, index, remove, obj) {
-  var css = remove ? '' : obj.css
-
-  if (styleElement.styleSheet) {
-    styleElement.styleSheet.cssText = replaceText(index, css)
-  } else {
-    var cssNode = document.createTextNode(css)
-    var childNodes = styleElement.childNodes
-    if (childNodes[index]) styleElement.removeChild(childNodes[index])
-    if (childNodes.length) {
-      styleElement.insertBefore(cssNode, childNodes[index])
-    } else {
-      styleElement.appendChild(cssNode)
-    }
-  }
-}
-
-function applyToTag (styleElement, obj) {
-  var css = obj.css
-  var media = obj.media
-  var sourceMap = obj.sourceMap
-
-  if (media) {
-    styleElement.setAttribute('media', media)
-  }
-  if (options.ssrId) {
-    styleElement.setAttribute(ssrIdKey, obj.id)
-  }
-
-  if (sourceMap) {
-    // https://developer.chrome.com/devtools/docs/javascript-debugging
-    // this makes source maps inside style tags work properly in Chrome
-    css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */'
-    // http://stackoverflow.com/a/26603875
-    css += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + ' */'
-  }
-
-  if (styleElement.styleSheet) {
-    styleElement.styleSheet.cssText = css
-  } else {
-    while (styleElement.firstChild) {
-      styleElement.removeChild(styleElement.firstChild)
-    }
-    styleElement.appendChild(document.createTextNode(css))
-  }
-}
-
+};
 
 /***/ }),
 
 /***/ 11:
-/***/ (function(module, exports) {
-
-/**
- * Translates the list format produced by css-loader into something
- * easier to manipulate.
- */
-module.exports = function listToStyles (parentId, list) {
-  var styles = []
-  var newStyles = {}
-  for (var i = 0; i < list.length; i++) {
-    var item = list[i]
-    var id = item[0]
-    var css = item[1]
-    var media = item[2]
-    var sourceMap = item[3]
-    var part = {
-      id: parentId + ':' + i,
-      css: css,
-      media: media,
-      sourceMap: sourceMap
-    }
-    if (!newStyles[id]) {
-      styles.push(newStyles[id] = { id: id, parts: [part] })
-    } else {
-      newStyles[id].parts.push(part)
-    }
-  }
-  return styles
-}
-
-
-/***/ }),
-
-/***/ 114:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(115);
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(12)
+/* template */
+var __vue_template__ = __webpack_require__(13)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/DownloadExcel.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-795cc6e8", Component.options)
+  } else {
+    hotAPI.reload("data-v-795cc6e8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
 
 
 /***/ }),
 
-/***/ 115:
+/***/ 12:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+   name: 'download-excel',
+   props: {
+      'data': {
+         type: Array,
+         required: true
+      },
+      'fields': {
+         type: Object,
+         required: false
+      },
+      'labels': {
+         type: Object,
+         required: false
+      },
+      'name': {
+         type: String,
+         default: "data.xls"
+      }
+   },
+   //template: ``,
+   data: function data() {
+      return {
+         animate: true,
+         animation: ''
+      };
+   },
+   created: function created() {},
+   computed: {
+      id_name: function id_name() {
+         var now = new Date().getTime();
+         return 'export_' + now;
+      }
+   },
+   methods: {
+      emitXmlHeader: function emitXmlHeader() {
+         var headerRow = '<ss:Row>\n';
+         for (var colName in this.fields) {
+            headerRow += '  <ss:Cell>\n';
+            headerRow += '    <ss:Data ss:Type="String">';
+            headerRow += (this.labels[colName] || colName) + '</ss:Data>\n';
+            headerRow += '  </ss:Cell>\n';
+         }
+         headerRow += '</ss:Row>\n';
+         //'<ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">\n' +
+         return '<?xml version="1.0"?>\n' + '<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"\n' + 'xmlns:o="urn:schemas-microsoft-com:office:office"\n' + 'xmlns:x="urn:schemas-microsoft-com:office:excel"\n' + 'xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"\n' + 'xmlns:html="http://www.w3.org/TR/REC-html40">\n' + '<ss:Worksheet ss:Name="Sheet1">\n' + '<ss:Table>\n\n' + headerRow;
+      },
+
+      emitXmlFooter: function emitXmlFooter() {
+         return '\n</ss:Table>\n' + '</ss:Worksheet>\n' + '</ss:Workbook>\n';
+      },
+
+      jsonToSsXml: function jsonToSsXml(jsonObject) {
+         var row;
+         var col;
+         var xml;
+         //console.log(jsonObject);
+         var data = (typeof jsonObject === 'undefined' ? 'undefined' : _typeof(jsonObject)) != "object" ? JSON.parse(jsonObject) : jsonObject;
+
+         xml = this.emitXmlHeader();
+
+         for (row = 0; row < data.length; row++) {
+            xml += '<ss:Row>\n';
+
+            for (col in data[row]) {
+               xml += '  <ss:Cell>\n';
+               xml += '    <ss:Data ss:Type="' + this.fields[col] + '">';
+               xml += String(data[row][col]).replace(/[^a-zA-Z0-9\s\-ñíéáóú\#\,\.\;\:ÑÍÉÓÁÚ@_]/g, '') + '</ss:Data>\n';
+               xml += '  </ss:Cell>\n';
+            }
+
+            xml += '</ss:Row>\n';
+         }
+
+         xml += this.emitXmlFooter();
+         return xml;
+      },
+      generate_excel: function generate_excel(content, filename, contentType) {
+         var blob = new Blob([this.jsonToSsXml(this.data)], {
+            'type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+         });
+
+         var a = document.getElementById(this.id_name);
+         a.href = window.URL.createObjectURL(blob);
+         a.download = this.name;
+      }
+   }
+});
+
+/***/ }),
+
+/***/ 120:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(121);
+
+
+/***/ }),
+
+/***/ 121:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert2__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__libs_HelperPackage__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_v_clipboard__ = __webpack_require__(15);
@@ -2489,8 +3222,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default.a, { dialog: true });
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_3_v_clipboard___default.a);
 
-Vue.component('download-excel', __webpack_require__(3));
-Vue.component('paginators', __webpack_require__(7));
+Vue.component('download-excel', __webpack_require__(11));
+Vue.component('paginators', __webpack_require__(5));
 
 var UsuarioBitacoraServicioController = new Vue({
    el: '#UsuarioBitacoraServicioController',
@@ -2528,6 +3261,9 @@ var UsuarioBitacoraServicioController = new Vue({
          'usuarios_bitacora_servicios': [],
          'actividades': [],
          'servicios': [],
+
+         'spinner_table': true,
+
          'datos_excel': [],
          'usuario_auth': [],
 
@@ -2672,123 +3408,6 @@ var UsuarioBitacoraServicioController = new Vue({
 
 /***/ }),
 
-/***/ 12:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-   name: "paginators",
-   props: ['pagination'],
-   data: function data() {
-      return {
-         pages: []
-      };
-   },
-   ready: function ready() {},
-   created: function created() {
-      //console.log(this.pagination); //está trayendo pagination
-      var p = this.pagination;
-      this.pages = this.generatePagesArray(p.current_page, p.total, p.per_page, 7);
-   },
-
-
-   methods: {
-      navigate: function navigate(ev, page) {
-         ev.preventDefault();
-         //console.log(page);
-         this.$emit('navigate', page);
-      },
-      nextPrev: function nextPrev(ev, page) {
-         if (page == 0 || page == this.pagination.last_page + 1) {
-            return;
-         }
-         this.navigate(ev, page);
-      },
-      generatePagesArray: function generatePagesArray(currentPage, collectionLength, rowsPerPage, paginationRange) {
-         var pages = [];
-         var totalPages = Math.ceil(collectionLength / rowsPerPage);
-         var halfWay = Math.ceil(paginationRange / 2);
-         var position;
-
-         if (currentPage <= halfWay) {
-            position = 'start';
-         } else if (totalPages - halfWay < currentPage) {
-            position = 'end';
-         } else {
-            position = 'middle';
-         }
-
-         var ellipsesNeeded = paginationRange < totalPages;
-         var i = 1;
-         while (i <= totalPages && i <= paginationRange) {
-            var pageNumber = this.calculatePageNumber(i, currentPage, paginationRange, totalPages);
-            var openingEllipsesNeeded = i === 2 && (position === 'middle' || position === 'end');
-            var closingEllipsesNeeded = i === paginationRange - 1 && (position === 'middle' || position === 'start');
-            if (ellipsesNeeded && (openingEllipsesNeeded || closingEllipsesNeeded)) {
-               pages.push('...');
-            } else {
-               pages.push(pageNumber);
-            }
-            i++;
-         }
-         return pages;
-      },
-      calculatePageNumber: function calculatePageNumber(i, currentPage, paginationRange, totalPages) {
-         var halfWay = Math.ceil(paginationRange / 2);
-         if (i === paginationRange) {
-            return totalPages;
-         } else if (i === 1) {
-            return i;
-         } else if (paginationRange < totalPages) {
-            if (totalPages - halfWay < currentPage) {
-               return totalPages - paginationRange + i;
-            } else if (halfWay < currentPage) {
-               return currentPage - halfWay + i;
-            } else {
-               return i;
-            }
-         } else {
-            return i;
-         }
-      }
-   },
-
-   watch: {
-      pagination: function pagination() {
-         //console.log('Estoy llegando al watch');
-         var p = this.pagination;
-         this.pages = this.generatePagesArray(p.current_page, p.total, p.per_page, 7);
-      }
-   }
-});
-
-/***/ }),
-
 /***/ 13:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2796,87 +3415,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("nav", { attrs: { "aria-label": "Page navigation" } }, [
-    _c(
-      "ul",
-      { staticClass: "pagination" },
-      [
-        _c("li", { class: { disabled: _vm.pagination.current_page == 1 } }, [
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-success",
-              attrs: { href: "#!", "aria-label": "Previous" },
-              on: {
-                click: function($event) {
-                  _vm.nextPrev($event, _vm.pagination.current_page - 1)
-                }
-              }
-            },
-            [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("«")])]
-          )
-        ]),
-        _vm._v(" "),
-        _vm._l(_vm.pages, function(page) {
-          return _c(
-            "li",
-            {
-              class: { pro: _vm.pagination.current_page == page },
-              attrs: { "track-by": "$index" }
-            },
-            [
-              page == "..."
-                ? _c("span", { staticClass: "btn btn-success" }, [
-                    _vm._v(_vm._s(page))
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              page != "..."
-                ? _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-success",
-                      attrs: { href: "#!" },
-                      on: {
-                        click: function($event) {
-                          _vm.navigate($event, page)
-                        }
-                      }
-                    },
-                    [_vm._v(_vm._s(page))]
-                  )
-                : _vm._e()
-            ]
-          )
-        }),
-        _vm._v(" "),
-        _c(
-          "li",
-          {
-            class: {
-              disabled: _vm.pagination.current_page == _vm.pagination.last_page
-            }
-          },
-          [
-            _c(
-              "a",
-              {
-                staticClass: "btn btn-success",
-                attrs: { href: "#!", "aria-label": "Next" },
-                on: {
-                  click: function($event) {
-                    _vm.nextPrev($event, _vm.pagination.current_page + 1)
-                  }
-                }
-              },
-              [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("»")])]
-            )
-          ]
-        )
-      ],
-      2
-    )
-  ])
+  return _c(
+    "a",
+    {
+      attrs: { href: "#", id: _vm.id_name },
+      on: { click: _vm.generate_excel }
+    },
+    [_vm._t("default", [_vm._v("\n      Download Excel\n   ")])],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -2884,7 +3431,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-267f8af9", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-795cc6e8", module.exports)
   }
 }
 
@@ -3802,1013 +4349,6 @@ if (false) {
 /***/ }),
 
 /***/ 2:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return inyeccion_funciones_compartidas; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_sweetalert2__);
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-//Algunas funciones lo necesitan
-
-
-/**
- *  Este objeto tiene permisos para manejar otros mudulos siempre que no afecte a otros metodos u
- *  objetos en donde ha sido importado
-*/
-var inyeccion_funciones_compartidas = {
-   methods: {
-      /*
-      *
-      *
-      * */
-      auto_alerta_corta: function auto_alerta_corta(titulo, texto, tipo) {
-         var tiempo = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1500;
-
-         __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()({
-            title: titulo,
-            text: texto,
-            type: tipo,
-            timer: tiempo || 1500
-         });
-      },
-
-      /*
-       *
-       *
-       * */
-      auto_alerta_media: function auto_alerta_media(titulo, texto, tipo) {
-         var tiempo = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 3000;
-
-         __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()({
-            title: titulo,
-            text: texto,
-            type: tipo,
-            timer: tiempo || 3000
-         });
-      },
-
-      /*
-       * Esta funcion en ingles es propia de los modal para hacer algo antes que se cierre
-       *
-       * */
-      before_close: function before_close(event) {
-         //console.log(event.name);
-         switch (event.name) {
-            case 'crear':
-               this.modal_crear_activo = false;
-               break;
-            case 'actualizar':
-               this.modal_actualizar_activo = false;
-               this.id_en_edicion = null;
-               break;
-         }
-         return;
-      },
-
-      /*
-       *
-       *
-       * */
-      buscar_en_array_por_modelo_e_id: function buscar_en_array_por_modelo_e_id(id, array, model) {
-         for (var a in array) {
-            if (array[a]['id_' + model] == id) {
-               return array[a];
-            }
-         }return null;
-      },
-
-      /*
-       *
-       *
-       * */
-      buscar_objeto_clase: function buscar_objeto_clase(id) {
-         var _this = this;
-
-         this.$http.get('/' + this.nombre_tabla + '/' + id).then(function (response) {
-            // success callback
-            _this.$data['' + _this.nombre_model] = response.body['' + _this.nombre_model];
-         }, function (response) {
-            // error callback
-            _this.checkear_estado_respuesta_http(response.status);
-         });
-      },
-
-      /*
-       *
-       *
-       * */
-      buscar_objeto_otra_clase: function buscar_objeto_otra_clase(id, nombre_tabla, nombre_model) {
-         var _this2 = this;
-
-         this.$http.get('/' + nombre_tabla + '/' + id).then(function (response) {
-            // success callback
-            return response.body['' + nombre_model];
-         }, function (response) {
-            // error callback
-            _this2.checkear_estado_respuesta_http(response.status);
-         });
-      },
-
-      /*
-       *
-       *
-       * */
-      buscar_objeto_clase_config_relaciones: function buscar_objeto_clase_config_relaciones(id, relaciones) {
-         var _this3 = this;
-
-         this.$http.get('/' + this.nombre_tabla + '/' + id).then(function (response) {
-            // success callback
-            _this3.$data['' + _this3.nombre_model] = response.body['' + _this3.nombre_model];
-            _this3.configurar_relaciones([_this3.$data['' + _this3.nombre_model]], relaciones);
-         }, function (response) {
-            // error callback
-            _this3.checkear_estado_respuesta_http(response.status);
-         });
-      },
-
-      /*
-       * change order variable direction
-       *
-       * */
-      cambiar_orden_lista: function cambiar_orden_lista(columna) {
-         this.orden_lista == 'asc' ? this.orden_lista = 'desc' : this.orden_lista = 'asc';
-         this.ordenar_lista(columna);
-      },
-
-      /*
-       *
-       *
-       * */
-      cambiar_visibilidad: function cambiar_visibilidad(campo) {
-         return this.tabla_campos[campo] = !this.tabla_campos[campo];
-      },
-
-      /*
-       *
-       *
-       * */
-      checkear_estado_respuesta_http: function checkear_estado_respuesta_http(status_code) {
-         switch (status_code) {
-            case 401:
-
-               __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()({
-                  title: "Atencion",
-                  text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
-                  type: "warning",
-                  confirmButtonClass: "btn-danger",
-                  closeOnConfirm: true
-               }, function (isConfirm) {
-                  if (isConfirm) {
-                     window.location.href = '/login';
-                  }
-               });
-
-               break;
-
-            case 500:
-
-               __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()({
-                  title: "Atencion",
-                  text: "Ocurrio un error al guardar, por favor actualice la página.",
-                  type: "warning",
-                  confirmButtonClass: "btn-danger",
-                  closeOnConfirm: true
-               }, function (isConfirm) {
-                  if (isConfirm) {
-                     window.location.href = '/login';
-                  }
-               });
-
-               break;
-
-            default:
-               __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()({
-                  title: "Atencion",
-                  text: "Ocurrio un error al procesar el formulario, por favor actualice la página.",
-                  type: "warning",
-                  confirmButtonClass: "btn-danger",
-                  closeOnConfirm: true
-               }, function (isConfirm) {
-                  if (isConfirm) {
-                     window.location.href = '/login';
-                  }
-               });
-               break;
-         }
-      },
-
-      /*
-       *
-       *
-       * */
-      configurar_relaciones: function configurar_relaciones(objetos_clase, relaciones) {
-         //console.log(o); el obj de la clase en la lista
-         //console.log(r); el obj con la key -> column
-         //console.log(key); //nombre del key del obj de la relacion
-         //console.log(o[key]); //el objeto llamado con el key de la relacion
-         //console.log(column); //key de la columna de la bd ; id_* nom_*
-         //console.log(o[key][column]); //Valor que iria en el key a asociar
-         objetos_clase.map(function (o) {
-            //obj de la clase -> servicios
-            o = relaciones.map(function (rel) {
-               //relaciones -> {nombre_relacion:'key de valor a asignar'}
-               for (var r in rel) {
-                  //console.log(rel); //key de la relacion
-                  //console.log(rel[r]); //contenido llamado con el key en el objeto
-                  //console.log(i.split('.')); //el arreglo del key de la relacion en caso que haya una relacion anidada
-                  //console.log(ult_relacion[ult_relacion.length - 1]); // contiene la ultima key de relacion de la anidacion, de donde sacará la data finalmente
-                  var ult_relacion = r.split('.'); //key finales separadas por el punto de la anidacion
-                  //ult_relacion = ult_relacion[ult_relacion.length - 1]; //key final de la relacion
-                  //console.log(o[ult_relacion]); //la relaccion llamada desde su nombre key
-                  switch (ult_relacion.length) {
-                     case 1:
-                        for (var col in rel[r]) {
-                           //console.log( o[ult_relacion][rel[r][col]] );
-                           if (o[ult_relacion] && o[ult_relacion][rel[r][col]]) {
-                              o[rel[r][col]] = o[ult_relacion][rel[r][col]] || null;
-                           }
-                           //
-                        }
-                        break;
-                     case 2:
-                        for (var col in rel[r]) {
-                           if (o[ult_relacion[0]][ult_relacion[1]] && o[ult_relacion[0]][ult_relacion[1]][rel[r][col]]) {
-                              o[rel[r][col]] = o[ult_relacion[0]][ult_relacion[1]][rel[r][col]] || null;
-                           }
-                        }
-                        break;
-                  }
-                  /*
-                  if (o[key]) {
-                     o[column] = o[key][column] || null;
-                  }
-                  return o;
-                  */
-               }
-               /*
-               var key = Object.keys(r)[0];
-               var column = r[key];
-               if (o[key]) {
-                  o[column] = o[key][column] || null;
-               }
-               return o;
-               */
-            });
-         });
-      },
-
-      /*
-       *
-       *
-       * */
-      dejar_de_editar: function dejar_de_editar() {
-         this.lista_actualizar_activo = false;
-         this.id_en_edicion = null;
-      },
-
-      /*
-       *
-       *
-       * */
-      atribuir_elementos_a_objetos: function atribuir_elementos_a_objetos(elementos_relaciones, objetos) {},
-
-      /*
-       *
-       *
-       * */
-      editar: function editar(id) {
-         this.id_en_edicion = id;
-         this.lista_actualizar_activo = true;
-         //id_objeto + array de objetos + nombre del model en lower case
-         this.$data['' + this.nombre_model] = this.buscar_en_array_por_modelo_e_id(this.$data['' + this.nombre_model]['' + this.pk_tabla], this.$data['' + this.nombre_ruta], this.nombre_model);
-      },
-
-      /*
-       *
-       *
-       * */
-      eliminar_de_array_por_modelo_e_id: function eliminar_de_array_por_modelo_e_id(id, array, model) {
-         for (var a in array) {
-            if (array[a]['id_' + model] == id) {
-               return array.splice(a, 1);
-            }
-         }return null;
-      },
-
-      /*
-       *
-       *
-       * */
-      eliminar: function eliminar(id) {
-         var _swal,
-             _this4 = this;
-
-         __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default()((_swal = {
-            title: "¿Estás seguro/a?",
-            text: "¿Deseas confirmar la eliminación de este registro?",
-            type: "warning",
-            showCancelButton: true,
-            closeOnConfirm: false,
-            closeOnCancel: false,
-            confirmButtonColor: '#DD6B55',
-            confirmButtonClass: "btn-danger",
-            confirmButtonText: 'Si, eliminar!'
-         }, _defineProperty(_swal, 'confirmButtonClass', "btn-warning"), _defineProperty(_swal, 'cancelButtonText', 'No, mantener.'), _swal)).then(function (result) {
-            if (result.value) {
-               //Se adjunta el token
-               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-
-               _this4.$http.delete('/' + _this4.nombre_ruta + '/' + id).then(function (response) {
-                  if (response.status == 200) {
-                     _this4.auto_alerta_corta("Eliminado!", "Registro eliminado correctamente", "success");
-                  } else {
-                     _this4.checkear_estado_respuesta_http(response.status);
-                     return false;
-                  }
-
-                  if (_this4.mostrar_notificaciones(response) == true) {
-                     //Aqui que pregunte si el modal está activo para que lo cierre
-                     if (_this4.modal_actualizar_activo == true) {
-                        _this4.ocultar_modal('actualizar');
-                        _this4.modal_actualizar_activo = false;
-                     }
-                     _this4.lista_actualizar_activo = false;
-                     _this4.id_en_edicion = null;
-
-                     //Recargar la lista
-                     _this4.inicializar();
-                  }
-               }, function (response) {
-                  // error callback
-                  _this4.checkear_estado_respuesta_http(response.status);
-               });
-            } else if (result.dismiss === __WEBPACK_IMPORTED_MODULE_0_sweetalert2___default.a.DismissReason.cancel) {
-               _this4.auto_alerta_corta("Cancelado", "Se ha cancelado la eliminación", "success");
-            }
-         });
-      },
-
-      /*
-       *
-       *
-       * */
-      existe_en_array_por_modelo_e_id: function existe_en_array_por_modelo_e_id(id, array, model) {
-         for (var a in array) {
-            if (array[a]['id_' + model] == id) {
-               return true;
-            }
-         }return null;
-      },
-
-      /*
-       *
-       *
-       * */
-      es_undefined: function es_undefined(v) {
-         return (typeof v === 'undefined' ? 'undefined' : _typeof(v)) == undefined ? true : false;
-      },
-
-      /*
-       *
-       *
-       * */
-      es_null: function es_null(v) {
-         return v == null ? true : false;
-      },
-
-      /*
-       *
-       *
-       * */
-      es_empty: function es_empty(v) {
-         return !v || v == null || v == '' || (typeof v === 'undefined' ? 'undefined' : _typeof(v)) == undefined ? true : false;
-      },
-
-      /*
-       *
-       *
-       * */
-      en_array: function en_array(array, v) {
-         return array.indexOf(v) > -1 ? true : false;
-      },
-
-      /*
-       *
-       *
-       * */
-      es_linux: function es_linux() {
-         if (this.$data['' + this.nombre_model]['id_sistema_operativo'] != null) {
-            var so = this.buscar_en_array_por_modelo_e_id(this.$data['' + this.nombre_model]['id_sistema_operativo'], this.$data['sistemas_operativos'], 'sistema_operativo');
-            if (so.tipo_sistema_operativo.cod_tipo_sistema_operativo == 'linux') {
-               return true;
-            }
-            return false;
-         }
-         return false;
-      },
-
-      /*
-       *
-       * var @boolean
-       * */
-      existe_en_arreglo: function existe_en_arreglo(id, arreglo, pkey_name) {},
-
-      /*
-       *
-       *
-       * */
-      existe_en_coleccion: function existe_en_coleccion(id, coleccion, pkey_name) {},
-
-      /*
-       *
-       *
-       * */
-      encontrar: function encontrar(id) {
-         var _this5 = this;
-
-         this.$http.get('/' + this.nombre_tabla + '/' + id).then(function (response) {
-            // success callback
-            return response.body['' + _this5.nombre_model];
-         }, function (response) {
-            // error callback
-            _this5.checkear_estado_respuesta_http(response.status);
-         });
-      },
-
-      /*
-       *
-       *
-       * */
-      guardar: function guardar() {
-         var _this6 = this;
-
-         //Ejecuta validacion sobre los campos con validaciones
-         //console.log(this.validar_campos());
-         this.$validator.validateAll().then(function (res) {
-            if (res == true) {
-               //Se adjunta el token
-               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-               //Instancia nuevo form data
-               var formData = new FormData();
-               //Conforma objeto paramétrico para solicitud http
-               for (var i in _this6.permitido_guardar) {
-                  formData.append('' + _this6.permitido_guardar[i], _this6.$data['' + _this6.nombre_model]['' + _this6.permitido_guardar[i]] || 0);
-               }
-               _this6.$http.post('/' + _this6.nombre_ruta, formData).then(function (response) {
-                  // success callback
-                  if (response.status == 200) {
-                     if (!_this6.es_null(response.body['' + _this6.nombre_model])) {
-                        // del backend viene el objeto con el nombre
-                        _this6.id_en_edicion = null; // se resetea el objeto reactivo de la clase
-                     } //this.inicializar();
-                  } else {
-                     _this6.checkear_estado_respuesta_http(response.status);
-                     return false;
-                  }
-                  if (_this6.mostrar_notificaciones(response) == true) {
-                     _this6.limpiar_objeto_clase_local();
-                     _this6.inicializar();
-                     _this6.ocultar_modal('crear');
-                     return;
-                  }
-               }, function (response) {
-                  // error callback
-                  _this6.checkear_estado_respuesta_http(response.status);
-               });
-            }
-         });
-         return;
-      },
-
-      /*
-       *
-       *
-       * */
-      guardar_editado: function guardar_editado() {
-         var _this7 = this;
-
-         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-         this.$http.put('/' + this.nombre_ruta + '/' + this.$data[this.nombre_model][this.pk_tabla], this.$data[this.nombre_model]).then(function (response) {
-            // success callback
-            if (response.status == 200) {
-               /*
-                if (!this.es_null(response.body.usuario)) {
-                this.lista_actualizar_activo = false;
-                this.id_en_edicion = null;
-                }
-                */
-            } else {
-               _this7.checkear_estado_respuesta_http(response.status);
-               return false;
-            }
-
-            if (_this7.mostrar_notificaciones(response) == true) {
-               _this7.buscar_objeto_clase_config_relaciones(_this7.$data[_this7.nombre_model][_this7.pk_tabla], _this7.relaciones_clase);
-               /*
-                //Aqui que pregunte si el modal está activo para que lo cierre
-                if (this.modal_actualizar_activo == true) {
-                this.ocultar_modal('actualizar');
-                this.modal_actualizar_activo = false;
-                }
-                 this.lista_actualizar_activo = false;
-                this.id_en_edicion = null;
-                */
-               //Recargar la lista
-               _this7.inicializar();
-            }
-         }, function (response) {
-            // error callback
-            _this7.checkear_estado_respuesta_http(response.status);
-         });
-         return;
-      },
-
-      /*
-       *
-       *
-       * */
-      guardar_editado_de_otra_clase: function guardar_editado_de_otra_clase(id, nombre_tabla, objeto_clase) {
-         var _this8 = this;
-
-         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-         this.$http.put('/' + nombre_tabla + '/' + id, objeto_clase).then(function (response) {
-            // success callback
-            if (response.status == 200) {
-               /*
-                if (!this.es_null(response.body.usuario)) {
-                this.lista_actualizar_activo = false;
-                this.id_en_edicion = null;
-                }
-                */
-            } else {
-               _this8.checkear_estado_respuesta_http(response.status);
-               return false;
-            }
-
-            if (_this8.mostrar_notificaciones(response) == true) {
-               //this.buscar_objeto_clase_config_relaciones(id, this.relaciones_clase);
-
-               /*
-                //Aqui que pregunte si el modal está activo para que lo cierre
-                if (this.modal_actualizar_activo == true) {
-                this.ocultar_modal('actualizar');
-                this.modal_actualizar_activo = false;
-                }
-                 this.lista_actualizar_activo = false;
-                this.id_en_edicion = null;
-                */
-               //Recargar la lista
-               //this.inicializar();
-            }
-         }, function (response) {
-            // error callback
-            _this8.checkear_estado_respuesta_http(response.status);
-         });
-         return;
-      },
-
-      /*
-       *
-       *
-       * */
-      limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
-         for (var k in this.$data['' + this.nombre_model]) {
-            this.$data['' + this.nombre_model][k] = null;
-         }
-      },
-
-      /*
-       *
-       *
-       * */
-      mostrar: function mostrar(id, tabla, modelo) {
-         var _this9 = this;
-
-         this.$http.get('/' + tabla + '/' + id).then(function (response) {
-            // success callback
-            //console.log(response.body[modelo][0]);
-            //var obj = console.log(response.body[modelo]);
-            var obj = response.body[modelo];
-            return obj;
-         }, function (response) {
-            // error callback
-            _this9.checkear_estado_respuesta_http(response.status);
-         });
-      },
-
-      /*
-       *
-       *
-       * */
-      mostrar_modal_actualizar: function mostrar_modal_actualizar(id) {
-         this.lista_actualizar_activo = false;
-         this.modal_actualizar_activo = true;
-         this.id_en_edicion = id;
-
-         if (this.$data['filtro_componente']) {
-            this.$data['filtro_componente'] = null;
-         }
-
-         this.$modal.show('actualizar', {
-            title: 'Alert!',
-            text: 'You are too awesome',
-            buttons: [{
-               title: 'Deal with it',
-               handler: function handler() {
-                  alert('Woot!');
-               }
-            }, {
-               title: '', // Button title
-               default: true, // Will be triggered by default if 'Enter' pressed.
-               handler: function handler() {} // Button click handler
-            }, {
-               title: 'Close'
-            }]
-         });
-      },
-
-      /*
-       *
-       *
-       * */
-      mostrar_modal_crear: function mostrar_modal_crear() {
-         this.lista_actualizar_activo = false;
-         this.modal_crear_activo = true;
-         this.id_en_edicion = null;
-
-         this.$modal.show('crear', {
-            title: 'Alert!',
-            text: 'You are too awesome',
-            buttons: [{
-               title: 'Deal with it',
-               handler: function handler() {
-                  alert('Woot!');
-               }
-            }, {
-               title: '', // Button title
-               default: true, // Will be triggered by default if 'Enter' pressed.
-               handler: function handler() {} // Button click handler
-            }, {
-               title: 'Close'
-            }]
-         });
-      },
-
-      /*
-       *
-       *
-       * */
-      mostrar_notificaciones: function mostrar_notificaciones(respuesta_http) {
-
-         var status = respuesta_http.status;
-         var tipo = respuesta_http.body.tipo;
-         var mensajes = respuesta_http.body.mensajes;
-
-         switch (tipo) {
-            case 'creacion_exitosa':
-               // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
-               this.notificar('success', 'Registro exitoso', mensajes, 'global');
-               return true;break;
-            case 'actualizacion_exitosa':
-               // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
-               this.notificar('success', 'Actualización exitosa', mensajes, 'global');
-               return true;break;
-            case 'eliminacion_exitosa':
-               // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
-               this.notificar('success', 'Eliminación exitosa', mensajes, 'global');
-               return true;break;
-            case 'errores_campos_requeridos':
-               // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
-               this.notificar('warn', 'Advertencia campo requerido', mensajes, 'global');
-               return false;break;
-            case 'error_datos_invalidos':
-               // Tipo de notificacion , Titulo de los mensajes , Mensajes , Grupo
-               this.notificar('error', 'Error datos invalidos', mensajes, 'global');
-               return false;break;
-         }
-         //Como no hay nada mas que pueda deneter la ejecucion, se cierra el modal con esta verificacion true.
-         return true;
-      },
-
-      /*
-       *
-       *
-       * */
-      validar_campos: function validar_campos() {
-         /*DEPRECATED*/
-         this.$validator.validateAll().then(function (res) {
-            return res;
-         });
-      },
-
-      /*
-       *
-       *
-       * */
-      notificar: function notificar(tipo, titulo, mensajes, grupo) {
-         for (var m in mensajes) {
-            this.$notify({ group: grupo, type: tipo, title: titulo, text: mensajes[m][0] });
-         }
-         return true;
-      },
-
-      /*
-       *
-       *
-       * */
-      ocultar_modal: function ocultar_modal(nom_modal) {
-         this.$modal.hide(nom_modal);
-      },
-      /*
-       *
-       *
-       * */
-      // function to order lists
-      ordenar_lista: function ordenar_lista(columna) {
-         this.lista_objs_model = _.orderBy(this.lista_objs_model, columna, this.orden_lista);
-      },
-
-      /*
-       *
-       *
-       * */
-      separar_miles: function separar_miles(num) {
-         return num.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
-      },
-
-      inicializar: function inicializar() {
-         var _this10 = this;
-
-         this.$http.get('/ajax/' + this.nombre_ruta).then(function (response) {
-            // success callback
-            if (response.status == 200) {
-               _this10.configurar_relaciones(response.body[_this10.nombre_ruta].data, _this10.relaciones_clase);
-               _this10.asignar_recursos(response);
-            } else {
-               _this10.checkear_estado_respuesta_http(response.status);
-            }
-         }, function (response) {
-            _this10.checkear_estado_respuesta_http(response.status);
-         }); // error callback
-      },
-
-      navigate: function navigate(page) {
-         var _this11 = this;
-
-         this.$http.get('/ajax/' + this.nombre_ruta + '?page=' + page + '&per_page=' + this.pagination.per_page).then(function (response) {
-            if (response.status == 200) {
-               _this11.configurar_relaciones(response.body[_this11.nombre_ruta].data, _this11.relaciones_clase);
-               _this11.asignar_recursos(response);
-            } else {
-               _this11.checkear_estado_respuesta_http(response.status);
-            }
-         }, function (response) {
-            _this11.checkear_estado_respuesta_http(response.status);
-         }); // error callback
-      },
-      navigateCustom: function navigateCustom() {
-         var _this12 = this;
-
-         this.$http.get('/ajax/' + this.nombre_ruta + '?page=' + 1 + '&per_page=' + this.pagination.per_page).then(function (response) {
-            console.log(response);
-            if (response.status == 200) {
-               _this12.configurar_relaciones(response.body[_this12.nombre_ruta].data, _this12.relaciones_clase);
-               _this12.asignar_recursos(response);
-            } else {
-               _this12.checkear_estado_respuesta_http(response.status);
-            }
-         }, function (response) {
-            _this12.checkear_estado_respuesta_http(response.status);
-         }); // error callback
-      }
-   }
-
-   /*
-   
-   Ejemplos
-   -----
-   const hola = {
-      test1(){console.log('test1')},
-      test2:function(){console.log('test2')}
-   }
-   export default hola
-   -----
-   export const hola2 = {
-      test1(){console.log('test1')},
-      test2:function(){console.log('test2')}
-   }
-   -----
-   var hola3 = {
-      test1(){console.log('test1')},
-      test2:function(){console.log('test2')}
-   }
-   
-   export var hola3
-   
-   -----
-   export function ocultar_modal (nom_modal) {
-      this.$modal.hide(nom_modal);
-   }
-   
-   
-   */
-
-};
-
-/***/ }),
-
-/***/ 3:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(4)
-/* template */
-var __vue_template__ = __webpack_require__(5)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/DownloadExcel.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-795cc6e8", Component.options)
-  } else {
-    hotAPI.reload("data-v-795cc6e8", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 4:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-   name: 'download-excel',
-   props: {
-      'data': {
-         type: Array,
-         required: true
-      },
-      'fields': {
-         type: Object,
-         required: false
-      },
-      'labels': {
-         type: Object,
-         required: false
-      },
-      'name': {
-         type: String,
-         default: "data.xls"
-      }
-   },
-   //template: ``,
-   data: function data() {
-      return {
-         animate: true,
-         animation: ''
-      };
-   },
-   created: function created() {},
-   computed: {
-      id_name: function id_name() {
-         var now = new Date().getTime();
-         return 'export_' + now;
-      }
-   },
-   methods: {
-      emitXmlHeader: function emitXmlHeader() {
-         var headerRow = '<ss:Row>\n';
-         for (var colName in this.fields) {
-            headerRow += '  <ss:Cell>\n';
-            headerRow += '    <ss:Data ss:Type="String">';
-            headerRow += (this.labels[colName] || colName) + '</ss:Data>\n';
-            headerRow += '  </ss:Cell>\n';
-         }
-         headerRow += '</ss:Row>\n';
-         //'<ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">\n' +
-         return '<?xml version="1.0"?>\n' + '<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"\n' + 'xmlns:o="urn:schemas-microsoft-com:office:office"\n' + 'xmlns:x="urn:schemas-microsoft-com:office:excel"\n' + 'xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"\n' + 'xmlns:html="http://www.w3.org/TR/REC-html40">\n' + '<ss:Worksheet ss:Name="Sheet1">\n' + '<ss:Table>\n\n' + headerRow;
-      },
-
-      emitXmlFooter: function emitXmlFooter() {
-         return '\n</ss:Table>\n' + '</ss:Worksheet>\n' + '</ss:Workbook>\n';
-      },
-
-      jsonToSsXml: function jsonToSsXml(jsonObject) {
-         var row;
-         var col;
-         var xml;
-         //console.log(jsonObject);
-         var data = (typeof jsonObject === 'undefined' ? 'undefined' : _typeof(jsonObject)) != "object" ? JSON.parse(jsonObject) : jsonObject;
-
-         xml = this.emitXmlHeader();
-
-         for (row = 0; row < data.length; row++) {
-            xml += '<ss:Row>\n';
-
-            for (col in data[row]) {
-               xml += '  <ss:Cell>\n';
-               xml += '    <ss:Data ss:Type="' + this.fields[col] + '">';
-               xml += String(data[row][col]).replace(/[^a-zA-Z0-9\s\-ñíéáóú\#\,\.\;\:ÑÍÉÓÁÚ@_]/g, '') + '</ss:Data>\n';
-               xml += '  </ss:Cell>\n';
-            }
-
-            xml += '</ss:Row>\n';
-         }
-
-         xml += this.emitXmlFooter();
-         return xml;
-      },
-      generate_excel: function generate_excel(content, filename, contentType) {
-         var blob = new Blob([this.jsonToSsXml(this.data)], {
-            'type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-         });
-
-         var a = document.getElementById(this.id_name);
-         a.href = window.URL.createObjectURL(blob);
-         a.download = this.name;
-      }
-   }
-});
-
-/***/ }),
-
-/***/ 5:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "a",
-    {
-      attrs: { href: "#", id: _vm.id_name },
-      on: { click: _vm.generate_excel }
-    },
-    [_vm._t("default", [_vm._v("\n      Download Excel\n   ")])],
-    2
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-795cc6e8", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 6:
 /***/ (function(module, exports) {
 
 /*
@@ -4891,19 +4431,282 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 7:
+/***/ 3:
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+  Modified by Evan You @yyx990803
+*/
+
+var hasDocument = typeof document !== 'undefined'
+
+if (typeof DEBUG !== 'undefined' && DEBUG) {
+  if (!hasDocument) {
+    throw new Error(
+    'vue-style-loader cannot be used in a non-browser environment. ' +
+    "Use { target: 'node' } in your Webpack config to indicate a server-rendering environment."
+  ) }
+}
+
+var listToStyles = __webpack_require__(4)
+
+/*
+type StyleObject = {
+  id: number;
+  parts: Array<StyleObjectPart>
+}
+
+type StyleObjectPart = {
+  css: string;
+  media: string;
+  sourceMap: ?string
+}
+*/
+
+var stylesInDom = {/*
+  [id: number]: {
+    id: number,
+    refs: number,
+    parts: Array<(obj?: StyleObjectPart) => void>
+  }
+*/}
+
+var head = hasDocument && (document.head || document.getElementsByTagName('head')[0])
+var singletonElement = null
+var singletonCounter = 0
+var isProduction = false
+var noop = function () {}
+var options = null
+var ssrIdKey = 'data-vue-ssr-id'
+
+// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+// tags it will allow on a page
+var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\b/.test(navigator.userAgent.toLowerCase())
+
+module.exports = function (parentId, list, _isProduction, _options) {
+  isProduction = _isProduction
+
+  options = _options || {}
+
+  var styles = listToStyles(parentId, list)
+  addStylesToDom(styles)
+
+  return function update (newList) {
+    var mayRemove = []
+    for (var i = 0; i < styles.length; i++) {
+      var item = styles[i]
+      var domStyle = stylesInDom[item.id]
+      domStyle.refs--
+      mayRemove.push(domStyle)
+    }
+    if (newList) {
+      styles = listToStyles(parentId, newList)
+      addStylesToDom(styles)
+    } else {
+      styles = []
+    }
+    for (var i = 0; i < mayRemove.length; i++) {
+      var domStyle = mayRemove[i]
+      if (domStyle.refs === 0) {
+        for (var j = 0; j < domStyle.parts.length; j++) {
+          domStyle.parts[j]()
+        }
+        delete stylesInDom[domStyle.id]
+      }
+    }
+  }
+}
+
+function addStylesToDom (styles /* Array<StyleObject> */) {
+  for (var i = 0; i < styles.length; i++) {
+    var item = styles[i]
+    var domStyle = stylesInDom[item.id]
+    if (domStyle) {
+      domStyle.refs++
+      for (var j = 0; j < domStyle.parts.length; j++) {
+        domStyle.parts[j](item.parts[j])
+      }
+      for (; j < item.parts.length; j++) {
+        domStyle.parts.push(addStyle(item.parts[j]))
+      }
+      if (domStyle.parts.length > item.parts.length) {
+        domStyle.parts.length = item.parts.length
+      }
+    } else {
+      var parts = []
+      for (var j = 0; j < item.parts.length; j++) {
+        parts.push(addStyle(item.parts[j]))
+      }
+      stylesInDom[item.id] = { id: item.id, refs: 1, parts: parts }
+    }
+  }
+}
+
+function createStyleElement () {
+  var styleElement = document.createElement('style')
+  styleElement.type = 'text/css'
+  head.appendChild(styleElement)
+  return styleElement
+}
+
+function addStyle (obj /* StyleObjectPart */) {
+  var update, remove
+  var styleElement = document.querySelector('style[' + ssrIdKey + '~="' + obj.id + '"]')
+
+  if (styleElement) {
+    if (isProduction) {
+      // has SSR styles and in production mode.
+      // simply do nothing.
+      return noop
+    } else {
+      // has SSR styles but in dev mode.
+      // for some reason Chrome can't handle source map in server-rendered
+      // style tags - source maps in <style> only works if the style tag is
+      // created and inserted dynamically. So we remove the server rendered
+      // styles and inject new ones.
+      styleElement.parentNode.removeChild(styleElement)
+    }
+  }
+
+  if (isOldIE) {
+    // use singleton mode for IE9.
+    var styleIndex = singletonCounter++
+    styleElement = singletonElement || (singletonElement = createStyleElement())
+    update = applyToSingletonTag.bind(null, styleElement, styleIndex, false)
+    remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true)
+  } else {
+    // use multi-style-tag mode in all other cases
+    styleElement = createStyleElement()
+    update = applyToTag.bind(null, styleElement)
+    remove = function () {
+      styleElement.parentNode.removeChild(styleElement)
+    }
+  }
+
+  update(obj)
+
+  return function updateStyle (newObj /* StyleObjectPart */) {
+    if (newObj) {
+      if (newObj.css === obj.css &&
+          newObj.media === obj.media &&
+          newObj.sourceMap === obj.sourceMap) {
+        return
+      }
+      update(obj = newObj)
+    } else {
+      remove()
+    }
+  }
+}
+
+var replaceText = (function () {
+  var textStore = []
+
+  return function (index, replacement) {
+    textStore[index] = replacement
+    return textStore.filter(Boolean).join('\n')
+  }
+})()
+
+function applyToSingletonTag (styleElement, index, remove, obj) {
+  var css = remove ? '' : obj.css
+
+  if (styleElement.styleSheet) {
+    styleElement.styleSheet.cssText = replaceText(index, css)
+  } else {
+    var cssNode = document.createTextNode(css)
+    var childNodes = styleElement.childNodes
+    if (childNodes[index]) styleElement.removeChild(childNodes[index])
+    if (childNodes.length) {
+      styleElement.insertBefore(cssNode, childNodes[index])
+    } else {
+      styleElement.appendChild(cssNode)
+    }
+  }
+}
+
+function applyToTag (styleElement, obj) {
+  var css = obj.css
+  var media = obj.media
+  var sourceMap = obj.sourceMap
+
+  if (media) {
+    styleElement.setAttribute('media', media)
+  }
+  if (options.ssrId) {
+    styleElement.setAttribute(ssrIdKey, obj.id)
+  }
+
+  if (sourceMap) {
+    // https://developer.chrome.com/devtools/docs/javascript-debugging
+    // this makes source maps inside style tags work properly in Chrome
+    css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */'
+    // http://stackoverflow.com/a/26603875
+    css += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + ' */'
+  }
+
+  if (styleElement.styleSheet) {
+    styleElement.styleSheet.cssText = css
+  } else {
+    while (styleElement.firstChild) {
+      styleElement.removeChild(styleElement.firstChild)
+    }
+    styleElement.appendChild(document.createTextNode(css))
+  }
+}
+
+
+/***/ }),
+
+/***/ 4:
+/***/ (function(module, exports) {
+
+/**
+ * Translates the list format produced by css-loader into something
+ * easier to manipulate.
+ */
+module.exports = function listToStyles (parentId, list) {
+  var styles = []
+  var newStyles = {}
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i]
+    var id = item[0]
+    var css = item[1]
+    var media = item[2]
+    var sourceMap = item[3]
+    var part = {
+      id: parentId + ':' + i,
+      css: css,
+      media: media,
+      sourceMap: sourceMap
+    }
+    if (!newStyles[id]) {
+      styles.push(newStyles[id] = { id: id, parts: [part] })
+    } else {
+      newStyles[id].parts.push(part)
+    }
+  }
+  return styles
+}
+
+
+/***/ }),
+
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(8)
+  __webpack_require__(6)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(12)
+var __vue_script__ = __webpack_require__(8)
 /* template */
-var __vue_template__ = __webpack_require__(13)
+var __vue_template__ = __webpack_require__(9)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -4943,17 +4746,17 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 8:
+/***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(9);
+var content = __webpack_require__(7);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(10)("63d3e7e1", content, false, {});
+var update = __webpack_require__(3)("63d3e7e1", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -4970,10 +4773,10 @@ if(false) {
 
 /***/ }),
 
-/***/ 9:
+/***/ 7:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(6)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -4982,6 +4785,224 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 // exports
 
+
+/***/ }),
+
+/***/ 8:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+   name: "paginators",
+   props: ['pagination'],
+   data: function data() {
+      return {
+         pages: []
+      };
+   },
+   ready: function ready() {},
+   created: function created() {
+      //console.log(this.pagination); //está trayendo pagination
+      var p = this.pagination;
+      this.pages = this.generatePagesArray(p.current_page, p.total, p.per_page, 7);
+   },
+
+
+   methods: {
+      navigate: function navigate(ev, page) {
+         ev.preventDefault();
+         //console.log(page);
+         this.$emit('navigate', page);
+      },
+      nextPrev: function nextPrev(ev, page) {
+         if (page == 0 || page == this.pagination.last_page + 1) {
+            return;
+         }
+         this.navigate(ev, page);
+      },
+      generatePagesArray: function generatePagesArray(currentPage, collectionLength, rowsPerPage, paginationRange) {
+         var pages = [];
+         var totalPages = Math.ceil(collectionLength / rowsPerPage);
+         var halfWay = Math.ceil(paginationRange / 2);
+         var position;
+
+         if (currentPage <= halfWay) {
+            position = 'start';
+         } else if (totalPages - halfWay < currentPage) {
+            position = 'end';
+         } else {
+            position = 'middle';
+         }
+
+         var ellipsesNeeded = paginationRange < totalPages;
+         var i = 1;
+         while (i <= totalPages && i <= paginationRange) {
+            var pageNumber = this.calculatePageNumber(i, currentPage, paginationRange, totalPages);
+            var openingEllipsesNeeded = i === 2 && (position === 'middle' || position === 'end');
+            var closingEllipsesNeeded = i === paginationRange - 1 && (position === 'middle' || position === 'start');
+            if (ellipsesNeeded && (openingEllipsesNeeded || closingEllipsesNeeded)) {
+               pages.push('...');
+            } else {
+               pages.push(pageNumber);
+            }
+            i++;
+         }
+         return pages;
+      },
+      calculatePageNumber: function calculatePageNumber(i, currentPage, paginationRange, totalPages) {
+         var halfWay = Math.ceil(paginationRange / 2);
+         if (i === paginationRange) {
+            return totalPages;
+         } else if (i === 1) {
+            return i;
+         } else if (paginationRange < totalPages) {
+            if (totalPages - halfWay < currentPage) {
+               return totalPages - paginationRange + i;
+            } else if (halfWay < currentPage) {
+               return currentPage - halfWay + i;
+            } else {
+               return i;
+            }
+         } else {
+            return i;
+         }
+      }
+   },
+
+   watch: {
+      pagination: function pagination() {
+         //console.log('Estoy llegando al watch');
+         var p = this.pagination;
+         this.pages = this.generatePagesArray(p.current_page, p.total, p.per_page, 7);
+      }
+   }
+});
+
+/***/ }),
+
+/***/ 9:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("nav", { attrs: { "aria-label": "Page navigation" } }, [
+    _c(
+      "ul",
+      { staticClass: "pagination" },
+      [
+        _c("li", { class: { disabled: _vm.pagination.current_page == 1 } }, [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-success",
+              attrs: { href: "#!", "aria-label": "Previous" },
+              on: {
+                click: function($event) {
+                  _vm.nextPrev($event, _vm.pagination.current_page - 1)
+                }
+              }
+            },
+            [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("«")])]
+          )
+        ]),
+        _vm._v(" "),
+        _vm._l(_vm.pages, function(page) {
+          return _c(
+            "li",
+            {
+              class: { pro: _vm.pagination.current_page == page },
+              attrs: { "track-by": "$index" }
+            },
+            [
+              page == "..."
+                ? _c("span", { staticClass: "btn btn-success" }, [
+                    _vm._v(_vm._s(page))
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              page != "..."
+                ? _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-success",
+                      attrs: { href: "#!" },
+                      on: {
+                        click: function($event) {
+                          _vm.navigate($event, page)
+                        }
+                      }
+                    },
+                    [_vm._v(_vm._s(page))]
+                  )
+                : _vm._e()
+            ]
+          )
+        }),
+        _vm._v(" "),
+        _c(
+          "li",
+          {
+            class: {
+              disabled: _vm.pagination.current_page == _vm.pagination.last_page
+            }
+          },
+          [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-success",
+                attrs: { href: "#!", "aria-label": "Next" },
+                on: {
+                  click: function($event) {
+                    _vm.nextPrev($event, _vm.pagination.current_page + 1)
+                  }
+                }
+              },
+              [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("»")])]
+            )
+          ]
+        )
+      ],
+      2
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-267f8af9", module.exports)
+  }
+}
 
 /***/ })
 

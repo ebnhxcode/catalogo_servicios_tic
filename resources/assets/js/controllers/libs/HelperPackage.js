@@ -697,29 +697,47 @@ export const inyeccion_funciones_compartidas = {
       },
 
       inicializar: function () {
+         if (typeof this.spinner_table != "undefined") {
+            this.spinner_table = true;
+         }
          this.$http.get(`/ajax/${this.nombre_ruta}`).then(response => { // success callback
             if (response.status == 200) {
                this.configurar_relaciones(response.body[this.nombre_ruta].data, this.relaciones_clase);
                this.asignar_recursos(response);
+               if (typeof this.spinner_table != "undefined") {
+                  this.spinner_table = false;
+               }
             } else { this.checkear_estado_respuesta_http(response.status); }
          }, response => { this.checkear_estado_respuesta_http(response.status); }); // error callback
       },
 
       navigate (page) {
+         if (typeof this.spinner_table != "undefined") {
+            this.spinner_table = true;
+         }
          this.$http.get(`/ajax/${this.nombre_ruta}?page=` + page + '&per_page=' + this.pagination.per_page).then(response => {
             if (response.status == 200) {
                this.configurar_relaciones(response.body[this.nombre_ruta].data, this.relaciones_clase);
                this.asignar_recursos(response);
+               if (typeof this.spinner_table != "undefined") {
+                  this.spinner_table = false;
+               }
             } else { this.checkear_estado_respuesta_http(response.status); }
          }, response => { this.checkear_estado_respuesta_http(response.status); });// error callback
       },
 
       navigateCustom () {
+         if (typeof this.spinner_table != "undefined") {
+            this.spinner_table = true;
+         }
          this.$http.get(`/ajax/${this.nombre_ruta}?page=` + 1 + '&per_page=' + this.pagination.per_page).then(response => {
             console.log(response);
             if (response.status == 200) {
                this.configurar_relaciones(response.body[this.nombre_ruta].data, this.relaciones_clase);
                this.asignar_recursos(response);
+               if (typeof this.spinner_table != "undefined") {
+                  this.spinner_table = false;
+               }
             } else { this.checkear_estado_respuesta_http(response.status); }
          }, response => { this.checkear_estado_respuesta_http(response.status); });// error callback
       },

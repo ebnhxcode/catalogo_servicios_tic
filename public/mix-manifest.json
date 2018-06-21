@@ -24,6 +24,7 @@
     "/js/controllers/AplicacionController.js": "/js/controllers/AplicacionController.js",
     "/js/controllers/AplicacionAccesoController.js": "/js/controllers/AplicacionAccesoController.js",
     "/js/controllers/ActividadController.js": "/js/controllers/ActividadController.js",
+    "/js/components/Spinner.vue.js": "/js/components/Spinner.vue.js",
     "/js/components/Paginators.vue.js": "/js/components/Paginators.vue.js",
     "/js/components/DownloadExcel.vue.js": "/js/components/DownloadExcel.vue.js",
     "/css/app.css": "/css/app.css",
