@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Ambiente;
 use App\Cluster;
+use App\Dominio;
 use App\Servicio;
 use App\Servidor;
 use App\ServidorEstado;
@@ -11,6 +12,7 @@ use App\Datacentro;
 use App\ServidorHistoricoCambio;
 use App\ServidorLvm;
 use App\SistemaOperativo;
+use App\TipoAplicacion;
 use App\Vlan;
 use App\TipoServidor;
 use App\TipoSistemaOperativo;
@@ -37,8 +39,10 @@ class ServidorController extends Controller {
    private $tipos_sistemas_operativos;
    private $ambientes;
    private $clusters;
+   private $dominios;
    private $vlans;
    private $tipos_servidores;
+   private $tipos_aplicaciones;
    private $tipos_respaldos_discos;
    private $estados;
    private $estado;
@@ -120,8 +124,11 @@ class ServidorController extends Controller {
          $this->estados = Estado::all();
          $this->ambientes = Ambiente::all();
          $this->clusters = Cluster::all();
+         $this->dominios = Dominio::all();
          $this->vlans = Vlan::all();
          $this->tipos_servidores = TipoServidor::all();
+         $this->tipos_aplicaciones = TipoAplicacion::all();
+         $this->dominios = Dominio::all();
          $this->tipos_respaldos_discos = TipoRespaldoDisco::all();
          $this->usuario_auth = Auth::user();
          return response()->json([
@@ -134,8 +141,10 @@ class ServidorController extends Controller {
             'tipos_respaldos_discos' => $this->tipos_respaldos_discos,
             'ambientes' => $this->ambientes,
             'clusters' => $this->clusters,
+            'dominios' => $this->dominios,
             'vlans' => $this->vlans,
             'tipos_servidores' => $this->tipos_servidores,
+            'tipos_aplicaciones' => $this->tipos_aplicaciones,
             'estados' => $this->estados,
             'usuario_auth' => $this->usuario_auth->load('usuario_role.role'),
          ]);

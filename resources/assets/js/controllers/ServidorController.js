@@ -15,7 +15,7 @@ Vue.component('paginators', require('../components/Paginators.vue'));
 Vue.component('vista-principal-servidor', require('../components/views/servidores/VistaPrincipalServidor.vue'));
 Vue.component('tabla-listar-aplicacion', require('../components/views/aplicaciones/TablaListarAplicacion.vue'));
 Vue.component('formulario-campos-aplicacion', require('../components/views/aplicaciones/FormularioCamposAplicacion.vue'));
-import { Aplicacion } from '../components/models/Aplicacion.vue';
+//import { Aplicacion } from '../components/models/Aplicacion.vue';
 
 const ServidorController = new Vue({
    el: '#ServidorController',
@@ -75,7 +75,22 @@ const ServidorController = new Vue({
             'updated_at':null,
             'deleted_at':null,
          },
-         'aplicacion':Aplicacion, //objeto importado para ser usado por sus propiedades
+         //'aplicacion':Aplicacion, //objeto importado para ser usado por sus propiedades
+
+         'aplicacion':{
+            'nom_aplicacion':null,
+            'det_aplicacion':null,
+            'alias':null,
+            'url_web':null,
+            'ip':null,
+            'subdominio':null,
+            'ssl_tls':null,
+
+            'id_dominio':null,
+            'id_servidor':null,
+            'id_servicio':null,
+            'id_tipo_aplicacion':null,
+         },
 
          'permitido_guardar':[
             'nom_servidor',
@@ -131,6 +146,7 @@ const ServidorController = new Vue({
          'clusters':[],
          'vlans':[],
          'tipos_servidores':[],
+         'tipos_aplicaciones':[],
          'tipos_respaldos_discos':[],
          'ambientes':[],
          'datacentros':[],
@@ -323,7 +339,7 @@ const ServidorController = new Vue({
       id_en_edicion: function (id_en_edicion) {
          if (id_en_edicion == null) { this.limpiar_objeto_clase_local(); }
          else { this.buscar_objeto_clase_config_relaciones(id_en_edicion, this.relaciones_clase); }
-lista_objs_model
+         // lista_objs_model
       },
       //servidores se mantiene en el watcher para actualizar la lista de lo que se esta trabajando y/o filtrando en grid
       servidores: function (servidores) {
@@ -409,13 +425,86 @@ lista_objs_model
          this.estados = response.body.estados || null;
          this.ambientes = response.body.ambientes || null;
          this.clusters = response.body.clusters || null;
+         this.dominios = response.body.dominios || null;
          this.vlans = response.body.vlans || null;
          this.tipos_servidores = response.body.tipos_servidores || null;
+         this.tipos_aplicaciones = response.body.tipos_aplicaciones || null;
          this.tipos_respaldos_discos = response.body.tipos_respaldos_discos || null;
 
          /* Datos de la sesion actual del usuario */
          this.usuario_auth = response.body.usuario_auth || null;
 
       },
+
+      guardar_aplicacion: function () {
+         //Ejecuta validacion sobre los campos con validaciones
+         this.$validator.validateAll({
+            nom_aplicacion:this.aplicacion.nom_aplicacion,
+            url_web:this.aplicacion.url_web,
+            id_dominio:this.aplicacion.id_dominio,
+            ip:this.aplicacion.ip,
+            ssl_tls:this.aplicacion.ssl_tls,
+            id_servicio:this.aplicacion.id_servicio,
+            id_tipo_aplicacion:this.aplicacion.id_tipo_aplicacion,
+            id_servidor:this.aplicacion.id_servidor,
+         }).then( res => {
+            if (res == true) {
+               //Se adjunta el token
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               //Instancia nuevo form data
+               var formData = new FormData();
+               //Conforma objeto paramétrico para solicitud http
+               formData.append(`nom_aplicacion`, this.aplicacion.nom_aplicacion);
+               formData.append(`det_aplicacion`, this.aplicacion.det_aplicacion || 'Sin detalles');
+               formData.append(`alias`, this.aplicacion.alias || '');
+               formData.append(`url_web`, this.aplicacion.url_web);
+               formData.append(`id_dominio`, this.aplicacion.id_dominio);
+               formData.append(`subdominio`, this.aplicacion.subdominio || '');
+               formData.append(`ip`, this.aplicacion.ip);
+               formData.append(`ssl_tls`, this.aplicacion.ssl_tls);
+               formData.append(`id_servicio`, this.aplicacion.id_servicio);
+               formData.append(`id_tipo_aplicacion`, this.aplicacion.id_tipo_aplicacion);
+               formData.append(`id_servidor`, this.aplicacion.id_servidor);
+
+               this.$http.post(`/aplicaciones`, formData).then(response => { // success callback
+
+                  //console.log(response.body);
+
+                  if (response.status == 200) {
+                     //this.inicializar();
+                     this.aplicacion = {
+                        'nom_aplicacion':null,
+                        'det_aplicacion':null,
+                        'alias':null,
+                        'url_web':null,
+                        'ip':null,
+                        'subdominio':null,
+                        'ssl_tls':null,
+
+                        'id_dominio':null,
+                        'id_servidor':null,
+                        'id_servicio':null,
+                        'id_tipo_aplicacion':null,
+                     };
+
+                     this.servidor.aplicaciones.push(response.body.aplicacion);
+                     //this.$validator.clean();
+                     //this.errors.clear();
+
+                  } else {
+                     this.checkear_estado_respuesta_http(response.status);
+                     return false;
+                  }
+                  if (this.mostrar_notificaciones(response) == true) {
+                     return;
+                  }
+               }, response => { // error callback
+                  this.checkear_estado_respuesta_http(response.status);
+               });
+            }
+         });
+         //return;
+      },
+
    }
 });

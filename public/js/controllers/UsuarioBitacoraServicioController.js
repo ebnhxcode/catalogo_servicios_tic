@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 120);
+/******/ 	return __webpack_require__(__webpack_require__.s = 118);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3113,125 +3113,15 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 12:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-   name: 'download-excel',
-   props: {
-      'data': {
-         type: Array,
-         required: true
-      },
-      'fields': {
-         type: Object,
-         required: false
-      },
-      'labels': {
-         type: Object,
-         required: false
-      },
-      'name': {
-         type: String,
-         default: "data.xls"
-      }
-   },
-   //template: ``,
-   data: function data() {
-      return {
-         animate: true,
-         animation: ''
-      };
-   },
-   created: function created() {},
-   computed: {
-      id_name: function id_name() {
-         var now = new Date().getTime();
-         return 'export_' + now;
-      }
-   },
-   methods: {
-      emitXmlHeader: function emitXmlHeader() {
-         var headerRow = '<ss:Row>\n';
-         for (var colName in this.fields) {
-            headerRow += '  <ss:Cell>\n';
-            headerRow += '    <ss:Data ss:Type="String">';
-            headerRow += (this.labels[colName] || colName) + '</ss:Data>\n';
-            headerRow += '  </ss:Cell>\n';
-         }
-         headerRow += '</ss:Row>\n';
-         //'<ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">\n' +
-         return '<?xml version="1.0"?>\n' + '<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"\n' + 'xmlns:o="urn:schemas-microsoft-com:office:office"\n' + 'xmlns:x="urn:schemas-microsoft-com:office:excel"\n' + 'xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"\n' + 'xmlns:html="http://www.w3.org/TR/REC-html40">\n' + '<ss:Worksheet ss:Name="Sheet1">\n' + '<ss:Table>\n\n' + headerRow;
-      },
-
-      emitXmlFooter: function emitXmlFooter() {
-         return '\n</ss:Table>\n' + '</ss:Worksheet>\n' + '</ss:Workbook>\n';
-      },
-
-      jsonToSsXml: function jsonToSsXml(jsonObject) {
-         var row;
-         var col;
-         var xml;
-         //console.log(jsonObject);
-         var data = (typeof jsonObject === 'undefined' ? 'undefined' : _typeof(jsonObject)) != "object" ? JSON.parse(jsonObject) : jsonObject;
-
-         xml = this.emitXmlHeader();
-
-         for (row = 0; row < data.length; row++) {
-            xml += '<ss:Row>\n';
-
-            for (col in data[row]) {
-               xml += '  <ss:Cell>\n';
-               xml += '    <ss:Data ss:Type="' + this.fields[col] + '">';
-               xml += String(data[row][col]).replace(/[^a-zA-Z0-9\s\-ñíéáóú\#\,\.\;\:ÑÍÉÓÁÚ@_]/g, '') + '</ss:Data>\n';
-               xml += '  </ss:Cell>\n';
-            }
-
-            xml += '</ss:Row>\n';
-         }
-
-         xml += this.emitXmlFooter();
-         return xml;
-      },
-      generate_excel: function generate_excel(content, filename, contentType) {
-         var blob = new Blob([this.jsonToSsXml(this.data)], {
-            'type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-         });
-
-         var a = document.getElementById(this.id_name);
-         a.href = window.URL.createObjectURL(blob);
-         a.download = this.name;
-      }
-   }
-});
-
-/***/ }),
-
-/***/ 120:
+/***/ 118:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(121);
+module.exports = __webpack_require__(119);
 
 
 /***/ }),
 
-/***/ 121:
+/***/ 119:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3436,6 +3326,116 @@ var UsuarioBitacoraServicioController = new Vue({
          this.usuario_auth = response.body.usuario_auth || null;
       }
 
+   }
+});
+
+/***/ }),
+
+/***/ 12:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+   name: 'download-excel',
+   props: {
+      'data': {
+         type: Array,
+         required: true
+      },
+      'fields': {
+         type: Object,
+         required: false
+      },
+      'labels': {
+         type: Object,
+         required: false
+      },
+      'name': {
+         type: String,
+         default: "data.xls"
+      }
+   },
+   //template: ``,
+   data: function data() {
+      return {
+         animate: true,
+         animation: ''
+      };
+   },
+   created: function created() {},
+   computed: {
+      id_name: function id_name() {
+         var now = new Date().getTime();
+         return 'export_' + now;
+      }
+   },
+   methods: {
+      emitXmlHeader: function emitXmlHeader() {
+         var headerRow = '<ss:Row>\n';
+         for (var colName in this.fields) {
+            headerRow += '  <ss:Cell>\n';
+            headerRow += '    <ss:Data ss:Type="String">';
+            headerRow += (this.labels[colName] || colName) + '</ss:Data>\n';
+            headerRow += '  </ss:Cell>\n';
+         }
+         headerRow += '</ss:Row>\n';
+         //'<ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">\n' +
+         return '<?xml version="1.0"?>\n' + '<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"\n' + 'xmlns:o="urn:schemas-microsoft-com:office:office"\n' + 'xmlns:x="urn:schemas-microsoft-com:office:excel"\n' + 'xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"\n' + 'xmlns:html="http://www.w3.org/TR/REC-html40">\n' + '<ss:Worksheet ss:Name="Sheet1">\n' + '<ss:Table>\n\n' + headerRow;
+      },
+
+      emitXmlFooter: function emitXmlFooter() {
+         return '\n</ss:Table>\n' + '</ss:Worksheet>\n' + '</ss:Workbook>\n';
+      },
+
+      jsonToSsXml: function jsonToSsXml(jsonObject) {
+         var row;
+         var col;
+         var xml;
+         //console.log(jsonObject);
+         var data = (typeof jsonObject === 'undefined' ? 'undefined' : _typeof(jsonObject)) != "object" ? JSON.parse(jsonObject) : jsonObject;
+
+         xml = this.emitXmlHeader();
+
+         for (row = 0; row < data.length; row++) {
+            xml += '<ss:Row>\n';
+
+            for (col in data[row]) {
+               xml += '  <ss:Cell>\n';
+               xml += '    <ss:Data ss:Type="' + this.fields[col] + '">';
+               xml += String(data[row][col]).replace(/[^a-zA-Z0-9\s\-ñíéáóú\#\,\.\;\:ÑÍÉÓÁÚ@_]/g, '') + '</ss:Data>\n';
+               xml += '  </ss:Cell>\n';
+            }
+
+            xml += '</ss:Row>\n';
+         }
+
+         xml += this.emitXmlFooter();
+         return xml;
+      },
+      generate_excel: function generate_excel(content, filename, contentType) {
+         var blob = new Blob([this.jsonToSsXml(this.data)], {
+            'type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+         });
+
+         var a = document.getElementById(this.id_name);
+         a.href = window.URL.createObjectURL(blob);
+         a.download = this.name;
+      }
    }
 });
 
