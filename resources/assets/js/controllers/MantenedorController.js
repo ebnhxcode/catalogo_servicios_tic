@@ -77,18 +77,18 @@ const MantenedorController = new Vue({
 
          /* Campos que se ven en el tablero */
          'tabla_campos': {
-            'id_mantenedor':false,
-            'url_mantenedor':true,
-            'nom_mantenedor':true,
-            'det_mantenedor':true,
-            'cod_mantenedor':true,
-            'imagen_mantenedor':false,
-            'font_icon_mantenedor':false,
-            //'id_usuario_registra':false,
-            //'id_usuario_modifica':false,
-            'created_at':false,
-            'updated_at':false,
-            'deleted_at':false,
+            'id_mantenedor':{'visibility':false,'value':null},
+            'url_mantenedor':{'visibility':false,'value':null},
+            'nom_mantenedor':{'visibility':true,'value':null},
+            'det_mantenedor':{'visibility':false,'value':null},
+            'cod_mantenedor':{'visibility':false,'value':null},
+            'imagen_mantenedor':{'visibility':false,'value':null},
+            'font_icon_mantenedor':{'visibility':false,'value':null},
+            //'id_usuario_registra':{'visibility':false,'value':null},
+            //'id_usuario_modifica':{'visibility':false,'value':null},
+            'created_at':{'visibility':false,'value':null},
+            'updated_at':{'visibility':false,'value':null},
+            'deleted_at':{'visibility':false,'value':null},
          },
 
          /* Etiquetas */

@@ -72,13 +72,13 @@ const VlanController = new Vue({
 
           /* Campos que se ven en el tablero */
          'tabla_campos': {
-            'id_vlan':false,
-            'nom_vlan':true,
-            'det_vlan':true,
-            'cod_vlan':true,
-            'created_at':false,
-            'updated_at':false,
-            //'deleted_at':false,
+            'id_vlan':{'visibility':false,'value':null},
+            'nom_vlan':{'visibility':true,'value':null},
+            'det_vlan':{'visibility':false,'value':null},
+            'cod_vlan':{'visibility':false,'value':null},
+            'created_at':{'visibility':false,'value':null},
+            'updated_at':{'visibility':false,'value':null},
+            //'deleted_at':{'visibility':false,'value':null},
          },
 
           /* Etiquetas */

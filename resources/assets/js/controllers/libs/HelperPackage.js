@@ -116,7 +116,7 @@ export const inyeccion_funciones_compartidas = {
        *
        *
        * */
-      cambiar_visibilidad: function (campo) { return this.tabla_campos[campo] = !this.tabla_campos[campo]; },
+      cambiar_visibilidad: function (campo) { return this.tabla_campos[campo].visibility = !this.tabla_campos[campo].visibility; },
 
       /*
        *
@@ -406,6 +406,12 @@ export const inyeccion_funciones_compartidas = {
          });
       },
 
+
+      filtrar_grid: function (key) {
+         //this.datos_excel = this.$data[this.nombre_ruta] = this.lista_objs_model =
+         this.datos_excel = this.lista_objs_model = this.filterBy(this.lista_objs_model, this.tabla_campos[key].value, key);
+      },
+
       /*
        *
        *
@@ -534,6 +540,11 @@ export const inyeccion_funciones_compartidas = {
       limpiar_objeto_clase_local: function () {
          for (var k in this.$data[`${this.nombre_model}`]) { this.$data[`${this.nombre_model}`][k] = null; }
       },
+
+      limpiar_tabla_campos: function () {
+         for (var k in this.tabla_campos) { this.tabla_campos[k].value = null; }
+      },
+
 
       /*
        *
@@ -688,6 +699,25 @@ export const inyeccion_funciones_compartidas = {
       // function to order lists
       ordenar_lista: function (columna) { this.lista_objs_model = _.orderBy(this.lista_objs_model, columna, this.orden_lista); },
 
+      recargar_filtros_tablero: function () {
+         if (typeof this.filtros != "undefined") {
+            for (var f in this.filtros) {
+               this.filtros[f] = null;
+            }
+         }
+         this.lista_objs_model=this.$data[this.nombre_ruta];
+         this.limpiar_tabla_campos();
+      },
+
+      recargar_filtros_tablero_sin_limpiar_filtros: function () {
+         this.lista_objs_model=this.$data[this.nombre_ruta];
+         for (var obj in this.tabla_campos) {
+            if (this.tabla_campos[obj].value != null) {
+               this.filtrar_grid(obj);
+            }
+         }
+      },
+
       /*
        *
        *
@@ -704,6 +734,7 @@ export const inyeccion_funciones_compartidas = {
             if (response.status == 200) {
                this.configurar_relaciones(response.body[this.nombre_ruta].data, this.relaciones_clase);
                this.asignar_recursos(response);
+               this.limpiar_tabla_campos();
                if (typeof this.spinner_table != "undefined") {
                   this.spinner_table = false;
                }
@@ -719,6 +750,7 @@ export const inyeccion_funciones_compartidas = {
             if (response.status == 200) {
                this.configurar_relaciones(response.body[this.nombre_ruta].data, this.relaciones_clase);
                this.asignar_recursos(response);
+               this.limpiar_tabla_campos();
                if (typeof this.spinner_table != "undefined") {
                   this.spinner_table = false;
                }
@@ -735,6 +767,7 @@ export const inyeccion_funciones_compartidas = {
             if (response.status == 200) {
                this.configurar_relaciones(response.body[this.nombre_ruta].data, this.relaciones_clase);
                this.asignar_recursos(response);
+               this.limpiar_tabla_campos();
                if (typeof this.spinner_table != "undefined") {
                   this.spinner_table = false;
                }

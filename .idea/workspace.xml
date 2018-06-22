@@ -3,9 +3,30 @@
   <component name="ChangeListManager">
     <list default="true" id="8aa2c585-d310-4a06-92e2-14a844c1db5f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/components/DownloadExcel.vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/components/DownloadExcel.vue.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/components/Paginators.vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/components/Paginators.vue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ActividadController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ActividadController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AplicacionAccesoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AplicacionAccesoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AplicacionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AplicacionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CargoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CargoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClusterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClusterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DatacentroController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DatacentroController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DominioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DominioController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EstadoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EstadoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MantenedorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MantenedorController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MenuController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MenuController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PermisoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PermisoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ServicioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ServicioController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ServicioUsuarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ServicioUsuarioController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ServidorAccesoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ServidorAccesoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ServidorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ServidorController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SistemaOperativoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SistemaOperativoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TagController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TagController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TipoAplicacionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TipoAplicacionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TipoRespaldoDiscoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TipoRespaldoDiscoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TipoServidorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TipoServidorController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsuarioBitacoraServicioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UsuarioBitacoraServicioController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsuarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UsuarioController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VlanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/VlanController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/controllers/ActividadController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/ActividadController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/controllers/AplicacionAccesoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/AplicacionAccesoController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/controllers/AplicacionController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/AplicacionController.js" afterDir="false" />
@@ -22,7 +43,6 @@
       <change beforePath="$PROJECT_DIR$/public/js/controllers/ServicioController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/ServicioController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/controllers/ServidorAccesoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/ServidorAccesoController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/controllers/ServidorController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/ServidorController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/controllers/SideMenuController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/SideMenuController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/controllers/SistemaOperativoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/SistemaOperativoController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/controllers/TagController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/TagController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/controllers/TipoAplicacionController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/TipoAplicacionController.js" afterDir="false" />
@@ -31,9 +51,33 @@
       <change beforePath="$PROJECT_DIR$/public/js/controllers/UsuarioBitacoraServicioController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/UsuarioBitacoraServicioController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/controllers/UsuarioController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/UsuarioController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/controllers/VlanController.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/controllers/VlanController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/ActividadController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/ActividadController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/AplicacionAccesoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/AplicacionAccesoController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/AplicacionController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/AplicacionController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/CargoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/CargoController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/ClusterController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/ClusterController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/DatacentroController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/DatacentroController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/DominioController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/DominioController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/EstadoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/EstadoController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/MantenedorController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/MantenedorController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/MenuController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/MenuController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/PermisoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/PermisoController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/RoleController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/RoleController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/ServicioController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/ServicioController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/ServidorAccesoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/ServidorAccesoController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/ServidorController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/ServidorController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/SistemaOperativoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/SistemaOperativoController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/TagController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/TagController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/TipoAplicacionController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/TipoAplicacionController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/TipoRespaldoDiscoController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/TipoRespaldoDiscoController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/TipoServidorController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/TipoServidorController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/UsuarioBitacoraServicioController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/UsuarioBitacoraServicioController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/UsuarioController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/UsuarioController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/VlanController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/VlanController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/main_para_componentes.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/main_para_componentes.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/tabla_listar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/tabla_listar.blade.php" afterDir="false" />
     </list>
     <ignored path="catalogo_servicios_tic.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -70,26 +114,65 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/layouts/main.blade.php">
+      <file leaf-file-name="tabla_listar.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/layouts/tabla_listar.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="155" column="40" selection-start-line="155" selection-start-column="40" selection-end-line="155" selection-end-column="40" />
-              <folding>
-                <element signature="e#5334#5361#0#HTML" expanded="true" />
-                <element signature="e#5765#5792#0#HTML" expanded="true" />
-                <element signature="e#5749#5776#0#HTML" expanded="true" />
-                <element signature="e#5724#6989#0#HTML" />
-              </folding>
+            <state relative-caret-position="335">
+              <caret line="79" column="34" selection-start-line="79" selection-start-column="34" selection-end-line="79" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tabla_listar.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/layouts/tabla_listar.blade.php">
+      <file leaf-file-name="UsuarioController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UsuarioController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="30" selection-start-column="30" selection-end-column="30" />
+            <state relative-caret-position="727">
+              <caret line="58" column="31" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VlanController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/VlanController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="475">
+              <caret line="44" column="31" selection-start-line="44" selection-start-column="31" selection-end-line="44" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TipoServidorController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TipoServidorController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="630">
+              <caret line="46" column="31" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UsuarioBitacoraServicioController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UsuarioBitacoraServicioController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="660">
+              <caret line="49" column="31" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TipoRespaldoDiscoController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TipoRespaldoDiscoController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="645">
+              <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/layouts/main.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="371">
+              <caret line="89" column="23" selection-start-line="89" selection-start-column="23" selection-end-line="89" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -97,8 +180,17 @@
       <file leaf-file-name="HelperPackage.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="707">
-              <caret line="739" column="16" selection-start-line="739" selection-start-column="16" selection-end-line="739" selection-end-column="16" />
+            <state relative-caret-position="652">
+              <caret line="769" column="43" selection-start-line="769" selection-start-column="43" selection-end-line="769" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServidorController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/ServidorController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="109">
+              <caret line="168" column="45" selection-start-line="168" selection-start-column="45" selection-end-line="168" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -114,13 +206,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>usuario_mod</find>
-      <find>fields</find>
-      <find>mantenedores</find>
-      <find>Mostrar</find>
-      <find>excel</find>
-      <find>ss:</find>
-      <find>ss</find>
       <find>data</find>
       <find>tabla_label</find>
       <find>'tabla_campos': {</find>
@@ -144,6 +229,13 @@
       <find>en_arr</find>
       <find>iniciali</find>
       <find>inicialiº</find>
+      <find>inicializar+</find>
+      <find>recargar_filtros_tablero</find>
+      <find>tabla</find>
+      <find>naviga</find>
+      <find>limpiar</find>
+      <find>spinner</find>
+      <find>tabla_campos</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -164,31 +256,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/roles/partials/formulario_campos.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/servicios/partials/formulario_campos.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/tags/partials/formulario_campos.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/tipos_aplicaciones/partials/formulario_campos.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/tipos_respaldos_discos/partials/formulario_campos.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/tipos_servidores/partials/formulario_campos.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/usuarios_bitacora_servicios/partials/formulario_campos.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/vlans/partials/formulario_campos.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/actividades/partials/formulario_campos.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/aplicaciones/partials/formulario_campos.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/aplicaciones_accesos/partials/formulario_campos.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/clusters/partials/formulario_campos.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/dominios/partials/formulario_campos.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/servidores_accesos/partials/formulario_campos.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/sistemas_operativos/partials/formulario_campos.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/usuarios/partials/formulario_campos.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/servidores/partials/formulario_campos.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/modal/modal_crear.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/modal/modal_actualizar.blade.php" />
-        <option value="$PROJECT_DIR$/resources/assets/js/components/Spinner.vue" />
-        <option value="$PROJECT_DIR$/resources/assets/js/components/Loader.vue" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/estilos_extras.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/tabla_listar.blade.php" />
-        <option value="$PROJECT_DIR$/resources/assets/js/controllers/SideMenuController.js" />
-        <option value="$PROJECT_DIR$/resources/assets/js/controllers/ActividadController.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/AplicacionAccesoController.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/AplicacionController.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/CargoController.js" />
@@ -197,13 +264,11 @@
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/DominioController.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/EstadoController.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/MantenedorController.js" />
-        <option value="$PROJECT_DIR$/resources/assets/js/controllers/HomeController.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/MenuController.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/PermisoController.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/RoleController.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/ServicioController.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/ServidorAccesoController.js" />
-        <option value="$PROJECT_DIR$/resources/assets/js/controllers/ServidorController.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/SistemaOperativoController.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/TagController.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/TipoAplicacionController.js" />
@@ -212,9 +277,36 @@
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/UsuarioBitacoraServicioController.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/UsuarioController.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/controllers/VlanController.js" />
-        <option value="$PROJECT_DIR$/webpack.mix.js" />
-        <option value="$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/main_para_componentes.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/main.blade.php" />
+        <option value="$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js" />
+        <option value="$PROJECT_DIR$/resources/assets/js/controllers/ServidorController.js" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/tabla_listar.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ActividadController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/AplicacionAccesoController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/CargoController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/AplicacionController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ClusterController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/DatacentroController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/DominioController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/EstadoController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/MantenedorController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/PermisoController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/MenuController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ServicioController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ServicioUsuarioController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ServidorAccesoController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ServidorController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/SistemaOperativoController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/TagController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/TipoAplicacionController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/TipoRespaldoDiscoController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/TipoServidorController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/UsuarioBitacoraServicioController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/UsuarioController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/VlanController.php" />
       </list>
     </option>
   </component>
@@ -952,12 +1044,12 @@
       <workItem from="1527710360783" duration="73000" />
       <workItem from="1528474516237" duration="51000" />
       <workItem from="1529112603672" duration="841000" />
-      <workItem from="1529551762517" duration="8234000" />
+      <workItem from="1529551762517" duration="10911000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="141149000" />
+    <option name="totallyTimeSpent" value="143826000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="878" extended-state="6" />
@@ -1033,132 +1125,135 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/mantenedores/partials/formulario_campos.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/DominioController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="148" column="25" selection-start-line="148" selection-start-column="25" selection-end-line="148" selection-end-column="25" />
+        <state relative-caret-position="350">
+          <caret line="79" column="44" selection-start-line="79" selection-start-column="44" selection-end-line="79" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/menus/partials/formulario_campos.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/ClusterController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="124" column="25" selection-start-line="124" selection-start-column="25" selection-end-line="124" selection-end-column="25" />
+        <state relative-caret-position="418">
+          <caret line="80" column="44" selection-start-line="80" selection-start-column="44" selection-end-line="80" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/permisos/partials/formulario_campos.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/MantenedorController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1155">
-          <caret line="77" column="25" selection-start-line="77" selection-start-column="25" selection-end-line="77" selection-end-column="25" />
+        <state relative-caret-position="383">
+          <caret line="81" column="47" selection-start-line="81" selection-start-column="47" selection-end-line="81" selection-end-column="47" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/roles/partials/formulario_campos.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/MenuController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="76" column="25" selection-start-line="76" selection-start-column="25" selection-end-line="76" selection-end-column="25" />
+        <state relative-caret-position="273">
+          <caret line="81" column="41" selection-start-line="81" selection-start-column="41" selection-end-line="81" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/servicios/partials/formulario_campos.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/PermisoController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1110">
-          <caret line="74" column="25" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
+        <state relative-caret-position="375">
+          <caret line="75" column="44" selection-start-line="75" selection-start-column="44" selection-end-line="75" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/servidores_accesos/partials/formulario_campos.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/RoleController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="108" column="4" selection-start-line="108" selection-start-column="4" selection-end-line="108" selection-end-column="4" />
+        <state relative-caret-position="218">
+          <caret line="79" column="41" selection-start-line="79" selection-start-column="41" selection-end-line="79" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/sistemas_operativos/partials/formulario_campos.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/ServicioController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="212" column="4" selection-start-line="212" selection-start-column="4" selection-end-line="212" selection-end-column="4" />
+        <state relative-caret-position="315">
+          <caret line="99" column="45" selection-start-line="99" selection-start-column="45" selection-end-line="99" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/tags/partials/formulario_campos.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/VlanController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1065">
-          <caret line="71" column="25" selection-start-line="71" selection-start-column="25" selection-end-line="71" selection-end-column="25" />
+        <state relative-caret-position="101">
+          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/tipos_aplicaciones/partials/formulario_campos.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/UsuarioController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="76" column="25" selection-start-line="76" selection-start-column="25" selection-end-line="76" selection-end-column="25" />
+        <state relative-caret-position="144">
+          <caret line="99" column="45" selection-start-line="99" selection-start-column="45" selection-end-line="99" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/tipos_respaldos_discos/partials/formulario_campos.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/UsuarioBitacoraServicioController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="76" column="25" selection-start-line="76" selection-start-column="25" selection-end-line="76" selection-end-column="25" />
+        <state relative-caret-position="330">
+          <caret line="89" column="46" selection-start-line="89" selection-start-column="46" selection-end-line="89" selection-end-column="46" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/tipos_servidores/partials/formulario_campos.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/TipoServidorController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="76" column="25" selection-start-line="76" selection-start-column="25" selection-end-line="76" selection-end-column="25" />
+        <state relative-caret-position="453">
+          <caret line="75" column="51" selection-start-line="75" selection-start-column="51" selection-end-line="75" selection-end-column="51" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/vlans/partials/formulario_campos.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/TipoRespaldoDiscoController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1155">
-          <caret line="77" column="25" selection-start-line="77" selection-start-column="25" selection-end-line="77" selection-end-column="25" />
+        <state relative-caret-position="467">
+          <caret line="75" column="57" selection-start-line="75" selection-start-column="57" selection-end-line="75" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/usuarios_bitacora_servicios/partials/formulario_campos.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/TipoAplicacionController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="102" column="25" selection-start-line="102" selection-start-column="25" selection-end-line="102" selection-end-column="25" />
+        <state relative-caret-position="415">
+          <caret line="75" column="53" selection-start-line="75" selection-start-column="53" selection-end-line="75" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/usuarios_bitacora_servicios/partials/vista_principal.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/usuarios/partials/formulario_campos.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/TagController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-773">
-          <caret line="198" column="4" selection-start-line="198" selection-start-column="4" selection-end-line="198" selection-end-column="4" />
+        <state relative-caret-position="420">
+          <caret line="76" column="40" selection-start-line="76" selection-start-column="40" selection-end-line="76" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/SistemaOperativoController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+        <state relative-caret-position="356">
+          <caret line="93" column="54" selection-start-line="93" selection-start-column="54" selection-end-line="93" selection-end-column="54" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/modal/modal_actualizar.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/ServidorAccesoController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="53" column="10" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
+        <state relative-caret-position="265">
+          <caret line="90" column="45" selection-start-line="90" selection-start-column="45" selection-end-line="90" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/modal/modal_crear.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/main_para_componentes.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        <state relative-caret-position="243">
+          <caret line="61" column="94" selection-start-line="61" selection-start-column="82" selection-end-line="61" selection-end-column="94" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/servidores/partials/formulario_campos.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9045">
-          <caret line="603" selection-start-line="603" selection-end-line="603" />
+        <state relative-caret-position="364">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1169,226 +1264,219 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/SideMenuController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="107" column="69" selection-start-line="107" selection-start-column="69" selection-end-line="107" selection-end-column="69" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/front.blade.php">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/ActividadController.js">
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app_para_componentes.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/AplicacionAccesoController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="58" column="30" selection-start-line="58" selection-start-column="30" selection-end-line="58" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/AplicacionController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="79" column="30" selection-start-line="79" selection-start-column="30" selection-end-line="79" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/CargoController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/ClusterController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="54" column="30" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/DatacentroController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/DominioController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="53" column="30" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/EstadoController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/MantenedorController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="54" column="30" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/HomeController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/MenuController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="54" column="30" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/PermisoController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/RoleController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/ServicioController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="73" column="30" selection-start-line="73" selection-start-column="30" selection-end-line="73" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/ServidorAccesoController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="59" column="30" selection-start-line="59" selection-start-column="30" selection-end-line="59" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/ServidorController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="142" column="30" selection-start-line="142" selection-start-column="30" selection-end-line="142" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/SistemaOperativoController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="66" column="30" selection-start-line="66" selection-start-column="30" selection-end-line="66" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/TagController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/TipoAplicacionController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/TipoRespaldoDiscoController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/TipoServidorController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/UsuarioBitacoraServicioController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="61" column="30" selection-start-line="61" selection-start-column="30" selection-end-line="61" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/UsuarioController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="73" column="30" selection-start-line="73" selection-start-column="30" selection-end-line="73" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/VlanController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="51" column="30" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/Spinner.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="21" lean-forward="true" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/Loader.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpack.mix.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="36" column="100" selection-start-line="36" selection-start-column="100" selection-end-line="36" selection-end-column="100" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="707">
-          <caret line="739" column="16" selection-start-line="739" selection-start-column="16" selection-end-line="739" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/tabla_listar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="30" selection-start-column="30" selection-end-column="30" />
+        <state relative-caret-position="454">
+          <caret line="32" column="7" lean-forward="true" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/main.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="155" column="40" selection-start-line="155" selection-start-column="40" selection-end-line="155" selection-end-column="40" />
-          <folding>
-            <element signature="e#5334#5361#0#HTML" expanded="true" />
-            <element signature="e#5765#5792#0#HTML" expanded="true" />
-            <element signature="e#5749#5776#0#HTML" expanded="true" />
-            <element signature="e#5724#6989#0#HTML" />
-          </folding>
+        <state relative-caret-position="371">
+          <caret line="89" column="23" selection-start-line="89" selection-start-column="23" selection-end-line="89" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/libs/HelperPackage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="652">
+          <caret line="769" column="43" selection-start-line="769" selection-start-column="43" selection-end-line="769" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/controllers/ServidorController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="168" column="45" selection-start-line="168" selection-start-column="45" selection-end-line="168" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ActividadController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AplicacionAccesoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="579">
+          <caret line="50" column="31" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CargoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="44" column="31" selection-start-line="44" selection-start-column="31" selection-end-line="44" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AplicacionController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="53" column="31" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ClusterController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="45" column="31" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DatacentroController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="44" column="31" selection-start-line="44" selection-start-column="31" selection-end-line="44" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DominioController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="45" column="31" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/EstadoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="44" column="31" selection-start-line="44" selection-start-column="31" selection-end-line="44" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MantenedorController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PermisoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MenuController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/RoleController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="49" column="31" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ServicioController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="56" column="31" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ServicioUsuarioController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="48" column="31" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ServidorAccesoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="50" column="31" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ServidorController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="542">
+          <caret line="73" column="31" selection-start-line="73" selection-start-column="31" selection-end-line="73" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SistemaOperativoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="50" column="31" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TagController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TipoAplicacionController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/tabla_listar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="79" column="34" selection-start-line="79" selection-start-column="34" selection-end-line="79" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TipoServidorController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="46" column="31" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UsuarioBitacoraServicioController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="49" column="31" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TipoRespaldoDiscoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UsuarioController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="727">
+          <caret line="58" column="31" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/VlanController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="44" column="31" selection-start-line="44" selection-start-column="31" selection-end-line="44" selection-end-column="31" />
         </state>
       </provider>
     </entry>

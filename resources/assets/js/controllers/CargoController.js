@@ -72,15 +72,15 @@ const CargoController = new Vue({
 
          /* Campos que se ven en el tablero */
          'tabla_campos': {
-            'id_cargo':false,
-            'nom_cargo':true,
-            'det_cargo':true,
-            'cod_cargo':true,
-            //'id_usuario_registra':false,
-            //'id_usuario_modifica':false,
-            'created_at':false,
-            'updated_at':false,
-            'deleted_at':false,
+            'id_cargo':{'visibility':false,'value':null},
+            'nom_cargo':{'visibility':true,'value':null},
+            'det_cargo':{'visibility':false,'value':null},
+            'cod_cargo':{'visibility':false,'value':null},
+            //'id_usuario_registra':{'visibility':false,'value':null},
+            //'id_usuario_modifica':{'visibility':false,'value':null},
+            'created_at':{'visibility':false,'value':null},
+            'updated_at':{'visibility':false,'value':null},
+            'deleted_at':{'visibility':false,'value':null},
          },
 
          /* Etiquetas */

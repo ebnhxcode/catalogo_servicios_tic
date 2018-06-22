@@ -2337,7 +2337,7 @@ var inyeccion_funciones_compartidas = {
        *
        * */
       cambiar_visibilidad: function cambiar_visibilidad(campo) {
-         return this.tabla_campos[campo] = !this.tabla_campos[campo];
+         return this.tabla_campos[campo].visibility = !this.tabla_campos[campo].visibility;
       },
 
       /*
@@ -2632,6 +2632,11 @@ var inyeccion_funciones_compartidas = {
          });
       },
 
+      filtrar_grid: function filtrar_grid(key) {
+         //this.datos_excel = this.$data[this.nombre_ruta] = this.lista_objs_model =
+         this.datos_excel = this.lista_objs_model = this.filterBy(this.lista_objs_model, this.tabla_campos[key].value, key);
+      },
+
       /*
        *
        *
@@ -2771,6 +2776,12 @@ var inyeccion_funciones_compartidas = {
       limpiar_objeto_clase_local: function limpiar_objeto_clase_local() {
          for (var k in this.$data['' + this.nombre_model]) {
             this.$data['' + this.nombre_model][k] = null;
+         }
+      },
+
+      limpiar_tabla_campos: function limpiar_tabla_campos() {
+         for (var k in this.tabla_campos) {
+            this.tabla_campos[k].value = null;
          }
       },
 
@@ -2925,6 +2936,25 @@ var inyeccion_funciones_compartidas = {
          this.lista_objs_model = _.orderBy(this.lista_objs_model, columna, this.orden_lista);
       },
 
+      recargar_filtros_tablero: function recargar_filtros_tablero() {
+         if (typeof this.filtros != "undefined") {
+            for (var f in this.filtros) {
+               this.filtros[f] = null;
+            }
+         }
+         this.lista_objs_model = this.$data[this.nombre_ruta];
+         this.limpiar_tabla_campos();
+      },
+
+      recargar_filtros_tablero_sin_limpiar_filtros: function recargar_filtros_tablero_sin_limpiar_filtros() {
+         this.lista_objs_model = this.$data[this.nombre_ruta];
+         for (var obj in this.tabla_campos) {
+            if (this.tabla_campos[obj].value != null) {
+               this.filtrar_grid(obj);
+            }
+         }
+      },
+
       /*
        *
        *
@@ -2944,6 +2974,7 @@ var inyeccion_funciones_compartidas = {
             if (response.status == 200) {
                _this10.configurar_relaciones(response.body[_this10.nombre_ruta].data, _this10.relaciones_clase);
                _this10.asignar_recursos(response);
+               _this10.limpiar_tabla_campos();
                if (typeof _this10.spinner_table != "undefined") {
                   _this10.spinner_table = false;
                }
@@ -2965,6 +2996,7 @@ var inyeccion_funciones_compartidas = {
             if (response.status == 200) {
                _this11.configurar_relaciones(response.body[_this11.nombre_ruta].data, _this11.relaciones_clase);
                _this11.asignar_recursos(response);
+               _this11.limpiar_tabla_campos();
                if (typeof _this11.spinner_table != "undefined") {
                   _this11.spinner_table = false;
                }
@@ -2986,6 +3018,7 @@ var inyeccion_funciones_compartidas = {
             if (response.status == 200) {
                _this12.configurar_relaciones(response.body[_this12.nombre_ruta].data, _this12.relaciones_clase);
                _this12.asignar_recursos(response);
+               _this12.limpiar_tabla_campos();
                if (typeof _this12.spinner_table != "undefined") {
                   _this12.spinner_table = false;
                }
@@ -3178,17 +3211,17 @@ var ServidorAccesoController = new Vue({
 
          /* Campos que se ven en el tablero */
          'tabla_campos': {
-            'usuario': true,
-            //'clave':false,
-            'tipo_acceso': true,
-            'puerto': true,
-            //'id_servidor':false,
-            'nom_servidor': false,
-            //'id_usuario_registra':false,
-            //'id_usuario_modifica':false,
-            'created_at': false,
-            'updated_at': false,
-            'deleted_at': false
+            'usuario': { 'visibility': false, 'value': null },
+            //'clave':{'visibility':false,'value':null},
+            'tipo_acceso': { 'visibility': false, 'value': null },
+            'puerto': { 'visibility': false, 'value': null },
+            //'id_servidor':{'visibility':false,'value':null},
+            'nom_servidor': { 'visibility': true, 'value': null },
+            //'id_usuario_registra':{'visibility':false,'value':null},
+            //'id_usuario_modifica':{'visibility':false,'value':null},
+            'created_at': { 'visibility': false, 'value': null },
+            'updated_at': { 'visibility': false, 'value': null },
+            'deleted_at': { 'visibility': false, 'value': null }
          },
 
          /* Etiquetas */

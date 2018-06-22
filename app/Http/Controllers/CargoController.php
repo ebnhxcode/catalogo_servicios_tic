@@ -42,7 +42,7 @@ class CargoController extends Controller {
 
    private function validar_paginacion ($request) {
       if (!$request->per_page) {
-         $this->per_page = 20;
+         $this->per_page = 500;
       } else {
          $this->per_page = $request->per_page;
       }

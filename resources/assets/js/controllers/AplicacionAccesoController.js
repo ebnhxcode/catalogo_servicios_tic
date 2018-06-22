@@ -82,17 +82,17 @@ const AplicacionAccesoController = new Vue({
 
          /* Campos que se ven en el tablero */
          'tabla_campos': {
-            'usuario':true,
-            //'clave':false,
-            'tipo_acceso':true,
-            'email':true,
-            //'id_aplicacion':false,
-            'nom_aplicacion':false,
-            //'id_usuario_registra':false,
-            //'id_usuario_modifica':false,
-            'created_at':true,
-            'updated_at':false,
-            'deleted_at':false,
+            'usuario':{'visibility':false,'value':null},
+            //'clave':{'visibility':false,'value':null},
+            'tipo_acceso':{'visibility':false,'value':null},
+            'email':{'visibility':false,'value':null},
+            //'id_aplicacion':{'visibility':false,'value':null},
+            'nom_aplicacion':{'visibility':true,'value':null},
+            //'id_usuario_registra':{'visibility':false,'value':null},
+            //'id_usuario_modifica':{'visibility':false,'value':null},
+            'created_at':{'visibility':false,'value':null},
+            'updated_at':{'visibility':false,'value':null},
+            'deleted_at':{'visibility':false,'value':null},
          },
 
          /* Etiquetas */

@@ -1,7 +1,7 @@
 <table class="table table-sm" v-if="typeof spinner_table != 'undefined' && spinner_table == false">
    <thead>
    <tr class="text-center">
-      <th v-for="c,i in tabla_campos" v-if="c">
+      <th v-for="c,i in tabla_campos" v-if="c.visibility!=false">
          <a href="#!" class="btn btn-primary" @click.prevent="cambiar_orden_lista(i)">
             <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
             @{{ tabla_labels[i] }}
@@ -19,7 +19,7 @@
    <tr class="text-center" v-for="lom in filterBy(lista_objs_model, filtro_head)"
        {{--@dblclick.prevent="editar(lom[`id_${nombre_model}`])"--}}>
       <template v-if="id_en_edicion != lom[`id_${nombre_model}`] || modal_actualizar_activo == true">
-         <td v-for="c,i in tabla_campos" v-show="c">
+         <td v-for="c,i in tabla_campos" v-show="c.visibility!=false">
             {{-- se corre por detras la completitud de relaciones. --}}
             @if(Request::path() == 'servicios')
             <div class="h6 btn btn-md" style="width: 100%;" v-if="en_array(['nom_servicio'],i)" @click.prevent="mostrar_modal_actualizar(lom[`id_${nombre_model}`])">
@@ -77,7 +77,7 @@
                     data-placement="top" data-toggle="tooltip" title="Actualizar desde modal"
                     @click.prevent="mostrar_modal_actualizar(lom[`id_${nombre_model}`])"
                     v-show="id_en_edicion == null">
-               <i class="fa fa-rocket" ></i>
+               <i class="fa fa-eye" ></i>
             </button>
             <button class="btn btn-secondary"
                     data-placement="top" data-toggle="tooltip" title="Dejar de editar"

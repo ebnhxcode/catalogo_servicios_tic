@@ -77,18 +77,18 @@ const MenuController = new Vue({
 
          /* Campos que se ven en el tablero */
          'tabla_campos': {
-            'id_menu':false,
-            'url_menu':true,
-            'nom_menu':true,
-            'det_menu':true,
-            'cod_menu':true,
-            'imagen_menu':false,
-            'font_icon_menu':false,
-            //'id_usuario_registra':false,
-            //'id_usuario_modifica':false,
-            'created_at':false,
-            'updated_at':false,
-            'deleted_at':false,
+            'id_menu':{'visibility':false,'value':null},
+            'url_menu':{'visibility':false,'value':null},
+            'nom_menu':{'visibility':true,'value':null},
+            'det_menu':{'visibility':false,'value':null},
+            'cod_menu':{'visibility':false,'value':null},
+            'imagen_menu':{'visibility':false,'value':null},
+            'font_icon_menu':{'visibility':false,'value':null},
+            //'id_usuario_registra':{'visibility':false,'value':null},
+            //'id_usuario_modifica':{'visibility':false,'value':null},
+            'created_at':{'visibility':false,'value':null},
+            'updated_at':{'visibility':false,'value':null},
+            'deleted_at':{'visibility':false,'value':null},
          },
 
          /* Etiquetas */

@@ -79,7 +79,7 @@
             {{--(<small>Clic en un botón para mostrar en grilla</small>)</h5>--}}
             {{--<mini-spinner v-if="mini_spinner_table_inputs == true"></mini-spinner> v-else --}}
             <div class="pro btn-group btn-group-sm btn-group-toggle" v-for="v,c,i in tabla_campos" style="z-index: 0 !important;">
-               <label :class="v==true?'btn btn-success active':'btn btn-secondary'" @click.prevent="cambiar_visibilidad(c)"
+               <label :class="v.visibility==true?'btn btn-success active':'btn btn-secondary'" @click.prevent="cambiar_visibilidad(c)"
                       {{--data-placement="top" data-toggle="tooltip" :title="`Clic para ${(v==true)?'ocultar':'mostrar'}`">--}}
                       data-placement="top" data-toggle="tooltip" title="Clic para mostrar u ocultar">
                <span style="font-size: 85%;">
@@ -91,6 +91,201 @@
             </div>
 
          </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+         <div class="col-md-12">
+            <div class="card">
+
+               <div class="card-body pro">
+
+                  {{--
+                  <span class="btn btn-warning float-right" @click.prevent="recargar_filtros_tablero">
+                     <i class="fa fa-refresh" aria-hidden="true"
+                        data-placement="top" data-toggle="tooltip" title="Recarga datos y elimina los filtros"></i>
+                     Re-Carga Borrando Filtros
+                  </span>
+
+                  <span class="btn btn-success float-right" @click.prevent="recargar_filtros_tablero_sin_limpiar_filtros">
+                     <i class="fa fa-refresh" aria-hidden="true"
+                        data-placement="top" data-toggle="tooltip" title="Mantiene contenido de los filtros"></i>
+                     Re-Carga Sin Borrar Filtros
+                  </span>
+                  --}}
+
+                  {{--recargar_filtros_tablero_sin_limpiar_filtros--}}
+                  <span class="btn btn-success float-right" @click.prevent="recargar_filtros_tablero">
+                        <i class="fa fa-refresh" aria-hidden="true"
+                           data-placement="top" data-toggle="tooltip" title="Mantiene contenido de los filtros"></i>
+                     {{--Re-Carga Sin Borrar Filtros--}}
+                     </span>
+
+
+                  <!-- Cantidad a paginar -->
+                  <div class="float-right" style="padding-left: 15px;">
+                     <select v-model="pagination.per_page" @change="navigateCustom"
+                             class="custom-select custom-select-sm btn btn-outline-success">
+                        <option selected disabled>@{{ pagination.per_page }}</option>
+                        <option :value="5">5</option>
+                        <option :value="10">10</option>
+                        <option :value="15">15</option>
+                        <option :value="20">20</option>
+                        <option :value="25">25</option>
+                        <option :value="30">30</option>
+                        <option :value="35">35</option>
+                        <option :value="40">40</option>
+                        <option :value="45">45</option>
+                        <option :value="50">50</option>
+                        <option :value="100">100</option>
+                        <option :value="250">250</option>
+                        <option :value="500">500</option>
+                        <option :value="750">750</option>
+                        <option :value="1000">1000</option>
+                        <option :value="1250">1250</option>
+                        <option :value="1500">1500</option>
+                        <option :value="1750">1750</option>
+                        <option :value="2000">2000</option>
+                        <option :value="3000">3000</option>
+                        <option :value="4000">4000</option>
+                        <option :value="5000">5000</option>
+                     </select>
+
+                  </div>
+
+
+                  <h5>FILTROS POR REFERENCIA</h5>
+                  <br>
+                  <div class="row" v-if="typeof spinner_table != 'undefined' && spinner_table == false">
+                     <div class="col-md-4 col-lg-4" v-for="c,key,i in tabla_campos" v-if="c.visibility == true">
+                        @{{ tabla_labels[key] }}
+                        <input type="text" class="form-control input-sm"
+                               data-placement="top" data-toggle="tooltip" title="FILTRAR"
+                               @change.prevent="recargar_filtros_tablero_sin_limpiar_filtros" v-model="tabla_campos[key].value" id="">
+
+                     </div>
+                  </div>
+                  <spinner v-else></spinner>
+
+                  <br>
+               </div>
+            </div>
+         </div>
+
+         <div class="col-md-6">
+            {{--@if(in_array(Request::path(), ['establecimientos']))@endif--}}
+            @if(in_array(Request::path(), ['establecimientos']))
+               <div class="card">
+                  <div class="card-body pro">
+                     {{--
+                     <span class="btn btn-warning float-right" @click.prevent="recargar_filtros_tablero">
+                        <i class="fa fa-refresh" aria-hidden="true"
+                           data-placement="top" data-toggle="tooltip" title="Recarga datos y elimina los filtros"></i>
+                        Re-Carga Borrando Filtros
+                     </span>
+                     --}}
+                     {{--recargar_filtros_tablero_sin_limpiar_filtros--}}
+                     <span class="btn btn-success float-right" @click.prevent="recargar_filtros_tablero">
+                        <i class="fa fa-refresh" aria-hidden="true"
+                           data-placement="top" data-toggle="tooltip" title="Mantiene contenido de los filtros"></i>
+                        {{--Re-Carga Sin Borrar Filtros--}}
+                     </span>
+
+
+                     <!-- Cantidad a paginar -->
+                     <div class="float-right" style="padding-left: 15px;">
+                        <select v-model="pagination.per_page" @change="navigateCustom"
+                                class="custom-select custom-select-sm btn btn-outline-success">
+                           <option selected disabled>@{{ pagination.per_page }}</option>
+                           <option :value="5">5</option>
+                           <option :value="10">10</option>
+                           <option :value="15">15</option>
+                           <option :value="20">20</option>
+                           <option :value="25">25</option>
+                           <option :value="30">30</option>
+                           <option :value="35">35</option>
+                           <option :value="40">40</option>
+                           <option :value="45">45</option>
+                           <option :value="50">50</option>
+                           <option :value="100">100</option>
+                           <option :value="250">250</option>
+                           <option :value="500">500</option>
+                           <option :value="750">750</option>
+                           <option :value="1000">1000</option>
+                           <option :value="1250">1250</option>
+                           <option :value="1500">1500</option>
+                           <option :value="1750">1750</option>
+                           <option :value="2000">2000</option>
+                           <option :value="3000">3000</option>
+                           <option :value="4000">4000</option>
+                           <option :value="5000">5000</option>
+                        </select>
+
+                     </div>
+
+                     <h5>OTROS FILTROS {{--ADICIONALES--}}</h5>
+                     <br>
+                     <div class="row" v-if="typeof spinner_table != 'undefined' && spinner_table == false">
+                        <div class="col-md-6 col-lg-6">
+                           Filtro por Región
+                           <select class="custom-select" v-model="filtros.id_region" name="id_region"
+                                   @change.prevent="filtrar_adicional('id_region')"
+                                   v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
+                              <option value=""></option>
+                              <option :value="r.id_region" v-for="r in regiones">
+                                 @{{ `${r.nom_region}` }}
+                              </option>
+                           </select>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                           Filtro por Comuna
+                           <select class="custom-select" v-model="filtros.id_comuna" name="id_comuna"
+                                   @change.prevent="filtrar_adicional('id_comuna')"
+                                   v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
+                              <option value="" v-if="filtros.id_comuna==null">Debe seleccionar una región</option>
+                              <option value="" v-else></option>
+                              <option :value="c.id_comuna" v-for="c in comunas" v-if="filtros.id_region==c.id_region">
+                                 @{{ `${c.nom_comuna}` }}
+                              </option>
+                           </select>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                           Filtro por Tipo de Establecimiento
+                           <select class="custom-select" v-model="filtros.id_tipo_establecimiento" name="id_tipo_establecimiento"
+                                   @change.prevent="filtrar_adicional('id_tipo_establecimiento')"
+                                   v-validate="{required:true,regex:/^[0-9]+$/i}" data-vv-delay="500">
+                              <option value=""></option>
+                              <option :value="t.id_tipo_establecimiento" v-for="t in tipos_establecimientos">
+                                 @{{ `${t.nom_tipo_establecimiento}` }}
+                              </option>
+                           </select>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                           Estado
+                           <select class="custom-select" v-model="filtros.estado_actualizacion" name="estado_actualizacion"
+                                   @change.prevent="filtrar_adicional('estado_actualizacion')"
+                                   v-validate="{required:true,regex:/^[a-zA-Z0-9]+$/i}" data-vv-delay="500">
+                              <option value="nuevo">Nuevos</option>
+                              <option value="desactualizado">No Actualizados</option>
+                              <option value="al_dia">Actualizados</option>
+
+                           </select>
+                           <div v-if="en_array(['al_dia','nuevo','desactualizado'],filtros.estado_actualizacion)">
+                              <small class="float-right">@{{ filterBy(lista_objs_model, filtros.estado_actualizacion).length || 0 }} resultados.</small>
+                           </div>
+                        </div>
+                     </div>
+                     <spinner v-else></spinner>
+
+                     {{--@if(in_array(Request::path(), ['establecimientos']))@endif--}}
+                  </div>
+               </div>
+
+               <br>
+            @endif
+         </div>
+
       </div>
 
       <br>

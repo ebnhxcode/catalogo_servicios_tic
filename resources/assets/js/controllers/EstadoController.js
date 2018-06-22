@@ -72,15 +72,15 @@ const EstadoController = new Vue({
 
          /* Campos que se ven en el tablero */
          'tabla_campos': {
-            'id_estado':false,
-            'nom_estado':true,
-            'det_estado':true,
-            'cod_estado':true,
-            //'id_usuario_registra':false,
-            //'id_usuario_modifica':false,
-            'created_at':false,
-            'updated_at':false,
-            'deleted_at':false,
+            'id_estado':{'visibility':false,'value':null},
+            'nom_estado':{'visibility':true,'value':null},
+            'det_estado':{'visibility':false,'value':null},
+            'cod_estado':{'visibility':false,'value':null},
+            //'id_usuario_registra':{'visibility':false,'value':null},
+            //'id_usuario_modifica':{'visibility':false,'value':null},
+            'created_at':{'visibility':false,'value':null},
+            'updated_at':{'visibility':false,'value':null},
+            'deleted_at':{'visibility':false,'value':null},
          },
 
          /* Etiquetas */
