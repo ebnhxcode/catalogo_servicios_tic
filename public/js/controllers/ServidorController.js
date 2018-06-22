@@ -3171,6 +3171,15 @@ var ServidorController = new Vue({
             'id_tipo_aplicacion': null
          },
 
+         'aplicacion_acceso': {
+            'usuario': null,
+            'clave': null,
+            'email': null,
+            'tipo_acceso': null,
+            'id_aplicacion': null,
+            'id_servidor': null
+         },
+
          'permitido_guardar': ['nom_servidor', 'det_servidor', 'ip_servidor', 'ram', 'memoria_dd', 'swap', 'procesador', 'modelo_procesador', 'frec_procesador', 'nucleos', 'usuarios_pactados', 'mac', 'nodo', 'interface', 'lvm_raiz', 'lvm_usr', 'lvm_tmp', 'lvm_var', 'lvm_home', 'agente_instana_instalado', 'id_datacentro', 'id_servicio', 'id_sistema_operativo', 'id_estado', 'id_ambiente', 'id_cluster', 'id_vlan', 'id_tipo_servidor', 'id_tipo_respaldo_disco'],
          'relaciones_clase': [{ 'datacentro': ['id_datacentro', 'nom_datacentro'] }, { 'servicio': ['id_servicio', 'nom_servicio'] }, { 'sistema_operativo': ['id_sistema_operativo', 'nom_sistema_operativo'] },
          //{'aplicaciones':['id_aplicacion','nom_aplicacion']},
@@ -3189,6 +3198,7 @@ var ServidorController = new Vue({
          'tipos_sistemas_operativos': [],
          'estados': [],
          'dominios': [],
+         'aplicaciones': [],
          'servidores': [],
          'servicios': [],
 
@@ -3460,6 +3470,7 @@ var ServidorController = new Vue({
          /* Relaciones con la entidad */
          this.datacentros = response.body.datacentros || null;
          this.servicios = response.body.servicios || null;
+         this.aplicaciones = response.body.aplicaciones || null;
          this.sistemas_operativos = response.body.sistemas_operativos || null;
          this.tipos_sistemas_operativos = response.body.tipos_sistemas_operativos || null;
          this.estados = response.body.estados || null;
@@ -3542,6 +3553,66 @@ var ServidorController = new Vue({
                }, function (response) {
                   // error callback
                   _this.checkear_estado_respuesta_http(response.status);
+               });
+            }
+         });
+         //return;
+      },
+
+      guardar_aplicacion_acceso: function guardar_aplicacion_acceso() {
+         var _this2 = this;
+
+         //Ejecuta validacion sobre los campos con validaciones
+         this.$validator.validateAll({
+            usuario: this.aplicacion_acceso.usuario,
+            clave: this.aplicacion_acceso.clave,
+            email: this.aplicacion_acceso.email,
+            tipo_acceso: this.aplicacion_acceso.tipo_acceso,
+            id_aplicacion: this.aplicacion_acceso.id_aplicacion,
+            id_servidor: this.aplicacion_acceso.id_servidor
+         }).then(function (res) {
+            if (res == true) {
+               //Se adjunta el token
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               //Instancia nuevo form data
+               var formData = new FormData();
+               //Conforma objeto paramétrico para solicitud http
+               formData.append('usuario', _this2.aplicacion_acceso.usuario);
+               formData.append('clave', _this2.aplicacion_acceso.clave);
+               formData.append('email', _this2.aplicacion_acceso.email);
+               formData.append('tipo_acceso', _this2.aplicacion_acceso.tipo_acceso);
+               formData.append('id_aplicacion', _this2.aplicacion_acceso.id_aplicacion);
+               formData.append('id_servidor', _this2.aplicacion_acceso.id_servidor);
+
+               _this2.$http.post('/aplicaciones_accesos', formData).then(function (response) {
+                  // success callback
+
+                  //console.log(response.body);
+
+                  if (response.status == 200) {
+                     //this.inicializar();
+                     _this2.aplicacion_acceso = {
+                        'usuario': null,
+                        'clave': null,
+                        'email': null,
+                        'tipo_acceso': null,
+                        'id_aplicacion': null,
+                        'id_servidor': null
+                     };
+
+                     //this.servidor.aplicaciones.push(response.body.aplicacion);
+                     //this.$validator.clean();
+                     //this.errors.clear();
+                  } else {
+                     _this2.checkear_estado_respuesta_http(response.status);
+                     return false;
+                  }
+                  if (_this2.mostrar_notificaciones(response) == true) {
+                     return;
+                  }
+               }, function (response) {
+                  // error callback
+                  _this2.checkear_estado_respuesta_http(response.status);
                });
             }
          });

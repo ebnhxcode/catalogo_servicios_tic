@@ -92,6 +92,15 @@ const ServidorController = new Vue({
             'id_tipo_aplicacion':null,
          },
 
+         'aplicacion_acceso':{
+            'usuario':null,
+            'clave':null,
+            'email':null,
+            'tipo_acceso':null,
+            'id_aplicacion':null,
+            'id_servidor':null,
+         },
+
          'permitido_guardar':[
             'nom_servidor',
             'det_servidor',
@@ -154,6 +163,7 @@ const ServidorController = new Vue({
          'tipos_sistemas_operativos':[],
          'estados':[],
          'dominios':[],
+         'aplicaciones':[],
          'servidores':[],
          'servicios':[],
 
@@ -420,6 +430,7 @@ const ServidorController = new Vue({
          /* Relaciones con la entidad */
          this.datacentros = response.body.datacentros || null;
          this.servicios = response.body.servicios || null;
+         this.aplicaciones = response.body.aplicaciones || null;
          this.sistemas_operativos = response.body.sistemas_operativos || null;
          this.tipos_sistemas_operativos = response.body.tipos_sistemas_operativos || null;
          this.estados = response.body.estados || null;
@@ -488,6 +499,63 @@ const ServidorController = new Vue({
                      };
 
                      this.servidor.aplicaciones.push(response.body.aplicacion);
+                     //this.$validator.clean();
+                     //this.errors.clear();
+
+                  } else {
+                     this.checkear_estado_respuesta_http(response.status);
+                     return false;
+                  }
+                  if (this.mostrar_notificaciones(response) == true) {
+                     return;
+                  }
+               }, response => { // error callback
+                  this.checkear_estado_respuesta_http(response.status);
+               });
+            }
+         });
+         //return;
+      },
+
+      guardar_aplicacion_acceso: function () {
+         //Ejecuta validacion sobre los campos con validaciones
+         this.$validator.validateAll({
+            usuario:this.aplicacion_acceso.usuario,
+            clave:this.aplicacion_acceso.clave,
+            email:this.aplicacion_acceso.email,
+            tipo_acceso:this.aplicacion_acceso.tipo_acceso,
+            id_aplicacion:this.aplicacion_acceso.id_aplicacion,
+            id_servidor:this.aplicacion_acceso.id_servidor,
+         }).then( res => {
+            if (res == true) {
+               //Se adjunta el token
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               //Instancia nuevo form data
+               var formData = new FormData();
+               //Conforma objeto paramétrico para solicitud http
+               formData.append(`usuario`, this.aplicacion_acceso.usuario);
+               formData.append(`clave`, this.aplicacion_acceso.clave);
+               formData.append(`email`, this.aplicacion_acceso.email);
+               formData.append(`tipo_acceso`, this.aplicacion_acceso.tipo_acceso);
+               formData.append(`id_aplicacion`, this.aplicacion_acceso.id_aplicacion);
+               formData.append(`id_servidor`, this.aplicacion_acceso.id_servidor);
+
+               this.$http.post(`/aplicaciones_accesos`, formData).then(response => { // success callback
+
+                  //console.log(response.body);
+
+                  if (response.status == 200) {
+                     //this.inicializar();
+                     this.aplicacion_acceso = {
+                        'usuario':null,
+                        'clave':null,
+                        'email':null,
+                        'tipo_acceso':null,
+                        'id_aplicacion':null,
+                        'id_servidor':null,
+                     };
+
+                     //this.servidor.aplicaciones.push(response.body.aplicacion);
                      //this.$validator.clean();
                      //this.errors.clear();
 

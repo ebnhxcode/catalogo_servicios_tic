@@ -7,6 +7,7 @@ use App\Cluster;
 use App\Dominio;
 use App\Servicio;
 use App\Servidor;
+use App\Aplicacion;
 use App\ServidorEstado;
 use App\Datacentro;
 use App\ServidorHistoricoCambio;
@@ -34,6 +35,7 @@ class ServidorController extends Controller {
 
    private $servicios;
    private $servidores;
+   private $aplicaciones;
    private $datacentros;
    private $sistemas_operativos;
    private $tipos_sistemas_operativos;
@@ -75,7 +77,7 @@ class ServidorController extends Controller {
 
    private function validar_paginacion ($request) {
       if (!$request->per_page) {
-         $this->per_page = 500;
+         $this->per_page = 200;
       } else {
          $this->per_page = $request->per_page;
       }
@@ -117,6 +119,7 @@ class ServidorController extends Controller {
             'tipo_respaldo_disco'
          ])->paginate((int)$this->per_page);
 
+         $this->aplicaciones = Aplicacion::all();
          $this->servicios = Servicio::all();
          $this->datacentros = Datacentro::all();
          $this->sistemas_operativos = SistemaOperativo::with('tipo_sistema_operativo')->get();
@@ -134,6 +137,7 @@ class ServidorController extends Controller {
          return response()->json([
             'status' => 200,
             'servidores' => $this->servidores,
+            'aplicaciones' => $this->aplicaciones,
             'servicios' => $this->servicios,
             'datacentros' => $this->datacentros,
             'sistemas_operativos' => $this->sistemas_operativos,
@@ -172,8 +176,18 @@ class ServidorController extends Controller {
       }
 
       $this->servidor = Servidor::where("id_$this->nombre_modelo",'=',$id)->with([
-         'datacentro','sistema_operativo','aplicaciones','servidor_estado.estado','ambiente','servidor_historico_cambios','cluster','servidor_lvm','servicio',
-         'vlan','tipo_servidor','tipo_respaldo_disco'
+         'datacentro',
+         'sistema_operativo',
+         'aplicaciones',
+         'servidor_estado.estado',
+         'ambiente',
+         'servidor_historico_cambios',
+         'cluster',
+         'servidor_lvm',
+         'servicio',
+         'vlan',
+         'tipo_servidor',
+         'tipo_respaldo_disco'
       ])->first();
 
       #Valida si servidor existe y busca si tiene servidor_permiso

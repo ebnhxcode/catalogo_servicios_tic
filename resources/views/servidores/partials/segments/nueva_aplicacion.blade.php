@@ -279,9 +279,6 @@
             <button class="btn btn-success float-left" @click="guardar_aplicacion">
                Guardar
             </button>
-            <button class="btn float-right" @click="limpiar_objeto_clase_local">
-               Limpiar Formulario
-            </button>
          </dd>
 
       </div>
