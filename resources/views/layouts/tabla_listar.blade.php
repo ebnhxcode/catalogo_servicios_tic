@@ -22,11 +22,68 @@
          <td v-for="c,i in tabla_campos" v-show="c.visibility!=false">
             {{-- se corre por detras la completitud de relaciones. --}}
             @if(Request::path() == 'servicios')
-            <div class="h6 btn btn-md" style="width: 100%;" v-if="en_array(['nom_servicio'],i)" @click.prevent="mostrar_modal_actualizar(lom[`id_${nombre_model}`])">
-               <i class="fa fa-rocket small float-right btn" data-placement="top" data-toggle="tooltip" title="Abrir modal"></i>
-               @{{ lom[i] }}
-            </div>
-            <div v-else>@{{ lom[i] }}</div>
+               <div class="h6 btn btn-md text-left card" style="width: 100%;" v-if="en_array(['nom_servicio'],i)" @click.prevent="mostrar_modal_actualizar(lom[`id_${nombre_model}`])">
+                  {{--<i class="fa fa-rocket small float-right btn" data-placement="top" data-toggle="tooltip" title="Abrir modal"></i>--}}
+
+
+
+
+
+                  <div class="card-body">
+
+
+                     <div class="media">
+
+                        <a class="thumbnail" href="#!">
+                           <img class="mr-3" src="{{asset('/img/servicio.png')}}" alt="">
+                        </a>
+
+                        <div class="media-body">
+                           <h5 class="mt-0">SERVICIO: @{{ lom[i] }}</h5>
+                           <span class="text-muted">DETALLE: @{{ lom['det_servicio'] }}</span>
+                           <hr>
+                           <div class="row">
+                              <div class="col-sm-12 col-md-8">
+
+                                 <div class="table-responsive">
+                                    <h6>USUARIOS RESPONSABLES</h6>
+                                    <table v-if="lom['servicios_usuarios'] && lom['servicios_usuarios'].length > 0">
+                                       <thead>
+                                       <tr>
+                                          <th>Nombre</th>
+                                          <th>Email</th>
+                                       </tr>
+                                       </thead>
+                                       <tbody>
+                                       <tr v-for="su in lom['servicios_usuarios']" v-if="su.usuario">
+                                          <td>@{{ su.usuario.nom_usuario +' '+su.usuario.ape_paterno }}</td>
+                                          <td>@{{ su.usuario.email }}</td>
+                                       </tr>
+                                       </tbody>
+
+                                    </table><!-- .table -->
+                                    <div class="card card-body bg-light" v-else>
+                                       Hasta el momento no existen responsables asociados.
+                                    </div><!-- .card -->
+
+                                 </div>
+
+                              </div>
+                              <div class="col-sm-12 col-md-4">
+                                 <h6>DETALLES</h6>
+                                 <span>APLICACIONES: @{{ lom['n_aplicaciones'] }}</span>
+                                 <br>
+                                 <span>SERVIDORES: @{{ lom['n_servidores'] }}</span>
+                              </div>
+                           </div><!-- .row -->
+
+                        </div>
+                     </div>
+
+
+                  </div>
+               </div>
+               <div v-else>@{{ lom[i] }}</div>
             @else
                <div class="text-center" style="width: 100%;" v-if="en_array(['ram','memoria_dd'],i)">
                   @{{`${(lom[i])/1024} GB`}}
