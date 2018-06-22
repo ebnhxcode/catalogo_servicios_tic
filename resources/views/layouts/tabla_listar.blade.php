@@ -22,7 +22,7 @@
          <td v-for="c,i in tabla_campos" v-show="c.visibility!=false">
             {{-- se corre por detras la completitud de relaciones. --}}
             @if(Request::path() == 'servicios')
-               <div class="h6 btn btn-md text-left card" style="width: 100%;" v-if="en_array(['nom_servicio'],i)" @click.prevent="mostrar_modal_actualizar(lom[`id_${nombre_model}`])">
+               <div class="h6 btn btn-md text-left pro" style="width: 100%;" v-if="en_array(['nom_servicio'],i)" @click.prevent="mostrar_modal_actualizar(lom[`id_${nombre_model}`])">
                   {{--<i class="fa fa-rocket small float-right btn" data-placement="top" data-toggle="tooltip" title="Abrir modal"></i>--}}
 
 
@@ -35,7 +35,7 @@
                      <div class="media">
 
                         <a class="thumbnail" href="#!">
-                           <img class="mr-3" src="{{asset('/img/servicio.png')}}" alt="">
+                           <img class="mr-3 pro" src="{{asset('/img/servicio.png')}}" alt="">
                         </a>
 
                         <div class="media-body">
