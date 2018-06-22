@@ -5005,6 +5005,7 @@ var ServidorController = new Vue({
          'estados': [],
          'dominios': [],
          'servidores': [],
+         'servicios': [],
 
          'spinner_table': true,
 
