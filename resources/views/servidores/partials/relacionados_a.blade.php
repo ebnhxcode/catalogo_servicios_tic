@@ -8,19 +8,19 @@
       <a class="nav-link active" id="v-pills-aplicaciones-tab" data-toggle="pill" href="#v-pills-aplicaciones" role="tab"
          aria-controls="v-pills-aplicaciones" aria-selected="true">
          <i class="fa fa-plus-circle"></i>
-         Aplicaciones
+         Registrar Aplicaciones
       </a>
 
       <a class="nav-link" id="v-pills-aplicaciones-accesos-tab" data-toggle="pill" href="#v-pills-aplicaciones-accesos" role="tab"
          aria-controls="v-pills-aplicaciones-accesos" aria-selected="false">
          <i class="fa fa-plus-circle"></i>
-         Accesos aplicaciones
+         Registrar Accesos a Aplicaciones
       </a>
 
       <a class="nav-link" id="v-pills-servidores-accesos-tab" data-toggle="pill" href="#v-pills-servidores-accesos" role="tab"
          aria-controls="v-pills-servidores-accesos" aria-selected="false">
          <i class="fa fa-plus-circle"></i>
-         Accesos servidores
+         Registrar Accesos a Servidores
       </a>
 
       {{--

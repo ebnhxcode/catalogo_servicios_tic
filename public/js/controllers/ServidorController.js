@@ -3180,6 +3180,14 @@ var ServidorController = new Vue({
             'id_servidor': null
          },
 
+         'servidor_acceso': {
+            'usuario': null,
+            'clave': null,
+            'tipo_acceso': null,
+            'puerto': null,
+            'id_servidor': null
+         },
+
          'permitido_guardar': ['nom_servidor', 'det_servidor', 'ip_servidor', 'ram', 'memoria_dd', 'swap', 'procesador', 'modelo_procesador', 'frec_procesador', 'nucleos', 'usuarios_pactados', 'mac', 'nodo', 'interface', 'lvm_raiz', 'lvm_usr', 'lvm_tmp', 'lvm_var', 'lvm_home', 'agente_instana_instalado', 'id_datacentro', 'id_servicio', 'id_sistema_operativo', 'id_estado', 'id_ambiente', 'id_cluster', 'id_vlan', 'id_tipo_servidor', 'id_tipo_respaldo_disco'],
          'relaciones_clase': [{ 'datacentro': ['id_datacentro', 'nom_datacentro'] }, { 'servicio': ['id_servicio', 'nom_servicio'] }, { 'sistema_operativo': ['id_sistema_operativo', 'nom_sistema_operativo'] },
          //{'aplicaciones':['id_aplicacion','nom_aplicacion']},
@@ -3613,6 +3621,63 @@ var ServidorController = new Vue({
                }, function (response) {
                   // error callback
                   _this2.checkear_estado_respuesta_http(response.status);
+               });
+            }
+         });
+         //return;
+      },
+
+      guardar_servidor_acceso: function guardar_servidor_acceso() {
+         var _this3 = this;
+
+         //Ejecuta validacion sobre los campos con validaciones
+         this.$validator.validateAll({
+            usuario: this.servidor_acceso.usuario,
+            clave: this.servidor_acceso.clave,
+            tipo_acceso: this.servidor_acceso.tipo_acceso,
+            puerto: this.servidor_acceso.puerto,
+            id_servidor: this.servidor_acceso.id_servidor
+         }).then(function (res) {
+            if (res == true) {
+               //Se adjunta el token
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               //Instancia nuevo form data
+               var formData = new FormData();
+               //Conforma objeto paramétrico para solicitud http
+               formData.append('usuario', _this3.servidor_acceso.usuario);
+               formData.append('clave', _this3.servidor_acceso.clave);
+               formData.append('tipo_acceso', _this3.servidor_acceso.tipo_acceso);
+               formData.append('puerto', _this3.servidor_acceso.puerto);
+               formData.append('id_servidor', _this3.servidor_acceso.id_servidor);
+
+               _this3.$http.post('/servidores_accesos', formData).then(function (response) {
+                  // success callback
+
+                  //console.log(response.body);
+
+                  if (response.status == 200) {
+                     //this.inicializar();
+                     _this3.servidor_acceso = {
+                        'usuario': null,
+                        'clave': null,
+                        'tipo_acceso': null,
+                        'puerto': null,
+                        'id_servidor': null
+                     };
+
+                     //this.servidor.aplicaciones.push(response.body.aplicacion);
+                     //this.$validator.clean();
+                     //this.errors.clear();
+                  } else {
+                     _this3.checkear_estado_respuesta_http(response.status);
+                     return false;
+                  }
+                  if (_this3.mostrar_notificaciones(response) == true) {
+                     return;
+                  }
+               }, function (response) {
+                  // error callback
+                  _this3.checkear_estado_respuesta_http(response.status);
                });
             }
          });

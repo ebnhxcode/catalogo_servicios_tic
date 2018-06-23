@@ -126,9 +126,9 @@
                <dd>
                   <p class="control has-icon has-icon-right">
 
-                     <select class="form-control" v-model="servidor_acceso.id_servidor" name="id_servidor"
+                     <select class="form-control" v-model="servidor_acceso.id_servidor=servidor.id_servidor" name="id_servidor"
                              v-validate="{required:true, regex:/^[0-9]+$/i}" data-vv-delay="500">
-                        <option :value="s.id_servidor" v-for="s in servidores">
+                        <option :value="s.id_servidor" v-for="s in servidores" v-if="servidor.id_servidor==s.id_servidor">
                            @{{ `${s.nom_servidor} -> ${s.det_servidor}` }}
                         </option>
                      </select>
@@ -138,9 +138,9 @@
                      </transition>
 
                      <transition name="bounce">
-               <span v-show="errors.has('id_servidor')" class="text-danger small">
-                  @{{ errors.first('id_servidor') }}
-               </span>
+                        <span v-show="errors.has('id_servidor')" class="text-danger small">
+                           @{{ errors.first('id_servidor') }}
+                        </span>
                      </transition>
                   </p>
                </dd>
@@ -150,6 +150,21 @@
 
 
          </div><!-- .row -->
+      </div>
+   </div>
+
+   <br>
+
+   <div class="card">
+      <div class="card-body pro">
+         <dt>Finalizar</dt>
+
+         <dd>
+            <button class="btn btn-success float-left" @click="guardar_servidor_acceso">
+               Guardar
+            </button>
+         </dd>
+
       </div>
    </div>
 

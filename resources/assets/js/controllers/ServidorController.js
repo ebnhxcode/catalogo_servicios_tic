@@ -101,6 +101,14 @@ const ServidorController = new Vue({
             'id_servidor':null,
          },
 
+         'servidor_acceso':{
+            'usuario':null,
+            'clave':null,
+            'tipo_acceso':null,
+            'puerto':null,
+            'id_servidor':null,
+         },
+
          'permitido_guardar':[
             'nom_servidor',
             'det_servidor',
@@ -552,6 +560,60 @@ const ServidorController = new Vue({
                         'email':null,
                         'tipo_acceso':null,
                         'id_aplicacion':null,
+                        'id_servidor':null,
+                     };
+
+                     //this.servidor.aplicaciones.push(response.body.aplicacion);
+                     //this.$validator.clean();
+                     //this.errors.clear();
+
+                  } else {
+                     this.checkear_estado_respuesta_http(response.status);
+                     return false;
+                  }
+                  if (this.mostrar_notificaciones(response) == true) {
+                     return;
+                  }
+               }, response => { // error callback
+                  this.checkear_estado_respuesta_http(response.status);
+               });
+            }
+         });
+         //return;
+      },
+
+      guardar_servidor_acceso: function () {
+         //Ejecuta validacion sobre los campos con validaciones
+         this.$validator.validateAll({
+            usuario:this.servidor_acceso.usuario,
+            clave:this.servidor_acceso.clave,
+            tipo_acceso:this.servidor_acceso.tipo_acceso,
+            puerto:this.servidor_acceso.puerto,
+            id_servidor:this.servidor_acceso.id_servidor,
+         }).then( res => {
+            if (res == true) {
+               //Se adjunta el token
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               //Instancia nuevo form data
+               var formData = new FormData();
+               //Conforma objeto paramétrico para solicitud http
+               formData.append(`usuario`, this.servidor_acceso.usuario);
+               formData.append(`clave`, this.servidor_acceso.clave);
+               formData.append(`tipo_acceso`, this.servidor_acceso.tipo_acceso);
+               formData.append(`puerto`, this.servidor_acceso.puerto);
+               formData.append(`id_servidor`, this.servidor_acceso.id_servidor);
+
+               this.$http.post(`/servidores_accesos`, formData).then(response => { // success callback
+
+                  //console.log(response.body);
+
+                  if (response.status == 200) {
+                     //this.inicializar();
+                     this.servidor_acceso = {
+                        'usuario':null,
+                        'clave':null,
+                        'tipo_acceso':null,
+                        'puerto':null,
                         'id_servidor':null,
                      };
 
