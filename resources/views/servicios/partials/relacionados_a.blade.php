@@ -13,10 +13,12 @@
       -->
       <a class="nav-link active" id="v-pills-bitacoras-tab" data-toggle="pill" href="#v-pills-bitacoras" role="tab"
          aria-controls="v-pills-bitacoras" aria-selected="false">
+         <i class="fa fa-plus-circle"></i>
          Bitacoras del servicio
       </a>
       <a class="nav-link" id="v-pills-responsables-tab" data-toggle="pill" href="#v-pills-responsables" role="tab"
          aria-controls="v-pills-responsables" aria-selected="false">
+         <i class="fa fa-plus-circle"></i>
          Usuarios Responsables
       </a>
 
